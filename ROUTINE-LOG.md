@@ -51,3 +51,6 @@ One per fully-verified ("Yes", not "Partial") new posting: MIT Lincoln Laborator
 - **RTX Massachusetts sites** (Andover/Tewksbury/Woburn) — RTX clearly has an active Winter/Spring 2027 co-op wave (5 reqs found this run, none in MA); their own MA-specific search page is JS-rendered and returned nothing — worth trying again.
 - **Analog Devices, Sierra Space, Danaher (US site), Caterpillar (next cycle)** — cycles not yet posted per this run's findings; likely to open in the next 4–8 weeks.
 - **Amazon Robotics req 10536817** — re-check periodically whether the posting narrows to a specific term, since it's currently a shared summer/spring/fall pipeline.
+
+### ⚠️ Push failure
+`git push -u origin master` failed with a 403: **"Claude doesn't have GitHub access to Svvipee/internship-tracker-2026 for your organization."** All of this run's work (build.mjs, the regenerated .xlsx, this log, and 9 staged-application files) is committed locally on `master` (commit `a3018f9`) but has NOT reached GitHub. An org admin needs to install the Claude GitHub App (https://github.com/apps/claude/installations/select_target) or reconnect GitHub from claude.ai settings before the next run's push — and before this run's commit — can land. **The next run should attempt to push this pending local commit before doing new work**, so nothing is lost or duplicated.
