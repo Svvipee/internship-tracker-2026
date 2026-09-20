@@ -127,3 +127,42 @@ None created this run — the only new posting (Zipline) is Partial, not fully v
 - **Draper Laboratory JR002688 (Acoustic and Vibration Technologies Co-op) and JR002717 (Metrology Co-op)** — both open/rolling with no season stated; check periodically for a dated Spring 2027 version.
 - **Astranis** — confirmed live "Winter 2027" (not Winter 2026/Spring 2027) Mechanical Engineer Intern; flagged as a near-miss in case Hamza wants to reconsider the season window, not re-checked otherwise.
 - **Analog Devices, Caterpillar** — still expected to open Winter 2026/Spring 2027 cycles in the coming weeks (Analog Devices' next wave reportedly ~Oct/Nov 2026); keep checking periodically.
+
+---
+
+## 2026-09-20 ~13:00 UTC
+
+### Sync
+`git fetch origin master` confirmed local (detached HEAD at `f4a1a04`) matches `origin/master` exactly — no divergence, no pull needed. No push-access issues this run.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: GD Electric Boat (req 601496955, still Cloudflare-blocked), Boston Dynamics req R2495, Relativity Space's Boston MA listing, Curtiss-Wright JR1907, Redwire Space/Karman Space, Draper JR002688/JR002717, Analog Devices, Caterpillar.
+2. **Fresh sweep**: Toyota Research Institute, Textron Systems (Wilmington MA — distinct from Textron Aviation), Thermo Fisher Scientific, Waters Corporation, Bose, Instron, Analogic, Form Energy, Boston Metal, Sublime Systems, Sanofi/Genzyme, Charles River Labs, Applied Materials, KLA, Lam Research, Intuitive Machines, Hexagon Manufacturing Intelligence, GE HealthCare, Philips, Waymo, Aurora Flight Sciences, Terex, Oshkosh, Polaris.
+
+### Added to `rows` (2 new entries)
+- **Applied Materials** — 2027 Spring Mechanical Engineer Co-op, **Gloucester, MA (Boston metro!)**, req R2628290 — **Partial** (Workday blocked, confirmed via a dreamworkhq aggregator mirror quoting exact title/season/location/pay/req ID).
+- **Sanofi (Genzyme)** — 2027 Spring Co-Op Opportunities, **Framingham, MA (Boston metro!)** — **Yes**, fetched directly, live, closes Nov 14, 2026. Biopharma manufacturing/process engineering (MSAT) umbrella posting, not classic mechanical — flagged as a discipline caveat in the row's Discipline field.
+
+### Not added — deduped
+- An RTX Cedar Rapids IA "Mechanical Engineering Co-op (Winter/Spring 2027)" req (01869080) surfaced in the fresh sweep but is identical to the RTX Cedar Rapids IA row already tracked from a prior run — logged in `checked` as a dedupe note, not double-counted.
+
+### Added/updated in `checked` (21 entries)
+Resolved/updated priority threads: GD Electric Boat (4th consecutive Cloudflare block, deprioritizing further automated attempts), Boston Dynamics R2495 (season still unconfirmed; also ruled out an unrelated same-titled Summer 2026 posting as a naming collision), Relativity Space (Boston MA listing no longer live), Curtiss-Wright JR1907 (posting still doesn't state a year — inference isn't enough to pass the verification bar), Redwire Space (Summer-only), Karman Space & Defense (Summer-only by program design), Draper JR002688/JR002717 (still no season stated, no change), Analog Devices (no change), Caterpillar (prior req dead, new "Parallel Co-op Program" doesn't cleanly fit a discrete term and has no MA location).
+New exclusions from the fresh sweep: Toyota Research Institute (ML/AI roles, wrong location/discipline), a 5-company "nothing found" batch (Waters Corporation, Instron, Analogic, Boston Metal, Charles River Labs), Bose (only stale/dead links), Thermo Fisher Scientific (Summer 2027 season / wrong location), Philips (only 2025 postings), a 5-company Summer-only batch (Hexagon Manufacturing Intelligence, Oshkosh, Terex, Polaris, Waymo), Sublime Systems (zero open roles, confirmed via direct fetch), Lam Research (2027 cycle not yet posted).
+Left unresolved (not excluded outright, flagged for follow-up): Textron Systems Wilmington MA (Taleo page wouldn't render real content), Aurora Flight Sciences (no dated listing found, only a generic description), GE HealthCare (zapply snippet couldn't be corroborated with real page content).
+
+### Staged applications created (1 file, `staged-applications/`)
+`sanofi-genzyme-spring-2027-coop.md` — the only fully-verified ("Yes") new posting this run. Applied Materials was NOT staged since it's Partial only.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (82.8KB → 94.6KB, confirmed via `git diff --stat`).
+
+### Worth re-checking next time
+- **Textron Systems (Wilmington, MA)** — "2027 Intern - Materials Quality Engineer (Weapons)" title exists but the Taleo posting page returns only template placeholders; needs a direct in-browser check to get season/pay/status.
+- **Aurora Flight Sciences (Boeing subsidiary)** — company materials mention MA-based mechanical/autonomy engineering work generally; no specific dated 2027 co-op req found yet — worth checking careers.aurora.aero directly.
+- **GE HealthCare** — "LSS Mechanical Engineering Co-op" title surfaced via zapply but the actual page returned unrelated content twice; try a direct careers.gehealthcare.com search instead.
+- **Lam Research** — 2027 mechanical engineering intern cycle not yet posted as of this run; likely opens in the coming weeks.
+- **GD Electric Boat req 601496955** — now blocked by Cloudflare on 4 consecutive runs; deprioritizing further automated fetch attempts — would need an actual in-browser check.
+- **Boston Dynamics req R2495** — season still unconfirmed after 3 attempts; worth one more try with a different fetch approach, or otherwise treat as a dead end.
+- **GE Aerospace, Analog Devices, Caterpillar** — all still expected to open new Winter 2026/Spring 2027 cycles in the coming weeks; keep checking periodically.
