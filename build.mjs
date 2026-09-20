@@ -545,6 +545,18 @@ const rows = [
     "Link Verified": "Partial — Oracle Cloud ATS is JS-rendered, returned empty content on direct fetch. Sourced via aggregator mirror only. Verify live in-browser before applying.",
     Notes: "",
   },
+  {
+    Company: "Zipline",
+    "Role Title": "Mechanical Engineer Intern",
+    Discipline: "Mechanical Engineering",
+    Season: "Spring 2027 (Jan–Apr/May)",
+    Location: "South San Francisco, CA (or Dallas, TX)",
+    "Distance from Boston, MA (mi, approx.)": 2700,
+    Pay: "~$60k–$70k annualized (third-party estimate, not stated on posting)",
+    "Application Link": "https://www.zipline.com/open-roles/7865253003?gh_jid=7865253003",
+    "Link Verified": "Partial — fetched directly, confirmed exact title and 'Spring 2027' wording on the page, but page is JS-rendered so Apply-button/open status could not be independently confirmed from the fetch alone. Corroborated as currently listed by two other independent sources (2026-09-20).",
+    Notes: "Design/build/test electro-mechanical systems for autonomous drone delivery. Requires ≥2nd year undergrad completed; masters/PhD also eligible.",
+  },
 ];
 
 const checked = [
@@ -598,6 +610,23 @@ const checked = [
   { Company: "iRobot (Bedford, MA)", "Role(s) Checked": "Full careers site", Reason: "2026-09-20: No current Spring 2027 postings found — only historical 2022 listings and older closed Workday reqs." },
   { Company: "Vicarious Surgical (Waltham, MA)", "Role(s) Checked": "Full careers site", Reason: "2026-09-20 re-check: no current Spring 2027 postings; most recent was a January 2026 Mechanical Engineering Co-Op (already past)." },
   { Company: "Apptronik / Figure AI / Agility Robotics", "Role(s) Checked": "Mechanical/hardware internship search", Reason: "2026-09-20: No Winter 2026/Spring 2027 mechanical postings found. One apparent lead (Figure AI 'Hardware Reliability Intern') turned out on direct fetch to be titled Summer 2026 and is closed/removed." },
+  // --- Added 2026-09-20 ~06:57 UTC routine run ---
+  { Company: "GE Aerospace", "Role(s) Checked": "Engines Eng Co-op R5029619 (dead), Manufacturing Eng Co-op R5030077 (HTTP 410), general Engines Eng Co-op — Lynn/Evendale (aggregator: EXPIRED), Lynn CNC Trainee Co-Op R5034331 (dead)", Reason: "2026-09-20 ~06:57 UTC re-check: all four known reqs confirmed dead ('no longer posted' / HTTP 410 / EXPIRED). No live Spring 2027 mechanical/manufacturing req found anywhere at GE Aerospace this pass." },
+  { Company: "Analog Devices", "Role(s) Checked": "Spring/Fall mechanical co-op search", Reason: "2026-09-20 ~06:57 UTC: still not posted; search summary indicates Summer 2027/2028-wave postings expected ~Oct/Nov 2026. No change." },
+  { Company: "Caterpillar", "Role(s) Checked": "r0000380501 '2027 Engineering Corporate Internship Program – Materials', r0000384650 '2027 Summer Corporate Intern – Engineering'", Reason: "2026-09-20 ~06:57 UTC: only Summer 2027 reqs found. No Winter 2026/Spring 2027 posting located." },
+  { Company: "Olympus (Westborough, MA)", "Role(s) Checked": "Jan–June 2026 Manufacturing Engineering Co-Op (direct fetch); July–Dec 2026 co-op", Reason: "2026-09-20 ~06:57 UTC: Jan–June 2026 cohort directly confirmed 'no longer accepting applications'. July–Dec 2026 is wrong season (Fall, not Winter/Spring). No real URL found for a 'Jan–June 2027' version — a prior aggregator claim of one appears to be a synthesis artifact, not an actual posting. Ruling out fully pending a real link." },
+  { Company: "Draper Laboratory", "Role(s) Checked": "JR002884 (Optics-Physics Sensor Eng Co-op, Spring 2027), JR002885 (Sensor Electrical Eng Co-op, Spring 2027), JR002767 (Mechanical Eng & System Packaging Intern), JR002688 (Acoustic and Vibration Technologies Co-op), JR002717 (Metrology Co-op)", Reason: "2026-09-20 ~06:57 UTC: JR002884/JR002885 wrong discipline (optics/electrical, consistent with prior exclusion). JR002767 is a Summer role per aggregator, not Winter/Spring. JR002688 and JR002717 are open/rolling but state no specific season/year on the posting — fail the 'season stated' bar, excluded pending a dated version." },
+  { Company: "MIT Lincoln Laboratory (Lexington, MA)", "Role(s) Checked": "Group 07-71 Mechanical Engineering (Jan–June 2026), Group 07-76 Control & Autonomous Systems (Jan–June 2026), Group 07-77 (July–Dec 2026)", Reason: "2026-09-20 ~06:57 UTC: all three are past/wrong-season cycles relative to today. No new Spring 2027 (Jan–June 2027) mechanical/aerospace req found beyond the already-tracked Microfabrication Co-Op." },
+  { Company: "Boston Dynamics (Waltham, MA)", "Role(s) Checked": "req R2495 'Mechanical Engineering Intern' (Atlas program)", Reason: "2026-09-20 ~06:57 UTC: search snippet mentions 'Spring 2027 Co-Op' but Workday fetch returned empty content twice — could not independently verify or confirm this is distinct from already-tracked req R2476. Worth a follow-up with better Workday access." },
+  { Company: "Commonwealth Fusion Systems (Devens, MA)", "Role(s) Checked": "'Intern – Mechanical Engineer – Fall Co-op 2026'", Reason: "2026-09-20 ~06:57 UTC: title/season is Fall 2026 only, and the posting itself now 404s. No Spring 2027 version found." },
+  { Company: "Relativity Space", "Role(s) Checked": "'2027 Mechanical Engineer Intern' reqs including a Boston, MA location", Reason: "2026-09-20 ~06:57 UTC: context strongly suggests Summer 2027 wave (aggregator states ~47% of new listings carry 'Summer 2027' in title); not confirmed as Winter 2026/Spring 2027 — excluded, but the Boston, MA listing specifically is worth a direct-fetch check next pass." },
+  { Company: "Astranis", "Role(s) Checked": "'Mechanical Engineer Intern (Winter 2027)', SF, via Greenhouse", Reason: "2026-09-20 ~06:57 UTC: directly verified live and open ($29/hr) but season is literally 'Winter 2027' (not Winter 2026 or Spring 2027 as required) — excluded on strict season-match grounds. Near miss, worth flagging if Hamza wants to reconsider the season window." },
+  { Company: "L3Harris", "Role(s) Checked": "'Mechanical Engineer Co-op' and 'Sustainment Mechanical Engineering Co-op' (Greenville, TX)", Reason: "2026-09-20 ~06:57 UTC: both confirmed dead (404) on direct fetch. Only software/AI Spring 2027 reqs remain live — discipline mismatch, consistent with prior exclusion." },
+  { Company: "Curtiss-Wright", "Role(s) Checked": "JR1907 'Co-op (Spring Term)', Cheswick, PA", Reason: "2026-09-20 ~06:57 UTC: posting has no explicit year in the title; direct fetch blocked (403). Could not confirm Spring 2027 specifically — excluded pending verification, worth a re-check." },
+  { Company: "Sierra Nevada Corporation", "Role(s) Checked": "Mechanical co-op/intern search", Reason: "2026-09-20 ~06:57 UTC: only found a historical (2023) mechanical co-op posting and current Summer 2027 reqs. No Winter 2026/Spring 2027 posting found." },
+  { Company: "Redwire Space / Karman Space", "Role(s) Checked": "Mechanical/aerospace intern search", Reason: "2026-09-20 ~06:57 UTC: candidate roles exist at both but could not verify season (Redwire rate-limited 429; Karman fetch didn't surface target content). Excluded, worth re-checking with more time/attempts." },
+  { Company: "Joby Aviation / Honeywell Aerospace / Moog / Woodward / Firefly Aerospace / Impulse Space / Virgin Galactic / Vecna Robotics / Desktop Metal / Markforged / Boston Dynamics AI Institute", "Role(s) Checked": "Mechanical/aerospace/systems/manufacturing/robotics internship search", Reason: "2026-09-20 ~06:57 UTC: no Winter 2026/Spring 2027 postings found at any of these — only Summer 2027, Fall 2026, or undated rolling reqs turned up." },
+  { Company: "General Dynamics Electric Boat (Groton, CT)", "Role(s) Checked": "req 601496955 (already Partial in `rows`), including a text-proxy (r.jina.ai) fetch workaround", Reason: "2026-09-20 ~06:57 UTC: still blocked by Cloudflare on jobs.buildsubmarines.com even via proxy workaround. WebSearch snippets remain consistent with the tracked posting (title, Groton CT, mechanical/aerospace-eligible, US citizenship required) but no independent direct-fetch confirmation obtained — status in `rows` unchanged at Partial." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];

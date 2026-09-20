@@ -93,3 +93,37 @@ One per fully-verified ("Yes", not "Partial") new posting: Formlabs (Mechanical 
 - **Olympus (Westborough, MA)** — a "Jan–June 2027" Manufacturing Engineering Co-Op may exist per aggregator text but couldn't be independently confirmed; worth a direct in-browser check.
 - **MIT Lincoln Laboratory** — confirmed the already-tracked Microfabrication Industrial Eng Co-Op has what looks like a sibling/refreshed req (careers.ll.mit.edu/job/Lexington-Group-08-35-Microfabrication-Engineering-Co-Op-Microelectronics-Laboratory-Jan-Aug-2027-MA-02420/1368363000/) — likely the same underlying role, not re-added to avoid duplication, but worth a look if the original req URL ever goes dead.
 - **Analog Devices, Sierra Space, Danaher (US), Caterpillar** — still expected to open their Spring 2027 cycles in the coming weeks; keep checking periodically.
+
+---
+
+## 2026-09-20 ~06:57 UTC
+
+### Sync
+`git fetch`/`git pull origin master` confirmed local was 3 commits behind (still on the initial-commit `master` pointer while `origin/master` had advanced through the two prior routine commits). Fast-forwarded cleanly, no conflicts. No push-access issues this run.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Priorities:
+1. Follow-ups from the last run's "worth re-checking" list: GD Electric Boat (req 601496955, still Cloudflare-blocked), Analog Devices, Caterpillar, Olympus (Jan–June 2027 claim), GE Aerospace (any new req), Draper Laboratory and MIT Lincoln Laboratory (any new reqs beyond what's tracked).
+2. Fresh sweep of additional aerospace/mechanical/robotics employers not yet checked: Zipline, Astranis, Curtiss-Wright, Sierra Nevada Corporation, Redwire Space, Karman Space, Joby Aviation, Honeywell Aerospace, Moog, Woodward, Firefly Aerospace, Impulse Space, Virgin Galactic, Vecna Robotics, Desktop Metal/Markforged, Boston Dynamics AI Institute, plus re-checks of Boston Dynamics, Commonwealth Fusion Systems, Relativity Space, and L3Harris.
+
+### Added to `rows` (1 new entry)
+- **Zipline** — Mechanical Engineer Intern, Spring 2027, South San Francisco CA (or Dallas TX) — **Partial**: exact title and "Spring 2027" wording confirmed via direct fetch of the actual zipline.com posting, but the page is JS-rendered so the Apply button/open status couldn't be independently confirmed from the fetch alone; corroborated as currently listed by two other independent sources. Not staged as an application draft since it's Partial, not fully verified, per the routine's rule (staging is for fully-verified postings only).
+
+### Added to `checked` (18 entries)
+GE Aerospace (all 4 known reqs re-confirmed dead — 410/"no longer posted"/EXPIRED), Analog Devices (still not posted), Caterpillar (Summer 2027 reqs only), Olympus (Jan–June 2026 cohort confirmed closed; no real "Jan–June 2027" URL exists — a prior aggregator claim of one looks like a synthesis artifact, not a real posting), Draper Laboratory (5 additional reqs checked: 2 wrong-discipline, 1 Summer, 2 with no stated season), MIT Lincoln Laboratory (3 more cycles checked, all past/wrong-season, nothing new in the Spring 2027 window), Boston Dynamics (a possibly-distinct req R2495 couldn't be verified — Workday returned empty content twice), Commonwealth Fusion Systems (Fall 2026 co-op posting now 404s), Relativity Space (Boston, MA listing appears part of the Summer 2027 wave, not confirmed otherwise), Astranis (near miss — verified live/open but season is literally "Winter 2027", outside the Winter 2026/Spring 2027 target), L3Harris (2 mechanical co-op reqs both dead), Curtiss-Wright (new company — no year stated, fetch blocked 403), Sierra Nevada Corporation (Summer 2027 only), Redwire Space/Karman Space (season unverifiable — rate-limited/no content), a 10-company batch with nothing found (Joby Aviation, Honeywell Aerospace, Moog, Woodward, Firefly Aerospace, Impulse Space, Virgin Galactic, Vecna Robotics, Desktop Metal/Markforged, Boston Dynamics AI Institute), and GD Electric Boat (still Cloudflare-blocked even via a text-proxy workaround — status in `rows` unchanged at Partial).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (74.5KB → 82.8KB, confirmed via `git diff --stat`).
+
+### Staged applications
+None created this run — the only new posting (Zipline) is Partial, not fully verified, so per the routine's rule it wasn't staged.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — three runs in a row now blocked by Cloudflare on jobs.buildsubmarines.com; automated methods (direct fetch, text-proxy) have been exhausted — probably needs an actual in-browser check to resolve from Partial to Yes or confirm dead.
+- **Boston Dynamics req R2495** — search snippet suggests a possibly-distinct Spring 2027 Mechanical Engineering Intern (Atlas program) beyond the already-tracked R2476, but Workday fetch returned empty content twice. Worth a direct in-browser check.
+- **Relativity Space (Boston, MA listing)** — part of a likely-Summer-2027 wave overall, but the specific Boston, MA req wasn't individually fetched — worth a closer direct check.
+- **Curtiss-Wright JR1907** — "Co-op (Spring Term)" with no year stated; fetch blocked 403 — worth a retry.
+- **Redwire Space / Karman Space** — candidate mechanical/aerospace intern roles exist but season unverified due to rate-limiting/fetch issues — worth another attempt.
+- **Draper Laboratory JR002688 (Acoustic and Vibration Technologies Co-op) and JR002717 (Metrology Co-op)** — both open/rolling with no season stated; check periodically for a dated Spring 2027 version.
+- **Astranis** — confirmed live "Winter 2027" (not Winter 2026/Spring 2027) Mechanical Engineer Intern; flagged as a near-miss in case Hamza wants to reconsider the season window, not re-checked otherwise.
+- **Analog Devices, Caterpillar** — still expected to open Winter 2026/Spring 2027 cycles in the coming weeks (Analog Devices' next wave reportedly ~Oct/Nov 2026); keep checking periodically.
