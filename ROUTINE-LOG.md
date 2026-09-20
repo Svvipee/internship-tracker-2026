@@ -54,3 +54,42 @@ One per fully-verified ("Yes", not "Partial") new posting: MIT Lincoln Laborator
 
 ### ⚠️ Push failure
 `git push -u origin master` failed with a 403: **"Claude doesn't have GitHub access to Svvipee/internship-tracker-2026 for your organization."** All of this run's work (build.mjs, the regenerated .xlsx, this log, and 9 staged-application files) is committed locally on `master` (commit `a3018f9`) but has NOT reached GitHub. An org admin needs to install the Claude GitHub App (https://github.com/apps/claude/installations/select_target) or reconnect GitHub from claude.ai settings before the next run's push — and before this run's commit — can land. **The next run should attempt to push this pending local commit before doing new work**, so nothing is lost or duplicated.
+
+---
+
+## 2026-09-20 ~00:49 UTC
+
+### GitHub access resolved
+On starting this run, `git status` showed a detached HEAD at commit `82ba943` (the previous run's two commits), while the local `master` branch pointer was still stale at the initial commit. `git fetch origin master` confirmed **origin/master is already at `82ba943`** — the prior run's "push failure" had actually been resolved/superseded and the commits did reach GitHub. Reset local `master` to track `origin/master` and continued from there. No action needed from an admin at this time.
+
+### What was searched
+Delegated to a research agent with strict-verification instructions (open the actual posting URL directly, no aggregator-only claims). Two priorities:
+1. **Priority re-checks** from the last run's "worth re-checking" list: GD Electric Boat, Textron Aviation, Eaton, RTX Massachusetts sites (Andover/Tewksbury), Analog Devices/Sierra Space/Danaher(US)/Caterpillar next-cycle check, and Amazon Robotics req 10536817's term ambiguity.
+2. **Fresh sweep**: additional Boston-area hardware/robotics/aerospace companies not yet checked (Vicor, Teradyne, iRobot, Commonwealth Fusion Systems, Olympus, Alloy Enterprises, Hologic, Vicarious Surgical), plus a broader re-check of GE Aerospace, Draper, MIT Lincoln Lab for any new reqs, and humanoid-robotics companies (Apptronik, Figure AI, Agility Robotics).
+
+### Added to `rows` (5 new entries)
+- **Formlabs** — Mechanical Engineering Intern (Winter/Spring 2027), Somerville MA — **Yes**, additional MA req beyond the one already tracked.
+- **Formlabs** — Hardware Systems Integration Intern (Winter/Spring 2027), Somerville MA — **Yes**.
+- **Eaton** — ETO Engineering Co-op, Syracuse NY, Fall 2026/Spring 2027 — **Yes** (verified via Eaton's own public Eightfold job API directly, since the rendered page is JS-heavy). This resolves last run's "Eaton link died" re-check note with a fresh, different req.
+- **Reframe Systems** (new company — modular-construction/robotics-manufacturing startup) — Mechanical Engineer, Spring 2027 Co-op, Andover/Billerica MA — **Yes** (verified via Ashby's own public job-board API directly). Strong Boston-area fit.
+- **General Dynamics Electric Boat** — 2027 Spring Engineering CO-OP Trainee, Groton CT — **Partial** (found via GD's own dedicated recruiting site with a specific req ID, but the page itself is behind a Cloudflare bot-check wall that blocked every fetch method tried).
+
+### Updated in `rows`
+- **Amazon Robotics** (req 10536817) — posting text now explicitly reads "...summer intern, spring co-op, and fall co-op roles," confirming Spring 2027 co-op is one of the covered terms (previously flagged as an ambiguous shared pipeline). Noted in the row's "Link Verified" field rather than re-added.
+
+### Added to `checked` (13 entries)
+Textron Aviation (no change, still unverifiable — SPA confirmed, aggregator mirror is stale 2024 data), RTX Massachusetts sites (no qualifying co-op, only Summer 2027 internship and full-time roles), Analog Devices/Sierra Space/Danaher(US)/Caterpillar (no change, next cycle not open yet), Olympus (2026 cohort closed, 2027 unverifiable), Alloy Enterprises (only Fall/Spring 2026), Commonwealth Fusion Systems (zero co-op postings on live board), GE Aerospace (two more specific reqs re-confirmed dead), Teradyne (only Spring 2026), Vicor (no co-ops at all), Hologic (only Spring 2026, one page 503'd), iRobot (nothing current), Vicarious Surgical (nothing current), Apptronik/Figure AI/Agility Robotics (no qualifying postings; one apparent Figure AI lead turned out to be Summer 2026 and closed).
+
+### Staged applications created (4 files, `staged-applications/`)
+One per fully-verified ("Yes", not "Partial") new posting: Formlabs (Mechanical Engineering Intern), Formlabs (Hardware Systems Integration Intern), Eaton (ETO Engineering Co-op), Reframe Systems (Mechanical Engineer Co-op). GD Electric Boat was NOT staged since it's Partial only.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (65KB → 74.5KB, confirmed via `git diff --stat`).
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — now have a specific req ID and it's on GD's own recruiting domain, but Cloudflare bot-check blocks every automated verification method. Worth trying to open directly in-browser to confirm live/open status and full discipline breakdown.
+- **Textron Aviation** — still fully unverifiable (JS SPA); the aggregator mirror found is stale (2024). Probably not worth further automated attempts unless a first-party listings page (not the SPA search) can be found.
+- **RTX Massachusetts sites (Andover/Tewksbury/Woburn)** — still nothing MA-specific found across two runs; likely deprioritize unless a new req appears.
+- **Olympus (Westborough, MA)** — a "Jan–June 2027" Manufacturing Engineering Co-Op may exist per aggregator text but couldn't be independently confirmed; worth a direct in-browser check.
+- **MIT Lincoln Laboratory** — confirmed the already-tracked Microfabrication Industrial Eng Co-Op has what looks like a sibling/refreshed req (careers.ll.mit.edu/job/Lexington-Group-08-35-Microfabrication-Engineering-Co-Op-Microelectronics-Laboratory-Jan-Aug-2027-MA-02420/1368363000/) — likely the same underlying role, not re-added to avoid duplication, but worth a look if the original req URL ever goes dead.
+- **Analog Devices, Sierra Space, Danaher (US), Caterpillar** — still expected to open their Spring 2027 cycles in the coming weeks; keep checking periodically.
