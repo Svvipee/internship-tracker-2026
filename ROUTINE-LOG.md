@@ -166,3 +166,55 @@ Left unresolved (not excluded outright, flagged for follow-up): Textron Systems 
 - **GD Electric Boat req 601496955** — now blocked by Cloudflare on 4 consecutive runs; deprioritizing further automated fetch attempts — would need an actual in-browser check.
 - **Boston Dynamics req R2495** — season still unconfirmed after 3 attempts; worth one more try with a different fetch approach, or otherwise treat as a dead end.
 - **GE Aerospace, Analog Devices, Caterpillar** — all still expected to open new Winter 2026/Spring 2027 cycles in the coming weeks; keep checking periodically.
+
+---
+
+## 2026-09-20 ~19:00 UTC
+
+### Sync
+`git fetch origin master` confirmed local matched `origin/master` exactly at `e2131cd` (no divergence). Created/reset local `master` branch tracking `origin/master`. No push-access issues at sync time.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: GD Electric Boat (req 601496955, Cloudflare-blocked for 4 straight runs), Boston Dynamics req R2495, Textron Systems Materials Quality Engineer intern, Aurora Flight Sciences, GE HealthCare LSS Mechanical Eng Co-op, Lam Research/Analog Devices/Caterpillar, GE Aerospace (any new Spring 2027 req), Draper JR002688/JR002717, MIT Lincoln Laboratory (any new reqs).
+2. **Fresh sweep**: nuclear/energy/industrial (Westinghouse, GE Vernova, NuScale, Commonwealth Fusion re-check), medical device/robotics (Intuitive Surgical, Stryker, Insulet), defense/aerospace (Kratos, HII/Newport News, Parsons), Boston-area robotics not yet checked (Realtime Robotics, Piaggio Fast Forward, Diligent Robotics, Veo Robotics), semiconductor/precision manufacturing (MKS Instruments, Coherent/II-VI), automotive/EV distressed companies (Fisker, Canoo, Nikola, VinFast, Karma).
+
+### Major finding — Boston Dynamics R2476 confirmed dead
+Queried Boston Dynamics' live Workday CXS jobs API directly for all open reqs: all 37 current postings are `workerSubType: "Regular"` — **zero Intern/Co-Op postings exist company-wide right now.** The previously-tracked "Mechanical Engineering Co-Op" (req R2476) is no longer live. **Moved from `rows` to `checked`.**
+
+### Upgraded from Partial to Yes
+- **Draper Laboratory — Systems Engineering Co-Op (Spring 2027, JR002882)** and **Electro-Mechanical Instrument Co-op (Spring 2027, JR002883-1)** — both previously tracked as Partial (Workday page blocked). This run's agent successfully fetched both directly via Draper's Workday CXS job API (title, description, pay range all confirmed) — upgraded to fully verified.
+
+### Added to `rows` (13 new entries)
+- **GE Aerospace — Engines Engineering Co-op – US – Spring 2027** (R5029617-1), Lynn, MA or Evendale, OH — **Yes**. First live GE Aerospace Spring 2027 req found after 4 prior runs found only dead/expired reqs; Lynn, MA option is a Boston-metro fit.
+- **GE Aerospace — Structures Intern/Co-op – ACSC – Spring 2027** (R5039588-1), Cincinnati, OH — **Yes**.
+- **Insulet — Co-op, R&D Mechanical Engineering** (REQ-2026-18007), Acton, MA — **Yes**. Strong Boston-metro fit (medical device manufacturer, ~25 mi).
+- **Insulet — Co-op, Manufacturing Engineering** (REQ-2026-18078), Acton, MA — **Yes**.
+- **Insulet — Co-op, Systems Engineering** (REQ-2026-18061), Acton, MA — **Yes**.
+- **Insulet — Co-op, Mechanical Lifecycle** (REQ-2026-18155), Acton, MA — **Partial** (confirmed live via Insulet's own Workday jobs-search API call, full description not individually opened).
+- **Insulet — Co-op, R&D Manufacturing** (REQ-2026-18069), Acton, MA — **Partial** (same basis).
+- **Insulet — Graduate Co-op, Manufacturing Engineering** (REQ-2026-18086), Acton, MA — **Partial** (same basis; confirm undergrad eligibility).
+- **Insulet — Co-op, Supplier Development Engineering - Mechanical** (REQ-2026-18209), Acton, MA — **Partial** (URL sourced from a Dreamwork aggregator mirror quoting Insulet's own Workday link directly, since the live Workday page returned blank to direct fetch).
+- **Insulet — Co-op, Systems Engineering - Design Verification** (REQ-2026-18144-1), Acton, MA — **Partial** (same aggregator-sourced-URL basis).
+- **Insulet — Co-op, Life Cycle Engineering - Systems** (REQ-2026-18149), Acton, MA — **Partial** (same aggregator-sourced-URL basis).
+- **GE HealthCare — Infant Care V&V Engineering Co-op - Spring 2027** (R4046324-1), Waukesha, WI — **Yes**. Accepts Mechanical/Electrical/Computer/Biomedical majors; V&V/test focus, not Boston-area.
+- **GE Vernova — Nuclear Engineering Co-Op/Intern - Spring 2027** (R5048552), Wilmington, NC — **Yes**. Nuclear/Industrial Engineering, not Boston-area.
+
+A 4th Insulet req found by the research agent — "Co-op, Next Gen Platforms (NGP) Systems Engineering" (REQ-2026-18071) — was investigated but **not added**: no source yielded a verifiable canonical Insulet Workday deep-link URL (unlike its siblings above), so per the no-fabricated-URLs rule it was logged to `checked` instead rather than including a guessed link.
+
+### Added to `checked` (22 entries)
+Boston Dynamics R2476 (moved from `rows`, confirmed dead — see above), Insulet NGP Systems Engineering (title/season/pay corroborated by two aggregators but no verifiable URL found), Draper Sensor Electrical Eng Co-op JR002885 (re-confirmed live but discipline mismatch, no change), Textron Systems Materials Quality Engineer intern (Taleo page now loads real content — Wilmington MA, Full-time Internship/Co-Op, posted 09/01/2026, requires US Citizenship for classified access — but still never states a season, so still excluded), Aurora Flight Sciences (still unverifiable, client-rendered Taleo board), GE HealthCare LSS Mechanical Eng Co-op R4046267-1 Madison WI (zero season language, wrong location, excluded — distinct from the Waukesha WI req that WAS added), MKS Instruments Andover MA (zero matching Workday reqs — "Spring 2027" reference was a stale aggregator artifact), Lam Research (2027 cycle still not posted), Analog Devices/Caterpillar/Commonwealth Fusion Systems (consolidated no-change re-check), and a 13-company fresh-sweep batch with nothing found (Westinghouse Electric, NuScale Power, Intuitive Surgical, Stryker, Kratos Defense, HII/Newport News Shipbuilding, Parsons Corporation, Realtime Robotics, Piaggio Fast Forward, Diligent Robotics, Veo Robotics, Coherent/II-VI, and a Fisker/Canoo/Nikola/VinFast/Karma Automotive group excluded partly due to several companies' financial distress).
+
+### Staged applications created (9 files, `staged-applications/`)
+One per fully-verified ("Yes") new/upgraded posting: Draper Systems Engineering Co-Op, Draper Electro-Mechanical Instrument Co-op (both upgraded from Partial this run), GE Aerospace Engines Engineering Co-op, GE Aerospace Structures Intern/Co-op, Insulet R&D Mechanical Engineering, Insulet Manufacturing Engineering, Insulet Systems Engineering, GE HealthCare Infant Care V&V Engineering Co-op, GE Vernova Nuclear Engineering Co-Op/Intern. The 7 Partial-verified Insulet sibling reqs were NOT staged, consistent with the routine's rule.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (94.6KB → 114.2KB, confirmed via `git diff --stat`). Sheet row counts: 60 in "Winter26-Spring27 Internships", 108 in "Checked - Not Included".
+
+### Worth re-checking next time
+- **Insulet — NGP Systems Engineering Co-op** (REQ-2026-18071, Jan-June 2027) — title/season/pay confirmed by two aggregators, but no source gave a working canonical URL. Also note a *separate* Insulet req exists for "NGP Systems Engineering Co-op (July-Dec 2026)" — different season, don't conflate the two. Worth a direct in-browser check to get the Jan-June 2027 req's real link.
+- **GD Electric Boat req 601496955** — not re-attempted this run (previously deprioritized after 4 straight Cloudflare blocks); still Partial in `rows`, still needs an in-browser check to resolve.
+- **Textron Systems Materials Quality Engineer intern** (req 1539632) — page finally loads real content, but the season is genuinely never stated on the posting itself; may need a recruiter/portal follow-up rather than another fetch attempt.
+- **GE Aerospace** — first live Spring 2027 req found in 5 runs (Engines Eng Co-op, Lynn/Evendale); worth checking careers.geaerospace.com again soon in case more reqs open in this same wave, especially Lynn, MA-specific ones.
+- **Analog Devices, Caterpillar, Lam Research** — still not posted; keep checking periodically (recurring note across multiple runs now).
+- **HII/Newport News Shipbuilding** — per their own stated cadence, Spring co-op postings open "September through October" — check again in ~2-4 weeks.
