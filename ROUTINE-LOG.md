@@ -361,3 +361,38 @@ Sublime Systems (third-party mirror confirms closed — corroborates the existin
 - **Analog Devices, Lam Research, Caterpillar** — still not posted, recurring note across many runs now.
 - **Moderna req R19735 vs. biospace mirror job 3072468** — confirm same posting next time either source is touched.
 - **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
+
+---
+
+## 2026-09-21 ~19:00 UTC
+
+### Sync
+`git fetch origin master` confirmed local (detached HEAD) matched `origin/master` exactly at `d2303ca`. Checked out and fast-forwarded local `master` cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: GD Electric Boat req 601496955 (Cloudflare-blocked 7+ runs straight), Vertex Pharmaceuticals (Workday 500 errors), GD Mission Systems McLeansville NC Mechanical Eng Co-op (Partial in `rows`, needs a working direct-fetch method), Lockheed Martin/Sikorsky (site migration, try current host structure), HII/Newport News Shipbuilding (Sept-Oct posting cadence), Analog Devices/Lam Research/Caterpillar (recurring not-yet-posted note), Draper Laboratory and MIT Lincoln Laboratory (any new in-discipline Spring 2027 req), GE Aerospace (any new Lynn, MA reqs).
+2. **Fresh sweep**: Northrop Grumman, Boeing, Spirit AeroSystems, Collins Aerospace direct, Moog, Woodward, PerkinElmer/Revvity, Boston Scientific, Medtronic, Becton Dickinson, GD Bath Iron Works, GD Ordnance & Tactical Systems, Blue Origin (new reqs), SpaceX (new reqs), Joby Aviation, Natel Energy, Sanergy, Vicor, Nuvation, PTC, Instron.
+
+### Result: no new entries added to `rows`
+Every "new" finding the research agent surfaced turned out, on cross-check against the current `build.mjs`, to already be tracked verbatim (SpaceX Spring 2027 Engineering Internship/Co-op, RTX Collins Aerospace Cedar Rapids IA Mechanical Eng Co-op req 01869080, Northrop Grumman Chandler AZ 2027 Spring Mechanical Engineering Co-op, Draper Electro-Mechanical Instrument Co-op JR002883-1, and GD Mission Systems McLeansville req 74530 with the exact same job ID/pay already on file). No genuinely new qualifying posting was found this run. One candidate (Blue Origin Spring 2027 Manufacturing Engineering Internship – Undergraduate, Space Coast FL, req R66348) was found via an aggregator mirror only; the same mirror states the application window closed July-Aug 2026 (already past as of today), so it was excluded rather than added as Partial — see `checked` below.
+
+### Added to `checked` (12 new entries)
+Lockheed Martin/Sikorsky (current portal is lockheedmartin.eightfold.ai/careers, replacing the dead legacy site — still JS-blocked, no Spring 2027 co-op located), GD Mission Systems McLeansville re-verify attempt (same blocking pattern, status unchanged), GD Electric Boat req 601496955 (8th+ consecutive Cloudflare block), HII/Newport News Shipbuilding (still nothing for Spring 2027), Analog Devices/Lam Research (re-check, no change), MIT Lincoln Laboratory (re-check, no new in-discipline req), GE Aerospace (re-check, no new Lynn MA req), Caterpillar (new "2027 Engineering Corporate Parallel Co-op Program" req IDs found and opened directly, but ambiguous continuous-rotation format still fails the discrete Winter/Spring-term bar, no MA location), Blue Origin req R66348 (aggregator-only, application window likely already closed), a 10-company fresh-sweep "nothing found" group (Spirit AeroSystems, Medtronic, Becton Dickinson, Moog, Woodward, PerkinElmer/Revvity, PTC, Natel Energy, Sanergy, Nuvation Engineering), GD Bath Iron Works (trades apprenticeship, discipline mismatch), and GD Ordnance & Tactical Systems / Northrop Grumman Boston-area presence (nothing found).
+
+### Staged applications
+None created this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (133.3KB → 139.4KB, confirmed via `git diff --stat`).
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 8+ consecutive automated-verification failures; still needs a human in-browser check.
+- **Vertex Pharmaceuticals** — not re-attempted this run (deprioritized); Workday portal has returned HTTP 500 on prior attempts.
+- **GD Mission Systems McLeansville NC Mechanical Eng Co-op (req 74530)** — still Partial; icims/gd.com both still block direct rendering after 2 runs of trying.
+- **Draper JR002688/JR002717** (Acoustic and Vibration Technologies Co-op, Metrology Co-op) — still open/rolling but no stated season/year; not re-attempted this run.
+- **HII/Newport News Shipbuilding** — re-check again per their own stated "September-October" posting cadence; still nothing live as of this run.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Moderna req R19735 vs. biospace mirror job 3072468** — not re-touched this run; prior conclusion (very likely same posting) stands.
+- **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
+- **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"** — confirmed live/open this run but excluded on ambiguous-term grounds; worth Hamza's own judgment call if he's open to a continuous parallel co-op structure rather than a discrete Winter/Spring-only term.
