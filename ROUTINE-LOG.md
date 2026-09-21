@@ -218,3 +218,53 @@ One per fully-verified ("Yes") new/upgraded posting: Draper Systems Engineering 
 - **GE Aerospace** — first live Spring 2027 req found in 5 runs (Engines Eng Co-op, Lynn/Evendale); worth checking careers.geaerospace.com again soon in case more reqs open in this same wave, especially Lynn, MA-specific ones.
 - **Analog Devices, Caterpillar, Lam Research** — still not posted; keep checking periodically (recurring note across multiple runs now).
 - **HII/Newport News Shipbuilding** — per their own stated cadence, Spring co-op postings open "September through October" — check again in ~2-4 weeks.
+
+---
+
+## 2026-09-21 ~01:00 UTC
+
+### Sync
+`git fetch origin master` confirmed local (detached HEAD at `030fc5b`) matched `origin/master` exactly. Reset local `master` to track `origin/master`. No push-access issues at sync time.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: Insulet NGP Systems Engineering Co-op (REQ-2026-18071, still needed a working URL), GD Electric Boat req 601496955 (5th consecutive Cloudflare block attempt), Textron Systems Materials Quality Engineer intern (req 1539632, season still unstated), GE Aerospace (any new Lynn/Spring 2027 reqs), Analog Devices/Caterpillar/Lam Research, HII/Newport News Shipbuilding, Draper JR002688/JR002717, MIT Lincoln Laboratory (any new reqs).
+2. **Fresh sweep**: Beta Technologies, Archer Aviation, Wisk Aero, Mercury Systems, Cognex, Abiomed, Haemonetics, Vertex Pharmaceuticals, Moderna, American Superconductor, Machina Labs, Hadrian, ICON, Divergent3D, Leonardo DRS, Elbit Systems, Saab, Mercury Marine, Illumina, 10x Genomics, and others.
+
+Note: the agent's exclude-list briefing accidentally omitted Formlabs (already fully tracked from a prior run) — the agent independently flagged it as unfamiliar rather than blindly re-adding it; verified against `build.mjs` and confirmed it's a pre-existing duplicate, no action taken.
+
+### Added to `rows` (3 new entries, all Partial)
+- **Leonardo DRS** — Mechanical Engineer Co-Op (Spring 2027), Bridgeton, MO — **Partial** (LinkedIn + Workopia mirror only; Leonardo DRS's own careers site not independently opened for this req). New company, first Leonardo DRS posting tracked.
+- **Insulet** — Co-op, Next Gen Platforms (NGP) Systems Engineering (Onsite), REQ-2026-18071, Acton MA — **Partial** (two aggregator mirrors, Workopia and Zapply, now corroborate the exact canonical Workday URL; official Workday page still returns empty on direct fetch after 3 runs). Resolves the "no verifiable URL" blocker flagged in the last 2 runs — moved out of `checked` into `rows`.
+- **Moderna** — Co-Op, Applied Technologies (Spring 2027), Norwood MA (~14 mi, Boston metro) — **Partial** (full content confirmed directly via a biospace.com job-board mirror; Moderna's own Workday page returned empty). Discipline caveat noted (automation/bioprocess engineering, not classic mechanical) — same treatment as the existing Sanofi/Genzyme row.
+
+### Not added — discipline mismatch or already tracked (important correction)
+The research agent initially reported "Draper — Sensor Electrical Engineering Co-op (JR002885)" and "Draper — Optics-Physics Sensor Engineering Co-op (JR002884)" as new verified findings, and "Insulet — Co-op, Systems Engineering (REQ-2026-18061)" as new. **Cross-checked against `build.mjs` before editing: all three were already accounted for** — the two Draper reqs have been correctly excluded for discipline mismatch (electrical/optics, not on Hamza's list) across 3 prior runs, and REQ-2026-18061 was already added to `rows` as Yes in the 2026-09-20 ~19:00 UTC run. None were re-added or duplicated. Also not added: Draper Systems Engineering Co-Op (JR002882) and Electro-Mechanical Instrument Co-op (JR002883-1) — the agent reported these as still-Partial (couldn't re-fetch the Workday page this run), but both were already upgraded to fully-verified "Yes" in the 2026-09-20 ~19:00 UTC run via a successful direct fetch; that earlier direct confirmation stands and they were left unchanged at Yes.
+
+### Updated in `checked`
+- **Textron Systems req 1539632** ("2027 Intern - Materials Quality Engineer (Weapons)") — **RESOLVED**: a proxy fetch this run finally returned the full posting body, which explicitly states "Paid, full-time 10-week summer internship," deadline Oct 31 2026. Confirmed Summer 2027 (wrong season) — reason text updated to reflect this, supersedes the prior "season never stated" notes across 3 runs.
+- Removed the old Insulet REQ-2026-18071 `checked` exclusion entry (superseded — now in `rows` as Partial, see above).
+
+### Added to `checked` (19 new entries)
+GE Aerospace Lynn trade/software reqs (discipline mismatch), MIT Lincoln Lab Cyber Security Co-op (discipline mismatch), Moderna CMC Development (aggregator-only, unconfirmed canonical URL — weaker discipline fit than the Applied Technologies req that WAS added), and a fresh-sweep batch with nothing qualifying found: Beta Technologies, Archer Aviation, Wisk Aero, Mercury Systems, Cognex, Abiomed, Haemonetics, Vertex Pharmaceuticals, Elbit Systems of America, Saab Inc, Divergent3D, Emerson/National Instruments, Mercury Marine, Illumina, 10x Genomics, American Superconductor, and a 9-company "nothing found" group (Hadrian, Machina Labs, ICON, Boston Engineering, Bruker, Zeiss Industrial Metrology, Nikon Metrology, Overair, Form Energy).
+
+### Priority re-check outcomes (no `rows`/`checked` change needed)
+- **GD Electric Boat req 601496955** — still Cloudflare-blocked on the 5th consecutive run (direct fetch, proxy, and search-cache methods all failed). Status unchanged at Partial in `rows`.
+- **Analog Devices, Caterpillar, Lam Research** — still nothing posted for the Winter2026/Spring2027 cycle; Caterpillar's engineering internship program confirmed Summer-only by design.
+- **HII/Newport News Shipbuilding** — company states Spring postings go up "September through October" (i.e. now) but nothing indexed/live yet — likely not posted yet, re-check in 1-2 weeks.
+- **Draper JR002688/JR002717** — still no season stated; deprioritizing further checks now that the company's actively-dated Spring 2027 reqs (JR002882-JR002885) are all tracked.
+
+### Staged applications
+None created this run — all 3 new postings are Partial, not fully verified, so per the routine's rule none were staged.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (114.2KB → 124.5KB, confirmed via `git diff --stat`). Current totals: 63 rows in "Winter26-Spring27 Internships", 127 rows in "Checked - Not Included".
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 5 consecutive Cloudflare blocks; consider trying a Wayback Machine/archive.org snapshot next run instead of live fetch.
+- **Insulet REQ-2026-18071 and the Leonardo DRS/Moderna Partial entries** — all three new Partial rows this run were verified only via aggregator/third-party mirrors, not the employer's own page directly rendering; worth a follow-up direct-fetch attempt each to upgrade to Yes.
+- **Saab "Systems Engineering Co-Op (Spring - Summer 2027)"** (East Syracuse, NY) — near-miss on season clarity, worth a direct fetch attempt to pin down the exact start date.
+- **Beta Technologies** — "2026-2027" program season labeling is ambiguous; worth checking specific team/track postings for a dated Spring 2027 version.
+- **Moderna CMC Development co-op** — aggregator-only, unconfirmed canonical URL; worth a direct fetch retry.
+- **HII/Newport News Shipbuilding** — re-check in 1-2 weeks per their own stated posting cadence.
+- **Analog Devices, Lam Research** — cycles still not open, recurring note across many runs now.
