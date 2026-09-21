@@ -736,21 +736,21 @@ const rows = [
     Location: "Bridgeton, MO",
     "Distance from Boston, MA (mi, approx.)": 1050,
     Pay: "$41,011–$53,315/yr base (co-op salary range) + bonus/equity eligibility per posting",
-    "Application Link": "https://www.linkedin.com/jobs/view/mechanical-engineer-co-op-spring-2027-at-leonardo-drs-4451960539",
-    "Link Verified": "Partial — confirmed via LinkedIn's own job listing (title/season/pay/location) corroborated by a Workopia aggregator mirror quoting the same details; Leonardo DRS's own careers.leonardodrs.com posting for this specific req was not independently located/opened, so the primary employer page itself couldn't be directly confirmed.",
-    Notes: "Land Systems division, Bridgeton, MO site. New company, first Leonardo DRS posting tracked. Note: a separately-numbered 'Mechanical Engineer Intern' req at the same Bridgeton site was confirmed CLOSED — do not confuse the two.",
+    "Application Link": "https://careers.leonardodrs.com/job/Bridgeton-Mechanical-Engineer-Co-Op-%28Spring-2027%29-MO-63044/1418392000/",
+    "Link Verified": "Yes — fetched directly on Leonardo DRS's own careers.leonardodrs.com ATS (job ID 115172, posted 2026-09-09), confirmed open. Upgraded from Partial (2026-09-21 ~07:00 UTC re-check).",
+    Notes: "Land Systems division, Bridgeton, MO site. Junior+ standing, 1+ prior internship/co-op required, CAD (Creo/SolidWorks) required. No citizenship requirement stated on this posting. Note: a separately-numbered 'Mechanical Engineer Intern' req at the same Bridgeton site was confirmed CLOSED — do not confuse the two.",
   },
   {
     Company: "Insulet",
     "Role Title": "Co-op, Next Gen Platforms (NGP) Systems Engineering (Onsite)",
     Discipline: "Systems Engineering",
-    Season: "January – June 2027",
+    Season: "January 11 – June 30, 2027",
     Location: "Acton, MA",
     "Distance from Boston, MA (mi, approx.)": 25,
-    Pay: "Not independently confirmed (see $25–34/hr range on sibling Insulet Acton reqs)",
+    Pay: "$25.00–$34.00/hr",
     "Application Link": "https://insulet.wd5.myworkdayjobs.com/en-US/insuletcareers/job/Acton-Massachusetts/Co-op--Next-Gen-Platforms--NGP--Systems-Engineering--January-June-2027--Onsite-_REQ-2026-18071",
-    "Link Verified": "Partial — title/season/location/req ID corroborated by two independent aggregator mirrors (Workopia, Zapply) quoting this exact canonical Workday URL; the live Workday page itself returned empty on repeated direct fetch attempts across three runs. Resolves the prior 'no verifiable URL' blocker.",
-    Notes: "Boston metro (Acton), onsite. A separate, distinct Insulet 'NGP Systems Engineering Co-op (July-Dec 2026)' req also exists — wrong season, not this one.",
+    "Link Verified": "Yes — fetched directly via Insulet's own Workday CXS job API (not an aggregator mirror), confirmed open, posted 5 days prior, application deadline 2026-12-31. Upgraded from Partial (2026-09-21 ~07:00 UTC re-check).",
+    Notes: "Boston metro (Acton), onsite. US work authorization required, no sponsorship. 3.0 GPA minimum. A separate, distinct Insulet 'NGP Systems Engineering Co-op (July-Dec 2026)' req also exists — wrong season, not this one.",
   },
   {
     Company: "Moderna",
@@ -760,9 +760,9 @@ const rows = [
     Location: "Norwood, MA",
     "Distance from Boston, MA (mi, approx.)": 14,
     Pay: "$20.00–$60.00/hr per posting",
-    "Application Link": "https://jobs.biospace.com/job/3072468/co-op-applied-technologies-spring-2027-/",
-    "Link Verified": "Partial — full posting content (title, dates, pay, citizenship requirement, open status) fetched and rendered directly at this biospace.com job-board listing, which mirrors Moderna's official Workday posting; Moderna's own modernatx.wd1.myworkdayjobs.com page returned empty on direct fetch, so the primary employer page wasn't independently confirmed.",
-    Notes: "Restricted to US persons (citizens/permanent residents/asylees/refugees). Onsite ~70%. Boston metro (Norwood). Discipline is automation/bioprocess engineering, not pure mechanical — included with caveat per Hamza's 'adjacent' disciplines (industrial/controls), similar treatment to the existing Sanofi/Genzyme row.",
+    "Application Link": "https://modernatx.wd1.myworkdayjobs.com/en-US/M_tx/job/Co-Op--Applied-Technologies--Spring-2027-_R19735",
+    "Link Verified": "Yes — fetched directly via Moderna's own Workday CXS job API (req R19735), returned live JSON confirming title, dates, pay, and open status. Upgraded from Partial (2026-09-21 ~07:00 UTC re-check); the previously-used biospace.com mirror (job 3072468) appears to be the same underlying posting under the job board's own listing ID, not a separate role.",
+    Notes: "Restricted to US persons (citizens/permanent residents/asylees/refugees) per prior mirror-sourced check, not re-confirmed word-for-word on this pass. Onsite ~70%. Boston metro (Norwood). Discipline is automation/bioprocess engineering, not pure mechanical — included with caveat per Hamza's 'adjacent' disciplines (industrial/controls), similar treatment to the existing Sanofi/Genzyme row.",
   },
 ];
 
@@ -899,6 +899,16 @@ const checked = [
   { Company: "10x Genomics (Pleasanton, CA)", "Role(s) Checked": "Manufacturing/Mechanical Engineering intern roles", Reason: "2026-09-21: postings found appear to be prior-cycle (2025/2026 summer); no Spring 2027 confirmed." },
   { Company: "American Superconductor (AMSC, Ayer, MA)", "Role(s) Checked": "'Superconducting Magnet R&D Intern' / 'SPS Intern' (US-citizen/ITAR roles)", Reason: "2026-09-21: roles found but season could not be confirmed — job board returned 403 on fetch." },
   { Company: "Hadrian / Machina Labs / ICON / Boston Engineering / Bruker / Zeiss Industrial Metrology / Nikon Metrology / Overair / Form Energy", "Role(s) Checked": "General mechanical/manufacturing engineering intern/co-op search, each company", Reason: "2026-09-21: no specific Winter 2026/Spring 2027-dated postings could be located or confirmed for any of these in this pass." },
+  // --- Added 2026-09-21 ~07:00 UTC routine run ---
+  { Company: "BAE Systems (Merrimack, NH)", "Role(s) Checked": "Mechanical/systems engineering intern/co-op search", Reason: "2026-09-21 ~07:00 UTC: the only 'Spring and Summer 2027' Mechanical Engineering Co-op found is located in Cedar Rapids, IA, not Merrimack, NH — no Merrimack-specific mechanical/systems co-op located." },
+  { Company: "Sig Sauer (Newington, NH)", "Role(s) Checked": "Mechanical engineering intern/co-op search", Reason: "2026-09-21 ~07:00 UTC: only a Spring 2027 Electrical/Computer Engineering (Uncrewed Systems) posting found — discipline mismatch. No mechanical-specific Spring 2027 posting located." },
+  { Company: "Textron Systems (Wilmington, MA)", "Role(s) Checked": "Fresh sweep for mechanical engineer intern/co-op reqs", Reason: "2026-09-21 ~07:00 UTC: the only '2027 Intern - Mechanical Engineer' found this pass is at Howe & Howe (Waterboro, ME), a different Textron subsidiary/location, with season/year unconfirmed — not the same as Wilmington, MA. No qualifying Wilmington MA mechanical req found." },
+  { Company: "Raytheon BBN (Cambridge, MA)", "Role(s) Checked": "Mechanical/systems engineering co-op search", Reason: "2026-09-21 ~07:00 UTC: no mechanical/systems engineering co-op found — BBN's internships lean AI/computing; general RTX Spring/Winter 2027 co-ops (already tracked elsewhere) are at other sites." },
+  { Company: "Eversource (MA)", "Role(s) Checked": "2027 Engineering Internships", Reason: "2026-09-21 ~07:00 UTC: posting language ('energize your summer') reads as a Summer program despite broadly referencing '2027' — no explicit Winter/Spring season stated. Excluded on season-ambiguity grounds." },
+  { Company: "National Grid", "Role(s) Checked": "Engineering internship/co-op search", Reason: "2026-09-21 ~07:00 UTC: no qualifying Winter 2026/Spring 2027 posting found." },
+  { Company: "MassDOT", "Role(s) Checked": "Engineering Co-op and Internship programs", Reason: "2026-09-21 ~07:00 UTC: Co-op program runs June/July-December (Fall) and Internship runs June-August (Summer) by design — no Winter 2026/Spring 2027 track exists. Also primarily civil engineering, not on Hamza's discipline list." },
+  { Company: "GE Aerospace", "Role(s) Checked": "Applied AI Engineer Co-op - Spring 2027 (Lynn, MA area)", Reason: "2026-09-21 ~07:00 UTC: a new Lynn-area Spring 2027 req was found beyond the already-tracked Engines Engineering Co-op, but it's a software/AI role — discipline mismatch." },
+  { Company: "Saab Inc (East Syracuse, NY)", "Role(s) Checked": "Systems Engineering Co-Op — exact posting title is 'Spring - Summer 2027'", Reason: "2026-09-21 ~07:00 UTC: fetched directly, confirmed live (link: saab.com/career/job-opportunities/systems-engineering-co-op-spring---summer-20272, $20.27-$22.30/hr + relocation bonus), but the term itself blends spring and summer into one combined window rather than a clean Winter/Spring-only co-op — judged closer to the common Summer 2027 wave Hamza asked to exclude than to a true Fall-through-Spring term. Flagged here rather than added; worth Hamza's own judgment call if he wants borderline spring/summer-blended terms reconsidered." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];

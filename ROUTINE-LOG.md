@@ -268,3 +268,51 @@ None created this run — all 3 new postings are Partial, not fully verified, so
 - **Moderna CMC Development co-op** — aggregator-only, unconfirmed canonical URL; worth a direct fetch retry.
 - **HII/Newport News Shipbuilding** — re-check in 1-2 weeks per their own stated posting cadence.
 - **Analog Devices, Lam Research** — cycles still not open, recurring note across many runs now.
+
+---
+
+## 2026-09-21 ~07:00 UTC
+
+### Sync
+`git status` initially showed a detached HEAD; `git fetch origin master` confirmed local matched `origin/master` exactly at `cd10a56` (7 commits ahead of the stale local `master` branch pointer). Checked out and fast-forwarded `master` cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: GD Electric Boat req 601496955 (Cloudflare-blocked 5 runs straight — tried Wayback Machine this time), the three Partial entries added last run (Leonardo DRS, Insulet REQ-2026-18071, Moderna Applied Technologies Co-Op) — attempted direct-fetch upgrades on the employer's own page, Saab Systems Engineering Co-Op season wording, HII/Newport News Shipbuilding, Analog Devices/Lam Research/Caterpillar, GE Aerospace (any new Lynn, MA reqs).
+2. **Fresh sweep**: Vicor, Nuvation, BAE Systems (Merrimack NH), Textron Systems, Sig Sauer, Smith & Wesson, iRobot (re-check), Desktop Metal, MathWorks, Waters Corp, Analogic, Charles River Labs, Vertex Pharmaceuticals, National Grid/Eversource, MassDOT, Raytheon BBN, plus re-checks of Blue Origin/SpaceX/Anduril for additional reqs and Joby/Archer/Firefly/Virgin Galactic for a dated Spring 2027 posting.
+
+### Upgraded from Partial to Yes (3 entries)
+- **Leonardo DRS — Mechanical Engineer Co-Op (Spring 2027)**, Bridgeton MO — now confirmed via direct fetch of Leonardo DRS's own careers.leonardodrs.com ATS (job ID 115172), replacing the prior LinkedIn/Workopia-mirror basis.
+- **Insulet — Co-op, NGP Systems Engineering (Onsite)** (REQ-2026-18071), Acton MA — now confirmed via direct fetch of Insulet's own Workday CXS job API, replacing the prior aggregator-mirror basis. Pay ($25–34/hr) and deadline (2026-12-31) added.
+- **Moderna — Co-Op, Applied Technologies (Spring 2027)**, Norwood MA — now confirmed via direct fetch of Moderna's own Workday CXS job API under req R19735, replacing the prior biospace.com-mirror basis. Note: R19735 is a different req number than the mirror's job ID (3072468); judged very likely the same underlying posting referenced by two different sites, not a separate role — flagged for a quick sanity check next run rather than treated as certain.
+
+### Added to `checked` (8 entries)
+BAE Systems (Merrimack, NH — no matching mechanical/systems co-op, the only Spring/Summer 2027 co-op found is in Cedar Rapids IA), Sig Sauer (only an EE/CE-discipline Spring 2027 posting, no mechanical match), Textron Systems Wilmington MA fresh sweep (the only "2027 Intern - Mechanical Engineer" found is at Howe & Howe/Waterboro ME, a different site/subsidiary — not a Wilmington match), Raytheon BBN (no mechanical/systems co-op, BBN skews AI/computing), Eversource (season reads as Summer despite "2027" branding), National Grid (nothing found), MassDOT (co-op/internship programs run Fall/Summer only by design, also civil-engineering-focused), GE Aerospace Applied AI Engineer Co-op — Lynn MA area (discipline mismatch, software/AI not mechanical).
+
+### Flagged but NOT added (judgment call, not excluded outright)
+- **Saab Inc — Systems Engineering Co-Op**, East Syracuse NY — exact wording pinned down via direct fetch as **"Spring - Summer 2027"** (a single combined term, not a clean Winter/Spring-only co-op). Judged closer to the common Summer 2027 wave than to a genuine Fall-through-Spring term, so it was logged to `checked` with the exact wording rather than added to `rows` — Hamza may want to reconsider this call himself since it's a genuinely borderline case.
+
+### Priority re-check outcomes (no `rows`/`checked` change)
+- **GD Electric Boat req 601496955** — Wayback Machine has **no archived snapshot** of the URL; direct fetch, proxy, and search-cache all still Cloudflare-blocked. 6th consecutive run unresolved — status unchanged at Partial in `rows`. Recommend deprioritizing further automated attempts; this needs a human in-browser check.
+- **HII/Newport News Shipbuilding, Analog Devices, Lam Research, Caterpillar** — no change, still not posted for the Winter 2026/Spring 2027 cycle.
+- **iRobot** — re-confirmed no current postings (live careers search returns 0 results for "mechanical intern"); no change to existing `checked` entry.
+- **Joby Aviation, Archer Aviation, Firefly Aerospace, Virgin Galactic** — re-checked, no new findings; these were already covered by existing `checked` entries from prior runs, so no new entries were added (avoiding duplication).
+
+### Not added — unresolved, worth a follow-up (not in `checked`, since not conclusively ruled out)
+- **Vertex Pharmaceuticals** — company confirms it runs summer and winter co-op programs generally, but the intern-specific Workday portal (`vrtx.wd5.myworkdayjobs.com/vertex_intern`) returned HTTP 500 on direct fetch; no specific dated req could be found or ruled out this pass.
+- **Anduril Industries — "Manufacturing Co-Op" / "Winter 2027 Manufacturing Engineer Co-op"** (Quincy/Lexington, MA) — appears to exist and be in-discipline/in-season per search snippets, but not independently direct-fetched from the live Greenhouse page this pass — worth a follow-up direct fetch before adding.
+
+### Staged applications created (3 files, `staged-applications/`)
+One per newly fully-verified ("Yes") posting this run: `leonardo-drs-mechanical-engineer-coop.md`, `insulet-ngp-systems-engineering-coop.md`, `moderna-applied-technologies-coop.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (124.5KB → 128.2KB, confirmed via `git diff --stat`).
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 6 consecutive automated-verification failures (direct fetch, proxy, search-cache, Wayback Machine); recommend a human in-browser check rather than further automated attempts.
+- **Vertex Pharmaceuticals** — retry the intern Workday portal (500 error this pass) or find an alternate canonical URL.
+- **Anduril "Manufacturing Co-Op" (Quincy/Lexington, MA)** — worth a direct-fetch follow-up to confirm season/discipline fit before adding to `rows`.
+- **Moderna req R19735 vs. biospace mirror job 3072468** — confirm these are the same posting (very likely) rather than two separate reqs, next time either source is touched.
+- **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — Hamza's own call on whether this borderline combined-term posting should count.
+- **HII/Newport News Shipbuilding** — re-check per their own stated "September-October" posting cadence.
+- **Analog Devices, Lam Research, Caterpillar** — still not posted, recurring note across many runs now.
