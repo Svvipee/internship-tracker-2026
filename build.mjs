@@ -160,6 +160,18 @@ const rows = [
     Notes: "Closest option to Boston besides Formlabs. Likely requires US citizenship (ITAR/clearance).",
   },
   {
+    Company: "General Dynamics Mission Systems",
+    "Role Title": "Mechanical Engineering Co-Op (January – May 2027)",
+    Discipline: "Mechanical Engineering",
+    Season: "January - May 2027",
+    Location: "McLeansville, NC",
+    "Distance from Boston, MA (mi, approx.)": 620,
+    Pay: "$26.00–$29.00/hr",
+    "Application Link": "https://careers-gdms.icims.com/jobs/74530/mechanical-engineering-co-op---%28january---may-2027%29/job",
+    "Link Verified": "Partial — corroborated across multiple independent sources (aggregator mirror quoting exact title/pay/dates/location, Glassdoor, career.io) with consistent details, but the icims URL redirected to a generic GDMS careers landing page (no job content) and the gd.com mirror URL returned HTTP 403 on direct fetch. Could not independently confirm current open/closed status. Verify live in-browser before applying.",
+    Notes: "Not Boston-area. Sibling req 'Mechanical Engineering Co-Op (July–December 2026)' exists at the same site — different season, not this one. Likely requires US citizenship (ITAR/clearance) as with other GDMS reqs.",
+  },
+  {
     Company: "Boeing (South Carolina)",
     "Role Title": "2026 Specialty Program – BSC Co-op – Engineering Internship Program (Materials & Process Eng, Industrial Eng)",
     Discipline: "Materials/Process Engineering, Industrial Engineering",
@@ -364,6 +376,18 @@ const rows = [
     "Application Link": "https://job-boards.greenhouse.io/andurilindustries/jobs/5236599007",
     "Link Verified": "Yes — fetched directly on Greenhouse, Apply button live.",
     Notes: "Boston metro (Quincy). Same cohort/site as the Mechanical Engineer Co-op above.",
+  },
+  {
+    Company: "Anduril Industries",
+    "Role Title": "Winter 2027 Manufacturing Engineer Co-op",
+    Discipline: "Mechanical Engineering / Aerospace Engineering",
+    Season: "Winter 2027 (16–24 wks; body notes ability to complete an in-person internship in summer 2027 — same Jan–Aug 2027 pattern as the other Anduril Winter 2027 co-ops)",
+    Location: "Lexington, MA; Quincy, MA",
+    "Distance from Boston, MA (mi, approx.)": 12,
+    Pay: "$32–$45/hr",
+    "Application Link": "https://job-boards.greenhouse.io/andurilindustries/jobs/5236589007",
+    "Link Verified": "Yes — fetched directly on Greenhouse, Apply button live.",
+    Notes: "Boston metro. This is the req flagged in the prior run as 'found in snippets but not direct-fetched' — now confirmed live. Same cohort/site family as the Mechanical/Systems Engineer Co-ops above. No stated application deadline.",
   },
   {
     Company: "Rivian",
@@ -909,6 +933,16 @@ const checked = [
   { Company: "MassDOT", "Role(s) Checked": "Engineering Co-op and Internship programs", Reason: "2026-09-21 ~07:00 UTC: Co-op program runs June/July-December (Fall) and Internship runs June-August (Summer) by design — no Winter 2026/Spring 2027 track exists. Also primarily civil engineering, not on Hamza's discipline list." },
   { Company: "GE Aerospace", "Role(s) Checked": "Applied AI Engineer Co-op - Spring 2027 (Lynn, MA area)", Reason: "2026-09-21 ~07:00 UTC: a new Lynn-area Spring 2027 req was found beyond the already-tracked Engines Engineering Co-op, but it's a software/AI role — discipline mismatch." },
   { Company: "Saab Inc (East Syracuse, NY)", "Role(s) Checked": "Systems Engineering Co-Op — exact posting title is 'Spring - Summer 2027'", Reason: "2026-09-21 ~07:00 UTC: fetched directly, confirmed live (link: saab.com/career/job-opportunities/systems-engineering-co-op-spring---summer-20272, $20.27-$22.30/hr + relocation bonus), but the term itself blends spring and summer into one combined window rather than a clean Winter/Spring-only co-op — judged closer to the common Summer 2027 wave Hamza asked to exclude than to a true Fall-through-Spring term. Flagged here rather than added; worth Hamza's own judgment call if he wants borderline spring/summer-blended terms reconsidered." },
+  // --- Added 2026-09-21 ~13:00 UTC routine run ---
+  { Company: "Textron (Bell Helicopter / Textron Aviation)", "Role(s) Checked": "Fresh sweep, mechanical/systems co-op/intern search", Reason: "2026-09-21 ~13:00 UTC: only a Summer 2027 program confirmed, with a posting window of Sept 1 - Oct 31, 2026. No Spring/Winter 2027 co-op found." },
+  { Company: "Honeywell Aerospace", "Role(s) Checked": "Fresh sweep, mechanical/systems co-op/intern search", Reason: "2026-09-21 ~13:00 UTC: 26 reqs found, all posted Aug 25-27, 2026 and all Summer 2027. No Spring/Winter 2027 co-op located." },
+  { Company: "Hexcel", "Role(s) Checked": "Internship/co-op search", Reason: "2026-09-21 ~13:00 UTC: only summer-dated internship/co-op mentions found; no Spring 2027 posting confirmed." },
+  { Company: "MathWorks (Natick, MA)", "Role(s) Checked": "Engineering Development Group (EDG) internship listing", Reason: "2026-09-21 ~13:00 UTC: re-checked and confirmed to be a Software Engineer role (C++/JavaScript/CS focus) — discipline mismatch, not merely an unconfirmed season as the 2026-09-19 note stated. Supersedes that earlier reason." },
+  { Company: "Waters Corporation (Milford, MA)", "Role(s) Checked": "Engineering co-op/intern search", Reason: "2026-09-21 ~13:00 UTC: only an Electrical Engineering Co-op and non-engineering postings (scheduling, digital experience, network analyst) found; no mechanical engineering co-op located." },
+  { Company: "Chart Industries", "Role(s) Checked": "Internship/co-op search", Reason: "2026-09-21 ~13:00 UTC: no internship/co-op postings of any kind found." },
+  { Company: "GreenPower Motor / Proterra", "Role(s) Checked": "Internship/co-op search", Reason: "2026-09-21 ~13:00 UTC: no current 2027 postings; only stale historical (2022) Proterra listings found." },
+  { Company: "Universal Robots / ABB Robotics", "Role(s) Checked": "Internship/co-op search", Reason: "2026-09-21 ~13:00 UTC: no Spring 2027-specific postings found for either." },
+  { Company: "Lockheed Martin / Sikorsky (Stratford, CT)", "Role(s) Checked": "search-jobs URL and current careers.lockheedmartin.com structure", Reason: "2026-09-21 ~13:00 UTC: confirmed further site migration — the legacy search-jobs URL now hard-redirects straight to lockheedmartin.com's 404 page. No Spring 2027 co-op/internship located. Worth trying the current careers.lockheedmartin.com host structure fresh next run." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];

@@ -316,3 +316,48 @@ One per newly fully-verified ("Yes") posting this run: `leonardo-drs-mechanical-
 - **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — Hamza's own call on whether this borderline combined-term posting should count.
 - **HII/Newport News Shipbuilding** — re-check per their own stated "September-October" posting cadence.
 - **Analog Devices, Lam Research, Caterpillar** — still not posted, recurring note across many runs now.
+
+---
+
+## 2026-09-21 ~13:00 UTC
+
+### Sync
+Session started with a detached HEAD; `git fetch origin master` confirmed local matched `origin/master` exactly at `d6e02f2`. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: GD Electric Boat req 601496955 (Cloudflare-blocked 6 runs straight), Vertex Pharmaceuticals (Workday 500 error), Anduril "Manufacturing Co-Op" (Quincy/Lexington MA, found in snippets but not direct-fetched), HII/Newport News Shipbuilding (their own Sept-Oct posting-window claim), Moderna req R19735 vs. biospace mirror job 3072468 sanity check (low priority, deprioritized this run).
+2. **Fresh sweep**: Blue Origin, Textron (Bell Helicopter/Textron Aviation), other GD divisions (GD Mission Systems, GD Ordnance & Tactical Systems), L3Harris, Sikorsky/Lockheed Martin, Honeywell Aerospace, Hexcel, Textron Specialized Vehicles, Chart Industries, Nuvation, Vicor, MathWorks, Desktop Metal, Waters Corp, Analogic, Charles River Labs, Formlabs (new reqs), Markforged, PTC, Hologic, Teradyne, Analog Devices (re-check), Wistron/Jabil/Flex/Sanmina, Firefly Space, Relativity Space, ABB Robotics, KUKA, Fanuc, Universal Robots, Vecna Robotics, Locus Robotics, GreenPower Motor, Proterra, Commonwealth Fusion Systems, Form Energy (re-check), Sublime Systems.
+
+### Added to `rows` (2 new entries)
+- **Anduril Industries — Winter 2027 Manufacturing Engineer Co-op**, Lexington MA / Quincy MA — **Yes**, confirmed live on Greenhouse (job 5236589007), $32–$45/hr. This is the req the prior run flagged as "found in snippets but not direct-fetched" — now confirmed. Same cohort/site family as the already-tracked Mechanical/Systems Engineer Co-ops.
+- **General Dynamics Mission Systems — Mechanical Engineering Co-Op (January – May 2027)**, McLeansville, NC — **Partial** (corroborated across multiple independent aggregator/mirror sources with consistent title/pay/dates/location, but the icims URL redirected to a generic careers landing page and the gd.com mirror returned HTTP 403 — could not independently render the job page or confirm open status). Not Boston-area. Different req/season from the already-tracked GDMS Infrastructure Engineer Co-op (Pittsfield, MA, Fall 2026 or Spring 2027).
+
+### Added to `checked` (9 new entries)
+Textron (Bell Helicopter/Textron Aviation — Summer 2027 only, posting window Sept 1–Oct 31 2026), Honeywell Aerospace (26 reqs found, all Summer 2027, posted Aug 25–27 2026), Hexcel (no Spring 2027 posting), MathWorks (re-checked and confirmed Software Engineer role — discipline mismatch, supersedes prior "unconfirmed season" note), Waters Corporation (only an EE co-op + non-engineering roles, no ME co-op), Chart Industries (no postings at all), GreenPower Motor/Proterra (no current 2027 postings, only stale 2022 listings), Universal Robots/ABB Robotics (no Spring 2027 postings), Lockheed Martin/Sikorsky (confirmed further site migration — legacy search-jobs URL now hard-redirects to a 404).
+
+### Priority re-check outcomes (no further `rows`/`checked` change beyond the above)
+- **GD Electric Boat req 601496955** — still Cloudflare-blocked; tried direct fetch and an r.jina.ai proxy workaround, both failed. 7th+ consecutive failed attempt across runs. Recommend deprioritizing further automated tries — needs an actual in-browser check.
+- **Vertex Pharmaceuticals** — Workday portal returned HTTP 500 again (2nd consecutive), and the co-ops page directly returned HTTP 403. No Spring 2027-specific req found via search either. Still unresolved.
+- **Anduril "Manufacturing Co-Op" Winter 2027** — CONFIRMED, see new `rows` entry above.
+- **HII/Newport News Shipbuilding** — re-checked directly; still nothing live for Spring 2027 (only Fall 2026 co-op and Summer 2027 internships exist). Their Sept–Oct posting-window claim hasn't materialized yet as of today. Worth another pass in 1–2 weeks.
+- **Moderna req R19735 vs. biospace mirror job 3072468** — not re-verified this run (explicitly deprioritized); prior run's conclusion (very likely the same posting) stands unchanged.
+
+### Fresh sweep — nothing qualifying found
+Sublime Systems (third-party mirror confirms closed — corroborates the existing Lever-board "checked" entry, no new entry needed), plus the 9 new `checked` entries above. No qualifying new postings found at L3Harris, Nuvation, Vicor, Desktop Metal, Analogic, Charles River Labs, Formlabs (no new reqs beyond existing), Markforged, Hologic, Teradyne, Analog Devices, Firefly Space, Relativity Space, KUKA, Fanuc, Locus Robotics, Commonwealth Fusion Systems, or Form Energy this pass (agent did not report explicit findings for every company in the sweep list — treat any not mentioned above as "no notable finding," not as independently ruled out).
+
+### Staged applications created (1 file, `staged-applications/`)
+`anduril-industries-manufacturing-engineer-coop.md` — the one new fully-verified ("Yes") posting this run. The GD Mission Systems row is Partial, so per the routine's rule it was not staged.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (128.2KB → 133.3KB, confirmed via `git diff --stat`).
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 7+ consecutive automated-verification failures; needs a human in-browser check rather than further automated attempts.
+- **Vertex Pharmaceuticals** — retry the Workday portal (2 consecutive 500s) or find an alternate canonical URL; also try the co-ops page again (403 this run).
+- **GD Mission Systems Mechanical Eng Co-op (McLeansville, NC)** — needs a working direct-fetch method (icims redirects to a landing page, gd.com 403s) to move from Partial to Yes.
+- **Lockheed Martin/Sikorsky** — try the current `careers.lockheedmartin.com` host structure fresh next run instead of the now-dead legacy `lockheedmartinjobs.com`/search-jobs paths.
+- **HII/Newport News Shipbuilding** — re-check per their own stated "September-October" posting cadence.
+- **Analog Devices, Lam Research, Caterpillar** — still not posted, recurring note across many runs now.
+- **Moderna req R19735 vs. biospace mirror job 3072468** — confirm same posting next time either source is touched.
+- **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
