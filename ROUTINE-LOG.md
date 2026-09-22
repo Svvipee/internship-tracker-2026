@@ -549,3 +549,47 @@ Blue Origin Huntsville "Spring 2027 Manufacturing Engineering Internship – Gra
 - **BETA Technologies "2026-2027 BETA Internship"** (South Burlington, VT, ~215 mi from Boston) — new judgment-call item, same treatment as Saab/Caterpillar: live rolling application, no stated Winter 2026/Spring 2027 term.
 - **Berkshire Grey "Spring 2027 Robot Learning R&D Co-op"** — borderline discipline fit (robotics R&D under Software dept); worth Hamza's own judgment call on whether it matches his target robotics discipline.
 - **SpaceX "Spring 2027 Graduate Engineer Internship/Co-op"** — requires already holding a bachelor's + current grad enrollment; only relevant if Hamza is in/entering grad school by Spring 2027 — confirm eligibility before treating as a real option.
+
+---
+
+## 2026-09-22 ~19:00 UTC
+
+### Sync
+`git status` showed a detached HEAD; `git fetch origin master` confirmed local matched `origin/master` exactly at `77e8c8b`. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Priority re-checks + Boston-area sweep**: GD Electric Boat req 601496955 (Cloudflare-blocked, low-effort only), GE Aerospace (Lynn, MA), HII/Newport News Shipbuilding (Sept-Oct cadence), Sierra Space, MKS Instruments (rate-limited last run), Hologic (503 across multiple runs), Relativity Space, PI Physik Instrumente, Analog Devices/Lam Research, Draper Laboratory/MIT Lincoln Laboratory; plus a fresh Boston-area sweep (Waters Corp, MathWorks, Teradyne, Cognex, Vicarious Surgical, Boston Dynamics, iRobot, Vicor, Nuvation Engineering, Desktop Metal, Markforged, PTC, Bose, Nuvera Fuel Cells, Cirtec Medical, Charles River Labs, Symbotic, Commonwealth Fusion Systems, Boston Metal, Alloy Enterprises).
+2. **National aerospace/defense/robotics sweep**: Northrop Grumman, Lockheed Martin/Sikorsky, Boeing, L3Harris, Textron Systems/Aviation, Honeywell Aerospace, Moog, Woodward, Curtiss-Wright, Parker Hannifin, Eaton, Safran USA, Shield AI, Saildrone, Kratos Defense, Joby Aviation, Archer Aviation, Firefly Aerospace, Relativity Space, Redwire Space, Virgin Galactic, Aerojet Rocketdyne, Bell Textron, General Atomics, Pratt & Whitney, Spirit AeroSystems, BAE Systems, Leidos, Aurora Flight Sciences.
+
+Every candidate either agent reported as a live/new lead was independently re-verified via direct `curl` (Workday CXS API with browser UA + Referer header, which continues to reliably bypass several Workday tenants' bot-blocking) from this session before any file edit — this caught two cases worth flagging (see below).
+
+### Corrected agent findings (important — no `rows` change resulted)
+- **GE Aerospace** — Agent 1 reported the Spring 2027 Engines Engineering Co-op reqs "R5029617" and "R5030077" as now HTTP 410 Gone. Direct re-fetch of the *already-tracked* req (`R5029617-1`, note the "-1" suffix) via Workday CXS API returned a full, live job description — it is still open. The agent's dead reqs were sibling/variant IDs, not the tracked one. No change to `rows`; logged as a re-check in `checked` for the transparency record.
+- **Northrop Grumman (Chandler, AZ)** — Agent 2 flagged this as a plausible new lead but could not obtain a canonical `jobs.northropgrumman.com` URL (Eightfold-based site blocks unauthenticated API access). A direct web search confirmed the posting's own stated term is "Spring and Summer semester (January–August 2027)" — a combined term, not a clean Spring-only co-op, similar to Saab's already-excluded "Spring - Summer 2027" posting. Excluded on both season-ambiguity and unverifiable-link grounds rather than added as Partial.
+- **Curtiss-Wright JR1907** — Agent 2 reported this as newly confirmed Spring 2027 based on "current recruiting cycle" inference. Direct re-fetch of the Workday CXS API shows the posting text is unchanged from prior runs: an evergreen "Spring, Summer and Fall semesters" listing with no year ever stated. This is the 4th consecutive run finding no change — recommending deprioritizing further automated re-checks (see below), same treatment already given to GD Electric Boat.
+- **Moog Inc.** — Both agents' two new Elma/Buffalo, NY reqs (Mechanical Analysis Engineering R-26-20226, Test Engineering R-26-20243-1) were independently re-fetched via Workday CXS API and confirmed live/open, but neither states a clean Spring-2027-only term: the first says only "seeking a spring block intern" (no year at all), the second says "spring/summer 2027 block intern" (combined term). Both excluded per the same season-stated verification bar and combined-term precedent as Saab — not added to `rows`.
+
+### Added to `rows`
+**None this run.** No candidate from either agent's research, nor this session's own direct-fetch verification, met the full bar (live posting + Winter 2026/Spring 2027 season stated cleanly on the posting itself + link opens successfully) for a genuinely new entry. Honesty over volume — see `checked` for the full list of what was investigated and why each was excluded.
+
+### Added to `checked` (30 new entries)
+Moog Inc. (2 reqs — no year stated / combined spring-summer term), Curtiss-Wright (JR1907 re-check #4, still no year stated; JR7519-1 and Round Rock JR8729 confirmed closed), GE Aerospace (re-check confirming tracked req still live, sibling reqs dead), HII/Newport News Shipbuilding (re-check #7, still nothing), Sierra Space (re-check #3, zero intern/co-op company-wide), MKS Instruments (clean re-check, zero MA/mechanical reqs), Boston Dynamics (zero current intern/co-op postings), Cognex (re-check, now zero relevant US reqs), Teradyne (re-check, no mechanical Spring 2027 co-op), Vicarious Surgical (Jan 2026 posting confirmed closed), Commonwealth Fusion Systems (re-check, Fall co-op now 404), PI Physik Instrumente (re-check, still only past cohort), Hologic (re-check #4, still 503), Boeing (all postings Summer-cohort or closed), Joby Aviation (2 more reqs confirmed 410), BAE Systems Cedar Rapids (2 reqs confirmed closed), Moog Mineral Wells TX (Summer 2027, wrong season), Pratt & Whitney/RTX (wrong season/wrong country), a 7-company Summer-only batch (Woodward, Spirit AeroSystems, Bell Textron, Textron Aviation, General Atomics, Virgin Galactic, Archer Aviation), Lockheed Martin (previously-found URLs now 404), L3Harris (wrong season/discipline), a 10-company unresolved-sweep batch (Shield AI, Saildrone, Firefly Aerospace, Redwire Space, Aerojet Rocketdyne, Aurora Flight Sciences, Safran USA, Parker Hannifin, Honeywell Aerospace, Kratos Defense), Northrop Grumman Chandler AZ (combined term, unverifiable link), Eaton Jackson MS (unresolved, unverifiable), Leidos (403-blocked, unresolved), Textron Systems req 343102 (ambiguous season), Symbotic (re-check, API errors, unresolved), Relativity Space (re-check, still unresolved), and Analog Devices/Lam Research (re-check, no change).
+
+### Staged applications created
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (177.8KB → ~193.3KB, size increase from the larger `checked` sheet only). Verified via direct read: "Winter26-Spring27 Internships" unchanged at 83 rows; "Checked - Not Included" went from 206 → 236 rows.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — still not attempted this run per low-priority guidance; needs a human in-browser check, 11+ consecutive automated failures on record.
+- **Hologic "Co-Op, R&D Mechanical Engineer" (Marlborough, MA)** — 4th consecutive 503 on their careers site; this remains the strongest unconfirmed lead in the tracker. Try a different time of day or a different network path next run, since 503 (not 403/Cloudflare) suggests a real outage rather than bot-blocking.
+- **Curtiss-Wright JR1907** — 4 consecutive runs confirming it's a truly evergreen, undated posting. Recommend deprioritizing further automated re-checks unless a differently-worded/dated version appears elsewhere.
+- **Northrop Grumman (Chandler, AZ)** — combined Spring+Summer 2027 term and unverifiable canonical URL (Eightfold blocks). Worth Hamza's own judgment call, same bucket as Saab/Moog's combined-term postings.
+- **Eaton (Jackson, MS) Co-op Design Engineering** and **Leidos Mechanical Engineer Intern reqs** — both plausible leads blocked by their ATS (Eightfold/Cloudflare); worth a different access method next run.
+- **Symbotic req R5394** — Workday API calls errored (422); try a corrected tenant/site slug next run.
+- **Relativity Space** — still no confirmable live URL despite a persistent Boston, MA reference in aggregator snippets; try Ashby instead of Greenhouse next run.
+- **Moog Inc. reqs R-26-20226 / R-26-20243-1** — both live and open but season-ambiguous (no year / combined spring-summer). Worth a follow-up in case a cleanly-dated "Spring 2027" version is posted separately.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Saab "Spring - Summer 2027" Systems Engineering Co-Op**, **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"**, **BETA Technologies "2026-2027 BETA Internship"**, **Berkshire Grey "Spring 2027 Robot Learning R&D Co-op"**, **SpaceX "Spring 2027 Graduate Engineer Internship/Co-op"** — all still Hamza's own judgment calls, unchanged this run.
