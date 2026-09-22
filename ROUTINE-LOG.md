@@ -396,3 +396,47 @@ None created this run — no new fully-verified postings.
 - **Moderna req R19735 vs. biospace mirror job 3072468** — not re-touched this run; prior conclusion (very likely same posting) stands.
 - **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
 - **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"** — confirmed live/open this run but excluded on ambiguous-term grounds; worth Hamza's own judgment call if he's open to a continuous parallel co-op structure rather than a discrete Winter/Spring-only term.
+
+## 2026-09-22 ~01:00 UTC
+
+### Sync
+`git status` initially showed a detached HEAD; `git fetch origin master` confirmed local matched `origin/master` exactly at `3507a61`. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: GD Electric Boat req 601496955 (Cloudflare-blocked 8+ runs straight), Vertex Pharmaceuticals (Workday 500/blank errors), GD Mission Systems McLeansville NC Mechanical Eng Co-op req 74530 (Partial, icims/gd.com block direct rendering), HII/Newport News Shipbuilding (Sept-Oct posting cadence), Draper Laboratory and MIT Lincoln Laboratory (any new in-discipline Spring 2027 req), GE Aerospace (any new Lynn, MA reqs).
+2. **Fresh sweep**: Boston Scientific, Vicarious Surgical, Desktop Metal, Markforged, PTC, Bose, Philips (Andover/Cambridge MA), Toyota Research Institute, Vicor, Nuvation Engineering, Instron, Analogic, Charles River Laboratories, Symbotic, Boston Metal, Alloy Enterprises, Commonwealth Fusion Systems (re-check), Sonos, Duracell, Hasbro, Curtiss-Wright, Textron Systems (re-check), Aurora Flight Sciences, Sierra Space, Redwire Space, Karman Space & Defense, L3Harris, Leidos, Astranis, Relativity Space, Firefly Aerospace, Joby Aviation, Honeywell Aerospace (re-check), Moog, Woodward.
+
+### Added to `rows` (3 new entries)
+- **Applied Materials — 2027 Spring Mechanical Engineer Co-op (Gloucester, MA)** (R2628290 / 100424621952) — **Yes**, confirmed live via direct fetch of Applied Materials' own careers site, posted 2026-09-10, $31–$33/hr. Boston metro (~35 mi). New req/location distinct from other Applied Materials postings already tracked.
+- **Vertex Pharmaceuticals — Vertex Spring Co-Op 2027, Mechanical Automation** (REQ-30500-1), Boston, MA — **Partial** (independent aggregator mirror shows full details and a fresh 2026-09-21 post date; Vertex's own Workday page returned blank/JS-rendered on both wd5 and wd501 subdomains, consistent with a recurring known access issue). Deadline Nov 15, 2026. Distinct from the excluded biotech/process Vertex reqs — see `checked`.
+- **Astranis Space Technologies — Mechanical Engineer Intern (Spring 2027)**, San Francisco, CA — **Yes**, confirmed live via direct fetch on Greenhouse. ITAR-restricted (US citizen/LPR/protected individual only). Not Boston-area but included per Hamza's nationwide preference. A separate Summer 2027 req exists at the same company — do not conflate.
+
+### Added to `checked` (10 new entries)
+Sonos (Fall 2026 only, wrong season), Vertex Pharmaceuticals' Process Development Upstream / CGT Process Development Spring Co-Op 2027 reqs (discipline mismatch — biotech/process, not mechanical), Karman Space & Defense (Summer-only program by design), Symbotic req R6576 (404, appears filled/removed), Commonwealth Fusion Systems (re-check, only Fall 2026 co-op posted, no change), HII/Newport News Shipbuilding (re-check, still nothing for Spring 2027 despite stated cadence), MIT Lincoln Laboratory (re-check, only Cyber Security discipline-mismatch and Fall-2026 Rapid Prototyping found), Draper Laboratory (re-check, no new reqs), GE Aerospace (re-check, no new Lynn MA reqs), and a 10-company fresh-sweep "nothing found" batch (Boston Scientific, PTC, Desktop Metal, Markforged, Vicor, Nuvation Engineering, Instron, Analogic, Boston Metal, Alloy Enterprises).
+
+### Not added — unresolved, flagged for follow-up (not in `checked`, not conclusively ruled out)
+- **Philips — Co-op, Robotics Mechatronics, Surgical Robotics (Cambridge, MA)**: in-discipline and pay-attractive ($29-32/hr), but season is contradictory across sources — the authoritative Workday req (589905, posted Aug 26) is titled "Fall 2026" while aggregator mirrors label the same-looking role "January 2027." Employer's own page is JS-blocked. Not added due to unresolved season conflict.
+- **RTX — Mechanical/Industrial Engineering Co-op, req 01872434, Melbourne FL**: confirmed live via aggregator mirror (posted Sept 17), but season labeled ambiguous "Spring/Summer 2027" rather than a clean Spring-only term. Not added; worth checking jobs.rtx.com directly for clearer season language.
+
+### Priority re-check outcomes (no `rows`/`checked` change)
+- **GD Electric Boat req 601496955** — still Cloudflare-blocked (buildsubmarines.com mirror 403, guessed icims URL now 410). 9+ consecutive failed independent-verification attempts. Recommend treating as Partial-only going forward and deprioritizing further per-run automated effort — needs a human in-browser check.
+- **GD Mission Systems req 74530 (McLeansville, NC)** — got the corrected exact iCIMS URL this run via a dreamworkhq mirror, but direct fetch of that exact URL still resolves to a generic careers landing page, not the job itself. Status unchanged at Partial.
+
+### Staged applications created (2 files, `staged-applications/`)
+`applied-materials-mechanical-engineer-coop-gloucester.md`, `astranis-mechanical-engineer-intern-spring2027.md` — the two fully-verified ("Yes") new postings this run. The Vertex Mechanical Automation row is Partial, so per the routine's rule it was not staged.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`; `.xlsx` file changed (139.4KB → 143.5KB, confirmed via `git diff --stat`).
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 9+ consecutive automated-verification failures; needs a human in-browser check rather than further automated attempts.
+- **GD Mission Systems req 74530 (McLeansville, NC)** — still Partial; try a different access method (referer/query string) next time.
+- **Philips Co-op, Robotics Mechatronics, Surgical Robotics (Cambridge, MA)** — season conflict (Fall 2026 vs January 2027) unresolved; worth a fresh direct-fetch attempt to pin down which label is current.
+- **RTX req 01872434 (Melbourne, FL)** — "Spring/Summer 2027" ambiguous wording; worth checking jobs.rtx.com directly for a clean season statement.
+- **Vertex Pharmaceuticals Mechanical Automation Spring Co-Op (REQ-30500-1)** — still Partial; worth a direct-fetch retry on Vertex's own Workday page to upgrade to Yes.
+- **HII/Newport News Shipbuilding** — re-check again per their own stated "September-October" posting cadence, still nothing live as of this run.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
+- **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"** — still Hamza's own judgment call on the ambiguous continuous-rotation structure.
+- **Moderna req R19735 vs. biospace mirror job 3072468** — prior conclusion (very likely same posting) stands, not re-touched this run.

@@ -788,6 +788,42 @@ const rows = [
     "Link Verified": "Yes — fetched directly via Moderna's own Workday CXS job API (req R19735), returned live JSON confirming title, dates, pay, and open status. Upgraded from Partial (2026-09-21 ~07:00 UTC re-check); the previously-used biospace.com mirror (job 3072468) appears to be the same underlying posting under the job board's own listing ID, not a separate role.",
     Notes: "Restricted to US persons (citizens/permanent residents/asylees/refugees) per prior mirror-sourced check, not re-confirmed word-for-word on this pass. Onsite ~70%. Boston metro (Norwood). Discipline is automation/bioprocess engineering, not pure mechanical — included with caveat per Hamza's 'adjacent' disciplines (industrial/controls), similar treatment to the existing Sanofi/Genzyme row.",
   },
+  {
+    Company: "Applied Materials",
+    "Role Title": "2027 Spring Mechanical Engineer Co-op (Gloucester, MA)",
+    Discipline: "Mechanical Engineering",
+    Season: "Spring 2027 (start January 2027)",
+    Location: "Gloucester, MA",
+    "Distance from Boston, MA (mi, approx.)": 35,
+    Pay: "$31–$33/hr",
+    "Application Link": "https://jobs.appliedmaterials.com/job/gloucester/2027-spring-mechanical-engineer-co-op-gloucester-ma/95/100424621952",
+    "Link Verified": "Yes — fetched directly on Applied Materials' own careers site (job ID R2628290 / 100424621952), confirmed open, posted 2026-09-10, active Apply button present.",
+    Notes: "Boston metro (Gloucester, ~45 min drive). GPA 3.0+ preferred, good academic standing required. No explicit citizenship/visa language stated on the posting. Applied Materials is already a tracked company (other reqs elsewhere) — this is a distinct new req/season/location.",
+  },
+  {
+    Company: "Vertex Pharmaceuticals",
+    "Role Title": "Vertex Spring Co-Op 2027, Mechanical Automation",
+    Discipline: "Mechanical / Industrial Engineering (mechanical design, GD&T, mechanism/robotics design)",
+    Season: "January – June 2027",
+    Location: "Boston, MA",
+    "Distance from Boston, MA (mi, approx.)": 0,
+    Pay: "$25.00–$50.00/hr",
+    "Application Link": "https://vrtx.wd501.myworkdayjobs.com/vertex_careers/job/Boston-MA/Vertex-Spring-Co-Op-2027--Mechanical-Automation_REQ-30500-1",
+    "Link Verified": "Partial — confirmed via an independent aggregator mirror (zapply.jobs) showing full title/season/pay/location and a posted date of 2026-09-21 (one day before this check); Vertex's own Workday page returned blank/JS-rendered content on direct fetch (both wd5 and wd501 subdomains tried), consistent with a known recurring Vertex Workday access issue.",
+    Notes: "Application deadline stated as November 15, 2026 (rolling review, may close earlier). No stated visa sponsorship. Distinct from Vertex's 'Process Development Upstream' and 'CGT Process Development' Spring Co-Op 2027 reqs, which are biotech/process discipline and excluded (see `checked`).",
+  },
+  {
+    Company: "Astranis Space Technologies",
+    "Role Title": "Mechanical Engineer Intern (Spring 2027)",
+    Discipline: "Mechanical / Aerospace Engineering (spacecraft structures, brackets, mechanisms)",
+    Season: "Spring 2027 (12-week internship)",
+    Location: "San Francisco, CA",
+    "Distance from Boston, MA (mi, approx.)": 2700,
+    Pay: "$29.00/hr",
+    "Application Link": "https://job-boards.greenhouse.io/astranis/jobs/4704602006",
+    "Link Verified": "Yes — fetched directly on Greenhouse, confirmed open.",
+    Notes: "ITAR-restricted: requires US citizen, lawful permanent resident, or other 'protected individual' status under export control rules. Not Boston-area, included per Hamza's nationwide preference. A separate Summer 2027 version of this same role exists (job 4704601006) — do not confuse the two; only this Spring 2027 req qualifies.",
+  },
 ];
 
 const checked = [
@@ -956,6 +992,17 @@ const checked = [
   { Company: "Spirit AeroSystems / Medtronic / Becton Dickinson / Moog Inc / Woodward Inc / PerkinElmer (Revvity) / PTC / Natel Energy / Sanergy / Nuvation Engineering", "Role(s) Checked": "General mechanical/aerospace/manufacturing engineering intern/co-op search, each company", Reason: "2026-09-21 ~19:00 UTC: no Winter 2026/Spring 2027-dated postings found at any of these. Becton Dickinson's only relevant req ('R&D Co-op') is Spring 2026, already past — wrong season. Boston Scientific's 'R&D Engineering Co-op 2026' (Marlborough, MA) confirmed dead/expired on direct fetch." },
   { Company: "GD Bath Iron Works", "Role(s) Checked": "'2027 Spring Manufacturing Apprentice'", Reason: "2026-09-21 ~19:00 UTC: this is a trades apprenticeship program, not an engineering co-op — discipline mismatch, excluded." },
   { Company: "GD Ordnance & Tactical Systems / Northrop Grumman (Boston-area presence)", "Role(s) Checked": "General co-op/intern search", Reason: "2026-09-21 ~19:00 UTC: no dedicated OTS-specific co-op postings found; no Northrop Grumman Boston/MA-area postings found (their live Spring 2027 mechanical co-op remains the already-tracked Chandler, AZ req)." },
+  // --- Added 2026-09-22 ~01:00 UTC routine run ---
+  { Company: "Sonos (Boston, MA)", "Role(s) Checked": "Mechanical Engineering Co-Op, req R2547/R2547-1", Reason: "2026-09-22: confirmed via multiple sources (Glassdoor, mediabistro, aggregators) this is a July-December 2026 program only (Fall 2026, applications close Oct 25) — does not extend into Spring 2027. Excluded — wrong season." },
+  { Company: "Vertex Pharmaceuticals", "Role(s) Checked": "'Process Development Upstream' and 'CGT Process Development' Spring Co-Op 2027 reqs", Reason: "2026-09-22: both real/dated Spring 2027 postings, but discipline is biotech/process/cell-culture, not mechanical/aerospace/manufacturing. Excluded — discipline mismatch. (Distinct from the Mechanical Automation Spring Co-Op REQ-30500-1 added to `rows` this run.)" },
+  { Company: "Karman Space & Defense", "Role(s) Checked": "Internship program incl. Mechanical/Aerospace Engineering Intern", Reason: "2026-09-22: company's own careers page states internships run 'typically May or June, concluding August or September' with an April 30 application deadline — the standard Summer 2027 wave. Excluded — wrong season." },
+  { Company: "Symbotic (Wilmington, MA)", "Role(s) Checked": "Co-Op - System Engineer, req R6576", Reason: "2026-09-22: appeared in search-engine cache but direct fetch of the live URL returns HTTP 404; current full job listing page shows no mechanical/systems co-op openings, only Skillbridge military-transition fellow roles. Excluded — appears filled/removed (stale listing)." },
+  { Company: "Commonwealth Fusion Systems (Devens, MA)", "Role(s) Checked": "Lever careers board, re-check", Reason: "2026-09-22: current open postings show only a 'Fall Co-op 2026' mechanical engineer role plus permanent/contract positions — no Spring 2027 co-op currently posted. No change." },
+  { Company: "HII / Newport News Shipbuilding", "Role(s) Checked": "Spring 2027 co-op search, re-check", Reason: "2026-09-22: as of today, careers.huntingtoningalls.com shows only a 'Fall 2026 Engineering Co-Op' and a '2027 Engineering Summer Internship' — no Spring 2027 co-op req found yet despite the company's own Sept-Oct posting-window claim. Re-check again in ~1 week." },
+  { Company: "MIT Lincoln Laboratory (Lexington, MA)", "Role(s) Checked": "careers.ll.mit.edu search, re-check", Reason: "2026-09-22: only in-discipline-adjacent Jan-June 2027 co-op found is Cyber Security (Group 11-10) — discipline mismatch, excluded. A 'Rapid Prototyping Aero/Mech' co-op (Group 77) is Fall 2026 — wrong season. No new in-discipline Spring 2027 req found." },
+  { Company: "Draper Laboratory", "Role(s) Checked": "Full careers site sweep, re-check", Reason: "2026-09-22: no new reqs found beyond the two already tracked in `rows` (Systems Engineering Co-Op JR002882, Electro-Mechanical Instrument Co-op JR002883-1). No change." },
+  { Company: "GE Aerospace", "Role(s) Checked": "careers.geaerospace.com, re-check for new Lynn MA reqs", Reason: "2026-09-22: no new Lynn, MA-specific Spring 2027 mechanical/systems req found beyond the already-tracked Engines Engineering Co-op and Structures Intern/Co-op. No change." },
+  { Company: "Boston Scientific / PTC / Desktop Metal / Markforged / Vicor / Nuvation Engineering / Instron / Analogic / Boston Metal / Alloy Enterprises", "Role(s) Checked": "General mechanical/aerospace/manufacturing engineering intern/co-op search, each company", Reason: "2026-09-22: no Winter 2026/Spring 2027-dated postings found at any of these. Boston Scientific's only visible current Spring co-op is in Johns Creek, GA (not MA) with ambiguous 'Spring or Summer 2026/2027' season wording." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
