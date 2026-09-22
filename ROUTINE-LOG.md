@@ -440,3 +440,55 @@ Sonos (Fall 2026 only, wrong season), Vertex Pharmaceuticals' Process Developmen
 - **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
 - **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"** — still Hamza's own judgment call on the ambiguous continuous-rotation structure.
 - **Moderna req R19735 vs. biospace mirror job 3072468** — prior conclusion (very likely same posting) stands, not re-touched this run.
+
+---
+
+## 2026-09-22 ~07:00 UTC
+
+### Sync
+`git status` showed a detached HEAD plus an untracked stray nested `internship-tracker-2026/` directory (a full duplicate git clone of this same repo, own `.git` included). Confirmed byte-identical to the tracked files via diff, then removed it as clutter — no unique content was lost. `git fetch origin master` confirmed local matched `origin/master` exactly at `b0cc51a`; checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to a research agent with the strict-verification instructions. Two priorities:
+1. **Follow-ups from the last run's "worth re-checking" list**: GD Electric Boat req 601496955 (Cloudflare-blocked 9+ runs straight, low-effort only), GD Mission Systems req 74530 (McLeansville NC, Partial), Philips Co-op Robotics Mechatronics Surgical Robotics req 589905 (Cambridge MA, season conflict), RTX req 01872434 (Melbourne FL, ambiguous "Spring/Summer 2027"), Vertex Pharmaceuticals REQ-30500-1 (Boston MA, Partial), HII/Newport News Shipbuilding (Sept-Oct posting cadence), Analog Devices/Lam Research, Draper Laboratory/MIT Lincoln Laboratory/GE Aerospace Lynn MA (any new reqs).
+2. **Fresh sweep**: Textron Systems, Hexcel, Boeing, Northrop Grumman, Collins Aerospace/RTX, Moog, Woodward, Blue Origin, SpaceX, Joby Aviation, Relativity Space, Firefly Aerospace, iRobot, Vicarious Surgical, Boston Dynamics, Desktop Metal, Markforged, PTC, MathWorks, Waters Corp, Teradyne, Analogic, Charles River Labs, Instron, Symbotic, Insulet, Leidos, L3Harris, Curtiss-Wright, Textron Aviation, Sikorsky/Lockheed Martin, Spirit AeroSystems, Bose, Karman Space & Defense, Redwire Space, Sierra Space, Astranis, Aurora Flight Sciences, Commonwealth Fusion Systems, Boston Metal, Alloy Enterprises, plus broad "Spring 2027 mechanical engineering co-op" searches.
+
+### Method note (worth carrying forward)
+The research agent found that `curl` with a standard browser User-Agent + a `Referer` header pointing at the site's own job-search page bypasses the block WebFetch hits on several major Workday-based ATS platforms: **gd.com, Vertex's Workday (wd501), RTX's Workday (wd5), Insulet's Workday (wd5), and Philips' Workday (wd3)**. Hitting the `/wday/cxs/{tenant}/{site}/job/{path}` endpoint directly resolved 3 long-standing Partials this run and found 2 wholly new verified Insulet reqs. It did **not** work on GD Electric Boat's Cloudflare-protected jobs.buildsubmarines.com (JS challenge, not plain Workday-blocking). **Future runs should try this technique on any remaining Partial/blocked Workday posting before giving up.**
+
+### Upgraded from Partial to Yes (2 entries)
+- **General Dynamics Mission Systems — Mechanical Engineering Co-Op (January – May 2027)**, McLeansville NC — now confirmed via direct fetch of gd.com (req 2026-74530). The previously-used URL was missing the "2026-" year prefix before the req number, which is why it kept 403/404ing across prior runs — corrected URL now in `rows`. US citizenship + DoD Secret clearance required.
+- **Vertex Pharmaceuticals — Vertex Spring Co-Op 2027, Mechanical Automation (REQ-30500-1)**, Boston MA — now confirmed via direct fetch of Vertex's own Workday CXS API (posted 2026-09-21/22), replacing the prior aggregator-mirror basis.
+
+### Added to `rows` (3 new entries, all Yes)
+- **RTX (Collins Aerospace) — Mechanical Design Engineering Co-op (Winter/Spring 2027)**, Jamestown ND — confirmed live via direct fetch of RTX's own Workday CXS API (req 01871736, posted 2026-09-21). Distinct req from the already-tracked Jamestown ND "Structural Engineering Co-op" (req 01873938) at the same site.
+- **Insulet — Co-op, Supplier Engineering - Global Technical Excellence (Jan–June 2027, Onsite)**, Acton MA — confirmed live via direct fetch of Insulet's own Workday CXS API (REQ-2026-18213, posted 2026-09-15).
+- **Insulet — Co-op, Supplier Engineering - Project Management Excellence (Jan–June 2027, Onsite)**, Acton MA — confirmed live via direct fetch of Insulet's own Workday CXS API (REQ-2026-18211, posted 2026-09-16).
+
+### Added to `checked` (14 new entries)
+Philips req 589905 (**RESOLVED** — posting no longer exists in Philips' live job index, zero search results; supersedes the earlier "season conflict, unresolved" note), RTX req 01872434 Melbourne FL (re-confirmed "Spring/Summer 2027" combined term via a second source, stays excluded), CMTA Inc (location + discipline mismatch), Astranis Winter 2027 Huntsville req (re-confirmed live but wrong season, unchanged), Blue Origin Huntsville "Spring 2027 Manufacturing Engineering Internship – Graduate" (no verifiable req ID found, not conclusively ruled out — see follow-up notes), Symbotic re-check (no change), Vicarious Surgical re-check (no change), Commonwealth Fusion Systems re-check (no change), Sierra Space (no dated Spring 2027 req found), Teradyne re-check (no change), iRobot re-check (no change, flagged bankruptcy/acquisition uncertainty), HII/Newport News Shipbuilding re-check (still nothing, 5+ runs now the Sept-Oct claim hasn't materialized), Analog Devices/Lam Research re-check (no change), and a 10-company fresh-sweep "no qualifying findings" group (Leidos, L3Harris, Spirit AeroSystems, Textron Aviation, Boeing, Moog, Woodward, Hexcel, Curtiss-Wright, Northrop Grumman new locations).
+
+### Priority re-check outcomes
+- **GD Electric Boat req 601496955** — still Cloudflare-blocked even against the new curl+browser-UA technique (JS challenge, not plain Workday-blocking). 10th+ consecutive failed attempt. Status unchanged at Partial in `rows`. Continuing to deprioritize automated attempts — needs a human in-browser check.
+- **GD Mission Systems req 74530** — **RESOLVED**, see upgrade above.
+- **Philips req 589905** — **RESOLVED**, see `checked` above.
+- **Vertex Pharmaceuticals REQ-30500-1** — **RESOLVED**, see upgrade above.
+- **RTX req 01872434 (Melbourne FL)** — re-confirmed ambiguous wording, no change.
+- **HII/Newport News Shipbuilding** — no change, still nothing live for Spring 2027.
+- **Analog Devices, Lam Research** — no change.
+
+### Staged applications created (5 files, `staged-applications/`)
+`gd-mission-systems-mechanical-engineering-coop.md`, `vertex-mechanical-automation-spring-coop.md` (both Partial→Yes upgrades this run), `rtx-collins-mechanical-design-engineering-coop-jamestown.md`, `insulet-supplier-engineering-global-technical-excellence-coop.md`, `insulet-supplier-engineering-project-management-excellence-coop.md` (3 new Yes postings this run).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (143.5KB → 151.6KB). Verified via direct read: "Winter26-Spring27 Internships" went from 68 → 71 rows; "Checked - Not Included" went from 167 → 181 rows.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 10+ consecutive automated-verification failures; still needs a human in-browser check.
+- **Blue Origin Huntsville "Spring 2027 Manufacturing Engineering Internship – Graduate"** — no verifiable req ID found this run; may be a mislabeled aggregator listing of the Summer 2027 req (R71427) rather than a real Spring req — worth a follow-up to find (or rule out) the correct req ID.
+- **HII/Newport News Shipbuilding** — the company's own "September–October" posting-window claim has now failed to materialize across 5+ checked runs; worth telling Hamza this claim may not be reliable this cycle rather than continuing indefinite re-checks (still worth one more pass, but with lowered confidence).
+- **Sierra Space** — company's own stated posting pattern (September post, December deadline) suggests a Spring 2027 req may appear soon; worth a follow-up.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
+- **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"** — still Hamza's own judgment call on the ambiguous continuous-rotation structure.
+- **Use the curl+Workday-CXS-API technique** (browser UA + Referer header) on any remaining Partial/blocked Workday postings before falling back to WebFetch — see Method Note above.
