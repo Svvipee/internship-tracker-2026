@@ -492,3 +492,60 @@ Philips req 589905 (**RESOLVED** — posting no longer exists in Philips' live j
 - **Saab "Spring - Summer 2027" Systems Engineering Co-Op** — still Hamza's own judgment call on the borderline combined-term posting.
 - **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"** — still Hamza's own judgment call on the ambiguous continuous-rotation structure.
 - **Use the curl+Workday-CXS-API technique** (browser UA + Referer header) on any remaining Partial/blocked Workday postings before falling back to WebFetch — see Method Note above.
+
+---
+
+## 2026-09-22 ~13:00 UTC
+
+### Sync
+`git status` showed a detached HEAD; `git fetch origin master` confirmed local matched `origin/master` exactly at `9be214f`. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Priority re-checks + Boston-area sweep**: GD Electric Boat req 601496955 (Cloudflare-blocked 10+ runs straight), Blue Origin "Spring 2027 Manufacturing Engineering Internship – Graduate" (Huntsville AL, unresolved), HII/Newport News Shipbuilding (Sept-Oct posting cadence), Sierra Space (Sept-post/Dec-deadline pattern), Analog Devices/Lam Research, Draper Laboratory/MIT Lincoln Laboratory (any new in-discipline req), GE Aerospace Lynn MA; plus a fresh Boston-area sweep (MKS Instruments, Cognex, BAE Systems Nashua NH, Raytheon BBN, Entegris, CIRCOR, Berkshire Grey, Vecna Robotics, Locus Robotics, National Grid, Hologic re-check).
+2. **National aerospace/space/robotics sweep**: Blue Origin (new reqs), SpaceX (new reqs), Joby Aviation, Archer Aviation, Firefly Aerospace, Relativity Space, Redwire Space, Virgin Galactic, ispace, Sikorsky, Textron Systems, Pratt & Whitney, Bell Textron, General Atomics, Beta Technologies, Kratos Defense, Aerojet Rocketdyne.
+
+Every candidate both agents surfaced was independently re-verified via direct `curl` (Workday CXS API / BambooHR API / careers.ll.mit.edu / Greenhouse) from this session before being trusted — several agent-reported "new" findings (Rocket Lab's ~25 additional Long Beach reqs, the already-tracked MIT Lincoln Lab Microfab Industrial Eng. Co-Op) turned out to already be accounted for in `build.mjs` and were NOT re-added; see "Corrected agent findings" below.
+
+### Added to `rows` (12 new entries, all Yes)
+- **MIT Lincoln Laboratory — Microfabrication Engineering Co-Op** (Group 08-35, Microelectronics Laboratory, req 42762), Lexington MA, Jan–Aug 2027 — sibling req to the already-tracked Microfab Industrial Eng. Co-Op; materials/chemistry/physics discipline focus. US citizenship + Secret clearance required.
+- **Draper Laboratory — Materials and Chemistry Engineering Co-op (Spring 2027)**, JR002942, Cambridge MA — confirmed via Draper's own Workday API, posted 2026-09-21.
+- **Entegris — 5 new Spring 2027 co-ops**, all Billerica MA (Boston metro): Capital Equipment Engineering (REQ-14497), Automation & Controls Engineering (REQ-14444), Material Quality Engineering (REQ-14469), Industrial Engineering (REQ-14462), Continuous Improvement (REQ-14504). **New company for the tracker.** All confirmed live via direct fetch of Entegris's own Workday CXS API; posting text itself states "Spring 2027 season."
+- **Berkshire Grey — 3 new Spring 2027 co-ops**, all Bedford MA (Boston metro): Mechanical Engineering (job 760), Mechatronics Engineering (job 772), Robot Learning R&D (job 768, borderline discipline — filed under Software dept). All confirmed "Open" via Berkshire Grey's own BambooHR API.
+- **Blue Origin — Spring 2027 Engineering Intern - Undergraduate (R69064)**, Greater Seattle Area — general multi-discipline req (mechanical placement not guaranteed); confirmed via Blue Origin's own Workday API.
+- **SpaceX — Spring 2027 Graduate Engineer Internship/Co-op** (job 8621749002), multiple sites incl. Bloomfield CT — distinct from the already-tracked undergrad req; requires already holding a bachelor's + current grad enrollment. Confirmed live on Greenhouse.
+
+### Upgraded from Partial to Yes (1 entry)
+- **Berkshire Grey — Spring 2027 Hardware Quality Co-op** (job 771) — previously Partial (aggregator-only); now confirmed "Open" via direct fetch of Berkshire Grey's own BambooHR API.
+
+### Corrected agent findings (not added — already accounted for)
+- **Rocket Lab's ~25 additional Long Beach CA Spring 2027 reqs** (Turbomachinery, Propulsion, Integration & Test, Structural Analysis, Fluid Component Interns) — one research agent reported these as new, sourced only from Cloudflare-blocked search snippets. Cross-check against `build.mjs` showed Rocket Lab is already tracked (2 representative reqs: Mechanical Engineering Intern, Systems Engineering Intern, both Yes via Greenhouse) with an existing note that ~25 more Spring 2027 reqs exist and are deliberately not individually logged. No change made — consistent with that prior decision.
+- **MIT Lincoln Lab "Microfab Industrial Eng. Co-Op"** — one agent reported this as new; it was already tracked in `rows` since the 2026-09-19 run. Only the genuinely new sibling req (Microfabrication Engineering Co-Op, materials/chem focus, req 42762) was added.
+
+### Added to `checked` (25 new entries)
+Blue Origin Huntsville "Spring 2027 Manufacturing Engineering Internship – Graduate" (**RESOLVED — does not exist**, only a Summer 2027 version exists company-wide, supersedes prior "not conclusively ruled out" note), SpaceX Silicon/Software Spring 2027 reqs (discipline mismatch), Joby Aviation Flight Test Intern (confirmed HTTP 410 dead), Archer Aviation (Summer-only), Firefly Aerospace (wrong seasons), Relativity Space (unverifiable — flagged for follow-up given a Boston MA site reference), Redwire Space (confirmed HTTP 404 dead), Virgin Galactic (Summer-only), ispace (nothing found), Textron Systems (unverifiable), Bell Textron (Summer-only), General Atomics (Summer-only), Kratos Defense (no dated postings), Pratt & Whitney fresh sweep (nothing beyond already-tracked req), Aerojet Rocketdyne (unverifiable), BETA Technologies (rolling application, no stated season — flagged as Hamza's own judgment call like Caterpillar/Saab), Sierra Space (re-check, now conclusively zero interns/co-ops posted at all), HII/Newport News Shipbuilding (re-check, 6th consecutive failure to materialize, confidence downgraded), Analog Devices (re-check, stale Spring 2025 listing, not current), Lam Research (re-check, still nothing), Cognex (re-check, now also a location mismatch — only req is in Aachen, Germany), a 6-company fresh-sweep group (MKS Instruments, Raytheon BBN, CIRCOR, Vecna Robotics, Locus Robotics, National Grid — nothing qualifying; MKS API was rate-limited mid-run, worth a clean recheck), Hologic (re-check, HTTP 503 again, still unresolved across multiple runs, worth prioritizing next time), PI Physik Instrumente Shrewsbury MA (**new company found**, but posting is for the already-elapsed Jan-June 2026 cohort — wrong season), and Entegris's excluded reqs at the same Billerica site (Application Engineering Co-Op — discipline mismatch; Digital Operations/EHS/Analytical-Metrology-Microanalysis Scientist Co-Ops — non-mechanical).
+
+### Priority re-check outcomes
+- **GD Electric Boat req 601496955** — still Cloudflare-blocked (11th+ consecutive failed attempt). No change, status unchanged at Partial in `rows`. Continuing to deprioritize automated attempts.
+- **GE Aerospace (Lynn, MA)** — inconclusive again this run; careers.geaerospace.com is JS-rendered and their Phenom API returned "Tenant not identified" via curl. Could not independently confirm or deny any new req beyond the already-tracked Engines Co-op and Structures Intern/Co-op.
+
+### Staged applications created (13 files, `staged-applications/`)
+`mit-lincoln-laboratory-microfabrication-engineering-coop.md`, `draper-laboratory-materials-and-chemistry-engineering-coop.md`, `entegris-capital-equipment-engineering-coop.md`, `entegris-automation-controls-engineering-coop.md`, `entegris-material-quality-engineering-coop.md`, `entegris-industrial-engineering-coop.md`, `entegris-continuous-improvement-coop.md`, `berkshire-grey-mechanical-engineering-coop.md`, `berkshire-grey-mechatronics-engineering-coop.md`, `berkshire-grey-robot-learning-rd-coop.md`, `berkshire-grey-hardware-quality-coop.md` (Partial→Yes upgrade), `blue-origin-spring-2027-engineering-intern-undergraduate.md`, `spacex-spring-2027-graduate-engineer-internship-coop.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (155.3KB → 177.8KB). Verified via direct read: "Winter26-Spring27 Internships" went from 71 → 83 rows; "Checked - Not Included" went from 181 → 206 rows.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 11+ consecutive automated-verification failures; still needs a human in-browser check.
+- **GE Aerospace (Lynn, MA)** — Phenom-based careers site is JS-rendered/API-blocked; try a different access method next time.
+- **HII/Newport News Shipbuilding** — the Sept-Oct posting-window claim has now failed to materialize across 6 checked runs; give it through end of October before treating it as unreliable this cycle.
+- **Sierra Space** — now conclusively zero interns/co-ops of any kind posted (Sept-post/Dec-deadline pattern hasn't started yet); worth one more pass in a couple weeks.
+- **MKS Instruments (Andover, MA)** — Workday API was rate-limited mid-run this time; needs a clean recheck, not treated as conclusive.
+- **Hologic (Marlborough, MA)** — "Co-Op, R&D Mechanical Engineer" — careers site has now 503'd across multiple runs; this is the first non-discipline-mismatch mechanical lead found there, worth prioritizing a fresh attempt.
+- **Relativity Space** — "2027 Mechanical Engineer Intern" referenced at multiple sites incl. Boston, MA, but no live posting URL located yet — worth a follow-up given the Boston-area reference.
+- **PI Physik Instrumente (Shrewsbury, MA)** — new company, current posting is for the already-past Jan-June 2026 cohort; recheck in coming weeks for a fresh Spring 2027-labeled cycle.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Saab "Spring - Summer 2027" Systems Engineering Co-Op** and **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"** — still Hamza's own judgment calls on ambiguous-term postings.
+- **BETA Technologies "2026-2027 BETA Internship"** (South Burlington, VT, ~215 mi from Boston) — new judgment-call item, same treatment as Saab/Caterpillar: live rolling application, no stated Winter 2026/Spring 2027 term.
+- **Berkshire Grey "Spring 2027 Robot Learning R&D Co-op"** — borderline discipline fit (robotics R&D under Software dept); worth Hamza's own judgment call on whether it matches his target robotics discipline.
+- **SpaceX "Spring 2027 Graduate Engineer Internship/Co-op"** — requires already holding a bachelor's + current grad enrollment; only relevant if Hamza is in/entering grad school by Spring 2027 — confirm eligibility before treating as a real option.
