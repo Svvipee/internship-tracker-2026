@@ -643,3 +643,49 @@ GD Electric Boat (13th consecutive block), Hologic (5th consecutive 503, partial
 - **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
 - **Saab, Caterpillar, BETA Technologies, Berkshire Grey Robot Learning R&D, SpaceX Graduate Engineer** — still Hamza's own judgment calls, unchanged.
 - **Relativity Space** — no Boston connection found this run after a dedicated Ashby check; consider this lead mostly exhausted unless a new signal appears.
+
+---
+
+## 2026-09-23 ~07:00 UTC
+
+### Sync
+`git status` showed a detached HEAD at `40cea45`, matching `origin/master` exactly. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Priority re-checks + Boston-area sweep**: GD Electric Boat req 601496955 (14th run, low-effort only), Hologic (Marlborough MA, 503 for 5 runs), Symbotic req R5394 (tenant-slug guesses had 422'd), Textron Systems req 343102, Eaton (Jackson MS), Analog Devices/Lam Research, Draper Laboratory/MIT Lincoln Laboratory, GE Aerospace (Lynn MA); plus a fresh Boston-area sweep (Waters Corp, MathWorks, Teradyne, Vicor, Nuvation Engineering, Desktop Metal, Markforged, PTC, Bose, Nuvera Fuel Cells, Cirtec Medical, Charles River Labs, Commonwealth Fusion Systems, Boston Metal, Alloy Enterprises, iRobot, Vicarious Surgical, Boston Dynamics, Cognex, PI Physik Instrumente, MKS Instruments, Entegris/Insulet/Berkshire Grey new-req checks, GD Mission Systems, Vertex Pharmaceuticals).
+2. **National aerospace/defense/robotics sweep**: Rocket Lab/Blue Origin/SpaceX/Zipline/Anduril/Astranis/L3Harris/RTX-Collins new-req checks (already-tracked companies), plus a fresh sweep of Boeing, Lockheed Martin, Sikorsky, Northrop Grumman, General Atomics, Spirit AeroSystems, Virgin Galactic, Karman Space & Defense, Stoke Space, Wisk Aero, Vast Space, Firefly Aerospace, Redwire Space, Safran USA, Shield AI, Saildrone, Parker Hannifin, Honeywell Aerospace, Kratos Defense, Aerojet Rocketdyne, Aurora Flight Sciences, Archer Aviation, Joby Aviation, ispace, HII/Newport News Shipbuilding, Curtiss-Wright, Moog Inc, Relativity Space, Textron Systems, Bell Textron, Pratt & Whitney, Leidos, BAE Systems, plus broad "Spring 2027 mechanical engineering co-op" / "Winter 2026 aerospace engineering internship" searches.
+
+Every candidate either agent reported as new was independently re-verified via direct `curl` (Greenhouse API, Workday CXS API with browser UA + Referer headers) from this session before any file edit. This caught two agent errors: Vertex Pharmaceuticals REQ-30500-1 and Draper JR002883-1 (Electro-Mechanical Instrument Co-op) were both reported as "new" by an agent but are already tracked in `rows` since prior runs — not re-added.
+
+### Added to `rows` (4 new entries, all Yes)
+- **Varda Space Industries — Mechanisms & Payload Internship (Spring 2027)**, El Segundo CA — new company found in a prior run's Manufacturing Engineering Internship (already tracked); this is a genuinely new sibling req. Confirmed live via direct fetch of Varda's own Greenhouse API. $33/hr + housing stipend; US work authorization/ITAR screening required.
+- **Varda Space Industries — Structures Engineering Internship (Spring 2027)**, El Segundo CA — another new sibling req at the same company, confirmed the same way.
+- **Entegris — Mechanical Engineering Co-Op (REQ-14457)**, Billerica MA — 6th Entegris/Billerica req tracked; confirmed live via direct fetch of Entegris's own Workday CXS API, "Spring 2027 season" stated on posting.
+- **Insulet — Graduate Co-op, Supplier Engineering - Project Management Excellence (REQ-2026-18165)**, Acton MA — MS-level sibling of the already-tracked undergrad version of the same role; confirmed live via direct fetch of Insulet's own Workday CXS API, explicit dates Jan 11 – Jun 30 2027.
+
+### Added to `checked` (18 new entries)
+GD Electric Boat (14th consecutive block), Hologic (6th consecutive 503), HII/Newport News Shipbuilding (**postings finally appeared after 8+ dry runs, but confirmed Summer-2027-only** — still wrong season), Symbotic R5394 (**resolved** — enumerated all current live listings, req no longer exists, likely filled/removed), Textron Systems Hunt Valley MD "2027 Intern - Mechanical Engineer (Sea Systems)" (season unconfirmed, likely Summer per naming convention), Eaton Jackson MS (still blocked), Analog Devices/Lam Research (no change), MIT Lincoln Laboratory (2 reqs — Control & Autonomous Systems Eng Co-Op, Human Resilience Tech Co-Op — confirmed explicitly FILLED), GE Aerospace (2 new Trainee Co-Op reqs — CNC, Carpentry — skilled-trades discipline mismatch), Boston Dynamics (re-check, both known reqs confirmed CLOSED via `postingAvailable: false`), Blue Origin (4 discipline-specific Spring 2027 reqs all confirmed CLOSED via the same technique — resolves a prior "likely closed" inference), Stoke Space (confirmed "no longer accepting applications"), Vast Space (open but no season stated at all), Shield AI (only Summer 2027 mechanical; Spring reqs are Electrical discipline), Karman Space & Defense (**program structurally runs May/June–Aug/Sept only** — wrong season by design), Entegris REQ-14492 (Manufacturing Eng Co-op — Desired Major is BS Chemical Engineering despite title, discipline mismatch), Draper Laboratory (full 217-job CXS sweep, no new reqs), and a consolidated Boston-area fresh-sweep group (Teradyne, Vicor, Nuvation Engineering, Desktop Metal, Markforged, PTC, Bose, Nuvera Fuel Cells, Cirtec Medical, Charles River Labs, Commonwealth Fusion Systems, Boston Metal, Alloy Enterprises, Vicarious Surgical, Cognex, Berkshire Grey, PI Physik Instrumente, MathWorks, MKS Instruments — no qualifying findings at any of these).
+
+### Corrected agent findings (no `rows` change resulted)
+- **Vertex Pharmaceuticals REQ-30500-1** — reported by an agent as new; already tracked since the 2026-09-22 ~01:00 run. Not re-added.
+- **Draper Laboratory JR002883-1 (Electro-Mechanical Instrument Co-op)** — reported by an agent as new; already tracked. Not re-added.
+- **GD Mission Systems req 74530** — an agent reported this as only "Partial" (blocked on gd.com/icims this run), but it is already fully verified as "Yes" in `rows` via a different, already-confirmed gd.com URL from a prior run. No status change — the agent simply re-hit the harder-to-access mirror URLs.
+
+### Staged applications created (4 files, `staged-applications/`)
+`varda-space-industries-mechanisms-payload-internship.md`, `varda-space-industries-structures-engineering-internship.md`, `entegris-mechanical-engineering-coop.md`, `insulet-supplier-engineering-project-management-excellence-grad-coop.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (220.5KB → 234.1KB). Verified via direct read: "Winter26-Spring27 Internships" went from 100 → 104 rows; "Checked - Not Included" went from 270 → 288 rows.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 14+ consecutive automated-verification failures; still needs a human in-browser check.
+- **Hologic (Marlborough, MA)** — 6th consecutive 503; try a different time of day or network path.
+- **Symbotic** — R5394 resolved as gone, but worth a periodic fresh sweep of their live careers page for any new mechanical/hardware co-op req.
+- **Textron Systems** — both req 343102 and the Hunt Valley MD Sea Systems req remain season-unconfirmed; JS-rendered/Taleo blocking persists.
+- **Eaton (Jackson, MS)** — still blocked by eightfold/dejobs.org; needs a different access method.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Vast Space** — open internships with no season field; worth a periodic re-check for a dated Spring 2027 cohort.
+- **Saab, Caterpillar, BETA Technologies, Berkshire Grey Robot Learning R&D, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ, Moog reqs** — still Hamza's own judgment calls on ambiguous/combined-term postings, unchanged.
+- **Relativity Space** — remains mostly exhausted per the prior run's dedicated Ashby check; low priority going forward.
+- **Blue Origin/Boston Dynamics** — the `postingAvailable: false` Workday HTML-embed technique (plain curl, browser UA, no CXS auth) is a useful addition alongside the existing CXS-API and Referer-header techniques for quickly confirming closed status on Workday-hosted postings that block full API access.
