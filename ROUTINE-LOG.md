@@ -593,3 +593,53 @@ None this run (no new fully-verified postings).
 - **Moog Inc. reqs R-26-20226 / R-26-20243-1** — both live and open but season-ambiguous (no year / combined spring-summer). Worth a follow-up in case a cleanly-dated "Spring 2027" version is posted separately.
 - **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
 - **Saab "Spring - Summer 2027" Systems Engineering Co-Op**, **Caterpillar "2027 Engineering Corporate Parallel Co-op Program"**, **BETA Technologies "2026-2027 BETA Internship"**, **Berkshire Grey "Spring 2027 Robot Learning R&D Co-op"**, **SpaceX "Spring 2027 Graduate Engineer Internship/Co-op"** — all still Hamza's own judgment calls, unchanged this run.
+
+---
+
+## 2026-09-23 ~01:00 UTC
+
+### Sync
+`git status` showed a detached HEAD; `git fetch origin master` confirmed local matched `origin/master` exactly at `3ab5671`. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Priority re-checks + Boston-area sweep**: GD Electric Boat req 601496955 (13th run), Hologic (Marlborough MA, 503 for 5 runs), Curtiss-Wright JR1907, Northrop Grumman Chandler AZ, Eaton/Leidos (blocked ATS), Symbotic R5394, Relativity Space (Boston reference), Moog reqs, Analog Devices/Lam Research, GE Aerospace (Lynn MA, JS-blocked), Draper/MIT Lincoln Lab, Sierra Space; plus a fresh Boston-area sweep (Waters Corp, MathWorks, Teradyne, Vicor, Nuvation, Desktop Metal, Markforged, PTC, Bose, Nuvera, Cirtec, Charles River Labs, CFS, Boston Metal, Alloy Enterprises, iRobot, Vicarious Surgical, Boston Dynamics, Cognex, PI Physik Instrumente, MKS Instruments).
+2. **National aerospace/defense/robotics sweep**: Blue Origin, SpaceX, Rocket Lab, Joby/Archer/Firefly/Redwire/Aerojet Rocketdyne/Aurora/Safran/Parker Hannifin/Honeywell/Kratos/Shield AI/Saildrone, Textron Systems, GD Mission Systems/Vertex/Insulet re-checks, Northrop Grumman/Lockheed-Sikorsky/Boeing/L3Harris/Textron Aviation-Bell/Pratt & Whitney/Spirit AeroSystems/General Atomics/Virgin Galactic/ispace/Astranis/Karman/Anduril/Collins Aerospace/HII/Zipline/Wisk Aero/Vast Space/Impulse Space/Stoke Space.
+
+Every candidate either agent reported as new was independently re-verified via direct `curl` (Workday CXS API, Greenhouse API, or plain fetch, with browser UA + Referer headers where needed) from this session before any file edit.
+
+### Added to `rows` (17 new entries, all Yes)
+- **GE Aerospace — Manufacturing Engineering Co-op – US – Spring 2027 (R5029663)**, Lynn MA (1 of 23 eligible sites) — sibling req to the already-tracked Engines Engineering Co-op at the same site; confirmed via direct Workday CXS API fetch, `canApply: true`, deadline 2026-11-06.
+- **PI (Physik Instrumente) — Mechanical Engineering Co-op** and **Manufacturing Engineering Internship** (both Winter/Spring 2027), Shrewsbury MA — fresh posting cycle superseding the already-past Jan-June 2026 cohort found at this company in a prior run; resolves that "worth re-checking" item.
+- **Astranis Space Technologies — CAD Engineer Intern (Spring 2027)**, San Francisco CA — sibling req to the already-tracked Mechanical Engineer Intern; distinct from Astranis's excluded "Winter 2027"-titled reqs.
+- **RTX (Collins Aerospace) — Mechanical Engineering Co-op (Winter/Spring 2027)**, Rockford IL, req 01869227 — new site beyond the already-tracked Jamestown ND/Cedar Rapids IA Collins reqs; confirmed via direct Workday CXS API fetch, posted 2026-09-22.
+- **L3Harris — Mechanical Engineer Intern - Spring 2027**, Greenville TX, job 41322 — confirmed live and open; a differently-worded, now-dead L3Harris Greenville mechanical req was previously excluded, this is a distinct, currently-live req.
+- **Anduril Industries — Winter 2027 Propulsion Engineer Co-op, Warhead Engineer Co-op, Test & Evaluation Engineer Co-op** (3 reqs), Costa Mesa CA — new site beyond the already-tracked Quincy MA/Lexington MA Anduril Winter 2027 co-ops (Anduril's "Winter 2027" = effectively Jan–Aug 2027, same treatment as the already-tracked Quincy reqs).
+- **Zipline — 8 new Spring 2027 reqs**, mostly South San Francisco CA (Maintenance Tool Engineering Intern is Esparto CA): Aerodynamics, Civil and Structural Engineer, Controls Engineer, Flight Test Engineer, Hardware Test, Maintenance Tool Engineering, Quality & Manufacturing, Supplier Industrialization Engineering — all confirmed live via direct fetch of Zipline's own Greenhouse API, no closed-application notice, updated 2026-09-17.
+
+### Upgraded from Partial to Yes (1 entry)
+- **Zipline — Mechanical Engineer Intern (Spring 2027)** — previously Partial (JS-rendered page, could not confirm apply status); now confirmed via direct fetch of Zipline's own Greenhouse API (HTTP 200, no closed-application notice).
+
+### Added to `checked` (34 new entries)
+GD Electric Boat (13th consecutive block), Hologic (5th consecutive 503, partial LinkedIn corroboration), Draper Electrical Engineering Co-Op JR002941 (new req, discipline mismatch), Astranis's 7 "Winter 2027"-titled reqs (season mismatch, same basis as prior Astranis exclusion), Zipline Materials Engineer Intern (combined Spring & Summer term), Curtiss-Wright JR1907 (5th consecutive no-change), Northrop Grumman Chandler AZ (no change), Eaton Jackson MS (link dead, Summer-only version live), Leidos (no change), Symbotic R5394 (still blocked, corrected tenant slugs tried), Moog Buffalo NY reqs (no change), Relativity Space (no Boston connection found this run — downgrades confidence on the prior "worth re-checking" note), Analog Devices (stale/inactive), Lam Research (no change), Sierra Space (Fall-only, not Boston), and a large fresh-sweep batch with no qualifying findings: Boeing (Summer-only), Lockheed Martin/Sikorsky, HII/Newport News Shipbuilding (8th consecutive failure to materialize — recommend treating the claim as unreliable), General Atomics/Spirit AeroSystems/Virgin Galactic (Summer-only), Karman Space & Defense (Summer-only by their own description), Stoke Space (Spring req removed), Wisk Aero (404), Vast Space (no season stated), Firefly Aerospace, Redwire Space (404), Safran USA, Shield AI (Summer-only), Saildrone (zero internships), Parker Hannifin/Honeywell/Kratos, Aerojet Rocketdyne/Aurora Flight Sciences, Archer/Joby/ispace, GD Mission Systems (only Boston-area/discipline-mismatch reqs found), Vertex Pharmaceuticals (no non-Boston mechanical), Textron Systems req 343102 (still unresolved).
+
+### Corrected agent findings (no `rows` change resulted)
+- **Rocket Lab's additional Spring 2027 reqs** (18 more identified by one agent, at new sites incl. Wallops Island VA, Middle River MD, Silver Spring MD, Stennis Space Center MS) — cross-checked against the already-tracked note ("~25 more Spring 2027 postings ... across CA/MD/VA/AZ/CO/NM ... not individually logged") and found to already be covered by that standing decision. No change made.
+- **SpaceX Spring 2027 Graduate Engineer Internship/Co-op (8621749002)** — reported by an agent as new; already tracked since the 2026-09-22 13:00 run. Not re-added.
+- **GE Aerospace Engines Engineering Co-op (R5029617-1)** and **Draper Materials and Chemistry Engineering Co-op (JR002942)** — both flagged by agents as possibly new; both already tracked. Not re-added.
+
+### Staged applications created (18 files, `staged-applications/`)
+`ge-aerospace-manufacturing-engineering-coop-lynn.md`, `pi-physik-instrumente-mechanical-engineering-coop.md`, `pi-physik-instrumente-manufacturing-engineering-internship.md`, `astranis-cad-engineer-intern-spring2027.md`, `rtx-collins-mechanical-engineering-coop-rockford.md`, `l3harris-mechanical-engineer-intern-spring2027-greenville.md`, `anduril-industries-propulsion-engineer-coop-costa-mesa.md`, `anduril-industries-warhead-engineer-coop-costa-mesa.md`, `anduril-industries-test-evaluation-engineer-coop-costa-mesa.md`, `zipline-mechanical-engineer-intern-spring2027.md` (Partial→Yes upgrade), `zipline-aerodynamics-intern-spring2027.md`, `zipline-civil-structural-engineer-intern-spring2027.md`, `zipline-controls-engineer-intern-spring2027.md`, `zipline-flight-test-engineer-intern-spring2027.md`, `zipline-hardware-test-intern-spring2027.md`, `zipline-maintenance-tool-engineering-intern-spring2027.md`, `zipline-quality-manufacturing-intern-spring2027.md`, `zipline-supplier-industrialization-engineering-intern-spring2027.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (193.3KB → 220.5KB). Verified via direct read: "Winter26-Spring27 Internships" went from 83 → 100 rows; "Checked - Not Included" went from 236 → 270 rows.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 13+ consecutive automated-verification failures; still needs a human in-browser check.
+- **Hologic (Marlborough, MA)** — 5th consecutive 503; partial LinkedIn corroboration suggests it's a genuine Winter 2026 posting. Try a different time of day or network path.
+- **HII/Newport News Shipbuilding** — the Sept-Oct posting-window claim has now failed to materialize across 8 checked runs; treat as unreliable this cycle unless something changes.
+- **Symbotic req R5394** — still blocked despite trying multiple corrected tenant slugs; try a completely different discovery method (e.g. search for the live careers page URL directly) next run.
+- **Textron Systems req 343102** and **Eaton Jackson MS Spring 2027 Manufacturing Engineering Co-op** — both plausible leads, both blocked by JS-rendered/Cloudflare-gated career sites.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Saab, Caterpillar, BETA Technologies, Berkshire Grey Robot Learning R&D, SpaceX Graduate Engineer** — still Hamza's own judgment calls, unchanged.
+- **Relativity Space** — no Boston connection found this run after a dedicated Ashby check; consider this lead mostly exhausted unless a new signal appears.
