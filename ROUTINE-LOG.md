@@ -689,3 +689,48 @@ GD Electric Boat (14th consecutive block), Hologic (6th consecutive 503), HII/Ne
 - **Saab, Caterpillar, BETA Technologies, Berkshire Grey Robot Learning R&D, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ, Moog reqs** — still Hamza's own judgment calls on ambiguous/combined-term postings, unchanged.
 - **Relativity Space** — remains mostly exhausted per the prior run's dedicated Ashby check; low priority going forward.
 - **Blue Origin/Boston Dynamics** — the `postingAvailable: false` Workday HTML-embed technique (plain curl, browser UA, no CXS auth) is a useful addition alongside the existing CXS-API and Referer-header techniques for quickly confirming closed status on Workday-hosted postings that block full API access.
+
+---
+
+## 2026-09-23 ~13:00 UTC
+
+### Sync
+`git status` showed a detached HEAD at `a02e5a7`, matching `origin/master` exactly. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Priority re-checks + Boston-area sweep**: GD Electric Boat req 601496955 (15th run, low-effort only), Hologic (Marlborough MA, 503 for 7 runs), Symbotic (periodic fresh sweep post-resolution), Textron Systems (req 343102 and Hunt Valley MD Sea Systems req), Eaton (Jackson MS), Analog Devices/Lam Research, Vast Space, GE Aerospace (Lynn MA), Draper Laboratory/MIT Lincoln Laboratory; plus a fresh Boston-area sweep (Waters Corp, MathWorks, Teradyne, Vicor, Nuvation Engineering, Desktop Metal, Markforged, PTC, Bose, Nuvera Fuel Cells, Cirtec Medical, Charles River Labs, Commonwealth Fusion Systems, Boston Metal, Alloy Enterprises, iRobot, Vicarious Surgical, Boston Dynamics, Cognex, PI Physik Instrumente, MKS Instruments, Entegris, Insulet, Vertex Pharmaceuticals, Berkshire Grey, Symbotic).
+2. **National aerospace/defense/robotics sweep**: full job-board API pulls for Rocket Lab, SpaceX, Zipline, Astranis, Anduril, Varda (to catch any req not yet itemized), plus fresh checks on Marathon Petroleum-style broad searches ("Spring 2027 mechanical engineering co-op" / "Winter 2026 aerospace engineering internship") that surfaced two new-to-tracker companies, and checks on Reliable Robotics, Figure AI, SharkNinja, GD Mission Systems (Dedham MA/Scottsdale AZ), Karman Space & Defense and Curtiss-Wright JR1907 (both quick re-check only per standing guidance).
+
+Every candidate either agent reported as new was independently re-verified by this session via direct API calls before any file edit: all 3 new Varda reqs via Varda's own Greenhouse API (full job descriptions, ITAR text confirmed), and Marathon Petroleum / GE Appliances via their own Workday CXS APIs (GET request with Referer header; full job descriptions with explicit dates/pay returned). This independent check also caught that the Marathon Petroleum posting's Pay field was understated by the reporting agent — the posting explicitly states a $32.92–$41.67/hr range, not "not stated," so the tracker entry was corrected before commit.
+
+### Added to `rows` (5 new entries, all Yes)
+- **Varda Space Industries — Guidance, Navigation & Controls (GNC) Internship (Spring 2027)**, El Segundo CA — sibling req to the 3 already-tracked Varda internships (Manufacturing Eng, Mechanisms & Payload, Structures); confirmed via direct Greenhouse API fetch, ITAR/US-person requirement confirmed in full posting text. $33/hr + housing stipend.
+- **Varda Space Industries — Propulsion Engineering Internship (Spring 2027)**, El Segundo CA — another new sibling req, confirmed the same way. Requires fluids/thermo/heat-transfer/combustion coursework.
+- **Varda Space Industries — Vehicle Integration & Test Internship (Spring 2027)**, El Segundo CA — another new sibling req, confirmed the same way.
+- **Marathon Petroleum — Intern/Co-op - Refining Mechanical Engineer (Spring 2027)**, Findlay OH (new company, not previously tracked) — confirmed via direct Workday CXS API fetch, req 00020137, canApply-eligible full description returned. $32.92–$41.67/hr. Industrial/refining rather than aerospace, but squarely mechanical engineering; posting also lists 13 other eligible refinery sites nationwide.
+- **GE Appliances (a Haier company) — Mechanical Engineering Co-op (Spring 2027)**, Louisville KY (new company, not previously tracked) — confirmed via direct Workday CXS API fetch, req REQ-24833, explicit dates Jan 11 – May 7 2027. GPA ≥3.0 and Dec-2027-or-later graduation required. Consumer-manufacturing rather than aerospace, but clean mechanical engineering fit with a Spring-only (not combined) term.
+
+### Added to `checked` (20 new entries)
+GD Electric Boat (15th consecutive block), Hologic (7th consecutive 503 — but new evidence this run: a direct keyword search across all 195 of Hologic's currently open jobs returned zero "co-op" matches, strengthening the case that this posting is closed/expired rather than merely bot-blocked; downgrading priority), Symbotic (fresh sweep, only Summer 2027 reqs found), Textron Systems (both req 343102 and the Hunt Valley MD Sea Systems req remain unresolved, JS-rendered), Eaton Jackson MS (previously-cited link now 404s; LinkedIn now shows the same role as Summer 2027, not Spring — likely rolled over), Analog Devices/Lam Research (no change), Vast Space (re-confirmed open, still no season field), GE Aerospace Lynn MA (landing page only, inconclusive), Draper Laboratory (1 new req found — Electrical Engineering Co-Op Spring 2027, JR002941 — discipline mismatch), MIT Lincoln Laboratory (only a Fall 2026 co-op found, wrong season), Entegris (3 more Billerica reqs found — Digital Operations, Analytical Organic Lab, Analytical Scientist — all discipline mismatches), Rocket Lab (re-check, ~34 Spring 2027 reqs all already covered by the standing aggregate note), SpaceX (only 2 of 6 live Spring 2027 reqs are on-discipline, both already tracked), Zipline (re-check, all matching reqs already tracked), Astranis ("Associate" Mechanical/CAD reqs require already holding a bachelor's degree — not a current-student internship, excluded on eligibility grounds), Anduril (re-check, no change), Reliable Robotics Corp (Winter 2026/Spring 2027 mechanical intern listing removed 2026-07-20 — closed), Figure AI (no current Winter 2026/Spring 2027 mechanical req; prior lead now closed/gone), SharkNinja Needham MA (freshly-posted "Mechanical Engineering Co-op Opportunities" but zero season/term stated anywhere on the posting — fails season bar, worth a periodic re-check), and General Dynamics Mission Systems Dedham MA/Scottsdale AZ (req 75046, "open until filled" — no season stated).
+
+### Corrected agent findings (before any file edit)
+- **Marathon Petroleum Pay field** — the reporting agent noted "Pay: not stated in excerpt"; this session's independent direct-API re-fetch retrieved the full job description including an explicit "$32.92 per hour / $41.67 per hour" range, so the tracker entry states the real pay range rather than "not stated."
+
+### Staged applications created (5 files, `staged-applications/`)
+`varda-space-industries-gnc-internship.md`, `varda-space-industries-propulsion-engineering-internship.md`, `varda-space-industries-vehicle-integration-test-internship.md`, `marathon-petroleum-refining-mechanical-engineer-intern-coop.md`, `ge-appliances-mechanical-engineering-coop-louisville.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (234.1KB → 248.4KB). Verified via direct read: "Winter26-Spring27 Internships" went from 104 → 109 rows; "Checked - Not Included" went from 288 → 308 rows.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 15+ consecutive automated-verification failures; still needs a human in-browser check.
+- **Hologic (Marlborough, MA)** — 7th consecutive 503, but new evidence (zero "co-op" titles company-wide) suggests this lead is likely dead. Try one more direct-URL attempt next run; if still 503, consider deprioritizing further automated re-checks.
+- **Textron Systems** — both req 343102 and the Hunt Valley MD Sea Systems req remain season-unconfirmed; JS-rendered/Taleo blocking persists.
+- **Eaton (Jackson, MS)** — the Spring 2027-labeled posting appears to have rolled over to Summer 2027 on LinkedIn; treat the Spring 2027 lead as likely gone unless a new dated version appears.
+- **Analog Devices, Lam Research** — still not posted, recurring note across many runs now.
+- **Vast Space** — open internships with no season field; worth a periodic re-check for a dated Spring 2027 cohort.
+- **SharkNinja (Needham, MA)** — freshly-posted generic co-op req with no season stated; worth a periodic re-check in case a dated Spring 2027 version appears (Boston-area company, would be a strong-fit lead if it materializes).
+- **Saab, Caterpillar, BETA Technologies, Berkshire Grey Robot Learning R&D, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ, Moog reqs** — still Hamza's own judgment calls on ambiguous/combined-term postings, unchanged.
+- **Relativity Space** — remains mostly exhausted per a prior dedicated Ashby check; low priority going forward.
+- **Curtiss-Wright JR1907, Karman Space & Defense** — not re-checked this run (quick-only guidance); no change expected, deprioritize further automated re-checks absent a new signal.
