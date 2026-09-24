@@ -1,4 +1,5 @@
 import xlsx from "xlsx";
+import fs from "fs";
 
 // Distances are straight-line (great-circle) approximations from Boston, MA,
 // for quick sorting/reference only — not driving distance.
@@ -1810,8 +1811,64 @@ ws["!cols"] = [
   { wch: 50 }, // Notes
 ];
 
+// Preserve manually-curated RESUME/COVER LETTER/QUESTIONS hyperlink columns
+// (added outside this script) across regeneration, matched by Company + Role Title.
+const OUTFILE = "Engineering-Internships-Winter2026-Spring2027.xlsx";
+const APPLICATION_COLS = ["RESUME", "COVER LETTER", "QUESTIONS"];
+let applicationLinkMap = new Map();
+if (fs.existsSync(OUTFILE)) {
+  const oldWb = xlsx.readFile(OUTFILE);
+  const oldWs = oldWb.Sheets["Winter26-Spring27 Internships"];
+  if (oldWs && oldWs["!ref"]) {
+    const range = xlsx.utils.decode_range(oldWs["!ref"]);
+    const headerCol = {};
+    for (let c = range.s.c; c <= range.e.c; c++) {
+      const cell = oldWs[xlsx.utils.encode_cell({ r: range.s.r, c })];
+      if (cell && cell.v) headerCol[cell.v] = c;
+    }
+    const companyCol = headerCol["Company"];
+    const roleCol = headerCol["Role Title"];
+    if (companyCol !== undefined && roleCol !== undefined) {
+      for (let r = range.s.r + 1; r <= range.e.r; r++) {
+        const companyCell = oldWs[xlsx.utils.encode_cell({ r, c: companyCol })];
+        const roleCell = oldWs[xlsx.utils.encode_cell({ r, c: roleCol })];
+        if (!companyCell || !roleCell) continue;
+        const key = `${companyCell.v}|||${roleCell.v}`;
+        const cellsForRow = {};
+        for (const col of APPLICATION_COLS) {
+          const c = headerCol[col];
+          if (c === undefined) continue;
+          const cell = oldWs[xlsx.utils.encode_cell({ r, c })];
+          if (cell && (cell.v || cell.l)) cellsForRow[col] = cell;
+        }
+        if (Object.keys(cellsForRow).length) applicationLinkMap.set(key, cellsForRow);
+      }
+    }
+  }
+}
+if (applicationLinkMap.size) {
+  const baseCol = 10; // K = first column after Notes (J)
+  ws["!cols"].push({ wch: 14 }, { wch: 16 }, { wch: 14 });
+  rows.forEach((row, i) => {
+    const key = `${row["Company"]}|||${row["Role Title"]}`;
+    const saved = applicationLinkMap.get(key);
+    if (!saved) return;
+    APPLICATION_COLS.forEach((col, offset) => {
+      if (!saved[col]) return;
+      const addr = xlsx.utils.encode_cell({ r: i + 1, c: baseCol + offset });
+      ws[addr] = { ...saved[col] };
+    });
+  });
+  const newRange = xlsx.utils.decode_range(ws["!ref"]);
+  newRange.e.c = Math.max(newRange.e.c, baseCol + APPLICATION_COLS.length - 1);
+  ws["!ref"] = xlsx.utils.encode_range(newRange);
+  APPLICATION_COLS.forEach((col, offset) => {
+    ws[xlsx.utils.encode_cell({ r: 0, c: baseCol + offset })] = { t: "s", v: col };
+  });
+}
+
 const wb = xlsx.utils.book_new();
 xlsx.utils.book_append_sheet(wb, ws, "Winter26-Spring27 Internships");
 xlsx.utils.book_append_sheet(wb, wsChecked, "Checked - Not Included");
-xlsx.writeFile(wb, "Engineering-Internships-Winter2026-Spring2027.xlsx");
+xlsx.writeFile(wb, OUTFILE);
 console.log("done");
