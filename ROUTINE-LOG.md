@@ -784,3 +784,54 @@ This session's own Workday CXS API access (POST to `/wday/cxs/{tenant}/{site}/jo
 - **Eaton (Jackson, MS)** — still likely rolled to Summer 2027; no new evidence found this run.
 - **Saab, Caterpillar, BETA Technologies, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ, Moog reqs** — still Hamza's own judgment calls on ambiguous/combined-term postings, unchanged.
 - **Process note**: confirm full posting text (not just title) before adding a discipline-adjacent lead (e.g. "Avionics," "Systems," "Flight X") to `rows` — this run caught and self-corrected an Avionics-titled EE role before it reached staging, but it should be caught earlier next time.
+
+---
+
+## 2026-09-24 ~01:00 UTC
+
+### Sync
+`git status` showed a detached HEAD at `0e20bcf`, matching `origin/master` exactly. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Priority re-checks + Boston-area sweep**: all "worth re-checking" items from the prior run (GD Electric Boat req 601496955 — 17th run, Hologic Marlborough MA, GE Appliances REQ-24835–24839, RTX/Collins Windsor Locks duplicate question, Anduril "EWIS Harness Engineer Co-op" missing job ID, Berkshire Grey job 768, Textron Systems req 343102, Parker Hannifin Columbus OH, Impulse Space, Analog Devices/Lam Research, Eaton Jackson MS, Saab/Caterpillar/BETA/SpaceX/Northrop Grumman Chandler AZ/Moog judgment calls); plus a fresh Boston-area sweep (Waters Corp, MathWorks, Teradyne, Vicor, Nuvation, Desktop Metal, Markforged, PTC, Bose, Nuvera, Cirtec, Charles River Labs, Commonwealth Fusion Systems, Boston Metal, Alloy Enterprises, iRobot, Vicarious Surgical, Boston Dynamics, Cognex, PI Physik Instrumente, MKS Instruments, Entegris, Insulet, Vertex Pharmaceuticals).
+2. **National aerospace/defense/robotics sweep**: new-req checks at already-tracked companies (Rocket Lab, SpaceX, Zipline, Astranis, Anduril, RTX/Collins, GD Mission Systems, Varda, Marathon Petroleum, GE Appliances, L3Harris, GE Aerospace) plus a fresh national sweep (Boeing, Lockheed Martin, Sikorsky, Northrop Grumman, General Atomics, Spirit AeroSystems, Virgin Galactic, Stoke Space, Wisk Aero, Firefly Aerospace, Redwire Space, Safran USA, Shield AI, Saildrone, Parker Hannifin, Honeywell Aerospace, Kratos Defense, Aerojet Rocketdyne, Aurora Flight Sciences, Archer Aviation, Joby Aviation, ispace, HII, Bell Textron, Pratt & Whitney, Leidos, BAE Systems, Reliable Robotics, Figure AI, Impulse Space, Vast Space, Sierra Space, Blue Origin, Curtiss-Wright, Moog, Relativity Space, Textron Systems, Symbotic) plus broad "Spring 2027 mechanical/manufacturing/robotics engineering co-op" searches.
+
+Every candidate either agent reported as new was independently re-verified by this session before any file edit, via direct WebFetch of the actual posting page and, for Workday-hosted RTX/Entegris reqs, this session's own curl against the Workday CXS API. This caught and discarded several false positives: Vertex REQ-30500-1, Draper JR002883-1, and Insulet REQ-2026-18007 were all reported as "new" by an agent but are already tracked in `rows` since prior runs — not re-added. The Astranis "Mechanical Engineer Intern" job ID an agent reported (4704601006) differs by one digit from the already-tracked 4704602006 — treated as the same already-tracked req (likely agent transcription), not re-added. GE Aerospace's Evendale, OH reqs (R5030077, R5029663) were already confirmed dead/duplicate-of-tracked in prior runs — not re-added.
+
+### Added to `rows` (5 new entries, all Yes)
+- **Aalo Atomics — Mechanical Engineering Internship/Co-op (Spring 2027)**, Austin TX — new company (advanced nuclear reactor startup); confirmed via direct fetch, live Apply button, Jan–May dates, requires Mechanical/Aerospace/Manufacturing Engineering enrollment.
+- **Hermeus — GNC & Flight Software Intern (Spring/Summer 2027)**, Atlanta GA — new company (hypersonic aircraft developer); confirmed via direct fetch. Posting states two distinct term options (Spring: ~16 wks Jan–Apr; Summer: ~12 wks May–Aug) rather than one combined term — included on that basis, unlike prior combined-term exclusions (Zipline Materials Engineer, Saab, Moog). GNC (Guidance, Navigation & Controls) is a flight-systems/controls role, squarely in Hamza's target disciplines.
+- **Owens Corning — Manufacturing Engineering Co-Op (Spring 2027)**, Toledo OH (+ Feura Bush NY / Sedalia MO / Irving TX) — new company (building materials manufacturer); confirmed via direct fetch, live Apply button, ~16-week Spring term, open to Mechanical Engineering majors among others.
+- **Crown Equipment — Mechanical Engineering Co-op (Spring 2027)**, Greencastle IN, req 146174 — new company (forklift/material handling manufacturer); an initial fetch of the generic co-op landing page gave an inconsistent "no positions" signal, but the actual job-detail URL (found via targeted web search) was independently confirmed live with an active Apply button.
+- **Anduril Industries — Winter 2027 EWIS Harness Engineer Co-op**, Costa Mesa CA, job 5236577007 — resolves the "worth re-checking" item from the prior run (previously found by an agent without a job ID); confirmed via direct fetch on Greenhouse, $34–50/hr, same batch/site as the already-tracked Propulsion/Warhead/Test & Evaluation co-ops.
+
+### Added to `checked` (5 new entries)
+RTX/Collins Windsor Locks CT req 01873957 (a third, distinct-looking req ID at the same site; this session's own Workday CXS API calls 422'd on both this req and the already-verified 01872478 used as a sanity check, confirming today's blocking is session-wide rather than evidence either req is dead — still unresolved, worth a fresh attempt next run), Entegris Billerica MA REQ-7046/REQ-7047-1/REQ-8392 (agent-reported via aggregator mirrors, but these req numbers are far outside the REQ-144xx/145xx range of every other confirmed-live Entegris/Billerica req; a direct Workday CXS API search for "REQ-7046" returned zero results — likely stale/mis-transcribed/wrong-site, not added), a documentation entry for the Crown Equipment verification path, and Hologic Marlborough MA re-check (9th consecutive HTTP 503, no change).
+
+### Corrected agent findings (no `rows` change resulted)
+- **Vertex Pharmaceuticals REQ-30500-1, Draper Laboratory JR002883-1, Insulet REQ-2026-18007** — all reported as new by research agents; all already tracked since prior runs. Not re-added.
+- **Astranis "Mechanical Engineer Intern" (4704601006)** — reported as new; differs by one digit from the already-tracked 4704602006 at the same company/title/season — treated as the same req, not re-added as a duplicate risk.
+- **GE Aerospace Evendale, OH (R5030077, R5029663)** — reported as new by an agent; R5030077 was already confirmed dead (HTTP 410) in a prior run and R5029663 is the already-tracked Lynn MA-eligible req (part of a 23-site-eligible posting). Not re-added.
+- **Rocket Lab Long Beach reqs (7985634003, 7987210003)** — 7985634003 is already tracked exactly; both fall under the already-tracked "~25 more Spring 2027 postings ... not individually logged" aggregate note. Not re-added.
+- **CMTA, Inc. (Boston, MA)** — an agent reported a Boston-located Spring 2027 mechanical co-op; this company was already excluded in a 2026-09-22 run on discipline grounds (MEP/building-systems consulting, not mechanical/aerospace/manufacturing) — that exclusion basis is unaffected by a different reported location, not re-added.
+
+### Staged applications created (5 files, `staged-applications/`)
+`aalo-atomics-mechanical-engineering-internship-coop.md`, `hermeus-gnc-flight-software-intern.md`, `owens-corning-manufacturing-engineering-coop.md`, `crown-equipment-mechanical-engineering-coop.md`, `anduril-industries-ewis-harness-engineer-coop.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (265.3KB → 272.1KB).
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** — 17+ consecutive automated-verification failures; still needs a human in-browser check.
+- **Hologic (Marlborough, MA)** — 9th consecutive 503; try a different time of day/network path.
+- **RTX/Collins Windsor Locks CT** — three req IDs now on record (01872478 tracked, 01872926 and 01873957 unresolved) at the same site; Workday CXS API bot-blocking has persisted across multiple runs — worth trying WebFetch or a fresh research agent with different tooling instead of this session's own curl.
+- **GE Appliances' 5 Spring 2027 co-ops (REQ-24835–24839)** — still Partial from the prior run; worth a fresh direct-fetch attempt.
+- **Berkshire Grey "Robot Learning R&D Co-op" (job 768)** — still not independently re-verified via direct BambooHR fetch this run either; worth doing next time given two consecutive runs of doubt.
+- **Textron Systems req 343102 / Hunt Valley MD Sea Systems req** — both season-unconfirmed, unchanged.
+- **Parker Hannifin (Columbus, OH) Design Engineering Co-Op** — still no live posting located.
+- **Impulse Space** — still worth checking specifically for a Spring-2027-dated mechanical/propulsion/structures req.
+- **Analog Devices, Lam Research** — still not posted.
+- **Eaton (Jackson, MS)** — still likely rolled to Summer 2027.
+- **Saab, Caterpillar, BETA Technologies, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ, Moog reqs** — still Hamza's own judgment calls, unchanged.
+- **Owens Corning, Crown Equipment, Aalo Atomics, Hermeus** — all new this run; worth a periodic re-check for sibling reqs (e.g. Owens Corning's other 3 sites, other Aalo Atomics disciplines) and to confirm continued open status.
