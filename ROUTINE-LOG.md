@@ -979,3 +979,56 @@ Entegris Bedford REQ-14401 (Mechanical Engineering Co-Op — confirmed live via 
 - **Eaton (Jackson, MS), Parker Hannifin (Columbus, OH), Analog Devices, Lam Research** — all still blocked/unconfirmed or not-yet-posted, recurring notes across many runs now.
 - **Sanofi Swiftwater, PA** — umbrella posting now tracked; worth checking next run whether the specific "Engineering & Maintenance" track (biospace.com job 3075194, $35/hr) is a genuinely separate application from the tracked "2027 Spring Co-op Opportunities" req, or the same program.
 - **MetOx International, Entegris Bedford reqs** — all new this run; worth a periodic re-check for sibling reqs and continued open status.
+
+---
+
+## 2026-09-25 ~01:00 UTC
+
+### Sync
+`git status` showed a detached HEAD; `git fetch origin master` confirmed it matched `origin/master` exactly at `c0d8a93`. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Boston-area + priority re-check sweep**: Hologic (12th 503), iRobot R4085 (Bedford MA), GE Vernova Findlay Township Spring variant, WestRock/Smurfit Westrock, Parker Hannifin (Columbus OH), Eaton (Jackson MS), Analog Devices/Lam Research, Sanofi Swiftwater umbrella-vs-track question, sibling-req sweeps at Rocket Lab/Formlabs/Hermeus/Entegris/Crown Equipment/Aalo Atomics/Owens Corning/GE Appliances; plus a fresh Boston-area sweep (Waters, MathWorks, Teradyne, Vicor, Nuvation, Desktop Metal, Markforged, PTC, Bose, Nuvera, Cirtec, Charles River Labs, CFS, Boston Metal, Alloy Enterprises, iRobot, Vicarious Surgical, Boston Dynamics, Cognex, MKS, Symbotic, SharkNinja).
+2. **National aerospace/defense/robotics sweep**: new-req checks at already-tracked companies (Rocket Lab, Anduril, RTX/Collins, Marathon Petroleum, ASM, Vast Space, Moog) plus a fresh national sweep (Boeing, Lockheed, Sikorsky, Northrop, General Atomics, Spirit, Virgin Galactic, Stoke Space, Wisk, Firefly, Redwire, Safran, Shield AI, Saildrone, Parker Hannifin, Honeywell, Kratos, Aerojet Rocketdyne, Aurora, Archer, Joby, ispace, HII, Bell, Pratt & Whitney, Leidos, BAE, Reliable Robotics, Figure AI, Impulse Space, Vast Space, Sierra Space, Blue Origin, Curtiss-Wright, Moog, Relativity Space, Textron Systems, Symbotic) plus broad Spring 2027 searches.
+
+Every candidate either agent reported as new or as a status change was independently re-verified by this session via direct curl against ATS APIs (Workday CXS, Greenhouse public API) before any file edit — this caught several important corrections (see below). Neither agent had visibility into the current `build.mjs` state.
+
+### Corrected agent findings (before any file edit — no false additions made)
+- **Rocket Lab's reported "new" 20-req Spring 2027 list** — diffed directly against the current `rows`: exact match, all 20 already tracked (same Greenhouse job IDs). Not re-added.
+- **Anduril's reported 7-req "Winter 2027" co-op cluster** (Mechanical/Manufacturing/Propulsion/Systems/Test & Evaluation/Warhead/EWIS Harness Engineer Co-op) — same 7 Greenhouse job IDs as the already-tracked 7 Anduril reqs. Not re-added.
+- **ASM International (job 4830098101), Owens Corning (req 70284 / job 1426905700), Crown Equipment Greencastle (job 1420491100), Hermeus Structures/Mechanical Intern (Lever 60b5d40a-...)** — all reported as "new" by an agent, all confirmed byte-for-byte identical to already-tracked `rows` entries via direct URL comparison. Not re-added.
+- **Entegris "REQ-8386"/"REQ-8392"/"REQ-7124"** — a research agent reported these as new via search snippets, but this session's own Entegris jobs-search API returned zero results for all 3 req numbers. Cross-referencing by title/location found the real req numbers: Capital Equipment Engineering Co-Op (Billerica MA) is actually REQ-14497 (already tracked); Manufacturing Engineering Co-Op (Billerica MA) is actually REQ-14492 (already tracked); "Materials Engineering Co-Op" is at Chaska, MN (REQ-14451), not Massachusetts — wrong location. Same mis-transcription pattern as a prior run's "REQ-7046." Not added. (The same search sweep did surface one genuinely new req — see below.)
+- **Rendezvous Robotics Avionics Engineering Intern** — an agent reported this alongside 3 legitimate siblings; this session pulled the full posting text and found it requires "a degree in Electrical Engineering, Computer Engineering, or a related field" and is scoped to PCB design/power electronics — EE discipline, not mechanical/aerospace/controls. Same treatment as the earlier Varda Avionics exclusion. Moved to `checked`, not added to `rows`.
+- **Hologic "Jan-June 2026" season flag** — one agent flagged this as a possible season mismatch (2026, not 2027), but Winter 2026 is explicitly one of Hamza's two target seasons — this was a false alarm, not a real issue. No change to the existing Partial entry (still 503-blocked, 12th consecutive fail).
+
+### Added to `rows` (9 new entries: 8 Yes, 1 Partial)
+- **Marathon Petroleum — 2 new Spring 2027 reqs**, both posted the day before this run: Midstream Logistics and Storage Mechanical/Civil/Electrical Engineering (req 00024207, Findlay OH) and Midstream Natural Gas and NGL Services Chemical/Mechanical/Civil/Petroleum/Electrical Engineering (req 00024213, Canonsburg PA). Both independently confirmed via direct Workday CXS API (canApply true, pay ranges extracted from body text).
+- **Rendezvous Robotics — 3 new reqs, all Spring 2027** (new company — small spacecraft-assembly startup, Golden CO): Mechanical Engineering Intern, GNC Intern (flight-systems/controls fit, same treatment as Hermeus's GNC intern), and Manufacturing and Test Engineering Intern (added as the only Partial this run — the Greenhouse job title states "(Spring 2027)" but the body text never restates the season, unlike its siblings). Confirmed via direct Greenhouse public API. The 4th sibling (Avionics Engineering Intern) was excluded — see corrections above.
+- **Vast Space — 2 reqs upgraded from `checked` to `rows`**: Emerging Talent - Mechanical/Aerospace Engineering Internship and Emerging Talent - Manufacturing Engineering Internship, both Long Beach CA. Excluded in 3 prior runs (2026-09-23) for having no season field at all; this session's direct re-fetch found the application form's start-term dropdown now includes a genuine dated "Spring 2027" option alongside 4 dated Summer 2027 ranges and Fall 2027 — confirmed via the page's raw JSON, not just rendered text. Same "distinct dated Spring option" precedent as Hermeus.
+- **Moog Inc. — Intern, Design Engineering (R-26-19186), Mineral Wells TX** — corrects a 2026-09-22 `checked` entry that had lumped this req in with 3 genuinely-Summer-2027 siblings; this session's fresh direct fetch shows R-26-19186 now/actually states "spring 2027 block intern," a different season from its siblings (which remain correctly excluded).
+- **Entegris — Application Engineering Co-Op (REQ-14473), Billerica MA** — new sibling req found via this session's own Entegris jobs-search API sweep (not reported by either agent), Spring 2027 stated twice in body, $20-$30/hr.
+
+### Added to `checked` (4 new entries)
+Rendezvous Robotics Avionics Engineering Intern (EE discipline mismatch — see corrections above), Moog R-26-19536 (Actuation Engineering, Torrance CA) and R-26-19391 (Engineering, Buffalo/East Aurora NY) — both confirmed live "spring block intern" but neither posting states a year anywhere, so the cohort year (2026 vs 2027) can't be determined; excluded pending clarification, a consolidated cross-check entry for the 6 companies whose "new" findings turned out to be exact duplicates (Rocket Lab, Anduril, ASM, Owens Corning, Crown Equipment, Hermeus), and the Entegris mis-transcription correction entry (also documents the genuinely new REQ-14473 finding).
+
+### Staged applications created (8 files, `staged-applications/`)
+`marathon-petroleum-midstream-logistics-storage-engineering-spring2027.md`, `marathon-petroleum-midstream-natural-gas-ngl-engineering-spring2027.md`, `rendezvous-robotics-mechanical-engineering-intern-spring2027.md`, `rendezvous-robotics-gnc-intern-spring2027.md`, `vast-space-mechanical-aerospace-engineering-internship-spring2027.md`, `vast-space-manufacturing-engineering-internship-spring2027.md`, `moog-intern-design-engineering-mineral-wells-spring2027.md`, `entegris-application-engineering-coop-billerica-req14473.md`. (Rendezvous Robotics' Manufacturing and Test Engineering Intern was NOT staged — it's Partial, not fully verified, per the routine's own rule.)
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (338.4KB → 353.5KB). Verified via direct read: "Winter26-Spring27 Internships" went from 162 → 171 rows; all 18 pre-existing RESUME/COVER LETTER/QUESTIONS hyperlinks confirmed intact. "Checked - Not Included" went from 353 → 357 rows.
+
+### Worth re-checking next time
+- **GD Electric Boat req 601496955** (jobs.buildsubmarines.com) — still Cloudflare-blocked; deprioritized since the same role is tracked via a working gd.com link.
+- **Hologic (Marlborough, MA)** — 12th consecutive 503 this run; still Partial. Try a different time of day/network path.
+- **iRobot (Bedford, MA) req R4085** — still 403-blocked on both direct Workday CXS API and WebFetch this run. Worth a fresh attempt or a research agent with different tooling.
+- **GE Vernova Findlay Township, PA** — Spring 2027 Power Conversion & Storage variant still not found on careers.gevernova.com or a Workday URL; Summer sibling R5050017 confirmed live.
+- **WestRock/Smurfit Westrock (Cowpens, SC)** — still unresolved, leaning stale.
+- **Parker Hannifin (Columbus, OH)** — jobs.parker.com still unreachable (CONNECT tunnel failed this run too).
+- **Eaton (Jackson, MS)** — still blocked; note that the 2026-09-23 13:00 UTC run found evidence the role may have rolled from Spring to Summer 2027 — worth confirming either way before continuing to chase it as a Spring lead.
+- **Analog Devices, Lam Research** — still not posted.
+- **Sanofi Swiftwater, PA** — whether the "Engineering & Maintenance" track (biospace.com job 3075194) is a separate application from the tracked umbrella req is still unresolved (medium-confidence inference only, not independently proven with two directly-compared req numbers).
+- **Moog R-26-19536 / R-26-19391** — confirmed live "spring block intern" but no year stated on either; worth a fresh look in case Moog adds a year.
+- **Rendezvous Robotics, Marathon Petroleum, Vast Space, Entegris** — all got new/upgraded reqs this run; worth a periodic re-check for sibling reqs and continued open status, and Rendezvous Robotics specifically for whether more reqs appear beyond the 4 found (3 tracked + 1 excluded).
+- **Saab, Caterpillar, BETA Technologies, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ** — still Hamza's own judgment calls, unchanged.
+
