@@ -2455,10 +2455,14 @@ ws["!cols"] = [
 ];
 
 // Preserve manually-curated RESUME/COVER LETTER/QUESTIONS hyperlink columns
-// (added outside this script) across regeneration, matched by Company + Role Title.
+// (added outside this script) across regeneration. Rows match on Company + Role Title +
+// Application Link first, so sibling reqs with the same title (e.g. Rocket Lab in two cities)
+// never share files. If the link changed, fall back to Company + Role Title only when that
+// pair is unique in both the old and the new sheet.
 const OUTFILE = "Engineering-Internships-Winter2026-Spring2027.xlsx";
 const APPLICATION_COLS = ["RESUME", "COVER LETTER", "QUESTIONS"];
 let applicationLinkMap = new Map();
+let applicationPairMap = new Map();
 if (fs.existsSync(OUTFILE)) {
   const oldWb = xlsx.readFile(OUTFILE);
   const oldWs = oldWb.Sheets["Winter26-Spring27 Internships"];
@@ -2471,12 +2475,15 @@ if (fs.existsSync(OUTFILE)) {
     }
     const companyCol = headerCol["Company"];
     const roleCol = headerCol["Role Title"];
+    const linkCol = headerCol["Application Link"];
     if (companyCol !== undefined && roleCol !== undefined) {
       for (let r = range.s.r + 1; r <= range.e.r; r++) {
         const companyCell = oldWs[xlsx.utils.encode_cell({ r, c: companyCol })];
         const roleCell = oldWs[xlsx.utils.encode_cell({ r, c: roleCol })];
         if (!companyCell || !roleCell) continue;
-        const key = `${companyCell.v}|||${roleCell.v}`;
+        const linkCell = linkCol === undefined ? undefined : oldWs[xlsx.utils.encode_cell({ r, c: linkCol })];
+        const pairKey = `${companyCell.v}|||${roleCell.v}`;
+        const fullKey = `${pairKey}|||${linkCell ? linkCell.v : ""}`;
         const cellsForRow = {};
         for (const col of APPLICATION_COLS) {
           const c = headerCol[col];
@@ -2484,7 +2491,10 @@ if (fs.existsSync(OUTFILE)) {
           const cell = oldWs[xlsx.utils.encode_cell({ r, c })];
           if (cell && (cell.v || cell.l)) cellsForRow[col] = cell;
         }
-        if (Object.keys(cellsForRow).length) applicationLinkMap.set(key, cellsForRow);
+        if (!Object.keys(cellsForRow).length) continue;
+        applicationLinkMap.set(fullKey, cellsForRow);
+        if (!applicationPairMap.has(pairKey)) applicationPairMap.set(pairKey, []);
+        applicationPairMap.get(pairKey).push(cellsForRow);
       }
     }
   }
@@ -2492,9 +2502,18 @@ if (fs.existsSync(OUTFILE)) {
 if (applicationLinkMap.size) {
   const baseCol = 10; // K = first column after Notes (J)
   ws["!cols"].push({ wch: 14 }, { wch: 16 }, { wch: 14 });
+  const newPairCount = new Map();
+  rows.forEach((row) => {
+    const pk = `${row["Company"]}|||${row["Role Title"]}`;
+    newPairCount.set(pk, (newPairCount.get(pk) || 0) + 1);
+  });
   rows.forEach((row, i) => {
-    const key = `${row["Company"]}|||${row["Role Title"]}`;
-    const saved = applicationLinkMap.get(key);
+    const pairKey = `${row["Company"]}|||${row["Role Title"]}`;
+    let saved = applicationLinkMap.get(`${pairKey}|||${row["Application Link"]}`);
+    if (!saved) {
+      const oldForPair = applicationPairMap.get(pairKey);
+      if (oldForPair && oldForPair.length === 1 && newPairCount.get(pairKey) === 1) saved = oldForPair[0];
+    }
     if (!saved) return;
     APPLICATION_COLS.forEach((col, offset) => {
       if (!saved[col]) return;
