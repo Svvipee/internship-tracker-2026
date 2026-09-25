@@ -1119,3 +1119,42 @@ Symbotic "Co-op - Robot Perception" (R8113 — Computer Vision/ML research role 
 - **Symbotic, GE Aerospace, Hermeus** — all got new reqs this run; worth a periodic re-check for further sibling reqs.
 - **Saab, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ** — still Hamza's own judgment calls, unchanged.
 
+---
+
+## 2026-09-25 ~19:00 UTC
+
+### Sync
+Repo was checked out in a detached-HEAD state, matching `origin/master` exactly at `bf1104b` (the tip of the 13:00 UTC run's commit) after a stale local remote-tracking ref was refreshed via `git fetch origin master`. Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Boston-area + priority re-check sweep**: Hologic (site back to HTTP 200 after 14+ runs of 503 — full re-scrape not completed, flagged for next run), Parker Hannifin (still blocked), Analog Devices/Lam Research (no change), Moog R-26-19536/R-26-19391 (still no year stated) plus a search for new siblings, BAE Systems Nashua NH/Endicott NY/Manassas VA; plus a fresh Boston-area sweep (Draper, MIT Lincoln Lab, GE Aerospace Lynn, Waters, MathWorks, Teradyne, Vicor, Nuvation, Desktop Metal, Markforged, PTC, Bose, Nuvera, Cirtec, Charles River Labs, Boston Metal, Alloy Enterprises, Vicarious Surgical, Boston Dynamics, Cognex, PI, MKS, Symbotic, SharkNinja, GD Electric Boat, iRobot, Entegris, Rendezvous Robotics, GE Vernova) and a periodic re-check of Rocket Lab/Formlabs/Hermeus/Entegris/GE Aerospace/Symbotic for further sibling reqs.
+2. **National sweep**: Leidos (PRIORITY — flagged as skipped by the last run), BAE Systems site sweep, re-checks of Aerojet Rocketdyne/L3Harris, Aurora Flight Sciences/Boeing, ispace, HII, Bell Textron/Textron Systems, Reliable Robotics, Impulse Space, Caterpillar, Saab, BETA Technologies, plus a fresh national sweep (SpaceX, Anduril, GD Mission Systems, Varda, L3Harris, Northrop, General Atomics, Spirit, Virgin Galactic, Stoke Space, Wisk, Firefly, Redwire, Safran, Shield AI, Saildrone, Honeywell, Kratos, Curtiss-Wright, Relativity, Textron, Figure AI, Sierra Space, Blue Origin, Archer, Joby, Zipline, Astranis, Vast Space, Crown Equipment, Aalo Atomics, Owens Corning, GE Appliances, Marathon Petroleum, Rendezvous Robotics, WestRock/Smurfit Westrock, Eaton) and RTX/Collins/Pratt & Whitney for new siblings.
+
+Neither agent had visibility into the current `build.mjs` state, so every reported finding was cross-checked by this session directly against `build.mjs` (via targeted `grep` on req/job IDs) before touching any file — the overwhelming majority of both reports turned out to already be tracked in `rows` or `checked` from prior runs, a sign the tracker's coverage of these companies is now quite mature. Every genuinely new candidate was then independently re-verified by this session itself via direct fetch/curl against the employer's own site or ATS API before any file edit, per the routine's verification bar.
+
+### Added to `rows` (2 new entries, both Yes)
+- **PI (Physik Instrumente) USA — Mechanical Engineering Co-op**, Shrewsbury, MA (~40 mi from Boston) — new company for the tracker. Winter/Spring 2027, $24-26/hr. Confirmed via direct page fetch (HTTP 200), full description read.
+- **PI (Physik Instrumente) USA — Manufacturing Engineering Internship**, Shrewsbury, MA — sibling req, same site/pay/season. Confirmed via direct page fetch.
+
+### Added to `checked` (7 new entries)
+Leidos (Mechanical Engineering Intern R-00193159 and Power Delivery Engineering Intern R-00192019 — both live but no season/year stated anywhere on either posting, fails verification bar; all other Leidos ME/AE reqs found are explicitly Summer 2027); RTX/Collins Advanced Manufacturing Engineering Co-Op Cedar Rapids IA (req 01874253 — combined "Spring/Summer 2027" term, no distinct dates, same treatment as its already-excluded Burnsville MN sibling); Redwire Space's "Redwire Internship 2027" umbrella req (3212 — no term/season stated at all); Eaton Manufacturing Engineer Co-op (Sumter SC) and Product Development Engineering Co-op (Hodges SC) — found via aggregator only, Eaton's own ATS/tenant could not be identified this run, not independently verified; Formlabs Industrial Design Intern (Winter/Spring 2027, job 8172232 — correct season but Industrial Design ≠ Industrial Engineering, discipline mismatch); Zipline Materials Engineer Intern (job 7905428003 — one continuous Jan–Sept internship, not a distinct dated Spring slot, fails season bar); BAE Systems (Cedar Rapids sibling 127776BR now also closed; full sweep of Nashua NH/Endicott NY/Manassas VA found no Spring-2027-dated mechanical/systems coop — only Summer 2027 interns or already-closed reqs — dropping active watch on this specific lead).
+
+### Staged applications created (2 files, `staged-applications/`)
+`pi-usa-mechanical-engineering-coop-shrewsbury.md`, `pi-usa-manufacturing-engineering-internship-shrewsbury.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (539.7KB → 547.0KB). Verified via direct read: "Winter26-Spring27 Internships" went from 186 → 188 rows. "Checked - Not Included" went from 377 → 384 entries.
+
+### Worth re-checking next time
+- **Hologic (Marlborough, MA)** — site is back to HTTP 200 after 14+ runs of 503; a dedicated full re-scrape for specific Winter2026/Spring2027 ME postings was NOT completed this run (ran out of time budget) — high priority for next run.
+- **Bose Corporation (Framingham, MA)** — Workday site (`boseallaboutme`) returned HTTP 500 on every tenant/site combination tried this run — genuine outage, not a bad guess; worth a retry.
+- **Vicarious Surgical and Desktop Metal** — both Greenhouse boards now return HTTP 404 (appear defunct/taken down) — likely drop from active watch unless they resurface on a new ATS.
+- **iRobot (Bedford, MA)** — this run's agent confirmed the entire external Workday board now has only 3 open reqs company-wide, all in Tokyo, Japan — essentially no US hiring right now, consistent with the 07:00 UTC run's earlier finding. Recommend dropping from active watch.
+- **Moog** — a new undated sibling (R-26-20226, Intern Mechanical Analysis Engineering, Buffalo/Elma NY) and the already-excluded dated sibling (R-26-20243, "spring/summer 2027 block intern") were re-surfaced by this run's agent but were already in `checked` from a prior run — no change.
+- **Eaton (Sumter SC / Hodges SC)** — new leads this run, but couldn't independently verify via Eaton's own site (tenant/ATS not identified despite several guesses) — worth a dedicated attempt next run to find Eaton's actual career-site platform.
+- **Bell Textron / Textron Systems** — still structurally JS-blocked, but this run's agent found the sitemap XML lists several live 2027-cycle mechanical req URL slugs at Hunt Valley MD, Augusta GA, Cartersville GA, Williamsport PA, and Wichita KS — season still unconfirmed (Textron's own messaging suggests the main wave is Summer 2027). Worth trying the sitemap-URL approach again with season confirmation.
+- **L3Harris/Aerojet Rocketdyne** — this run's agent found a live, confirmed Spring 2027 Mechanical Engineer Intern (job 41322, Greenville TX) — already tracked. Several other L3Harris reqs (Huntsville AL, Rochester NY, SLC, Canoga Park CA, Londonderry NH) were found with no season stated in the snippets reviewed — worth a direct-fetch pass next run to check for season info.
+- **GD Electric Boat req 2026-20763** (Groton CT) — already tracked; this run's agent could only verify via a search-cache snippet (gd.com returned HTTP 403 to this agent), consistent with the tracker's prior direct-fetch verification via a different user-agent.
+- **Draper Laboratory, Entegris, Symbotic, Formlabs, Rocket Lab, Hermeus, Rendezvous Robotics, Zipline, Varda, GE Appliances, Marathon Petroleum, Crown Equipment, Owens Corning, Anduril, Astranis, SpaceX, Blue Origin, RTX/Collins** — this run's agents re-surfaced large batches of reqs at all of these companies; every single one cross-checked byte-for-byte against `build.mjs` and found already tracked (rows or checked) — strong signal the tracker's coverage here is now comprehensive and stable. Continue periodic light-touch re-checks rather than full deep sweeps.
+

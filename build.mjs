@@ -2246,6 +2246,30 @@ const rows = [
     "Link Verified": "Yes — fetched directly via Hermeus's own Lever API, page live, distinct dated Spring option confirmed in body text.",
     Notes: "New sibling req beyond already-tracked Hermeus postings. Hands-on factory-floor work: sheet metal, welded assemblies, tooling, manufacturing process improvement for aircraft structures. Open to 3rd/4th-year undergrads or Master's/PhD students in Mechanical/Aerospace/Materials Science Engineering. GPA 3.0+. US person required (export control). Same 'distinct dated Spring option within a combined-term posting' treatment as other tracked Hermeus reqs.",
   },
+  {
+    Company: "PI (Physik Instrumente) USA",
+    "Role Title": "Mechanical Engineering Co-op",
+    Discipline: "Mechanical Engineering",
+    Season: "Winter/Spring 2027",
+    Location: "Shrewsbury, MA",
+    "Distance from Boston, MA (mi, approx.)": 40,
+    Pay: "$24-26/hour",
+    "Application Link": "https://www.pi-usa.us/en/about/careers/job/mechanical-engineering-co-op-winterspring-2027",
+    "Link Verified": "Yes — fetched directly, HTTP 200, page title 'Mechanical Engineering Co-op - Winter/Spring 2027', full description read.",
+    Notes: "New company for the tracker. Boston metro (Shrewsbury, MA — PI's US headquarters). High-precision positioning/motion systems and piezo technology manufacturer. Prepares detail/assembly drawings, CAD support, PLM data entry, R&D build/test work. Must be currently enrolled full-time; legally authorized to work in the US without sponsorship. SolidWorks and manufacturing-process experience preferred.",
+  },
+  {
+    Company: "PI (Physik Instrumente) USA",
+    "Role Title": "Manufacturing Engineering Internship",
+    Discipline: "Manufacturing Engineering",
+    Season: "Winter/Spring 2027",
+    Location: "Shrewsbury, MA",
+    "Distance from Boston, MA (mi, approx.)": 40,
+    Pay: "$24-26/hour",
+    "Application Link": "https://www.pi-usa.us/en/about/careers/job/manufacturing-engineering-internship-winterspring-2027",
+    "Link Verified": "Yes — fetched directly, HTTP 200, page title 'Manufacturing Engineering Internship - Winter/Spring 2027', full description read.",
+    Notes: "Sibling req to the Mechanical Engineering Co-op above, same site/pay/season. Fixture design for assembly/metrology/manufacturing, SolidWorks modeling, hands-on machining (mills, lathes, saws, 3D printers), process optimization, ECR/ECO documentation. Must be currently enrolled full-time; legally authorized to work in the US without sponsorship.",
+  },
 ];
 
 const checked = [
@@ -2638,6 +2662,13 @@ const checked = [
   { Company: "Symbotic (Wilmington, MA)", "Role(s) Checked": "Intern-Industrial Controls (R7973), Intern-Hardware Engineer (R8101), Intern-Bot Controls (R7965)", "Reason": "2026-09-25 ~13:00 UTC: all three confirmed live via direct Workday CXS API fetch, but all are Summer 2027 — wrong season. (Two Spring 2027-dated siblings, 'Co-op- Hardware Engineer' R7976 and 'Co-op - Robot Perception' R8113, were reviewed separately — see `rows` and the R8113 exclusion above.)" },
   { Company: "Caterpillar", "Role(s) Checked": "Full Workday query across all 2027 engineering internship/co-op reqs (Mossville IL, Peoria IL, East Syracuse NY, West Lafayette IN)", "Reason": "2026-09-25 ~13:00 UTC: every 2027 req found is explicitly labeled '2027 Summer Corporate Intern' or 'Mechanical Engineer Co-Op (Summer 2027)' — zero Winter 2026 or Spring 2027 results for any search variant tried." },
   { Company: "BETA Technologies", "Role(s) Checked": "General Winter 2026/Spring 2027 internship search", "Reason": "2026-09-25 ~13:00 UTC: jobs.lever.co/beta now returns an empty postings array; the two specific '2026-2027 BETA Internship' posting URLs found via search both 404. beta.team/careers is JS-rendered with no listings in server HTML. Company may have switched ATS — no live posting could be located or verified." },
+  { Company: "Leidos", "Role(s) Checked": "'Mechanical Engineering Intern' (R-00193159, Albuquerque, NM) and 'Power Delivery Engineering Intern' (R-00192019, Greensboro, NC) — priority re-check after being flagged as skipped by a prior run", "Reason": "2026-09-25 ~19:00 UTC: both confirmed live/open via direct Workday CXS API fetch (this session's own fetch, full job description read end-to-end), but neither posting states any season/term (Winter/Spring/Summer/Fall) or year anywhere in the body — fails the 'season stated' verification bar. All other Leidos ME/AE internship reqs found this run (Aerospace M&S Engineer Intern, Lunar Terrain Vehicle Engineering Intern, Laser Air Monitoring System Engineering Intern, Radar Engineer Intern, all Huntsville AL) are explicitly Summer 2027 — excluded on season grounds. Not added." },
+  { Company: "RTX / Collins Aerospace (Cedar Rapids, IA)", "Role(s) Checked": "'Advanced Manufacturing Engineering Co-Op (Spring/Summer 2027)', req 01874253", "Reason": "2026-09-25 ~19:00 UTC: confirmed live via this session's own direct Workday CXS API fetch (posted 2026-09-24), but the description is a single merged 'Spring/Summer 2027' co-op session with no distinct Spring-only dated sub-range — same treatment as the already-excluded Burnsville, MN sibling (req 01874254). Not added." },
+  { Company: "Redwire Space", "Role(s) Checked": "'Redwire Internship 2027' umbrella req, 3212", "Reason": "2026-09-25 ~19:00 UTC: confirmed live via direct page fetch (HTTP 200) — a single generic req covering ~15 different internship disciplines (incl. Mechanical, Manufacturing, Materials & Process, Systems, RF Engineering) across 9 US sites including Marlborough, MA. But the posting states only '2027' with no Winter/Spring/Summer/Fall term specified anywhere — fails the season-stated verification bar. Worth re-checking if Redwire posts discipline-specific dated reqs later." },
+  { Company: "Eaton", "Role(s) Checked": "'Manufacturing Engineer Co-op (Spring 2027)', Sumter, SC and 'Product Development Engineering Co-op (Spring 2027)', Hodges, SC — reported by a research agent via aggregator listings", "Reason": "2026-09-25 ~19:00 UTC: could not independently verify via Eaton's own career site this run — Eaton's Workday tenant/ATS could not be identified (guessed tenant URLs returned HTTP 500; eaton.com careers page failed to load cleanly). Only aggregator-sourced pay ranges available, no direct employer confirmation. Not added pending direct-source verification in a future run." },
+  { Company: "Formlabs (Somerville, MA)", "Role(s) Checked": "'Industrial Design Intern (Winter/Spring 2027)', Greenhouse job 8172232", "Reason": "2026-09-25 ~19:00 UTC: confirmed live via direct Greenhouse API fetch (HTTP 200, correct Winter/Spring 2027 season), but the role sits on Formlabs' Industrial Design team (product aesthetics/user experience design), not Industrial Engineering/manufacturing — discipline mismatch against Hamza's target list despite the superficially matching 'Industrial' keyword. Not added." },
+  { Company: "Zipline (South San Francisco, CA)", "Role(s) Checked": "'Materials Engineer Intern (Spring & Summer 2027)', Greenhouse job 7905428003", "Reason": "2026-09-25 ~19:00 UTC: confirmed live via direct Greenhouse API fetch, but the body states this is one continuous internship hosted 'from January to August/September' — a single combined Spring+Summer stint, not a distinct dated Spring-only option (unlike other tracked Zipline/Hermeus/Vast reqs that offer a genuine standalone Spring slot). Fails the season-stated verification bar. Not added." },
+  { Company: "BAE Systems", "Role(s) Checked": "'Operations Engineering (Ind/Mech/Elec) Co-op Spring/Summer 2027' sibling req 127776BR (Cedar Rapids, IA, re-check); full sweep of Nashua NH, Endicott NY, and Manassas VA sites for a Spring-2027-dated mechanical/systems coop", "Reason": "2026-09-25 ~19:00 UTC: 127776BR now also confirmed 'no longer accepting applications' (closed), joining its already-excluded Cedar Rapids siblings 125975BR/126541BR. No Spring-2027-dated mechanical/systems coop found at Nashua NH, Endicott NY, or Manassas VA — only postings found at those sites are Summer 2027 interns (Mechanical Engineering Intern III, Nashua NH, 129311BR onsite / 127637BR hybrid) or already-closed reqs (Industrial Engineering Co-Op Fall Semester 2026, Nashua NH, 124709BR — now HTTP 410 Gone). The Cedar Rapids Spring-coop naming pattern does not appear to extend to these other sites currently. Dropping active watch on this lead unless a new dated req surfaces." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
