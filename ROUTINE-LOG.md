@@ -1076,3 +1076,46 @@ Rocket Lab Flight Software Intern (Littleton CO, discipline mismatch) and Mechan
 - **Rocket Lab, Formlabs, Hermeus, Entegris, GE Aerospace** — all got new reqs this run; worth a periodic re-check for further sibling reqs and continued open status.
 - **Saab, Caterpillar, BETA Technologies, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ** — still Hamza's own judgment calls, unchanged.
 
+---
+
+## 2026-09-25 ~13:00 UTC
+
+### Sync
+`git status` showed a detached HEAD matching `origin/master` exactly at `3920a5b` (the tip of the 07:00 UTC run's commit). Checked out and reset local `master` to track it cleanly. No push-access issues at sync time.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions:
+1. **Boston-area + priority re-check sweep**: Hologic (14th 503), WestRock/Smurfit Westrock, Parker Hannifin (Columbus OH), Eaton (Jackson MS), Analog Devices/Lam Research, Moog R-26-19536/R-26-19391 (still no year stated), sibling-req sweeps at Rocket Lab/Formlabs/Hermeus/Entegris/Crown Equipment/Aalo Atomics/Owens Corning/GE Appliances/Marathon Petroleum/Vast Space/Rendezvous Robotics/GE Aerospace; plus a fresh Boston-area sweep (Draper, MIT Lincoln Lab, Waters, MathWorks, Teradyne, Vicor, Nuvation, Desktop Metal, Markforged, PTC, Bose, Nuvera, Cirtec, Charles River Labs, Boston Metal, Alloy Enterprises, Vicarious Surgical, Cognex, PI, MKS, Symbotic, SharkNinja, GD Electric Boat).
+2. **National sweep gap (flagged by the 07:00 UTC run as unreached)**: Aerojet Rocketdyne, Aurora Flight Sciences, ispace, HII, Bell Textron, Pratt & Whitney, Leidos, BAE Systems, Reliable Robotics, Impulse Space, Curtiss-Wright, Textron Systems, Symbotic, Caterpillar, Saab, BETA Technologies — prioritized in that order per instructions.
+
+Every candidate either agent reported as new was independently re-verified by this session via direct curl/fetch against the employer's own ATS API (Workday CXS, Greenhouse, Lever) before any file edit. Neither agent had visibility into the current `build.mjs` state.
+
+### Corrected agent findings (before any file edit — no false additions made)
+- **RTX Workday "Winter/Spring 2027" mechanical co-ops at Rockford, IL (req 01869227) and Jamestown, ND (req 01871736)**, reported as new by the national-sweep agent — this session confirmed both are byte-for-byte already tracked in `rows` under Collins Aerospace (same site/req). Not re-added.
+- **MIT Lincoln Laboratory "Group 08-35 Microfabrication Engineering Co-Op"** (URL `.../1368363000/`), reported as new by the Boston-area agent — confirmed identical to the already-tracked entry added on 2026-09-22. Not re-added.
+- **Formlabs's "new" Mechanical Engineering Intern/Hardware Systems Integration Intern IDs**, Entegris/Crown Equipment/Owens Corning/Aalo Atomics/Marathon Petroleum/Vast Space/Rendezvous Robotics/GE Appliances "new" findings from both agents — all cross-checked against `build.mjs` and found already tracked. Not re-added.
+
+### Added to `rows` (3 new entries, all Yes)
+- **Symbotic — Co-op- Hardware Engineer (req R7976)**, Wilmington, MA (ITC site) — Boston metro. Independently confirmed via direct fetch of Symbotic's own Workday CXS API (canApply: true, posted 3 days ago). Spring Jan–May 2027, $29–40/hr, Bachelor's-eligible (Systems/Robotics/Mechanical/Electrical/CS), hands-on electro-mechanical/GD&T/SolidWorks/manufacturing work — strong discipline fit.
+- **GE Aerospace — Unison Engineering Intern - Spring 2027 (req R5037093)**, one assignment across Dayton OH / Jacksonville FL / Norwich NY / St. George UT — new full-time-intern sibling distinct from the already-tracked part-time co-op (R5040016, St. George UT only). Independently confirmed via direct Workday CXS API fetch (canApply: true). Min 3.0 GPA, Aero/Mechanical/Electrical Engineering majors.
+- **Hermeus — Build Reliability Engineering Intern - Spring/Summer 2027**, Atlanta, GA — new sibling req beyond already-tracked Hermeus postings. Independently confirmed via direct Lever API fetch; distinct dated Spring option (Jan–April) confirmed in body text, same treatment as other tracked Hermeus combined-term reqs. Manufacturing/structural-fabrication discipline, GPA 3.0+, US person required (export control).
+
+### Added to `checked` (17 new entries)
+Symbotic "Co-op - Robot Perception" (R8113 — Computer Vision/ML research role requiring Master's/PhD, software/CS discipline mismatch despite being on the "Robotics" team; its Bachelor's-eligible hardware sibling R7976 was added to `rows`), 3 Summer-2027 Symbotic siblings (R7973, R8101, R7965 — season mismatch), WestRock/Smurfit Westrock (RESOLVED — LinkedIn's own `expired_jd_redirect` signal confirms the listing has closed, dropping from active watch), Eaton Jackson MS (RESOLVED — LinkedIn now explicitly labels the identical role "Summer 2027," confirming the long-suspected Spring→Summer roll-over), BAE Systems Cedar Rapids IA Mechanical Coop (new req, confirmed closed on direct fetch), RTX/Pratt & Whitney US-branded search (all non-Canada Winter/Spring 2027 P&W-specific reqs are actually Collins-branded and already tracked; all genuine P&W "Winter 2027" postings are Canada-located), Curtiss-Wright Cheswick PA Co-op (generic evergreen req, no distinct Spring 2027 dating), Saab Inc. East Syracuse NY Systems Engineering Co-Ops (combined Spring-Summer term + software/ATC discipline mismatch), Aerojet Rocketdyne/L3Harris (site technically blocks automated verification, no posting found), Aurora Flight Sciences/Boeing (same site-rendering blocker), ispace (careers page 404, no ATS identified), HII (only Fall 2026 Designer Co-op and Summer 2027 internships live, no Winter/Spring 2027), Bell Textron/Textron Systems (careers.textron.com confirmed to be a client-side-rendered SPA with no server-side job data — structurally blocked), Reliable Robotics (zero internships on live 56-req Ashby board), Impulse Space (re-confirmed still Summer-2027-only aside from the excluded Antenna/RF Spring req), Caterpillar (every 2027 req confirmed Summer-only via full Workday query).
+
+### Staged applications created (3 files, `staged-applications/`)
+`symbotic-hardware-engineer-coop-wilmington.md`, `ge-aerospace-unison-engineering-intern-spring2027.md`, `hermeus-build-reliability-engineering-intern-atlanta.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (526.3KB → 539.7KB). Verified via direct read: "Winter26-Spring27 Internships" went from 183 → 186 data rows (184 → 187 incl. header); all 161 pre-existing RESUME hyperlinks, 161 COVER LETTER, and 160 QUESTIONS hyperlinks confirmed byte-for-byte intact (counts matched exactly before/after regeneration). "Checked - Not Included" went from 360 → 377 entries.
+
+### Worth re-checking next time
+- **Hologic (Marlborough, MA)** — not re-checked this run (deprioritized); still Partial, 13+ consecutive 503s as of the last check.
+- **Parker Hannifin (Columbus, OH)** — not re-checked this run; jobs.parker.com blocked at the proxy-policy level, parker.com Akamai-blocked regardless of client — recurring note across many runs.
+- **Analog Devices, Lam Research** — still not posted, recurring note.
+- **Moog R-26-19536 (Torrance CA) / R-26-19391 (Buffalo/East Aurora NY)** — not re-checked this run; still no year stated on either as of the last check.
+- **BAE Systems** — Cedar Rapids IA mechanical coop just closed, but the title pattern confirms a Spring-2027-dated mechanical coop program exists — worth checking Nashua NH, Endicott NY, Manassas VA sites for a live sibling.
+- **National sweep gap — Leidos** — was on this run's priority list but the research agent did not reach it (skipped without explanation); prioritize next run.
+- **Symbotic, GE Aerospace, Hermeus** — all got new reqs this run; worth a periodic re-check for further sibling reqs.
+- **Saab, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ** — still Hamza's own judgment calls, unchanged.
+
