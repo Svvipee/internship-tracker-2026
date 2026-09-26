@@ -1203,3 +1203,43 @@ One per new Entegris row, named `entegris-<role-slug>-<location-slug>-<req>.md` 
 - **Vicarious Surgical, Desktop Metal, Alloy Enterprises, Markforged** — all confirmed to have no current independent internship listings (absorbed/moved/board 404) — safe to drop from active watch.
 - **Saab, Caterpillar, BETA Technologies, SpaceX Graduate Engineer, Northrop Grumman Chandler AZ** — still Hamza's own judgment calls, unchanged.
 
+---
+
+## 2026-09-26 ~07:00 UTC
+
+### Sync
+`git status` showed HEAD detached, one commit (`af90f7c`, the 01:00 UTC run's own commit) ahead of `master`/`origin/master` — that prior run had committed locally but never pushed. Confirmed it was a clean linear fast-forward, merged it onto `master`, and pushed it to `origin/master` before starting any new work. No commits were lost; this is a process note for future runs to double check `git log master..HEAD` at sync time.
+
+### What was searched
+Delegated to two parallel research agents (neither had `build.mjs` visibility; every finding cross-checked by this session against the file before any edit), since the prior run 6 hours ago was already an exhaustive sweep:
+1. **Boston-area + priority re-check sweep**: Eaton (eaton.eightfold.ai), Bell Textron/Textron Systems (sitemap slugs), Waters Corporation (ATS re-identification post BD-merger), SharkNinja (dated sibling check), Entegris (periodic re-sweep for new reqs), plus a general Boston-area pass (Draper, MIT Lincoln Lab, GE Aerospace Lynn, Symbotic, GD Electric Boat, PI USA, MathWorks, Teradyne, Vicor, Cognex, MKS, Boston Dynamics, iRobot).
+2. **National sweep**: ~40 aerospace/defense/robotics companies for anything newly posted since the 01:00 UTC run, plus targeted re-checks of Moog's two undated reqs and Leidos's two undated reqs.
+
+Neither agent had a JS-rendering/headless-browser tool available this run, so Workday, Eightfold, and Textron's Nuxt SPA remained unreadable beyond their app shells (confirmed via raw-HTML inspection rather than assumed) — same structural blocker as prior runs.
+
+### Added to `rows`
+None. Every candidate either agent surfaced was independently cross-checked by this session against the current `build.mjs` and found already tracked (Varda's Vehicle Integration & Test/Structures/Mechanisms & Payload/Propulsion Spring 2027 reqs, Astranis's Spring 2027 Mechanical Engineer Intern, Rocket Lab's Silver Spring MD Mechanical Engineering Intern, Zipline's Mechanical Engineer Intern SF/Dallas, GD Electric Boat req 2026-20763), already excluded in `checked` (Impulse Space Antenna/RF), or failed the verification bar (GE Aerospace Evendale OH reqs R5030077/R5029619 re-confirmed dead; SharkNinja's two reqs still have no season stated; Eaton/Waters/Draper/Boston Dynamics/iRobot/Entegris/Textron all remain genuinely unverifiable due to JS-rendering/bot-block, not silently upgraded).
+
+### Added to `checked` (1 new entry)
+SharkNinja's previously-unlogged "Mechanical Engineering Intern Opportunities" sibling req (Greenhouse job 4713812006) — confirmed live, freshly posted 2026-09-17, but no season stated, same as its already-excluded sibling.
+
+### Spot re-verifications (no `rows`/`checked` change)
+- **PI (Physik Instrumente) USA** — both tracked Shrewsbury, MA URLs re-confirmed HTTP 200 directly by this session (one research agent's search had surfaced unrelated stale Fall 2026/past-Winter-Spring-2026 postings for this company, but did not check the actual tracked URLs — no evidence the tracked reqs are dead).
+- **GD Electric Boat req 2026-20763** — independently re-confirmed live/open via direct fetch of gd.com's own posting; remains correctly tracked, no change needed.
+
+### Staged applications created
+None — no new fully-verified postings this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (567.5KB → 568.3KB, reflecting the one new `checked` row).
+
+### Worth re-checking next time
+- **Eaton (eaton.eightfold.ai)** — confirmed via raw-HTML inspection to be a pure client-rendered React/Eightfold SPA (zero "2027" occurrences in server response); the Eightfold API itself returns 403. Aggregators consistently describe live Spring 2027 co-ops at Sumter SC, Hodges SC, and Jackson MS ($22.15–27.69/hr) but none independently confirmed yet — needs a JS-capable browser tool to close out.
+- **Textron Systems / Bell Textron** — sitemap re-confirms the same ~10 live "2027" mechanical req slugs at Hunt Valley MD, Williamsport PA, Wichita KS, Augusta/Cartersville GA found in the prior run; season remains completely unconfirmable (Nuxt.js SPA). No change in status; needs browser-rendering.
+- **Waters Corporation (Milford, MA)** — waters.com is Akamai-bot-blocked (403) independent of JS rendering; no ATS/Workday tenant identified even post BD-merger (completed Feb 2026). Aggregators show only undated rolling reqs, no Spring 2027 posting found — may simply not exist yet.
+- **Draper Laboratory JR002883** ("Electro-Mechanical Instrument Co-op, Spring 2027") — already tracked in `rows`; Workday tenant still redirects to the bot-block "outage" page on direct fetch, consistent with every prior run.
+- **Boston Dynamics, iRobot** — both continue to show no live intern/co-op postings on their own current listing pages (Boston Dynamics: 20 live reqs, none seasonal; iRobot: essentially no US hiring). Recommend keeping off active watch per the 01:00 UTC run's recommendation, revisit only if a new posting surfaces via search.
+- **L3Harris** — no change; season-blank posting template continues to be structural, not a fetch issue. Occasional light-touch check only.
+- **Analog Devices, Lam Research, Parker Hannifin, Leidos, Moog's two undated reqs** — Leidos's careers.leidos.com and Moog's Workday tenant both actively blocked this run's fetch attempts entirely (403 / outage redirect) — genuinely unverifiable with current tooling, not just "still no change." Recurring notes.
+- **Entegris** — no independent re-verification possible this run (Workday outage-redirect blocked every attempt); prior 01:00 UTC run's 103-req sweep should still be treated as the current baseline until a future run can re-access the board.
+
