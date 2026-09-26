@@ -1276,3 +1276,42 @@ PI (Physik Instrumente) USA's pi-usa.us-domain duplicate rows — see the data-q
 - **PI (Physik Instrumente)** — now correctly de-duplicated; future runs should treat "PI (Physik Instrumente)" (not "...USA") as the canonical Company name for this Shrewsbury, MA co-op pair, and note that physikinstrumente.com and pi-usa.us are mirror domains for the same postings before treating a "new" pi-usa.us or physikinstrumente.com finding as a distinct opportunity.
 - **General note on data quality**: given how mature this tracker now is (206 active rows, 391 checked), it may be worth an occasional dedicated pass specifically looking for other same-company mirror-domain or near-identical-title duplicates like the PI one found this run, rather than only hunting for new postings.
 
+---
+
+## 2026-09-26 ~19:00 UTC
+
+### Sync
+`git status` showed a clean working tree already on `master`, up to date with `origin/master` at `aff1ab0` (the tip of the 13:00 UTC run's commit). No sync issues, no push-access issues at sync time.
+
+### Tooling breakthrough: headless-browser rendering now available
+This run installed the `playwright` npm package (`npm install playwright --no-save`) into the repo and confirmed the sandbox already ships a compatible headless Chromium at `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. Launching it with `--ignore-certificate-errors --proxy-server=http://127.0.0.1:44789` (matching this sandbox's outbound proxy) successfully renders JS-heavy sites that plain curl/WebFetch could only see as an empty app shell — the single biggest class of "genuinely unverifiable" blocker across ~10 prior runs (Eaton's eightfold.ai ATS, Textron's Nuxt.js SPA, Buro Happold's JS-rendered job search). **Cloudflare-protected sites (e.g. GD Electric Boat's jobs.buildsubmarines.com) still block headless Chromium and were not attempted further** — that specific blocker is unrelated to JS rendering and remains open. This capability was documented and handed to this run's research agents so they can use it directly in future sweeps instead of reporting these ATSes as unverifiable.
+
+### Resolved this run using the new headless-browser method
+- **Eaton (eaton.eightfold.ai)** — fully resolved, ending a blocker that spanned the 2026-09-25 ~19:00 UTC through 2026-09-26 ~13:00 UTC runs (Workday/Eightfold tenant could not be identified/read). Rendered directly:
+  - **Manufacturing Engineer Co-op - Spring 2027**, Sumter, SC (Job Req 73120), $22.15–27.69/hr — confirmed live, "Spring 2027 Start Date" stated explicitly. **Added to `rows`, staged.**
+  - **Product Development Engineering Co-op - Spring 2027**, Hodges, SC (Job Req 73116), $22.15–27.69/hr — confirmed live, same explicit season wording. **Added to `rows`, staged.**
+  - **Mechanical Engineer Internship / Co-op**, Moon Township, PA (Job Req IDs 71539, 71556) — confirmed live but each explicitly says "This position can either be a rotational co-op assignment, or a Summer 2027 internship" — no distinct Spring-2027 slot. **Added to `checked`, not staged.**
+- **Buro Happold** — used the site's own JS-rendered keyword search (typed "Mechanical Co-op" into the search box and pressed Enter) to finally resolve the exact job-detail URL after multiple runs of guessing sequential job IDs. **Upgraded the existing Mechanical Co-op, Boston, Spring 2027 row from Partial to Yes** (https://vacancies.burohappold.com/jobs/job/Mechanical-Coop-Boston-Spring-2027/2462, confirmed live, $24-34/hr). Also found a sibling, **Plumbing & Fire Protection Co-op - Boston - Spring 2027** (job 2463) — confirmed live but discipline mismatch (not on Hamza's target list). **Added to `checked`.**
+- **Textron Systems / Bell Textron** — rendered all 14 currently-live "2027" mechanical/manufacturing/systems intern-or-co-op reqs across Hunt Valley MD, Williamsport PA/Lycoming, Cartersville GA, and Slidell/New Orleans LA directly (full body text, not just titles). **Definitively confirmed none state a season anywhere** — only a generic application-window deadline (e.g. "accepted through October 31, 2026"). This upgrades the status from "structurally blocked, unconfirmable" (the conclusion of 3+ prior runs) to "confirmed via full-text read: season structurally omitted from Textron's posting template." No `rows` changes; the `checked` entry was rewritten to reflect the stronger finding and recommend downgrading Textron to an occasional light-touch check going forward, since even full rendering can't clear the season bar here.
+
+### Added to `rows` (2 new, 1 upgraded from Partial to Yes)
+See Eaton (2 new) and Buro Happold (1 upgrade) above.
+
+### Added to `checked` (4 new/updated entries)
+Eaton Moon Township PA (season-ambiguous, both reqs), Buro Happold Plumbing & Fire Protection Co-op (discipline mismatch), Textron Systems/Bell Textron (rewritten with the definitive full-text finding, superseding the prior "unconfirmable" note), and a superseding update to the 2026-09-25 ~19:00 UTC Eaton entry (which couldn't identify Eaton's ATS at all — now resolved and cross-referenced).
+
+### Staged applications created (3 files, `staged-applications/`)
+`eaton-manufacturing-engineer-coop-sumter-sc.md`, `eaton-product-development-engineering-coop-hodges-sc.md`, `buro-happold-mechanical-coop-boston.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (569.8KB → 575.7KB).
+
+### Research agents dispatched, in progress
+Two parallel research agents were dispatched for this run's fresh sweep (Boston-area priority re-checks + general sweep; national aerospace/defense sweep) before this commit, briefed on the new Playwright capability. Their findings were not yet back at the time of this commit — **this run is being committed in two parts**: this first commit captures the headless-browser breakthrough and the 3 postings it resolved directly; a follow-up commit later in this same routine run will add whatever the two agents find, cross-checked against this now-updated `build.mjs` before any further edit.
+
+### Worth re-checking next time
+- **Waters Corporation** — not yet retried with the new headless-browser method as of this commit (delegated to this run's Boston-area agent); still Akamai-blocked as of the last direct attempt.
+- **GD Electric Boat (jobs.buildsubmarines.com)** — confirmed the new headless-browser method does NOT bypass its Cloudflare challenge (hung/timed out); the already-tracked gd.com-domain link remains the correct source, don't re-attempt the buildsubmarines.com mirror.
+- **Moog's two undated reqs, L3Harris, Leidos, Analog Devices, Lam Research, Parker Hannifin** — worth a fresh headless-browser attempt in a future run now that this method is proven; not attempted directly by this session this run (delegated to the national-sweep agent).
+- See the follow-up entry immediately below for this run's agent-sourced findings.
+
