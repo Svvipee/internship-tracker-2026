@@ -1315,3 +1315,30 @@ Two parallel research agents were dispatched for this run's fresh sweep (Boston-
 - **Moog's two undated reqs, L3Harris, Leidos, Analog Devices, Lam Research, Parker Hannifin** — worth a fresh headless-browser attempt in a future run now that this method is proven; not attempted directly by this session this run (delegated to the national-sweep agent).
 - See the follow-up entry immediately below for this run's agent-sourced findings.
 
+---
+
+## 2026-09-26 ~19:00 UTC (continued — national-sweep agent's findings)
+
+The national aerospace/defense sweep agent dispatched earlier in this run reported back. Every lead it flagged as new was cross-checked by this session directly against the now-updated `build.mjs` before any edit.
+
+### Cross-check result: tracker coverage is comprehensive
+The overwhelming majority of the agent's "new" findings (Varda Space Industries' 4 reqs, Astranis's Spring 2027 Mechanical Engineer Intern, Rendezvous Robotics' 3 reqs including the GNC Intern and Manufacturing/Test Engineering Intern, Aalo Atomics, Crown Equipment, Owens Corning, Formlabs's Winter/Spring 2027 batch, Marathon Petroleum's 2 reqs, Insulet's R&D Mechanical Engineering co-op, Hermeus's Spring/Summer combined-term reqs, GE Appliances REQ-24833) were confirmed byte-for-byte already tracked in `rows`. Figure AI and Reliable Robotics (flagged by the agent as "worth a follow-up") were also already conclusively excluded in `checked` from prior runs (Figure AI: zero current Winter 2026/Spring 2027 mechanical reqs on its live 97-job Greenhouse board; Reliable Robotics: prior lead confirmed removed from its live Ashby board). No re-additions needed.
+
+### Upgraded/resolved: Blue Origin (net -3 rows, 1 upgrade)
+Used this run's new headless-browser method (see above) to attempt upgrading Blue Origin's 4 remaining Partial rows:
+- **Spring 2027 Engineering Intern – Undergraduate (R69064)** — confirmed live via direct render (full body text read: "Posted 30+ Days Ago," open/rolling window, covers Mechanical/Manufacturing/Propulsion-Fluids among other disciplines). **Upgraded Partial → Yes.**
+- **R66202, R66207, R66356** (the other 3 previously-Partial Blue Origin reqs) — all three now return Workday's "The page you are looking for doesn't exist" — closed/expired, not merely still-blocked. **Moved from `rows` to `checked`.**
+- The 4th previously-tracked Partial row (Structural & Mechanical Systems Engineering Internship – Graduate, Los Angeles, ZipRecruiter-mirror-only) was left unchanged — its real Workday req ID was never identified, so it couldn't be attempted this run. Blue Origin's Workday tenant (1,700+ open reqs, keyword search returns HTTP 400 on non-empty searchText, same block pattern as other Workday CXS tenants) was not fully re-swept for other fresh Spring-2027 siblings this run.
+
+### Added to `checked` (2 new entries, consolidated)
+One bundled entry covering the mostly-already-tracked national sweep (see above, logged for the transparency trail) and one entry for Blue Origin's 3 now-dead reqs. Also logged, within the bundled entry: Caterpillar's newly-found "2027 Engineering Corporate Internship Program" (Materials R0000380501, Welding R0000380506) — live but no season stated in the body, same treatment as its already-excluded Summer-titled siblings; GE Vernova's "Gas Power Engineering Internship - Spring 2027" and Smurfit Westrock's Spring 2027 co-op — both aggregator-only, could not be located on the employer's own site; Rocket Lab's Spring 2027 Mechanical Engineering Intern reqs — rocketlabcorp.com is Cloudflare-protected and blocked headless-browser rendering (confirmed the same dead end as GD Electric Boat's buildsubmarines.com — do not keep re-attempting this specific bypass); Zipline — could not locate a current live ATS page at all; BAE Systems Cedar Rapids IA and Northrop Grumman Chandler AZ — re-confirmed closed/pulled, no change; Moog Torrance CA req R-26-19984 — new req, explicitly Summer 2027, wrong season.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`.
+
+### Worth re-checking next time
+- **Blue Origin — Structural & Mechanical Systems Engineering Internship – Graduate (Los Angeles)** — still only sourced via a ZipRecruiter mirror; needs its real Workday req ID identified before it can be upgraded or ruled dead via direct render.
+- **Rocket Lab** — confirmed Cloudflare blocks headless-browser rendering same as GD Electric Boat; don't keep re-attempting this bypass specifically, but the Spring 2027 Mechanical Engineering Intern leads (Long Beach CA, Silver Spring MD) remain plausible per consistent aggregator sourcing — worth trying a different verification angle (e.g. the company's LinkedIn Jobs page) in a future run.
+- **GE Vernova, Smurfit Westrock, Zipline** — all aggregator-only this run with no located employer-owned source; re-check with fresh searches next time rather than assuming stale.
+- The Boston-area sweep agent for this run is still in progress as of this entry — see the follow-up entry below once it reports.
+
