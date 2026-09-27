@@ -1342,3 +1342,33 @@ One bundled entry covering the mostly-already-tracked national sweep (see above,
 - **GE Vernova, Smurfit Westrock, Zipline** — all aggregator-only this run with no located employer-owned source; re-check with fresh searches next time rather than assuming stale.
 - The Boston-area sweep agent for this run is still in progress as of this entry — see the follow-up entry below once it reports.
 
+---
+
+## 2026-09-26/27 ~19:00–20:00 UTC (continued — session interrupted, run closed out)
+
+### Boston-area sweep agent's work lost to a container restart
+This session's sandbox container restarted before the Boston-area research agent (dispatched earlier this run, covering Waters Corp, SharkNinja, Draper, MIT Lincoln Lab, GE Aerospace Lynn, Symbotic, Entegris, and a general Boston-metro sweep) reported back — the harness confirmed its result is unrecoverable. It was not re-dispatched this run, to avoid open-endedly extending a single routine cycle; a full Boston-area sweep should be prioritized at the top of the next run instead. Nothing it might have found was lost from the tracker itself (it was never given write access and had not reported back), so no `rows`/`checked` entries are missing because of this — it simply means this run's Boston-area coverage is limited to what this session did directly (see below and the two entries above).
+
+Note for future runs: after a container restart, re-check the outbound proxy port before reusing any saved Playwright/curl snippets — `$HTTPS_PROXY` changed (44789 → 34895 this restart) and a stale hardcoded port causes silent `ERR_PROXY_CONNECTION_FAILED` failures that look like a new site block. Read `$HTTPS_PROXY`/`$https_proxy` at runtime instead of hardcoding the port.
+
+### Waters Corporation — re-confirmed, definitively
+This session re-attempted Waters Corp directly (waters.com/nextgen job-search page and careers.waters.com) using both curl and the headless-browser method. Confirmed via a plain `curl -I`: Akamai (`server: AkamaiGHost`) returns a flat **HTTP 403 at the edge**, before any page content or JS would even load — this is an edge/fingerprint-level bot block, not a client-side-rendering problem like Eaton/Textron/Buro Happold were. This means the headless-browser method that resolved those three this run will NOT help here; a genuinely different approach (e.g. finding Waters' actual ATS/Workday tenant by another route, since curl/browser access to the main domain itself is blocked outright) is needed, not just "try rendering it." Downgrading this from "needs a browser-rendering attempt" to "needs the actual ATS tenant identified via a route that doesn't touch waters.com directly."
+
+### This run's overall summary
+- **Added to `rows`:** 3 new (Eaton ×2, part 1) + 1 upgraded Partial→Yes (Buro Happold, part 1) + 1 upgraded Partial→Yes (Blue Origin R69064, part 2) = net **+4 rows, +2 upgrades**.
+- **Removed from `rows`:** 3 dead Blue Origin partials (part 2) = **-3 rows**.
+- **Net `rows` change this run: -1** (verified via direct read of the regenerated .xlsx: "Winter26-Spring27 Internships" went from 206 → 205 data rows, 207 → 206 incl. header — the +2 from Eaton's two new rows was outweighed by the -3 from removing Blue Origin's now-dead partials; both upgrades, Buro Happold and Blue Origin R69064, were in-place and don't change the count).
+- **Added to `checked`:** verified via direct read: "Checked - Not Included" went from 391 → 396 entries (+5: Eaton Moon Township PA, Buro Happold Plumbing/Fire Protection, Textron/Bell definitive resolution, national-sweep consolidated batch, Blue Origin's 3 dead reqs) — see the three entries above for full detail.
+- **Staged applications:** 3 new files (2 Eaton, 1 Buro Happold).
+- **Biggest structural win:** headless-browser rendering (Playwright + the sandbox's pre-installed Chromium) is now a proven, repeatable method for this tracker, closing 3 long-standing multi-run blockers (Eaton, Buro Happold, Textron) in one run. Future runs should reach for it immediately on any Workday/Eightfold/Nuxt/similar JS-rendered site instead of reporting "unverifiable."
+- **Biggest known gap:** the Boston-area-specific sweep (Waters aside) did not complete this run due to the container restart — prioritize it next run.
+
+### Commits this run
+Three commits, each pushed immediately: `a30c976` (Eaton/Buro Happold/Textron via headless-browser breakthrough), `0411047` (national-sweep cross-check + Blue Origin resolution). This closing entry will be committed as a fourth, final commit for the run.
+
+### Worth re-checking next time (consolidated)
+- **Full Boston-area sweep** (not completed this run) — Waters Corp (see above — needs a different approach, not just browser rendering), SharkNinja, Draper Laboratory, MIT Lincoln Laboratory, GE Aerospace Lynn MA, Symbotic, Entegris (periodic re-sweep), Boston Dynamics/iRobot (quick re-confirm only), PI (Physik Instrumente) — check for a genuinely new 3rd req.
+- **Blue Origin** — Structural & Mechanical Systems Engineering Internship – Graduate (Los Angeles) still needs its real Workday req ID; the tenant's 1,700+ reqs were not fully re-swept for new Spring 2027 siblings.
+- **Rocket Lab** — Cloudflare-blocked for headless rendering (same as GD Electric Boat); try a different verification angle next time (e.g. LinkedIn Jobs) rather than re-attempting the same bypass.
+- **GE Vernova, Smurfit Westrock, Zipline** — aggregator-only this run, no employer-owned source located; re-check with fresh searches.
+- **Moog's two long-undated reqs, L3Harris, Leidos, Analog Devices, Lam Research, Parker Hannifin, Caterpillar** — all still recurring "no qualifying season" notes; the new headless-browser method hasn't yet been tried on Moog/Parker Hannifin specifically (Leidos/L3Harris/Analog Devices/Lam Research/Caterpillar are confirmed server-rendered or otherwise not JS-blocked, so rendering wouldn't change their outcome).
