@@ -1342,3 +1342,46 @@ One bundled entry covering the mostly-already-tracked national sweep (see above,
 - **GE Vernova, Smurfit Westrock, Zipline** — all aggregator-only this run with no located employer-owned source; re-check with fresh searches next time rather than assuming stale.
 - The Boston-area sweep agent for this run is still in progress as of this entry — see the follow-up entry below once it reports.
 
+---
+
+## 2026-09-27 ~01:00 UTC
+
+### Sync
+`git status` showed a clean working tree, detached HEAD matching `origin/master` at `0411047` (the tip of the prior run's "pt.2" commit). No sync issues, no push-access issues at sync time. Note: the prior run's log entry ended saying its Boston-area sweep agent was "still in progress" with a promised follow-up entry that was never written — that agent's results were apparently lost when the prior run ended. This run re-dispatched a fresh Boston-area sweep from scratch to cover the same ground, rather than assuming it was ever incorporated.
+
+### What was searched
+Delegated to two parallel research agents with the strict-verification instructions (opening actual posting URLs, not aggregator summaries; headless Chromium via Playwright available for JS-rendered/bot-protected sites):
+1. **Boston-area sweep**: priority re-checks (Waters Corporation, Moog, L3Harris, Analog Devices/Lam Research/Parker Hannifin, Draper Laboratory, MIT Lincoln Laboratory, GE Aerospace Lynn, Entegris, SharkNinja) plus a fresh Boston-metro pass (PTC, MathWorks, Teradyne, Vicor, Cognex, MKS Instruments, Charles River Labs, Boston Metal, Nuvation, Nuvera, Cirtec, PI USA, Symbotic, Amazon Robotics, Formlabs, Insulet, Buro Happold, Vertex Pharmaceuticals, Commonwealth Fusion Systems).
+2. **National sweep**: priority re-checks (Blue Origin's unresolved LA Graduate lead, Rocket Lab Long Beach/Silver Spring, GE Vernova, Smurfit Westrock, Zipline, Caterpillar, Moog) plus a fresh national pass across ~35 aerospace/defense/robotics companies (Textron Aviation, Sikorsky, Honeywell Aerospace, Safran, Spirit AeroSystems, General Atomics, Kratos, Shield AI, Archer/Joby/Wisk/Beta Technologies, Firefly, Stoke Space, Redwire, Sierra Space, ispace, Impulse Space, Curtiss-Wright, Saab, HII, Aurora Flight Sciences, Virgin Galactic, Reliable Robotics, Figure AI, Apptronik, Agility Robotics, Karman, Aerojet Rocketdyne, Northrop Grumman, BAE Systems, Leidos, Bell Textron, Astranis, Anduril, SpaceX, Vast Space, Hermeus, Rendezvous Robotics, Varda, Rivian, GD Mission Systems, RTX/Collins/P&W, GD Electric Boat).
+
+Neither agent had visibility into `build.mjs`. Both agents' "new" findings were overwhelmingly already tracked byte-for-byte (same job IDs/URLs) — cross-checked directly against the file via grep before any edit. This is a strong signal, after ~8 days of near-daily sweeps, that mainstream Boston-area and aerospace/defense employer coverage is close to saturated; genuinely new leads are becoming rare and increasingly come from second- and third-tier/adjacent companies (Zipline sibling reqs, Smurfit Westrock, GE Vernova) rather than the well-covered majors.
+
+### Data-quality fix found during cross-checking (not a new posting)
+While cross-checking the national agent's GE Vernova findings, this session noticed `build.mjs` was carrying the exact same posting (Workday req R5048552, "Nuclear Engineering Co-Op/Intern", Wilmington NC) as **2 separate `rows` entries** — once as Company "GE Vernova (Nuclear)" (added 2026-09-20) and again as Company "GE Vernova" (mistakenly re-added as "new" on 2026-09-21, same application link byte-for-byte). Verified via the live `.xlsx` that both rows carried identical RESUME/COVER LETTER/QUESTIONS hyperlinks (same `GEVernova_Nuclear` application docs). **Fixed:** removed the later duplicate, kept the original. Net effect: 1 fewer row, no lost opportunity, existing application documents unaffected. Logged in `checked` for the transparency trail — same treatment as the PI (Physik Instrumente) dedup found in the 2026-09-26 ~13:00 UTC run.
+
+### Contested claim resolved via independent direct verification
+The two research agents disagreed on **Moog Inc. — Intern, Mechanical Analysis Engineering (R-26-20226)**: one claimed the posting now states "spring 2027 block intern" (a year), the other read it as still year-less. Rather than trust either secondhand account, this session queried Moog's own Workday CXS API directly and read the full description text itself: it states only "seeking a spring block intern" — no year appears anywhere in the body. The year-stated claim was incorrect; the posting still fails the season-stated verification bar, consistent with 5+ prior runs' exclusions. Not added.
+
+### Added to `rows` (4 new entries, all Yes)
+- **GE Vernova — Gas Power Engineering Internship - Spring 2027** (req R5052776), Greenville SC / Schenectady NY / Atlanta GA — independently confirmed via direct Workday CXS API fetch (canApply: true, posted 15 days ago), body explicitly states "EMPLOYMENT DATES: January - June 2027 (Spring)". Resolves a lead first flagged 2026-09-24 that 3 prior runs couldn't find a working req ID for.
+- **WestRock / Smurfit Westrock — Manufacturing Engineering Co-op - Spring 2027, Mills**, multiple mill sites (AL/FL/GA/MI/NC/NY/SC/TX/VA) — independently confirmed via direct fetch of the company's own Avature careers portal (HTTP 200), title/term/eligible-majors (Chemical/Electrical/Mechanical/Paper Science) confirmed in page content. Resolves a dead-end from 3 prior runs (2026-09-24/25) that had concluded the only known LinkedIn mirror was expired — that was a different, stale listing; this is the live employer-hosted one.
+- **Zipline — Field Systems Engineer Intern (Spring 2027)**, South San Francisco, CA — new sibling to the already-tracked Zipline Spring 2027 batch, independently confirmed via direct Greenhouse API fetch ("We will host our Spring 2027 interns from January to April"). Avionics-adjacent field/test discipline; EE/CompE/Aero/Robotics/CS majors; no visa sponsorship.
+- **Amazon Robotics — Hardware Development Engineer Intern/Co-Op, ROBOTICS – 2027** (job 10535282), North Reading, MA (~22 mi, Boston metro) — independently confirmed via direct fetch, but same season-ambiguity caveat as the already-tracked sibling req (10536817): rolling year-round placement, Spring 2027 not guaranteed. Distinct req/title/pay-band ($107,270/yr) from the existing Industrial Development Engineer req, not a duplicate.
+
+### Added to `checked` (5 new entries)
+GE Vernova duplicate-row fix (see above); Moog R-26-20226 contested-claim resolution (see above); a consolidated national-sweep entry noting the overwhelming majority of both agents' findings were already tracked; Waters Corporation (ATS now identified as iCIMS behind an AWS WAF CAPTCHA — still fully unverifiable, needs a real signed-in browser session); SharkNinja (postings now carry season wording, but only Spring 2026/Fall 2026/Summer 2027 exist — no Spring 2027 yet); Caterpillar (re-confirmed live but still no season stated in the body — unchanged).
+
+### Staged applications created (4 files, `staged-applications/`)
+One per new fully-verified ("Yes") posting: `ge-vernova-gas-power-engineering-internship-spring-2027.md`, `smurfit-westrock-manufacturing-engineering-coop-mills-spring-2027.md`, `zipline-field-systems-engineer-intern-spring-2027.md`, `amazon-robotics-hardware-development-engineer-intern-coop.md` (staged despite the season caveat, consistent with the precedent set for its sibling req 10536817).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the `.xlsx`: "Winter26-Spring27 Internships" now has 208 data rows (209 incl. header; net +3 = -1 dedup +4 new), "Checked - Not Included" has 402 entries (403 incl. header). Confirmed the GE Vernova duplicate no longer appears (single occurrence of req R5048552) and its RESUME/COVER LETTER/QUESTIONS hyperlinks survived the edit intact on the surviving row.
+
+### Worth re-checking next time
+- **Waters Corporation** — ATS identified (iCIMS) but gated by AWS WAF CAPTCHA; would need a real signed-in browser session, not just headless rendering, to close out.
+- **SharkNinja** — now confirms season wording on its postings; check periodically for when its cycle turns to Spring 2027.
+- **Caterpillar** — season genuinely never stated on the "2027 Engineering Corporate Internship Program"; recurring note, deprioritize unless a dated version appears.
+- **Moog R-26-20226 and R-26-20243** — R-26-20226 still lacks a year (5+ runs now); R-26-20243 remains a combined Spring/Summer term. Worth a periodic re-check in case Moog ever adds a year to R-26-20226's text.
+- **Analog Devices, Lam Research, Parker Hannifin** — still not posted as of this run; long-recurring note.
+- **General note**: given how mature this tracker now is (208 active rows, 402 checked), future runs should prioritize (a) periodic re-sweeps of companies with rolling/frequent posting patterns (Entegris, Rocket Lab, Hermeus, Varda) for genuinely new sibling reqs, and (b) an occasional dedicated duplicate-detection pass (as this run and the 2026-09-26 ~13:00 UTC run both found one real duplicate each) over blanket re-sweeps of already-exhausted major employers.
+
