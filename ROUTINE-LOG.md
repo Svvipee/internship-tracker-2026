@@ -1501,3 +1501,42 @@ One per new fully-verified Entegris row (14 files) plus one for the new Blue Ori
 - **Karman Space & Defense** — ADP WorkforceNow SPA, still unverifiable without a JS-capable render; worth a headless-browser attempt in a future run given that method's success on Eaton/Textron/Buro Happold.
 - **Analog Devices, Lam Research, Parker Hannifin, Caterpillar, Moog R-26-20226/R-26-20243, Waters Corporation, SharkNinja** — all unchanged, long-recurring notes.
 - **General note**: this run's two data-quality catches (rejecting a false "REQ-14486 now qualifies" claim, and independently re-deriving the Blue Origin LA dead-lead conclusion rather than just trusting the agent) reinforce the standing practice — re-verify agent claims against the primary source directly before touching `rows`, especially for claims that a previously-excluded item should now be included.
+
+---
+
+## 2026-09-27 ~19:00 UTC
+
+Also fixed a stale local git state at session start: the container's detached HEAD and cached `origin/master` ref were 10 commits behind the actual GitHub `master` (confirmed via `git fetch` — no real divergence, just a stale ref); fast-forwarded local `master` to match before making any changes.
+
+### What was searched
+Per this run's priority instructions: Entegris (full company-wide re-sweep, not just the 8 previously-tracked sites), Blue Origin LA/Altadena facet re-check, GE Aerospace Spring 2027 re-sweep, Draper Laboratory re-sweep, MIT Lincoln Laboratory re-check.
+
+- **Entegris**: paged the full Workday CXS API with `searchText: "Co-Op"` across 29 pages (offset 0–560, empty-searchText facet paging from a prior run's method also attempted but now 400s — worked around with smaller-offset full-text paging instead) and found 103 live Co-Op-titled reqs company-wide, 47 of them not already in `build.mjs`. Fetched full body text directly for every plausible engineering-discipline candidate before deciding.
+- **Blue Origin**: the previously-documented "Contingent, Temporary, & Intern" jobFamilyGroup facet id now reliably 400s (reproduced 3x, including with a freshly re-looked-up id) — likely a new server-side block on that specific facet. Worked around with full-text `Co-Op`/`Intern` search (200+ postings) filtered to Los Angeles/Altadena.
+- **GE Aerospace**: full-text `Co-op`/`Intern` sweep via Workday CXS, ~305 unique postings enumerated across all US/UK/global sites.
+- **Draper Laboratory**: full-text `Co-op`/`Co-Op` sweep via Workday CXS, 100 postings enumerated.
+- **MIT Lincoln Laboratory**: careers.ll.mit.edu's own search UI is a JS-rendered SuccessFactors/SmashFly page — confirmed by direct curl that its `/search-jobs/<keyword>` URL path does NOT actually filter results server-side on a static fetch (identical 25-result set returned regardless of keyword); no working keyword-filtered JSON API endpoint found. Worked around with targeted web search plus direct re-fetch of the two already-tracked req URLs.
+
+### Added to `rows` (4 new entries, all Yes)
+- **Entegris — Research and Development Engineer/Scientist Co-Op**, Danbury, CT (REQ-14430) — Spring 2027, $20-$30/hr, majors incl. Mechanical/Materials Engineer.
+- **Entegris — Quality Engineer Co-Op**, San Luis Obispo, CA (REQ-14434) — Spring 2027, $20-$30/hr, majors incl. Mechanical/Industrial/Manufacturing/Materials Engineering.
+- **Entegris — Analytical Quality Engineering Co-Op**, Round Rock, TX (REQ-14464) — Spring 2027, $20-$30/hr, majors incl. Industrial/Systems Engineering, Materials Science.
+- **Entegris — R&D Co-Op**, Franklin, MA (REQ-14446) — Spring 2027, $20-$30/hr, majors: Chemical Engineering, Materials Science/Engineering. Closest-to-Boston new find this run (~26 mi).
+
+All four independently confirmed via direct fetch of Entegris's own Workday CXS API (canApply true, body text states "Spring 2027 season," $20-$30/hr each), no H1-B sponsorship per Entegris's standard co-op policy text.
+
+### Added to `checked` (7 new entries)
+Entegris REQ-14436 (Electrical Engineer Co-Op, San Luis Obispo — EE-only mismatch, same treatment as REQ-14486); a consolidated entry for 5 chemistry/lab-scientist-titled Entegris co-ops (REQ-14471, 14476, 14482, 14493, 14501 — analytical chemist/microanalysis/research-associate/nanoparticle-research/metrology-scientist titles, not an engineering discipline); a consolidated entry for the other 38 non-engineering Entegris co-ops found in this sweep (HR/Marketing/IT/Sales/EHS/Sustainability/Supply Chain/Cybersecurity/Training/Finance/Procurement/Audit/etc.); Blue Origin (re-check note: new facet-block workaround, no new LA-area mechanical/aerospace req found, R71542 re-confirmed still live); GE Aerospace (full re-sweep note: every Spring-2027 Co-op/Intern title found is already tracked or a non-target discipline — Digital Technology, Data Science, Communications); Draper Laboratory (full re-sweep note: no new reqs beyond what's already tracked/excluded); MIT Lincoln Laboratory (re-check note: no new live Spring 2027 mechanical/aerospace/structural/systems co-op beyond the two already-tracked microfab reqs; the only other near-season postings surfaced by search are dated Jan-Jun 2026/Summer 2026 and are already in the past).
+
+### Staged applications created (4 files, `staged-applications/`)
+One per new fully-verified Entegris row: `entegris-rd-engineer-scientist-coop-danbury-ct-req-14430.md`, `entegris-quality-engineer-coop-san-luis-obispo-ca-req-14434.md`, `entegris-analytical-quality-engineering-coop-round-rock-tx-req-14464.md`, `entegris-rd-coop-franklin-ma-req-14446.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the `.xlsx`: "Winter26-Spring27 Internships" went from 222 → 226 data rows (+4, matching the 4 new rows). "Checked - Not Included" went from 412 → 419 entries (+7, matching the 7 new `checked` entries above).
+
+### Worth re-checking next time
+- **Entegris** — this run's full 29-page company-wide sweep (vs. prior runs' 8-site-only sweeps) surfaced 47 previously-untracked reqs in one pass; the board clearly rotates fast and has far more sites than the 8 previously tracked (Danbury CT, Round Rock TX, Franklin MA, Aurora IL, and more all had live reqs this run) — worth doing the full company-wide sweep (not just the 8 known sites) on a recurring basis, not just periodically.
+- **Blue Origin** — the "Contingent, Temporary, & Intern" jobFamilyGroup facet id (`5f32d2b8465201b51255d2713817d845`) that prior runs relied on for a fast LA-area intern/co-op lookup now reliably 400s server-side (reproduced 3x this run with fresh id lookups). The full-text `Co-Op`/`Intern` search + client-side location filter used this run is a working substitute but noisier/slower (200+ results to page through) — worth confirming whether this is a permanent change or a transient block in a future run.
+- **MIT Lincoln Laboratory** — careers.ll.mit.edu's search UI does not filter server-side on a plain URL fetch (SuccessFactors/SmashFly SPA); no working keyword-filtered JSON API endpoint was found this run. A headless-browser method (successful on Eaton/Textron/Buro Happold/Karman per earlier notes) would likely be needed to properly re-sweep this site beyond the 2 already-tracked microfab reqs.
+- **GE Aerospace, Draper Laboratory** — both re-swept in full this run via working Workday CXS full-text search; both appear saturated at their currently-tracked reqs. Standard periodic re-checks (not full sweeps) should suffice going forward unless a "worth re-checking" flag is raised again.
+- **Karman Space & Defense, Analog Devices, Lam Research, Parker Hannifin, Caterpillar, Moog R-26-20226/R-26-20243, Waters Corporation, SharkNinja** — all unchanged, long-recurring notes, not re-checked this run (no new information to act on).
