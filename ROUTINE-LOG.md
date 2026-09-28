@@ -1540,3 +1540,47 @@ One per new fully-verified Entegris row: `entegris-rd-engineer-scientist-coop-da
 - **MIT Lincoln Laboratory** — careers.ll.mit.edu's search UI does not filter server-side on a plain URL fetch (SuccessFactors/SmashFly SPA); no working keyword-filtered JSON API endpoint was found this run. A headless-browser method (successful on Eaton/Textron/Buro Happold/Karman per earlier notes) would likely be needed to properly re-sweep this site beyond the 2 already-tracked microfab reqs.
 - **GE Aerospace, Draper Laboratory** — both re-swept in full this run via working Workday CXS full-text search; both appear saturated at their currently-tracked reqs. Standard periodic re-checks (not full sweeps) should suffice going forward unless a "worth re-checking" flag is raised again.
 - **Karman Space & Defense, Analog Devices, Lam Research, Parker Hannifin, Caterpillar, Moog R-26-20226/R-26-20243, Waters Corporation, SharkNinja** — all unchanged, long-recurring notes, not re-checked this run (no new information to act on).
+
+---
+
+## 2026-09-28 ~01:00 UTC
+
+### Sync
+`git status`/`git log` at session start showed a detached HEAD already at `origin/master`'s tip (`c6a5f33`, the 2026-09-27 19:00 UTC run's commit) — no divergence. Ran `git fetch origin master` to confirm, then `git checkout -B master origin/master` to get onto a proper tracking branch before making any changes. Clean, nothing at risk.
+
+### What was searched
+Delegated to two parallel research agents (Boston-area + national), briefed with the current saturation state and this run's priorities per the routine instructions: GE Aerospace Spring 2027 reqs, Draper Laboratory, MIT Lincoln Laboratory, plus a full Entegris company-wide re-sweep, Blue Origin, Moog R-26-20226/R-26-20243, Lam Research, Parker Hannifin, Caterpillar, Rendezvous Robotics/Hermeus/Varda/Rocket Lab, Waters Corporation, SharkNinja, Analog Devices, Insulet, and a light untried-company pass (Applied Materials, Anduril, RTX/Collins, KLA, Woodward, ABB, Textron, Relativity Space).
+
+Every specific req/URL either agent reported was independently cross-checked by this session against `build.mjs` (by REQ ID / job ID) before any edit, and new candidates were independently re-fetched directly (not just trusted from the agent report) before being added.
+
+### Cross-check result: near-total saturation confirmed again
+The Boston-area agent's "strong new batch" of 11 Entegris Bedford/Franklin reqs, 6 Draper reqs, and 2 MIT Lincoln Lab microfab co-ops were **all already tracked** — every single REQ ID/job ID matched an existing `rows` or `checked` entry byte-for-byte. The national agent's full 54-req Entegris company-wide sweep was likewise **100% already tracked** (checked every REQ ID directly against `build.mjs`). Blue Origin (R71542/R71548), Moog (R-26-20226/R-26-20243 — same ambiguous/combined-term wording as prior runs, no change), Rocket Lab (~20-req wave), Varda (7 reqs), Hermeus (11-req batch), Rendezvous Robotics (4 reqs), and Anduril (8-req Winter 2027 batch) were all confirmed already tracked with matching job IDs.
+
+### Independent verification performed by this session
+- **RTX/Collins Aerospace (req 01873225)** — independently fetched directly via RTX's own Workday CXS API (`globalhr.wd5.myworkdayjobs.com`), confirmed `canApply: true`, posted the same day, and read the full body text confirming "Winter/Spring 2027" and the January–July/August run.
+- **Applied Materials (R2628290, R2626230)** — WebFetch couldn't render the Eightfold SPA's job description; independently re-fetched both postings via direct curl and extracted the `JobPosting` JSON-LD schema embedded in the page, which gave clean season/pay/eligibility text for both.
+- **Analog Devices (R266691)** — the Boston-area agent quoted only the "June through December" sentence; this session's own direct re-fetch of the full body found the posting is **internally contradictory** — the Qualifications section separately states "January through June." Treated the same way as the already-excluded Entegris REQ-14401 (conflicting season text, exclude rather than guess).
+- **Caterpillar (R0000380509)** — independently fetched via Caterpillar's Workday CXS API; confirmed this is a continuous, year-round "Parallel Co-op" program (summer full-time + part-time during school year), not a discrete Winter 2026/Spring 2027 block — fails the season-specific bar despite strong discipline fit.
+
+### Added to `rows` (3 new, all Yes)
+- **RTX / Collins Aerospace — Mechanical Design Engineering Co-op (Winter/Spring 2027)**, Rockford, IL, req 01873225. New company for the tracker. U.S. citizenship strictly required, no pay stated.
+- **Applied Materials — 2027 Spring Product Quality Engineer Co-op - Bachelor's**, Gloucester, MA, req R2628290. $31-33/hr, mechanical/industrial engineering. New company/site — closest new find to Boston this run (~26 mi).
+- **Applied Materials — 2026-2027 Process Engineer Co-op - Doctorate**, Gloucester, MA, req R2626230. PhD-only (flagged prominently in Notes and staged file) — Fall 2026 start (Sept-Nov) running into Spring 2027, mechanical/materials science eligible.
+
+### Added to `checked` (7 new entries)
+Analog Devices R266691 (internally contradictory season text — see above); Caterpillar R0000380509 (continuous year-round program, wrong season type — see above); Parker Hannifin (portal 403 Forbidden, aggregator-only unverified leads); Lam Research (no 2027 reqs posted yet, 2026 cycle closed); Waters Corporation (still blocked — this run saw a DNS-level failure rather than the previously-documented WAF CAPTCHA; aggregator-only unverified leads); ABB/ABB Robotics (JS-blocked, one unverified aggregator lead); a consolidated saturation-reconfirmation entry covering the full Entegris/Draper/GE Aerospace/MIT Lincoln Lab/Blue Origin/Moog/Rocket Lab/Varda/Hermeus/Rendezvous Robotics/Anduril cross-check described above.
+
+### Staged applications created (3 files, `staged-applications/`)
+`rtx-collins-mechanical-design-engineering-coop-winter-spring-2027.md`, `applied-materials-product-quality-engineer-coop-bachelors-gloucester-ma.md`, `applied-materials-process-engineer-coop-doctorate-gloucester-ma.md` (PhD-only warning at the top of this last one).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the `.xlsx`: "Winter26-Spring27 Internships" went from 226 → 229 data rows (+3, matching the 3 new rows). "Checked - Not Included" went from 419 → 426 entries (+7, matching the 7 new `checked` entries above).
+
+### Worth re-checking next time
+- **Entegris** — now fully saturated across two consecutive full company-wide sweeps (2026-09-27 ~19:00 UTC and this run) with zero new reqs found either time; safe to deprioritize back to periodic re-checks rather than full sweeps every run, unless a new site or a large time gap since the last check suggests otherwise.
+- **Applied Materials (Gloucester, MA)** — first time this employer has been checked; the site fetches cleanly via direct curl (Eightfold ATS, JobPosting JSON-LD embedded in each job page — WebFetch could not render it, but curl + JSON-LD extraction worked well). Worth a fuller sweep of this site's other open reqs next run given the clean access and Boston-area location (there's also a Spring 2027 Electrical Engineer Co-op at the same site — discipline mismatch, not pursued this run).
+- **RTX/Collins Aerospace** — first time checked; RTX's Workday full-text search returns thousands of results regardless of query specificity (too broad to page through cleanly) so this run only confirmed the one specific req found via aggregator. A more targeted per-site or per-keyword approach might surface more Collins Aerospace/Pratt & Whitney/Raytheon co-ops — worth a dedicated attempt.
+- **Moog R-26-20226/R-26-20243** — unchanged for 7+ consecutive runs now (still "spring block intern" with no year for -20226, still combined "spring/summer 2027" for -20243, excluded per Hamza's standing judgment on combined-term postings). Consider dropping to occasional-only checks.
+- **Analog Devices R266691** — worth a fresh look if the internal season contradiction gets corrected on either side.
+- **Waters Corporation, SharkNinja, Analog Devices (general), Lam Research, Parker Hannifin, Karman Space & Defense** — all unchanged, long-recurring notes.
+- **General note**: after 9+ days of near-daily sweeps, mainstream Boston-area and aerospace/defense employer coverage remains essentially saturated. This run's 3 new finds all came from previously-untried companies (RTX/Collins, Applied Materials) rather than re-sweeping known majors — future runs should keep prioritizing genuinely untried companies/sites over re-treading exhausted ones.
