@@ -534,19 +534,6 @@ const rows = [
     "Link Verified": "Yes — upgraded 2026-09-23: confirmed directly via Zipline's own Greenhouse API (job-boards.greenhouse.io/flyzipline/jobs/7865253003), HTTP 200, no closed-application notice, updated 2026-09-17.",
     Notes: "Design/build/test electro-mechanical systems for autonomous drone delivery. Requires ≥2nd year undergrad completed; masters/PhD also eligible.",
   },
-  // --- Added 2026-09-20 ~13:00 UTC routine run ---
-  {
-    Company: "Applied Materials",
-    "Role Title": "2027 Spring Mechanical Engineer Co-op",
-    Discipline: "Mechanical Engineering",
-    Season: "Spring 2027 (start January 2027)",
-    Location: "Gloucester, MA",
-    "Distance from Boston, MA (mi, approx.)": 30,
-    Pay: "$31–33/hr",
-    "Application Link": "https://amat.wd1.myworkdayjobs.com/external/job/GloucesterMA/XMLNAME-2027-Spring-Mechanical-Engineer-Co-op--Gloucester-MA-_R2628290",
-    "Link Verified": "Partial — Workday page blocked automated fetch (JS-rendered, empty). Confirmed via a dreamworkhq aggregator mirror quoting the exact title, season, location, pay, and req ID, posted ~1 week ago as of 2026-09-20. Verify live in-browser before applying.",
-    Notes: "Boston metro (Gloucester, MA). A sibling req, '2027 Spring Product Quality Engineer Co-op' at the same site, also exists but is a different discipline — not added.",
-  },
   {
     Company: "Sanofi (Genzyme)",
     "Role Title": "2027 Spring Co-Op Opportunities",
@@ -2750,7 +2737,7 @@ const rows = [
     Pay: "$31-$33/hour",
     "Application Link": "https://careers.appliedmaterials.com/careers/job/790318404669",
     "Link Verified": "Yes — fetched directly (JobPosting JSON-LD on the live page), datePosted 2026-09-09, validThrough 2027-03-08.",
-    Notes: "Req R2628290 (VSU BU Implant). Bachelor's student in mechanical or industrial engineering, good academic standing. Supports quality group: defective-material processing, supplier visits, cross-functional problem solving.",
+    Notes: "Req R2628291 (VSU BU Implant) — corrected 2026-09-28 (was mislabeled R2628290, which is actually the separate Mechanical Engineer Co-op req at the same site). Bachelor's student in mechanical or industrial engineering, good academic standing. Supports quality group: defective-material processing, supplier visits, cross-functional problem solving.",
   },
   {
     Company: "Applied Materials",
@@ -2763,6 +2750,43 @@ const rows = [
     "Application Link": "https://careers.appliedmaterials.com/careers/job/790317811290",
     "Link Verified": "Yes — fetched directly (JobPosting JSON-LD on the live page), datePosted 2026-08-14.",
     Notes: "Req R2626230. PhD-ONLY role — requires currently pursuing a PhD in Electrical/Chemical/Mechanical Engineering, Materials Science, Chemistry, or Physics; verify this matches Hamza's own class standing before applying. Thin-film characterization/patterning R&D for next-gen semiconductor nodes; cleanroom protocols.",
+  },
+  // --- Added 2026-09-28 ~07:00 UTC routine run ---
+  {
+    Company: "RTX / Collins Aerospace",
+    "Role Title": "Chemical/Materials Engineering Co-op (Winter/Spring 2027)",
+    Discipline: "Industrial / Materials Engineering (Z-Fab wafer fabrication manufacturing)",
+    Season: "Winter/Spring 2027 (posting titled 'Winter & Spring Co-op')",
+    Location: "Cedar Rapids, IA",
+    "Distance from Boston, MA (mi, approx.)": 1140,
+    Pay: "Not stated on posting",
+    "Application Link": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-IA-CEDAR-RAPIDS-109--400-Collins-Rd-NE--BLDG-109/Chemical-Materials-Engineering-Co-op--Winter-Spring-2027-_01871473",
+    "Link Verified": "Yes — fetched directly via RTX's own Workday CXS API, canApply true, posted 2026-09-27.",
+    Notes: "Req 01871473. TIME-SENSITIVE: posting's own end date is 2026-10-03 (application window closes fast). Title says Chemical/Materials Engineering but body describes Industrial Engineering manufacturing-process work (equipment/floor layout, cost/productivity studies, quality/safety review) on the Z-Fab wafer fab team. U.S. citizenship strictly required, no clearance required.",
+  },
+  {
+    Company: "RTX / Collins Aerospace",
+    "Role Title": "Certification Engineer Co-Op (Winter/Spring 2027)(Onsite)",
+    Discipline: "Aerospace / Structural Engineering (FAA certification — seats & seating components)",
+    Season: "Winter/Spring 2027 (two-semester term, January–July)",
+    Location: "Winston-Salem, NC",
+    "Distance from Boston, MA (mi, approx.)": 700,
+    Pay: "Not stated on posting",
+    "Application Link": "https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-NC-WINSTON-SALEM-190--190-Oak-Plaza-Blvd--BLDG-190/Certification-Engineer-Co-Op--Winter-Spring-2027--Onsite-_01871317-1",
+    "Link Verified": "Yes — fetched directly via RTX's own Workday CXS API, canApply true, posted 2026-09-16.",
+    Notes: "Req 01871317. Supports FAA certification (structural and flammability testing) of commercial aircraft seats. Majors: Mechanical, Aerospace, Materials Science, or Chemical Engineering. Requires U.S. Person status (ITAR — ecfr 8 U.S.C. 1101(a)(20)/1324b(a)(3)), not strictly U.S. citizenship. A sibling 'Summer/Fall 2027' req (01874662) at the same site was excluded, wrong season.",
+  },
+  {
+    Company: "Regal Rexnord",
+    "Role Title": "Engineering Co-Op",
+    Discipline: "Mechanical / General Engineering",
+    Season: "Winter/January 2027 (3-4 month co-op)",
+    Location: "Charlotte, NC",
+    "Distance from Boston, MA (mi, approx.)": 845,
+    Pay: "Not stated on posting",
+    "Application Link": "https://careers.regalrexnord.com/en/jobs/r26_04216/engineering-co-op/",
+    "Link Verified": "Yes — fetched directly (WebFetch), quote: 'Co-Op Start: Winter/January 2027', posted 2026-08-25, active Apply Now button present.",
+    Notes: "Req R26_04216. New company for the tracker. No discipline restriction stated beyond general engineering; posting text did not specify eligibility/citizenship requirements — confirm directly with employer before applying.",
   },
 ];
 
@@ -3205,6 +3229,17 @@ const checked = [
   { Company: "Waters Corporation (Milford, MA)", "Role(s) Checked": "jobs.waters.com / uscareers-waters.icims.com, re-check", "Reason": "2026-09-28 ~01:00 UTC: this run's block presented differently than before (DNS-level failure / ENOTFOUND on both curl-via-proxy and WebFetch, rather than the previously-documented AWS WAF CAPTCHA) — still fully inaccessible either way. Aggregator-only, unverified mentions found: a 'Research Electrical Engineering Co-Op' (Milford, MA, discipline mismatch besides being unverifiable) and a vague reference to a Liquid Chromatography Operations Engineering co-op — neither has a confirmed season, req ID, or working application URL. Genuinely unverifiable with current tooling; unchanged from prior runs." },
   { Company: "ABB / ABB Robotics", "Role(s) Checked": "careers.abb (general search)", "Reason": "2026-09-28 ~01:00 UTC: careers.abb is JS-rendered; direct fetch returned only generic program blurbs, no live listings enumerable. An aggregator mentions an 'Application Engineering Intern — Spring 2027' in Lombard, IL, but the actual posting could not be fetched or verified — not added." },
   { Company: "National + Boston-area sweep, 2026-09-28 ~01:00 UTC — saturation reconfirmed", "Role(s) Checked": "Two parallel research agents (Boston-area + national) briefed with the current known-blocker/saturation state and this run's priorities (Entegris full company-wide sweep, GE Aerospace, Draper, MIT Lincoln Laboratory, Blue Origin, Moog, Lam Research, Parker Hannifin, Caterpillar, Rendezvous Robotics/Hermeus/Varda/Rocket Lab, plus a light untried-company pass).", "Reason": "Every specific req/URL either agent reported was independently cross-checked by this session against `build.mjs` (by REQ ID/job ID) before any edit. Entegris: a full 54-req company-wide Workday sweep (San Luis Obispo, Bedford, Billerica, Franklin, Chaska, Aurora, Hillsboro, Colorado Springs, Austin, Bloomington MA/CT/TX/MN/IL/OR/CO sites) found every single engineering-discipline req already tracked in `rows` or `checked`, byte-for-byte by REQ ID — the board has not produced a genuinely new req since the 2026-09-27 ~19:00 UTC sweep. Draper (6 reqs), GE Aerospace (Lynn-specific + national Spring 2027 slate), and MIT Lincoln Laboratory (both microfab co-ops) were each independently re-swept and found fully saturated at their already-tracked reqs — no changes. Blue Origin (R71542/R71548), Moog (R-26-20226/R-26-20243 — re-confirmed same ambiguous/combined-term wording as prior runs, no change), Rocket Lab (~20-req Spring 2027 wave), Varda (7 El Segundo reqs), Hermeus (11-req Lever batch), Rendezvous Robotics (4 Golden CO reqs), and Anduril (8-req Winter 2027 Quincy/Lexington/Costa Mesa batch, including the EWIS Harness Engineer Co-op resolved in a prior run) were all confirmed already tracked with matching job IDs — no new items. Genuinely new finds from this run (RTX/Collins Rockford IL, 2 new Applied Materials Gloucester MA reqs) were added to `rows` above; Analog Devices, Caterpillar, Parker Hannifin, Lam Research, Waters, and ABB findings were added to `checked` above. SharkNinja (still Fall 2026 only, no Spring 2027 yet), KLA, Woodward, Textron/Textron eAviation (JS-blocked, no verifiable dated posting), and Relativity Space (Greenhouse board returned 0 jobs, likely migrated ATS — unexamined) turned up nothing actionable this run." },
+  // --- Added 2026-09-28 ~07:00 UTC routine run ---
+  { Company: "Data-quality fix, 2026-09-28 ~07:00 UTC", "Role(s) Checked": "Applied Materials Gloucester, MA rows", "Reason": "Two rows independently found: (1) a duplicate — the 2026-09-20 ~13:00 UTC 'Partial' entry for the '2027 Spring Mechanical Engineer Co-op' (req R2628290, Workday link) was the same posting as the later fully-verified entry for the same req/title (careers.appliedmaterials.com job 100424621952), just added twice under different link formats. Deleted the older weaker-verified duplicate, kept the fully-verified one. (2) The 'Product Quality Engineer Co-op' row's Notes mislabeled its own req as R2628290 (copy-paste from the Mechanical Engineer req) — corrected to its actual req R2628291, confirmed via fresh direct fetch of the Applied Materials Eightfold listing." },
+  { Company: "Applied Materials", "Role(s) Checked": "'2027 Spring Electrical Engineer (Controls, PCB) Co-op BS or MS', Gloucester, MA (req R2628288)", "Reason": "2026-09-28 ~07:00 UTC: a Boston-area research agent flagged this as a discipline-borderline candidate (Controls is one of Hamza's target disciplines, but the title leads with Electrical Engineer/PCB). Could not independently locate a working direct URL for this specific req within this run's time budget (site's JS-rendered search/filter pages don't expose it via plain fetch) — not added without a directly verified posting. Worth a dedicated look next run if Hamza wants Controls-adjacent EE roles considered." },
+  { Company: "Applied Materials", "Role(s) Checked": "'2026 Fall Materials Engineering Co-op (TCAD Modeling) - Doctorate', Gloucester, MA (req R2611503)", "Reason": "2026-09-28 ~07:00 UTC: PhD-only, same treatment as the already-tracked-excluded R2626230 doctorate co-op. Title states 'Fall 2026' only with no confirmed extension into Winter/Spring 2027 — excluded on season grounds pending clearer evidence." },
+  { Company: "RTX / Collins Aerospace", "Role(s) Checked": "'Certification Engineering Co-op (Summer/Fall 2027)', req 01874662, Winston-Salem, NC (sibling of the newly-added Winter/Spring 2027 req 01871317, same site)", "Reason": "2026-09-28 ~07:00 UTC: confirmed a distinct sibling req exists at the same site/team but for Summer/Fall 2027 — wrong season, not added." },
+  { Company: "RTX / Pratt & Whitney Canada", "Role(s) Checked": "Multiple 'Hiver 2027' ('Winter 2027') co-op postings found via targeted Workday CXS search", "Reason": "2026-09-28 ~07:00 UTC: located at P&W Canada sites (Longueuil/Saint-Hubert/Mirabel, QC) — excluded on location grounds, Hamza's search is US-only." },
+  { Company: "Karman Space & Defense", "Role(s) Checked": "Re-check via ADP WorkforceNow client ID lookup + Karman's own public internship-program page", "Reason": "2026-09-28 ~07:00 UTC: the ADP job posting itself remains fully unreachable (JS/browser-compatibility gate blocks both curl and WebFetch). However, Karman's own careers/internships page states its general internship program runs on a single annual cycle with 'start dates... typically begin in May or June and conclude in August or September' (deadline April 30) — i.e., summer-only by design. Still flagged inconclusive rather than dropped outright, since a specific division could post an off-cycle Winter/Spring req the general page doesn't describe, but this lowers the priority for future re-checks." },
+  { Company: "Parker Hannifin", "Role(s) Checked": "Correct portal identified (parkercareers.ttcportals.com), Cloudflare-protected", "Reason": "2026-09-28 ~07:00 UTC: found the real portal domain (parkercareers.ttcportals.com, not Workday/Taleo) but it's behind a Cloudflare managed challenge that blocks both curl and WebFetch (403 'Just a moment...'). Aggregator-only mentions of a '2027 Manufacturing Engineering Co-Op' and a 'Product Engineering Co-Op' remain unconfirmed by any primary source — not added." },
+  { Company: "Lam Research", "Role(s) Checked": "Fresh re-check, careers.lamresearch.com university programs", "Reason": "2026-09-28 ~07:00 UTC: no change — no 2027-season listings posted yet, current visible reqs are Summer 2026/Summer 2027 only." },
+  { Company: "Fresh untried-company pass, 2026-09-28 ~07:00 UTC", "Role(s) Checked": "Vertiv (Summer 2027 mechanical/thermal intern only — wrong season), Barnes Aerospace ('Engineering Co-Op (Start ASAP)', rolling posting with no stated season — could not confirm Winter/Spring 2027 term from primary source), ATI/Allegheny Technologies (only a Jun 2026/Summer R&D-Metallurgy intern listed — wrong season), Triumph Group (careers site lists only generic Internship/Engineering categories, no specific 2027-season req surfaced within time budget).", "Reason": "No Winter 2026/Spring 2027-dated, discipline-matching, independently verifiable posting found for any of the four within this run's time budget." },
+  { Company: "Regal Rexnord", "Role(s) Checked": "'Application Engineer Co-op (Spring 2027)', Tipp City, OH", "Reason": "2026-09-28 ~07:00 UTC: multiple aggregators (Dreamwork, Workopia, zapply) describe this as a live Spring 2027 posting with a $40k-$50k range, but the employer's own careers.regalrexnord.com search is JS-rendered and no matching live req could be located directly — the closest indexed req number (R25_04222, 'Application Team Co-Op') appears to be an undated/prior-cycle listing, not confirmed as the same role. Not added without a directly verified posting; worth a targeted re-check next run now that Regal Rexnord is a known-good employer (see `rows` — Charlotte, NC Engineering Co-Op, req R26_04216, added this run)." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];

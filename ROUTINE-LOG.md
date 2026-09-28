@@ -1584,3 +1584,42 @@ Analog Devices R266691 (internally contradictory season text — see above); Cat
 - **Analog Devices R266691** — worth a fresh look if the internal season contradiction gets corrected on either side.
 - **Waters Corporation, SharkNinja, Analog Devices (general), Lam Research, Parker Hannifin, Karman Space & Defense** — all unchanged, long-recurring notes.
 - **General note**: after 9+ days of near-daily sweeps, mainstream Boston-area and aerospace/defense employer coverage remains essentially saturated. This run's 3 new finds all came from previously-untried companies (RTX/Collins, Applied Materials) rather than re-sweeping known majors — future runs should keep prioritizing genuinely untried companies/sites over re-treading exhausted ones.
+
+---
+
+## 2026-09-28 ~07:00 UTC
+
+### Sync
+Fresh container: local `master`/cached `origin/master` were stale (10 commits behind, at the 2026-09-25 19:00 UTC commit) while detached HEAD was already at the true latest (`1834229`, the 2026-09-28 01:00 UTC run). `git fetch origin master` confirmed HEAD was in fact an ancestor of the real `origin/master` — no work at risk, just a stale cached ref (same recurring container quirk noted in prior runs). Ran `git checkout -B master origin/master` to get onto a clean tracking branch before editing.
+
+### What was searched
+Delegated to two parallel research agents, briefed with the full list of 248 already-tracked companies to avoid duplicate effort:
+- **Boston-area re-check agent**: focused re-verification of 7 flagged items — Applied Materials (Gloucester, MA) full re-sweep, Analog Devices req R266691 fresh look, Draper Laboratory/GE Aerospace/MIT Lincoln Laboratory periodic re-checks, Waters Corporation, SharkNinja.
+- **National sweep agent**: RTX/Collins/Pratt & Whitney targeted Workday re-sweep (found the correct CXS site slug `REC_RTX_Ext_Gateway`), Karman Space & Defense, Parker Hannifin, Lam Research, plus a fresh untried-company pass (Vertiv, Regal Rexnord, Barnes Aerospace, ATI, Triumph Group).
+
+Every specific req/URL either agent reported was independently re-fetched and cross-checked by this session directly (RTX Cedar Rapids req 01871473, RTX Winston-Salem req 01871317, and Regal Rexnord req R26_04216 were all re-verified first-hand via curl/Workday CXS API or WebFetch before being added — not just trusted from the agent reports).
+
+### Added to `rows` (3 new, all Yes)
+- **RTX / Collins Aerospace — Chemical/Materials Engineering Co-op (Winter/Spring 2027)**, Cedar Rapids, IA, req 01871473. TIME-SENSITIVE: posting's own end date is 2026-10-03. Title says Chemical/Materials but body describes Industrial Engineering manufacturing-process work on the Z-Fab wafer fab team. U.S. citizenship strictly required.
+- **RTX / Collins Aerospace — Certification Engineer Co-Op (Winter/Spring 2027)(Onsite)**, Winston-Salem, NC, req 01871317. FAA certification (structural/flammability) of aircraft seats. Mechanical/Aerospace/Materials/Chemical majors. Requires U.S. Person status (ITAR), not strictly citizenship.
+- **Regal Rexnord — Engineering Co-Op**, Charlotte, NC, req R26_04216. New company for the tracker. "Co-Op Start: Winter/January 2027," 3-4 months. Eligibility/citizenship requirements not stated on posting — confirm on the live form.
+
+### Data-quality fixes (found during Applied Materials re-verification, not new postings)
+- Removed a duplicate row: the 2026-09-20 "Partial" entry for Applied Materials' "2027 Spring Mechanical Engineer Co-op" (req R2628290) was the same posting as an already-existing fully-verified entry for the same req added later — kept the stronger-verified one, deleted the weaker duplicate (net -1 row from this cause, independent of the +3 above).
+- Corrected a mislabeled req ID: the "Product Quality Engineer Co-op" row's Notes cited "Req R2628290" (copy-paste from the Mechanical Engineer req) — fixed to its actual req, R2628291, confirmed via fresh direct fetch.
+
+### Added to `checked` (10 new entries)
+Applied Materials R2628288 (Electrical Engineer Controls/PCB Co-op — discipline-borderline, could not independently locate a working direct URL this run); Applied Materials R2611503 (Process Engineer Co-op Doctorate — PhD-only, Fall-2026-only season, no confirmed Spring 2027 extension); RTX/Collins req 01874662 (Certification Engineering Co-op sibling at the same Winston-Salem site, but Summer/Fall 2027 — wrong season); RTX/Pratt & Whitney Canada ("Hiver 2027" co-ops at Longueuil/Saint-Hubert/Mirabel, QC — excluded on location, US-only search); Karman Space & Defense (ADP posting still unreachable, but their own internship-program page confirms a summer-only annual cycle — lowers priority for future re-checks); Parker Hannifin (real portal identified as parkercareers.ttcportals.com, still Cloudflare-blocked); Lam Research (no change, 2027 cycle not yet posted); a consolidated fresh-untried-company entry (Vertiv, Barnes Aerospace, ATI, Triumph Group — no qualifying finds); Regal Rexnord's Tipp City, OH "Application Engineer Co-op (Spring 2027)" (aggregator-only, could not locate/verify a matching live req on the employer's own site).
+
+### Staged applications created (3 files, `staged-applications/`)
+`rtx-collins-chemical-materials-engineering-coop-cedar-rapids-ia.md`, `rtx-collins-certification-engineer-coop-winston-salem-nc.md` (both flag the ITAR/U.S. Person and U.S.-citizenship requirements respectively), `regal-rexnord-engineering-coop-charlotte-nc.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the `.xlsx`: "Winter26-Spring27 Internships" went from 229 → 231 data rows (+3 new, -1 duplicate removed). "Checked - Not Included" went from 426 → 436 entries (+10, matching the 10 new `checked` entries above).
+
+### Worth re-checking next time
+- **RTX/Collins/Pratt & Whitney** — the correct Workday CXS site slug is `REC_RTX_Ext_Gateway` at `globalhr.wd5.myworkdayjobs.com` (not a guessed tenant/site name) — use this directly for future RTX re-checks instead of the broad, too-noisy public search. The Cedar Rapids Chemical/Materials req (01871473) closes 2026-10-03 — remove/move to `checked` next run if Hamza hasn't applied and it's since closed.
+- **Applied Materials (Gloucester, MA)** — the "Electrical Engineer (Controls, PCB) Co-op" req (R2628288) is a genuine discipline judgment call (Controls is on Hamza's target list) that couldn't be independently verified this run due to the site's JS-rendered filtering — worth a dedicated direct-URL hunt next run if Hamza wants it considered.
+- **Regal Rexnord** — newly confirmed as a real, currently-hiring employer (Charlotte, NC req live). Worth a fuller site sweep next run for other Winter/Spring 2027 engineering co-ops, and a specific re-check of the unverified Tipp City, OH lead.
+- **Karman Space & Defense, Parker Hannifin, Lam Research, Waters Corporation, SharkNinja, Analog Devices R266691, Moog R-26-20226/R-26-20243** — all unchanged or newly deprioritized (see above), long-recurring notes.
+- **General note**: this run avoided re-treading the now twice-saturated full sweeps (Entegris, GE Aerospace, Draper, MIT Lincoln Lab, Blue Origin, Rocket Lab, Varda, Hermeus, Anduril) per the prior run's recommendation, and focused instead on targeted re-checks and genuinely untried companies (Regal Rexnord, Barnes Aerospace, ATI, Triumph Group, Vertiv) — this remains the higher-yield strategy at this stage of saturation.
