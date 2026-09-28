@@ -1660,3 +1660,46 @@ Updated in place: the Applied Materials R2628288 entry (resolved with a working 
 - **Flowserve (Houston, TX)** — a real, apparently-open "Engineering Co-op" req exists but never states a season anywhere in the posting; worth a periodic re-check in case a dated version appears.
 - **Karman Space & Defense, Parker Hannifin, Lam Research, Waters Corporation, SharkNinja, Analog Devices R266691, Moog R-26-20226/R-26-20243** — all unchanged, long-recurring notes.
 - **General note**: this run's one data-quality catch (independently re-deriving the correct Applied Materials req ID rather than trusting a research agent's transcription) reinforces the standing practice of re-verifying agent claims directly against the primary source, especially on a site/company that has already produced one req-ID mislabeling in a prior run.
+
+---
+
+## 2026-09-28 ~19:00 UTC
+
+### Sync
+Fresh container, HEAD was detached 14 commits ahead of the cached local `master`/`origin/master` (a stale ref) — `git fetch origin master` confirmed HEAD was in fact `origin/master`'s true tip (`f3e8c22`, the 13:00 UTC run's commit), just a stale local cache (same recurring container quirk noted in prior runs). Ran `git checkout master && git merge --ff-only f3e8c22` to get onto a clean tracking branch before editing.
+
+### What was searched
+Delegated to two parallel research agents, each briefed with the current saturation state and told to grep build.mjs before calling anything "new":
+- **Boston-area agent**: the 5 priority items from the 13:00 UTC run's "worth re-checking" notes — RTX/Collins Cedar Rapids req 01871473 (closing 2026-10-03), the Applied Materials "Product Quality Engineer Co-op" req-ID label (R2628291, previously not independently re-verified), Skyworks Solutions (any new mechanical/hardware/test co-op beyond the excluded EE-only Andover posting), light periodic re-checks (GE Aerospace, Draper, MIT Lincoln Lab, Entegris, Insulet), plus a fresh pass on 8 untried Boston-metro hardware/industrial companies.
+- **National agent**: a fuller Regal Rexnord sweep, a Flowserve (Houston) re-check, light re-checks (Karman, Parker Hannifin, Lam Research, Waters, SharkNinja, Analog Devices R266691, Moog R-26-20226/R-26-20243), plus a fresh national pass for untried companies.
+
+Every specific req/URL either agent reported was independently cross-checked by this session against `build.mjs` (grep by company/req ID) before any edit. This session independently re-fetched and confirmed all 5 new-posting candidates itself via direct API/WebFetch calls (not just trusted from the agent reports) before adding anything to `rows`: Regal Rexnord R26_04736 and R26_04469 and Crane Company JR102518/JR102520/JR102521 via curl against each employer's own Workday CXS API (all returned HTTP 200, canApply-eligible, correct titles/season text, no filled/closed language), Flex WD229697 the same way (confirmed pay range and explicit "Is Sponsorship Available? No" text), and Skyworks req 78294 via WebFetch (confirmed req ID, season quote, pay range, Apply button). Also independently re-confirmed Kairos Power's exclusion via direct fetch of their Greenhouse board (10/10 season mentions were "Summer 2027", zero Winter/Spring 2027).
+
+### Priority re-check results (no edits needed)
+- **RTX/Collins Cedar Rapids req 01871473** — still live (Boston agent), `endDate: 2026-10-03`, "4 days left to apply" as of this run. Already correctly in `rows`; flagging again as time-sensitive.
+- **Applied Materials req R2628291 ("Product Quality Engineer Co-op")** — confirmed CORRECT via direct fetch of the Eightfold-hosted JSON-LD (`"identifier": "R2628291"`), cross-checked against the already-tracked Oracle/Taleo mirror (same title/pay/description). No correction needed; this closes out the "worth re-verifying" flag from the 13:00 UTC run.
+
+### Added to `rows` (5 new, all Yes — independently verified by this session, not just the delegated agents)
+- **Skyworks Solutions — Microelectronics / Semiconductor Packaging Co-Op**, Nashua, NH (req 78294) — Winter/Spring 2027 (Jan–June), $26.00–$47.50/hr. Notable: the first Skyworks co-op found that isn't EE-only — explicitly also accepts Mechanical/Chemical/Materials Science/Industrial Engineering. Closest new find to Boston this run (~40 mi).
+- **Regal Rexnord — Application Team Co-Op (Spring 2027)**, Tipp City, OH (req R26_04736) — distinct from the already-tracked R26_04440 at the same site.
+- **Regal Rexnord — Sound Lab Co-op (Spring 2027)**, Fort Wayne, IN (req R26_04469) — acoustics/vibration testing.
+- **Crane Company (Crane Pumps & Systems) — Engineering Co-op Spring 2027-1**, Piqua, OH — new company; 3 parallel open reqs (JR102518, JR102520, JR102521), all independently confirmed live.
+- **Flex (Flextronics International) — Mechanical Engineering Co-Op - Spring 2027**, Libertyville, IL (req WD229697) — new company; $27.50–$44.50/hr, explicit "no sponsorship" language (not a citizenship/ITAR requirement).
+
+### Added to `checked` (12 new entries)
+Skyworks Woburn "Quality Systems Data Analyst Winter/Spring Co-Op" (req 78511 — technically Industrial-Engineering-eligible but the work is data-analytics/business-process, not engineering; flagged for Hamza's own judgment call, same treatment as the Berkshire Grey precedent); Kairos Power (all 5 current internships confirmed Summer-2027-only via direct Greenhouse fetch); Watts Water Technologies, North Andover MA (zero live Intern/Co-Op postings on their full 252-posting Workday board); Ameren (403-blocked, conflicting/stale-looking aggregator data, unverifiable); Arkwin Industries (no co-op found on the company's own listing page); Crane Aerospace & Electronics req JR102436, Elyria OH (real and open but season-ambiguous and ITAR-restricted — distinct division from the new Crane Pumps & Systems row); Flowserve req R-17161 (confirmed closed, also wrong year); Flowserve Houston "Engineering Co-op" (re-check, still no season stated, unchanged); two stale Regal Rexnord reqs R25_00369/R24_01240 (re-confirmed 404, consistent with 5 others found last run); SharkNinja (re-check, still Fall-2026/Summer-2027 only); Analog Devices R266691 (re-check, internal season contradiction still unfixed); a consolidated Boston-area fresh-pass entry (Sensata Technologies, Harmonic Drive LLC, ClearMotion — confirmed no current postings; QinetiQ/Foster-Miller, MilliporeSigma, 6 River Systems/Ocado, Vention — blocked/unresolved rather than confirmed dead).
+
+### Staged applications created (5 files, `staged-applications/`)
+One per new fully-verified row: `skyworks-microelectronics-packaging-coop-nashua-nh.md`, `regal-rexnord-application-team-coop-tipp-city-oh.md`, `regal-rexnord-sound-lab-coop-fort-wayne-in.md`, `crane-pumps-systems-engineering-coop-piqua-oh.md` (notes the 3 parallel req IDs), `flex-mechanical-engineering-coop-libertyville-il.md` (flags the "no sponsorship" language).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the `.xlsx`: "Winter26-Spring27 Internships" went from 232 → 237 data rows (+5, matching the 5 new rows above). "Checked - Not Included" went from 448 → 460 entries (+12, matching the 12 new `checked` entries above).
+
+### Worth re-checking next time
+- **RTX/Collins Cedar Rapids req 01871473** — closes 2026-10-03 (days away at time of this run). Re-verify next run and move to `checked` if closed by then.
+- **QinetiQ North America / Foster-Miller (Waltham, MA)** — a real Boston-area defense R&D employer whose iCIMS board blocks automated keyword search (HTTP 405) and whose marketing site is JS-rendered with no server-side job listings. Worth a dedicated headless-browser attempt (the method that worked for Eaton/Textron/Buro Happold/Karman per much earlier notes).
+- **Crane Company** — newly confirmed as a real, currently-hiring employer with two divisions (Crane Pumps & Systems, tracked; Crane Aerospace & Electronics, ITAR-restricted/season-ambiguous, excluded). Worth a fuller sweep of other Crane Pumps & Systems sites next run given the clean Workday API access.
+- **Flex (Flextronics)** — newly confirmed as a real employer with clean Workday CXS API access (no JS-blocking observed). Worth a fuller sweep of other Flex sites for Winter/Spring 2027 co-ops.
+- **Ameren** — 403-blocked this run (unlike Regal/Crane/Flex/ADI which all worked cleanly via the same method) despite a plausible-looking aggregator lead; worth a re-check with different tooling/timing given the mixed signals (conflicting pay ranges, one stale-looking deadline).
+- **Karman Space & Defense, Parker Hannifin, Lam Research, Waters Corporation, Moog R-26-20226/R-26-20243** — all unchanged, long-recurring notes; not re-checked this run per the "light effort, don't over-invest" guidance given how recently they were last verified.
+- **General note**: at this saturation level (237 rows, ~463 checked entries, 260+ unique companies), the highest-yield activity remains finding genuinely untried companies with clean (non-JS-blocked) career sites — this run's 2 new companies (Crane, Flex) both came from a fresh national pass rather than re-treading known majors, consistent with the pattern noted in prior runs.
