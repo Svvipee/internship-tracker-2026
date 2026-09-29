@@ -1752,3 +1752,48 @@ Ameren req 034022 (Mechanical Engineering Spring Co-Op — resolved the standing
 - **Ameren req 034022** — title/qualifications discipline contradiction (Mechanical title, Electrical Engineering quals text) unresolved; worth a direct call/email to Ameren recruiting if Hamza wants to pursue it, otherwise leave excluded.
 - **Karman Space & Defense, Parker Hannifin, Lam Research, Waters Corporation, Moog R-26-20226/R-26-20243** — all unchanged, long-recurring notes.
 - **General note**: at 243 rows / ~475 checked entries / 270+ unique companies, coverage remains highly saturated; this run's highest-yield finds again came from (a) a fuller sweep of a very recently-discovered employer (Flex's other Libertyville/Orangeburg reqs) and (b) a genuinely new company (DEKA) — both patterns worth continuing to prioritize over re-treading long-saturated majors.
+
+## 2026-09-29 ~07:00 UTC
+
+### Sync
+Fresh container, `HEAD` was detached at the 09-29 ~01:00 UTC commit (`ddb01d4`) while the local `master` ref was stale at the 09-25 ~19:00 UTC commit — same recurring stale-local-ref quirk as prior runs, confirmed via `git fetch` that `origin/master` was already at `ddb01d4` (no work at risk). `git checkout master && git merge --ff-only origin/master` fast-forwarded cleanly before any edits.
+
+### What was searched
+Delegated to two parallel research agents, each briefed with the current ~276-entry already-tracked company list:
+- **Boston-area agent**: RTX/Collins Cedar Rapids req 01871473 re-check (closing 2026-10-03), Boston Dynamics req R2496 (previously 403-blocked), MACOM Technology Solutions, CIRCOR International, Siemens Grand Prairie TX lead, Flex Hollis NH reqs, plus a fresh Boston-area/New England pass.
+- **National agent**: Karman/Parker Hannifin/Lam Research/Waters/Moog re-checks, Ameren req 034022, The Nuclear Company, a fresh national pass for new companies, and a fuller-sweep re-check of Crane Company/Flex/Regal Rexnord.
+
+Every specific req/URL either agent reported was independently cross-checked by this session against `build.mjs` (by REQ ID/job ID) before any edit — this caught several false "NEW" claims (see below).
+
+### Corrections to agent reports (no edit made, or edit reversed from what was reported)
+- The national agent reported Moog R-26-20226/R-26-20243 as a "breakthrough — genuinely OPEN, status changed." Cross-check found its own quoted body text ('seeking a spring block intern' / 'spring/summer 2027 block intern') byte-for-byte identical to wording re-confirmed unchanged earlier the same day and in 5+ prior runs — a misread, not a real change. Exclusion reconfirmed, logged in `checked`.
+- The national agent reported Flex Libertyville reqs (WD229697/8/9, WD229696) and Regal Rexnord reqs (R26_04736, R26_04216) and Crane Piqua reqs (JR102518/20/21) as "NEW" — all four were already added to `rows` in the 2026-09-29 ~01:00 UTC run. Not re-added.
+- The Boston-area agent reported General Dynamics Mission Systems as "not currently in your tracked list" — it is (multiple existing entries). No action needed.
+- Independently re-fetched Axcelis's own postings rather than trusting the national agent's "2 solidly confirmed + 2 high-confidence" framing — found req 11590 has an internal Winter-2027-header-vs-summer-2026-body contradiction the agent didn't surface, and reqs 12001/12009 lack a year entirely — both excluded rather than added, despite the agent's more optimistic read.
+
+### Added to `rows` (3 new, all Yes)
+- **Axcelis Technologies — Engineering Co-op (Warehouse Solutions)**, Beverly, MA, req 12018 (Winter/Spring 2027, Jan 4–Jun 25, 2027, explicit year). New company for the tracker — semiconductor ion-implantation equipment maker, ~25 mi from Boston. Industrial Engineering discipline (mechanical also accepted per posting).
+- **Flex — Mechanical Engineering Co-op**, Hollis, NH, req WD226382 (Jan–Jun 2027). **TIME-SENSITIVE: posting's own end date is 2026-09-30**, ~1 day left as of this run. A prior run excluded this on a title-only technicality; body text explicitly states the year, so it was re-evaluated and added.
+- **Flex — NPI Process Engineering Co-op**, Hollis, NH (body says Nashua, NH site), req WD226387 (Jan–Jun 2027). Sibling to WD226382, no end date populated (less urgent).
+
+All three independently verified via direct fetch of each employer's own Workday CXS API — not just trusted from the research agents' reports.
+
+### Added to `checked` (12 new entries)
+Moog R-26-20226/R-26-20243 (re-confirmed unchanged, correcting this run's false "breakthrough" report); Axcelis's 5 excluded sibling reqs (11590 season-contradiction, 12001/12009 no-year, 12008/12010 wrong-season, 12019 wrong-discipline); Flex WD226386 (Hollis NH, Electrical Engineering — wrong discipline); Siemens Grand Prairie TX req 521404 + sibling (RESOLVED access block via jobs.siemens.com direct fetch — confirmed real and in-season, but both require current enrollment at UT Arlington specifically, an eligibility bar Hamza can't meet); Boston Dynamics req R2496 (RESOLVED — confirmed closed/removed via a full 77-req company-wide Workday sweep); CIRCOR International (RESOLVED access block via its real ATS, UltiPro — only open internship is an evergreen, no-season Tampa FL posting); MACOM Technology Solutions (specific req IDs now on record — 2589/2606/2611/2612/2623 — still blocked by Cornerstone's API even with an extracted bearer token); MITRE Corporation (new company, Summer-only found); VulcanForms (new company, zero co-ops currently open); a consolidated Oklo/Redwood Materials/X-energy/K2 Space/Radiant Industries/Ursa Major nuclear-and-space-adjacent entry (all wrong season); Crane Company's 3 Spartanburg SC reqs (no season stated); a consolidated 6 River Systems/RightHand Robotics/Soft Robotics/Repligen/Kongsberg(Hydroid)/Myomo fresh-pass entry (nothing found, not conclusively ruled out).
+
+### Priority re-check results (no edit needed)
+- RTX/Collins Cedar Rapids req 01871473 — still open, reposted again, endDate 2026-10-03, ~3 days left. Already correctly in `rows`.
+- Draper Laboratory, GE Aerospace, MIT Lincoln Laboratory — no changes from earlier today's periodic re-sweep.
+
+### Staged applications created (3 files, `staged-applications/`)
+`axcelis-engineering-coop-warehouse-solutions-beverly-ma.md`, `flex-mechanical-engineering-coop-hollis-nh.md` (flags the ~1-day-left deadline prominently), `flex-npi-process-engineering-coop-hollis-nh.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the `.xlsx`: "Winter26-Spring27 Internships" went from 243 → 246 data rows (+3). "Checked - Not Included" went from 475 → 487 entries (+12).
+
+### Worth re-checking next time
+- **Flex Mechanical Engineering Co-op WD226382 (Hollis, NH)** — if not already applied to, this closes 2026-09-30; confirm status and move to `checked` if it has closed by the next run.
+- **MACOM Technology Solutions** — specific req IDs (2589/2606/2611/2612/2623) are now on record; worth a dedicated headless-browser attempt against macomtech.csod.com given the plausible Boston-area fit.
+- **Karman Space & Defense, Parker Hannifin, Lam Research, Waters Corporation** — still blocked despite fresh direct-API attempts this run (Karman: no reqs discoverable on their own internship page; Parker: Cloudflare 403; Lam: Eightfold API returns config only; Waters: iCIMS redirects job IDs to a marketing page) — long-recurring, worth a headless-browser attempt.
+- **6 River Systems, RightHand Robotics, Soft Robotics, Repligen, Kongsberg/Hydroid, Myomo, Motional (Boston, MA robotics/AV)** — quick searches found nothing actionable but none conclusively ruled out; worth a more focused direct-ATS look.
+- **General note**: at 246 rows / 487 checked entries, coverage remains highly saturated; this run's highest-yield finds again came from (a) a genuinely new Boston-area company (Axcelis) and (b) correcting a previously-excluded req after realizing the exclusion reason (title-only season check) was overly strict compared to how the tracker treats title/body discrepancies elsewhere (Flex Hollis NH). Continue prioritizing genuinely untried companies and re-reading full body text on borderline exclusions over re-treading fully-saturated majors.
