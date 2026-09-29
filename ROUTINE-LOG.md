@@ -1797,3 +1797,46 @@ Moog R-26-20226/R-26-20243 (re-confirmed unchanged, correcting this run's false 
 - **Karman Space & Defense, Parker Hannifin, Lam Research, Waters Corporation** — still blocked despite fresh direct-API attempts this run (Karman: no reqs discoverable on their own internship page; Parker: Cloudflare 403; Lam: Eightfold API returns config only; Waters: iCIMS redirects job IDs to a marketing page) — long-recurring, worth a headless-browser attempt.
 - **6 River Systems, RightHand Robotics, Soft Robotics, Repligen, Kongsberg/Hydroid, Myomo, Motional (Boston, MA robotics/AV)** — quick searches found nothing actionable but none conclusively ruled out; worth a more focused direct-ATS look.
 - **General note**: at 246 rows / 487 checked entries, coverage remains highly saturated; this run's highest-yield finds again came from (a) a genuinely new Boston-area company (Axcelis) and (b) correcting a previously-excluded req after realizing the exclusion reason (title-only season check) was overly strict compared to how the tracker treats title/body discrepancies elsewhere (Flex Hollis NH). Continue prioritizing genuinely untried companies and re-reading full body text on borderline exclusions over re-treading fully-saturated majors.
+
+## 2026-09-29 ~13:00 UTC
+
+### Sync
+Fresh container. `git status` initially showed a detached `HEAD` at `d39ed12` (the 09-29 ~07:00 UTC run's commit) while the local `master` ref was stale, pointing at the 09-25 ~19:00 UTC commit (`3701715`) — same recurring stale-local-ref container quirk as prior runs. Ran `git fetch origin master` and confirmed `origin/master` was in fact already at `d39ed12` — no divergence, no work at risk. `git checkout master && git merge --ff-only d39ed12` fast-forwarded cleanly before any edits.
+
+### What was searched
+Delegated to two parallel research agents, each briefed with the current ~246-row/489-checked tracked state:
+- **Boston-area agent**: priority re-checks — Flex Hollis NH WD226382 (closing today, 2026-09-30), RTX/Collins Cedar Rapids req 01871473 (closing 2026-10-03), MACOM Technology Solutions (known req IDs), Karman/Parker Hannifin/Lam Research/Waters Corporation (persistently blocked), a fresh look at 6 River Systems/RightHand Robotics/Soft Robotics/Repligen/Kongsberg-Hydroid/Myomo/Motional, periodic GE Aerospace/Draper/MIT Lincoln Lab re-sweeps, plus a fresh Boston-area/New England pass.
+- **National agent**: fuller sweeps of Crane Company, Flex, and Regal Rexnord (recently-confirmed employers), light re-checks of Karman/Parker Hannifin/Lam Research/Waters/Moog, The Nuclear Company re-check, plus a fresh national pass for untried companies.
+
+Every specific req/URL either agent reported was independently cross-checked by this session against `build.mjs` (by req/job ID) before any edit — this caught several already-tracked items misreported as new by the agents (Draper JR002882/2883/2884, RTX 01871736, GE R5029617/R5029663, MIT LL Group 08-35, and all three Anduril Costa Mesa job IDs the national agent flagged as "ambiguous" — all three, 5236587007/5236583007/5236585007, are in fact already in `rows`).
+
+### Priority re-check results (no edit needed)
+- **Flex Hollis NH WD226382** — confirmed still open at check time (canApply true, "15 hours left to apply" per the Boston-area agent's fetch) but closes 2026-09-30 — likely already closed by the time this log is read. Already correctly in `rows`, flagged again.
+- **RTX/Collins Cedar Rapids req 01871473** — NOT closed; reposted 2026-09-27, still shows Apply Now, no filled/closed markers. Already correctly in `rows` as time-sensitive (endDate 2026-10-03).
+- **Draper Laboratory, GE Aerospace, MIT Lincoln Laboratory** — no changes beyond what's already tracked.
+- **MACOM Technology Solutions** — still fully blocked (Cornerstone REST API now returns 401 instead of a flat block, but no usable public API found). Karman (real domain now `karman-sd.com`, not `karmanspace.com` — old domain is dead; public page suggests a Summer-only program). Parker Hannifin, Lam Research (now identified as running on Eightfold AI), Waters Corporation — all still blocked, unchanged.
+
+### Added to `rows` (2 new, both Yes — independently re-verified by this session, not just the delegated agents)
+- **RTX / Collins Aerospace — Mechanical Engineering Co-op (Winter/Spring 2027)**, Cedar Rapids, IA, req 01872047 (posted 2026-09-28). Displays/Controls/Computing & Networking dept — cockpit displays, servo actuation, avionics hardware. U.S. citizenship required, no clearance. Distinct from the already-tracked Chemical/Materials Co-op (01871473) and Mechanical Design Co-op (01871736, Jamestown ND) at the same company. Verified via direct fetch of raw HTML/JSON-LD (bypassing careers.rtx.com's Phenom-SPA WebFetch unreliability — the Boston-area agent flagged that WebFetch can wrongly report "no longer available" on live RTX/GE Phenom pages; raw curl + JSON-LD is the reliable method going forward).
+- **Flex (Flextronics International) — Mechanical Engineering Co-op - Spring 2027**, Orangeburg, SC, req WD227049 (posted 2026-09-03). **TIME-SENSITIVE: closes 2026-10-03, ~3 days left as of this run.** URL slug reads "Fall-2026" (stale rename leftover, same pattern as the already-tracked WD226357 at the same site) but title/body explicitly say "Spring 2027" — treated as authoritative. No visa sponsorship (not citizenship/ITAR). Verified via direct fetch of Flex's own Workday CXS API.
+
+### Added to `checked` (8 new entries)
+Crane Company's Marion NC/Saddle Brook NJ reqs (JR102585, JR102567, JR102566, JR102564, JR102570 — no season stated, company-wide sweep now fully saturated); Regal Rexnord (full 529-req company-wide sweep, fully saturated, no new reqs beyond already-tracked); Flex's Injection Molding Co-Op WD229347 (Libertyville IL — no season + stale past end-date); Moog's new Buffalo NY req R-26-20334 (Summer 2027, wrong season); The Nuclear Company (re-check, still Summer-only for engineering disciplines); Stanley Black & Decker (new company, Summer-2027-only); AMETEK (new company, one target-discipline req but no season stated); Curtiss-Wright (new company, only qualifying-discipline req is a no-year evergreen template, though a same-company Spring-2027-dated Supply Chain req confirms they do run a real Spring 2027 cycle).
+
+### Staged applications created (2 files, `staged-applications/`)
+`rtx-collins-mechanical-engineering-coop-cedar-rapids-ia.md`, `flex-mechanical-engineering-coop-orangeburg-sc.md` (flags the ~3-day-left deadline prominently).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via source-count check (Company: occurrences before/after the `checked` array boundary): "Winter26-Spring27 Internships" rows went from 246 → 248 (+2, matching the 2 new rows above). "Checked - Not Included" entries went from 489 → 497 (+8, matching the 8 new `checked` entries above).
+
+### Worth re-checking next time
+- **Flex Hollis NH WD226382** — closes 2026-09-30 (today/tomorrow depending on timezone); confirm status and move to `checked` if closed by next run.
+- **Flex Orangeburg SC WD227049** (newly added) — closes 2026-10-03; confirm status next run.
+- **RTX/Collins Cedar Rapids req 01871473** — still repeatedly reposted with endDate 2026-10-03; re-verify next run and move to `checked` if it has finally closed.
+- **Karman Space & Defense** — domain has moved to `karman-sd.com` (`karmanspace.com` is dead/NXDOMAIN); worth a fresh look at the new domain's actual job board (behind an external ADP portal link not yet reached) rather than continuing to treat it as unreachable.
+- **Lam Research** — now identified as running on Eightfold AI (`lamresearch.eightfold.ai`); the `/api/apply/v2/jobs` endpoint 403's with "Not authorized for PCSX" — worth a different query approach given the platform is now known.
+- **MACOM Technology Solutions** — Cornerstone REST API now returns 401 (vs. a flatter block previously) with the page's embedded bearer token — incremental progress; still worth a headless-browser attempt given the plausible Boston-area fit (Lowell, MA).
+- **Curtiss-Wright** — confirmed to run a real Spring 2027 cycle (via a Supply Chain intern req) but no matching engineering-discipline req is live yet; worth a periodic re-check.
+- **RTX/GE Phenom-SPA pages (careers.rtx.com, careers.geaerospace.com)** — WebFetch's markdown conversion has been observed to unreliably report "no longer available" even on genuinely live postings; use raw HTML + JSON-LD `JobPosting` block fetches for these two employers going forward rather than trusting a single WebFetch read.
+- **Karman Space & Defense, Parker Hannifin, Waters Corporation** — still blocked, long-recurring.
+- **General note**: at 248 rows / 497 checked entries / 280+ unique companies, both Crane Pumps & Systems and Regal Rexnord were confirmed via full company-wide sweeps (not samples) to be fully saturated this run — deprioritize further full sweeps of those two absent a posting refresh. Highest-yield activity remains genuinely untried companies and re-reading full body text on season-ambiguous URL-slug-vs-title discrepancies (this run's Flex Orangeburg find repeated that exact pattern from a prior run).
