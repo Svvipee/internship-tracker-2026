@@ -2024,3 +2024,56 @@ As in every prior run, nearly every specific req/URL either agent reported as "n
 - **PPL Corporation/LG&E-KU, Precision Castparts Corp** — both long-standing-pattern aggregator-only leads with bot-blocked real ATS; low priority unless a new access method becomes available.
 - **Trane Technologies** — 4 confirmed-live reqs excluded purely on season-not-stated grounds; worth a periodic re-check in case Trane posts a dated "Spring 2027" version of the same roles.
 - **General note**: at 274 rows / 527 checked entries / ~316 unique companies, this run's independent-cross-check step caught the priority agent reporting roughly a dozen already-tracked req IDs as "new" — consistent with the pattern noted in nearly every prior run's log. The 3 new rows the priority agent did surface (Buro Happold Structural, Insulet Quality Engineering, plus the SGH/Cyvl upgrades) came from full company-wide ATS re-sweeps of already-tracked employers rather than brand-new companies; the national agent's fresh sweep (Hydrite Chemical Co., Keurig Dr Pepper) remains the higher-yield source for genuinely new companies at this point in the tracking cycle.
+
+## 2026-09-30 ~19:00 UTC
+
+### Sync
+Fresh container. `git status` showed detached `HEAD` at `53fe18f` (the 13:00 UTC run's commit) with a stale local `master` ref pointing at an older commit — same recurring container quirk noted in every prior run. `git fetch origin master` confirmed `origin/master` matched `HEAD` exactly (no divergence). `git checkout master && git reset --hard origin/master` synced cleanly before any edits.
+
+### What was searched
+Delegated to two parallel research agents:
+- **Priority/Boston-area agent**: re-checked the 8 carry-over items flagged "worth re-checking" by the 13:00 UTC run (RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049/WD226357, GE Aerospace R5029663, Weston & Sampson Engineers, CDM Smith, Trane Technologies, a fresh Draper/GE/MIT LL sweep, and a liveness spot-check on SGH/Cyvl).
+- **National agent**: fresh national sweep for new companies not yet tracked (~24 companies checked; see `checked`).
+
+As in every prior run, every specific req/URL either agent reported was independently cross-checked by this session against `build.mjs` before any edit. This caught that Draper JR002940 and JR002942, and MIT LL req 1434254300 (internal req 43350), which the priority agent reported re-finding, were already correctly tracked in `rows` — no action needed there. This session also independently re-verified (via direct curl to the primary ATS API — Ashby, Lever, or the company's own site) every genuinely-new finding from both agents before adding anything, rather than trusting the agent reports alone.
+
+### Correction to a prior run's classification
+- **Weston & Sampson Engineers (Reading, MA)** — last run logged this as "unverified, worth a dedicated attempt." This run independently confirmed the posting live via direct fetch of the company's own ADP Workforce Now REST API (itemID 9201572098947_1, "Co-Op Civil/Environmental Engineer (Spring 2027)," Reading MA, $22-26/hr, posted 2026-09-03). However, on closer reading the role is **Civil/Environmental Engineering (water/wastewater/stormwater)** — outside Hamza's target discipline list (mechanical, aerospace/systems, manufacturing, robotics, flight systems, industrial, materials, structural, controls). Updated the `checked` entry to reflect verified-but-discipline-mismatch rather than unverified.
+
+### Re-check results (no changes needed)
+- **RTX/Collins Cedar Rapids 01871473** — still live; a closing date of 2026-10-03 has now appeared (previously open-ended). Already documented as time-sensitive in the existing `rows` entry — no edit needed.
+- **Flex Orangeburg WD227049 / WD226357** — both still live, unchanged 2026-10-03 end date, already correctly tracked.
+- **GE Aerospace R5029663** — the marketing portal (careers.geaerospace.com) now returns "no longer posted" for two URL formats tried, but the actual tracked Application Link (a direct Workday job-page URL, not the marketing portal) is independently confirmed still live via GE's own Workday CXS API (canApply true, endDate 2026-11-06). No change to `rows`; logged the marketing-portal/Workday discrepancy in `checked` for future-run awareness.
+- **Draper Laboratory** — full company-wide re-sweep confirmed all live Cambridge MA Spring 2027 co-ops are already tracked or already excluded; continued saturation.
+- **Trane Technologies** — same 4 reqs re-confirmed live (2 freshly reposted with new req numbers) but still no season/year word anywhere in the text; no change to exclusion.
+- **CDM Smith** — re-checked; only Electrical and Environmental co-ops (discipline mismatch) and a Summer-2027 Structural intern (wrong season + wrong type) found; still no qualifying match. Could not find a public API for their JS-rendered iCIMS site.
+
+### Added to `rows` (4 new, all fully verified — Yes, not Partial)
+- **Apex Technology, Inc. (Apex Space)** (new company — satellite bus manufacturer, Los Angeles CA) — "Avionics Test Engineering Internship (Spring 2027)" — confirmed live via direct fetch of Apex's own Ashby posting-api.
+- **Apex Technology, Inc. (Apex Space)** — "Thermal Engineering Internship (Spring or Summer 2027)" — same verification method; posting explicitly offers Spring 2027 as one of two term options, so it qualifies (note added to specify Spring preference).
+- **Layup Parts** (new company — composites manufacturing tech, Huntington Beach CA) — "Manufacturing Engineer Intern," rolling admissions explicitly including Winter and Spring — confirmed live via direct fetch of Lever's own postings API. ITAR-restricted (citizenship/PR/refugee/asylee required).
+- **NDimensions Labs** (new company — early-stage robotics/AI hardware startup, **Boston, MA**) — "Hardware & Electronics Intern, Robotics (Spring 2027)" — confirmed live via direct fetch of the company's own careers page. Small/early-stage company, flagged as a maturity consideration.
+
+### Added/updated in `checked` (8 entries this run)
+- Weston & Sampson Engineers — updated (see Correction above).
+- CDM Smith — updated with fuller re-check detail.
+- GE Aerospace — new entry documenting the R5029663 marketing-portal/Workday discrepancy and the now-expired Lynn MA trade Trainee Co-Ops.
+- Draper Laboratory — new entry documenting the full re-sweep and continued saturation.
+- Trane Technologies — new entry documenting the re-check (no change).
+- Apex Technology, Inc. — new entry for the 5 Apex internships that did NOT qualify (wrong season, software discipline, or EE/sensors discipline mismatch).
+- Foundation Robotics — new company checked; Mechanical Engineer Intern (SF, CA) confirmed live but season not stated on the primary posting itself (only a stale, now-defunct aggregator cache claimed Spring 2027) — fails the season-verification bar, not added.
+- National sweep consolidated entry — 22 additional companies checked with no qualifying opening found (Carbon Inc., Scout Space, KYOCERA SENCO, The Aerospace Corporation, StandardAero, Second Order Effects, Royal Switchgear, SEACORP, Avion Solutions, Magna International, Saronic Technologies, SmartFlower Solar, Anthro Energy, Amperesand, Moeller Aerospace, Skyways, Nor-Cal Controls ES, AS&T Inc., Dennis Group, General Matter, Lykos Energy, CX2, BMW Group) — reasons vary (closed/404, wrong season, discipline mismatch, or ATS access blocked). See `checked` array for per-company detail.
+
+### Staged applications created (4 files, `staged-applications/`)
+`apex-technology-avionics-test-engineering-internship-spring-2027-los-angeles-ca.md`, `apex-technology-thermal-engineering-internship-spring-or-summer-2027-los-angeles-ca.md`, `layup-parts-manufacturing-engineer-intern-huntington-beach-ca.md`, `ndimensions-labs-hardware-electronics-intern-robotics-spring-2027-boston-ma.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the generated `.xlsx` with the `xlsx` library: "Winter26-Spring27 Internships" went from 274 → 278 data rows (+4, matching the 4 new `rows` entries above). "Checked - Not Included" went from 527 → 533 entries (+6 net new entries; 2 existing entries were edited in place rather than added).
+
+### Worth re-checking next time
+- **RTX/Collins Cedar Rapids 01871473** — now has a 2026-10-03 close date; confirm closed/move to `checked` if it has lapsed by next run.
+- **Flex Orangeburg WD227049 / WD226357** — both close 2026-10-03; confirm status next run.
+- **GE Aerospace R5029663** — Workday backend still shows endDate 2026-11-06 as of this run; keep periodic checks, and note the marketing-portal discrepancy in case it signals an early close.
+- **Apex Technology (Apex Space)** — new company with an active, fast-moving internship slate (multiple reqs posted within the last ~3 weeks); worth a periodic re-sweep in case new qualifying reqs (e.g., a Mechanical Engineering Spring 2027 req, rather than the current Fall-2026-only one) appear.
+- **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation** — all long-standing or newly-found aggregator-only leads with bot-blocked real ATS; low priority unless a new access method becomes available.
+- **Trane Technologies** — still worth a periodic re-check in case a dated "Spring 2027" version of the 4 standing reqs appears.
