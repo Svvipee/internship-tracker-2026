@@ -2946,18 +2946,6 @@ const rows = [
   },
   {
     Company: "Flex (Flextronics International)",
-    "Role Title": "Mechanical Engineering Co-op",
-    Discipline: "Mechanical Engineering",
-    Season: "Winter/Spring 2027 (Jan–Jun 2027)",
-    Location: "Hollis, NH",
-    "Distance from Boston, MA (mi, approx.)": 45,
-    Pay: "Not stated on posting",
-    "Application Link": "https://flextronics.wd1.myworkdayjobs.com/Careers/job/USA-NH-Hollis/Mechanical-Engineering-Co-op_WD226382",
-    "Link Verified": "Yes — fetched directly via Flex's own Workday CXS API, req WD226382, canApply true, quote: 'Available to work 40 hours/week (in-person) for the assignment term (Jan - Jun 2027).'",
-    Notes: "TIME-SENSITIVE: posting's own end date is 2026-09-30 — application window closes within ~1 day of this run. Medical products (wearables, therapy systems, surgical robotics) mechanical design/CAD/prototyping work. 2nd or 3rd co-op preferred, SolidWorks required. A prior run excluded this req because its TITLE alone states no season, but the body text explicitly names the year ('Jan - Jun 2027') — re-evaluated as meeting the season-stated bar on body text, consistent with how other title/body-text discrepancies (e.g. Flex's own Orangeburg req) are handled elsewhere in this tracker. Pay/citizenship not stated.",
-  },
-  {
-    Company: "Flex (Flextronics International)",
     "Role Title": "NPI Process Engineering Co-op",
     Discipline: "Manufacturing Engineering (New Product Introduction)",
     Season: "Winter/Spring 2027 (Jan–Jun 2027)",
@@ -3207,6 +3195,30 @@ const rows = [
     "Application Link": "https://www.workatastartup.com/jobs/103200",
     "Link Verified": "Yes — independently fetched directly, HTTP 200, title tag and body confirm 'Spring 2027 Mechanical Engineering Internship/Co-op'; also cross-confirmed on ycombinator.com's own company page.",
     Notes: "New company for the tracker — YC-backed startup building autonomous robots for orbital manufacturing. Minimum 12 weeks on-site in San Francisco required. 'U.S. citizen or national, U.S. lawful permanent resident, or eligible for authorization under U.S. export regulations.' Applies via YC's own account/signup flow (workatastartup.com).",
+  },
+  {
+    Company: "Simpson Gumpertz & Heger (SGH)",
+    "Role Title": "Technical Co-Op, Structural Engineering",
+    Discipline: "Structural Engineering",
+    Season: "Spring 2027",
+    Location: "Waltham, MA",
+    "Distance from Boston, MA (mi, approx.)": 10,
+    Pay: "$29.25–$38.25/hr depending on degree level, plus $1,000 sign-on bonus per posting",
+    "Application Link": "https://www.sgh.com/careers/job-openings/view-job/8760874002?gh_jid=8760874002",
+    "Link Verified": "Partial — sgh.com's own job-detail page is JS-rendered and returned only the careers landing page on direct fetch (confirmed independently this run). Content (exact title, Waltham MA, term, pay, 'updated 1 week ago') was confirmed via an aggregator mirror (dreamworkhq.com) that links through to this same gh_jid. Not independently opened on sgh.com itself.",
+    Notes: "New company for the tracker — structural/civil engineering consultancy (also runs a sibling Technical Co-Op, Civil Engineering req at the same Waltham office, and a Plumbing & Fire Protection Co-op at Buro Happold-style disciplines — see `checked` for the civil sibling, excluded on discipline-fit grounds). Fits Hamza's 'adjacent — structural' category.",
+  },
+  {
+    Company: "Cyvl",
+    "Role Title": "Hardware Engineering Intern (Co-Op Spring 2027 / Intern Summer 2027)",
+    Discipline: "Hardware/Mechanical Engineering (sensor mounts/enclosures, CAD, machining)",
+    Season: "Spring 2027 (Co-Op track; a separate Summer 2027 Intern track is also offered on the same posting)",
+    Location: "Somerville, MA",
+    "Distance from Boston, MA (mi, approx.)": 3,
+    Pay: "Not confirmed on primary source",
+    "Application Link": "https://jobs.ashbyhq.com/cyvl/3590960d-4d02-48bb-a335-cb82e121a01e",
+    "Link Verified": "Partial — direct fetch of the Ashby posting (JS-rendered) returned only the job title; full details (Somerville MA location, 'posted 2 weeks ago', active application link matching this same URL) were confirmed via an aggregator mirror (dreamworkhq.com), not independently opened on Ashby itself.",
+    Notes: "New company for the tracker — robotics/mapping hardware startup (sensor mounts/enclosures, CAD, machining for mobile-mapping hardware). Boston-metro (Somerville). Season stated on the posting title itself as a dual Co-Op(Spring)/Intern(Summer) track; Spring 2027 Co-Op option is the qualifying track.",
   },
 ];
 
@@ -3738,6 +3750,11 @@ const checked = [
   { Company: "Barry-Wehmiller", "Role(s) Checked": "'Automation & Controls Engineering Internship/Co-Op'", "Reason": "2026-09-30: only located via Illinois Tech's login-walled Handshake listing (iit.joinhandshake.com) — could not independently open; not found on barrywehmiller.com's own career pages. Description says the co-op can start 'January or June 2027' (applicant's choice) — ambiguous term boundary besides. Excluded pending direct-source confirmation." },
   { Company: "Cresilon (Brooklyn, NY)", "Role(s) Checked": "Hemostatic-medical-device internship", "Reason": "2026-09-30: posting is dated '2026 Spring' (already elapsed as of this run's date), not 2027. Wrong season — excluded." },
   { Company: "The Mosaic Company", "Role(s) Checked": "Electrical Engineer Co-Op/Intern - Spring 2027 (req 64427, Bartow FL), Water Balance Engineer Co-Op/Intern - Spring 2027 (req 64508, Mulberry FL), Reliability Engineer Co-Op/Intern - Winter 2027 (req 64355, Esterhazy SK Canada), Operations Engineering Co-op/Intern (req 64862, Bartow FL, full title reveals '...Summer 2027')", "Reason": "2026-09-30: found during the same-company sweep that surfaced reqs 64450/64455/64392 (added to `rows`). 64427 — EE discipline, not a fit. 64508 — water/environmental-balance discipline, not a fit. 64355 — non-US location (Saskatchewan, Canada), excluded per US-only scope. 64862 — search-result title truncated 'Spring 2027'; the full posting title is actually 'Summer 2027' — wrong season. None added." },
+  { Company: "Flex (Flextronics International, Hollis, NH)", "Role(s) Checked": "Mechanical Engineering Co-op, req WD226382 — moved from `rows`", "Reason": "2026-09-30 (later run): this req's own posted end date was 2026-09-30 (today). Re-checked via Flex's own Workday CXS API — a full-text search for '226382' now returns 0 results, a location search for Hollis/Nashua NH returns only the still-open NPI Process Engineering sibling (WD226387), and the direct req URL now returns a permission-denied response consistent with expiry. Moved here from `rows` as closed." },
+  { Company: "Draper Laboratory", "Role(s) Checked": "Co-Op Student Engineering (JR002974, Lowell/Cambridge MA); Digital Engineering – Requirements Engineering Intern (JR002945, Summer 2027)", "Reason": "2026-09-30 (later run): both newly found via a full Workday CXS sweep. JR002974 is live/open but states no season or year anywhere on the posting — fails the season-stated bar (evergreen/general engineering co-op req). JR002945 is explicitly titled Summer 2027 — wrong season. Neither added; JR002974 worth a re-check if it's ever updated with a dated term." },
+  { Company: "Simpson Gumpertz & Heger (SGH), Waltham MA", "Role(s) Checked": "Technical Co-Op, Civil Engineering (Winter/Spring 2027) — sibling to the Structural Engineering Co-Op added to `rows` this run", "Reason": "2026-09-30 (later run): confirmed live/season-correct via the same aggregator mirror, but civil engineering discipline doesn't cleanly fit Hamza's target list (mechanical/aerospace/manufacturing/robotics/industrial/materials/structural/controls). Excluded on discipline-fit grounds; the sibling Structural Engineering req at the same office DID qualify." },
+  { Company: "Genentech", "Role(s) Checked": "'2027 Spring Intern - Pharma Technical Development - Device Development' — re-check of the standing lead above", "Reason": "2026-09-30 (later run): the two sibling req IDs (202609-122484, 202609-123436) that were previously confirmed live on careers.gene.com now both return HTTP 410 Gone when re-fetched directly. Strong signal the entire September-2026 PTD Spring-2027 intern posting batch (including Device Development, if it ever had a distinct req) has expired. Still no live canonical URL ever found for the Device Development role specifically — recommend dropping this from active re-checking unless a fresh, dated posting surfaces." },
+  { Company: "Lam Research / MACOM / Waters Corporation / Parker Hannifin", "Role(s) Checked": "Re-check via alternate access methods (Google-indexed snippets, aggregator mirrors) for each company's real ATS/ID", "Reason": "2026-09-30 (later run): no change in live/open status for any of the four — all remain unverifiable via any method tried this run, consistent with many prior runs. Progress made identifying platforms: Lam Research confirmed on Eightfold 'PCSX' (lamresearch.eightfold.ai / careers.lamresearch.com), still auth-walled; MACOM confirmed on Cornerstone OnDemand (macomtech.csod.com, careersite ID 4), API still returns 'CSOD Unauthorized Exception'; Waters and Parker Hannifin both remain fully WAF/Cloudflare-blocked with no working alternate access (Wayback Machine unavailable in this environment). No postings added." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];

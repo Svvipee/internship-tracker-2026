@@ -1938,3 +1938,42 @@ CIRCOR International (RESOLVED to confirmed zero, see above); Lam Research (PCSX
 - **Waters Corporation, Parker Hannifin** — both still AWS-WAF/Cloudflare-blocked with known real ATS domains on record; long-recurring, worth a headless-browser attempt.
 - **Draper Laboratory** — 2 fresh reqs found and added this run (JR002940, JR002944), both posted the same day as this run — worth a fast re-sweep next run in case Draper posted a batch and more siblings appear.
 - **General note**: at 266 rows / 514 checked entries / 296+ unique companies, this run's highest-yield activity was again genuinely new, previously-untried companies (Pyka, General Astronautics) and a fuller sweep of a recently-discovered employer (Mosaic) rather than re-treading long-saturated majors — consistent with the pattern noted in prior runs. The initial false "stale origin/master" read (corrected by an explicit `git fetch`) is worth remembering for future syncs: always `git fetch origin master` before trusting a `git rev-parse origin/master` read in a fresh container, since the local ref cache can be stale until the first fetch.
+
+
+## 2026-09-30 07:00 UTC
+
+### What was searched
+Two parallel research agents: (1) re-checked the 8 "worth re-checking" leads from the 2026-09-30 01:00 UTC run — Flex Hollis NH (WD226382), Flex Orangeburg SC (WD227049), RTX/Collins Cedar Rapids IA (req 01871473), Genentech Device Development, Lam Research, MACOM, Waters Corporation, Parker Hannifin, and a full Draper Laboratory Workday re-sweep; (2) a fresh national/Boston-area sweep for new companies, briefed with an approximate (non-exhaustive) list of already-tracked companies.
+
+**Process note for future runs:** agent (2) was not given the full `build.mjs` contents (only a partial company-name list, since the file is ~490KB), so most of what it reported as "new" — MIT Lincoln Laboratory Group 07-71 Mechanical Co-Op (req 43350), Reframe Systems, Buro Happold's Mechanical Co-op, MetOx International — turned out to already be in `rows`, added by prior runs on 2026-09-26 through 2026-09-29. This session cross-checked every reported req/URL against the live file before touching it. Only two of that agent's finds were genuinely new. Future runs delegating a "find new companies" sweep should hand the subagent a company-name list extracted via `grep -oP '(?<=Company: ")[^"]+' build.mjs | sort -u` (306 companies as of this run) rather than an approximate list, to reduce wasted re-discovery.
+
+### Added to `rows` (2 new, both Partial)
+- **Simpson Gumpertz & Heger (SGH)** (new company — structural/civil engineering consultancy) — Technical Co-Op, Structural Engineering, Spring 2027, Waltham MA. $29.25–$38.25/hr + $1,000 sign-on bonus. Link Verified: Partial — sgh.com's own job page is JS-rendered (confirmed independently via WebFetch this run, returned only the careers landing page); content confirmed via an aggregator mirror (dreamworkhq.com) linking through to the same job ID.
+- **Cyvl** (new company — robotics/mobile-mapping hardware startup) — Hardware Engineering Intern (Co-Op Spring 2027 / Intern Summer 2027), Somerville MA. Link Verified: Partial — Ashby posting is JS-rendered (confirmed independently via WebFetch this run, returned only the title); full details confirmed via an aggregator mirror.
+
+Neither is fully verified, so per the routine's own rule, no staged-application files were created this run for either.
+
+### Moved from `rows` to `checked` (1)
+- **Flex (Hollis, NH) — Mechanical Engineering Co-op, req WD226382**: this req's own posted end date was 2026-09-30 (today). Re-verified dead by both the research agent (Workday CXS API full-text search for "226382" now returns 0 results) and this session's own independent WebFetch (empty/blocked response). Its sibling req (NPI Process Engineering Co-op, WD226387) remains live and unaffected, still in `rows`.
+
+### Added to `checked` (5 new entries)
+Draper Laboratory's JR002974 ("Co-Op Student Engineering" — live but no season stated, evergreen) and JR002945 ("Digital Engineering – Requirements Engineering Intern" — Summer 2027, wrong season); SGH's Civil Engineering Co-Op sibling (Waltham MA, discipline mismatch vs. the qualifying Structural Engineering sibling); Genentech (re-check — the two previously-live sibling req IDs for the Device Development lead now both return HTTP 410 Gone, strong signal the whole batch has expired; recommend dropping from active re-checking); a consolidated Lam Research/MACOM/Waters Corporation/Parker Hannifin re-check entry (all four remain fully unverifiable this run despite identifying MACOM's and Lam's actual ATS platforms — no status change).
+
+### Confirmed still-open, no `rows` change needed
+- **RTX/Collins Cedar Rapids IA, req 01871473** — re-confirmed live (2 days left to apply, closes 2026-10-03) via direct Workday API; the discipline note already in its `rows` entry (title says Chemical/Materials, body describes Industrial Engineering work) was independently re-confirmed accurate, no edit needed.
+- **Flex Orangeburg SC, req WD227049** — re-confirmed live via direct Workday API (2 days left to apply, closes 2026-10-03). No change needed.
+- **Draper Laboratory's already-tracked Spring 2027 co-ops** (JR002882, JR002883, JR002942, JR002940, JR002944) — re-confirmed live via a fresh full CXS sweep; still fully saturated, no new in-discipline req beyond what's already in `rows`.
+
+### Staged applications created
+None this run (the two new `rows` additions are both Partial-verified, not fully verified — see above).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the generated `.xlsx`: "Winter26-Spring27 Internships" went from 266 → 267 data rows (net +1: +2 new, -1 moved to checked). "Checked - Not Included" went from 514 → 519 entries (+5).
+
+### Worth re-checking next time
+- **GE Aerospace** — this run's agent independently re-confirmed the 4 previously-tracked-as-dead Spring 2027 co-op reqs are still closed/410; no new req found. Continues to cycle fast — keep periodic re-checks.
+- **Genentech Device Development** — now effectively a dead end (see above); deprioritize unless a fresh dated posting surfaces.
+- **Lam Research** — 2027-cycle mechanical/hardware co-op still not posted (or is posted but unreachable behind Eightfold PCSX's auth wall at lamresearch.eightfold.ai / careers.lamresearch.com). Worth a headless-browser attempt targeting the client-rendered app directly, since anonymous API calls are consistently rejected.
+- **MACOM** — real ATS confirmed as Cornerstone OnDemand (macomtech.csod.com/ux/ats/careersite/4); a "Mechanical Product Engineer Intern" title appears in Google's index for this site but its req ID/live status couldn't be resolved through the unauthorized API. Worth a manual/headless-browser check of that URL directly.
+- **Waters Corporation, Parker Hannifin** — both still fully blocked (WAF/Cloudflare); Wayback Machine is not reachable from this environment's egress policy, ruling out that workaround. Long-recurring, low priority unless a new access method becomes available.
+- **SGH (Simpson Gumpertz & Heger)** and **Cyvl** — both new Partial-verified `rows` entries; worth a direct headless-browser open next run to upgrade to fully-verified status.
