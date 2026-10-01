@@ -2223,3 +2223,45 @@ Trane Technologies re-check (new method, same no-qualifying-posting conclusion);
 - **Gravitics, Castelion, Yaskawa** — all new, young/fast-moving companies; worth a periodic re-sweep for additional reqs.
 - **"General Astronautics" Spring 2027 lead** — surfaced only via an AI-search-engine summary with no company independently identifiable; worth a dedicated attempt to confirm (or debunk) which real company this refers to.
 - **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne, Boston Dynamics req R2476 (403-blocked)** — long-standing or newly-found bot-blocked/unconfirmable-ATS leads; low priority unless a new access method becomes available.
+
+## 2026-10-01 ~19:00 UTC
+
+**Housekeeping note:** session started with the repo's local `master` branch and `HEAD` pointing at stale/detached state (3 prior commits, 2026-10-01 01:00–13:00 UTC, were sitting on a detached `HEAD` not reachable from any local branch). Verified `origin/master` already had all 3 commits (a fresh `git fetch` confirmed this — the initial stale read was a local checkout artifact, not a lost-push situation), then fast-forwarded local `master` to match. No data was lost; flagging in case a future run sees the same local-state oddity.
+
+### Re-checked time-sensitive items from the last run's "worth re-checking" list
+- **Marotta Controls, Inc. (both reqs)** — deadline was today (Oct 1); independently re-fetched both Paycor ATS pages — both still show an active "Apply for this Position" button and the same Oct 1 deadline/Oct 16 interview-day text. Left in `rows` unchanged; genuinely ambiguous whether new applications are still accepted on the deadline day itself — worth a hard re-check next run to see if it has actually closed.
+- **RTX/Collins Cedar Rapids 01871473** (endDate was 2026-10-03) — re-fetched via Workday CXS API directly, still returns full posting content. Still open, left unchanged.
+- **Flex (Orangeburg SC) WD226357 and WD227049** — both re-fetched via Workday CXS API directly, both still live (WD226357 "Industrial Engineering Co-Op - Spring 2027", endDate 2026-10-30; WD227049 "Mechanical Engineering Co-op - Spring 2027", endDate 2026-10-03). Still open, left unchanged.
+- **GE Aerospace R5029663** — re-fetched via Workday CXS API, endDate still 2026-11-06. Still open, left unchanged.
+- **Tesla Sparks NV Partial posting** — retried both direct curl and WebFetch against tesla.com; both still return HTTP 403 (Akamai bot protection). No alternate access method succeeded. Left as Partial, unresolved.
+- **RTX/Collins Jamestown ND conflicting-signal req (01871736)** — re-fetched via Workday CXS API (still returns full posting, endDate 2026-10-02) and re-fetched the public careers.rtx.com page directly via curl (JS-rendered; raw HTML contains both "Apply Now" and "posting is no longer available" as client-side template strings, so a plain HTTP fetch cannot determine which actually renders). Conflict remains unresolved by this method; endDate is tomorrow so it will likely self-resolve (expire) before the next run regardless.
+- **RTX/Collins Andover, MA req 01874598** — not re-fetched this run (no new information to add beyond the standing exclusion); left in `checked`.
+- **Gravitics, Castelion, Yaskawa** — searched for additional/new reqs at each; found only the same postings already tracked or already-excluded siblings (Castelion EE/Embedded-SW Fall 2026 siblings, confirmed still Fall 2026). No new reqs found.
+- **"General Astronautics" Spring 2027 lead** — **resolved.** Identified as a YC-backed startup (San Francisco). Its own listing on workatastartup.com states the live posting is "Summer 2027 Engineering Internship/Co-op" (confirmed by direct fetch), not Spring 2027 as a third-party aggregator (jobleads.com) had mis-stated — a textbook case of the verification bar catching an aggregator error. Moved to `checked` as wrong-season; this re-check note can be dropped going forward.
+
+### Added to `rows`
+None this run. Re-verification of the full standing "worth re-checking" list (above) found nothing closed and nothing newly qualifying; a full re-sweep of Insulet's Jan–June 2027 co-op batch (Acton, MA — 6 Mechanical/Manufacturing-discipline reqs independently re-confirmed live via direct Workday CXS API fetch) found all 6 already present in `rows` from prior runs. GE Aerospace's full "Spring 2027" Workday search (14 results) also re-confirmed the existing 3 tracked reqs with no new mechanical/aerospace/manufacturing matches. Coverage of both companies now appears genuinely saturated.
+
+### Added to `checked` (5 new entries)
+- General Astronautics (YC-backed, San Francisco) — Summer 2027, wrong season (resolves prior run's "unverifiable" flag).
+- CMTA, Inc. — Mechanical track is Summer 2027 (wrong season); the Jan/Spring-2027 track is Electrical Engineering (discipline mismatch).
+- Buro Happold (Boston office) — a "Mechanical Co-op - Boston - Spring 2027" listing exists only on a third-party aggregator (workopia.io); the firm's own ATS (careershub.burohappold.com, vacancies.burohappold.com) shows no live matching posting, only a closed Fall 2025 predecessor. Unconfirmable via primary source.
+- SoftInWay Inc. (Burlington, MA, new company) — Turbomachinery Engineering Intern targets recent Master's graduates (not current students), no season/start-date stated anywhere in the posting.
+- Insulet (Acton, MA) — full 6-req Jan-June 2027 Mechanical/Manufacturing co-op batch re-confirmed live but all already tracked; logged as a positive freshness re-check, not a new exclusion.
+
+### Staged applications created
+None this run (no newly fully-verified postings added to `rows`).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read with the `xlsx` library: "Winter26-Spring27 Internships" unchanged at 291 rows (no new postings this run). "Checked - Not Included" went from 566 → 571 (+5, matching the 5 new `checked` entries).
+
+### Worth re-checking next time
+- **Marotta Controls, Inc. (both reqs)** — still showed live Apply buttons on the Oct 1 deadline day itself; confirm definitively closed or still open by next run.
+- **RTX/Collins Jamestown ND req 01871736** — conflicting open/closed signal between Workday CXS API and the public JS-rendered careers.rtx.com page remains unresolved; endDate is 2026-10-02, so it may simply expire before next run.
+- **RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049** — both have endDate 2026-10-03; confirm closed/move to `checked` next run if lapsed.
+- **GE Aerospace R5029663** — endDate still 2026-11-06; keep periodic checks.
+- **Tesla Sparks NV Partial posting** — still fully bot-blocked (403) via every method tried so far (curl, WebFetch); try a headless-browser method if one becomes available.
+- **RTX/Collins Andover, MA req 01874598** — open but no season stated; strong Boston-area location, worth re-checking if the posting is ever updated with explicit season text.
+- **Buro Happold (Boston)** — worth a direct re-check if a genuine Spring 2027 Mechanical Co-op posting ever appears on the firm's own ATS (careershub.burohappold.com or vacancies.burohappold.com) rather than only third-party aggregators.
+- **Analog Devices (Wilmington, MA) / Vicor (Andover, MA)** — per the prior run's note, their Spring-term co-op postings typically open October–November; worth checking again once that window arrives.
+- **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne, Boston Dynamics req R2476 (403-blocked)** — long-standing bot-blocked/unconfirmable-ATS leads; low priority unless a new access method becomes available.
