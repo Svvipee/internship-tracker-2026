@@ -2126,3 +2126,54 @@ Marotta Controls' 2 excluded siblings (EE, Business Operations — discipline mi
 - **Trane Technologies** — still worth a periodic re-check in case a dated "Spring 2027" version of the standing reqs ever appears.
 - **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape** — long-standing or newly-found bot-blocked/unlocatable-ATS leads; low priority unless a new access method becomes available.
 - A long list of space/drone/robotics/materials/EV companies had no locatable ATS board this run via slug-guessing (see the national-sweep `checked` entry) — worth trying their actual company domains directly in a future run rather than guessing standard ATS slugs.
+
+## 2026-10-01 ~07:00 UTC
+
+### Sync
+Fresh container. `git status` was clean but `git log` showed `HEAD` **detached** at `ce8cd84` (the prior 01:00 UTC run's commit) while the local `master` branch ref was stale at `e020bf1`, one commit behind. This is a worse variant of the recurring container quirk noted in prior runs (previously just a stale ref with no divergence; this time `master` genuinely hadn't been fast-forwarded). Confirmed `ce8cd84` is a clean descendant of `master` (`git merge-base --is-ancestor` check passed), then `git checkout master && git merge --ff-only ce8cd84`. `origin/master` was re-fetched and already had `ce8cd84` — the prior run's push had succeeded; only the local branch pointer was stale. No data was at risk; fast-forwarded cleanly before any new edits.
+
+### What was searched
+Delegated to two parallel research agents:
+- **Priority/Boston-area agent**: re-checked all 7 time-sensitive/priority carry-overs from the prior run (Marotta Controls' Oct-1-deadline reqs, RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049/WD226357, GE Aerospace R5029663, Trane Technologies, 1X Technologies/Skydio/Formic/Inversion Space full board re-sweeps, Draper/MIT LL full sweeps), plus a light general Boston-area pass.
+- **National agent**: fresh national sweep for companies not yet tracked, focused on co-op-program industrials (pumps, valves, motion control, aerospace suppliers) and newer space/robotics hardware startups not yet checked.
+
+Every genuinely-new finding was independently re-verified by this session (not just trusted from the agent reports) via direct fetch of the company's own ATS before any edit — Lexington Medical confirmed via Greenhouse board API, and all three ITT Inc. reqs confirmed via direct HTTP fetch (200 status, exact title and "Academic Schedule" text matched) before being added.
+
+### Re-check results (no changes needed — all still open/unchanged)
+- **Marotta Controls, Inc. (both reqs)** — still open as of this run despite the stated October 1, 2026 deadline being today; both Paycor pages return HTTP 200 with a live apply form and no closed/filled messaging. Caveat: deadline is literally today — could flip to closed later; worth a same-day re-check if the routine runs again before midnight.
+- **RTX/Collins Cedar Rapids 01871473** — still open via Workday CXS API, `canApply: true`, endDate unchanged at 2026-10-03 ("2 days left").
+- **Flex Orangeburg WD227049 / WD226357** — both still open via Workday CXS API, unchanged endDate 2026-10-03.
+- **GE Aerospace R5029663** — still live via the correct Workday CXS API, endDate unchanged at 2026-11-06 (marketing-portal false-negative issue persists but remains a known non-issue).
+- **Trane Technologies** — inconclusive this run; could not locate a working ATS endpoint (Phenom People platform blocked static fetch; ~36 guessed Workday CXS tenant/site-name combinations all failed). No new reqs independently confirmed either way. Still worth finding a working verification method for this employer.
+- **1X Technologies, Skydio, Formic** — full board re-sweeps (not search-filtered) at each; no new qualifying postings found at any.
+- **Inversion Space** — full board browse (81 jobs enumerated directly, not searched) confirms zero intern/co-op titles exist at all. Upgrades last run's "possible stale cache" note to a hard confirmation — no longer worth a dedicated re-check.
+- **Draper Laboratory, MIT Lincoln Laboratory** — full sweeps confirm both remain saturated at their already-tracked reqs; no new qualifying postings.
+
+### Added to `rows` (4 new, all fully verified — Yes, not Partial)
+- **Lexington Medical, Inc.** (new company — surgical stapler medical device manufacturer, **Bedford, MA**) — "Mechanical Engineering Co-Op" — January–June 2027 — confirmed live via direct fetch of Greenhouse's own board API (job updated 2026-09-30, posting states the exact Jan–Jun 2027 date range verbatim). $28–$34/hr. R&D team: CAD, test fixtures, machine shop, FDA-grade documentation. Strong Boston-area fit. Sibling Manufacturing/Mechanical/Quality intern roles at the same site are explicitly Summer 2027 and were excluded.
+- **ITT Inc. (Goulds Pumps / Industrial Process business)** (new company) — three Spring/Summer 2027 co-ops, each independently confirmed live via direct HTTP fetch (200 status) with exact "Academic Schedule" text matched against the posting body:
+  - "iProd Design Center Engineering Co-op" — Seneca Falls, NY — Jan–Aug 2027 — $25–30/hr.
+  - "Application Engineering Co-op" — Stafford, TX — Jan–Aug 2027 — $25–30/hr — open to junior/senior ME or IE undergrads.
+  - "ES Horizontal Design Center Engineering Co-op" — Seneca Falls, NY — Jan–Aug 2027 — $25–30/hr.
+  All three run Jan–Aug 2027 (co-op begins in Spring 2027, consistent with this tracker's existing precedent for Jan–Aug co-ops, e.g. the MIT LL Microfabrication Co-Op already in `rows`). A duplicate req (17447) of the iProd listing exists and was not added as a separate row.
+
+### Added to `checked` (3 new entries)
+- Markforged (Waltham/Billerica, MA) — re-confirmed via full Greenhouse board check: only 3 open jobs company-wide, none intern/co-op.
+- Inversion Space — upgraded confirmation (see Re-check results above).
+- National sweep consolidated entry — 13 additional companies checked with no qualifying opening found: ITT Inc.'s own excluded siblings (Product Management/Supply Chain/Sourcing co-ops — discipline mismatch; a Westminster SC "2027 Engineering Co-op" — wrong season, summer start), Onto Innovation (no explicit season, likely rolling req), Azenta Life Sciences, Ascend Elements (zero current openings), Veeco Instruments, True Anomaly, Medical Murray (aggregator-only, unconfirmable), Teleflex (confirmed filled), Baxter International, KLA Corporation (insufficient evidence), Framatome (unconfirmable), Schneider Electric, Barnes Group/Barnes Aerospace (stated cycle already closed). See `checked` array for full per-company detail.
+
+### Staged applications created (4 files, `staged-applications/`)
+`lexington-medical-mechanical-engineering-coop-spring2027-bedford-ma.md`, `itt-inc-iprod-design-center-engineering-coop-spring2027-seneca-falls-ny.md`, `itt-inc-application-engineering-coop-spring2027-stafford-tx.md`, `itt-inc-es-horizontal-design-center-engineering-coop-spring2027-seneca-falls-ny.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the generated `.xlsx` with the `xlsx` library: "Winter26-Spring27 Internships" went from 282 → 286 data rows (+4, matching the 4 new `rows` entries). "Checked - Not Included" went from 546 → 549 (+3, matching the 3 new `checked` entries).
+
+### Worth re-checking next time
+- **Marotta Controls, Inc. (both reqs)** — deadline was today (Oct 1); confirm still open or move to `checked` as closed if lapsed by next run.
+- **RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049/WD226357** — both "2 days left to apply" as of this run (endDate 2026-10-03); confirm closed/move to `checked` if lapsed next run.
+- **GE Aerospace R5029663** — Workday backend still shows endDate 2026-11-06; keep periodic checks.
+- **Trane Technologies** — still need a working verification method (Phenom People platform, not Workday); find the correct ATS access path before the next recheck.
+- **ITT Inc.** — new company with an active Goulds Pumps co-op pipeline across multiple sites (Seneca Falls NY, Stafford TX); worth a periodic re-sweep for additional reqs at other ITT sites (Flow Technologies/Motion Technologies/Connect and Control Technologies segments), and note `validThrough` on all three current reqs is 2026-12-12 per site metadata (not a confirmed hard deadline).
+- **Lexington Medical, Inc.** — new, strong Boston-area (Bedford, MA) medical device company with an active multi-role co-op/intern pipeline; worth a periodic re-sweep for additional reqs.
+- **Skydio "Hardware Test & Reliability Intern - Fall 2026/Winter 2027"** — still excluded on a season-labeling ambiguity judgment call flagged in a prior run; still worth Hamza's explicit input on whether company-labeled "Winter 2027" cohorts without explicit month dates should be treated as in-window.
+- **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation** — long-standing or newly-found bot-blocked/unconfirmable-ATS leads; low priority unless a new access method becomes available.
