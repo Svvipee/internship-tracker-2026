@@ -2077,3 +2077,52 @@ As in every prior run, every specific req/URL either agent reported was independ
 - **Apex Technology (Apex Space)** — new company with an active, fast-moving internship slate (multiple reqs posted within the last ~3 weeks); worth a periodic re-sweep in case new qualifying reqs (e.g., a Mechanical Engineering Spring 2027 req, rather than the current Fall-2026-only one) appear.
 - **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation** — all long-standing or newly-found aggregator-only leads with bot-blocked real ATS; low priority unless a new access method becomes available.
 - **Trane Technologies** — still worth a periodic re-check in case a dated "Spring 2027" version of the 4 standing reqs appears.
+
+## 2026-10-01 ~01:00 UTC
+
+### Sync
+Fresh container. `git status` clean, `git log` showed `master` already at `e020bf1` (the previous 19:00 UTC run's commit) matching `origin/master` — no drift this run.
+
+### What was searched
+Delegated to two parallel research agents:
+- **Priority/Boston-area agent**: re-checked all 6 "worth re-checking next time" carry-overs from the prior run (RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049/WD226357, GE Aerospace R5029663, Apex Technology, Trane Technologies), plus a fresh full sweep of Draper Laboratory, GE Aerospace (broader/Lynn MA), and MIT Lincoln Laboratory, plus a general Boston-area pass for new employers.
+- **National agent**: fresh national sweep for companies not yet tracked (~45 companies/leads checked; see `checked`), including a job-board-keyword-search pass to surface company names before verifying each directly.
+
+Every genuinely-new finding from both agents was independently re-verified by this session via direct fetch of the company's own ATS/API (Paycor, Ashby posting-api, Greenhouse API, Workday CXS) before any edit — consistent with every prior run's practice.
+
+### Re-check results (no changes needed)
+- **RTX/Collins Cedar Rapids 01871473** — still open (`canApply: true`), now shows "2 days left to apply" (endDate 2026-10-03 unchanged). Time-sensitive — likely to close by the next run or two.
+- **Flex Orangeburg WD227049 / WD226357** — both still open, same "2 days left to apply" / 2026-10-03 end date.
+- **GE Aerospace R5029663** — still open via the real Workday CXS API (`canApply: true`, endDate 2026-11-06); marketing-portal "no longer posted" discrepancy persists but is confirmed a false signal.
+- **Apex Technology (Apex Space)** — full 133-posting board re-swept; one previously-unlisted "Avionics Internship (Spring or Summer 2027)" found and excluded (EE/CompE discipline). No new Mechanical Engineering / Spring-2027-only req.
+- **Trane Technologies** — all 4 standing reqs re-confirmed live, still no explicit season/year word; 2 new sibling reqs found (JR-14080, JR-8912) with the same issue, excluded.
+- **Draper Laboratory** — full Workday CXS sweep (223 postings); all 5 tracked qualifying reqs still live; 3 new-to-this-run postings found, all excluded (EE discipline or Summer 2027).
+- **MIT Lincoln Laboratory** — all 3 tracked qualifying reqs still live (HTTP 200); no new qualifying req.
+- **GE Aerospace (broader/Lynn MA)** — Lynn CNC Programmer Co-Op is a vocational high-school trade co-op, excluded; national Spring-2027 search surfaced 9 more discipline-mismatched reqs, none added.
+
+### Added to `rows` (4 new, all fully verified — Yes, not Partial)
+- **MORSE Corp** (new company — defense-tech R&D, Cambridge MA) — "Mechanical Engineer Co-op" — Spring 2027 — confirmed live via Greenhouse's own API and the board's own "Spring 2027 Semester" language. $27–$33/hr. Requires US citizenship + clearance eligibility.
+- **Marotta Controls, Inc.** (new company — defense/aerospace motion & flow control, Parsippany NJ) — "Spring 2027 Mechanical Engineering Internship/Co-Op" — confirmed live via direct fetch of the company's own Paycor ATS. **Deadline stated as October 1, 2026 — today** — flagged as time-sensitive in `rows` and the staged file; may already be closed by the time this is reviewed.
+- **Marotta Controls, Inc.** — "Spring 2027 Control Systems Engineering Internship/Co-Op" — same company/verification/deadline urgency as above; strong fit for Hamza's "controls" discipline.
+- **1X Technologies** (new company — humanoid robotics, San Carlos CA) — "Internship - Manufacturing Engineering" — confirmed live via Ashby's own posting-api; posting states "Starting January 2027" rather than a literal "Spring"/"Winter" label, but the explicit January 2027 start date places it inside the target window (judgment call, documented in Notes). $35/hr + $2,500/mo housing stipend.
+
+### Added to `checked` (13 new entries)
+Marotta Controls' 2 excluded siblings (EE, Business Operations — discipline mismatch); 1X Technologies' CNC Machine Park sibling (no season stated); Skydio (new company) — "Hardware Test & Reliability Intern - Fall 2026/Winter 2027" excluded on a judgment call (season label doesn't match "Winter 2026"/"Spring 2027" and no explicit month range given, unlike the previously-accepted Keurig Dr Pepper "Winter 2027" precedent which had explicit dates) — **flagging this one for Hamza's input**: if he confirms companies' own "Winter 2027"-labeled cohorts should be treated as in-window the way "Winter 2027" was for Keurig, this should be added next run; Skydio's 6 other excluded siblings (EE, product management, 4x Summer 2027, 1x non-US); Apex Technology's newly-surfaced Avionics Internship sibling (EE/CompE); Trane's 2 new no-season siblings; Draper's 3 new excluded postings; GE Aerospace's Lynn trade co-op + 9 discipline-mismatched national reqs; Sonos (Boston MA) — confirmed closed via Workday page-config flag; Ubicept (Boston MA) — "Spring" with no year stated; Humatics Corporation / Veo Robotics (Waltham MA) — low-confidence, no primary-source confirmation either way; Soft Robotics/Oxipital AI (Bedford MA) — inconclusive, likely restructured; a consolidated 22-company national-sweep entry (TerraPower, QuantumScape, Zebra Technologies, Sargent Aerospace & Defense, Howmet Aerospace, DNV, Formic, Albedo Space, Inversion Space, Censys, Solid Power, Sila Nanotechnologies, Velo3D, Bright Machines, Dexterity, Physical Intelligence, Cobot, Standard Bots, Group14 Technologies, Portal Space Systems, Electra.aero, Elroy Air — all wrong season/discipline/closed/no-ATS-found).
+
+### Staged applications created (4 files, `staged-applications/`)
+`morse-corp-mechanical-engineer-coop-spring2027-cambridge-ma.md`, `marotta-controls-mechanical-engineering-internship-coop-spring2027-parsippany-nj.md`, `marotta-controls-control-systems-engineering-internship-coop-spring2027-parsippany-nj.md`, `1x-technologies-manufacturing-engineering-internship-jan2027-san-carlos-ca.md`. Both Marotta files are flagged with the October 1, 2026 (today) deadline for Hamza's immediate attention.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the generated `.xlsx`: "Winter26-Spring27 Internships" went from 278 → 282 data rows (+4, matching the 4 new `rows` entries). "Checked - Not Included" went from 533 → 546 (+13, matching the 13 new `checked` entries).
+
+### Worth re-checking next time
+- **Marotta Controls, Inc. (both reqs)** — deadline was October 1, 2026 (today); confirm still open or move to `checked` as closed if lapsed by next run.
+- **RTX/Collins Cedar Rapids 01871473** — "2 days left to apply" as of this run; confirm closed/move to `checked` if lapsed.
+- **Flex Orangeburg WD227049 / WD226357** — same "2 days left to apply" status; confirm next run.
+- **GE Aerospace R5029663** — Workday backend still shows endDate 2026-11-06; keep periodic checks.
+- **Skydio "Hardware Test & Reliability Intern - Fall 2026/Winter 2027"** — currently excluded on a season-labeling ambiguity judgment call (see `checked`); worth Hamza's explicit input on whether company-labeled "Winter 2027" cohorts should be treated as in-window, and worth re-checking if Skydio ever adds explicit month dates to the posting.
+- **1X Technologies, Skydio, Formic, Inversion Space** — all young/fast-moving companies with Ashby/Greenhouse boards; worth periodic re-sweeps for new qualifying reqs.
+- **Inversion Space** — board returned 81 total jobs but 0 for any search query tried this run; possible stale-cache/access quirk worth a dedicated retry.
+- **Trane Technologies** — still worth a periodic re-check in case a dated "Spring 2027" version of the standing reqs ever appears.
+- **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape** — long-standing or newly-found bot-blocked/unlocatable-ATS leads; low priority unless a new access method becomes available.
+- A long list of space/drone/robotics/materials/EV companies had no locatable ATS board this run via slug-guessing (see the national-sweep `checked` entry) — worth trying their actual company domains directly in a future run rather than guessing standard ATS slugs.
