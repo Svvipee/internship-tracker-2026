@@ -2265,3 +2265,57 @@ None this run (no newly fully-verified postings added to `rows`).
 - **Buro Happold (Boston)** — worth a direct re-check if a genuine Spring 2027 Mechanical Co-op posting ever appears on the firm's own ATS (careershub.burohappold.com or vacancies.burohappold.com) rather than only third-party aggregators.
 - **Analog Devices (Wilmington, MA) / Vicor (Andover, MA)** — per the prior run's note, their Spring-term co-op postings typically open October–November; worth checking again once that window arrives.
 - **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne, Boston Dynamics req R2476 (403-blocked)** — long-standing bot-blocked/unconfirmable-ATS leads; low priority unless a new access method becomes available.
+
+## 2026-10-02 ~01:00 UTC
+
+### Sync
+Fresh container. Same recurring quirk as every recent run: `git status` clean but `HEAD` detached at `24b645e` (the prior 19:00 UTC run's commit) while the local `master` ref was stale at `e020bf1`. `git fetch origin master` confirmed `origin/master` already matched `HEAD` (prior run's push had succeeded). Ran `git checkout -B master origin/master` to put the local branch cleanly on the fetched tip before any edits.
+
+### What was searched
+Delegated to two parallel research agents:
+- **Priority/Boston-area agent**: re-checked all 9 carry-over items from the prior run's "worth re-checking" list (Marotta Controls' both reqs, RTX/Collins Jamestown ND 01871736, RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049, GE Aerospace R5029663, Tesla Sparks NV Partial, RTX Andover MA 01874598, Buro Happold, Analog Devices/Vicor), plus full re-sweeps of Draper Laboratory, MIT Lincoln Laboratory, GE Aerospace, Lexington Medical, Insulet, ITT Inc., Gravitics, Castelion, Yaskawa, plus a light general Boston-area pass.
+- **National agent**: fresh sweep of ~30 companies not yet saturated (aerospace/defense suppliers, industrial/manufacturing co-op programs, robotics/hardware startups).
+
+As in every prior run, every "new" finding from both agents was independently cross-checked by this session against the current `build.mjs` by req/job ID before any edit. This caught that nearly everything either agent reported as new — Varda Space Industries' 6 reqs, Rocket Lab's ~20 reqs, Blue Origin R69064/R71542, L3Harris, Eaton's 2 Spring 2027 reqs, Curtiss-Wright JR1907, MIT LL 1434254300, Draper JR002940/JR002942/JR002882/etc., Lexington Medical job 5423105008, Formlabs job 8161817, Gravitics job 4396521009, Castelion job 4386032009, 11 of 12 Insulet req IDs reported — was already byte-for-byte present in `rows` or `checked`. Only one previously-untracked Insulet req (REQ-2026-18125) and two genuinely new companies (The Exploration Company, Lincoln Electric) survived this cross-check; all three were then independently re-verified by this session via direct fetch of the employer's own ATS (Ashby posting-api, Lincoln Electric's own careers site, Insulet's Workday CXS API) before being added — not taken on either agent's word alone.
+
+### Re-check results
+- **Marotta Controls, Inc. (both reqs)** — still open. The previously-stated "Deadline: October 1, 2026" text has been **removed** from the live posting entirely; page now reads "beginning January 2027 through end of summer 2027" with no deadline language, and pay ($18-24/hr) is now visible for the first time. Updated both `rows` entries' Pay and Notes fields accordingly — no longer flagged as time-sensitive.
+- **RTX/Collins Jamestown ND req 01871736** (already in `rows`) — Workday CXS API still says `canApply:true`, but endDate is **today** (2026-10-02), and the public careers.rtx.com page continues to show "no longer available" text (a conflict persisting across several runs, treated as a known JS-template-string false negative). Added a note to the `rows` entry; likely to close by the next run regardless.
+- **RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049** — both still open via Workday CXS API, unchanged endDates (2026-10-03). No row changes needed.
+- **GE Aerospace R5029663** — still open, endDate unchanged (2026-11-06).
+- **Tesla Sparks NV Partial posting** — still fully 403-blocked on tesla.com directly; a third-party mirror (milwaukeejobs.com) shows it live as of today, but this is secondary-source only. Noted in the `rows` entry; left as Partial.
+- **RTX Andover MA req 01874598** — re-confirmed no season/year language anywhere in the posting text; unchanged, remains in `checked`.
+- **Buro Happold, Vicor** — both re-confirmed via direct fetch of their own primary career sites: still no Boston listing (Buro Happold) and still zero co-op/intern titles (Vicor). Updated `checked` with the fresh confirmation.
+- **Analog Devices** — still inconclusive; careers.analog.com returns a JS/cookie-gated redirect that neither agent's tools nor this session's direct curl could get past. No change from the standing (already-excluded, separately-confirmed) entry.
+- **Draper, MIT Lincoln Lab, GE Aerospace, Lexington Medical, Insulet, ITT Inc., Gravitics, Castelion, Yaskawa, Formlabs** — full re-sweeps of each; all already-tracked reqs reconfirmed live, no new qualifying finds beyond the one new Insulet req below. Coverage of these employers remains essentially saturated.
+- **Boston Dynamics** — re-confirmed zero Intern/Co-Op worker-subtype postings among 74 current open reqs; reinforces the standing exclusion, no row change.
+
+### Added to `rows` (3 new, all fully verified — Yes, not Partial)
+- **The Exploration Company** (new company — French/German crewed-spacecraft developer, Nyx vehicle program) — "Spring 2027 Internship (Engineering)" — Houston, TX — confirmed live via direct fetch of the company's own Ashby posting-api, body states "Spring 2027 Engineering Internship... beginning January 2027" verbatim. General engineering discipline (design/test/validation support). US citizen/Green Card required (ITAR/EAR); no housing/relocation provided. Posted 2026-09-03 — about 4 weeks old, slightly past the usual ~3-week freshness preference but still a strong fit.
+- **Lincoln Electric** (new company — industrial machinery/welding/automation manufacturer) — "Mechanical Engineering Spring 2027 Co-op" — Plymouth, MI — req 29823 — confirmed live via direct fetch of the company's own careers site, "Target Program Dates: January 12th – April16th, 2027" stated verbatim. Mechanical/automation/robotics work at an automation facility. No sponsorship. Distinct from a same-site "Mechanical Engineering Summer 2027 Internship" sibling at the same location — do not confuse the two.
+- **Insulet** — "Co-op - Supplier Quality Engineering: January - June 2027 (Onsite)" — Acton, MA — req REQ-2026-18125 — confirmed live via direct Workday CXS API fetch, canApply:true, posted 2026-10-01 (yesterday), "Position Dates: January 11, 2027 – June 30, 2027" stated verbatim. $24.00–$28.50/hr. Sibling to Insulet's many other already-tracked Acton Jan–June 2027 co-ops.
+
+### Added to `checked` (6 new entries)
+- **Reframe Systems** (Billerica/Andover, MA — housing-construction robotics startup) — "Mechanical Engineer (Spring 2027 Co-op)" confirmed live via direct Ashby fetch, but the posting's own body text states the role is for "this fall," directly contradicting the "Spring 2027" title — a title/body season discrepancy, same pattern as prior Lincoln Electric Controls Eng. and Analog Devices exclusions. Not added despite the strong Boston-area/discipline fit — worth re-checking if an internally-consistent dated version appears.
+- **E Ink Corporation** (Billerica, MA) — 3 co-op titles found only via aggregators; eink.com's own career page has no locatable ATS reachable via direct fetch. Unverifiable on primary source.
+- **Qnity Electronics** (Marlborough, MA, new DuPont Electronics spinoff) — aggregator listings for a "Spring 2027" co-op conflict with an underlying "2026 Summer Intern & Co-Op" label; no company ATS located to resolve the conflict. Not added.
+- **Storion Energy** (Billerica, MA, new VRFB battery joint venture) — aggregator-only, no locatable company ATS. Not added.
+- **GE Aerospace Lynn, MA "CNC Programmer Co-Op"** (req R5040944) — confirmed live but explicitly requires enrollment in a Vocational Technical High School — audience/discipline mismatch, not a college engineering internship.
+- **Vicor / Buro Happold** — re-sweep confirmations (see Re-check results above).
+
+### Staged applications created (3 files, `staged-applications/`)
+`the-exploration-company-spring2027-engineering-internship-houston-tx.md`, `lincoln-electric-mechanical-engineering-spring2027-coop-plymouth-mi.md`, `insulet-supplier-quality-engineering-coop-jan-jun-2027-acton-ma.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct read of the generated `.xlsx` with the `xlsx` library: "Winter26-Spring27 Internships" went from 291 → 294 data rows (+3, matching the 3 new `rows` entries). "Checked - Not Included" went from 571 → 577 (+6, matching the 6 new `checked` entries).
+
+### Worth re-checking next time
+- **RTX/Collins Jamestown ND req 01871736** — endDate is today (2026-10-02); likely to close by the next run — confirm and move to `checked` if lapsed.
+- **RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049** — both endDate 2026-10-03; confirm closed/move to `checked` next run if lapsed.
+- **GE Aerospace R5029663** — endDate still 2026-11-06; keep periodic checks.
+- **Tesla Sparks NV Partial posting** — still fully bot-blocked on tesla.com directly; a secondary mirror shows it live — try to independently confirm on the primary source if a new access method becomes available.
+- **Marotta Controls, Inc. (both reqs)** — the Oct 1 deadline has disappeared from the live posting; no longer time-sensitive, but worth a periodic liveness check like any other tracked posting.
+- **Reframe Systems** — title/body season contradiction ("Spring 2027" title vs. "this fall" body); worth re-checking if the posting is ever corrected to be internally consistent.
+- **E Ink Corporation, Qnity Electronics, Storion Energy** — all new Boston-area leads found only via aggregators; worth a dedicated attempt to locate each company's actual ATS/career portal in a future run.
+- **Analog Devices (Wilmington, MA)** — careers.analog.com remains JS/cookie-gated against every direct-fetch method tried across multiple runs; worth a headless-browser attempt if one becomes available.
+- **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne, Boston Dynamics** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.
