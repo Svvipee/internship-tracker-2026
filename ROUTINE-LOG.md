@@ -2370,3 +2370,51 @@ RTX Jamestown ND 01871736 (moved from `rows`, closed); GE Aerospace R5029663 re-
 - **Analog Devices req R266691** — internally contradictory dates (Summer/Fall language vs. a stray "January through June" eligibility line); the CXS-API bypass method (`/wday/cxs/analogdevices/External/job/...`) is now documented and should be reused for ADI's broader Spring 2027 co-op slate once it opens (expected ~Oct/Nov per standing note).
 - **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne, Boston Dynamics (403-blocked)** — long-standing or newly-found bot-blocked/unconfirmable-ATS leads; low priority unless a new access method becomes available.
 - **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne, Boston Dynamics** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.
+
+## 2026-10-02 ~13:00 UTC
+
+### Sync
+Fresh container. `git status` clean; `HEAD` was detached at `7dc8080` but exactly matched `origin/master` (the prior run's commit, confirmed via `git fetch`) — no lost work, just the usual stale-local-branch-pointer quirk. Ran `git checkout -B master origin/master` to get a normal tracking branch before editing.
+
+### What was searched
+Delegated to three parallel research agents:
+- **Punch-list agent**: re-verified 7 specific carryover leads from the prior run's "worth re-checking" list (RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049, GE Aerospace R5029663 + a fresh Lynn/GE sweep, Analog Devices R266691, Base Power, CMTA Boston, E Ink Corporation).
+- **Boston-priority agent**: deep re-check of Draper Laboratory, MIT Lincoln Laboratory, GE Aerospace (Lynn, MA specifically), Symbotic, and Boston Dynamics — all via direct Workday/ATS JSON API calls rather than the JS-rendered marketing pages.
+- **Broad-search agent**: fresh national sweep for new candidates not yet in the tracker, with an explicit list of the ~89 companies already in `rows` and a summary of the ~324-company `checked` exclusion list to avoid re-treading ground.
+
+**Important process note this run:** nearly every "new" finding reported by the punch-list and Boston-priority agents (GE Aerospace R5029617, Draper JR002940/JR002942/JR002944, MIT Lincoln Lab Mechanical Eng Co-Op Group 07-71, Symbotic R7976) turned out, on this session's own byte-for-byte cross-check of `build.mjs`, to have **already been added to `rows` earlier today** (the 2026-10-01 ~19:00 UTC and 2026-10-02 ~07:00 UTC runs, per their own "Added 2026-10-0x" comment markers) — the agents simply weren't given the full existing-rows detail needed to recognize these as duplicates. All were caught before committing and were NOT re-added. Two URLs from the broad-search agent (Bose Corporation's Workday link, and an initial CMTA link) were also initially reported with elided/guessed path segments; this session followed up with each agent directly (via SendMessage) to get the literal, non-fabricated URL before using either, per the "never invent a URL" rule. The Bose finding could not be resolved to a confirmed-live page even after follow-up (two independent HTTP 500s, LinkedIn link never opened live) and was excluded rather than published with hopeful plumbing.
+
+### Re-check results
+- **RTX/Collins Cedar Rapids 01871473** — still open (16 hours left to apply at check time). Unchanged in `rows`; almost certainly closed by the next run.
+- **Flex Orangeburg WD227049** — still open (15 hours left to apply at check time). Unchanged in `rows`.
+- **GE Aerospace R5029663** — still open, endDate unchanged. Unchanged in `rows`. (The sibling Engines Engineering Co-op R5029617 and Dayton-based Systems Eng Co-op R5030103 that agents flagged as "new" were both already tracked from an earlier run today.)
+- **Analog Devices R266691** — still open, still internally contradictory on season (same June–December vs. January–June conflict). Unchanged exclusion; re-check entry added to `checked` for continuity.
+- **Base Power** — still no season language anywhere in the live postings (one more ME-titled intern posting found, already covered by this morning's entry's wording). Unchanged exclusion.
+- **CMTA, Inc. (Boston, MA)** — **RESOLVED**: a second verification pass beat the Dayforce JS rendering by hitting its JSON API directly with a fetched CSRF token, and independently confirmed the human-facing URL (job id 33378) returns the same data via direct HTTP fetch. Moved from `checked` to `rows` as Yes-verified (discipline flagged as MEP/HVAC, borderline fit).
+- **E Ink Corporation** — **RESOLVED**: found the real ATS (UltiPro/UKG) and queried its live API directly — zero internship/co-op postings exist among E Ink's 22 current openings. Upgraded from "unverifiable" to a hard confirmed-closed in `checked`.
+- **Draper Laboratory** — known Systems Engineering Co-Op (JR002882) and Electro-Mechanical Instrument Co-op (JR002883) re-confirmed still open. No new reqs beyond what was already tracked.
+- **MIT Lincoln Laboratory** — known Microfabrication Co-Op re-confirmed still open. No new reqs beyond what was already tracked.
+- **Symbotic** — re-confirmed the already-tracked Hardware Engineer Co-op (R7976) still open. No new postings.
+- **Boston Dynamics** — re-confirmed both previously-excluded reqs (R2476, R2495) are genuinely gone (Workday API returns errorCode S22 "permission denied" for both, and all 73 current company-wide postings are non-Co-Op/Intern). No change; closes out the standing question with a fresh full-board check.
+
+### Added to `rows` (2 new, fully verified — Yes)
+- **CMTA, Inc. (via Legence)** — Mechanical Engineer Intern/Co-op, Spring 2027 — Boston, MA (170 Milk Street). MEP/HVAC building-systems discipline flagged for Hamza's own judgment.
+- **Eversource Energy** — 2027 Co-op: Capital Projects — Westwood, MA. New Boston-area utility co-op employer; exact season wording caveat noted (sibling posting confirms Jan–June 2027, this specific posting just says "2027").
+
+### Added to `checked` (6 new entries)
+CMTA Boston (resolved/moved to `rows`, see above); E Ink Corporation (resolved to confirmed-closed, see above); Kaman Aerospace/Barnes Aerospace CT (new, no postings located); Skydio Hardware Test & Reliability Intern (season-naming near-miss, same treatment as the Astranis "Winter 2027" precedent, plus unconfirmed Apply status); Boston Dynamics re-confirmation; Analog Devices R266691 re-check. See `checked` array for full per-entry detail.
+
+### Staged applications created (2 files, `staged-applications/`)
+`cmta-mechanical-engineer-intern-coop-spring2027-boston-ma.md`; `eversource-2027-coop-capital-projects-westwood-ma.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: 294 → 296 (+2). `checked`: 590 → 596 (+6).
+
+### Worth re-checking next time
+- **RTX/Collins Cedar Rapids 01871473 and Flex Orangeburg WD227049** — both had well under 24 hours left to apply at this run's check time; almost certainly closed by the next run — confirm and move to `checked` if lapsed.
+- **Bose Corporation (Framingham, MA)** — "Mechanical Engineer Co-op, Concept Prototyping" (req R26422) is a real, discipline-fitting, exact-location-fitting lead, but every direct-fetch attempt at its Workday page has returned HTTP 500 across two independent agent attempts this run; worth a genuine browser-based follow-up given how close a match it would otherwise be. Do not re-add without actually seeing the live page content.
+- **GE Aerospace Lynn, MA Spring 2027 reqs generally** — continue using the direct Workday CXS job-page API link rather than careers.geaerospace.com, which gives false "no longer posted" negatives.
+- **Agility Robotics** — the broad-search agent surfaced a possible Mountain View, CA "Spring 2027" Mechanical Engineer intern lead via aggregator snippets, but a direct company-source fetch returned 403; not confirmed this run, worth a dedicated follow-up.
+- **Draper Laboratory Digital Engineering – Requirements Engineering Co-Op (JR002944)** — already tracked in `rows` (added in an earlier run today) but flagged there as discipline-borderline (requirements/digital-twin work, not hands-on systems design) — worth Hamza's own read on whether to keep counting it.
+- **Important process reminder for future runs**: when delegating to research agents, give them the FULL current `rows`/`checked` detail (role titles + req IDs, not just company names) to cross-check against — a company-name-only list isn't enough to catch a req added by an earlier run on the same day, as happened multiple times this run.
+- Carrying forward unresolved items from prior runs: **Tesla Sparks NV Partial posting** (Akamai-edge-blocked); **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.
