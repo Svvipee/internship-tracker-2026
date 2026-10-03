@@ -2607,3 +2607,56 @@ None this run — the only new finding (Analogic) is Partial, not fully verified
 - **Sanofi (Waltham, MA)** and **Schaeffler Humanoid Robotics Co-op (Troy, MI)** — both confirmed live/open but excluded on discipline-fit / season-unconfirmed grounds respectively; worth Hamza's own read.
 - **SSOE Group's 3 Partial reqs** and **Analogic's new Partial posting (MANUF002804)** — both worth a browser-based follow-up to get past their JS-rendered detail pages and fully confirm pay/description/Apply button.
 - Carrying forward unresolved items from prior runs: **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.
+
+## 2026-10-03 ~19:00 UTC
+
+### Sync
+Fresh container. `git status` clean; `HEAD` was detached at the prior run's commit (`3d3974c`) while the local `master` ref was stale at `e020bf1` (11 commits behind) — the same recurring container quirk as every recent run. `git fetch origin master` confirmed `origin/master` already matched the detached `HEAD` exactly (`3d3974c`) — the prior run's push DID land this time (contrary to the 2026-10-03 13:00 UTC run's "silently failing for 10 runs" watch-item — that backlog was fixed then, and this run found the remote current). Ran `git checkout master && git reset --hard origin/master` to get a clean tracking branch before any edits. Also re-extracted exact `rows`/`checked` array lengths directly from `build.mjs` via a small Node script (not from this log's own cumulative arithmetic, which had drifted slightly off the true count in a prior entry) — ground truth going into this run: `rows` 319, `checked` 654.
+
+### What was searched
+Delegated to two parallel research agents, each given the full current `rows` (319) and `checked` (654) as compact Company|Role|Location / Company|Role(s) Checked files for dedup before reporting anything:
+- **Carryover agent**: re-checked every item flagged "worth re-checking next time" by the prior (13:00 UTC) run — RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049 (top priority, both past their stated 2026-10-03 end date), RTX Uniontown OH 01874486, Wabtec/nVent/Graco liveness re-sweeps, GE Aerospace Lynn MA, Draper Laboratory, MIT Lincoln Laboratory, Symbotic, Boston Dynamics fresh sweeps, SSOE Group's 3 Partial reqs, Analogic's Partial posting, and a Rolls-Royce North America cycle-open check.
+- **Broad-sweep agent**: fresh national search for new-to-the-tracker companies, pivoting to a live GitHub co-op-aggregator repo (refreshed same-day) given how saturated the "usual suspect" employer list has become, plus a short list of untried Boston-area employers (Vicor, Hologic, Commonwealth Fusion, Markforged, Vecna Robotics, iRobot, Desktop Metal, Charles River Analytics, etc.) — every candidate independently re-verified against the employer's own ATS, not taken on the aggregator's word.
+
+### Re-check results
+- **RTX/Collins Cedar Rapids req 01871473** — CONFIRMED NOW CLOSED. Direct Workday CXS API `searchText="01871473"` returns zero results while the same API call works normally for dozens of other current Cedar Rapids reqs — a clean negative signal, not a tenant block. Moved from `rows` to `checked`.
+- **Flex Orangeburg req WD227049** — CONFIRMED NOW CLOSED. Direct Workday CXS API `searchText="WD227049"` returns zero results (search mechanism independently validated against a known-live req); full Orangeburg Intern/Co-op facet pull shows only 3 remaining reqs, none matching. Moved from `rows` to `checked`.
+- **RTX Uniontown, OH req 01874486** — previously blocked by a tenant-level 403; access cleared this run, confirmed live (posted 2026-10-02, 1 day old). Added to `rows`.
+- **Wabtec** — both known reqs (R0116547 Waltham MA, R0116563 State College PA) reconfirmed still live. Fresh sweep found 3 new Oak Creek, WI reqs (Controls Engineering Intern, 2x Mechanical Engineer Intern) — discipline-fitting but no season stated anywhere; not added, logged in `checked`.
+- **nVent** — all 6 known reqs reconfirmed still live via direct Workday CXS API. Full paginated sweep found no new qualifying reqs.
+- **Graco** — all 6 known reqs reconfirmed still live via direct Workday CXS API. Full paginated sweep found no new qualifying reqs (only already-excluded May-Dec 2027 wave).
+- **GE Aerospace, Lynn MA** — both known reqs (R5029617-1, R5029663) reconfirmed still live, endDates unchanged. No new Lynn-specific req found.
+- **Draper Laboratory** — all 5 already-tracked Spring 2027 reqs reconfirmed still live (several recently reposted/updated). No new qualifying req found.
+- **MIT Lincoln Laboratory** — no new postings found (site remains JS-rendered/unpaginated via automated fetch; partial coverage only).
+- **Symbotic** — known Hardware Engineer Co-op (R7976) reconfirmed still live, explicit "Timeframe: Spring (January-May 2027)" in full description. No new qualifying req found.
+- **Boston Dynamics** — reconfirmed zero Intern/Co-op reqs company-wide (71 total reqs, 100% "Regular" worker subtype).
+- **SSOE Group's 3 Partial reqs** — upgraded confirmation via SSOE's own auto-generated ATS sitemap (all 3 job IDs present with recent lastmod timestamps); job-detail pages remain an unreachable JS-rendered React SPA shell — still Partial.
+- **Analogic Corporation (MANUF002804)** — likely CLOSED (moderate-high confidence). The employer's real ATS (UKG Pro Recruiting) server-renders a seed list of all current company-wide postings; consistently shows only 6 non-engineering roles, no co-op of any kind. Could not reach a definitive 404 on the specific req page, so treated as a strong negative signal rather than a hard confirmation. Moved from `rows` to `checked`.
+- **Rolls-Royce North America** — no change; cycle still not open (confirmed again directly).
+
+### Added to `rows` (4 new, all fully verified — Yes, three new companies)
+- **RTX / Collins Aerospace** — Mechanical Design Engineering Co-op (Spring 2027), req 01874486, Uniontown, OH.
+- **Daktronics** (new company) — Manufacturing Process Engineer Co-op Intern, Sioux Falls, SD. Two term options on the posting (Jan 11–Aug 13, 2027 qualifies; May–Dec 2027 does not).
+- **Greenheck Group** (new company) — Machine Design and Controls Engineering Co-op, req JR104723, Schofield, WI. Confirmed via direct Workday CXS JSON API (JS-rendered page bypassed); Apply-button click-through not independently verified.
+- **Marmon Holdings (Powerex-Iwata Air Technology)** (new company) — Controls Engineer Co-op (Spring 2027), req JR0000045809, Mt. Juliet, TN. Same CXS-API verification method; controls-adjacent discipline fit.
+
+### Added to `checked` (16 new entries: 3 moved closures + 13 new exclusions)
+RTX Cedar Rapids 01871473 (moved — closed); Flex Orangeburg WD227049 (moved — closed); Analogic MANUF002804 (moved — likely closed); Wabtec Oak Creek WI trio (no season stated); Re:Build Manufacturing (EE/mechatronics discipline lean + multi-term season ambiguity, borderline/Hamza's call); Verkada (EE discipline mismatch); Delta Faucet/Masco (EE discipline mismatch); Lennox International (EE + wrong season); General Motors Manufacturing Controls Engineer (EE-leaning despite "controls" title, borderline/Hamza's call); First Quality (no season stated, stale posting); ControlTouch Systems (no season stated); Daktronics Firmware/Hardware sibling req (EE + wrong season); Olin (Fall 2027, wrong season); American Axle & Manufacturing (EE discipline mismatch); Delta Air Lines R&D Hardware Design Engineer (embedded hardware/software discipline mismatch); Charles River Analytics (software/AI/autonomy discipline mismatch, distinct from Charles River Laboratories). See `checked` array for full per-entry detail.
+
+### Staged applications created (4 files, `staged-applications/`)
+`rtx-collins-mechanical-design-engineering-coop-spring2027-uniontown-oh.md`, `daktronics-manufacturing-process-engineer-coop-sioux-falls-sd.md`, `greenheck-group-machine-design-controls-engineering-coop-schofield-wi.md`, `marmon-powerex-iwata-controls-engineer-coop-spring2027-mt-juliet-tn.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows`: 319 → 320 (−3 closures, +4 new, net +1). `checked`: 654 → 670 (+16). `.xlsx` file changed (892,066 → 900,629 bytes), confirming regeneration.
+
+### Worth re-checking next time
+- **Wabtec Oak Creek, WI trio (R0116732/R0116733/R0116734)** — discipline-fitting, freshly posted, but no season stated; worth a dedicated re-check in case season wording is ever added.
+- **Analogic MANUF002804** — moved to `checked` on a strong-but-not-definitive negative signal; if a future run finds a cleaner confirming/denying signal (e.g. a direct 404 on the req page, or it reappears live), update accordingly.
+- **Re:Build Manufacturing and General Motors Manufacturing Controls Engineer** — both borderline EE/controls-discipline exclusions flagged for Hamza's own judgment call; reconsider if he wants controls-titled EE-leaning roles included more liberally (precedent: nVent's Electrical/Controls Co-Op was accepted).
+- **Wabtec, nVent, Graco** — continue the periodic liveness re-sweep given how many parallel reqs each posts per cycle.
+- **GE Aerospace Lynn, MA** — endDate for R5029663 still 2026-11-06; keep periodic checks via the direct Workday CXS job API.
+- **Rolls-Royce North America** — co-op cycle doesn't open until late Jan/early Feb 2027 — worth checking again once that window opens.
+- **SSOE Group's 3 Partial reqs** — sitemap-confirmed live but job-detail pages still unreachable; worth a genuine browser-based follow-up if one becomes available.
+- **Sanofi (Waltham, MA)** and **Schaeffler Humanoid Robotics Co-op (Troy, MI)** — both confirmed live/open but excluded on discipline-fit / season-unconfirmed grounds respectively; worth Hamza's own read.
+- **Tracker is approaching saturation on the "usual suspect" aerospace/defense/Boston-hardware employer list** (per this run's broad-sweep agent) — future runs may get more value from GitHub co-op-aggregator-driven discovery (as used this run) than re-treading the same ~90+ already-covered companies from scratch.
+- Carrying forward unresolved items from prior runs: **Tesla Sparks NV Partial posting** (Akamai-edge-blocked across many runs, deprioritized); **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.
