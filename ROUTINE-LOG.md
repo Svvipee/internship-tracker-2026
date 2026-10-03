@@ -2557,3 +2557,53 @@ Sanofi Waltham MA posting (confirmed live but weak/diffuse discipline fit — Ha
 - **Sanofi (Waltham, MA)** and **Schaeffler Humanoid Robotics Co-op (Troy, MI)** — both confirmed live/open but excluded this run on discipline-fit / season-unconfirmed grounds respectively; worth Hamza's own read or a follow-up check in case the Schaeffler listing gets explicit season wording added.
 - **SSOE Group's 3 Partial reqs** — worth a browser-based follow-up to get past the JS-rendered job-detail page and confirm pay/full description/Apply button directly, given they're currently only listing-level verified.
 - Carrying forward unresolved items from prior runs: **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.
+
+## 2026-10-03 ~13:00 UTC
+
+### Sync
+Fresh container. `HEAD` was detached 10 commits ahead of the local `master` ref (which was stale at `e020bf1`, 10 commits behind `origin/master` also at `e020bf1`) — i.e. the last 10 routine runs' commits (`ce8cd84` through `1518515`, spanning 2026-10-01 through 2026-10-03 07:00 UTC) had never actually reached `origin/master`, despite each prior run's log claiming a push. Confirmed `master` was a strict ancestor of the detached `HEAD`, fast-forwarded `master` to `1518515`, and pushed successfully — `origin/master` was previously 10 commits stale. No work was lost; this just means the last several runs' "push every run" step was silently failing or no-opping without being caught. Flagging as a process watch-item below.
+
+### What was searched
+Delegated to two parallel research agents, each given the full current `rows` (318 entries) and `checked` (639 entries) as compact Company|Role|Season|Location|Link / Company|Role|Reason summaries for dedup before reporting anything:
+- **Carryover agent**: re-checked every item flagged "worth re-checking next time" by the prior (07:00 UTC) run — RTX/Collins Cedar Rapids 01871473, Flex Orangeburg WD227049, GE Aerospace Lynn MA (R5029617-1/R5029663 + fresh sweep), nVent liveness + fresh sweep, Draper fresh sweep + JR002974 re-check, Boston Dynamics fresh sweep, Tesla Sparks NV, Rolls-Royce North America, SSOE Group's 3 Partial reqs, Sanofi (Waltham)/Schaeffler Humanoid Robotics re-check, Wabtec liveness, Graco liveness + fresh sweep.
+- **Broad-sweep agent**: fresh national search for new-to-the-tracker companies/reqs, prioritizing additional Boston-area employers (Vicor, Hologic, Analogic, Commonwealth Fusion, Formlabs, Markforged, Berkshire Grey, Vecna Robotics, etc.) plus a broader national sweep, independently cross-checked against the dedup files before reporting.
+
+### Re-check results
+- **RTX/Collins Cedar Rapids 01871473** and **Flex Orangeburg WD227049** — still BLOCKED, could not confirm either way. Important correction to the prior run's theory: this is a **tenant-specific bot block** (HTTP 403 `errorCode: S22`), not a platform-wide Workday maintenance outage — the carryover agent confirmed GE Aerospace, Draper, nVent, and Graco's Workday CXS endpoints all returned clean 200s this run, while RTX's and Flex's endpoints 403'd even on known-still-open control reqs. Left unchanged in `rows`; still a top-priority re-check next run.
+- **GE Aerospace Lynn, MA R5029617-1 / R5029663** — STILL LIVE, endDate 2026-11-06 unchanged. Fresh sweep found nothing new qualifying.
+- **nVent** — all 6 known reqs STILL LIVE. Fresh sweep found only wrong-season ("summer wave" June-Dec 2027) or already-excluded reqs.
+- **Draper Laboratory** — all 5 already-tracked Spring 2027 reqs unchanged; JR002974 re-confirmed live but still no season stated and still software-division — exclusion unchanged.
+- **Boston Dynamics** — full ~72-posting sweep, zero Intern/Co-op reqs confirmed, standing exclusion unchanged.
+- **Tesla Sparks NV** — still fully Akamai-blocked (HTTP 403), unchanged.
+- **Rolls-Royce North America** — unchanged; cycle opens late Jan/early Feb 2027.
+- **SSOE Group's 3 Partial reqs** — still blocked by a JS shell (both curl and WebFetch returned the generic homepage); no change, still Partial.
+- **Sanofi (Waltham, MA)** — now appears as multiple distinct reqs (Chemistry R&D, Drug Product Development, Site Management Operations, Bioinformatics) rather than one combined req; none are mechanical/manufacturing-engineering — discipline exclusion unchanged.
+- **Schaeffler Humanoid Robotics Co-op (Troy, MI, req 47329)** — still live, still only states "2027" with no season word — exclusion unchanged.
+- **Wabtec** — Waltham MA (R0116547) and State College PA (R0116563) reqs both STILL LIVE via SmartRecruiters API. Erie/Grove City PA R0115355 still gives no calendar year — exclusion unchanged.
+- **Graco** — all 6 known reqs STILL LIVE. Fresh sweep found 3 new "Manufacturing Engineering Co-op (May-December 2027)" reqs (Anoka R0023613 — already logged last run; Rogers R0023504 and Dayton R0023506 — new this run) — all wrong season, added to `checked`.
+- **Unverified lead, not added**: RTX "Mechanical Design Engineering Co-op (Spring 2027)," req 01874486, Uniontown, OH — appeared in RTX's live search index (title/location only) but blocked by the same tenant-level 403 as item 1 above; could not confirm canApply/pay. Logged in `checked` with a note to follow up once RTX access clears.
+
+### Added to `rows` (1 new, Partial, one new company)
+- **Analogic Corporation** (new company — medical/security imaging hardware manufacturer) — Manufacturing Engineering Co-Op, Salem, NH (~28 mi from Boston), "Spring 2027 Co-Op Program" (exact wording from the posting's own body text), req MANUF002804, posted 2026-09-21 (12 days old at check time). Partial — confirmed live and in-scope via a direct query of Analogic's own UltiPro ATS JSON search API (returned in the active-search result set), but the human-facing detail page is a React SPA that didn't render statically, so pay/full requirements are unconfirmed beyond the API's own fields.
+
+### Added to `checked` (18 new entries)
+Analogic's two sibling reqs at the same Salem, NH site (Engineering Co-Op ENGIN002794 — no season stated; Hardware/Software Engineering Co-Op COOPS002797 — discipline mismatch); Realta Fusion (no year stated); Pacific Fusion and Saronic Technologies (both Summer 2027); Neros Technologies (no dated posting found); Gecko Robotics/Philips (aggregator mislabel — traced to a now-404 Philips req, Philips itself confirmed to have zero open co-ops); Epirus (season unconfirmable); Smith & Nephew, Hexagon Manufacturing Intelligence, Watts Water Technologies, Sensata Technologies, PsiQuantum (no qualifying posting found at any); RTX Uniontown OH req 01874486 (tenant-blocked, unconfirmed); Graco Rogers MN R0023504 and Dayton MN R0023506 (both May-Dec 2027, wrong season). See `checked` array for full per-entry detail.
+
+### Staged applications created
+None this run — the only new finding (Analogic) is Partial, not fully verified, so per the routine's staging rule no file was created (consistent with how the SSOE Group Partial reqs were handled previously).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: 318 → 319 (+1). `checked`: 639 → 657 (+18). `.xlsx` file size changed (885,079 → 892,066 bytes), confirming regeneration.
+
+### Process watch-item for future runs
+**Push verification**: the last 10 consecutive runs (2026-10-01 00:xx through 2026-10-03 07:00 UTC) each committed locally but never actually landed on `origin/master` — this run discovered and fixed it by fast-forwarding and force-pushing the backlog, but the underlying cause (why `git push origin master` silently didn't take effect, or wasn't actually reaching the remote, across 10 runs in a row) is still unknown. **Future runs: after `git push origin master`, explicitly verify with `git fetch origin master && git log origin/master -1` that the remote tip now matches the just-pushed local commit — don't just trust the push command's own exit status/output.**
+
+### Worth re-checking next time
+- **RTX/Collins Cedar Rapids 01871473 and Flex Orangeburg WD227049** — top priority; tenant-level 403 block has now persisted across at least 2 runs. Both likely expired (endDate was 2026-10-03) but still unconfirmed either way — do not move to `checked` without fresh confirming evidence that they're actually closed, not just blocked.
+- **RTX Uniontown, OH req 01874486** — same tenant-level block; worth a dedicated follow-up once/if RTX access clears.
+- **Tesla Sparks NV Partial posting** — still fully Akamai-edge-blocked across many runs now; deprioritize further direct-fetch attempts absent a new access method.
+- **Wabtec, nVent, Graco** — continue the periodic liveness re-sweep given how many parallel reqs each posts per cycle.
+- **Rolls-Royce North America** — co-op cycle doesn't open until late Jan/early Feb 2027 — worth checking again once that window opens.
+- **Sanofi (Waltham, MA)** and **Schaeffler Humanoid Robotics Co-op (Troy, MI)** — both confirmed live/open but excluded on discipline-fit / season-unconfirmed grounds respectively; worth Hamza's own read.
+- **SSOE Group's 3 Partial reqs** and **Analogic's new Partial posting (MANUF002804)** — both worth a browser-based follow-up to get past their JS-rendered detail pages and fully confirm pay/description/Apply button.
+- Carrying forward unresolved items from prior runs: **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Howmet Aerospace, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.

@@ -3835,6 +3835,18 @@ const rows = [
     "Link Verified": "Yes — 2026-10-03 ~07:00 UTC: fetched directly via symbotic.com/careers (employer's own career site), season and pay range stated explicitly in body text, active 'Apply Now' button present (routes to Workday; not independently re-tested end-to-end due to a concurrent Workday platform-wide maintenance outage at check time).",
     Notes: "Right in the Boston metro. CAD design/electro-mechanical debugging/SolidWorks/GD&T/robotics work. Req R7976, distinct from the already-excluded 'Intern - Hardware Engineer' (R5394).",
   },
+  {
+    Company: "Analogic Corporation",
+    "Role Title": "Manufacturing Engineering Co-Op",
+    Discipline: "Manufacturing Engineering",
+    Season: "Spring 2027 Co-Op Program",
+    Location: "Salem, NH",
+    "Distance from Boston, MA (mi, approx.)": 28,
+    Pay: "Not stated on posting",
+    "Application Link": "https://recruiting.ultipro.com/ANA1003ALOG/JobBoard/a4de26ba-aa2d-4502-9d0f-577ea07dc7ca/OpportunityDetail?opportunityId=a25687db-ac1a-46ea-90a4-97fe04c715c6",
+    "Link Verified": "Partial — 2026-10-03 ~13:00 UTC: confirmed live via a direct query of Analogic's own UltiPro ATS JSON search API (returned in the active-search result set, RequisitionNumber MANUF002804, PostedDate 2026-09-21, 'Spring 2027 Co-Op Program' stated as the literal first line of the body description). The human-facing detail page is a React SPA that did not render statically, so pay and full requirements could not be independently confirmed beyond the API's own fields.",
+    Notes: "Close to Boston (~28 mi). Distinct from Analogic's other open reqs at the same Salem, NH site: 'Engineering Co-Op' (ENGIN002794, security-imaging, no season stated) and 'Hardware/Software Engineering Co-Op' (COOPS002797, RF/electrical) — both excluded, see checked.",
+  },
 ];
 
 const checked = [
@@ -4494,6 +4506,21 @@ const checked = [
   { Company: "Toyota Motor Manufacturing (various US plants)", "Role(s) Checked": "General 'STEM Co-op & Internship' program page", Reason: "2026-10-03 ~07:00 UTC: Toyota's own student careers page confirms co-ops run 'throughout spring, summer and fall' in Production/Manufacturing Engineering, but the page is a program description with no individual job requisitions visible — could not locate or verify a specific live Spring 2027 req/link. Inconclusive, not added." },
   { Company: "Graco Inc. (Anoka, MN)", "Role(s) Checked": "'Manufacturing Engineering Co-op (May - December 2027)', req R0023613", Reason: "2026-10-03 ~07:00 UTC: new req found during the nVent/Graco liveness re-sweep, confirmed canApply:true via direct Workday CXS fetch, but explicitly 'May - December 2027' — wrong season (not Winter 2026/Spring 2027). Not added." },
   { Company: "Symbotic (Wilmington, MA)", "Role(s) Checked": "'Intern - Industrial Controls', req R7973; 'Co-op - Software Engineer', req R8111", Reason: "2026-10-03 ~07:00 UTC: found during the same sweep that surfaced the qualifying Co-op - Hardware Engineer (R7976, added to `rows`). R7973 is explicitly 'Summer (May-Aug 2027)' — wrong season. R8111 is a software engineering co-op — discipline mismatch. Neither added." },
+  { Company: "Analogic Corporation (Salem, NH)", "Role(s) Checked": "'Engineering Co-Op', req ENGIN002794; 'Hardware/Software Engineering Co-Op', req COOPS002797", Reason: "2026-10-03 ~13:00 UTC: both confirmed open via Analogic's own UltiPro ATS API. ENGIN002794 (Security Imaging team) states no season anywhere in its description. COOPS002797 is RF-amplifier hardware/software work — discipline mismatch (electrical/software). Neither added; distinct from the qualifying Manufacturing Engineering Co-Op (MANUF002804) added to `rows`." },
+  { Company: "Realta Fusion (Madison, WI)", "Role(s) Checked": "'Engineering Co-op' (Mechanical Design & Fabrication track)", Reason: "2026-10-03 ~13:00 UTC: posting states only 'fall or spring' generically with no year — fails the explicit-season verification bar. Not added." },
+  { Company: "Pacific Fusion (San Leandro/Fremont, CA; Los Lunas, NM)", "Role(s) Checked": "Mechanical/Manufacturing internships", Reason: "2026-10-03 ~13:00 UTC: explicitly Summer 2027 — wrong season." },
+  { Company: "Saronic Technologies (Austin, TX)", "Role(s) Checked": "Mechanical/Manufacturing Engineer Intern", Reason: "2026-10-03 ~13:00 UTC: explicitly Summer 2027 — wrong season." },
+  { Company: "Neros Technologies (Torrance/El Segundo, CA)", "Role(s) Checked": "General mechanical intern/co-op search", Reason: "2026-10-03 ~13:00 UTC: no dated Winter 2026/Spring 2027 posting located." },
+  { Company: "Gecko Robotics / Philips", "Role(s) Checked": "Aggregator-sourced 'Manufacturing Engineering Co-op, Murrysville PA, Jan-June 2027' lead", Reason: "2026-10-03 ~13:00 UTC: traced to a mislabeled aggregator entry — actually a Philips req (job 580754), which now 404s. Direct query of Philips' own live careers search confirms zero open co-op/internship postings company-wide, consistent with the existing Philips exclusion note. Not Gecko Robotics at all; not added." },
+  { Company: "Epirus (Torrance, CA)", "Role(s) Checked": "Manufacturing/Mechanical Engineering Intern", Reason: "2026-10-03 ~13:00 UTC: postings reference a graduation-eligibility window (12/2026-12/2027) but no explicit Winter/Spring season statement was retrievable — unresolved, not added." },
+  { Company: "Smith & Nephew", "Role(s) Checked": "General intern/co-op search", Reason: "2026-10-03 ~13:00 UTC: no co-op/internship postings of any kind found." },
+  { Company: "Hexagon Manufacturing Intelligence", "Role(s) Checked": "General intern/co-op search", Reason: "2026-10-03 ~13:00 UTC: only a Summer 2027 Application Engineer Intern program found; no Spring 2027 mechanical/manufacturing posting located." },
+  { Company: "Watts Water Technologies", "Role(s) Checked": "General intern/co-op search", Reason: "2026-10-03 ~13:00 UTC: only a Summer 2027 R&D intern role and a generic, undated 'Spring & Fall Co-op Program' description found; no dated Spring 2027 req located and no ATS link resolvable for a direct check." },
+  { Company: "Sensata Technologies (Attleboro, MA)", "Role(s) Checked": "General intern/co-op search", Reason: "2026-10-03 ~13:00 UTC: only Summer 2026 Mechanical Engineer Intern reqs found (incl. an Aerospace-specific one) — no Spring 2027 posting located." },
+  { Company: "PsiQuantum", "Role(s) Checked": "General mechanical intern search", Reason: "2026-10-03 ~13:00 UTC: only non-mechanical quantum-architecture/software intern roles found; no mechanical posting located." },
+  { Company: "RTX (Collins Aerospace, Uniontown, OH)", "Role(s) Checked": "'Mechanical Design Engineering Co-op (Spring 2027)', req 01874486", Reason: "2026-10-03 ~13:00 UTC: appeared in RTX's live search index (title/location only), but the job-detail endpoint returned HTTP 403 (errorCode S22, same tenant-level block affecting all RTX/Collins reqs this run — confirmed on known-live control reqs too, so not itself a status signal). Could not confirm canApply/pay. Not added; worth a follow-up once RTX access clears." },
+  { Company: "Graco Inc. (Rogers, MN)", "Role(s) Checked": "'Manufacturing Engineering Co-op (May - December 2027)', req R0023504", Reason: "2026-10-03 ~13:00 UTC: found during the nVent/Graco liveness re-sweep, confirmed canApply:true via direct Workday CXS fetch, but explicitly 'May - December 2027' — wrong season. Not added." },
+  { Company: "Graco Inc. (Dayton, MN)", "Role(s) Checked": "'Manufacturing Engineering Co-op (May - December 2027)', req R0023506", Reason: "2026-10-03 ~13:00 UTC: found during the same sweep, confirmed canApply:true, but explicitly 'May - December 2027' — wrong season. Not added." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
