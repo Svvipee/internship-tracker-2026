@@ -2768,3 +2768,35 @@ Re-check confirmations with no status change (RoboForce, Wabtec Oak Creek trio, 
 - **Wabtec Oak Creek, WI trio** — still no season stated after 3+ checks across multiple runs; consider this a long-term exclusion unless wording changes.
 - Do a one-time full dedupe pass across all of `rows` for duplicate Application Links — this run found 2 pre-existing duplicates by accident (checked programmatically only for links touched by other checks); a systematic company+link pass across the full 340 rows hasn't been done.
 - Carrying forward unresolved items from prior runs: **Tesla Sparks NV** (Akamai-edge-blocked, deprioritized); **Rolls-Royce North America** (cycle opens ~late Jan/early Feb 2027); **PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne** — long-standing bot-blocked/unconfirmable-ATS or confirmed-saturated leads; low priority unless a new access method becomes available.
+
+## 2026-10-04 ~13:00 UTC
+
+### Sync
+Fresh container; `HEAD` was detached at `72a6794` while the local `master` ref was stale at `e020bf1` (2026-09-30) — same recurring container quirk as prior runs. Ran `git fetch origin master` and confirmed `origin/master` matched the detached `HEAD` exactly (`72a6794`), so all 10 runs' worth of commits since 2026-09-30 had in fact landed on GitHub — nothing was lost, the local ref was just never advanced. Ran `git branch -f master HEAD && git checkout master` before any edits. Ground truth going in (re-extracted directly from `build.mjs`): `rows` 340, `checked` 698.
+
+### What was searched
+Worked the "worth re-checking" list from the prior run plus the standing priorities (GE Aerospace, Draper, MIT Lincoln Laboratory):
+- **MIT Lincoln Laboratory Group 07-71** — re-confirmed this req is the already-tracked Mechanical Engineering Co-Op (Jan–June 2027); no new Winter/Spring 2027 sibling to the Fall-2026-only "Rapid Prototyping Aero/Mech" req was found.
+- **GKN Aerospace, Illinois Tool Works** — re-searched; no new information beyond what the 2026-10-04 ~07:00 UTC run already logged (both remain unverifiable/no live dated posting located). Not re-added to `checked` a second time.
+- **GE Aerospace, Draper Laboratory** — fresh searches returned only the same reqs already tracked in `rows` (R5029617-1/R5029663; JR002882/JR002883/JR002940/JR002942/JR002944) — fully consistent with 10+ days of saturation findings logged in this file. No new entries needed.
+- **Sherwin-Williams siblings** (flagged last run as "reportedly has sibling postings in Los Angeles CA, Richmond KY, Holland MI, and Waco TX, not individually verified") — ran this down directly. Via aggregator pages (dreamworkhq, zapply) found the actual `ejhp.fa.us6.oraclecloud.com` job IDs for each site, then independently confirmed three of the four via direct `curl` fetch of the Oracle Cloud page's own server-rendered `og:title` meta tag (same method already used for the existing Chicago, IL entry): **Los Angeles, CA** (job 2624794), **Holland, MI** (job 2624788), **Waco, TX** (job 2624835). Richmond, KY's specific job ID could not be located/confirmed directly — left unverified.
+- Light fresh-company pass: Saronic Technologies, Ursa Major, Epirus — all three are new to the tracker but none have a live Winter 2026/Spring 2027 posting (Summer 2027, not-yet-open, and an undated-season 10-week program respectively).
+
+### Added to `rows` (3 new postings, all Partial-verified)
+Sherwin-Williams "2027 Spring Engineering Co-Op" — Los Angeles, CA; Holland, MI; Waco, TX. Each is a sibling of the already-tracked Chicago, IL req, same 15-week program, January 2027 start. Verification tier matches the existing Chicago entry: Oracle Cloud's JS-rendered candidate page couldn't fully load, but a direct curl of the page's own `og:title` meta tag confirms a live posting exists at that exact URL with the matching title. Pay/exact dates/open-status not independently confirmed beyond that.
+
+### Added to `checked` (4 new entries, dated 2026-10-04)
+Sherwin-Williams Richmond, KY sibling (aggregator-confirmed to exist, but no direct Oracle Cloud URL locatable — worth a quick re-check since the pattern strongly suggests it exists); Saronic Technologies (Summer 2027 only); Ursa Major (2027 cycle not yet open); Epirus (undated ~10-week program, reads as Summer).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: 340 → 343 (+3). `checked`: 698 → 702 (+4). Programmatic duplicate-Application-Link check across all 343 `rows` entries: zero duplicates. `.xlsx` file changed (928,285 → 934,363 bytes).
+
+### Staged applications
+None this run — all 3 new postings are Partial-verified (per the routine's staging rule, only fully-verified postings get a staged-applications file).
+
+### Worth re-checking next time
+- **Sherwin-Williams Richmond, KY** — locate the direct `ejhp.fa.us6.oraclecloud.com` job ID (pattern suggests it's near 2624784/2624788/2624794/2624835) to upgrade from `checked` to a Partial `rows` entry.
+- **GKN Aerospace** and **Illinois Tool Works** — carried forward again, still no dated Winter/Spring 2027 posting found after two consecutive runs; consider deprioritizing unless a new access method (e.g. direct ATS discovery) becomes available.
+- **MIT Lincoln Laboratory Group 77** "Rapid Prototyping Aero/Mech Co-Op" — still Fall-2026-only; keep watching for a Winter/Spring 2027 sibling.
+- The full systematic dedupe pass across all of `rows` (mentioned in the prior run's notes) still hasn't been done as a dedicated pass — today's spot-check (all 343 links) found zero duplicates, which is a reasonable proxy, but a true systematic pass (e.g. by Company+Role+Location, not just by link) hasn't been run.
+- Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Tesla Sparks NV, Rolls-Royce North America, Wabtec Oak Creek WI trio, PPL Corporation/LG&E-KU, Precision Castparts Corp, SEACORP, The Aerospace Corporation, QuantumScape, Medical Murray, Teleflex, Framatome, KLA Corporation, Teradyne.
