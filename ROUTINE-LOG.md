@@ -2901,3 +2901,53 @@ GKN Aerospace (stale 2023 sitemap); ITW 3 dead sitemap-listed jobs; Tesla Sparks
 - **GKN Aerospace** and **Illinois Tool Works** — carried forward again after 5+ consecutive runs with no live dated Winter 2026/Spring 2027 posting found; recommend deprioritizing further plain-fetch attempts on these two unless a headless-browser method becomes available.
 - Tracker is now heavily saturated (355 rows, 730 checked entries) after 17 consecutive runs — future runs may get more value from targeted re-checks of time-sensitive/deadline items (like GTRI above) and periodic liveness sweeps of the standing Boston-area/bot-blocked list than fresh broad-sweep discovery, which is yielding diminishing returns (2-4 new postings per run now vs. 8-13 in earlier runs).
 - Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Precision Castparts Corp, SEACORP, The Aerospace Corporation, Medical Murray, Teleflex, Framatome.
+
+## 2026-10-05 ~13:00 UTC
+
+### Sync
+Fresh container; `HEAD` was detached at `9d258b5` while the local `master` ref was stale at `e020bf1` (2026-09-30). `git fetch origin master` confirmed `origin/master` matched the detached `HEAD` exactly, so all 18 runs' worth of commits since 2026-09-30 had landed cleanly on GitHub. Ground truth going in (re-extracted directly from `build.mjs`): `rows` 355, `checked` 730.
+
+### What was searched
+Delegated to two parallel research agents, each given the full current `rows` (355) and `checked` (730) as a compact dedup reference file:
+- **Carryover agent**: resolved specific "worth re-checking" items from the prior run — GTRI Smyrna GA deadline status, R.W. Beckett direct-link search, Tesla (Sparks NV job 278960, Palo Alto job 278627) Akamai-block retry, GKN Aerospace, Illinois Tool Works — plus a fresh liveness sweep of GE Aerospace (Lynn MA), Draper Laboratory, MIT Lincoln Laboratory, Wabtec, nVent, Graco, Rolls-Royce North America, and a light re-check of long-standing low-priority items (Precision Castparts Corp, SEACORP, The Aerospace Corporation, Medical Murray, Teleflex, Framatome).
+- **Broad-sweep agent**: fresh national search for new-to-the-tracker companies (GitHub internship-aggregator repos, Greenhouse/Lever/Ashby/SmartRecruiters postings), each candidate independently re-verified against the employer's own ATS.
+
+### Carryover re-check results
+- **GTRI Smyrna, GA** — still open as of this run; Oct 9, 2026 deadline stands (4 days left as of today). No status change.
+- **R.W. Beckett Corporation** — no direct job-specific link found (ADP deep-link pattern and Indeed/LinkedIn/Glassdoor searches all came up empty). Status quo, stays Partial with the generic ADP portal URL.
+- **Tesla (Sparks NV job 278960, Palo Alto job 278627)** — both still return HTTP 403 (Akamai) to direct fetch, curl, and an r.jina.ai proxy workaround. No change.
+- **GKN Aerospace** — still a pure client-rendered shell with no job data in static HTML; internships page shows only generic marketing copy. No change.
+- **Illinois Tool Works** — jobs.itw.com search endpoint returned HTTP 503 this run. No change.
+- **GE Aerospace, Draper, MIT Lincoln Lab, Wabtec, nVent, Graco** — fresh sweep via each employer's own ATS API found nothing beyond what's already tracked (every new-looking req was already logged as excluded on discipline/season grounds, or — in GE's case — a vocational-high-school trade role).
+- **Rolls-Royce North America** — confirmed still closed; cycle still expected to open late Jan/early Feb 2027.
+- **Teleflex, SEACORP, The Aerospace Corporation, Framatome** — re-confirmed unchanged (Teleflex req still filled; SEACORP/Aerospace Corp still have no exploitable primary source; Framatome's careers domain is now fully DNS-unreachable, worse than the prior block).
+- **Precision Castparts Corp.** — BREAKTHROUGH: the Altcha bot-wall that blocked PCC's StepStone TalentLink portal in every prior run was not encountered this run (plain curl with a browser UA returned a clean HTTP 200). Found a genuinely qualifying Spring 2027 co-op — see below. A sibling Manufacturing Engineering co-op (Shur-Lok, Irvine CA) was also found live but states no season — excluded, logged to `checked`.
+- **Medical Murray** — RESOLVED the prior run's "could not independently confirm still open" note via direct query of ADP Workforce Now's own public job-requisitions JSON API — confirmed open, Partial-verified, added to `rows` (see below).
+
+### Broad-sweep results — new companies/postings found
+- **Physical Intelligence** (new company) — Mechatronics Intern, San Francisco CA, explicit Jan–May 2027 duration. Verified via its own public Ashby posting-API (isListed true).
+- **Etched** (new company — AI-inference-chip hardware startup) — Mechanical/Thermal Intern, San José CA, one of four named rolling cohorts including "Spring '27". Verified via its own public Ashby posting-API (isListed true).
+- **AEVEX Aerospace** (Tampa, FL) — Robotics Engineering Co-op confirmed live via Greenhouse API, but the primary posting text itself states no season anywhere (only two aggregators claim "Winter 2026"); fails the strict "season confirmed from the posting itself" bar — excluded, logged to `checked`, not added to `rows`.
+- Checked and excluded (new companies, dated 2026-10-05): Xometry, Fictiv, Formic, General Matter (all Summer 2027), Zoox, Motional, Collaborative Robotics, Dexterity, Loft Orbital, Machina Labs (no intern/co-op titles), Vertex Pharmaceuticals (ChemE discipline mismatch), Stantec (MEP/HVAC discipline mismatch, consistent with prior CMTA precedent).
+
+### Added to `rows` (4 new: 3 fully verified "Yes" + 1 "Partial")
+Precision Castparts Corp. (TIMET), Toronto OH — 2027 Spring Engineering or Metallurgy Co-op (Yes, new division for the tracker); Medical Murray, N Barrington IL — Engineering Co-op/Internship Spring 2027 (Partial, resolves a prior "unconfirmed" note); Physical Intelligence, San Francisco CA — Mechatronics Intern (Yes, new company); Etched, San José CA — Mechanical/Thermal Intern (Yes, new company).
+
+### Added to `checked` (23 new entries, dated 2026-10-05; 1 prior entry annotated as superseded)
+Re-check confirmations with no status change (Teleflex, SEACORP, Aerospace Corp, Framatome, GKN, ITW, GE Aerospace Lynn trade co-op, Draper, nVent — logged for the audit trail); PCC Shur-Lok Irvine CA (no season stated); AEVEX Aerospace (season unconfirmable from primary source); newly-excluded companies from the broad sweep (Xometry, Fictiv, Formic, General Matter, Zoox, Motional, Collaborative Robotics, Dexterity, Loft Orbital, Machina Labs, Vertex Pharmaceuticals, Stantec). The old Precision Castparts Corp. entry (bot-blocked, dated 2026-09-30) was annotated "SUPERSEDED 2026-10-05" rather than removed, pointing to the new `rows` entry — kept for audit-trail continuity.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows`: 355 → 359 (+4). `checked`: 730 → 753 (+23). Zero duplicate Application Links across all 359 `rows` entries (programmatic check). `.xlsx` file changed (958,958 → 971,502 bytes).
+
+### Staged applications created (3 files, `staged-applications/`)
+`precision-castparts-timet-spring-engineering-metallurgy-coop-spring2027-toronto-oh.md`, `physical-intelligence-mechatronics-intern-spring2027-san-francisco-ca.md`, `etched-mechanical-thermal-intern-spring2027-san-jose-ca.md`. (Medical Murray not staged — Partial, not fully verified, per the routine's staging rule.)
+
+### Worth re-checking next time
+- **GTRI Smyrna, GA — Oct 9, 2026 deadline is now very close (4 days).** If Hamza hasn't applied by the next run, move this entry to `checked` as closed.
+- **R.W. Beckett Corporation** and **Medical Murray** — both confirmed open/in-season via their respective ADP APIs but neither has a job-specific deep link; worth a headless-browser pass if one ever becomes available in this environment.
+- **AEVEX Aerospace** — live and discipline-fitting, but season unconfirmed from the primary source; worth an in-browser re-check in case season info lives in an application-form dropdown not present in the static description HTML.
+- **Precision Castparts Corp.** — the Altcha bot-wall was down this run; worth a fuller sweep of its ~44 other open reqs next time in case more co-ops are hiding behind the now-open portal (only 2 of them were checked this run: the TIMET one that qualified, and the Shur-Lok one that didn't).
+- **Tesla (Sparks NV job 278960; Palo Alto job 278627)** — both plausible, in-season, in-discipline Tesla leads remain blocked by Akamai from this environment; needs a bot-block workaround to fully verify either.
+- **GKN Aerospace** and **Illinois Tool Works** — carried forward again after 6+ consecutive runs with no live dated Winter 2026/Spring 2027 posting found; recommend deprioritizing further plain-fetch attempts unless a headless-browser method becomes available.
+- Tracker is now at 359 rows / 753 checked entries after 18 consecutive runs — broad-sweep discovery continues to show diminishing returns (2-4 new postings per run, almost none Boston-area this run specifically); future runs may get more value from targeted re-checks of time-sensitive items (GTRI deadline) and periodic liveness sweeps of the standing bot-blocked/low-priority list.
+- Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio.
