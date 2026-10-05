@@ -2951,3 +2951,54 @@ Re-check confirmations with no status change (Teleflex, SEACORP, Aerospace Corp,
 - **GKN Aerospace** and **Illinois Tool Works** — carried forward again after 6+ consecutive runs with no live dated Winter 2026/Spring 2027 posting found; recommend deprioritizing further plain-fetch attempts unless a headless-browser method becomes available.
 - Tracker is now at 359 rows / 753 checked entries after 18 consecutive runs — broad-sweep discovery continues to show diminishing returns (2-4 new postings per run, almost none Boston-area this run specifically); future runs may get more value from targeted re-checks of time-sensitive items (GTRI deadline) and periodic liveness sweeps of the standing bot-blocked/low-priority list.
 - Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio.
+
+## 2026-10-05 ~19:00 UTC
+
+### Sync
+Fresh container; `HEAD` was detached at `0db6122` while the local `master` ref was stale at `e020bf1` (2026-09-30). `git fetch origin master` confirmed `origin/master` matched the detached `HEAD` exactly, so all 19 runs' worth of commits since 2026-09-30 had landed cleanly on GitHub. Ran `git checkout -B master origin/master`. Ground truth going in (re-extracted directly from `build.mjs`): `rows` 359, `checked` 753.
+
+### What was searched
+Delegated to two parallel research agents, each given the full current `rows` (359) and `checked` (753) as compact dedup reference files:
+- **Carryover agent**: resolved specific "worth re-checking" items from the prior run — GTRI Smyrna GA deadline status, R.W. Beckett direct-link search, Medical Murray direct-link search, AEVEX Aerospace season check, Precision Castparts Corp fuller sweep of its ~44+ open reqs, Tesla (Sparks NV job 278960, Palo Alto job 278627) Akamai-block retry, GKN Aerospace, Illinois Tool Works — plus a light liveness sweep of GE Aerospace (Lynn MA), Draper Laboratory, MIT Lincoln Laboratory, Wabtec, nVent, Graco, Rolls-Royce North America.
+- **Broad-sweep agent**: fresh national search for new-to-the-tracker companies (GitHub internship-aggregator repos, Workday/Greenhouse/Lever/Ashby/SmartRecruiters direct API queries, general web search), with Boston-area finds flagged.
+
+### Carryover re-check results
+- **GTRI Smyrna, GA** — still open (HTTP 200, no closed text). However, the earlier-reported "Oct 9, 2026" deadline text could not be re-located in today's raw HTML; the page's own JSON-LD now shows `validThrough: 2027-01-03`. Updated the `rows` entry to flag this deadline as unconfirmed rather than dropping it, since there's no evidence either way that it closed.
+- **R.W. Beckett Corporation** — confirmed (via a direct experiment, not just absence of discovery) that the ADP portal is a pure client-side SPA that ignores job-ID URL params server-side — no deep link is obtainable by any URL-pattern method. Status unchanged, still open/in-season per ADP API.
+- **Medical Murray** — re-confirmed open via ADP API (same SPA limitation, no deep link exists). Also found a distinct sibling "Engineering Co-op/Internship **Summer** 2027" req at the same company — wrong season, not added.
+- **AEVEX Aerospace** — exhaustively re-verified: pulled the full Greenhouse job object including all 22 application-form fields; no season dropdown exists, and zero season keywords appear anywhere in title, body, or `application_deadline`. Exclusion stands, now exhaustively documented (replaced the prior less-detailed `checked` entry).
+- **Precision Castparts Corp.** — fuller sweep of the ~78-req tal.net portal found **one new qualifying posting**: Wyman Gordon/Structurals Co. Engineering Co-Op, Groton CT, Dec 2026/Jan 2027 start, $20.75–$31.00/hr — added to `rows` as fully verified ("Yes"). Four other PCC reqs checked and excluded (no season stated, or explicit Sept 2026 start).
+- **Tesla (jobs 278960, 278627)** — still fully blocked by Akamai, confirmed via four independent methods (curl w/ browser UA, WebFetch, Googlebot UA, Tesla's internal API endpoint) — all 403. No change.
+- **GE Aerospace (Lynn), Draper, MIT Lincoln Lab, Wabtec, nVent** — no new qualifying req found beyond what's already tracked/excluded.
+- **Graco** — two previously-untracked Dexter, MI intern reqs found (Application Engineering Intern, Electrical Engineering Intern); Application Engineering Intern's body has zero season keywords, Electrical Engineering Intern is a discipline mismatch — both excluded.
+- **Rolls-Royce North America** — could not independently re-verify this run (404 on two URL guesses for the students-and-graduates page); treated as unchanged/still closed per the 2026-10-04 finding.
+- **GKN Aerospace, Illinois Tool Works** — no change, skipped further effort per the standing deprioritization.
+
+### Broad-sweep results — new companies/postings found
+- **Barry-Wehmiller (BW Design Group)** — "Controls Engineering Co-Op - BOS," Boston, MA (req R023035). Confirmed live via the company's own Workday CXS API, but this specific req's own body doesn't state a season — a January 2027 start is inferred only from an identical sibling national req's text. Added as **Partial**. (A different Barry-Wehmiller req found 2026-09-30 via a Handshake listing remains separately logged in `checked` — not the same posting.)
+- **Haast Autonomous** — "Fall/Winter Engineering Co-op," Pendleton, OR. Confirmed live via the company's own Ashby posting-API, but the posting never states an explicit year — added as **Partial**.
+- Everything else surfaced in the broad sweep (Lutron, CMTA, Vertex Pharmaceuticals, WSP, Buro Happold, Moderna, Skyworks Solutions, Rendezvous Robotics, GITAI, The Mosaic Company, Amazon Robotics) was already present in `rows` or `checked` — no action needed.
+- Newly checked-and-excluded: HNTB Co-op Engineer: Structures (Philadelphia/Harrisburg/King of Prussia PA, ambiguous "Spring/Summer 2027" season, not Boston-area); HNTB Co-op Civil Engineer (Boston MA, but civil/transportation discipline mismatch); Langan Engineering (Boston MA, site/civil discipline mismatch); Field AI Robotics Research Internship (Boston MA, title/body season contradiction — title says Spring 2027, body says Fall 2026 — plus PhD-only); Boston Dynamics (reconfirmed zero live co-op reqs company-wide); Markforged, Desktop Metal (no live posting locatable).
+
+### Added to `rows` (3 new: 1 fully verified "Yes" + 2 "Partial")
+Precision Castparts Corp. (Wyman Gordon/Structurals Co.), Groton CT — Yes; Barry-Wehmiller (BW Design Group), Boston MA — Partial; Haast Autonomous, Pendleton OR — Partial.
+
+### Added to `checked` (12 new entries, dated 2026-10-05; 1 prior entry replaced with a more thorough re-verification)
+PCC Forging Engineer Intern/Co-Op (Paramount CA, no season); PCC Operations Process Control Co-Op (San Leandro CA, no season); PCC Operations Co-Op/Intern x2 reqs (Sept 2026 start, wrong season); GE Aerospace Lynn Engines Engineering Co-op – Computer/Software (discipline mismatch); Graco Dexter MI Application Engineering Intern + Electrical Engineering Intern; HNTB Structures (ambiguous season); HNTB Civil (discipline mismatch); Langan Engineering (discipline mismatch); Field AI (season self-contradiction); Boston Dynamics (reconfirmed); Markforged; Desktop Metal. The existing AEVEX Aerospace entry was replaced with a more exhaustive re-verification (same conclusion, stronger evidence).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows`: 359 → 362 (+3). `checked`: 753 → 765 (+12, net of the AEVEX replace). Zero duplicate Application Links across all 362 `rows` entries (programmatic check). `.xlsx` file changed (971,502 → 980,799 bytes).
+
+### Staged applications created (1 file, `staged-applications/`)
+`precision-castparts-wyman-gordon-engineering-coop-winter2026-spring2027-groton-ct.md`. (Barry-Wehmiller and Haast Autonomous not staged — both Partial, per the routine's staging rule.)
+
+### Worth re-checking next time
+- **GTRI Smyrna, GA** — the previously-reported Oct 9, 2026 deadline could not be re-confirmed this run (page now shows a JSON-LD validThrough of 2027-01-03 instead); worth a fresh read to resolve which date is accurate, and whether the posting is still accepting applications.
+- **Barry-Wehmiller Boston "Controls Engineering Co-Op - BOS" (R023035)** — Partial on season; worth pinning down this specific req's exact start date (vs. inferring it from the sibling national req) before Hamza relies on it.
+- **Haast Autonomous** — Partial on year; worth a closer read or direct outreach to confirm whether "Fall/Winter co-op term" refers to 2026/2027 specifically.
+- **R.W. Beckett Corporation** and **Medical Murray** — both confirmed open/in-season via their respective ADP APIs, and now confirmed (via direct experiment) that no job-specific deep link is obtainable through any URL-pattern method; only a headless-browser pass could resolve this further, if one ever becomes available in this environment.
+- **Precision Castparts Corp.** — ~70 of its ~78 open reqs are still unchecked (only TIMET Toronto OH, Shur-Lok Irvine CA, Wyman Gordon Groton CT, and 4 excluded reqs have been reviewed so far); worth continuing the sweep since the portal has stayed unblocked for two consecutive runs now.
+- **Tesla (Sparks NV job 278960; Palo Alto job 278627)** — both plausible, in-season, in-discipline Tesla leads remain blocked by Akamai from this environment; needs a bot-block workaround to fully verify either.
+- **GKN Aerospace** and **Illinois Tool Works** — carried forward again after 7+ consecutive runs with no live dated Winter 2026/Spring 2027 posting found; recommend deprioritizing further plain-fetch attempts unless a headless-browser method becomes available.
+- Tracker is now at 362 rows / 765 checked entries after 19 consecutive runs — broad-sweep discovery continues to show diminishing returns; future runs may get more value from targeted re-checks of time-sensitive/Partial items (GTRI deadline, Barry-Wehmiller season, Haast Autonomous year, PCC's remaining ~70 reqs) than fresh company discovery.
+- Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio.
