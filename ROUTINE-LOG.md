@@ -2856,3 +2856,48 @@ ITW Warewash Co-Op (dead); Wabtec Firmware Co-Op (discipline); nVent 5 wrong-sea
 - **CNH Industrial (Fargo, ND)** — large, active ME co-op program but every posting uses season-free "evergreen" template language; worth periodically re-checking in case a dated Spring 2027 version is ever posted (as happened with Wabtec/Trane previously).
 - Several EE-discipline-only leads surfaced this run (Johns Hopkins APL, Siemens Digital Industries Software, Winchester Ammunition, Arconic, Rehlko, ABB, Legrand, BlueScope, CAE) were not pursued — flagged only in case Hamza's discipline scope ever broadens.
 - Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio, Precision Castparts Corp, SEACORP, The Aerospace Corporation, Medical Murray, Teleflex, Framatome.
+
+## 2026-10-05 ~07:00 UTC
+
+### Sync
+Fresh container; `HEAD` was detached at `3fab1c6` while the local `master` ref was stale at `e020bf1` (2026-09-30). `git fetch origin master` confirmed `origin/master` matched the detached `HEAD` exactly, so all 16 runs' worth of commits since 2026-09-30 had landed cleanly. Ran `git checkout master && git merge --ff-only origin/master`. Ground truth going in (re-extracted directly from `build.mjs`): `rows` 351, `checked` 718.
+
+### What was searched
+Delegated to two parallel research agents, each given the full current `rows` (351) and `checked` (718) as compact dedup files, plus one follow-up agent to resolve an application-link gap:
+- **Carryover agent**: resolved specific "worth re-checking" items from the prior run — GTRI Smyrna GA (upgrade attempt), R.W. Beckett Corporation, Tesla Sparks NV job 278960, GKN Aerospace, Illinois Tool Works — plus a fresh liveness sweep of GE Aerospace (Lynn MA), Draper Laboratory, MIT Lincoln Laboratory, Wabtec, nVent, Graco, and Rolls-Royce North America.
+- **Broad-sweep agent**: national search for new-to-the-tracker companies (Ashby/Greenhouse/Lever/SmartRecruiters postings, GitHub aggregator repos) with independent verification against each employer's own posting-API.
+- **Follow-up agent**: specifically chased down a direct, job-specific application URL for the R.W. Beckett posting once the carryover agent confirmed it existed via ADP's API but had no human-facing deep link.
+
+### Carryover re-check results
+- **GTRI Smyrna, GA** — RESOLVED, upgraded Partial → Yes. Re-fetched the live search listing (server-rendered this time) and the job page; confirmed Job ID 501209, open window Sep 9 – **Oct 9, 2026**. This posting closes in 4 days as of today — flagged urgently in `rows` Notes and in the staged-application file.
+- **R.W. Beckett Corporation (North Ridgeville, OH)** — RESOLVED as Partial, added to `rows`. Found the real ATS (ADP Workforce Now, not careers.beckettcorp.com which doesn't resolve) and queried its public job-requisitions JSON API directly: "Spring 2027 Engineering Co-Op- Mechanical," $21.00/hr, posted 2026-09-02, ExternalJobID 954864 — independently confirms the $21/hr figure multiple aggregators had reported. A dedicated follow-up agent then spent significant effort trying to find a job-specific clickable URL (ADP deep-link pattern returned HTTP 200 but empty body; the real careers.beckettcorp.com page links only to a generic ADP portal shell; the per-job URL is built client-side by a JS SPA with no exploitable static API endpoint or Indeed cross-reference that could be independently confirmed). Added to `rows` as Partial with the verified generic ADP portal URL and an explicit note that Hamza will need to search within that portal for the listing by title.
+- **Tesla Sparks NV job 278960** — still unverifiable; re-confirmed via Google-indexed snippet that tesla.com serves this exact URL with title/season intact, but direct fetch and an r.jina.ai proxy workaround both still return HTTP 403 (Akamai block). Logged to `checked` again for the audit trail; not added.
+- **GKN Aerospace** — sitemap.xml is valid XML but every job entry is dated July 2023 (stale); still unverifiable.
+- **Illinois Tool Works (ITW)** — found the real current sitemap (sitemap1.xml) with 3 live-looking job URLs (Troy OH, Clearwater FL, Appleton WI); all three return "no longer available" when opened directly. Exclusion confirmed; deprioritize further ITW attempts barring a new access method.
+- **GE Aerospace, Draper, MIT Lincoln Lab, Wabtec, nVent, Graco, Rolls-Royce NA** — fresh sweep found nothing beyond what's already in `rows`/`checked` (Wabtec and nVent reqs found this run were already tracked or already excluded).
+
+### Broad-sweep results — new companies/postings found
+- **Forge Atomics Inc.** (new company) — Mechanical Engineering Internship/Co-op, Spring 2027, El Segundo CA. Verified via Forge Atomics' own Ashby public posting-API (isListed: true, posted 2026-08-13); posting body explicitly states Spring 2027 and Summer 2027 terms are both available.
+- **Beyond Reach Labs** (new company) — Mechanical Engineer Intern (Spring 2027), New York City NY — the closest non-Boston option found this run. Verified via its own Ashby public posting-API (isListed: true, posted 2026-07-15); title itself states the season.
+- **Tesla (Palo Alto, CA)** job 278627, "Internship, Test Equipment Mechanical Design Engineer, Cell Engineering (Winter/Spring 2027)" — added as Partial. tesla.com 403'd to direct fetch, curl, and an r.jina.ai proxy alike; the job ID and exact title/season string are corroborated by multiple independent search-engine hits quoting Tesla's own URL pattern (same evidentiary class already used for existing Tesla rows in this tracker).
+- Checked and excluded (12 new entries, dated 2026-10-05): Apex Technology/Apex Space (Fall 2026 only / stale aggregator link); Merlin Labs (zero live internship postings); XWing (both closed/stale); Kodiak Robotics (discipline mismatch — software/autonomy, not mechanical); Boom Supersonic (Summer 2027 only); Aurora Innovation/Nuro/Gatik (no postings / cycle not yet open); Arizona Beverage Company (unverifiable, no primary source); Natilus (no postings found); Astroscale U.S./Momentus/Terran Orbital (none found / closed).
+
+### Added to `rows` (4 new/upgraded, 2 fully verified "Yes" new companies + 1 upgraded "Yes" + 1 "Partial" + 1 "Partial")
+Forge Atomics Inc. El Segundo CA (Yes, new company); Beyond Reach Labs NYC (Yes, new company); GTRI Smyrna GA (upgraded Partial → Yes, urgent Oct 9 deadline); R.W. Beckett Corporation North Ridgeville OH (Partial, new company); Tesla Palo Alto CA job 278627 (Partial).
+
+### Added to `checked` (12 new entries, dated 2026-10-05)
+GKN Aerospace (stale 2023 sitemap); ITW 3 dead sitemap-listed jobs; Tesla Sparks NV job 278960 (re-confirmed still blocked); Apex Technology/Apex Space; Merlin Labs; XWing (x2 reqs); Kodiak Robotics; Boom Supersonic; Aurora Innovation/Nuro/Gatik; Arizona Beverage Company; Natilus; Astroscale U.S./Momentus/Terran Orbital.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: 351 → 355 (+4). `checked`: 718 → 730 (+12). Programmatic duplicate-Application-Link check across all 355 `rows` entries: zero duplicates. `.xlsx` file changed (949,523 → 958,958 bytes).
+
+### Staged applications created (3 files, `staged-applications/`)
+`forge-atomics-mechanical-engineering-internship-coop-spring2027-el-segundo-ca.md`, `beyond-reach-labs-mechanical-engineer-intern-spring2027-nyc.md`, `gtri-mechanical-engineering-coop-spring2027-atas-smyrna-ga.md` (newly upgraded to fully-verified, with the Oct 9 deadline flagged prominently). R.W. Beckett and Tesla Palo Alto not staged — both Partial, per the routine's staging rule.
+
+### Worth re-checking next time
+- **GTRI Smyrna, GA — Oct 9, 2026 deadline is imminent.** If Hamza hasn't applied by then, this entry should be moved to `checked` as closed on the next run.
+- **R.W. Beckett Corporation** — confirmed open and in-season via ADP's API, but no job-specific deep link exists; worth a headless-browser pass (if ever available) to capture the real per-job URL once the SPA renders client-side.
+- **Tesla (Sparks, NV job 278960; Palo Alto job 278627)** — both plausible, in-season, in-discipline Tesla leads blocked by Akamai from this environment; needs a bot-block workaround to fully verify either.
+- **GKN Aerospace** and **Illinois Tool Works** — carried forward again after 5+ consecutive runs with no live dated Winter 2026/Spring 2027 posting found; recommend deprioritizing further plain-fetch attempts on these two unless a headless-browser method becomes available.
+- Tracker is now heavily saturated (355 rows, 730 checked entries) after 17 consecutive runs — future runs may get more value from targeted re-checks of time-sensitive/deadline items (like GTRI above) and periodic liveness sweeps of the standing Boston-area/bot-blocked list than fresh broad-sweep discovery, which is yielding diminishing returns (2-4 new postings per run now vs. 8-13 in earlier runs).
+- Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Precision Castparts Corp, SEACORP, The Aerospace Corporation, Medical Murray, Teleflex, Framatome.
