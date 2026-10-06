@@ -3149,4 +3149,46 @@ One per new fully-verified ("Yes") posting this run: `watts-water-design-enginee
 - **Shield AI / Hadrian / Firefly Aerospace / Impulse Space / Stoke Space** — ATS board tokens couldn't be resolved this run; worth a fresh lookup of their current careers-page ATS links rather than re-guessing slugs.
 - **CIRCOR International** — specifically worth checking for a Warren, MA posting if a browser-rendering method ever becomes available for its UltiPro portal.
 - Tracker is now at 389 rows / 812 checked entries after 22 consecutive runs. Broad-sweep discovery remains heavily saturated (zero brand-new companies this run); the Watts Water and Medical Murray resolutions came entirely from the carryover list, reinforcing that targeted re-checks of flagged items are now the highest-value activity, more so than fresh company discovery.
+
+## 2026-10-06 ~19:20 UTC
+
+### Sync
+Fresh container; `HEAD` was detached at `6588bae` (the prior run's 13:00 UTC commit) while local `master` was stale at `327d0a9`. `git fetch origin master` confirmed `origin/master` already matched the detached `HEAD` exactly — no divergence, prior run's push landed cleanly. Ran `git checkout -B master origin/master` to realign the local branch ref. Ground truth going in (re-extracted directly from `build.mjs`): `rows` 389, `checked` 812.
+
+### What was searched
+Delegated to two parallel research agents, each given the full current `rows` (389) and `checked` (812) as compact dedup reference files:
+- **Carryover agent**: Watts Water Technologies (quick re-check for new disciplines beyond the 4 already tracked), Medical Murray's SolidProfessor deep link liveness, fresh ATS-board-token resolution for Shield AI/Hadrian/Firefly Aerospace/Impulse Space/Stoke Space (all previously unresolved), a light liveness sweep of GE Aerospace (Lynn MA)/Draper Laboratory/MIT Lincoln Laboratory, and one light PCC check (oppid 24181 Henderson NV). Explicitly skipped GKN Aerospace/Illinois Tool Works (now monthly-cadence per last run), Tesla, R.W. Beckett, BAE Systems (Nashua), Textron Systems, CIRCOR International — all flagged low-priority with no new info expected.
+- **Broad-sweep agent**: fresh national search for new-to-the-tracker companies via direct Greenhouse/Lever/Ashby public job-board APIs, Boston-area hardware/robotics/battery/fusion startups, plus a GitHub internship-aggregator cross-check (vanshb03, SimplifyJobs repos).
+
+### Carryover re-check results — all 5 items came back "no change"
+- **Watts Water Technologies** — re-pulled the full 29-job Workday "Intern-External" board directly; the 4 already-tracked Jan-Jun 2027 co-ops are still the only engineering disciplines. No new req.
+- **Medical Murray** — SolidProfessor deep link (jobs.solidprofessor.com/job/372053/...) reconfirmed HTTP 200, still live.
+- **Shield AI, Hadrian, Firefly Aerospace, Impulse Space, Stoke Space** — resolved the correct ATS board/API for all 5 (Shield AI = Lever "shieldai"; Hadrian = Ashby "hadrian-automation"; Firefly = firefly.hrmdirect.com RSS; Impulse Space = impulsespace.pinpointhq.com/postings.json; Stoke Space = Greenhouse "stokespacetechnologies") and pulled each board in full directly. None currently have a qualifying Winter 2026/Spring 2027 posting beyond what's already tracked (Impulse Space's one already-tracked Spring 2027 Manufacturing Engineering Intern); Stoke Space's previously-seen Spring 2027 req has actually disappeared from the board (now Summer-2027-only).
+- **GE Aerospace (Lynn), Draper Laboratory, MIT Lincoln Laboratory** — direct Workday CXS / search sweeps found nothing beyond what's already tracked/excluded.
+- **Precision Castparts Corp** — oppid 24181 (Henderson NV) re-verified directly; still no season/term language. Stable/unchanged.
+
+### Broad-sweep results — 1 new qualifying posting found
+- **Mach Industries** — "Spring 2027 Engineering Internship," Huntington Beach, CA (also SF/San Luis Obispo/Victorville, CA). Confirmed live directly via Greenhouse API (job id 4397035009); posting's own text explicitly states "Mach's Spring 2027 Engineering Internship... paid, in-person, 12-week internship," availability required "in spring 2027." $30–$55/hr. ITAR-restricted. General engineering internship (not mechanical-only titled), but mechanical/structural hardware design+manufacturing+test is explicitly one of the listed tracks — added as fully verified ("Yes"), flagged with a discipline/mission-fit caveat in Notes for Hamza to weigh. Not Boston-area. Same board's 5 Summer-2027-titled internship reqs correctly excluded as wrong season.
+- Checked ~35 other Boston-area and national hardware/aerospace/robotics/battery/fusion startups (Pickle Robot, SES AI, Nimble Robotics, Form Energy, Standard Bots, Via Separations, Covariant, Chef Robotics, Ambi Robotics, Osaro, Gather AI, Cobalt Robotics, Collier Aerospace, RAVE Aerospace, plus ~17 fusion/battery/robotics startups with no discoverable public ATS board under guessed tokens) — all excluded (no internship postings at all, wrong season, or unresolvable ATS token). GitHub aggregator cross-check (vanshb03, SimplifyJobs) yielded nothing new beyond companies already tracked.
+
+### Added to `rows` (1 new, fully verified "Yes": Mach Industries — Spring 2027 Engineering Internship, Huntington Beach CA)
+
+### Added to `checked` (21 new entries: 5 from the carryover agent's fresh ATS-slug resolutions, 16 from the broad-sweep agent's new-company checks)
+Firefly Aerospace, Hadrian Automation, Stoke Space Technologies, Shield AI, Impulse Space (carryover agent — ATS slugs now resolved for future runs); Pickle Robot Company, SES AI, Nimble Robotics, Form Energy, Standard Bots, Via Separations (wrong season — Spring 2026), Covariant, Chef Robotics, Ambi Robotics, Osaro, Gather AI, Cobalt Robotics, Collier Aerospace (wrong season — Summer 2027), RAVE Aerospace (unresolved), Mach Industries' own Summer 2027 reqs (wrong season), and a batch of 17 fusion/battery/robotics startups with no discoverable public ATS board (Ascend Elements, 24M Technologies, Nanoramic Laboratories, Turion Space, Zap Energy, Type One Energy, TAE Technologies, Avalanche Energy, General Fusion, Proxima Fusion, Thea Energy, Xcimer Energy, Skild AI, Plus One Robotics, Fox Robotics, inVia Robotics, Aescape, Corvus Robotics — 1 batched entry).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows`: 389 → 390 (+1). `checked`: 812 → 833 (+21). Zero duplicate Application Links across all 390 `rows` entries (programmatic check).
+
+### Staged applications created (1 file, `staged-applications/`)
+`mach-industries-spring2027-engineering-internship-huntington-beach-ca.md` — the one new fully-verified ("Yes") posting this run.
+
+### Worth re-checking next time
+- **Via Separations (Watertown/Woburn, MA)** — posts a Mechanical Systems Engineering Co-Op seasonally on Lever (jobs.lever.co/viaseparations); the live req found this run was Spring 2026 (wrong season) — recheck closer to Spring 2027 recruiting season for a refreshed posting.
+- **Mach Industries Greenhouse board** (job-boards.greenhouse.io/machindustries) — large (140+ reqs), defense-manufacturing company with real mechanical/structural internship tracks; recheck periodically for new Winter/Spring postings beyond the one Spring 2027 req found this run.
+- **RAVE Aerospace** — Workable board (apply.workable.com/raveaerospace) didn't yield a readable listing via fetch; worth a direct browser/API check next time.
+- **17 fusion/battery/robotics startups with no discoverable public ATS board** (Ascend Elements, 24M Technologies, Nanoramic Laboratories, Zap Energy, Type One Energy, TAE Technologies, Skild AI, Corvus Robotics, Plus One Robotics, inVia Robotics, Fox Robotics, and others) — worth finding each company's actual career-page ATS link directly (via their own careers page) rather than guessing Greenhouse/Lever/Ashby tokens.
+- **PCC's 7 no-season reqs** — still stable/unchanged; continue light-only periodic checks.
+- **GKN Aerospace / Illinois Tool Works** — now at monthly-check cadence per prior run's recommendation; skip next few 6-hour runs.
+- **Tesla (Sparks NV 278960; Palo Alto 278627), R.W. Beckett Corporation, BAE Systems (Nashua), Textron Systems, CIRCOR International** — all unchanged, low-priority, no new info expected without a headless-browser method.
+- Tracker is now at 390 rows / 833 checked entries after 23 consecutive runs. Both the carryover and broad-sweep passes continue to show the search space is thoroughly saturated — this run's sole net addition (Mach Industries) came from the broad-sweep agent's fresh-company search, while the carryover agent's main value this run was resolving 5 previously-unresolvable ATS board tokens for future runs rather than finding anything new itself.
 - Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio.
