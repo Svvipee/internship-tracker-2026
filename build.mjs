@@ -3042,6 +3042,18 @@ const rows = [
   },
   {
     Company: "Draper Laboratory",
+    "Role Title": "Mechanical Engineering & System Packaging Co-Op (Spring 2027)",
+    Discipline: "Mechanical Engineering",
+    Season: "Spring 2027",
+    Location: "Cambridge, MA",
+    "Distance from Boston, MA (mi, approx.)": 3,
+    Pay: "$20.00–$45.00/hr per posting",
+    "Application Link": "https://draper.wd5.myworkdayjobs.com/en-US/Draper_Careers/job/Cambridge-MA/Mechanical-Engineering---System-Packaging-Co-Op--Spring-2027-_JR003000",
+    "Link Verified": "Yes — independently fetched directly via Draper's own Workday CXS job API, req JR003000, canApply true, postedOn 'Posted Today', startDate 2026-10-07.",
+    Notes: "Distinct req ID from the already-tracked sibling JR002940 (same title/team, posted ~8 days apart) — a second open slot, not a duplicate. US citizenship/clearance language per Draper's standard co-op terms for this division.",
+  },
+  {
+    Company: "Draper Laboratory",
     "Role Title": "Digital Engineering – Requirements Engineering Co-Op (Spring 2027)",
     Discipline: "Systems Engineering",
     Season: "Spring 2027",
@@ -5682,6 +5694,9 @@ const checked = [
   { Company: "Keysight Technologies", "Role(s) Checked": "Internship/co-op postings", Reason: "2026-10-07: only Summer 2026 internships/co-ops found; no Spring 2027 req located." },
   { Company: "OSI Systems / American Science and Engineering (Billerica, MA)", "Role(s) Checked": "Careers page", Reason: "2026-10-07: only full-time mechanical engineer roles found; no internship/co-op posting." },
   { Company: "Ralliant (Tektronix parent; incl. Qualitrol/Hengstler Dynapar)", "Role(s) Checked": "Operations & Manufacturing Co-op; Engineering Co-op (Fairport, NY)", Reason: "2026-10-07: both confirmed directly as a Spring 2026 cohort, 'Applications Closed'; no Spring 2027 posting found anywhere on the board." },
+  { Company: "Draper Laboratory (Cambridge, MA)", "Role(s) Checked": "Metrology Co-op — resolves the earlier-today 'season-unstated/unresolved' entry above", Reason: "2026-10-07 (later run): a simplify.jobs mirror of the same posting shows it is explicitly 'Fall 2026' (not Winter 2026/Spring 2027) and the listing itself is marked INACTIVE. Also confirmed both previously-indexed student-draper.icims.com URLs for this req now 404 (Draper's co-op board has fully migrated to Workday). Excluded: wrong season + closed." },
+  { Company: "GE Aerospace", "Role(s) Checked": "Manufacturing Engineering Co-op – US – Spring 2027 (Batesville, AR)", Reason: "2026-10-07: confirmed via a Runway job-board mirror of the exact posting as 'Applications Closed.' (The Rutland, VT sibling req could not be independently confirmed this run — no working GE req ID/URL located; not added, not excluded.)" },
+  { Company: "Analog Devices (Wilmington, MA)", "Role(s) Checked": "Healthcare Mechanical Engineering Co-op (Spring), R266691 — re-check", Reason: "2026-10-07: re-fetched directly via ADI's own Workday CXS API; the internal season contradiction first noted 2026-09-28 is still unresolved — the role-overview paragraph still says 'running from June through December' while the Qualifications section still says 'available... from January through June.' Exclusion stands." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
