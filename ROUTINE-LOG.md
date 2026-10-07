@@ -3192,3 +3192,50 @@ Firefly Aerospace, Hadrian Automation, Stoke Space Technologies, Shield AI, Impu
 - **Tesla (Sparks NV 278960; Palo Alto 278627), R.W. Beckett Corporation, BAE Systems (Nashua), Textron Systems, CIRCOR International** — all unchanged, low-priority, no new info expected without a headless-browser method.
 - Tracker is now at 390 rows / 833 checked entries after 23 consecutive runs. Both the carryover and broad-sweep passes continue to show the search space is thoroughly saturated — this run's sole net addition (Mach Industries) came from the broad-sweep agent's fresh-company search, while the carryover agent's main value this run was resolving 5 previously-unresolvable ATS board tokens for future runs rather than finding anything new itself.
 - Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio.
+
+## 2026-10-07 ~01:00 UTC
+
+### Sync
+Fresh container; `HEAD` was detached at `fd12a41` (the prior run's 19:20 UTC commit) while local `master` was stale at `327d0a9`. `git fetch origin master` confirmed `origin/master` already matched the detached `HEAD` exactly (`fd12a41`) — no divergence, prior run's push had landed cleanly; the local `master` ref was simply stale in this fresh clone. Ran `git checkout -B master origin/master` to realign. Ground truth going in (re-extracted directly from `build.mjs`): `rows` 390, `checked` 833.
+
+### What was searched
+Delegated to two parallel research agents, each given the full current `rows` (390) and `checked` (833) as compact dedup reference files:
+- **Carryover agent**: Watts Water Technologies (re-check for new disciplines beyond the 4 already tracked), Medical Murray's SolidProfessor deep link liveness, Via Separations (refreshed Spring 2027 check), Mach Industries board re-check, RAVE Aerospace (another direct-API attempt), PCC oppid 24181 (Henderson NV) season re-check, and a light liveness sweep of GE Aerospace (Lynn MA)/Draper Laboratory/MIT Lincoln Laboratory. Explicitly skipped (per last run's notes, low-priority/no new info expected): GKN Aerospace, Illinois Tool Works, Tesla (Akamai-blocked), R.W. Beckett Corporation, BAE Systems (Nashua), Textron Systems, CIRCOR International, Rolls-Royce North America, Wabtec Oak Creek WI.
+- **Broad-sweep agent**: fresh national search for new-to-the-tracker companies — MIT/Harvard hardware/robotics spinouts, newer Boston-area startups, space/defense-tech startups, plus a GitHub internship-aggregator cross-check (SimplifyJobs Summer2027-Internships, filtered for non-summer hardware entries).
+
+### Carryover re-check results — no new postings, several status refreshes
+- **Watts Water Technologies** — re-pulled the full 29-job Workday "Intern-External" board directly (paginated); the 4 already-tracked Jan-Jun 2027 co-ops are still the only engineering disciplines. No new req.
+- **Medical Murray** — SolidProfessor deep link reconfirmed HTTP 200 live; Link Verified note refreshed with today's re-confirmation date.
+- **Via Separations** — the previously-tracked Spring 2026 (wrong-season) posting has been taken down entirely; Lever API now returns an empty board (zero postings of any kind). No Spring 2027 posting has appeared. `checked` entry updated with this status.
+- **Mach Industries** — full 140-job Greenhouse board re-pulled; still only the one already-tracked Spring 2027 Engineering Internship qualifies. All else is Summer 2027 or full-time New Grad roles.
+- **RAVE Aerospace** — still blocked: Workable's widget API and WebFetch both hit Cloudflare "error code: 1015" (bot-detection, ~22-23hr retry-after) or a redirect loop. Unresolved; `checked` entry updated recommending a browser-driven check next time.
+- **PCC oppid 24181 (Henderson NV)** — this run's attempt was served an Altcha CAPTCHA wall instead of content (could not even re-confirm the "no season stated" status this time, let alone check for new language). Status left as unconfirmed/unchanged rather than assumed; `checked` entry updated.
+- **GE Aerospace (Lynn), Draper Laboratory, MIT Lincoln Laboratory** — direct HTTP status checks confirm all 16 already-tracked reqs across the three employers are still live (HTTP 200). No new postings searched for (liveness-only scope this run).
+
+### Broad-sweep results — zero new qualifying postings (honest negative result)
+Checked and excluded (all dated 2026-10-07): Humanoid/thehumanoid.ai (stale aggregator lead, Co-op no longer on live Ashby board); Tutor Intelligence (wrong season — Winter/Spring 2026 — and wrong discipline); Walden Robotics (zero internships, all full-time); Nextera Robotics (zero internships); Nexus Robotics (no discoverable careers page); Verve Motion (ADP-hosted, JS-blocked, unverifiable); Infinite Cooling (genuine Boston-area MechE co-op but season-silent/rolling, fails verification bar — flagged for recurring check); Allen Control Systems (wrong season, Summer 2026); Arc Boat Company (wrong season, Summer 2027); CesiumAstro (wrong season, Summer 2027); Muon Space (wrong season, Summer 2027); E-Space (wrong season / RF discipline mismatch); Lightmatter (PhD-only EE/Photonics, no season); Portal Space Systems/Vannevar Labs/Boston Materials (zero internships); a batch of 15 further space/defense/robotics startups with no public ATS board or zero qualifying postings (Quindar, Katalyst Space, Albedo Space, Antaris, Scout Space, Vatn Systems, Ghost Robotics, Fortem Technologies, Anzu Robotics, Firestorm Labs, Bedrock Robotics, Cambrian Robotics, Dusty Robotics, 6K/6K Additive, Persona AI); and Field AI (re-surfaced by search, re-confirms two prior exclusions, nothing new). A GitHub SimplifyJobs aggregator cross-check (332 entries) found the repo ~100% Summer-2027/software-skewed — not a fruitful channel for this task's non-summer mechanical focus.
+
+### Added to `rows`
+None this run.
+
+### Added to `checked` (16 new entries this run, covering ~31 individual companies; 3 existing entries updated in place — Via Separations, RAVE Aerospace, PCC oppid-24181 bucket — not counted as new)
+Humanoid; Tutor Intelligence; Walden Robotics; Nextera Robotics; Nexus Robotics; Verve Motion; Infinite Cooling; Allen Control Systems; Arc Boat Company; CesiumAstro; Muon Space; E-Space; Lightmatter; Portal Space Systems/Vannevar Labs/Boston Materials (1 entry); a 15-company no-board/no-posting batch (1 entry); Field AI re-search note.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows`: 390 → 390 (unchanged). `checked`: 833 → 849 (+16). Zero duplicate Application Links across all 390 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Staged applications created
+None this run (no new fully-verified postings).
+
+### Worth re-checking next time
+- **RAVE Aerospace** — still Cloudflare-blocked (HTTP 429 "error code: 1015"); needs a browser-driven check (Claude in Chrome / built-in browser) rather than API/curl, since this looks like a persistent IP/fingerprint-based block for this environment's egress IP.
+- **PCC oppid 24181 (Henderson NV)** — this run hit an Altcha CAPTCHA wall; genuinely unconfirmed (not re-confirmed "no season," just unreachable). Also worth a browser-driven check. The rest of PCC's structurally no-season reqs remain deprioritized.
+- **Infinite Cooling (Malden, MA)** — standing, open, genuine MechE co-op at infinite-cooling.com/jobs/engineering-intern, but never states a season (rolling). Worth a periodic re-check in case a future revision adds explicit Winter2026/Spring2027 dates, or Hamza may want to make a judgment call on whether season-silent rolling co-ops at strong-fit companies should be included anyway.
+- **Verve Motion (Cambridge, MA)** — ADP-hosted careers page JS-blocked; strong discipline/location fit (exosuit mechanical engineering) if an internship exists — worth a headless-browser check.
+- **Walden Robotics, Nextera Robotics, Portal Space Systems, Vannevar Labs, Boston Materials** — all confirmed zero internships currently but are legitimate, well-funded, discipline-fit companies; worth periodic re-checks rather than permanent exclusion.
+- **Via Separations** — board now completely empty; recheck closer to Spring 2027 recruiting season (likely Nov-Dec 2026).
+- **Watts Water Technologies** — stable at 4 tracked co-ops; light periodic re-check only.
+- **GKN Aerospace / Illinois Tool Works** — still at monthly-check cadence; skip next few 6-hour runs.
+- **Tesla (Sparks NV 278960; Palo Alto 278627), R.W. Beckett Corporation, BAE Systems (Nashua), Textron Systems, CIRCOR International** — all unchanged, low-priority, no new info expected without a headless-browser method.
+- Tracker is now at 390 rows / 849 checked entries after 24 consecutive runs. This run was a clean, thorough negative result on new postings — both the carryover and broad-sweep passes continue to confirm the search space is heavily saturated via plain API/curl methods. The handful of items now blocked specifically by Cloudflare/Altcha bot-walls (RAVE Aerospace, PCC oppid 24181) and the JS-rendered ADP portal (Verve Motion) are the clearest remaining candidates for a future run with browser-driven access, rather than continued API-only attempts.
+- Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio.
