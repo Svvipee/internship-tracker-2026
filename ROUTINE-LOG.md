@@ -3239,3 +3239,46 @@ None this run (no new fully-verified postings).
 - **Tesla (Sparks NV 278960; Palo Alto 278627), R.W. Beckett Corporation, BAE Systems (Nashua), Textron Systems, CIRCOR International** — all unchanged, low-priority, no new info expected without a headless-browser method.
 - Tracker is now at 390 rows / 849 checked entries after 24 consecutive runs. This run was a clean, thorough negative result on new postings — both the carryover and broad-sweep passes continue to confirm the search space is heavily saturated via plain API/curl methods. The handful of items now blocked specifically by Cloudflare/Altcha bot-walls (RAVE Aerospace, PCC oppid 24181) and the JS-rendered ADP portal (Verve Motion) are the clearest remaining candidates for a future run with browser-driven access, rather than continued API-only attempts.
 - Carrying forward long-standing low-priority/bot-blocked items unchanged from before: Rolls-Royce North America (cycle opens ~late Jan/early Feb 2027), Wabtec Oak Creek WI trio.
+
+## 2026-10-07 ~07:00 UTC
+
+### Sync
+Fresh container; `HEAD` was detached at `32c18ae` (the prior run's 01:00 UTC commit) while local `master` was stale at `327d0a9`. `git fetch origin master` confirmed `origin/master` already matched the detached `HEAD` exactly — no divergence, prior run's push had landed cleanly. Ran `git checkout master && git merge --ff-only origin/master` to realign. Ground truth going in: `rows` 390, `checked` 849.
+
+### What was searched
+Delegated to two parallel research agents, each given the full list of already-tracked company names (dedup reference) and the strict verification bar:
+- **Carryover agent**: re-checked specific leads flagged last run — RAVE Aerospace, PCC oppid 24181 (Henderson NV), Verve Motion, Infinite Cooling, GE Aerospace (careers.geaerospace.com/Lynn), Draper Laboratory, MIT Lincoln Laboratory, Via Separations, Watts Water Technologies.
+- **Broad-sweep agent**: fresh national search for brand-new companies — Boston-area hardware/robotics startups (Boston Dynamics, iRobot/SharkNinja, Vicarious Surgical, Markforged, Piaggio Fast Forward, Commonwealth Fusion Systems, Veo Robotics, Carbon Robotics, etc.), untried primes (Textron Systems, Honeywell Aerospace, Parker Hannifin, Woodward, Curtiss-Wright, HEICO), and eVTOL/space/defense startups (Joby, Archer, Saronic, AeroVironment, BETA Technologies, Xona Space, Saildrone, Figure AI, Sanctuary AI, Agility Robotics, Hadrian).
+
+### Mistake caught and corrected before committing
+The carryover agent reported 3 "new" MIT Lincoln Laboratory postings (Group 07-71 Mechanical Eng Co-Op; Group 08-35 Microfabrication Eng Co-Op; Group 08-35 Microfab Industrial Eng Co-Op) as newly found. A link/req-ID cross-check against the existing `rows` array before committing showed all 3 were **already tracked** (added in the 2026-09-20/22/29 runs) — the agent had simply re-discovered and re-verified them without recognizing them as duplicates, since it was only given company names, not exact URLs, for dedup. All 3 were caught and removed before this run's commit; nothing duplicated in the final build. (Useful side effect: this independently re-confirms all 3 are still live as of today.) Note for future runs: give research agents the exact Application Link list, not just company names, for dedup.
+
+### Added to `rows` (5 new, all Precision Castparts Corp. / BAE Systems — all Partial verification)
+- **Precision Castparts Corp. (Airfoils / Mentor-Painesville)** — Engineering Co-Op, Spring 2027, Mentor OH. Partial — PCC's own site still Altcha-CAPTCHA-blocked; confirmed active via direct fetch of a Dice.com mirror (oppid 22133).
+- **Precision Castparts Corp. (Airfoils / Mentor-Painesville)** — Alloy Process Engineering Co-Op, Spring 2027, Mentor OH. Partial, same basis (Dice oppid 22135).
+- **Precision Castparts Corp. (EPD / E-One)** — Engineering Co-Op, Spring 2027, Niskayuna NY. Partial, same basis (Dice oppid 22911). ITAR-restricted.
+- **Precision Castparts Corp. (Metals / Cannon Muskegon)** — Spring 2027 Engineering Student Co-Op, Muskegon MI. Partial, same basis (Dice oppid 22052). ITAR-restricted.
+- **BAE Systems** — 2027 Spring and Summer Mechanical Engineering Coop, Cedar Rapids IA (not Boston-area; Secret + polygraph clearance required). Partial — could not locate on BAE's own ATS; confirmed open directly on two independent third-party boards (ClearanceJobs.com, hiringourheroes.org).
+
+These bring the confirmed/candidate PCC Spring 2027 count to 7 of ~78 total open reqs (still ~71 unreviewed; PCC's primary site remains CAPTCHA-blocked for several consecutive runs now, so all PCC additions continue to rely on third-party mirrors).
+
+### Added to `checked` (33 new entries, dated 2026-10-07; 2 existing entries updated in place — RAVE Aerospace, PCC oppid 24181 — not counted as new)
+Verve Motion (still unverifiable, ADP portal unindexed); Watts Water WI Manufacturing Engineer Co-Op (closed + wrong season); Draper Acoustic/Vibration and Metrology Co-ops (open but season-silent on available text); PCC "Quality Engineering Co-Op Spring 2027" (title exists on campus mirrors, no working link found); GE Aerospace Lynn candidate Spring 2027 titles (search-snippet only, blocked from independent confirmation); Vicarious Surgical; Markforged; Commonwealth Fusion Systems; Boston Dynamics; Piaggio Fast Forward; SharkNinja/iRobot; Textron Systems/Howe & Howe; Honeywell Aerospace; Woodward; BAE Systems (NH); Curtiss-Wright; Parker Hannifin/HEICO; Figure AI; Sanctuary AI; Agility Robotics; Veo Robotics; Xona Space Systems (confirmed closed); Boston Scientific (confirmed closed); BALA Consulting Engineers; Joby Aviation (confirmed closed); Archer Aviation; Hadrian; Saronic Technologies; AeroVironment; Saildrone; BETA Technologies; Desktop Metal/Nano Dimension; Carbon Robotics.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows`: 390 → 395 (+5, after removing the 3 caught duplicates). `checked`: 849 → 882 (+33, +2 updated in place). Zero duplicate Application Links across all 395 `rows` entries (programmatic check). `.xlsx` file changed; both sheets' row counts (395 / 882) match the source arrays.
+
+### Staged applications created
+None this run — all 5 new postings are Partial (third-party-mirror-only) verification, not fully verified, so per the staging rule none qualify yet.
+
+### Worth re-checking next time
+- **Boston Dynamics** — says internship recruiting "kicks off in the new year" (Jan 2027). Strong Boston-area candidate; re-check Dec 2026/Jan 2027.
+- **Commonwealth Fusion Systems** and **SharkNinja/iRobot** — both post Spring cohorts ~2 months ahead historically; re-check Nov/Dec 2026.
+- **Draper Laboratory** — Acoustic/Vibration Co-op and Metrology Co-op are open and Boston-area but season-unstated on the text available; worth opening the actual student-draper.icims.com page directly next run (guessed URLs 404'd this time).
+- **RAVE Aerospace** — now additionally confirmed via a third-party aggregator to have 0 open positions and weak discipline fit (IFEC company, software/embedded-heavy); deprioritizing further automatic re-checks.
+- **PCC oppid 24181 (Henderson NV)** — still genuinely unresolved (Altcha CAPTCHA); a different Henderson NV req was separately confirmed expired (HTTP 410), so no inference either way for 24181 itself.
+- **PCC broad sweep** — ~71 of ~78 total open reqs still unreviewed; worth continuing since third-party Dice/joinrunway mirrors have proven usable as a workaround for the CAPTCHA-blocked primary site.
+- **PCC "Quality Engineering Co-Op Spring 2027"** — title confirmed to exist via campus career-service mirrors but no working link found yet; retry next cycle.
+- **GE Aerospace (Lynn, MA)** — two Spring 2027 candidate titles surfaced in search only (Indeed/Glassdoor 403'd); note a same-titled "Manufacturing Engineering Co-op" is actually in Batesville AR, not Lynn — don't conflate the two without direct confirmation.
+- **Verve Motion** — still fully opaque (ADP portal unindexed); would need a headless-browser-capable tool.
+- Tracker is now at 395 rows / 882 checked entries after 25 consecutive runs. Dedup discipline note for future runs: hand research agents the exact Application Link list (not just company names) to prevent re-reporting already-tracked postings as new.
