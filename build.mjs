@@ -283,18 +283,6 @@ const rows = [
     Notes: "Boston metro. Portfolio of prior engineering work required.",
   },
   {
-    Company: "Eaton",
-    "Role Title": "ETO Engineering Co-op",
-    Discipline: "Mechanical, Industrial, or Electrical Engineering",
-    Season: "Fall 2026 or Spring 2027 (posting states either start date is acceptable)",
-    Location: "Syracuse, NY",
-    "Distance from Boston, MA (mi, approx.)": 260,
-    Pay: "$24.92/hr",
-    "Application Link": "https://eaton.eightfold.ai/careers/job/687236797540",
-    "Link Verified": "Yes — verified via Eaton's own public Eightfold job-board API directly (the rendered page is JS-heavy); record shows isPrivate: false (publicly listed/active), created 2026-05-21, last updated 2026-08-12.",
-    Notes: "Min GPA 2.8. No visa sponsorship (no CPT/OPT/H-1B support). Must live within ~50 mi of Syracuse, NY — no relocation assistance.",
-  },
-  {
     Company: "Reframe Systems",
     "Role Title": "Mechanical Engineer (Spring 2027 Co-op)",
     Discipline: "Mechanical Engineering (CAD, welding, machining, fixturing/workcell design)",
@@ -4760,6 +4748,30 @@ const rows = [
     "Link Verified": "Partial — 2026-10-07: could not locate on BAE's own careers.baesystems.com/Workday ATS (search did not surface a first-party link); confirmed open on two independent third-party boards — ClearanceJobs.com (fetched directly, 'Apply now' present, posting states role 'will remain active until filled') and jobs.hiringourheroes.org/jobs/596763619 (same title/location/season, status 'currently open'). Verify on BAE's own site before applying.",
     Notes: "Secret clearance with polygraph required. Not Boston-area. Jan-Aug 2027 cohort covers Spring 2027 even though it extends into summer.",
   },
+  {
+    Company: "Toyota Material Handling North America (The Raymond Corporation)",
+    "Role Title": "Mechanical Systems Engineering Co-op",
+    Discipline: "Mechanical Engineering / Mechanical Engineering Technology",
+    Season: "Spring 2027 (posting allows Jan–May 2027 onsite assignment window)",
+    Location: "Greene, NY",
+    "Distance from Boston, MA (mi, approx.)": 230,
+    Pay: "$20.00–$30.00+/hr",
+    "Application Link": "https://www.dice.com/job-detail/0876ca46-24f9-4993-82ef-cce4d047d749",
+    "Link Verified": "Partial — 2026-10-07: canonical employer ATS (myjobs.adp.com/tmhcareers, req r=5001219342900) is a JS-rendered ADP portal that returned 'Unsupported Browser' on direct fetch; confirmed instead via direct fetch of this Dice.com mirror (status 'Applications open') and cross-checked against a second independent mirror (talentally.com, status 'Active'). Verify on the employer's own ADP portal before applying.",
+    Notes: "GPA 2.5+ required. Posting also allows Jan–Aug, May–Aug, or May–Dec 2027 windows; Jan–May 2027 satisfies Hamza's Spring 2027 target.",
+  },
+  {
+    Company: "Toyota Material Handling North America (The Raymond Corporation)",
+    "Role Title": "Automation Development Co-op",
+    Discipline: "Computer Engineering, Electrical Engineering, Robotics, or Mechatronics",
+    Season: "Spring 2027 (posting allows Jan–May 2027 onsite assignment window)",
+    Location: "Greene, NY",
+    "Distance from Boston, MA (mi, approx.)": 230,
+    Pay: "$20.00–$30.00+/hr",
+    "Application Link": "https://talentally.com/job/automation-development-co-op-1",
+    "Link Verified": "Partial — 2026-10-07: canonical employer ATS is the same JS-rendered ADP portal referenced above (myjobs.adp.com/tmhcareers), unreachable via direct fetch; confirmed instead via direct fetch of this talentally.com mirror, status 'Active,' matching title/location/season/pay. Verify on the employer's own ADP portal before applying.",
+    Notes: "Robotics/mechatronics discipline fit. Posting also allows a Jan–Aug 2027 window; Jan–May 2027 satisfies Hamza's Spring 2027 target.",
+  },
 ];
 
 const checked = [
@@ -5552,7 +5564,7 @@ const checked = [
   { Company: "Precision Castparts Corp. — Operations Co-Op/Intern (leadership-track roles)", "Role(s) Checked": "Operations Co-Op/Intern, oppids 23146 (Metals/HBE, Huntington WV), 23437 (Structurals/LPC, Portland OR), 23677 (Metals/Toronto-TIMET, Toronto OH), 23716 (EPD/University Swaging, Woodinville WA), 24033 (Airfoils/Ceramics-LED, Wickliffe OH)", Reason: "2026-10-06: all 5 reqs explicitly describe a generic leadership-development rotation ('a future career leading people'), not an engineering role — discipline mismatch, excluded." },
   { Company: "Precision Castparts Corp. — non-engineering Development Program/Co-Op reqs", "Role(s) Checked": "29 reqs company-wide (HR, Finance, IT, Supply Chain, Talent Acquisition, EHS, rotational Development Program tracks), oppids 20366, 20414, 22912, 23479, 23492, 23493, 23495, 23496, 23535, 23691, 23763, 23800, 23829, 23902, 23908, 23917, 23972, 24008, 24055, 24091, 24118, 24166, 24209, 24240, 24270, 24292, 24293, 24394, 24409", Reason: "2026-10-06: triaged by title/division against PCC's full open-Co-Op list — all are non-engineering disciplines, out of scope for Hamza's ME/aero/manufacturing focus." },
   { Company: "Precision Castparts Corp. — Summer 2027 Co-Op reqs", "Role(s) Checked": "8 reqs, oppids 24252, 24253, 24284, 24285, 24287, 24289, 24290, 24333", Reason: "2026-10-06: each posting's own title explicitly states Summer 2027 — wrong season, excluded." },
-  { Company: "Precision Castparts Corp. — no season stated, unresolved", "Role(s) Checked": "8 reqs: Manufacturing Engineer Intern/Co-Op (Wyman Gordon/Shultz Steel, South Gate CA, oppid 23458); Forge Shop Mfg Process Improvement Co-Op (Wyman Gordon, Houston TX, oppid 23814); Heat Treat Mfg Process Improvement Co-Op (Wyman Gordon, Houston TX, oppid 23815); Research Engineering Co-Op (Metals/Henderson, Henderson NV, oppid 24180); Mechanical Engineering Co-Op (Metals/Henderson, Henderson NV, oppid 24181); Engineer Co-Op $21/hr (Fasteners/AIC, Garden Grove CA, oppid 24183); CNC Machinist/Programmer Intern Co-Op (Structurals/Schlosser, Redmond OR, oppid 24238); Engineering Co-Op (Fasteners/Andrews Laser Works, Wilder KY, oppid 24353)", Reason: "2026-10-06: each live posting was read in full but states no season anywhere (title or body) — cannot confirm Winter2026/Spring2027 fit either way. Not added to rows per the verification bar; flagged for a future revisit (PCC sometimes adds season language later), especially oppid 24181 (Henderson NV Mechanical Engineering Co-Op) which is a strong discipline match if the season resolves favorably. UPDATE 2026-10-06 (later run): re-checked all 8 — oppid 23458 is now confirmed closed ('This requisition is closed to applications'); the other 7, including priority oppid 24181, are still live and still state no season anywhere. Pattern looks structural/permanent for this template; deprioritize further automatic re-checks absent a site-wide PCC template change. UPDATE 2026-10-07: attempted re-check of oppid 24181 specifically — portal served an Altcha 'Quick Check Needed' CAPTCHA wall instead of content via curl/WebFetch; could not confirm or deny whether season language was added. Status unconfirmed, not assumed unchanged. Recommend a browser-driven check (Claude in Chrome / built-in browser) on a future run instead of API/curl for this one. UPDATE 2026-10-07 (later run): still CAPTCHA-blocked on oppid 24181 itself via every URL-pattern/PeopleSoft-guess attempt tried; however a separate, different Henderson NV req ('Mechanical Engineer Co-Op', oppid ~23630, found via Dice mirror) was confirmed HTTP 410 Gone — that one has expired. oppid 24181 status remains genuinely unresolved either way." },
+  { Company: "Precision Castparts Corp. — no season stated, unresolved", "Role(s) Checked": "8 reqs: Manufacturing Engineer Intern/Co-Op (Wyman Gordon/Shultz Steel, South Gate CA, oppid 23458); Forge Shop Mfg Process Improvement Co-Op (Wyman Gordon, Houston TX, oppid 23814); Heat Treat Mfg Process Improvement Co-Op (Wyman Gordon, Houston TX, oppid 23815); Research Engineering Co-Op (Metals/Henderson, Henderson NV, oppid 24180); Mechanical Engineering Co-Op (Metals/Henderson, Henderson NV, oppid 24181); Engineer Co-Op $21/hr (Fasteners/AIC, Garden Grove CA, oppid 24183); CNC Machinist/Programmer Intern Co-Op (Structurals/Schlosser, Redmond OR, oppid 24238); Engineering Co-Op (Fasteners/Andrews Laser Works, Wilder KY, oppid 24353)", Reason: "2026-10-06: each live posting was read in full but states no season anywhere (title or body) — cannot confirm Winter2026/Spring2027 fit either way. Not added to rows per the verification bar; flagged for a future revisit (PCC sometimes adds season language later), especially oppid 24181 (Henderson NV Mechanical Engineering Co-Op) which is a strong discipline match if the season resolves favorably. UPDATE 2026-10-06 (later run): re-checked all 8 — oppid 23458 is now confirmed closed ('This requisition is closed to applications'); the other 7, including priority oppid 24181, are still live and still state no season anywhere. Pattern looks structural/permanent for this template; deprioritize further automatic re-checks absent a site-wide PCC template change. UPDATE 2026-10-07: attempted re-check of oppid 24181 specifically — portal served an Altcha 'Quick Check Needed' CAPTCHA wall instead of content via curl/WebFetch; could not confirm or deny whether season language was added. Status unconfirmed, not assumed unchanged. Recommend a browser-driven check (Claude in Chrome / built-in browser) on a future run instead of API/curl for this one. UPDATE 2026-10-07 (later run): still CAPTCHA-blocked on oppid 24181 itself via every URL-pattern/PeopleSoft-guess attempt tried; however a separate, different Henderson NV req ('Mechanical Engineer Co-Op', oppid ~23630, found via Dice mirror) was confirmed HTTP 410 Gone — that one has expired. oppid 24181 status remains genuinely unresolved either way. UPDATE 2026-10-07 (later run): CAPTCHA wall cleared — direct fetch of oppid 24181's own portal page succeeded and confirmed the posting is OPEN/live (Henderson NV, Mechanical Engineering Co-Op, re-establishing in-house mechanical testing capabilities for metallic materials). However the posting still states no season/date anywhere. Now excluded purely on season-unstated grounds, not on CAPTCHA/access grounds." },
   { Company: "Wabtec (Waltham, MA)", "Role(s) Checked": "Firmware Engineering Co-Op (Jan-June 2027)", Reason: "2026-10-05/06: season and Boston-area location both fit, but role is firmware/software — discipline mismatch." },
   { Company: "Precision Castparts Corp. — new no-season/discipline-mismatch reqs", "Role(s) Checked": "9 reqs found during a board re-sweep: Co-Op, Manufacturing Engineering (Irvine CA, oppid 23909); Manufacturing Operations Co-Op (Groton CT, oppid 22257); Engineering Co-Op (Wilder KY, oppid 24353 — duplicate req ID of an already-logged no-season entry); Health & Safety Intern/Co-op (oppid 23908); Co-Op, Supply Chain (oppid 23763); IT Co-op/Intern (oppid 23902); EHS Co/Op (oppid 24091); Talent Acquisition Co-Op (oppid 24008); Finance Co/Op (oppid 24240); Human Resources Co-Op/Intern (oppid 23800); EH&S Intern/Co-op Student (oppid 24409)", Reason: "2026-10-06: oppids 23909/22257/24353 are discipline fits (Mfg/Industrial Eng) but state no season anywhere in the posting, same structural pattern as the existing no-season PCC bucket; the remaining reqs (EHS/Supply Chain/IT/Talent/Finance/HR) are discipline mismatches regardless of season. Not added." },
   { Company: "Precision Castparts Corp.", "Role(s) Checked": "'2027 Spring/Summer Data Co-op' (Toronto OH, oppid 24394)", Reason: "2026-10-06: data-analytics discipline mismatch; season label itself is also ambiguous ('Spring/Summer')." },
@@ -5662,6 +5674,14 @@ const checked = [
   { Company: "BETA Technologies (South Burlington, VT)", "Role(s) Checked": "Full internship listing on beta.team (Aircraft Design & Engineering, Manufacturing & Production, etc.)", Reason: "2026-10-07: all currently live listings are explicitly 'Summer 2027' ($22-32/hr). Earlier '2026-2027 BETA Internship' postings (which might have covered Spring 2027) are now expired/404." },
   { Company: "Desktop Metal / Nano Dimension", "Role(s) Checked": "Careers pages", Reason: "2026-10-07: Desktop Metal directs resumes via email with no formal posting; Nano Dimension's NDEAR is an academic partnership program, not a discrete internship req. No qualifying posting." },
   { Company: "Carbon Robotics", "Role(s) Checked": "Careers page", Reason: "2026-10-07: only a software intern and senior full-time mechanical roles found; no mechanical intern/co-op posting." },
+  { Company: "Eaton", "Role(s) Checked": "ETO Engineering Co-op (Syracuse, NY, req 687236797540)", Reason: "2026-10-07: previously tracked as a verified 'Yes' Fall 2026/Spring 2027 posting; re-checked directly this run and the Eightfold listing now shows 'Applications Closed.' Moved from `rows` to `checked`." },
+  { Company: "Draper Laboratory (Cambridge, MA)", "Role(s) Checked": "Acoustic and Vibration Technologies Co-op", Reason: "2026-10-07: confirmed via multiple aggregator snippets (Simplify, ClearanceJobs, Handshake) as explicitly 'Fall 2026' — wrong season. (The separate Metrology Co-op from the same batch remains season-unstated/unresolved, not excluded.)" },
+  { Company: "REGENT Craft (seaglider startup)", "Role(s) Checked": "Internships page", Reason: "2026-10-07: own internships page states 'Summer 2026 internship applications have closed'; nothing posted for Winter 2026/Spring 2027." },
+  { Company: "Vertical Aerospace", "Role(s) Checked": "Careers page", Reason: "2026-10-07: only UK (Bristol) summer internships found — wrong country." },
+  { Company: "Supernal", "Role(s) Checked": "Careers page", Reason: "2026-10-07: no internship/co-op posting of any kind found." },
+  { Company: "Keysight Technologies", "Role(s) Checked": "Internship/co-op postings", Reason: "2026-10-07: only Summer 2026 internships/co-ops found; no Spring 2027 req located." },
+  { Company: "OSI Systems / American Science and Engineering (Billerica, MA)", "Role(s) Checked": "Careers page", Reason: "2026-10-07: only full-time mechanical engineer roles found; no internship/co-op posting." },
+  { Company: "Ralliant (Tektronix parent; incl. Qualitrol/Hengstler Dynapar)", "Role(s) Checked": "Operations & Manufacturing Co-op; Engineering Co-op (Fairport, NY)", Reason: "2026-10-07: both confirmed directly as a Spring 2026 cohort, 'Applications Closed'; no Spring 2027 posting found anywhere on the board." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
