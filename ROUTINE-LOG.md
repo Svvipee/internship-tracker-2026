@@ -3456,3 +3456,36 @@ None this run — no new fully-verified postings were found to add to `rows`.
 - **Boston Dynamics, Commonwealth Fusion Systems, SharkNinja/iRobot**: all still pre-season per their own stated cycles; recheck Nov/Dec 2026–Jan 2027.
 - **Base Power** (Austin TX / San Carlos CA home-battery hardware): ME/Manufacturing Engineering Intern postings are open but state no season anywhere; worth a periodic re-check in case a dated cohort posting replaces these generic ones.
 - Tracker is now at 400 rows / 915 checked entries after 30 consecutive runs. Major Boston-area and national aerospace/defense/robotics/manufacturing employer coverage remains saturated; this run's main value was closing out two long-standing ambiguous carryover leads (PCC oppid 24181 and the "Quality Engineering Co-Op" duplicate) and ruling out one false-positive "new" lead (GE Rutland VT) before it could be mistakenly added as a duplicate row.
+
+---
+
+## 2026-10-08 ~13:00 UTC
+
+### What was searched
+No "worth re-checking" item from the prior run was yet due (Teradyne/Analog Devices/Vicor were flagged for re-check in "a few weeks"/"2-4 weeks," and Boston Dynamics/CFS/SharkNinja for Nov/Dec — none of that time has passed), so this run did not re-burn effort on those. Instead ran fresh searches across several angles:
+1. Direct spot-checks anyway on Analog Devices (Wilmington MA), Teradyne (North Reading MA), and Vicor (Andover MA) for a Spring 2027 cycle — none found live yet.
+2. Boston-area/national Lever and Greenhouse board searches for freshly-posted "Spring 2027" mechanical/aerospace co-ops.
+3. Specific-company checks: Berkshire Grey, Entegris, CMTA/Legence (all three leads that surfaced were already tracked byte-for-byte), Cirrus Aircraft, Alaka'i Technologies/"SKAI Technology" (Stow, MA), Blue Origin, Xona Space Systems, Siemens, Reliable Robotics (all already resolved in prior runs).
+4. Priority re-checks per task instructions: GE Aerospace (Lynn, MA) Spring 2027 reqs, Draper Laboratory (Cambridge, MA), MIT Lincoln Laboratory (Lexington, MA) — no new live Spring 2027 mechanical/aerospace req found beyond what's already tracked (Draper's "Digital Engineering – Requirements Engineering Co-Op, Spring 2027" that surfaced is already in `rows`).
+
+### New company found: Alaka'i Technologies (Stow, MA)
+A genuinely new company — hydrogen eVTOL aircraft startup in Stow, MA (close to Boston, good discipline fit: mechanical/aerospace). Its only listed internship (posted under a "SKAI Technology" employer name on Built In Boston) is explicitly for the "2026 Fall Semester" — wrong season — and the listing itself shows removed/closed as of Aug 10, 2026. Not added to `rows`. Worth checking back for a Spring 2027 cohort given the strong location/discipline fit.
+
+### Added to `rows`
+None this run.
+
+### Added to `checked` (2 new entries, dated 2026-10-08 ~13:00 UTC)
+Alaka'i Technologies (Stow, MA) — Engineering Intern, wrong season (Fall 2026) + confirmed closed. Cirrus Aircraft (Duluth, MN) — "Co-Op Sustaining Engineering Intern," no working primary-source link found (404) and no season could be confirmed.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 400; `checked` 915 → 917 (+2). `.xlsx` file changed (1,087,821 → 1,089,186 bytes).
+
+### Staged applications created
+None this run — no new fully-verified postings.
+
+### Worth re-checking next time
+- **Analog Devices (Wilmington, MA) / Vicor (Andover, MA) / Teradyne (North Reading, MA)**: still no Spring 2027 cycle live as of this run; historically opens Oct/Nov — keep checking every few runs over the next 2-4 weeks.
+- **Alaka'i Technologies (Stow, MA)**: new, good-fit company (hydrogen aircraft, Boston-adjacent) with only a Fall 2026 posting found so far — check back for a Spring 2027 cohort.
+- **Cirrus Aircraft (Duluth, MN)**: "Co-Op Sustaining Engineering Intern" lead's only found link 404'd — worth checking Cirrus's own careers/ATS directly (not yet identified) in a future run.
+- All other standing re-check notes from the 2026-10-08 07:00 UTC entry (Boston Dynamics/CFS/SharkNinja for Nov/Dec, Base Power periodic check) remain unchanged and not yet due.
+- Tracker is now at 400 rows / 917 checked entries after 31 consecutive runs. Coverage remains heavily saturated; this run's main value was ruling out several freshly-surfaced leads (Berkshire Grey/Entegris/CMTA duplicates, Alaka'i Technologies, Cirrus Aircraft) rather than finding new qualifying rows.
