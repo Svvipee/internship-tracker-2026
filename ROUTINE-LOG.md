@@ -3408,3 +3408,51 @@ Also corrected one existing `checked` entry in place (GE Aerospace Batesville, A
 - **PCC "Quality Engineering Co-Op, Spring 2027" ambiguous lead**: probably a stale duplicate of oppid 22134 — recommend treating as resolved/non-actionable unless a live independent source surfaces proving it's a genuinely separate req.
 - **BMW Group Spartanburg, SC**: same Spring 2027 co-op batch also included several roles not independently fetched this run (Innovation and Digitalization Co-op, Launch & Change Coordination Co-Op, Launch Planning and Steering Co-op, Quality Data Co-op, Packaging Development Intern) — these lean software/data/logistics/packaging discipline and were left unverified rather than reported; worth a quick discipline-fit check if a future run has spare capacity, otherwise low priority.
 - Tracker is now at 400 rows / 901 checked entries after 28 consecutive runs. Coverage remains essentially saturated for major Boston-area and national aerospace/defense/robotics/manufacturing employers; today's one genuinely new, fully-verified cluster (BMW Spartanburg) came from a general sweep rather than a known-employer re-check, suggesting broad general sweeps still occasionally surface fresh non-Boston leads even as the known-employer list saturates.
+
+## 2026-10-08 ~07:00 UTC
+
+### Sync
+Fresh container; local `master` ref was already exactly at `origin/master` (`d6cb82f`, matching the detached `HEAD`) — ran `git checkout -B master origin/master` to realign the branch ref cleanly before any edits, same recurring stale-local-ref quirk as every recent run. Ground truth going in (re-extracted directly from `build.mjs` via a small Node script, not log arithmetic): `rows` 400, `checked` 901.
+
+### What was searched
+Two parallel research agents, both against dedup reference lists (400 `rows` as `Company | Role Title | Application Link`, 901 `checked` as `Company || Reason`, extracted programmatically from `build.mjs` first):
+1. **Carryover agent**: PCC oppid 24181 (Henderson, NV) re-check, the ambiguous "PCC Quality Engineering Co-Op, Spring 2027" dedup lead, the 5 unverified BMW Spartanburg SC co-op siblings (Innovation and Digitalization, Launch & Change Coordination, Launch Planning and Steering, Quality Data, Packaging Development), plus a general fresh sweep of Draper Laboratory, GE Aerospace (Lynn MA + Rutland VT), MIT Lincoln Laboratory, Analog Devices, Entegris, Insulet, Vicor, Teradyne, and RTX/Collins Aerospace MA sites.
+2. **Broad-sweep agent**: newer/funded hardware-robotics-defense startups and energy/clean-tech hardware companies not yet in the tracker (ANYbotics, Quaise Energy, Natron Energy, Span.io, Base Power, Apptronik), plus re-checks of Boston Dynamics, SharkNinja/iRobot, and Commonwealth Fusion Systems per their known seasonal posting cycles.
+
+### Carryover re-check results
+- **PCC oppid 24181 (Henderson, NV)**: CAPTCHA cleared this run. Confirmed directly (not inferred): Mechanical Engineering Co-Op, Metals division, Henderson NV — but states no season anywhere in the body. Disposition unchanged; updated the existing `checked` entry in place with the first-hand confirmation (was previously based on an assumption from a blocked page).
+- **PCC "Quality Engineering Co-Op, Spring 2027" ambiguous lead**: RESOLVED. Direct fetch of oppid 22134 confirms it is the exact same posting already tracked in `rows` (Precision Castparts Corp / Airfoils Mentor-Painesville) — all university-mirror and Dice sightings of this title point to this one req, not a second distinct posting. No new entry needed; this multi-run-old ambiguity is now closed out.
+- **BMW Group Spartanburg, SC — 5 sibling co-ops checked directly**: Innovation and Digitalization Co-op (req 190505, open, discipline mismatch — software/data strategy); Launch & Change Coordination Co-Op (req 191158, confirmed CLOSED); Launch Planning and Steering Co-op (req 190965, confirmed CLOSED); Quality Data Co-op (open, discipline mismatch — data/software-centric despite accepting ME majors); Packaging Development Intern (req 191425, open, discipline mismatch — packaging/logistics). None qualify; all added to `checked`.
+- **GE Aerospace — Rutland, VT "Manufacturing Engineering Co-op"**: a VermontJobLink state-board mirror (last updated 2026-10-07) was found for this location, but this is NOT a new/separate req — it's the same company-wide req R5029663 already tracked in `rows` (Rutland VT is one of 23 selectable `additionalLocations` on that req, as already resolved on 2026-10-08 ~01:00 UTC). A sibling "Environmental/Health/Safety, Facilities, & Maintenance Co-op" found in the same listing range is discipline-mismatched and added to `checked`.
+- **Formlabs full Greenhouse API sweep**: all genuinely ME/Manufacturing/Materials/Hardware-discipline Winter/Spring 2027 Formlabs reqs are already tracked. Four additional reqs found (Industrial Design Intern, Global Operations Intern, Global Sourcing Intern, Sourcing Program Management Intern) are all discipline mismatches (product design / supply chain / sourcing) — added to `checked`.
+- **Draper Laboratory, GE Aerospace (Lynn MA), MIT Lincoln Laboratory, Analog Devices, Entegris, Insulet, Vicor, Teradyne, RTX/Collins Aerospace (MA)**: all re-confirmed — no new Winter 2026/Spring 2027 mechanical/aerospace reqs beyond what's already tracked or excluded. No new `checked` entries added for these (pure reconfirmations of standing dispositions already logged in prior runs).
+
+### Broad-sweep results — no new qualifying postings; 4 new companies checked and excluded
+- **ANYbotics** — legged/quadruped inspection robotics, Series B-backed. Live, discipline-fitting ME/Mechatronics internships exist via direct Lever API fetch, but every posting and the company's only offices are in Zurich, Switzerland. Not added — outside US-only requirement.
+- **Quaise Energy** (Houston TX / Malden MA, geothermal drilling hardware) — only internship-titled posting is a generic "Future Internship Opportunities" req with no stated season anywhere; its ME-discipline reqs are full-time. Not added.
+- **Natron Energy** (sodium-ion battery manufacturing) — zero internship/co-op titles company-wide; full-time roles only. Not added.
+- **Span.io** (smart electrical panel/grid-hardware manufacturing) — no job postings of any kind found on its own career pages. Not added.
+- **Base Power, Boston Dynamics, SharkNinja/iRobot, Commonwealth Fusion Systems, Apptronik**: all reconfirmed — no change from prior runs' dispositions (Base Power open but season-unstated; Boston Dynamics/CFS/SharkNinja pre-season; Apptronik zero intern/co-op titles company-wide).
+
+### Added to `rows`
+None this run. The one promising lead (GE Aerospace Rutland VT) turned out to be the same already-tracked req, not a new posting.
+
+### Added to `checked` (14 new entries, dated 2026-10-08)
+BMW Group — Innovation and Digitalization Co-op, Launch & Change Coordination Co-Op, Launch Planning and Steering Co-op, Quality Data Co-op, Packaging Development Intern (Spartanburg SC, all 5); GE Aerospace — Environmental/Health/Safety, Facilities, & Maintenance Co-op (Rutland VT); Formlabs — Industrial Design Intern, Global Operations Intern, Global Sourcing Intern, Sourcing Program Management Intern; ANYbotics; Quaise Energy; Natron Energy; Span.io.
+
+Also updated 1 existing `checked` entry in place (PCC oppid 24181 — first-hand confirmation of no-season disposition, plus closing out the "Quality Engineering Co-Op" duplicate ambiguity within the same note).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays (programmatic regex count): `rows` unchanged at 400, `checked` 901 → 915 (+14). Zero duplicate Application Links across all 400 `rows` entries (programmatic check). Read the generated `.xlsx` back with the `xlsx` library: both sheets' row counts (401 / 916, including header rows) directly match the source arrays. `.xlsx` file changed (1,080,875 → 1,087,821 bytes).
+
+### Staged applications created
+None this run — no new fully-verified postings were found to add to `rows`.
+
+### Worth re-checking next time
+- **PCC oppid 24181 (Henderson, NV) / "Quality Engineering Co-Op" duplicate lead**: both now fully resolved — no further action needed unless a genuinely new, distinct PCC posting surfaces independently.
+- **GE Aerospace Rutland VT / Batesville AR**: fully resolved across two runs now — stop re-checking as a "new row" candidate; it's permanently the same req R5029663 already tracked.
+- **Teradyne (North Reading, MA)**: still only Spring 2026 (past) co-ops found; re-check in a few weeks in case a Spring 2027 cycle opens.
+- **Analog Devices (Wilmington, MA) / Vicor (Andover, MA)**: Spring cycles reportedly open Oct/Nov historically; worth a fresh check in the next 2-4 weeks.
+- **Boston Dynamics, Commonwealth Fusion Systems, SharkNinja/iRobot**: all still pre-season per their own stated cycles; recheck Nov/Dec 2026–Jan 2027.
+- **Base Power** (Austin TX / San Carlos CA home-battery hardware): ME/Manufacturing Engineering Intern postings are open but state no season anywhere; worth a periodic re-check in case a dated cohort posting replaces these generic ones.
+- Tracker is now at 400 rows / 915 checked entries after 30 consecutive runs. Major Boston-area and national aerospace/defense/robotics/manufacturing employer coverage remains saturated; this run's main value was closing out two long-standing ambiguous carryover leads (PCC oppid 24181 and the "Quality Engineering Co-Op" duplicate) and ruling out one false-positive "new" lead (GE Rutland VT) before it could be mistakenly added as a duplicate row.
