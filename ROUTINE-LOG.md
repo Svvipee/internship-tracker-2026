@@ -3489,3 +3489,37 @@ None this run — no new fully-verified postings.
 - **Cirrus Aircraft (Duluth, MN)**: "Co-Op Sustaining Engineering Intern" lead's only found link 404'd — worth checking Cirrus's own careers/ATS directly (not yet identified) in a future run.
 - All other standing re-check notes from the 2026-10-08 07:00 UTC entry (Boston Dynamics/CFS/SharkNinja for Nov/Dec, Base Power periodic check) remain unchanged and not yet due.
 - Tracker is now at 400 rows / 917 checked entries after 31 consecutive runs. Coverage remains heavily saturated; this run's main value was ruling out several freshly-surfaced leads (Berkshire Grey/Entegris/CMTA duplicates, Alaka'i Technologies, Cirrus Aircraft) rather than finding new qualifying rows.
+
+---
+
+## 2026-10-08 ~19:00 UTC
+
+### Sync
+`git fetch origin master` confirmed local was exactly in sync with `origin/master` at `b3e8ac8` (no detached-HEAD drift this time). `git checkout -B master origin/master` run as a precaution; no conflicts.
+
+### What was searched
+No standing "worth re-checking" item was due yet this run (Analog Devices/Vicor/Teradyne: "few weeks/2-4 weeks"; Alaka'i Technologies: no stated timeline but checked last run; Cirrus Aircraft: no new primary source identified; Boston Dynamics/CFS/SharkNinja: Nov/Dec; Base Power: periodic, not due). A research agent ran a fresh sweep instead, cross-checking ~50 candidate companies/leads against programmatically-extracted reference lists (400 `rows` as Company/Role/Link, 917 `checked` as Company/Reason) before spending search budget on anything already logged:
+1. A full-text paginated sweep of RTX's company-wide Workday CXS API (`globalhr.wd5.myworkdayjobs.com`, 1100+ open reqs, refreshes daily) for "Co-Op"/"2027" — surfaced two freshly-posted reqs not caught by prior runs' title-pattern searches.
+2. Newer Boston-area and national hardware/robotics/space startups not yet in the tracker: Pratt Miller, Intuitive Machines, Resonant Link, Antora Energy, Figur8, Humanetics Innovative Solutions.
+3. Re-confirmation (reference-list match only, no re-fetch) that ~40 other candidate names raised during the sweep were already present in `rows`/`checked` from prior runs.
+
+### Added to `rows`
+None this run.
+
+### Added to `checked` (10 new entries, dated 2026-10-08)
+- **Pratt & Whitney (RTX) — Aguadilla, PR**: APU Mechanical Engineer Co-Op, Jan 2027 — verified live (Workday API, canApply:true) but requires PR residency with no relocation offered; hard dealbreaker.
+- **Pratt & Whitney (RTX) — East Hartford, CT**: Engineering Quality Co-op, Spring 2027, req 01876476 — verified live (posted 2026-10-07), ME-eligible, 3.0 GPA min, **but actual work is quality-systems data/software-platform support**, discipline mismatch under existing precedent (BMW Quality Data Co-op, Skyworks Quality Systems Data Analyst). **Flagged as a borderline judgment call for Hamza**, not auto-added to `rows`, because the work content reads as data/software rather than mechanical/hardware — but it has a **hard application deadline of 2026-10-15** (one week from this run), so surfaced explicitly rather than silently buried. Link: https://globalhr.wd5.myworkdayjobs.com/REC_RTX_Ext_Gateway/job/US-CT-EAST-HARTFORD-ETC--400-Main-St--BLDG-ETC/Engineering-Quality-Co-op--Spring-2027---Onsite-_01876476
+- RTX/Collins Aerospace (York, NE and Cedar Rapids, IA): two more reqs excluded for merged Spring/Summer term wording (fails season-stated bar) and/or software discipline mismatch.
+- Pratt Miller, Intuitive Machines, Resonant Link, Antora Energy, Figur8, Humanetics Innovative Solutions: all checked fresh, no qualifying Winter 2026/Spring 2027 mechanical/aerospace postings found (wrong season, wrong location, or no postings at all).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 400; `checked` 917 → 927 (+10, confirmed via programmatic extraction). `.xlsx` file changed (1,089,186 → 1,092,889 bytes).
+
+### Staged applications created
+None this run — no new fully-verified postings were added to `rows`.
+
+### Worth re-checking / flagging next time
+- **RTX East Hartford Quality Co-op (req 01876476)**: deadline 2026-10-15 — if Hamza wants it despite the discipline-mismatch judgment call, he needs to act within the week; this run is notifying him directly about it rather than waiting for a future log read.
+- **RTX's company-wide Workday API full-text search** is a good lead source going forward — worth repeating each run (paginated "Co-Op"/"2027" search) rather than relying solely on previously-known req IDs, since it caught two reqs this run that prior title-pattern searches missed.
+- All other standing re-check notes (Analog Devices/Vicor/Teradyne, Alaka'i Technologies, Cirrus Aircraft, Boston Dynamics/CFS/SharkNinja, Base Power) remain unchanged and not yet due.
+- Tracker is now at 400 rows / 927 checked entries after 32 consecutive runs.
