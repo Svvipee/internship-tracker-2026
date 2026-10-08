@@ -3364,3 +3364,47 @@ Draper Laboratory Metrology Co-op (resolves prior "unresolved" note — now Fall
 - **Draper Laboratory**: fully re-swept today (JR002940, JR002942, JR002883, JR003000 all confirmed live); worth a fresh full sweep again in ~1-2 weeks since JR003000 shows Draper is still actively opening new Spring 2027 reqs for this same team.
 - **Analog Devices R266691**: still internally contradictory on season after 3+ checks across different weeks; likely a permanent posting-template bug rather than something that will self-correct — probably safe to stop re-checking this specific req unless Hamza wants a judgment call made on which window is more likely authoritative.
 - Tracker is now at 397 rows / 893 checked entries after 27 consecutive runs. Boston-area and major aerospace/defense/robotics employer coverage remains essentially saturated (confirmed again this run — every lead from my own general WebSearch queries turned out to already be tracked); the main remaining source of new value is (a) catching newly-posted reqs at already-tracked employers with large/growing-over-time boards (Draper, Entegris, PCC, GE Aerospace), and (b) periodic liveness re-checks of older `rows` entries.
+
+---
+
+## 2026-10-08 ~01:00 UTC
+
+Fresh container; confirmed via `git fetch origin master` at start that the local `master` branch ref was stale (`327d0a9`, 7 commits behind) while `origin/master` was already at `c081c16`, matching the detached `HEAD` exactly — the same recurring stale-local-ref container quirk as every recent run, not a lost push. Ran `git checkout master && git merge --ff-only origin/master` to realign cleanly before any edits. Ground truth going in (re-extracted directly from `build.mjs` via a small Node script, not cumulative log arithmetic): `rows` 397, `checked` 893.
+
+### What was searched
+Two parallel research passes, both against dedup reference lists (397 `rows` as `Company | Role Title | Application Link`, 893 `checked` as `Company || Reason`, extracted programmatically from `build.mjs` first):
+1. **GE Aerospace Rutland, VT** (carried over from the 2026-10-07 19:00 UTC run's "worth re-checking" note) + a fresh general sweep for new Winter 2026/Spring 2027 postings not already tracked.
+2. **MIT Lincoln Laboratory** fresh sweep + **PCC oppid 24181 (Henderson, NV)** and the ambiguous "Quality Engineering Co-Op, Spring 2027" dedup lead, both carried over from prior runs.
+
+### Carryover re-check results
+- **GE Aerospace — Rutland, VT "Manufacturing Engineering Co-op" (RESOLVED, no new row):** Hit GE's own Workday CXS API directly. There is only ONE "Manufacturing Engineering Co-op – US – Spring 2027" req company-wide (R5029663, already tracked as row 76/"Lynn, MA"), and its own `additionalLocations` array lists BOTH Rutland, VT and Batesville, AR among 23 selectable US sites — they are not separate sibling reqs, just two of many location options on the same req. Live status reconfirmed via GE's own API: `canApply: true`, `endDate: 2026-11-06`, "29 days left to apply." **This directly contradicts the 2026-10-07 19:00 UTC run's `checked` entry claiming Batesville, AR was confirmed "Applications Closed" via a Runway aggregator mirror** — that was a false negative (same known marketing-portal/aggregator-vs-Workday-API discrepancy this tracker has documented for this employer on 2026-09-30, 2026-10-01, 2026-10-02). Corrected that `checked` entry in place with a dated correction note rather than deleting it, per this log's established pattern for self-corrections.
+- **MIT Lincoln Laboratory**: re-confirmed via fresh search — only Fall 2026 (07-71, Group 77 Rapid Prototyping) and June–Nov 2026 (CAD Design Specialist) mechanical/aero co-ops are currently live; no new Winter 2026/Spring 2027 req found beyond the 3 already tracked. Added a dated re-confirmation to `checked`.
+- **PCC oppid 24181 (Henderson, NV)**: direct fetch again hit PCC's Altcha bot-check wall ("Quick Check Needed") — confirms this is an intermittent/token-based block, not a resolved access path. Disposition unchanged (already confirmed open once via a cleared CAPTCHA on 2026-10-07, but excluded because the posting states no season anywhere). Added a dated re-check note to `checked`.
+- **PCC "Quality Engineering Co-Op, Spring 2027" dedup lead**: still could not resolve to a distinct oppid — both previously-cited university-mirror source pages now genuinely 404. Likely a stale re-mirror of the already-tracked Mentor-Painesville oppid 22134 (matching template language) rather than a true separate req, but this couldn't be independently confirmed. No change; flagged as a probable duplicate rather than asserted.
+
+### Added to `rows` (3 new)
+1. **BMW Group — Assembly Manufacturing Engineer Co-op (Spring 2027), Spartanburg SC** — Yes, direct fetch of jobs.bmwgroup.com, "Apply now" present.
+2. **BMW Group — Manufacturing Process Improvement Co-Op (Spring 2027), Spartanburg SC** — Yes, same verification.
+3. **BMW Group — Production Process and Quality Co-op (Spring 2027), Spartanburg SC** — Yes, same verification.
+
+All three: Jan 11 – May 14, 2027, min 3.0 GPA / 30+ credit hours / enrolled through all 3 rotations, no citizenship/ITAR language seen, pay not stated.
+
+### Added to `checked` (8 new entries, all dated 2026-10-08)
+MIT Lincoln Laboratory re-confirmation; PCC oppid 24181 re-check; BMW Group Controls Engineering Co-op (req 191197) and Acoustics Co-Op (req 191204) — both confirmed closed, found in the same Spartanburg batch as the 3 added rows; Ahlstrom Nonwovens PM35 Process Engineer Co-op (weak discipline fit + aggregator-only verification, not added); Edwards Lifesciences Engineering Co-Op Program (biomedical discipline, not a fit); Halo Braid Mechanical Engineering Co-op (Fall 2026 only, wrong season); Crown Equipment Corporation Handshake-listed co-op (probable duplicate of an already-tracked site, location unstated, not added); WSP USA Mechanical Engineering Co-op (explicitly "Winter 2027" not "Winter 2026," near-miss exclusion).
+
+Also corrected one existing `checked` entry in place (GE Aerospace Batesville, AR — see above).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays (programmatic regex count, not log arithmetic): `rows` 397 → 400 (+3), `checked` 893 → 901 (+8). Zero duplicate Application Links across all 400 `rows` entries (programmatic check). Read the generated `.xlsx` back with the `xlsx` library: both sheets' row counts (401 / 902, including header rows) directly match the source arrays. `.xlsx` file changed (1,073,156 → 1,080,875 bytes).
+
+### Staged applications created
+1. `staged-applications/bmw-group-assembly-manufacturing-engineer-coop-spring2027-spartanburg-sc.md`
+2. `staged-applications/bmw-group-manufacturing-process-improvement-coop-spring2027-spartanburg-sc.md`
+3. `staged-applications/bmw-group-production-process-and-quality-coop-spring2027-spartanburg-sc.md`
+
+### Worth re-checking next time
+- **GE Aerospace Rutland, VT / Batesville, AR**: now fully resolved — no further re-checking needed, both are just location options on already-tracked req R5029663.
+- **PCC oppid 24181 (Henderson, NV)**: the Altcha CAPTCHA wall remains intermittent; worth one more attempt with a different fetch approach (e.g. a headless-browser pass) if a future run has that capability, but low priority since even a cleared view showed no season stated.
+- **PCC "Quality Engineering Co-Op, Spring 2027" ambiguous lead**: probably a stale duplicate of oppid 22134 — recommend treating as resolved/non-actionable unless a live independent source surfaces proving it's a genuinely separate req.
+- **BMW Group Spartanburg, SC**: same Spring 2027 co-op batch also included several roles not independently fetched this run (Innovation and Digitalization Co-op, Launch & Change Coordination Co-Op, Launch Planning and Steering Co-op, Quality Data Co-op, Packaging Development Intern) — these lean software/data/logistics/packaging discipline and were left unverified rather than reported; worth a quick discipline-fit check if a future run has spare capacity, otherwise low priority.
+- Tracker is now at 400 rows / 901 checked entries after 28 consecutive runs. Coverage remains essentially saturated for major Boston-area and national aerospace/defense/robotics/manufacturing employers; today's one genuinely new, fully-verified cluster (BMW Spartanburg) came from a general sweep rather than a known-employer re-check, suggesting broad general sweeps still occasionally surface fresh non-Boston leads even as the known-employer list saturates.

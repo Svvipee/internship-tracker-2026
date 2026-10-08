@@ -4784,6 +4784,43 @@ const rows = [
     "Link Verified": "Partial — 2026-10-07: canonical employer ATS is the same JS-rendered ADP portal referenced above (myjobs.adp.com/tmhcareers), unreachable via direct fetch; confirmed instead via direct fetch of this talentally.com mirror, status 'Active,' matching title/location/season/pay. Verify on the employer's own ADP portal before applying.",
     Notes: "Robotics/mechatronics discipline fit. Posting also allows a Jan–Aug 2027 window; Jan–May 2027 satisfies Hamza's Spring 2027 target.",
   },
+  // --- Added 2026-10-08 ~01:00 UTC routine run ---
+  {
+    Company: "BMW Group",
+    "Role Title": "Assembly Manufacturing Engineer Co-op (Spring 2027)",
+    Discipline: "Manufacturing Engineering / Industrial Engineering",
+    Season: "Spring 2027 (Jan 11 – May 14, 2027)",
+    Location: "Spartanburg, SC",
+    "Distance from Boston, MA (mi, approx.)": 850,
+    Pay: "Not stated",
+    "Application Link": "https://jobs.bmwgroup.com/job/Assembly-Manufacturing-Engineer-Co-op-%28Spring-2027%29/191166-en_US/",
+    "Link Verified": "Yes — fetched the live posting directly on jobs.bmwgroup.com, 'Apply now' present, no closed/filled messaging.",
+    Notes: "Requires enrolled student at accredited US 4-yr institution, min 3.0 GPA, 30+ completed credit hours, enrolled through all 3 rotations. No explicit citizenship/ITAR language seen.",
+  },
+  {
+    Company: "BMW Group",
+    "Role Title": "Manufacturing Process Improvement Co-Op (Spring 2027)",
+    Discipline: "Manufacturing Engineering / Industrial Engineering",
+    Season: "Spring 2027 (Jan 11 – May 14, 2027)",
+    Location: "Spartanburg, SC",
+    "Distance from Boston, MA (mi, approx.)": 850,
+    Pay: "Not stated",
+    "Application Link": "https://jobs.bmwgroup.com/job/Manufacturing-Process-Improvement-Co-Op-%28Spring-2027%29/191747-en_US/",
+    "Link Verified": "Yes — fetched the live posting directly on jobs.bmwgroup.com, 'Apply now' present, no closed/filled messaging.",
+    Notes: "Same eligibility requirements as the sibling Assembly Manufacturing Engineer Co-op req (same batch, Spartanburg SC plant).",
+  },
+  {
+    Company: "BMW Group",
+    "Role Title": "Production Process and Quality Co-op (Spring 2027)",
+    Discipline: "Mechanical or Industrial Engineering (preferred)",
+    Season: "Spring 2027 (Jan 11 – May 14, 2027)",
+    Location: "Spartanburg, SC",
+    "Distance from Boston, MA (mi, approx.)": 850,
+    Pay: "Not stated",
+    "Application Link": "https://jobs.bmwgroup.com/job/Production-Process-and-Quality-Co-op-%28Spring-2027%29/192803-en_US/",
+    "Link Verified": "Yes — fetched the live posting directly on jobs.bmwgroup.com, 'Apply now' present, no closed/filled messaging.",
+    Notes: "Hybrid quality/process engineering role. Same eligibility requirements as sibling Spartanburg SC co-ops above.",
+  },
 ];
 
 const checked = [
@@ -5695,8 +5732,17 @@ const checked = [
   { Company: "OSI Systems / American Science and Engineering (Billerica, MA)", "Role(s) Checked": "Careers page", Reason: "2026-10-07: only full-time mechanical engineer roles found; no internship/co-op posting." },
   { Company: "Ralliant (Tektronix parent; incl. Qualitrol/Hengstler Dynapar)", "Role(s) Checked": "Operations & Manufacturing Co-op; Engineering Co-op (Fairport, NY)", Reason: "2026-10-07: both confirmed directly as a Spring 2026 cohort, 'Applications Closed'; no Spring 2027 posting found anywhere on the board." },
   { Company: "Draper Laboratory (Cambridge, MA)", "Role(s) Checked": "Metrology Co-op — resolves the earlier-today 'season-unstated/unresolved' entry above", Reason: "2026-10-07 (later run): a simplify.jobs mirror of the same posting shows it is explicitly 'Fall 2026' (not Winter 2026/Spring 2027) and the listing itself is marked INACTIVE. Also confirmed both previously-indexed student-draper.icims.com URLs for this req now 404 (Draper's co-op board has fully migrated to Workday). Excluded: wrong season + closed." },
-  { Company: "GE Aerospace", "Role(s) Checked": "Manufacturing Engineering Co-op – US – Spring 2027 (Batesville, AR)", Reason: "2026-10-07: confirmed via a Runway job-board mirror of the exact posting as 'Applications Closed.' (The Rutland, VT sibling req could not be independently confirmed this run — no working GE req ID/URL located; not added, not excluded.)" },
+  { Company: "GE Aerospace", "Role(s) Checked": "Manufacturing Engineering Co-op – US – Spring 2027 (Batesville, AR)", Reason: "2026-10-07: confirmed via a Runway job-board mirror of the exact posting as 'Applications Closed.' (The Rutland, VT sibling req could not be independently confirmed this run — no working GE req ID/URL located; not added, not excluded.) CORRECTION (2026-10-08): this was a false negative. Direct fetch of GE's own Workday CXS API for req R5029663 (the already-tracked `rows` entry) shows it is a SINGLE multi-location req with 23 selectable US sites, and its own `additionalLocations` array includes BOTH Batesville, AR and Rutland, VT alongside Lynn, MA and 20 others — they are not separate sibling reqs. Authoritative status from GE's own API as of today: canApply:true, posted:true, endDate 2026-11-06, '29 days left to apply.' The Runway mirror's 'Applications Closed' signal for Batesville was wrong (same known false-negative pattern this tracker has documented for GE's marketing-portal/aggregator mirrors vs. its Workday API on 2026-09-30, 2026-10-01, 2026-10-02). No separate row needed — Batesville and Rutland are both already covered by the existing R5029663 row; this exclusion entry is kept only as a historical record of the correction." },
   { Company: "Analog Devices (Wilmington, MA)", "Role(s) Checked": "Healthcare Mechanical Engineering Co-op (Spring), R266691 — re-check", Reason: "2026-10-07: re-fetched directly via ADI's own Workday CXS API; the internal season contradiction first noted 2026-09-28 is still unresolved — the role-overview paragraph still says 'running from June through December' while the Qualifications section still says 'available... from January through June.' Exclusion stands." },
+  // --- Added 2026-10-08 ~01:00 UTC routine run ---
+  { Company: "MIT Lincoln Laboratory (Lexington, MA)", "Role(s) Checked": "Fresh sweep of careers.ll.mit.edu for Winter 2026/Spring 2027 mechanical/aero co-ops", Reason: "2026-10-08: re-confirmed via fresh search — only 'Fall CO-OP Student (Mechanical Engineering, 07-71)' (Fall 2026), 'Rapid Prototyping Aero/Mech Co-Op (Fall 2026) – Group 77,' and 'CAD Design Specialist CO-OP, Group 07-71 (June–November 2026)' are currently live in-discipline, all wrong season. No new Winter 2026/Spring 2027 req found beyond the 3 already tracked (microfab x2 + Group 07-71 Mechanical Engineering Co-Op)." },
+  { Company: "Precision Castparts Corp (Henderson, NV)", "Role(s) Checked": "oppid 24181 (Mechanical Engineering Co-Op) — re-check", Reason: "2026-10-08: direct fetch of the tal.net posting URL again hit PCC's Altcha bot-check wall ('Quick Check Needed'), same as prior attempts — confirms this is an intermittent/token-based block rather than a resolved access path. Disposition unchanged from 2026-10-07: already confirmed open/live once via a cleared CAPTCHA, but excluded because the posting states no season anywhere in title or body." },
+  { Company: "BMW Group", "Role(s) Checked": "Controls Engineering Co-op (Spring 2027), req 191197; Acoustics Co-Op (Spring 2027), req 191204", Reason: "2026-10-08: both confirmed via direct fetch today as 'You can't view this job because it's not available at this time' — closed. Found during the same Spartanburg, SC Spring 2027 co-op batch as the 3 reqs added to `rows` this run." },
+  { Company: "Ahlstrom Nonwovens LLC (Stevens Point, WI)", "Role(s) Checked": "PM35 Process Engineer Co-op, Spring 2027", Reason: "2026-10-08: Paper Science/Chemical Engineering discipline — a weak fit for Hamza's mechanical/aerospace/manufacturing/robotics/adjacent target list. Could not locate Ahlstrom's own primary ATS posting; only a Dice.com aggregator mirror was found, which itself shows conflicting freshness signals ('Updated 4 hours ago' vs. 'Posted 30+ days ago'). Not added — discipline fit too weak and primary-source verification unavailable." },
+  { Company: "Edwards Lifesciences (Irvine, CA / Draper, UT)", "Role(s) Checked": "Engineering Co-Op Program, Spring-Summer 2027", Reason: "2026-10-08: confirmed live/open (Jan–Aug 2027) but discipline is R&D/Clinical Development/Quality Engineer for structural heart devices — biomedical, not mechanical/aerospace/manufacturing/robotics. Not added." },
+  { Company: "Halo Braid (Cambridge/Allston, MA)", "Role(s) Checked": "Mechanical Engineering Co-op", Reason: "2026-10-08: only a Fall 2026 Mechanical Engineering Co-op found (posted 2026-05-07); no Spring 2027 cycle located anywhere. Not added — wrong/no season." },
+  { Company: "Crown Equipment Corporation", "Role(s) Checked": "Handshake-listed 'Mechanical Engineering Co-op - Spring 2027' (forklift/material-handling focus, location unstated)", Reason: "2026-10-08: company already has 2 Mechanical Engineering Co-op/Intern rows tracked (Greencastle IN, Kinston NC); the Handshake preview didn't state a location, so could not confirm this is a genuinely distinct 3rd site rather than a duplicate of an already-tracked posting. Not added, to avoid a probable duplicate." },
+  { Company: "WSP USA", "Role(s) Checked": "Mechanical Engineering Co-op (Drexel co-op program, Philadelphia), 'Fall 2026/Winter 2027'", Reason: "2026-10-08: season is explicitly 'Winter 2027,' not 'Winter 2026' — same near-miss exclusion this tracker has already applied to Astranis/Skydio 'Winter 2027' cohorts. Not added." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
