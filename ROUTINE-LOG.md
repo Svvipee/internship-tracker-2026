@@ -3523,3 +3523,78 @@ None this run — no new fully-verified postings were added to `rows`.
 - **RTX's company-wide Workday API full-text search** is a good lead source going forward — worth repeating each run (paginated "Co-Op"/"2027" search) rather than relying solely on previously-known req IDs, since it caught two reqs this run that prior title-pattern searches missed.
 - All other standing re-check notes (Analog Devices/Vicor/Teradyne, Alaka'i Technologies, Cirrus Aircraft, Boston Dynamics/CFS/SharkNinja, Base Power) remain unchanged and not yet due.
 - Tracker is now at 400 rows / 927 checked entries after 32 consecutive runs.
+
+---
+
+## 2026-10-09 ~01:00 UTC (part 1)
+
+### Sync
+`git fetch origin master` found local HEAD detached at `5c129e7` while the local `master` branch ref was stale at `327d0a9` (11 commits behind) — `git ls-remote origin` confirmed `origin/master` was actually already at `5c129e7` (matching detached HEAD exactly), so this was the same recurring stale-local-ref container quirk as every recent run, not a lost push. Ran `git checkout -B master origin/master` to realign cleanly before any edits. Ground truth going in (programmatically extracted from `build.mjs`): `rows` 400, `checked` 927.
+
+### What was searched
+Two parallel research agents launched, both instructed to first extract dedup reference lists from `build.mjs` before searching:
+1. **Carryover agent**: RTX company-wide Workday CXS API full-text sweep (repeat of the lead source that worked 2026-10-08 19:00 UTC), status check on RTX East Hartford Quality Co-op req 01876476 (hard deadline 2026-10-15), Analog Devices/Vicor/Teradyne Spring 2027 cycle check, a fresh Draper Laboratory full sweep, Alaka'i Technologies Spring 2027 cohort check, and GE Aerospace (Lynn MA) / MIT Lincoln Laboratory re-checks. **Still running as of this log entry** — results will be appended in part 2 of this run.
+2. **Broad-sweep agent**: fresh search for genuinely new companies/postings outside the ~150 already-tracked employer names, pivoting toward structural/civil engineering consulting firms and large contract manufacturers/controls integrators given how saturated the core aerospace/defense/robotics employer list already is. Completed; results below.
+
+### Broad-sweep results
+
+**Added to `rows` (2 new, both fully verified):**
+1. **BMW Group — Additive Manufacturing Co-op (Spring 2027), Spartanburg SC, req 191077** — found in the same Spartanburg SC Spring 2027 co-op batch as the 4 already-tracked BMW reqs (this specific req ID wasn't previously checked individually). Verified by this session directly via WebFetch of jobs.bmwgroup.com — two "Apply now" buttons present, no closed/filled messaging. Posting start date 7/31/26; work term Jan 11 – May 14, 2027. Eligibility bullets not independently re-confirmed on this specific req (assumed similar to siblings — flagged in the staged-application file).
+2. **Thornton Tomasetti, Inc. — Structural Engineer Co-op (Forensics Practice, Spring 2027), New York NY** — genuinely new company (structural/forensic engineering consultancy). Posting explicitly states "Spring 2027," $25.00–$35.00/hr (NY Pay Transparency Law disclosure), listed Sep 16, 2026. Verified both by the research agent and independently re-verified by this session via direct WebFetch — "Apply Now" present, no closed/filled messaging, genuine employer-side posting (pay-transparency disclosure + recruiting-fraud warning naming the real company domain). Could not extract the literal destination URL behind the Apply button (site blocks non-browser requests to it) — the listing page itself serves as the Application Link.
+
+**Added to `checked` (8 new entries, all dated 2026-10-09):**
+- Thornton Tomasetti — **Mechanical Engineer Co-op (Forensics Practice)**, same NYC batch as the structural co-op above: explicitly states **"Winter 2027"**, not "Winter 2026" or "Spring 2027" — excluded on the same near-miss season-label precedent as the WSP USA "Winter 2027" exclusion (2026-10-08). Flagging again here in case Hamza wants this reconsidered — his own criteria only name "Winter 2026 or Spring 2027" literally, and it's genuinely ambiguous whether this employer's "Winter 2027" term is the same Jan-start window as "Spring 2027."
+- Thornton Tomasetti — **Electrical Engineer Intern**, same batch — discipline mismatch (electrical).
+- **AECOM — Structural Engineering Intern**, Conshohocken PA (AECOM Transportation / Structures — Bridges & Walls): new company. AECOM's own ATS (americas.aecom.jobs / campus.aecom.jobs) is JS-rendered and returned empty content on direct fetch — could not independently confirm on the employer's own page. A secondary job-board copy states the season as "Spring 2027 and Summer 2027" (dual-eligible, not Spring-only) — excluded under the same merged-season precedent as the RTX York NE / Cedar Rapids IA exclusions (2026-10-08). Also requires US citizenship, no visa sponsorship.
+- **Celestica International LP — Student Intern, Mechanical Engineering**, Austin TX, req 140463: new company (contract manufacturer), confirmed live, but explicitly "Start date: June 2027" — Summer 2027, wrong season.
+- **JR Automation / Dematic (Hitachi, KION Group) — Controls Engineering Intern/Co-Op**, Auburn Hills & Holland MI: new company, explicitly "May 2027 through August 2027" — Summer 2027, wrong season.
+- **Dematic (KION Group) — Electrical Controls Applications Engineering Intern/Co-Op**, Grand Rapids MI: new company, no season stated anywhere found.
+- **NextStep Robotics — Mechanical Engineering Internship**, Baltimore MD: new company (rehab robotics startup), only source is a University of Maryland career-office repost with no official ATS link, no stated season, email-only application (no online apply mechanism).
+- **Capella Space / Sidus Space / Ekso Bionics / Deep Fission** (bulk): new-to-tracker companies, full board sweeps found zero qualifying Winter 2026/Spring 2027 mechanical/aerospace/robotics intern or co-op postings at any of the four.
+
+(The broad-sweep agent also re-confirmed several already-tracked/already-excluded leads — BMW's other Spartanburg req 191197, Celestica discipline fit, various space/battery companies from the dedup list — with no change to standing dispositions; not re-logged here since they match prior entries exactly.)
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows` 400 → 402 (+2), `checked` 927 → 935 (+8). Zero duplicate Application Links across all 402 `rows` entries (programmatic check). Read the generated `.xlsx` back with the `xlsx` library: both sheets' row counts (403 / 936, including header rows) directly match the source arrays.
+
+### Staged applications created
+1. `staged-applications/bmw-group-additive-manufacturing-coop-spring2027-spartanburg-sc.md`
+2. `staged-applications/thornton-tomasetti-structural-engineer-coop-spring2027-nyc.md`
+
+### Status
+This is a checkpoint commit — the carryover research agent (RTX Workday sweep, Draper, Analog Devices/Vicor/Teradyne, Alaka'i, GE/MIT Lincoln Lab) was still running when this part of the run was committed. Its results, if any new rows/checked entries result, will be added in a follow-up commit under a "part 2" heading immediately below this entry, same run.
+
+## 2026-10-09 ~01:00 UTC (part 2 — carryover agent results)
+
+### Carryover re-check results
+- **RTX company-wide Workday CXS sweep ("Co-Op" + "2027", paginated)**: repeated as planned (225 total results, all fetched/deduped). Found 3 new-to-reference-list reqs: 1 qualifies (added to `rows` — see below), 2 excluded (Santa Isabel, PR residency dealbreaker, same precedent as req 01874717). Confirms this sweep method remains a productive lead source worth repeating each run.
+- **RTX East Hartford Quality Co-op, req 01876476**: confirmed unchanged/still open (`canApply:true`, 6 days left to apply as of today). Still a borderline discipline-mismatch judgment call left for Hamza — deadline is 2026-10-15, so only 6 days remain. Not moved to `rows` or `checked`.
+- **Analog Devices (Wilmington, MA) / Vicor (Andover, MA) / Teradyne (North Reading, MA)**: all re-checked directly via their own ATS/APIs — no change from standing dispositions (ADI's R266691 still internally contradictory on season, unresolved since 2026-09-28; Vicor still zero co-op/intern titles; Teradyne still only a past Spring 2026 cohort). No new `checked` entries added — these have already been re-logged many times (R266691 alone has 6+ prior dated re-check entries; Teradyne/Vicor have 8+ each), so per the 2026-10-08 07:00 UTC log note ("probably safe to stop re-checking... unless Hamza wants a judgment call"), further unchanged reconfirmations are being recorded here in the narrative only, not as new array entries, to avoid unbounded bloat.
+- **Draper Laboratory**: fresh full paginated sweep (223 postings) — all previously-tracked and previously-excluded reqs reconfirmed unchanged. One genuinely new-to-reference-list req found (Microsystems Integration Intern, JR003002-1) — excluded, added to `checked` (no season stated + EE/Physics/Materials discipline mismatch). No new qualifying Draper req.
+- **Alaka'i Technologies / SKAI Technology (Stow, MA)**: re-checked — Built In Boston's company page now shows zero open postings at all (even the previously-found Fall 2026 listing is gone). No Spring 2027 cohort exists yet. No new `checked` entry (narrative-only reconfirmation).
+- **GE Aerospace (Lynn, MA)**: full Workday CXS location sweep (63 results) — only Lynn-specific co-ops remain skilled-trade apprenticeships (CNC/Carpentry/Welder Trainee), already long-excluded as non-college-engineering roles. No change.
+- **MIT Lincoln Laboratory (Lexington, MA)**: already-tracked Mechanical Engineering Co-Op (Group 07-71) reconfirmed live, unchanged. One new borderline req found — "Advanced Sensors and Techniques Co-Op (Spring 2027) - Group 09-02" explicitly lists Aerospace Engineering as an accepted major, but the actual work is RF/radar/EO sensor design (EE-flavored). Flagged as a borderline judgment call for Hamza (same treatment as the RTX Quality Co-op) and added to `checked`, not `rows`.
+
+### Added to `rows` (1 new)
+1. **RTX (Collins Aerospace) — Mechanical Engineering Co-Op (Winter/Spring 2027), Portsmouth RI, req 01880887** — fully verified via RTX's own Workday CXS API (`canApply:true`, posted 2026-10-08). **Flagging for Hamza: the posting requires an ALREADY-HELD, active security clearance after day 1** — a much stricter bar than the usual "eligible to obtain" clearance language seen on other tracked RTX co-ops, and likely disqualifies most student applicants who don't already hold a clearance. Added anyway per the tracker's practice of listing season/discipline/location-qualifying postings and flagging eligibility hurdles rather than silently excluding on personal-qualification grounds — but this one deserves a close look before applying.
+
+### Added to `checked` (4 new entries, dated 2026-10-09)
+RTX/Collins Aerospace Santa Isabel, PR reqs 01878947 and 01878937 (Manufacturing Engineering Co-Op, Spring 2027 — PR residency dealbreaker, 2 entries); Draper Laboratory Microsystems Integration Intern JR003002-1 (no season stated + discipline mismatch); MIT Lincoln Laboratory Advanced Sensors and Techniques Co-Op, Group 09-02 (borderline discipline fit — EE-flavored work despite Aerospace Engineering being a listed acceptable major, flagged for Hamza's judgment).
+
+### Spreadsheet regenerated (combined with part 1)
+`node build.mjs` → printed `done`. Final combined counts for this run: `rows` 400 → 403 (+3 total: BMW Additive Mfg Co-op, Thornton Tomasetti Structural Co-op, RTX Portsmouth RI Mechanical Co-op), `checked` 927 → 939 (+12 total across both parts). Zero duplicate Application Links across all 403 `rows` entries (programmatic check). Both `.xlsx` sheets' row counts (404 / 940, including header rows) directly match the source arrays.
+
+### Staged applications created
+3. `staged-applications/rtx-collins-aerospace-mechanical-engineering-coop-winterspring2027-portsmouth-ri.md` (flags the active-clearance requirement prominently)
+
+(Items 1-2 — BMW Additive Manufacturing Co-op and Thornton Tomasetti Structural Co-op — were staged in part 1 above.)
+
+### Worth re-checking / flagging next time
+- **RTX East Hartford Quality Co-op (req 01876476)**: deadline 2026-10-15 — only 6 days left as of this run. Still unresolved whether Hamza wants to apply despite the discipline-mismatch judgment call.
+- **MIT Lincoln Laboratory Advanced Sensors and Techniques Co-Op (Group 09-02)**: borderline discipline call (Aerospace Engineering explicitly listed as an accepted major, but work is EE/RF-flavored) — Hamza's call whether this should move to `rows`.
+- **RTX Portsmouth RI Mechanical Co-op (req 01880887)**: newly added to `rows`, but double-check the active-clearance requirement before applying — this is a stricter bar than Hamza may be able to meet as a student.
+- **Thornton Tomasetti Mechanical Engineer Co-op ("Winter 2027" label)**: excluded on a season-label technicality identical to the WSP USA precedent — worth Hamza's own judgment call on whether "Winter 2027" at this employer means the same window as "Spring 2027"/"Winter 2026" elsewhere in the tracker.
+- **RTX company-wide Workday "Co-Op"/"2027" full-text sweep**: confirmed productive again this run (3rd run in a row it's surfaced new reqs) — keep repeating each run.
+- Analog Devices/Vicor/Teradyne: still not live as of today; stop logging individual re-check array entries going forward (per this run's note) unless something actually changes — just note reconfirmation status in the narrative.
+- Alaka'i Technologies: now shows zero postings of any kind (even the prior Fall 2026 one is gone) — low priority going forward unless a dated Spring 2027 cohort appears.
+- Tracker is now at 403 rows / 939 checked entries after 33 consecutive runs.
