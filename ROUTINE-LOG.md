@@ -3598,3 +3598,47 @@ RTX/Collins Aerospace Santa Isabel, PR reqs 01878947 and 01878937 (Manufacturing
 - Analog Devices/Vicor/Teradyne: still not live as of today; stop logging individual re-check array entries going forward (per this run's note) unless something actually changes — just note reconfirmation status in the narrative.
 - Alaka'i Technologies: now shows zero postings of any kind (even the prior Fall 2026 one is gone) — low priority going forward unless a dated Spring 2027 cohort appears.
 - Tracker is now at 403 rows / 939 checked entries after 33 consecutive runs.
+
+---
+
+## 2026-10-09 ~07:00 UTC
+
+### Sync
+`git fetch origin master` confirmed local HEAD already matched `origin/master` exactly (`0a8aa5f`). Ran `git checkout -B master origin/master` as a precaution; no conflicts. Ground truth going in (programmatically extracted from `build.mjs`): `rows` 403, `checked` 939.
+
+### What was searched
+Two parallel research agents, both instructed to read programmatically-extracted dedup reference lists (403 `rows` as Company/Role/Link, 939 `checked` as Company/Role(s) Checked/Reason) before searching:
+1. **Carryover agent**: RTX company-wide Workday CXS API full-text sweep (repeat of the lead source that's been productive for 3+ runs running), status check on RTX East Hartford Quality Co-op req 01876476 (hard deadline 2026-10-15, still a discipline-mismatch judgment call for Hamza), a fresh Draper Laboratory full paginated sweep, GE Aerospace (Lynn MA) and MIT Lincoln Laboratory re-checks, and quick status checks on Analog Devices/Vicor/Teradyne.
+2. **Broad-sweep agent**: fresh search for genuinely new companies/postings outside the ~150+ already-tracked employer names — national labs/FFRDCs (Sandia, ORNL, PNNL, INL, JHU/APL), forensic/failure-analysis consultancies (Exponent, WJE), civil/structural consulting firms beyond Thornton Tomasetti (Arup, Jacobs, Tetra Tech, Michael Baker), contract electronics manufacturers (Jabil, Sanmina, Benchmark, Plexus, Kimball, TTM, IEC), and industrial controls/automation integrators (Bastian Solutions, Swisslog, Honeywell Intelligrated, Brooks Automation/Azenta, FANUC America, KUKA, Bosch Rexroth).
+
+### Added to `rows` (1 new)
+1. **RTX (Collins Aerospace) — Embedded Controls Hardware Co-Op (Winter/Spring 2027), Rockford IL, req 01871814** — fully verified via RTX's own Workday CXS API (`canApply:true`, posted 2026-10-07). Clean "Winter/Spring 2027" season label. **URGENT: application deadline 2026-10-12 — only ~3 days left as of this run.** Controls-engineering discipline, fits Hamza's target list.
+
+### Time-sensitive status update (not a new row/checked entry — existing flagged item)
+- **RTX East Hartford Quality Co-op, req 01876476**: reconfirmed still open (`canApply:true`, "5 days left to apply" as of 2026-10-09, deadline 2026-10-15). Still the same standing discipline-mismatch judgment call (quality-systems data/software work, not core mechanical) flagged for Hamza since 2026-10-08 — updated the existing `checked` entry in place with this reconfirmation rather than duplicating it. Deadline is closing fast (6 days from this run).
+
+### Added to `checked` (20 new entries, dated 2026-10-09)
+- RTX/Pratt & Whitney Aguadilla PR — Hot Section Engineering Project Co-Op (req 01877168): PR-residency dealbreaker, same precedent as 3 prior PR exclusions.
+- 17 entries from the broad-sweep agent: BMW Group Electrical-Mechanical Co-Op (req 191539, confirmed closed); DMC Inc. and Johnson & Johnson/Ethicon (EE discipline mismatches); KUKA Robotics (no season + sales role); Bosch Rexroth (Fall 2026, wrong season); Sandia/ORNL/PNNL/INL/JHU-APL (national labs — no qualifying Spring 2027 mechanical co-op found at any); Exponent and WJE (no Spring 2027 co-op in Hamza's discipline); Arup/Jacobs/Tetra Tech/Michael Baker (no Spring 2027 co-ops); Jabil (season unconfirmable); Sanmina/Benchmark/Plexus/Kimball/TTM/IEC (no qualifying postings); Bastian Solutions/Swisslog/Honeywell Intelligrated and Brooks Automation/Azenta/FANUC America (no internship postings of any season); NREL (not yet posted, worth a later re-check).
+- Berkshire Grey (Khosla Ventures board mirror) and Yaskawa America/Motoman Robotics (Miamisburg OH): both duplicates/contradictions of already-tracked or already-excluded postings, logged for transparency.
+
+### Carryover re-check results (no new rows/checked beyond the above)
+- **Draper Laboratory**: full paginated sweep of 223 postings — every co-op/intern-titled req already tracked or already excluded (one, JR002974, is a re-titled version of a previously-excluded software/embedded req — no change).
+- **GE Aerospace (Lynn, MA)**: only co-op-titled posting remains the already-excluded Lynn CNC Programmer Co-Op (vocational/trade role, not a college engineering internship). No change.
+- **MIT Lincoln Laboratory**: already-tracked Mechanical Engineering Co-Op (Group 07-71) reconfirmed live. The "Advanced Sensors and Techniques Co-Op (Spring 2027) - Group 09-02" borderline item flagged in the 01:00 UTC run today is still present in `checked` (not duplicated) — still Hamza's call.
+- **Analog Devices / Vicor / Teradyne**: no change from standing dispositions (ADI's R266691 still internally contradictory on season; Vicor and Teradyne still JS-rendered/unenumerable, no positive evidence of an open Spring 2027 cycle). Not re-logged as new array entries per the 2026-10-08 07:00 UTC note to avoid unbounded bloat — narrative-only reconfirmation.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows` 403 → 404 (+1), `checked` 939 → 959 (+20). Zero duplicate Application Links across all 404 `rows` entries (programmatic check). Read the generated `.xlsx` back with the `xlsx` library: both sheets' row counts (405 / 960, including header rows) directly match the source arrays. `.xlsx` file changed (1,110,... → 1,113,351 bytes).
+
+### Staged applications created
+1. `staged-applications/rtx-collins-aerospace-embedded-controls-hardware-coop-winterspring2027-rockford-il.md` — flags the 2026-10-12 deadline prominently at the top.
+
+### Worth re-checking / flagging next time
+- **RTX East Hartford Quality Co-op (req 01876476)**: deadline 2026-10-15 — 6 days left as of this run. Still Hamza's call on the discipline-mismatch question; this is the second run in a row flagging it given the closing deadline.
+- **RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814)**: deadline 2026-10-12 — if Hamza hasn't acted by the next run (~13:00 UTC), it will likely have expired; worth a quick status check then regardless.
+- **MIT Lincoln Laboratory Advanced Sensors and Techniques Co-Op (Group 09-02)**: still a standing borderline discipline call for Hamza, flagged twice now.
+- **RTX company-wide Workday "Co-Op"/"2027" full-text sweep**: confirmed productive yet again this run (found both the Rockford IL and PR leads) — keep repeating each run.
+- **NREL**: no Spring 2027 posting yet; past cycles suggest a similar window may open soon — worth a periodic re-check.
+- Analog Devices/Vicor/Teradyne, Alaka'i Technologies, Boston Dynamics/CFS/SharkNinja, Base Power: all still not due per their own standing timelines from prior runs; no change.
+- Tracker is now at 404 rows / 959 checked entries after 34 consecutive runs. Today's broad sweep (national labs, forensic/structural consultancies, contract electronics manufacturers, controls integrators) came up entirely dry for new qualifying rows, reinforcing that coverage is at saturation; the RTX company-wide Workday sweep remains the single most reliable source of genuinely new leads run over run.
