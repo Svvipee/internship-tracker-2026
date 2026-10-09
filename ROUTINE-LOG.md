@@ -3682,3 +3682,52 @@ None created this run — no new fully-verified postings.
 - RTX company-wide Workday "Co-Op"/"2027" full-text sweep remains the single most productive lead source (4 runs running) — keep repeating each run even though this run's sweep itself surfaced only PR-excluded reqs.
 - Analog Devices/Vicor/Teradyne, Alaka'i Technologies: still no change — narrative-only reconfirmation per established practice, not re-logged as array entries.
 - Tracker is now at 404 rows / 977 checked entries after 35 consecutive runs. This is the first run with zero new verified postings — both research agents independently flagged the tracker as at or near saturation for currently-live qualifying postings; future runs will likely depend more on new postings appearing over time (especially around the RTX Rockford/East Hartford deadlines closing and new cycles opening) than on finding previously-missed existing ones.
+
+## 2026-10-09 ~19:00 UTC
+
+### Sync
+`git fetch origin master` confirmed `origin/master` was at `82a24df` (14 commits ahead of stale detached local HEAD — same recurring stale-ref container quirk as prior runs). Ran `git checkout master && git merge --ff-only origin/master` to realign. Ground truth going in (programmatically extracted from `build.mjs` via a scratchpad copy with `export { rows, checked }` appended): `rows` 404, `checked` 977.
+
+### What was searched
+Two parallel research agents, both given programmatically-extracted dedup reference lists (404 `rows` as Company/Role/Link, 977 `checked` as Company/Role(s)/Reason) before searching:
+1. **Carryover agent**: RTX company-wide Workday CXS API full-text sweep (6th consecutive run repeating this source; confirmed the correct tenant is `globalhr`/`REC_RTX_Ext_Gateway`, not `rtx`/`CollinsAerospace_External` as previously assumed — same results either way), status checks on the two time-sensitive items (RTX East Hartford Quality Co-op req 01876476, deadline 2026-10-15; RTX Rockford IL Embedded Controls Hardware Co-Op req 01871814, deadline 2026-10-12), a fresh Draper Laboratory full paginated sweep (220 postings), GE Aerospace and MIT Lincoln Laboratory rechecks, a Procter & Gamble Winter 2027 attempt, and quick pings on Analog Devices/Vicor/Teradyne.
+2. **Broad-sweep agent**: fresh angles — Boston/Cambridge/Somerville deep-tech & robotics startups, MassRobotics-adjacent companies, Greentown Labs cleantech members, EV/battery & charging infrastructure, semiconductor capital equipment makers, and university co-op consortium boards (Northeastern, WPI).
+
+### Added to `rows`
+**None.** Second consecutive run with zero new fully-verified postings. The RTX sweep (218 total hits reviewed) surfaced no new qualifying US reqs beyond the two already tracked (Portsmouth RI and Rockford IL) — everything else was PR-residency-dealbreaker reqs, merged-season reqs, Canada postings, or discipline mismatches. Draper (220 postings), GE Aerospace Lynn, and MIT Lincoln Lab all reconfirmed fully saturated with no new qualifying reqs. The broad-sweep agent's one candidate (Andis Company, see below) was judged too weakly sourced to add to `rows` under the honesty-over-volume bar.
+
+### Time-sensitive status updates (not new entries — existing flagged items)
+- **RTX East Hartford Quality Co-op (req 01876476)**: reconfirmed via direct Workday CXS API fetch — still `canApply:true`, API `endDate` field confirms 2026-10-15, 6 days left as of this run. Updated the existing `checked` entry in place with this reconfirmation rather than duplicating it. Discipline-mismatch judgment call still stands, unresolved — Hamza's call.
+- **RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814)**: reconfirmed via direct Workday CXS API fetch — still `canApply:true`, API `endDate` field confirms 2026-10-12, ~3 days left as of this run. Already in `rows` (added 07:00 UTC run), no changes needed to that entry — just confirming it hasn't closed yet. This is the tightest deadline in the tracker right now; worth a final open/closed check next run since it will likely have expired by then.
+
+### Added to `checked` (12 new entries, dated 2026-10-09)
+- **Andis Company (Racine, WI) — Manufacturing Engineering Intern/Co-op, Spring 2027, $20/hr**: the one candidate either agent surfaced this run. Found via jobs.solidprofessor.com with an active "Apply Now" control and explicit Spring 2027 season — but no primary Andis ATS/careers-site listing could be located to cross-confirm, and the Apply button's actual destination could not be resolved via automated fetch. Flagged as unverifiable rather than added to `rows`; worth a manual click-through re-check.
+- Kulicke & Soffa (Santa Ana, CA — "Applications Closed"; main kns.com portal also dead) and Ultra Clean Technology/UCT (Phoenix, AZ — "This job has closed").
+- ASML (Wilton, CT — no current Spring 2027 co-op matches on company site); Veeco Instruments (403-blocked careers site, only an expired listing found); Ichor Systems (404 careers page, no live postings).
+- DeBra-Kuempel, Inc. / EMCOR Group (Cincinnati, OH — posting now returns HTTP 410 Gone despite appearing live in search).
+- CESO, Inc. (Overland Park, KS — live "2027 Co-Op" posting but season not specified as Spring vs. another 2027 term, fails the season-specificity bar).
+- Electric Era (no dated posting, only a generic undated landing page); Dexai Robotics, Somerville MA (no public postings of any kind found); CNH Racine, WI location (404, distinct from the already-checked CNH Fargo, ND entry); Moment Energy, Coquitlam BC Canada (non-US, outside scope).
+- Several other broad-sweep leads (MetOx International, Yaskawa/Motoman, Medical Murray, Field AI, Rise Robotics) resolved to duplicates of already-tracked/already-excluded entries — not re-logged per standing practice.
+
+### Carryover re-check results (no new rows/checked beyond the above)
+- **Draper Laboratory**: full sweep of 220 postings, 18 co-op/intern titles reviewed — all already tracked or excluded. Five additional reqs (Integrated Circuits Intern, Corporate and Community Engagement Intern, GN&C Modeling/Simulation/Analysis Intern, Cable And Harnessing Intern, Mechanical Engineering & System Packaging Intern) confirmed Summer 2027, wrong season. One previously-excluded req (JR002974) now carries an updated title clarifying it as "Operating Systems and Embedded Software Development Co-Op (Spring 2027)" — season is now stated but it's a software/embedded discipline, still excluded (on discipline grounds now rather than missing-season), not re-logged as a new entry.
+- **GE Aerospace (Lynn, MA)**: 69 postings reviewed (22 co-op/intern-typed) — all already tracked, already excluded, or Summer 2027. No change.
+- **MIT Lincoln Laboratory**: 45 results reviewed — only the already-tracked Mechanical Engineering Co-Op (Group 07-71) qualifies. Noted the already-tracked Microfabrication Engineering Co-Op (row 64) now displays as "Group 08-84" instead of "Group 08-35" on the live page — same job ID/URL, cosmetic relabel only, no action taken.
+- **Procter & Gamble**: still blocked — pgcareers.com's Phenom People search widget is fully client-side JS-rendered; direct fetch and the Phenom API endpoint both failed ("Tenant not identified" / empty template). No change from standing finding; still needs a browser-capable tool to check properly.
+- **Analog Devices (R266691) / Vicor / Teradyne**: all re-confirmed unchanged (ADI still internally contradictory on season; Vicor still zero co-op postings; Teradyne's only co-op listed is Spring 2026, wrong season). No new array entries per established practice.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct extraction of `build.mjs`'s own arrays: `rows` 404 → 404 (unchanged), `checked` 977 → 989 (+12). Zero duplicate Application Links across all 404 `rows` entries (programmatic check). `.xlsx` file changed (1,120,851 → 1,125,158 bytes).
+
+### Staged applications
+None created this run — no new fully-verified postings.
+
+### Worth re-checking / flagging next time
+- **RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814)**: deadline 2026-10-12 — will likely have expired by the next run (~01:00 UTC on 2026-10-10); check status and move to `checked` if closed.
+- **RTX East Hartford Quality Co-op (req 01876476)**: deadline 2026-10-15 — still Hamza's discipline-mismatch judgment call, closing within the next couple of runs.
+- **Andis Company (Racine, WI)**: flagged as unverifiable this run — worth a browser-capable re-check to resolve the Apply button's actual destination and confirm it's a genuine, currently-open posting before deciding whether to add to `rows`.
+- **Procter & Gamble pgcareers.com**: still needs a JS-capable fetch/browser tool — plain HTTP fetch cannot get past the client-side search widget.
+- **MIT Lincoln Laboratory Advanced Sensors and Techniques Co-Op (Group 09-02)**: still a standing borderline discipline call for Hamza (flagged multiple times since 2026-10-08), unchanged this run.
+- RTX company-wide Workday "Co-Op"/"2027" full-text sweep: now confirmed dry for 2 runs running (after 4 productive runs) — still worth repeating since it's cheap and has been the top lead source, but expectations should be tempered.
+- Analog Devices/Vicor/Teradyne, Alaka'i Technologies: still no change — narrative-only reconfirmation, not re-logged as array entries.
+- Tracker is now at 404 rows / 989 checked entries after 36 consecutive runs. Second run in a row with zero new verified postings — both research agents again independently concluded the tracker is at or near saturation for currently-live qualifying postings. Future progress will likely depend on new postings appearing over time (cycles opening, deadlines on tracked reqs closing and freeing up research bandwidth) rather than continued broad discovery sweeps of the same employer universe.
