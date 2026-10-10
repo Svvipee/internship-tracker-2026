@@ -3892,3 +3892,33 @@ Boston Dynamics (official careers page reconfirms: no current intern/co-op openi
 - **MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op (Group 09-02)"**: still a standing borderline-discipline call for Hamza, unchanged.
 - **Precision Castparts Corp**: the three specifically-named leads from the last run's log (Mentor OH Quality Eng, Wickliffe OH Operations, Muskegon MI Spring 2027 Engineering Student Co-Op) could not be located on PCC's own tal.net board this run (now 49 open reqs, down from 80) — they may have already closed/expired, or may sit on a different PCC division's "brand" tenant not covered by this board. Not worth a broader re-sweep per standing instruction; if these specific titles resurface via a non-PCC aggregator with a resolvable PCC oppid, worth a quick targeted check.
 - Tracker is now at 406 rows / 1010 checked entries after 39 consecutive runs. This run broke the four-run zero-net-new streak with 2 genuinely new postings (Entegris's brand-new Round Rock, TX site) plus one important data-integrity correction (restoring the wrongly-removed GE Aerospace req) — a reminder that even a mature, heavily-mined tracker can still turn up new postings when an employer opens a brand-new site, and that every "closed" finding from a marketing-portal/aggregator source should be cross-checked against the employer's own authoritative API before a row is removed.
+
+## 2026-10-10 ~19:00 UTC
+
+### Searched
+Priority re-checks per standing "worth re-checking" notes: RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814), RTX East Hartford Quality Co-op (req 01876476), GE Aerospace R5029617-1, Entegris Round Rock TX site. Also re-swept Draper Laboratory (full company-wide Workday CXS, 219 postings), MIT Lincoln Laboratory's Lexington co-op board, and ran fresh web searches for new Boston-area and national mechanical/aerospace Spring 2027 postings (Textron, GE Vernova, Analog Devices, iRobot, Hubble Network, SharkNinja, GE Appliances, Berkshire Grey, and generic site-targeted searches on myworkdayjobs.com/greenhouse.io/lever.co).
+
+### Added to `rows` (1 new)
+- **SharkNinja — Mechanical Engineering Co-op, Shark (Spring 2027)**, Needham, MA (Boston-metro, ~11 mi). Greenhouse job 4718791006, first published 2026-10-08. Verified directly via SharkNinja's own Greenhouse public API — live, no closed-application notice. This is the first clean Spring-2027-only (non-combined-term, dated) version of SharkNinja's recurring Needham co-op posting; every run since 2026-09-23 had previously found only undated/rolling or wrong-season (Spring 2026/Fall 2026/Summer 2027) siblings. Pay $30-$36/hr. Staged: `staged-applications/sharkninja-mechanical-engineering-coop-needham-ma.md`.
+
+### Added to `checked` (3 new)
+- **Entegris — Leadership Development Program - Supply Chain (REQ-14776, Round Rock, TX)**: posted 9 days ago, found during the Round Rock re-sweep — supply-chain rotation program, non-engineering business function.
+- **RTX/Collins/GE Aerospace reconfirmation entry**: logged the 2026-10-10 ~19:00 UTC reconfirmation of req 01871814 (still canApply:true, 2 days left to apply), req 01876476 (still canApply:true, 5 days left), and GE Aerospace R5029617-1 (still canApply:true, 26 days left) — no status changes, just a dated transparency record.
+- **SharkNinja sibling reqs**: Spring 2027 Electrical Engineering Co-op (job 4718702006, discipline mismatch), Summer 2027 Mechanical Engineering Intern (job 4718812006, wrong season), Fall 2026 Industrial Design Co-op (job 4655076006, wrong season/discipline) — all found during the same board re-sweep that surfaced the new Mechanical Engineering Co-op row above.
+
+Note: Entegris's Analytical Quality Engineering Co-Op (REQ-14464, Round Rock TX) was re-verified this run (still canApply:true) — this is an **existing `rows` entry** from the 2026-09-27 sweep, not a new exclusion; left unchanged, no contradiction logged.
+
+### Staged
+1 new file: `staged-applications/sharkninja-mechanical-engineering-coop-needham-ma.md` (posting URL, eligibility, application-form checklist — staged only, not submitted).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 406 → 407 (+1), `checked` 1010 → 1011 (+1). No duplicate Application Links (programmatic check across all rows). `.xlsx` file changed (1,141,777 → 1,146,456 bytes).
+
+### Worth re-checking next time
+- **RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814)**: now exactly 2 days left to apply (endDate 2026-10-12) as of this run — very likely to close before the next scheduled run; check status and move to `checked` if closed.
+- **RTX East Hartford Quality Co-op (req 01876476)**: 5 days left to apply (endDate 2026-10-15) — still Hamza's own discipline-mismatch judgment call, closing soon either way.
+- **GE Aerospace R5029617-1**: always verify via the direct Workday job-page/API URL, never careers.geaerospace.com's marketing portal (repeated false 410 readings for this exact req).
+- **SharkNinja (Needham, MA)**: now has a Spring-2027-dated Mechanical Engineering Co-op live for the first time — worth checking whether a dated Controls/Industrial Design/other-discipline Spring 2027 sibling appears on a future sweep, since the board just turned over its season labeling.
+- **Entegris Round Rock, TX**: now 5 reqs deep since first appearing 2026-10-10 — still a newer/more active site than most of Entegris's other locations, worth continued light monitoring.
+- Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02, Hamza's own discipline call); Entegris Material Quality Engineering Co-Op (REQ-14470, San Luis Obispo CA, Hamza's own discipline call); Andis Company (Racine, WI, still unresolved after multiple runs, needs a JS-rendering-capable tool); Precision Castparts Corp's 3 previously-named leads (Mentor OH / Wickliffe OH / Muskegon MI) still not locatable on PCC's own board, not worth a further broad re-sweep per standing instruction.
+- Tracker is now at 407 rows / 1011 checked entries after 40 consecutive runs.
