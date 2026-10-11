@@ -3922,3 +3922,40 @@ Note: Entegris's Analytical Quality Engineering Co-Op (REQ-14464, Round Rock TX)
 - **Entegris Round Rock, TX**: now 5 reqs deep since first appearing 2026-10-10 — still a newer/more active site than most of Entegris's other locations, worth continued light monitoring.
 - Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02, Hamza's own discipline call); Entegris Material Quality Engineering Co-Op (REQ-14470, San Luis Obispo CA, Hamza's own discipline call); Andis Company (Racine, WI, still unresolved after multiple runs, needs a JS-rendering-capable tool); Precision Castparts Corp's 3 previously-named leads (Mentor OH / Wickliffe OH / Muskegon MI) still not locatable on PCC's own board, not worth a further broad re-sweep per standing instruction.
 - Tracker is now at 407 rows / 1011 checked entries after 40 consecutive runs.
+
+## 2026-10-11 ~01:00 UTC
+
+### Sync note
+This run started with a detached HEAD in the container's checkout that was one `git fetch` behind `origin/master` (local caches of `master`/`origin/master` were stale at 327d0a9 from 2026-10-06, while the real origin/master was already at 12d990d from the 2026-10-10 ~19:00 UTC run). Re-fetched and reset the local `master` branch to track `origin/master` properly before doing anything else — no data was lost, this was purely a stale local ref in the fresh container, not a real divergence. Also found and deleted two stray scratch HTML files (`.scratch_andis.html`, `.scratch_fieldai.html`) accidentally left in the repo root by a research subagent's fetch calls — removed before committing, not part of the tracker.
+
+### Searched
+Two parallel research agents: (1) targeted rechecks of every item flagged "worth re-checking" last run — RTX Rockford req 01871814, RTX East Hartford req 01876476, GE Aerospace req R5029617-1, SharkNinja's board for new dated siblings, Entegris Round Rock for new reqs; (2) a fresh sweep for new Boston-area/national qualifying postings — Teradyne, Analog Devices, Vicor, Bose, iRobot, Berkshire Grey, Hubble Network, Textron, Andis Company (resolving the standing ADP-portal question), plus 3 open-ended searches that surfaced QuEra Computing, CMTA/Legence's corporate careers-site mirror, and a new Field AI Boston posting. This session independently re-verified (direct WebFetch/curl, not trusting the subagent reports alone) the two most promising leads — Berkshire Grey's "new" Khosla Ventures posting and the Entegris Bedford/Billerica lead — plus the Field AI posting's full text and Entegris's live Workday CXS API.
+
+### Added to `rows` (0 new)
+None. Both candidate "new" leads from this run's search turned out, on direct cross-check against `build.mjs`, to be mirrors of postings already tracked: Berkshire Grey's Khosla-Ventures-hosted "Spring 2027 Mechanical Engineering Co-op" is the same requisition as the already-tracked `berkshiregrey.bamboohr.com/careers/760`, and CMTA/Legence's corporate-site posting is the same Spring 2027 campaign as the already-tracked Boston-specific Dayforce req (jobReqId 4002). Logged both as dedup-correction `checked` entries so future runs recognize these mirror URLs instead of re-flagging them as new.
+
+### Added to `checked` (8 new)
+- RTX/GE reconfirmation (req 01871814 now 1 day left to apply; req 01876476 now 4 days left; R5029617-1 unchanged, 26 days left) — dated transparency record, no status change.
+- SharkNinja/Entegris Round Rock re-sweep — no new qualifying postings beyond the single new non-qualifying Entegris req below.
+- Entegris Round Rock REQ-14456 "Procurement Solutions – Process Development Co-Op" — open but non-engineering discipline.
+- Field AI (Boston, MA) "Mechanical Engineer Internship, Robotics Hardware" (new Lever req, distinct from the two previously-excluded Field AI postings) — open, on-discipline, but reviewed in full and contains no season/term wording anywhere — undated/rolling, excluded.
+- Berkshire Grey Khosla Ventures mirror — dedup correction (see above).
+- CMTA/Legence wearelegence.com mirror — dedup correction (see above).
+- Andis Company (Racine, WI) — technical root-cause confirmation that the ADP WorkForceNow portal is a pure client-rendered SPA with no static job data or API, requiring a JS-capable browser tool this session doesn't have; same unresolved status as 2026-10-09, now explained.
+- Consolidated negative sweep: Teradyne, Vicor, Bose, iRobot, Analog Devices, Textron (all reconfirmed, no change) plus Hubble Network and QuEra Computing (both checked for the first time, neither qualifies — no careers presence at all for Hubble; QuEra's co-ops explicitly end by December 2026, wrong season).
+
+### Staged
+None this run (no new fully-verified postings to stage).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 407. `checked` 1011 → 1019 (+8, matches the 8 new array entries above — the "1011" in the prior run's narrative count and this run's are both informal running tallies, not re-derived from the file each time). Verified programmatically: 407 total rows, zero duplicate Application Links. `.xlsx` file changed (1,146,456 → 1,154,780 bytes).
+
+### Worth re-checking next time
+- **RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814)**: 1 day left to apply as of this run (endDate 2026-10-12) — will almost certainly be closed by the next scheduled run; move to `checked` then.
+- **RTX East Hartford Quality Co-op (req 01876476)**: 4 days left to apply (endDate 2026-10-15) — still Hamza's own discipline-mismatch judgment call, closing soon either way.
+- **GE Aerospace R5029617-1**: unchanged, 26 days left; keep using the direct Workday CXS API URL, never careers.geaerospace.com.
+- **iRobot (Bedford, MA)**: careers.irobot.com still 404s on every direct fetch attempt — a Spring 2027 posting can't be fully ruled out, only "not found by search." Worth a browser-capable re-check.
+- **Analog Devices**: this session's tooling couldn't reach ADI's own careers site at all this run — genuinely unresolved, not a confirmed negative. Worth a dedicated re-attempt.
+- **Andis Company (Racine, WI)**: now technically confirmed to need a JS-executing browser tool to resolve one way or the other — not worth further plain-fetch attempts; needs a browser-capable tool in a future run.
+- Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02, Hamza's own discipline call); Entegris Material Quality Engineering Co-Op (REQ-14470, San Luis Obispo CA, Hamza's own discipline call); Precision Castparts Corp's 3 previously-named leads (Mentor OH / Wickliffe OH / Muskegon MI) still not locatable on PCC's own board, not worth a further broad re-sweep per standing instruction.
+- Tracker is now at 407 rows / 1019 checked entries after 41 consecutive runs. This run found zero new verified postings — the two most promising-looking leads both resolved to duplicates of already-tracked postings on closer inspection, reinforcing that the tracker is at or near saturation for currently-discoverable live qualifying postings; future progress likely depends more on new postings appearing over time than on finding previously-missed existing ones.
