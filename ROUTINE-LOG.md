@@ -3959,3 +3959,37 @@ None this run (no new fully-verified postings to stage).
 - **Andis Company (Racine, WI)**: now technically confirmed to need a JS-executing browser tool to resolve one way or the other — not worth further plain-fetch attempts; needs a browser-capable tool in a future run.
 - Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02, Hamza's own discipline call); Entegris Material Quality Engineering Co-Op (REQ-14470, San Luis Obispo CA, Hamza's own discipline call); Precision Castparts Corp's 3 previously-named leads (Mentor OH / Wickliffe OH / Muskegon MI) still not locatable on PCC's own board, not worth a further broad re-sweep per standing instruction.
 - Tracker is now at 407 rows / 1019 checked entries after 41 consecutive runs. This run found zero new verified postings — the two most promising-looking leads both resolved to duplicates of already-tracked postings on closer inspection, reinforcing that the tracker is at or near saturation for currently-discoverable live qualifying postings; future progress likely depends more on new postings appearing over time than on finding previously-missed existing ones.
+
+
+## 2026-10-11 ~07:00 UTC
+
+### Sync
+`git status`/`git branch` showed the container's local `master` one `git fetch` behind `origin/master` again (same stale-local-ref pattern as the 2026-10-11 ~01:00 UTC run, just a fresh container checkout issue, not a real divergence) — reset local `master` to track `origin/master` (837128a) before doing anything else. Ground truth going in (grep-verified directly against `build.mjs` before any edit this run): 407 `rows` (`"Application Link":` count), 1022 `"Role(s) Checked"` entries in `checked`. Note: prior runs' narrative counts (e.g. "407 rows / 1019 checked") are informal running tallies that have drifted slightly from a fresh grep each time — this run's own before/after counts below are independently verified from the file, not carried from the log narrative.
+
+### Searched
+Worked the priority leads carried over from the last run's log via direct Workday CXS API fetches: RTX/Collins Rockford IL Embedded Controls Hardware Co-Op (req 01871814), RTX Pratt & Whitney East Hartford Engineering Quality Co-op (req 01876476), GE Aerospace Engines Engineering Co-op (req R5029617-1). Also ran a full re-sweep of Draper Laboratory's Workday CXS API (18 current "Student" workerSubType postings, same facet query as 2026-10-10) and MIT Lincoln Laboratory's Lexington careers board (45 current postings), plus fresh web searches for new Winter 2026/Spring 2027 mechanical/aerospace postings nationally and specifically re-checking the standing unresolved leads (iRobot Bedford MA, Analog Devices Wilmington MA, a Yaskawa Motoman Spring-2027-titled posting).
+
+### Added to `rows` (0 new)
+None this run.
+
+### Added to `checked` (2 new)
+- **RTX/GE reconfirmation** (req 01871814 still canApply:true, endDate 2026-10-12, 1 day left; req 01876476 still canApply:true, endDate 2026-10-15; req R5029617-1 still canApply:true, endDate 2026-11-06) — dated transparency record, no status change to any existing `rows` entry.
+- **Draper Laboratory / MIT Lincoln Laboratory full re-sweep**: Draper's 18 current Student-type postings all already tracked/excluded, no new req since the 2026-10-10 ~13:00 UTC sweep. MIT LL's already-tracked Mechanical Engineering Co-Op (Winter/Spring 2027, Group 07-71, job ID 1434254300) directly re-verified still live ("Apply now" active); the borderline Advanced Sensors and Techniques Co-Op (Group 09-02) remains Hamza's own standing judgment call, unchanged. Both employers remain fully saturated.
+
+No new exclusion entries were logged for iRobot, Analog Devices, or the Yaskawa Motoman posting — this run's fresh searches on each turned up nothing beyond what the 2026-10-11 ~01:00 UTC run's log entry already documents (iRobot: only Spring 2026/Fall 2026 postings found, careers.irobot.com still unreachable directly, standing unresolved; Analog Devices: still could not reach ADI's own careers site, only the same undated aggregator-reposted "Healthcare Mechanical Engineering Co-op" lead; Yaskawa Motoman's "Mechanical Engineering Coop (Spring 2027)" at Miamisburg, OH is the same title/body-contradictory posting already excluded 2026-10-09).
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 407 (grep-verified). `checked` 1022 → 1024 (+2, grep-verified). Read the generated `.xlsx` back with the `xlsx` library: 408 rows (incl. header) on the internships sheet, 1025 rows (incl. header) on the checked sheet — both match the source arrays. Zero duplicate Application Links across all 407 `rows` entries (programmatic check). `.xlsx` file changed (1,154,780 → 1,157,209 bytes).
+
+### Worth re-checking next time
+- **RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814)**: still exactly 1 day left to apply (endDate 2026-10-12) as of this run — essentially certain to close before the next scheduled run; check and move to `checked` then if closed.
+- **RTX East Hartford Quality Co-op (req 01876476)**: endDate 2026-10-15, still Hamza's own discipline-mismatch judgment call, closing soon either way.
+- **GE Aerospace R5029617-1**: unchanged, endDate 2026-11-06; always use the direct Workday CXS API URL, never careers.geaerospace.com's marketing portal.
+- **iRobot (Bedford, MA)**: careers.irobot.com still unreachable via direct fetch on every attempt across multiple runs now — a Spring 2027 posting still can't be fully ruled out. Would benefit from a browser-capable (JS-rendering) tool in a future run.
+- **Analog Devices**: still couldn't reach ADI's own careers site directly this run either — genuinely unresolved, not a confirmed negative, across several consecutive runs now.
+- **Andis Company (Racine, WI)**: confirmed (2026-10-11 ~01:00 UTC run) to need a JS-executing browser tool — not worth further plain-fetch attempts.
+- Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02, Hamza's own discipline call); Entegris Material Quality Engineering Co-Op (REQ-14470, San Luis Obispo CA, Hamza's own discipline call); Precision Castparts Corp's 3 previously-named leads (Mentor OH / Wickliffe OH / Muskegon MI) still not locatable on PCC's own board, not worth a further broad re-sweep per standing instruction.
+- Tracker is now at 407 rows / 1024 checked entries after 42 consecutive runs, the fifth run of the last six with zero net new verified postings — reinforcing that the tracker is at or near saturation for currently-discoverable live qualifying postings via plain-fetch/API tooling; a JS-rendering-capable browser tool would likely be needed to make further progress on the iRobot/Analog Devices/Andis dead ends, and otherwise future progress depends more on new postings appearing over time.
