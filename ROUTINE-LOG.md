@@ -4076,3 +4076,46 @@ None this run (no new fully-verified postings).
 - **GE Vernova Nuclear Engineering Co-Op/Intern (Wilmington, NC)**: still unverified on primary source (non-filtering Workday search); low priority (non-MA, discipline not on Hamza's explicit list).
 - Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02); Entegris Material Quality Engineering Co-Op (REQ-14470, San Luis Obispo CA); Precision Castparts Corp's 3 previously-named leads (Mentor OH / Wickliffe OH / Muskegon MI).
 - Tracker is now at 407 rows / 1036 checked entries after 44 consecutive runs, the seventh run of the last eight with zero net new verified postings. Resolving the Andis blocker and finding ADI's real tenant are both genuine process improvements even without a new row — both reduce wasted effort on future runs. The tracker increasingly looks saturated for currently-discoverable live qualifying postings via this tooling; future progress most likely depends on new postings appearing over time (worth watching RTX/GE/Entegris/Draper/MIT LL/Bose for board turnover) rather than on finding previously-missed existing ones.
+
+## 2026-10-12 ~01:00 UTC
+
+### Sync
+`git status` showed the container checkout detached at HEAD (1996f73), one commit ahead of the cached local `master` ref but exactly matching `origin/master` after `git fetch` — same stale-local-ref pattern documented in several prior entries, not a real divergence. Checked out `master` and reset to `origin/master` before any edits. Ground truth going in (grep-verified directly against `build.mjs`): 407 `rows`, 1036 `checked` entries.
+
+### Searched
+Directly re-verified the priority leads via each employer's own Workday CXS job-detail API (not the search endpoint, which 422'd): RTX/Collins Rockford IL Embedded Controls Hardware Co-Op (req 01871814), RTX Pratt & Whitney East Hartford Engineering Quality Co-op (req 01876476), GE Aerospace Engines Engineering Co-op (req R5029617-1) and Manufacturing Engineering Co-op (req R5029663). Also directly re-swept Analog Devices's full company-wide Workday board (co-op/mechanical-intern keyword searches via the known tenant `analogdevices`/`External`) and Draper Laboratory's full 219-posting Workday CXS board (paginated, filtered to Co-Op titles). Ran fresh web searches for new Winter 2026/Spring 2027 mechanical/aerospace/manufacturing postings nationally and Boston-specifically, which surfaced one candidate worth checking primary-source (Reliable Robotics, aggregator-claimed Winter 2026/Spring 2027 Mechanical Engineering Intern) and otherwise returned only already-tracked companies (Berkshire Grey, Entegris, CMTA, Formlabs, Sanofi) or wrong-season leads (Hitachi/J.R. Automation, already excluded 2026-10-09). Re-checked iRobot's careers site and the already-tracked GE Vernova Nuclear Co-Op/Field-Services reqs (R5048552, R5049161) for continued liveness.
+
+### Correction / housekeeping note
+The 2026-10-11 ~19:00 UTC log entry's "worth re-checking" list carried forward a "GE Vernova Nuclear Engineering Co-Op/Intern (Wilmington, NC): still unverified on primary source" note. This appears to be stale/superseded — both Nuclear Engineering Co-Op/Intern (R5048552) and Nuclear – Field Services Spring Internship (R5049161) are already live `rows` entries (added prior to this run) and both independently re-confirmed HTTP 200 on careers.gevernova.com just now. No action needed; flagging so a future run doesn't waste time re-chasing an already-resolved item.
+
+### Priority-lead results (no status changes)
+- req 01871814: canApply:true, endDate 2026-10-12 — today's date; still open as of this check, essentially certain to close before the next scheduled run.
+- req 01876476: canApply:true, endDate 2026-10-15 — unchanged, still Hamza's own discipline-mismatch judgment call.
+- req R5029617-1 / R5029663: both canApply:true, endDate 2026-11-06 — unchanged.
+- R5048552 / R5049161 (GE Vernova Nuclear, already in `rows`): both HTTP 200, unchanged.
+
+### Added to `rows` (0 new)
+None this run. The one candidate investigated (Reliable Robotics' aggregator-claimed Mechanical Engineering Intern, Winter 2026/Spring 2027) could not be confirmed on the employer's own ATS — see `checked` entry below.
+
+### Added to `checked` (5 new)
+- **RTX/GE priority-lead reconfirmation** (reqs 01871814, 01876476, R5029617-1, R5029663) plus GE Vernova Nuclear reconfirmation — dated transparency record, no status changes.
+- **Analog Devices**: full company-wide sweep surfaced 3 new-looking evergreen reqs (Manufacturing Engineer Intern R265301 Wilmington MA, Equipment Engineering Intern R266095 Beaverton OR, Test Engineering Intern R266146 Durham NC) — all three state no season anywhere in title or body and have `startDate` fields already in the past; fail the explicit-season bar. Not added.
+- **Reliable Robotics (Mountain View, CA)**: re-verified directly against its own Ashby ATS board (`reliable-robotics`) — 57 open reqs company-wide, zero titled "intern" or "co-op." The aggregator-sourced Winter 2026/Spring 2027 Mechanical Engineering Intern claim (Built In SF, Otta, Wellfound) cannot be confirmed on the primary source; consistent with the 2026-09-25/09-27 no-internship findings. Not added.
+- **iRobot (Bedford, MA)**: careers.irobot.com reverted to HTTP 404 this run, after briefly being reachable on 2026-10-11 ~13:00 UTC. Flagged as an intermittent-reachability issue, not a fresh confirmed status either way.
+- **Draper Laboratory full Co-Op-title re-sweep** (11 current Co-Op-titled reqs, all cross-checked byte-for-byte): all already tracked in `rows` or already excluded in `checked` from prior runs. No new qualifying req; fully saturated, unchanged.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 407 (grep-verified before and after). `checked` 1036 → 1041 (+5, matches the 5 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 407 data rows on the internships sheet, 1041 on the checked sheet, zero duplicate Application Links across all 407 `rows` entries (programmatic check). `.xlsx` file changed (1,169,983 → 1,175,721 bytes).
+
+### Worth re-checking next time
+- **RTX Rockford IL Embedded Controls Hardware Co-Op (req 01871814)**: endDate 2026-10-12 (today) — essentially certain to be closed by the next scheduled run; check and move to `checked` then if closed.
+- **RTX East Hartford Quality Co-op (req 01876476)**: endDate 2026-10-15, still Hamza's own discipline-mismatch judgment call, closing soon either way.
+- **GE Aerospace R5029617-1 / R5029663**: unchanged, both endDate 2026-11-06; use the direct Workday CXS job-detail API URLs (the plain `/jobs` search endpoint returned HTTP 422 for both RTX and Draper this run with a `searchText` payload — omit `searchText` and paginate with `offset` instead, or use the job-detail endpoint directly for a known req).
+- **iRobot (Bedford, MA)**: reachability keeps flip-flopping between HTTP 200 and 404 across runs — worth another check next run, no tooling change needed.
+- **Analog Devices**: the Healthcare Mechanical Engineering Co-op (R266691) remains the only MA-based, discipline-plausible co-op on the board, still season-ambiguous; the board is large (844 postings) and evergreen-titled postings (no season text) keep appearing — worth periodic spot checks but low yield so far.
+- GE Vernova Nuclear Co-Op/Field-Services reqs (R5048552, R5049161) — already tracked in `rows`, no longer a "worth re-checking" item; removing from this list per the correction note above.
+- Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02, Hamza's own discipline call); Entegris Material Quality Engineering Co-Op (REQ-14470, San Luis Obispo CA, Hamza's own discipline call); Precision Castparts Corp's 3 previously-named leads (Mentor OH / Wickliffe OH / Muskegon MI, not locatable on PCC's own board); Bose Corporation (Framingham, MA) — this run's attempt to re-sweep its Workday API via a guessed site-id POST failed (HTTP 400/empty); last successful sweep remains 2026-10-11 ~13:00/19:00 UTC, no Mechanical/Controls-specific co-op found then.
+- Tracker is now at 407 rows / 1041 checked entries after 45 consecutive runs, the eighth run of the last nine with zero net new verified postings. This run's main value was process hygiene (correcting a stale re-check note, confirming Draper/RTX/GE/ADI/Reliable Robotics all remain saturated or unconfirmable) rather than new postings — consistent with the tracker being at or near saturation for currently-discoverable live qualifying postings via this tooling.
