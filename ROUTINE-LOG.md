@@ -4242,3 +4242,34 @@ Delegated this run's research to a sub-agent with the full standing priority lis
 - **Precision Castparts Corp (Mentor, OH / Wickliffe, OH)**: real domain/ATS now known (careers.precast.com → pcctalentacquisitionportal.tal.net, Oleeo "tal.net" ATS) but bot-walled by an Altcha/Cloudflare challenge — worth a JS-capable-browser attempt next time instead of re-discovering the domain.
 - Standing unresolved items carried forward unchanged: MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op" (Group 09-02, job 1437466700, Hamza's own discipline call, reconfirmed still open this run).
 - Tracker is now at 407 rows / 1057 checked entries after 48 consecutive runs. This run's one new addition (Rugged Robotics, Houston TX) is outside the Boston-preference radius but within the US-wide scope and passed the strict verification bar; otherwise the run was reconfirmation and further-excluded leads (Bose, Precision Castparts domain discovery, Rugged Robotics' own EE/software siblings, STERIS, J&J/Ethicon) — consistent with the tracker remaining at or near saturation for currently-discoverable live qualifying postings via this tooling.
+
+## 2026-10-13 ~01:00 UTC
+
+### Sync
+Container checked out detached at HEAD (373a277), 27 commits behind the local `master` ref but matching `origin/master` exactly after `git fetch` — same recurring stale-local-ref pattern as every prior entry. Checked out `master` and fast-forwarded to `origin/master` before any edits. Ground truth going in (grep-verified directly against `build.mjs`): 407 `rows`, 1057 `checked` entries.
+
+### Searched
+Re-verified the standing priority leads via direct employer API fetch: RTX Pratt & Whitney East Hartford Engineering Quality Co-op (req 01876476, Workday CXS job-detail API — canApply:true, endDate 2026-10-15, still "2 days left to apply," very likely to close before the next run) and GE Aerospace Engines Engineering Co-op (R5029617-1) / Manufacturing Engineering Co-op (R5029663, same method, both endDate 2026-11-06, "24 days left") — all unchanged. Ran a full company-wide Workday CXS re-sweep of Draper Laboratory (219 postings via direct POST to the jobs-search API) filtered to Co-Op-titled reqs — all 11 current reqs cross-checked against `build.mjs`, no new qualifying req, fully saturated and unchanged from the prior sweep. Attempted MIT Lincoln Laboratory job 1437466700 via direct page fetch but the URL on record (careers.ll.mit.edu/job/1437466700, missing the full title slug) 404'd/returned a generic nav page this run — could not re-confirm status; not asserting a change either way, standing item carried forward as-is. Ran fresh web searches for new Winter 2026/Spring 2027 mechanical/aerospace/manufacturing/robotics postings, both nationally and Boston-specifically (Formlabs, Entegris Bedford/Billerica, WSP, and other near-misses all matched already-tracked reqs), which surfaced three new-looking companies — Boom Supersonic, Hexcel Corporation, and Piaggio Fast Forward (Boston, MA) — each traced to a primary source before being excluded (see below). No new qualifying posting survived the verification bar this run.
+
+### Added to `rows` (0 new)
+None this run.
+
+### Added to `checked` (5 new)
+- **Priority-lead reconfirmation (RTX East Hartford / GE Aerospace)**: both re-verified unchanged (see Searched above) — dated transparency record, no status changes.
+- **Draper Laboratory full re-sweep**: all 11 current Co-Op-titled reqs already tracked in `rows` or already excluded in `checked`; no new qualifying req.
+- **Boom Supersonic (Centennial, CO)**: new company lead, but only a Summer 2027 intern program found — no Spring 2027/Winter 2026 co-op posting exists. Not added; also outside the Boston-preference radius.
+- **Hexcel Corporation**: new company lead (Pottsville, PA "Engineering Co-Op"), but the posting states no season and its aggregator mirror shows applications already closed; Hexcel's own student-opportunities page 404'd. Not added.
+- **Piaggio Fast Forward (Boston, MA)**: Boston-area company, but its current co-op postings (Robotics and AI Co-op, Smart Behaviors AI Co-op) are robotics-software/AI discipline, not mechanical/aerospace/manufacturing hardware. Not added.
+
+### Staged
+None this run (no new fully-verified posting to stage).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 407 → 407 (unchanged). `checked` 1057 → 1062 (+5, matches the 5 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 407 data rows on the internships sheet, 1062 on the checked sheet, zero duplicate Application Links across all 407 `rows` entries (programmatic check). `.xlsx` file changed (1,192,392 → 1,196,368 bytes).
+
+### Worth re-checking next time
+- **MIT Lincoln Laboratory job 1437466700**: the URL on record is incomplete (missing title slug) and 404'd this run — worth re-finding the full careers.ll.mit.edu URL (via search or the LL co-op board) next run to properly re-confirm status rather than leaving it stale.
+- **RTX East Hartford Quality Co-op (req 01876476)**: endDate 2026-10-15, "2 days left to apply" — very likely closed by the next scheduled run; check and move to `checked` if closed (was never in `rows`, due to Hamza's own discipline-mismatch call).
+- **GE Aerospace R5029617-1 / R5029663**: unchanged, both endDate 2026-11-06, "24 days left to apply."
+- Standing unresolved items carried forward unchanged (not re-attempted this run, no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall — all would need JS-capable browser tooling this session doesn't have.
+- Tracker is now at 407 rows / 1062 checked entries after 49 consecutive runs. This run found zero new qualifying postings — three new company leads (Boom Supersonic, Hexcel, Piaggio Fast Forward) were investigated and excluded on primary-source grounds, consistent with the tracker remaining at or near saturation for currently-discoverable live qualifying postings via this tooling.
