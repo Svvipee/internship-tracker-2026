@@ -4307,3 +4307,33 @@ None this run (no new fully-verified postings).
 - **MIT Lincoln Laboratory (Group 09-02, job 1437466700)**: now has a correct, working URL on record (see above) — use it going forward instead of the truncated one.
 - Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall — all would need JS-capable browser tooling this session doesn't have.
 - Tracker is now at 407 rows / 1069 checked entries after 50 consecutive runs. This run found zero new qualifying postings, but closed out two long-standing tooling gaps for good (the MIT LL broken URL, and the Watts Water Technologies aggregator lead) and ruled out nine more national employers via fresh searches. The tracker remains at or near saturation for currently-discoverable live qualifying postings via this tooling; future progress most likely depends on new postings appearing over time rather than on finding previously-missed existing ones.
+
+## 2026-10-13 ~13:00 UTC
+
+### Sync
+This run's container started with a local `master` branch pointer one commit behind its own detached HEAD (which held the unpushed-looking 07:00 UTC commit `efcbe84`). A fetch confirmed `origin/master` was already at `efcbe84` — the 07:00 UTC run's push had in fact succeeded; only this container's local branch ref was stale. Fast-forwarded local `master` to `efcbe84` (clean, no divergent work) before starting this run's own changes. No data was lost.
+
+### Searched
+Re-verified the two live priority leads via direct Workday CXS job-detail API fetch (RTX Pratt & Whitney Engineering Quality Co-op req 01876476; GE Aerospace Engines Engineering Co-op R5029617-1 and Manufacturing Engineering Co-op R5029663) — both unchanged. Ran a full direct-API re-sweep of Entegris's Bedford, MA site (68 open reqs company-wide, 13 Bedford Co-Op-titled) — every engineering-discipline req already tracked; the rest are business/IT/sales/QA-lab discipline mismatches. Ran ~10 fresh web searches for new Winter 2026/Spring 2027 mechanical/aerospace/manufacturing/robotics/propulsion postings, covering Markforged, Commonwealth Fusion Systems (Devens, MA), Brooks Automation (Chelmsford, MA), Karman Space & Defense, Impulse Space, Stoke Space, Berkshire Grey, and Precision Castparts Corp (Airfoils/SMP-Eastlake Wickliffe OH, EPD/E-One Niskayuna NY) — every specific lead surfaced was either already tracked (cross-checked by req/job ID) or a wrong-season/discipline-mismatch dead end. One genuinely new find: True Anomaly's "Propulsion and Fluids Intern" (Centennial, CO / Long Beach, CA; posted 2026-08-19) — directly fetched and confirmed Fall 2026 (not previously indexed in the 2026-10-06 full-board sweep), and already closed.
+
+### Added to `rows` (0 new)
+None this run. No new candidate survived primary-source verification.
+
+### Added to `checked` (5 new)
+- **Priority-lead reconfirmation (RTX East Hartford / GE Aerospace)**: both re-verified unchanged. req 01876476 still has only ~2 days left (deadline 2026-10-15) — very likely to close before the next scheduled run.
+- **Entegris (Bedford, MA) — full Co-Op re-sweep**: confirmed saturated; no new engineering-discipline req beyond the 9 already tracked.
+- **True Anomaly — Propulsion and Fluids Intern**: new req, wrong season (Fall 2026) and already closed. Logged for transparency.
+- **Fresh-search sweep (Markforged / Commonwealth Fusion Systems / Brooks Automation / Karman Space & Defense / Impulse Space / Stoke Space / Berkshire Grey / Precision Castparts Airfoils-E-One)**: no new qualifying posting at any of these; the Berkshire Grey and Precision Castparts leads surfaced by search were aggregator mirrors of already-tracked entries.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 407. `checked` 1069 → 1074 (+5, matches the 5 new array entries above). `.xlsx` file changed (1,202,539 → 1,206,671 bytes).
+
+### Worth re-checking next time
+- **RTX East Hartford Quality Co-op (req 01876476)**: deadline 2026-10-15, ~2 days left — check first thing next run and move to `checked` if closed (was never in `rows`, due to Hamza's own discipline-mismatch call).
+- **GE Aerospace R5029617-1 / R5029663**: unchanged, both endDate 2026-11-06.
+- **Commonwealth Fusion Systems (Devens, MA)**: posts its Spring cohort ~2 months ahead historically; worth checking again in the next week or two for a Spring 2027 posting to appear.
+- Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall — all would need JS-capable browser tooling this session doesn't have.
+- Tracker is now at 407 rows / 1074 checked entries after 51 consecutive runs with zero new qualifying `rows` additions. This run's searches continue to surface only already-tracked postings or wrong-season/discipline-mismatch dead ends, confirming the saturation noted in prior runs. Future progress most likely depends on new postings appearing over time (new Spring 2027 cohorts opening at companies like CFS, Entegris, or GE Aerospace) rather than on finding previously-missed existing ones.
