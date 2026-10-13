@@ -4273,3 +4273,37 @@ None this run (no new fully-verified posting to stage).
 - **GE Aerospace R5029617-1 / R5029663**: unchanged, both endDate 2026-11-06, "24 days left to apply."
 - Standing unresolved items carried forward unchanged (not re-attempted this run, no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall — all would need JS-capable browser tooling this session doesn't have.
 - Tracker is now at 407 rows / 1062 checked entries after 49 consecutive runs. This run found zero new qualifying postings — three new company leads (Boom Supersonic, Hexcel, Piaggio Fast Forward) were investigated and excluded on primary-source grounds, consistent with the tracker remaining at or near saturation for currently-discoverable live qualifying postings via this tooling.
+
+## 2026-10-13 ~07:00 UTC
+
+### Sync
+Container checked out fresh at HEAD matching `origin/master`. Ground truth going in (grep-verified directly against `build.mjs`): 407 `rows`, 1062 `checked` entries.
+
+### Searched
+Delegated this run's research to a sub-agent with the full standing priority list and verification bar. Re-verified via direct employer API fetch: RTX Pratt & Whitney East Hartford Engineering Quality Co-op (req 01876476, canApply:true, endDate 2026-10-15, 2 days left), GE Aerospace Engines Engineering Co-op (R5029617-1) and Manufacturing Engineering Co-op (R5029663, both canApply:true, endDate 2026-11-06, 23 days left), Analog Devices Healthcare Mechanical Engineering Co-op (R266691, unchanged season contradiction), and Entegris Material Quality Engineering Co-Op (REQ-14470, unchanged) — all unchanged. **Resolved the standing MIT Lincoln Laboratory URL problem**: found the correct full URL for the Advanced Sensors and Techniques Co-Op (Group 09-02, job 1437466700) — https://careers.ll.mit.edu/job/Lexington-Advanced-Sensors-and-Techniques-Co-Op-%28Spring-2027%29-Group-09-02-MA-02420/1437466700/ — confirmed still open ("Apply now," posted Oct 6, 2026). Re-swept Bose Corporation via the known-working Workday CXS method (tenant `boseallaboutme`/site `Bose_Careers`/limit<=20) across mechanical/controls/manufacturing engineer/robotics keywords — no new qualifying req. Ran a fresh direct-API investigation of the long-standing Watts Water Technologies (North Andover, MA) aggregator lead — found the real Workday tenant (wattswater.wd5.myworkdayjobs.com) and confirmed zero genuine co-op/intern/student postings exist company-wide (204 total postings), closing out that lead for good. Cross-checked a search-snippet-only "Mechanical Engineer Co-Op (Maritime)" title against Anduril's full Greenhouse board (2,495 postings) — confirmed it's a stale mislabel of the already-tracked Winter 2027 Mechanical Engineer Co-op (job 5236601007), not a separate posting. Re-confirmed Joby Aviation's Winter 2027 Mechanical Engineer Intern (Electric Propulsion Unit) still HTTP 410 Gone. Quick gut-checks on known JS/bot-walled dead ends (Siemens Hingham, Regeneron Tarrytown, iRobot Bedford, Precision Castparts Corp) — all still blocked, unchanged. Ran ~15 fresh web searches nationally and Boston-specifically across BAE Systems NH, L3Harris, GD Electric Boat, Sensata Attleboro, Spirit AeroSystems, Textron, Moog, Aurora Flight Sciences, and CIRCOR — no qualifying Winter 2026/Spring 2027 posting found at any of them (wrong season, no co-op posted, or discipline mismatch in every case).
+
+### Added to `rows` (0 new)
+None this run. No new candidate survived primary-source verification.
+
+### Added to `checked` (7 new)
+- **Priority-lead reconfirmation (RTX East Hartford / GE Aerospace / Analog Devices / Entegris)**: all re-verified unchanged — dated transparency record, no status changes. req 01876476 has 2 days left and is very likely to close before the next run.
+- **MIT Lincoln Laboratory — standing-item URL correction**: corrected the long-broken 404ing URL to the full working one (see Searched above); still open, still Hamza's own discipline-borderline call, not added to `rows`.
+- **Bose Corporation — keyword re-sweep**: no new Mechanical/Controls-specific req found; unchanged roster.
+- **Watts Water Technologies (North Andover, MA)**: confirmed via direct Workday API that no co-op/intern postings exist anywhere on the company's board — the aggregator-mirrored "Research and Technology Co-Op" lead does not correspond to any live posting. Lead closed out.
+- **Anduril Industries — Maritime title cross-check**: confirmed the search-snippet "Mechanical Engineer Co-Op (Maritime)" title is a stale mislabel of an already-tracked req, not a new posting.
+- **Joby Aviation**: re-confirmed Winter 2027 Mechanical Engineer Intern (Electric Propulsion Unit) still closed (HTTP 410).
+- **Fresh-search near-misses**: BAE Systems NH, L3Harris, GD Electric Boat, Spirit AeroSystems, Sensata Attleboro, Textron, Moog, Aurora Flight Sciences, CIRCOR — none had a qualifying Winter 2026/Spring 2027 posting this run.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 407. `checked` 1062 → 1069 (+7, matches the 7 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 407 data rows on the internships sheet, 1069 on the checked sheet, zero duplicate Application Links across all 407 `rows` entries (programmatic check). `.xlsx` file changed (1,196,368 → 1,202,539 bytes).
+
+### Worth re-checking next time
+- **RTX East Hartford Quality Co-op (req 01876476)**: endDate 2026-10-15, 2 days left — very likely closed by the next scheduled run; check and move to `checked` if closed (was never in `rows`, due to Hamza's own discipline-mismatch call).
+- **GE Aerospace R5029617-1 / R5029663**: unchanged, both endDate 2026-11-06, 23 days left to apply.
+- **Analog Devices (R266691)**: still the only MA-based, discipline-plausible ADI co-op on the board, still season-ambiguous — low priority, low yield so far.
+- **MIT Lincoln Laboratory (Group 09-02, job 1437466700)**: now has a correct, working URL on record (see above) — use it going forward instead of the truncated one.
+- Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall — all would need JS-capable browser tooling this session doesn't have.
+- Tracker is now at 407 rows / 1069 checked entries after 50 consecutive runs. This run found zero new qualifying postings, but closed out two long-standing tooling gaps for good (the MIT LL broken URL, and the Watts Water Technologies aggregator lead) and ruled out nine more national employers via fresh searches. The tracker remains at or near saturation for currently-discoverable live qualifying postings via this tooling; future progress most likely depends on new postings appearing over time rather than on finding previously-missed existing ones.
