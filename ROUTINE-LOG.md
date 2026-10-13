@@ -4337,3 +4337,33 @@ None this run (no new fully-verified postings).
 - **Commonwealth Fusion Systems (Devens, MA)**: posts its Spring cohort ~2 months ahead historically; worth checking again in the next week or two for a Spring 2027 posting to appear.
 - Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall — all would need JS-capable browser tooling this session doesn't have.
 - Tracker is now at 407 rows / 1074 checked entries after 51 consecutive runs with zero new qualifying `rows` additions. This run's searches continue to surface only already-tracked postings or wrong-season/discipline-mismatch dead ends, confirming the saturation noted in prior runs. Future progress most likely depends on new postings appearing over time (new Spring 2027 cohorts opening at companies like CFS, Entegris, or GE Aerospace) rather than on finding previously-missed existing ones.
+
+
+## 2026-10-13 ~19:00 UTC
+
+### Sync
+Container started in a detached-HEAD state one commit behind local `master`; fetched `origin/master` (at `87122b1`, the 13:00 UTC run's commit — confirmed that push succeeded) and fast-forwarded local `master` to match before starting this run's changes. No data lost.
+
+### Searched
+Delegated the research legwork to a subagent briefed with the full verification bar and five priority re-checks (RTX P&W req 01876476, GE Aerospace R5029617-1/R5029663, Commonwealth Fusion Systems' Lever board, MIT Lincoln Laboratory, Draper Laboratory), plus a broader fresh sweep. The subagent reported 9 "new" candidate postings (5 Anduril Industries Winter 2027 co-ops, 2 Formlabs Winter/Spring 2027 interns, 1 Berkshire Grey Spring 2027 co-op, 1 Entegris Billerica REQ-14457) plus a Commonwealth Fusion Systems board-status change. Before accepting any into `rows`, this session independently grepped `build.mjs` for every reported job ID/req number as a duplicate check: all 9 "new" candidates were already tracked byte-for-byte in `rows` (Formlabs 8130829/8161817; Anduril 5236601007/5236599007/5236589007/5236587007/5236585007; Berkshire Grey; Entegris REQ-14457) — the subagent's research was sound but it did not itself cross-check against the existing tracker before reporting, so none of these were genuinely new. This is a useful reminder for future runs: always independently dedup a subagent's "new" findings against `build.mjs` by job ID before trusting them.
+
+The one item that was NOT a duplicate — Commonwealth Fusion Systems' Lever board showing two new postings since the same-day 13:00 UTC check ("Intern - Industrial Engineer - Spring or Summer 2027" and "Intern - Manufacturing Engineer - Spring or Summer 2027") — was independently re-verified directly via WebFetch against the live Lever postings. Both confirmed real, open, and discipline-fit (Industrial/Manufacturing Engineering), but the season is stated only as a merged "Spring or Summer 2027" in the title with no Spring-only date range in the body — fails the season-stated bar under the same precedent as prior merged-term exclusions (RTX York NE, Cedar Rapids SOA).
+
+### Added to `rows` (0 new)
+None this run. No new candidate survived primary-source verification and dedup.
+
+### Added to `checked` (1 new)
+- **Commonwealth Fusion Systems — Intern/Industrial Engineer & Intern/Manufacturing Engineer, "Spring or Summer 2027"**: board status change (no longer zero Spring-2027-adjacent postings as of this run), but both excluded on merged-term season grounds. Worth re-checking next run in case CFS later splits the cohorts into a Spring-only posting.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 407. `checked` 1074 → 1075 (+1, matches the 1 new array entry above). `.xlsx` file changed (1,206,671 → 1,207,835 bytes).
+
+### Worth re-checking next time
+- **RTX East Hartford Quality Co-op (req 01876476)**: deadline 2026-10-15, re-confirmed open this run (~2 days left) — very likely closed by the next scheduled run; check first thing and move to `checked` with a closed status if so (was never in `rows`, Hamza's own discipline-mismatch call).
+- **GE Aerospace R5029617-1 / R5029663**: both re-confirmed open this run, endDate 2026-11-06, unchanged.
+- **Commonwealth Fusion Systems (Devens, MA)**: now has live Spring-or-Summer-2027 Industrial/Manufacturing Engineer intern postings (new this run) — worth checking again soon in case a Spring-only split appears, consistent with CFS's historical ~2-month-ahead-of-term posting pattern.
+- Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall — all would need JS-capable browser tooling this session doesn't have.
+- Tracker is now at 407 rows / 1075 checked entries after 52 consecutive runs with zero new qualifying `rows` additions. This run's one borderline-new lead (CFS) failed the season bar on inspection. Future progress most likely depends on new postings appearing over time (new Spring 2027 cohorts opening at companies like CFS, Entegris, or GE Aerospace) rather than on finding previously-missed existing ones.
