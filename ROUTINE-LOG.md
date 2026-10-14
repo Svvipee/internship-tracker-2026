@@ -4481,3 +4481,40 @@ This session independently re-verified the Rivian candidate before accepting it:
 - **RTX East Hartford Quality Co-op (req 01876476)**: not independently re-checked this run (no direct URL on file since it was never added to `rows`, and it's Hamza's own discipline-mismatch call regardless of open/closed status) — deadline was 2026-10-15 as of the last check; almost certainly closed or closing by the next run. No `rows` action needed either way; just close out the transparency record next run if easy to confirm.
 - Standing items carried forward unchanged (too soon to re-check again, per the 2026-10-14 ~01:00/07:00 UTC entries): iRobot, Regeneron, Precision Castparts, Teradyne, MKS Instruments, Siemens Hingham (NEU-eligibility is Hamza's own call, not a research item).
 - Tracker is now at 409 rows / 1087 checked entries after 55 consecutive runs. This run's one new addition (Rivian, Normal IL) came from a national (not Boston-specific) sweep — mainstream Boston-area/aerospace employer coverage continues to look saturated; new finds increasingly come from broader national searches or from genuinely new postings appearing over time at already-tracked companies.
+
+
+## 2026-10-14 ~19:00 UTC
+
+### Sync
+Container started detached from `master`, working tree clean. `git fetch origin master` showed `origin/master` at `062dff6` (the prior 13:00 UTC run's own commit), matching the detached HEAD exactly — no divergence, same recurring stale-local-ref pattern as every prior entry. Ran `git checkout master && git merge --ff-only origin/master` to fast-forward (6 commits) before any edits. No data lost. Ground truth going in (grep-verified directly against `build.mjs`): `rows` 409, `checked` 1087.
+
+### Searched
+Delegated this run's research to a subagent, briefed with the full verification bar, Playwright/headless-browser method, and four priority items: Cognex Corporation re-check, GE Vernova Schenectady reqs (R5055683-2/R5055894-2) re-confirmation via the Workday `endDate` field, RTX East Hartford req 01876476 final status check, and a fresh Boston-area/national sweep. The subagent reported 5 "new" candidates (MIT Lincoln Laboratory Group 07-71 Mechanical Engineering Co-Op, 5 Formlabs reqs, Berkshire Grey via a Khosla Ventures mirror, Entegris Reliability Engineer Co-Op via a Wellfound mirror, Leonardo DRS Bridgeton MO, Johnson Controls New Freedom PA) plus several dead-end notes.
+
+This session independently grepped `build.mjs` for every reported job ID/req number/URL before accepting anything as new, per the dedup-gap lesson from the 2026-10-13 ~19:00 UTC entry: **all 6 candidates were exact duplicates already tracked byte-for-byte in `rows`** under the employer's own primary ATS link (MIT LL job 1434254300; Formlabs 8130829/8161817/8172226/8196515/8199092; Berkshire Grey's own BambooHR listing; Entegris's own Workday REQ-14399; Leonardo DRS's own listing job 1418392000; Johnson Controls' own Workday WD30280745). The subagent's research was accurate but, same as before, it had not itself cross-checked against the existing tracker — the aggregator/third-party mirrors it found (Khosla Ventures, Wellfound, Dice) simply resurface postings already tracked under the employer's own link.
+
+Also independently re-checked the priority items: GE Vernova's two Schenectady castings reqs (R5055683-2, R5055894-2) re-posted again via their own Workday CXS API — same req IDs, canApply:true, full bodies re-read end-to-end, still no "Spring 2027" phrase anywhere — season-stated bar still fails, unchanged. Cognex's careers site remains blocked by the same Vercel Security Checkpoint to headless Chromium — still genuinely unverifiable. RTX req 01876476 (deadline was 2026-10-15) could no longer be located via careers.rtx.com or web search — consistent with having closed on schedule; this item was never in `rows` regardless (Hamza's own discipline-mismatch call).
+
+Two genuinely new minor dead ends surfaced during the GE Vernova sweep: a Leonardo DRS "Co-op, Mechanical Engineer Winter'26 term" at Bedford, Nova Scotia (Canada — wrong country, distinct entity from the tracked Bridgeton MO req), and GE Vernova's "Cores and Castings Manufacturing Intern" (R5054916-3, explicitly Summer 2027 — wrong season).
+
+### Added to `rows` (0 new)
+None this run. No candidate survived primary-source verification and dedup.
+
+### Added to `checked` (4 new)
+- Priority-lead reconfirmation (GE Vernova Schenectady reqs / Cognex / RTX req 01876476) — all unchanged or closed-out per the Searched section above.
+- Dedup-confirmed non-new batch — the 6 research-agent leads described above, all exact duplicates already in `rows`.
+- Leonardo DRS — Bedford, Nova Scotia, Canada — wrong country.
+- GE Vernova — Cores and Castings Manufacturing Intern (R5054916-3) — wrong season (Summer 2027).
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 409. `checked` 1087 → 1091 (+4, matches the 4 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 409 data rows on the internships sheet, 1091 on the checked sheet, zero duplicate Application Links across all 409 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **GE Vernova R5055683-2 / R5055894-2**: still no explicit Spring 2027 phrase after two more reposts; deadline remains ~2026-10-30 per prior boilerplate note (not independently re-derived from a structured `endDate` field this run either — the Workday CXS response for these two reqs does not appear to expose a clean `endDate` field the way single-req detail fetches for other employers do; worth trying the job-detail endpoint directly by req ID next run instead of the search/list endpoint). Worth a final check before the deadline passes.
+- **Cognex Corporation (Natick, MA)**: still bot-walled by a Vercel Security Challenge — unresolved after multiple attempts across several runs; low priority given repeated failures, but flag if a non-bot-walled path (e.g. a different subdomain, an RSS/API feed like PCC's) is ever found.
+- Standing items carried forward unchanged (too soon to re-check again): iRobot, Regeneron, Precision Castparts, Teradyne, MKS Instruments, Vicor (confirmed negative, re-check in a few weeks), Siemens Hingham (NEU-eligibility is Hamza's own call, not a research item).
+- **Methodology note for future runs**: when a research subagent reports "new" candidates, always independently grep `build.mjs` for the exact job ID/req number/URL before accepting — mainstream Boston-area and national aerospace/manufacturing/robotics employer coverage is now so saturated (56 consecutive runs) that aggregator-sourced "new" leads are overwhelmingly third-party mirrors (Khosla Ventures, Wellfound, Dice, WayUp, Monster) of postings already tracked under the employer's own primary ATS link, not genuinely new reqs.
+- Tracker is now at 409 rows / 1091 checked entries after 56 consecutive runs, with 3 of the last 4 runs finding zero new qualifying postings. Progress now depends almost entirely on new postings appearing over time at already-tracked companies (GE Vernova, Entegris, GE Aerospace, CFS) or new companies entering the target seasons, rather than on finding previously-missed existing ones.
