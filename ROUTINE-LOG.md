@@ -4413,3 +4413,39 @@ Subagent re-verified the five standing priority leads (RTX East Hartford req 018
 - **Teradyne (North Reading, MA) / MKS Instruments (Andover, MA)**: no Spring 2027 posting yet at either — worth a re-check in the coming weeks.
 - **Methodology note for future runs**: this sandbox has Playwright + Chromium pre-installed at `/opt/pw-browsers` (launch with `executablePath` pointed at the chrome binary under there, args `['--no-sandbox','--disable-setuid-sandbox']`, a normal desktop UA, and a `networkidle` wait) — always try it against Siemens/iRobot/Regeneron/PCC-style JS-rendered or bot-walled sites before falling back to "Partial"/aggregator-only treatment, since none of them needed anything more than that this run.
 - Tracker is now at 408 rows / 1082 checked entries after 53 consecutive runs. This run's one new addition (GE Vernova, Findlay Township PA) came from a fresh GE Vernova board sweep; the larger contribution was resolving four long-standing tooling blockers for good via a newly-available headless browser, converting several "unverifiable" standing items into confirmed negative findings (iRobot) or properly-excluded leads (Regeneron, PCC) rather than leaving them stuck in limbo.
+
+## 2026-10-14 ~07:00 UTC
+
+### Sync
+Container started with `HEAD` detached at `bc8db77` (the prior 01:00 UTC run's own commit) while local `master` was stale at `7f20e1f`, four commits behind. `git fetch origin master` confirmed `origin/master` already matched the detached `HEAD` exactly at `bc8db77` — no divergence, the prior four runs' pushes had all landed cleanly; only the local `master` ref was stale (the same recurring container quirk noted in many prior entries). Ran `git checkout master && git merge --ff-only origin/master` to fast-forward cleanly (4 commits, no conflicts) before starting any edits. No data lost. Ground truth going in (re-extracted directly from `build.mjs`): `rows` 408, `checked` 1082.
+
+### Searched
+Re-verified the two highest-priority standing items from the last run's notes directly via each employer's own Workday CXS API (no subagent delegation this run, to avoid the dedup-gap noted in the 2026-10-13 ~19:00 UTC entry):
+- **RTX/Pratt & Whitney East Hartford Quality Co-op (req 01876476)**: still `canApply:true`, endDate 2026-10-15, now exactly "21 hours left to apply" — almost certain to close before the next scheduled run.
+- **GE Vernova Investment Casting (R5055683-2) / Spring Intern Cores and Castings (R5055894-2)**: both reposted ("Posted Today," same req IDs, not new postings), `canApply:true`, deadline unchanged at 2026-10-30; re-read both full job-description bodies in full — still no "Spring 2027" phrase and no work-term date range anywhere, so the season-stated bar still fails.
+
+Also ran a fresh sweep for Boston-area companies not yet in the tracker: web searches for Spring 2027 mechanical/manufacturing/robotics co-ops in the Boston area, plus Cognex (Natick, MA) and Vicor Corporation (Andover, MA) specifically (both are Boston-area hardware/electronics employers not previously checked). Two other candidates surfaced by search (Formlabs Winter/Spring 2027 roles, Berkshire Grey Spring 2027 Mechanical Engineering Co-op) were independently grepped against `build.mjs` by req/job ID and confirmed to be duplicates of postings already tracked — not re-added or re-logged. A third (a WayUp-mirrored Collins Aerospace/RTX "Mechanical Design Engineering Co-op (Winter/Spring 2027)," Jamestown ND) matched req 01871736, which `build.mjs` already notes as "now-closed" from a prior run; the WayUp mirror independently confirms this with its own "no longer accepting applications" banner — consistent, no tracker change needed.
+
+### Added to `rows` (0 new)
+None this run. No new candidate survived primary-source verification and dedup.
+
+### Added to `checked` (2 new)
+- **Vicor Corporation (Andover, MA)**: new Boston-area company sweep. `careers.vicorpower.com`'s listings are JS-rendered (returned only "Loading..." on direct fetch, no headless-browser session available this run); no Greenhouse/Lever board found under the obvious slugs. Web search found only full-time roles and historical (2019) intern postings — no current co-op/intern posting independently located. Not added.
+- **Cognex Corporation (Natick, MA)**: new Boston-area company sweep. No current US co-op/intern posting found — search surfaced only undated Mechanical/Manufacturing Engineering Intern listings at Cognex's Aachen, Germany site and an outdated 2025-cycle program. Not added.
+
+Also appended dated reconfirmation notes (not new entries) to the existing RTX req 01876476 and GE Vernova R5055683-2/R5055894-2 `checked` entries, per the "Searched" section above.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 408. `checked` 1082 → 1084 (+2, matches the 2 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 408 data rows on the internships sheet, 1084 on the checked sheet, zero duplicate Application Links across all 408 `rows` entries (programmatic check). `.xlsx` file changed (1,219,594 → 1,222,159 bytes).
+
+### Worth re-checking next time
+- **RTX East Hartford Quality Co-op (req 01876476)**: 21 hours left to apply as of this run — check first thing next run; near-certain to be closed by then. Still Hamza's own discipline-mismatch call regardless, so no `rows` action needed either way, just close out the transparency record.
+- **GE Vernova Investment Casting (R5055683-2) / Spring Intern Cores and Castings (R5055894-2)**: unchanged, deadline 2026-10-30 — re-check before then in case GE Vernova updates either with explicit Spring term dates.
+- **Vicor Corporation (Andover, MA)**: JS-rendered careers site blocked a direct-fetch check this run — worth a re-check with headless-browser tooling (Playwright, per the iRobot/Regeneron/Siemens precedent) to see past the loading screen and confirm whether any co-op/intern posting actually exists.
+- **Cognex Corporation (Natick, MA)**: no US posting found via web search this run — worth a direct headless-browser check of `cognex.com/careers` in a future run in case their board isn't well-indexed by search.
+- Standing items carried forward unchanged: Siemens Hingham NEU-only eligibility (needs Hamza's own call), iRobot/Regeneron/PCC/Teradyne/MKS re-checks per the 2026-10-14 ~01:00 UTC entry's notes (too soon to re-check again same day).
+- **Non-routine note for an admin**: this container's `applications/` directory (467 `.docx` files: tailored resumes/cover-letters/question-docs per company-role, distinct from the Markdown `staged-applications/` this routine's own instructions specify) is outside the scope of what this routine creates or edits. It predates this run and was left untouched; flagging only because it is materially different in kind (completed-looking application documents, not staging checklists) from what the routine's spec describes, so a human should confirm it's intentional/Hamza's own content rather than scope creep from an earlier run.
+- Tracker is now at 408 rows / 1084 checked entries after 54 consecutive runs. No new qualifying postings found this run; the two new `checked` entries (Vicor, Cognex) are genuinely new company leads investigated and ruled out, not re-checks.
