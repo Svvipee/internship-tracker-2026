@@ -4635,3 +4635,42 @@ None this run (no new fully-verified postings; the only `rows` change was a remo
 - **Methodology note for future runs**: a subagent's "new" candidate list needs independent `build.mjs` grepping before any edit — this run again found 100% of the subagent's GE Aerospace/Draper candidates were already-tracked duplicates. But don't stop at dedup-checking the "new" claims only: this run's one real finding (Berkshire Grey id 760 closure) surfaced while fact-checking a seemingly-garbled *secondary* detail in the subagent's report, not from its primary "new candidate" list — a lesson to independently re-verify surprising claims even about allegedly-excluded leads, since they can reveal that an already-tracked posting has since closed.
 - Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) NEU-eligibility (Hamza's own call, not a research item); Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall.
 - Tracker is now at 409 rows / 1103 checked entries after 59 consecutive runs. This run found zero new qualifying postings but did find one real status change (an already-tracked posting closing) — a reminder that at this saturation level, maintaining accuracy on existing entries is as valuable as searching for new ones.
+
+## 2026-10-15 ~19:00 UTC
+
+### Sync
+Fresh container, local `master` was 10 commits behind `origin/master` (same recurring stale-local-ref pattern as every prior entry — no divergence, just a stale checkout). `git checkout master && git merge --ff-only origin/master` fast-forwarded cleanly. Ground truth going in (grep-verified directly against `build.mjs`): `rows` 409, `checked` 1103.
+
+### Searched
+Delegated this run's research to a subagent, briefed on the saturation state (59 prior runs, 409/1103) and five priorities carried over from the last log entry: (1) GE Aerospace "Unison Engineering Part-time Co-op" (R5040016, Saint George, UT) — re-check whether it has closed; (2) Teradyne (North Reading, MA) — look for a Mechanical-Engineering-specific Spring 2027 co-op now that the program exists; (3) Draper Laboratory full Workday CXS sweep; (4) GE Vernova "co-op spring 2027" full-text query; (5) MIT Lincoln Laboratory new postings. The subagent was instructed to independently grep `build.mjs` for every req ID/job ID before reporting anything as new; this session reviewed its report rather than re-running the same primary-source fetches itself.
+
+**GE Aerospace R5040016**: direct Workday CXS job-detail API fetch — still **canApply: true**, "11 hours left to apply," endDate 2026-10-16. Still open as of this run; almost certain to close before the next scheduled run. Left in `rows` unchanged — not yet a confirmed closure.
+
+**Teradyne**: direct SuccessFactors board query for "co-op" — same 2 Spring 2027 co-ops as the 13:00 UTC run (Quality Applications Engineering job 1436974400, Software Engineering job 1440172200), plus a separate North Reading, MA location-filtered pull — no Mechanical-Engineering-specific Spring 2027 req exists yet. Confirms the standing exclusion, no new finding.
+
+**Draper Laboratory**: full company-wide Workday CXS sweep (219 current postings, paginated through all co-op-titled results) plus a targeted "vibration" re-check on JR003003 (still explicitly Summer 2027). All 12 current Co-Op-titled reqs are already tracked in `rows` or `checked` by exact req ID — zero new.
+
+**GE Vernova**: direct "co-op spring 2027" full-text CXS query (with and without a US-location facet) — exactly 4 results, all 4 already tracked (R5049860, R5054653, R5053611, R5052776).
+
+**MIT Lincoln Laboratory**: fetched both pages of careers.ll.mit.edu's "co-op" search (49 total results) directly — only one Winter2026/Spring2027-dated mechanical/aero-eligible co-op exists (job 1434254300), already tracked. All others are discipline mismatches or the already-flagged borderline EE/RF Advanced Sensors job.
+
+**General sweep**: RTX req 01876476 re-check attempt blocked by HTTP 403 on all paths (already definitively confirmed CLOSED via a direct HTTP 410 fetch in the 13:00 UTC entry — no status change, just an inconclusive re-attempt). iRobot careers search still JS-rendered/unreadable via static fetch — no change to its standing unresolved status. **Albany Engineered Composites / Albany International (Rochester, NH, Safran-owned aerospace composites manufacturer)** — a genuinely new company for this tracker (0 prior grep hits) — surfaced during the sweep; its ADP Workforce Now careers portal and an alternate Safran-group.com careers search both failed to return readable job listings (empty/JS-rendered content, HTTP 403). Genuinely unverifiable this run, not a confirmed negative — logged below as a new unverifiable lead per the transparency rule, worth a dedicated Playwright/headless-browser follow-up given Safran's in-discipline aerospace-composites focus. Quick grep-only saturation spot-checks (no live re-fetch) confirmed exhaustive prior coverage of Anduril, Northrop Grumman, Blue Origin, Analog Devices, Waters Corp, Hologic, and Apptronik.
+
+### Added to `rows` (0 new)
+None this run. No candidate survived primary-source verification and dedup.
+
+### Added to `checked` (1 new)
+- **Albany Engineered Composites / Albany International (Rochester, NH)**: new company, never before checked — ADP Workforce Now portal and a Safran-group.com careers search both returned unreadable/blocked content (JS-rendered, HTTP 403). Not excluded on substantive grounds (wrong season/discipline/closed) — flagged as genuinely unverifiable with this run's tooling, worth a headless-browser follow-up.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 409. `checked` 1103 → 1104 (+1, matches the 1 new array entry above). Read the generated `.xlsx` back with the `xlsx` library: 409 data rows on the internships sheet, 1104 on the checked sheet, zero duplicate Application Links across all 409 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **GE Aerospace R5040016 (Saint George, UT)**: had only "11 hours left to apply" as of this run — almost certainly closed by the next scheduled run (6 hours out, deadline is ~17 hours out as of this check, so it's a close call either way). Check first thing next run and move to `checked` if closed.
+- **Albany Engineered Composites (Rochester, NH)**: brand-new lead, unverifiable via static/API fetch this run (ADP Workforce Now JS-rendered, Safran-group.com 403). Worth a dedicated Playwright/headless-browser attempt next run before concluding anything substantive — Safran is squarely in-discipline (aerospace composites manufacturing).
+- **Teradyne (North Reading, MA)**: still worth watching for a Mechanical-specific Spring 2027 req now that the program exists (currently only CE/EE and software co-ops are posted for that season).
+- Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) NEU-eligibility (Hamza's own call, not a research item); Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall; Cognex Corporation (Natick, MA) ATS platform still unidentified, low priority.
+- Tracker is now at 409 rows / 1104 checked entries after 60 consecutive runs. Mainstream coverage remains heavily saturated; this run's only actionable new thread is the brand-new, as-yet-unverifiable Albany Engineered Composites lead.
