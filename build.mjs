@@ -4928,6 +4928,19 @@ const rows = [
     "Link Verified": "Yes — fetched directly via GE Vernova's own Workday CXS job-detail API (independently re-confirmed by two separate fetches, 2026-10-14): canApply:true, postedOn 'Posted 11 Days Ago', startDate 2026-10-02, endDate not set (no stated application deadline). Body explicitly states 'Internship Term Dates: Spring – Jan – Apr,' confirming the Spring 2027 season beyond just the title.",
     Notes: "New company for the tracker. Power-electronics/controls engineering work for Naval, industrial, marine, and Oil & Gas power conversion systems (MV/LV power converters, motors, transformers, E-house, switchgear, controls). Eligibility: currently enrolled engineering student (EE/ME/Computer Engineering or similar), no visa sponsorship available, min 3.0 GPA desired (not required). Relocation assistance and a weekly housing allowance offered for permanent addresses >50mi from the work location. Not Boston-area (Pittsburgh-area PA) but within the US-wide scope.",
   },
+  // --- Added 2026-10-15 ~07:00 UTC routine run ---
+  {
+    Company: "GE Aerospace",
+    "Role Title": "CNC Programmer Co-op - Spring 2027",
+    Discipline: "Manufacturing Engineering (CNC/Machining)",
+    Season: "Spring 2027",
+    Location: "Lynn, MA",
+    "Distance from Boston, MA (mi, approx.)": 10,
+    Pay: "$20/hour and increase for each undergraduate year completed",
+    "Application Link": "https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Lynn/CNC-Programmer-Co-op---Spring-2027_R5033208-1",
+    "Link Verified": "Yes — fetched directly via GE Aerospace's own Workday CXS job-detail API, canApply true, posted today (2026-10-15).",
+    Notes: "Boston-area (Lynn, North Shore). 2/3/4/5-axis N/C machining programs, CMM inspection programming, process improvement, tooling, blueprint-reading. Distinct req from the already-tracked Lynn CNC Programmer Co-Op (R5040944-1), which requires current enrollment in a Vocational Technical High School; this req instead requires a full-time matriculated Bachelor of Science Engineering student who has completed two full years of college (rising junior), min 3.0 GPA (no rounding). Surfaced via GE Aerospace's own Workday jobs-search API full-text query 'co-op spring 2027', which returned 13 total current results — the other 12 were already tracked in rows/checked.",
+  },
 ];
 
 const checked = [
@@ -6046,6 +6059,8 @@ const checked = [
   { Company: "IPG Photonics (Oxford, MA)", "Role(s) Checked": "Fresh Boston-area sweep for a US Spring 2027/Winter 2026 mechanical/manufacturing co-op", Reason: "2026-10-15 ~01:00 UTC: no dated current US posting found — only undated aggregator listings (iHireEngineering, Betterteam) with no season/term stated and no direct ATS link located. Not added; worth a periodic re-check." },
   { Company: "Ava Robotics (Cambridge, MA)", "Role(s) Checked": "Fresh Boston-area sweep for a mechanical engineering intern/co-op role", Reason: "2026-10-15 ~01:00 UTC: company currently has only an EE intern role posted; no mechanical engineering role found at all. Not added." },
   { Company: "Unidentified company — Dice job 0107ab01-d48a-45a5-986c-15bdaab2fc9f ('Mechanical Engineering Co-Op')", "Role(s) Checked": "Aggregator-sourced lead from a fresh sweep", Reason: "2026-10-15 ~01:00 UTC: link returns HTTP 410 Gone; employer could not be identified from the dead listing. Dropped." },
+  { Company: "Draper Laboratory — Acoustic and Vibration Technologies Intern (JR003003-1)", "Role(s) Checked": "Full company-wide Workday CXS re-sweep (216 current postings, filtered to 'co-op'/'coop' in title) found this new sibling req replacing the previously-excluded JR002688 (which no longer appears in live listings at all)", Reason: "2026-10-15 ~07:00 UTC: explicitly titled 'Summer 2027' — wrong season, excluded. All 10 other current Draper Co-Op-titled reqs were already tracked in rows or checked; worth watching in case a Winter 2026/Spring 2027 sibling of this role appears later, consistent with Draper's pattern of posting multiple seasonal variants of the same role." },
+  { Company: "RTX (Pratt & Whitney) — East Hartford, CT, req 01876476 — post-deadline re-check attempt", "Role(s) Checked": "Engineering Quality Co-op (Spring 2027), req 01876476 — direct Workday CXS job-detail API, careers.rtx.com search, and a fresh web search for the req number", Reason: "2026-10-15 ~07:00 UTC: the deadline (2026-10-15) has now passed. Could not independently reconfirm status this run — the direct Workday CXS API returned HTTP 403 (errorCode S22, permission denied), careers.rtx.com returned HTTP 403 (Cloudflare block), and a fresh web search surfaced zero hits for this req number at all. Consistent with closure but not a confirmed-closed read (only 'could not be re-verified, consistent with closure'). Never in rows regardless (Hamza's own discipline-mismatch call); worth one more direct-API attempt next run in case the 403 block is temporary, then this transparency thread can finally be closed out." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];

@@ -4559,3 +4559,39 @@ None this run (no new fully-verified postings).
 - **RTX req 01876476**: expect closed by next run (deadline was today) — confirm and note closure if easy, though it was never in `rows` either way.
 - Standing items carried forward unchanged (too soon to re-check again): iRobot, Regeneron, Precision Castparts, Teradyne, MKS Instruments, Vicor (confirmed negative), Siemens Hingham (NEU-eligibility is Hamza's own call, not a research item).
 - Tracker is now at 409 rows / 1097 checked entries after 57 consecutive runs, with 4 of the last 5 runs finding zero new qualifying postings. Mainstream Boston-area/national aerospace/manufacturing/robotics coverage remains heavily saturated; progress now depends almost entirely on new postings appearing over time at already-tracked companies or genuinely new companies entering the target seasons.
+
+## 2026-10-15 ~07:00 UTC
+
+### Sync
+Fresh container, HEAD detached at `fb72522` (the prior 01:00 UTC run's own commit), matching `origin/master` exactly after `git fetch` — no divergence. Checked out `master` and fast-forwarded (8 commits, no conflicts) before any edits. Ground truth going in (grep-verified against `build.mjs`): `rows` 409, `checked` 1097.
+
+### Searched
+Delegated this run's research to a subagent, briefed on the saturation state (57 prior runs, 409/1097) and three priorities: (1) final status check on RTX East Hartford Quality Co-op req 01876476 (deadline was today); (2) a fresh Boston-area/national sweep, reusing GE Aerospace's own Workday jobs-search API full-text query `"co-op spring 2027"` which had worked well for GE Vernova-style sweeps; (3) Draper Laboratory's current Co-Op-titled reqs, since Draper updates its board frequently. The subagent was instructed to grep `build.mjs` itself before reporting anything as new; this session independently spot-checked its dedup claims (confirmed zero hits for "R5033208" prior to adding it).
+
+**RTX req 01876476**: could not be independently reconfirmed this run — the direct Workday CXS API returned HTTP 403 (errorCode S22, permission denied), careers.rtx.com returned HTTP 403 (Cloudflare block), and a fresh web search surfaced zero hits for the req number at all. Consistent with closure (deadline was today) but not a confirmed-closed read. Never in `rows` regardless (Hamza's own discipline-mismatch call) — logged for the transparency record, one more re-check attempt planned next run.
+
+**GE Aerospace**: the `"co-op spring 2027"` full-text query against GE Aerospace's own Workday jobs-search API returned 13 current results. 12 were already tracked in `rows` or `checked`; one — CNC Programmer Co-op - Spring 2027 (R5033208-1), Lynn, MA, posted today — was genuinely new and independently grep-confirmed absent from `build.mjs` before being added.
+
+**Draper Laboratory**: full company-wide Workday CXS re-sweep (216 current postings, filtered to "co-op"/"coop" in title) found 10 current Co-Op-titled reqs, all already tracked except one: the previously-excluded "Acoustic and Vibration Technologies Co-op" (JR002688, excluded for stating no season) no longer appears live at all, apparently replaced by a new sibling req, "Acoustic and Vibration Technologies Intern (Summer 2027)" (JR003003-1, posted yesterday) — explicitly Summer 2027, wrong season, correctly stays excluded under the new req ID.
+
+**Fresh sweep (re-confirmations, no new array entries needed)**: GE Vernova's `"co-op spring 2027"` CXS query returned 5 results, all already tracked. Berkshire Grey's Spring 2027 Mechanical Engineering Co-op (Bedford, MA) resurfaced via a Khosla Ventures mirror — already tracked under the employer's own BambooHR link. Entegris "Mechanical Engineering Co-Op, Bedford MA" resurfaced via a SolidProfessor aggregator mirror — already confirmed (2026-10-11) as a stale mislabel; only the Billerica, MA req exists. Vicor Corporation (Andover, MA) re-checked fresh — still zero intern/co-op titles, consistent with the 2026-09-20/09-23 confirmed-negative findings. Analogic Corporation — still no distinct career site/postings found (taken private in 2018, per standing note).
+
+### Added to `rows` (1 new)
+- GE Aerospace — CNC Programmer Co-op - Spring 2027 (R5033208-1), Lynn, MA. Fully verified via direct Workday CXS job-detail API fetch, canApply true, posted today.
+
+### Added to `checked` (2 new)
+- Draper Laboratory — Acoustic and Vibration Technologies Intern (JR003003-1): new req replacing the previously-excluded JR002688; explicitly Summer 2027, wrong season.
+- RTX (Pratt & Whitney) East Hartford req 01876476 — post-deadline re-check attempt blocked by 403s on all verification paths; consistent with closure but not confirmed. Never in `rows` regardless.
+
+### Staged
+- `staged-applications/ge-aerospace-cnc-programmer-coop-spring2027-lynn-ma.md` created for the new fully-verified GE Aerospace posting (posting URL, eligibility — rising-junior BS Engineering student, 3.0 GPA no rounding, distinct from the Vocational Technical High School variant req R5040944-1 — and application checklist).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 409 → 410 (+1, matches the 1 new array entry above). `checked` 1097 → 1099 (+2, matches the 2 new array entries above). Programmatic check: zero duplicate Application Links across all 410 `rows` entries. `.xlsx` file changed (1,235,077 → 1,238,292 bytes).
+
+### Worth re-checking next time
+- **RTX req 01876476**: the 403 block may be temporary (consistent with the intermittent Cloudflare pattern seen in prior runs); worth one more direct-API attempt next run for a definitive closed/open read, then this transparency thread can finally be closed out regardless of outcome.
+- **Draper JR003003-1** (Acoustic and Vibration Technologies Intern, Summer 2027): wrong season now, but worth watching in case a Winter 2026/Spring 2027 sibling appears later, consistent with Draper's pattern of posting multiple seasonal variants of the same role.
+- **GE Aerospace**: the `"co-op spring 2027"` full-text query against `geaerospace.wd5.myworkdayjobs.com/wday/cxs/geaerospace/GE_ExternalSite/jobs` (POST with `{"appliedFacets":{},"limit":20,"offset":0,"searchText":"co-op spring 2027"}`) worked well this run and surfaced one new req that 3+ prior GE Aerospace sweeps had missed — worth reusing this exact query next run since their Spring 2027 slate is evidently still being added to.
+- Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) JS-only SuccessFactors portal; Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall; Cognex Corporation (Natick, MA) — ATS platform still unidentified after many runs, domain-wide Vercel edge block, low priority.
+- Tracker is now at 410 rows / 1099 checked entries after 58 consecutive runs. Mainstream Boston-area/national aerospace/manufacturing/robotics coverage remains heavily saturated, but GE Aerospace's own Workday search API continues to surface the occasional genuinely new req as their Spring 2027 slate fills in — worth keeping that specific query in the regular rotation going forward.
