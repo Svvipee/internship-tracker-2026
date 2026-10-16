@@ -4754,3 +4754,44 @@ None this run (no new fully-verified postings — the only change was a closure)
 - **Fleet Robotics (Charlestown, MA)**: still worth a later re-check for a Winter 2026/Spring 2027 sibling to its current Summer/Fall 2026 co-op.
 - Standing items carried forward unchanged (not touched this run, low priority): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified (now also bot-walled via LinkedIn/Indeed redirect workarounds, per the 2026-10-15 13:00 UTC entry).
 - Tracker is now at 408 rows / 1108 checked entries after 62 consecutive runs. This run's only substantive change was one confirmed closure (GE Aerospace R5040016) — zero new qualifying postings found despite a broad sweep, reinforcing that mainstream coverage remains heavily saturated at this point.
+
+## 2026-10-16 ~13:00 UTC
+
+### Sync
+Fresh container. `git fetch origin master` showed local HEAD already matched `origin/master` (a66c826), but was detached — checked out `master` and ran `git merge --ff-only origin/master` (0 commits, already current). Ground truth going in (grep-verified directly against `build.mjs`): `rows` 408, `checked` 1108.
+
+### Searched
+Delegated this run's research to a subagent, briefed on the saturation state (62 prior runs, 408/1108) and four carried-over priorities: (1) GE Aerospace R5040016 closure — already resolved last run, not re-raised; (2) Albany Engineered Composites (Rochester, NH) — try genuinely new discovery angles beyond the ADP Workforce Now JS-rendering dead end; (3) Boston Dynamics req R2496 — find the correct Workday tenant and definitively resolve; (4) Teradyne — re-check for a Mechanical-specific Spring 2027 co-op; (5) Fleet Robotics — re-check for a Winter2026/Spring2027 sibling to its Summer/Fall 2026 co-op. Also ran a broader fresh sweep (Entegris, MIT Lincoln Laboratory, Anduril, GE Aerospace, Berkshire Grey, Draper, Vicarious Surgical, Formlabs, Amazon Robotics, Analog Devices, Desktop Metal, Hologic, Waters Corp, Northrop Grumman, Collins Aerospace/RTX, Blue Origin, Textron). The subagent was instructed to fetch actual posting pages directly (not trust aggregator summaries) and report full verification detail; this session independently grepped `build.mjs` for every job/req ID the subagent reported before accepting anything as new.
+
+**Boston Dynamics R2496 — RESOLVED.** The subagent found the CXS API requires a POST (GET 400s) and successfully paginated all 84 currently-open requisitions directly against `bostondynamics.wd1.myworkdayjobs.com/wday/cxs/bostondynamics/Boston_Dynamics/jobs`. Zero intern/co-op titles among them; all are Staff/Senior/Principal-level roles. A third-party aggregator (zerogtalent.com) still shows stale R2496/R2476/R2477/R2536 listings, none of which appear in the live official feed — confirms these are expired, not open. This definitively closes the standing R2496 thread after 3 runs of unresolved attempts.
+
+**Albany Engineered Composites**: 4th run of attempts via new angles (site-restricted search, LinkedIn, ZipRecruiter/Indeed company pages, a VC aggregator, ClearanceJobs, CircaWorks) — all dead ends (403s, no results, "Applications Closed," wrong season/location). Core ADP Workforce Now Angular SPA blocker remains unresolved; still needs genuine JS rendering. Deprioritizing further effort absent new tooling.
+
+**Teradyne**: re-queried `jobs.teradyne.com/search/?q=co-op` directly — unchanged, still only the same 2 discipline-mismatched Spring 2027 co-ops.
+
+**Fleet Robotics**: the previously-flagged Summer/Fall 2026 ME co-op (job 68690504) is now closed ("no longer accepting applications"). No Winter2026/Spring2027 sibling found. Moved to a closed/no-change note in `checked` (was never in `rows`).
+
+**Fresh sweep**: every candidate the subagent surfaced — MIT Lincoln Laboratory's Winter/Spring 2027 Mechanical Engineering Co-Op (job 1434254300), 5 Entegris Bedford MA co-ops (REQ-14484, REQ-14491, REQ-14458, REQ-14452, REQ-14461), Anduril's Winter 2027 Mechanical Engineer Co-op (Quincy MA, via jobs.generalcatalyst.com job 93310425), Berkshire Grey job 91872250 (already-known closed duplicate), and GE Aerospace's Lynn MA CNC Programmer Co-op (via a Simplify.jobs aggregator mirror) — were all independently grep-confirmed already tracked in `rows` by exact job/req ID (several were the subagent's self-described "strongest" leads, all pre-existing). Draper, Vicarious Surgical, Formlabs, Amazon Robotics, Analog Devices, Desktop Metal, Hologic, Waters Corp, Northrop Grumman, Collins Aerospace/RTX, Blue Origin, and Textron all reconfirmed negative/no qualifying change.
+
+### Added to `rows` (0 new)
+None this run. No candidate survived primary-source verification and dedup — every lead the research agent surfaced was already tracked.
+
+### Added to `checked` (5 new)
+- **Boston Dynamics — RESOLVED**: definitive zero-co-op confirmation via the correct CXS API call method (POST, not GET). Closes the R2496 thread.
+- **Teradyne — re-check**: no change, same 2 discipline-mismatched Spring 2027 co-ops.
+- **Fleet Robotics — now closed**: its only tracked lead (Summer/Fall 2026 co-op) has closed; no Winter2026/Spring2027 sibling exists.
+- **Albany Engineered Composites — 4th-run re-check**: new angles tried, all dead ends; still unresolved.
+- **Dedup-confirmed non-new batch (run 63)**: 5 candidates the research agent reported as its strongest new leads — MIT LL, 5 Entegris Bedford reqs, Anduril Quincy MA, Berkshire Grey mirror, GE Aerospace Lynn CNC Programmer mirror — all exact duplicates of already-tracked `rows` entries.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 408. `checked` 1108 → 1113 (+5, matches the 5 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 408 data rows on the internships sheet, 1113 on the checked sheet, zero duplicate Application Links across all 408 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Albany Engineered Composites (Rochester, NH)**: 4 runs of dead ends now across many distinct discovery angles. The ADP Workforce Now portal needs genuine Playwright/headless-browser rendering, not available with current tooling. Lowest priority yet — only worth revisiting if that tooling becomes available, or via a completely different discovery channel (e.g. a direct company press release or LinkedIn post linking a specific req).
+- **Teradyne (North Reading, MA)**: still watching for a Mechanical-specific Spring 2027 req now that the co-op program exists (currently only CE/EE and software).
+- Standing items carried forward unchanged (not touched this run, low priority): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified.
+- **Methodology note**: a research agent's "strongest new leads" were, this run, 100% already-tracked duplicates (including one, MIT LL job 1434254300, that has now been independently re-confirmed as a duplicate across at least 3 separate runs) — reinforcing that at this saturation level, every agent-reported candidate needs an independent `build.mjs` grep by exact job/req ID before any edit, regardless of how confidently the agent frames it as new.
+- Tracker is now at 408 rows / 1113 checked entries after 63 consecutive runs. This run found zero new qualifying postings and zero closures in `rows` (Fleet Robotics' closure doesn't affect `rows` since it was never added); its only substantive progress was definitively resolving the long-standing Boston Dynamics R2496 thread.
