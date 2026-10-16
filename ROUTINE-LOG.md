@@ -4714,3 +4714,43 @@ None this run (no new fully-verified postings).
 - **Fleet Robotics (Charlestown, MA)**: new company, wrong-season co-op this run — worth a re-check later for a Winter 2026/Spring 2027 sibling role.
 - Standing items carried forward unchanged (not touched this run per low-priority instruction): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified.
 - Tracker is now at 409 rows / 1105 checked entries after 61 consecutive runs. This run found zero new qualifying postings; the GE Aerospace Spring 2027 slate (13 results via the "co-op spring 2027" query) has not grown in three consecutive runs, suggesting it may now be fully populated for this cycle.
+
+## 2026-10-16 ~07:00 UTC
+
+### Sync
+Fresh container. `git fetch origin master` showed local HEAD already matched `origin/master` (f952734) — no divergence, but ran `git checkout master && git merge --ff-only origin/master` anyway per routine (fast-forwarded 0 commits, already current). Ground truth going in (grep-verified directly against `build.mjs`): `rows` 409, `checked` 1105.
+
+### Searched
+Worked this run's four carried-over priorities directly (via WebFetch/WebSearch/curl against primary-source APIs) rather than delegating to a subagent, given the short, well-defined priority list: (1) GE Aerospace "Unison Engineering Part-time Co-op" (R5040016, Saint George, UT) — check whether it closed, per the prior run's "5 hours left to apply" flag; (2) Albany Engineered Composites (Rochester, NH) — try new angles beyond the ADP Workforce Now JS-rendering dead end; (3) Teradyne (North Reading, MA) — re-check for a Mechanical-specific Spring 2027 co-op using the newly-confirmed working search endpoint; (4) Boston Dynamics req R2496 — first flagged unresolved 2026-09-29, never since re-attempted. Also ran a broader fresh sweep (GE Aerospace "co-op spring 2027" full-text query, GE Vernova nuclear co-op, MIT Lincoln Laboratory, Fleet Robotics Spring-2027 sibling check, Entegris full "mechanical co-op" company-wide query, Vicarious Surgical, Boston-area/startup general searches) and independently grepped `build.mjs` for every candidate req/job ID before treating anything as new.
+
+**GE Aerospace R5040016**: direct Workday CXS job-detail API fetch now returns **HTTP 404** (previously a full `canApply:true` job record on every prior check). A fresh CXS full-text search for `"R5040016"` on GE Aerospace's own board returns `total:0`. Both signals match the exact pattern used to confirm the RTX 01871814 closure on 2026-10-12. Independently corroborated by the broader "co-op spring 2027" query: 12 results now (down from 13 last run), with this req missing and all 12 remaining results already tracked in `rows`/`checked` by req ID — the only change to the slate is this one closure. **CONFIRMED CLOSED — moved from `rows` to `checked`.**
+
+**Albany Engineered Composites**: found two new third-party mirror listings via search (circaworks.com/localjobnetwork.com, jobs 78344098 "Process Engineering Intern" and 78344100 "Quality Engineering Intern," both Rochester NH). Both are dead: 78344098 shows "Position No Longer Available" and was posted ~29 months ago (pre-dates this tracker's window entirely); 78344100 returns HTTP 410 Gone. No new angle found on the core ADP Workforce Now Angular-SPA blocker (still needs genuine JS rendering, not available with this run's tooling). Still unresolved after 3 runs of attempts — logged as a dated re-check, urgency lowered slightly given the pattern of dead ends.
+
+**Teradyne**: re-queried `jobs.teradyne.com/search/?q=co-op` directly — still exactly the same 2 Spring 2027 co-ops as the last 2 runs (Quality Applications Engineering, Software Engineering), neither Mechanical. No Mechanical-specific Spring 2027 req yet. No change.
+
+**Boston Dynamics R2496**: attempted direct Workday CXS fetches against two guessed tenant slugs (`bostondynamics.wd1`, `boston-dynamics.wd1`) — both returned error responses (HTTP 404 "Job_Posting_Site_ID not found" / HTTP 422), and `bostondynamics.com/careers/open-positions/` 404s on direct fetch. Could not locate the correct Workday tenant URL this run. Consistent with the long-standing finding (multiple runs since 2026-09-20) that Boston Dynamics currently has zero live intern/co-op postings company-wide. Still unresolved/unverifiable; deprioritizing further automated attempts absent a working tenant URL.
+
+**GE Vernova nuclear co-op, MIT Lincoln Laboratory, Fleet Robotics, Entegris, Vicarious Surgical, general Boston-area sweep**: every candidate surfaced (GE Vernova Nuclear Engineering Co-Op/Intern R5048552; MIT LL fall/July-Dec 2026 co-ops; Fleet Robotics' still-Summer/Fall-2026-only co-op; all 16 spot-checked current Entegris "mechanical co-op" reqs across MA/CA/TX/MN/CO/OR/IL sites out of a 200-result company-wide query; Vicarious Surgical's closed Jan-2026 co-op) independently grep-confirmed already tracked in `rows` or `checked` by exact req/job ID. Entegris in particular is now confirmed fully saturated — a company-wide "mechanical co-op" full-text query (200 total results) spot-checked across all 16 distinct req IDs in the first page found zero new ones.
+
+### Added to `rows` (0 new)
+None this run. No candidate survived primary-source verification and dedup.
+
+### Added to `checked` (3 new)
+- **GE Aerospace (Unison Industries), Saint George UT, req R5040016 — CONFIRMED CLOSED, MOVED from `rows`**: HTTP 404 on direct job-detail fetch, zero results on a req-number full-text search. See "Searched" above.
+- **Albany Engineered Composites (Rochester, NH) — dated re-check**: two newly-surfaced mirror listings both dead (one pre-dates this tracker, one HTTP 410). Still unresolved, not excluded on substantive grounds.
+- **Boston Dynamics (Waltham, MA) — req R2496 dated re-check**: still unable to locate the correct Workday tenant URL; consistent with the standing "zero current intern/co-op postings" finding.
+
+### Staged
+None this run (no new fully-verified postings — the only change was a closure).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 409 → 408 (−1, the R5040016 closure). `checked` 1105 → 1108 (+3, matches the 3 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 408 data rows on the internships sheet, 1108 on the checked sheet, zero duplicate Application Links across all 408 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Albany Engineered Composites (Rochester, NH)**: 3 runs of dead ends now; the ADP Workforce Now portal needs genuine Playwright/headless-browser rendering, not available with current tooling. Still worth it given Safran's in-discipline aerospace-composites focus, but lower urgency than before.
+- **Boston Dynamics req R2496**: unresolved since 2026-09-29 (3 attempts across runs); the correct Workday tenant slug still not found. Consider trying a web search specifically for a current Boston Dynamics job URL (not a slug guess) next time, or deprioritize further given the standing "zero co-op postings company-wide" finding.
+- **Teradyne (North Reading, MA)**: still watching for a Mechanical-specific Spring 2027 req; `jobs.teradyne.com/search/?q=<keyword>` confirmed working without JS.
+- **Fleet Robotics (Charlestown, MA)**: still worth a later re-check for a Winter 2026/Spring 2027 sibling to its current Summer/Fall 2026 co-op.
+- Standing items carried forward unchanged (not touched this run, low priority): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified (now also bot-walled via LinkedIn/Indeed redirect workarounds, per the 2026-10-15 13:00 UTC entry).
+- Tracker is now at 408 rows / 1108 checked entries after 62 consecutive runs. This run's only substantive change was one confirmed closure (GE Aerospace R5040016) — zero new qualifying postings found despite a broad sweep, reinforcing that mainstream coverage remains heavily saturated at this point.
