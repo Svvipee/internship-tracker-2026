@@ -4795,3 +4795,46 @@ None this run (no new fully-verified postings).
 - Standing items carried forward unchanged (not touched this run, low priority): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified.
 - **Methodology note**: a research agent's "strongest new leads" were, this run, 100% already-tracked duplicates (including one, MIT LL job 1434254300, that has now been independently re-confirmed as a duplicate across at least 3 separate runs) — reinforcing that at this saturation level, every agent-reported candidate needs an independent `build.mjs` grep by exact job/req ID before any edit, regardless of how confidently the agent frames it as new.
 - Tracker is now at 408 rows / 1113 checked entries after 63 consecutive runs. This run found zero new qualifying postings and zero closures in `rows` (Fleet Robotics' closure doesn't affect `rows` since it was never added); its only substantive progress was definitively resolving the long-standing Boston Dynamics R2496 thread.
+
+
+## 2026-10-16 ~19:00 UTC
+
+### Sync
+Fresh container. `git fetch origin master` / local HEAD matched `origin/master` (88cb1d3), no divergence. Ground truth going in (grep-verified against `build.mjs`): `rows` 408, `checked` 1113.
+
+### Searched
+Delegated this run's research to one subagent, briefed with the exact same five carried-over priorities as the 13:00 UTC run (Teradyne Mechanical-specific Spring 2027 req; Albany Engineered Composites new discovery angle; Draper Laboratory and MIT Lincoln Laboratory re-sweep; a fresh full GE Aerospace Workday full-text sweep for "co-op spring 2027"/"co-op winter 2026" with every result listed for dedup), plus a broader fresh sweep across ~20 other Boston-area/national mechanical-aerospace-manufacturing-robotics employers and general web search. The agent was instructed to fetch actual posting pages/APIs directly rather than trust aggregator summaries, and to clearly separate FULL vs. PARTIAL verification.
+
+The agent returned a detailed report describing 4 "verified new candidates" (MIT Lincoln Laboratory Mechanical Engineering Co-Op Winter/Spring 2027 job 1434254300; GE Aerospace CNC Programmer Co-op Spring 2027 Lynn MA req R5033208; six Entegris Bedford MA Spring 2027 co-ops REQ-14484/14491/14399/14452/14458/14461; Formlabs Manufacturing Engineering Intern Winter/Spring 2027 job 8161817) plus 2 "partially verified, flag for judgment" items (Anduril Winter 2027 Mechanical Engineer Co-op job 93310425; Leonardo DRS Mechanical Engineer Co-Op Spring 2027 job 1418392000/req 115172), several confidently framed as its strongest/freshest finds.
+
+As the standing methodology note requires, this session independently grepped `build.mjs` for every job/req ID before accepting anything. Result: **100% of the reported candidates were already exact duplicates already live in `rows`** — R5033208 (added 2026-10-15 ~07:00 UTC), 1434254300 (tracked since at least 2026-09, re-confirmed as duplicate across 5+ prior runs), all 6 Entegris reqs (REQ-14484/14491/14458/14452/14461 added 2026-10-13, REQ-14399 tracked separately), 93310425 (tracked as a Boston-metro Anduril Winter 2027 Mechanical co-op), 8161817 (one of 5 already-tracked Formlabs reqs), and 1418392000/115172 (tracked since 2026-09-21, upgraded Partial→Full that same run). This is now the SECOND consecutive run (13:00 UTC and 19:00 UTC) where a freshly-briefed research agent's full set of "strongest new leads" turned out to be 100% pre-existing. None added to `rows`.
+
+The agent's priority re-checks confirmed no change: Teradyne still only has the same 2 discipline-mismatched Spring 2027 co-ops (Quality Applications Engineering — CE/EE/Computer Systems major; Software Engineering). Albany Engineered Composites — no new discovery channel found; ADP Workforce Now portal remains a JS-rendering dead end on its 5th consecutive run of attempts. Draper Laboratory — confirmed via Draper's own site that Spring co-op postings typically open in October (now), but no live Spring 2027 req could be surfaced via search (likely not yet indexed); the iCIMS portal remains unreachable by direct fetch. GE Aerospace full Workday sweep — every req returned (Evendale OH, Dayton OH, Grand Rapids MI, West Chester OH, Austin TX, Jacksonville FL, Lynn MA) was either already-tracked, Fall/Summer 2027 (wrong season), or discipline-mismatched; zero new Winter 2026/Spring 2027 mechanical/aerospace reqs at GE beyond what's already in `rows`/`checked`.
+
+One genuinely new (but still excluded) item surfaced: a Yaskawa America "Mechanical Engineering Coop (Spring 2027)" posting at their Miamisburg, OH Motoman Robotics site — distinct from the already-tracked ENGIN002923 req, but internally inconsistent (title says Spring 2027, body says August 2026 start) and requires Dayton-OH-area residency. Excluded.
+
+Other items the agent checked and confirmed negative (Berkshire Grey already-known-closed, Amazon Robotics, Analog Devices, Vicarious Surgical, iRobot, Toyota Research Institute, Vicor, Desktop Metal, Hologic, Waters Corporation, Northrop Grumman, Textron, Blue Origin, L3Harris, RTX/Collins/Pratt & Whitney non-Boston reqs) matched standing exclusions already in `checked` — no new entries needed for these.
+
+### Added to `rows` (0 new)
+None this run. No candidate survived independent `build.mjs` grep-dedup.
+
+### Added to `checked` (5 new)
+- **Dedup-confirmed non-new batch (run 64)**: all of the research agent's reported candidates (MIT LL 1434254300, GE Aerospace R5033208, 6 Entegris reqs, Anduril 93310425, Formlabs 8161817, Leonardo DRS 1418392000/115172) — confirmed exact duplicates of existing `rows` entries by grep.
+- **Yaskawa America — Miamisburg, OH**: new, distinct posting from the already-tracked req, excluded on date-inconsistency and location grounds.
+- **Teradyne — re-check**: no change, same 2 discipline-mismatched Spring 2027 co-ops.
+- **Albany Engineered Composites — 5th-run re-check**: still unresolved, no new angle.
+- **Draper Laboratory — re-check**: Spring co-op cycle should be opening now (per Draper's own site) but nothing live/indexed yet; worth watching in the coming weeks.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 408. `checked` 1113 → 1118 (+5, matches the 5 new array entries above). Read the generated `.xlsx` back with the `xlsx` library: 408 data rows on the internships sheet, 1118 on the checked sheet, zero duplicate Application Links across all 408 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Draper Laboratory**: Spring 2027 co-op cycle should start posting imminently (per their own site, "Spring postings open in October") — worth a dedicated look in the next few runs since nothing is indexed yet.
+- **Teradyne (North Reading, MA)**: still watching for a Mechanical-specific Spring 2027 req now that the co-op program clearly exists (currently only CE/EE/Computer Systems and software).
+- **Albany Engineered Composites (Rochester, NH)**: 5 runs of dead ends now; core ADP Workforce Now JS-rendering blocker unresolved. Lowest priority absent new tooling (e.g. genuine headless-browser rendering) or a different discovery channel.
+- Standing items carried forward unchanged (not touched this run, low priority): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified.
+- **Methodology note (reinforced)**: this is the second consecutive run where a freshly-briefed, carefully-instructed research agent's full set of self-described "strongest new leads" was 100% already-tracked duplicates. At this saturation level (64 runs in), independent `build.mjs` grep-by-exact-ID before any edit is not optional — it is now catching duplicates on every single run, not just some.
+- Tracker is now at 408 rows / 1118 checked entries after 64 consecutive runs. This run found zero new qualifying postings and zero closures; its only substantive output was 5 new dated exclusion entries (1 genuinely new company/posting checked and excluded, 4 re-check confirmations).
