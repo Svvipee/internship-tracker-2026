@@ -4674,3 +4674,43 @@ None this run (no new fully-verified postings).
 - **Teradyne (North Reading, MA)**: still worth watching for a Mechanical-specific Spring 2027 req now that the program exists (currently only CE/EE and software co-ops are posted for that season).
 - Standing unresolved items carried forward unchanged (no new tooling available): Siemens (Hingham, MA) NEU-eligibility (Hamza's own call, not a research item); Regeneron (Tarrytown, NY) Cloudflare-protected; iRobot (Bedford, MA) TalentBrew AJAX JS-only; Precision Castparts Corp (Mentor/Wickliffe, OH) Altcha/Cloudflare bot wall; Cognex Corporation (Natick, MA) ATS platform still unidentified, low priority.
 - Tracker is now at 409 rows / 1104 checked entries after 60 consecutive runs. Mainstream coverage remains heavily saturated; this run's only actionable new thread is the brand-new, as-yet-unverifiable Albany Engineered Composites lead.
+
+## 2026-10-16 ~01:00 UTC
+
+### Sync
+Fresh container, HEAD detached at `1242e21` (the prior 19:00 UTC run's own commit), matching `origin/master` exactly after `git fetch` — no divergence, same recurring stale-local-ref pattern as every prior entry. Checked out `master` and fast-forwarded (11 commits, no conflicts) before any edits. Ground truth going in (grep-verified directly against `build.mjs`): `rows` 409, `checked` 1104.
+
+### Searched
+Delegated this run's research to a subagent, briefed on the saturation state (60 prior runs, 409/1104) and four priorities carried over from the last entry: (1) GE Aerospace "Unison Engineering Part-time Co-op" (R5040016, Saint George, UT) — check whether it has closed (deadline was today, had "11 hours left" ~6 hours ago); (2) Albany Engineered Composites / Albany International (Rochester, NH) — try a different angle than last run's dead-end ADP/Safran fetch; (3) Teradyne (North Reading, MA) — look again for a Mechanical-specific Spring 2027 co-op; (4) GE Aerospace's `"co-op spring 2027"` full-text Workday CXS query, which has surfaced genuinely new reqs in each of the last two runs. The subagent was instructed to grep `build.mjs` itself for every req/job ID before reporting anything as new; this session reviewed its report and independently spot-checked the two candidates it flagged as new companies (Albany, Fleet Robotics) against `build.mjs` before accepting either into `checked`.
+
+**GE Aerospace R5040016**: direct Workday CXS job-detail API fetch — still **canApply:true**, "5 hours left to apply," endDate 2026-10-16. Still open as of this run; will almost certainly close before the next scheduled run. Left in `rows` unchanged — not yet a confirmed closure.
+
+**Albany Engineered Composites**: tried several new angles beyond last run's dead ends. `myjobs.adp.com/albanyjobs` confirmed to be a pure Angular SPA shell (identical markup regardless of path), and its backing `api.adp.com/jobsearch/v1/jobs` endpoint returns HTTP 401 without an app-specific token — no accessible static API exists. `albint.com/careers/internships/` is static HTML with no embedded listings, just a pointer back to the same ADP portal. A third-party mirror (`employer.circaworks.com`, 121-page board) showed zero intern/co-op postings in Rochester, NH on its first page (not paged through exhaustively given saturation-era effort budget). A VC/startup aggregator (`app.joinrunway.io`) surfaced one "Engineering Intern, Albany International Corp., Rochester, NH" listing, but it states no season/term at all anywhere — fails the explicit-season bar regardless of live status. Still unresolved; the ADP portal is now confirmed to need genuine JS rendering (Playwright), not a smarter static-fetch trick.
+
+**Teradyne**: found a working static-HTML search endpoint this run (`jobs.teradyne.com/search/?q=co-op`, SuccessFactors-based, renders without JS). Full current co-op result set (6 of 6): the same two already-excluded Spring 2027 co-ops (Quality Applications Engineering — CS/EE/Computer Systems major, not ME; Software Engineering) plus 4 unrelated full-time software reqs. No Mechanical-specific Spring 2027 co-op exists yet. Standing exclusion unchanged, but future runs can now query this endpoint directly instead of treating the site as JS-blocked.
+
+**GE Aerospace "co-op spring 2027" query**: 13 total current results, independently grep-checked against `build.mjs` one by one — all 13 already tracked in `rows` or `checked` (same set as the last two runs; the slate has not grown since the last addition).
+
+**Fresh sweep**: several candidates surfaced (Berkshire Grey, Entegris, Amazon Robotics, Formlabs, MIT Lincoln Laboratory, Xona Space Systems, Yaskawa America, GE Appliances, CESO) — all independently grep-confirmed already tracked or already excluded in `build.mjs`. One genuinely new company, **Fleet Robotics (Charlestown, MA)**, surfaced with a Mechanical Engineering Co-op listing, but it is explicitly Summer/Fall 2026 — wrong season.
+
+### Added to `rows` (0 new)
+None this run. No candidate survived primary-source verification and dedup.
+
+### Added to `checked` (1 new)
+- **Fleet Robotics (Charlestown, MA)**: new company, Mechanical Engineering Co-op is Summer/Fall 2026 — wrong season. Not added.
+
+Also appended a dated re-check note (not a new entry) to the existing Albany Engineered Composites `checked` entry, per the "Searched" section above — still unresolved, not yet excluded or added on substantive grounds.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 409. `checked` 1104 → 1105 (+1, matches the 1 new array entry above). Read the generated `.xlsx` back with the `xlsx` library: 409 data rows on the internships sheet, 1105 on the checked sheet, zero duplicate Application Links across all 409 `rows` entries (programmatic check). `.xlsx` file changed (1,241,917 → 1,243,445 bytes).
+
+### Worth re-checking next time
+- **GE Aerospace R5040016 (Saint George, UT)**: endDate is today (2026-10-16); had "5 hours left to apply" as of this run — almost certain to be closed by the next scheduled run. Check first thing next run and move to `checked` if closed.
+- **Albany Engineered Composites (Rochester, NH)**: still unresolved after two runs of attempts; the ADP Workforce Now portal now confirmed to need genuine Playwright/headless-browser rendering (a plain-token API call returns 401) — worth that specific approach if the tooling is available in a future run. Low-to-medium priority given Safran's in-discipline aerospace-composites focus, but two runs of static-fetch dead ends.
+- **Teradyne (North Reading, MA)**: `jobs.teradyne.com/search/?q=<keyword>` now confirmed to work without JS — keep using it directly in future runs rather than treating the site as blocked; still watching for a Mechanical-specific Spring 2027 req.
+- **Fleet Robotics (Charlestown, MA)**: new company, wrong-season co-op this run — worth a re-check later for a Winter 2026/Spring 2027 sibling role.
+- Standing items carried forward unchanged (not touched this run per low-priority instruction): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified.
+- Tracker is now at 409 rows / 1105 checked entries after 61 consecutive runs. This run found zero new qualifying postings; the GE Aerospace Spring 2027 slate (13 results via the "co-op spring 2027" query) has not grown in three consecutive runs, suggesting it may now be fully populated for this cycle.
