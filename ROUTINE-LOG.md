@@ -4838,3 +4838,43 @@ None this run (no new fully-verified postings).
 - Standing items carried forward unchanged (not touched this run, low priority): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified.
 - **Methodology note (reinforced)**: this is the second consecutive run where a freshly-briefed, carefully-instructed research agent's full set of self-described "strongest new leads" was 100% already-tracked duplicates. At this saturation level (64 runs in), independent `build.mjs` grep-by-exact-ID before any edit is not optional — it is now catching duplicates on every single run, not just some.
 - Tracker is now at 408 rows / 1118 checked entries after 64 consecutive runs. This run found zero new qualifying postings and zero closures; its only substantive output was 5 new dated exclusion entries (1 genuinely new company/posting checked and excluded, 4 re-check confirmations).
+
+## Run 65 — 2026-10-17 ~01:00 UTC
+
+### Sync
+Fresh container. Local checkout was detached HEAD at the latest commit's content but the `master` branch ref itself was 15 commits behind `origin/master` (same recurring stale-local-ref pattern noted in prior entries — no divergence). `git checkout master && git merge --ff-only origin/master` fast-forwarded cleanly to `995569d`. Ground truth going in (grep-verified directly against `build.mjs`): `rows` 408, `checked` 1118.
+
+### Searched
+Delegated this run's research to a subagent, briefed on the three carried-over priority leads from the last log entry (Draper Laboratory, Teradyne, Albany Engineered Composites) plus a general fresh Boston-area/national sweep, and explicitly instructed to open actual posting URLs and flag JS-walled sites rather than trust aggregator summaries.
+
+**Draper Laboratory**: the agent reported a "breakthrough" — 5 Spring 2027 co-op titles (Mechanical Engineering & System Packaging Co-Op JR003000; Materials and Chemistry Engineering Co-op JR002942; Systems Engineering Co-Op JR002882; an Optics-Physics Sensor Engineering Co-Op; an Electro-mechanical Instrument Co-op) — but could not independently fetch Draper's own JS-walled Workday page, relying instead on third-party aggregator mirrors for req IDs. Independently grepped `build.mjs`: JR003000, JR002942, and JR002882 are all already live in `rows` (added in earlier runs, upgraded to "Yes — independently fetched directly via Draper's own Workday CXS job API" status). Not a breakthrough — these are pre-existing, already-verified rows the agent re-discovered via mirrors. The Optics-Physics and Electro-mechanical titles match already-logged discipline-mismatch/already-tracked exclusions from prior sweeps (JR002884, JR002883-1).
+
+**Teradyne**: re-checked via direct fetch of the full 16-posting "Internships & Co-Ops" category page. Still only the same 2 Spring 2027 co-ops (Software Engineering job 1440172200; Quality Applications Engineering job 1436974400, CE/EE/Computer Systems major) — no Mechanical-specific US req. A "Mechanical Engineering Intern" (job 1433787000) exists but is in Science Park, Singapore — excluded on location. No change.
+
+**Albany Engineered Composites**: tried Circa Works/localjobnetwork.com (the ATS Albany International itself uses) as an alternate channel to the ADP Workforce Now wall. Found one Rochester, NH "Process Engineering Intern" posting but it's dead ("Position No Longer Available," posted ~29 months ago, no season stated) and a "Quality Engineering Intern" link returns HTTP 410 Gone. Core ADP Angular SPA blocker (needs genuine JS rendering) remains unresolved — 6th consecutive run of dead ends.
+
+**General sweep**: Anduril's two Quincy/MA-adjacent "Winter 2027" co-ops (Mechanical Engineer job 5236601007; Manufacturing Engineer job 5236589007) were independently re-verified live on Greenhouse by the agent but both are already-tracked duplicates already in `rows` (lines ~317, ~341). Formlabs Manufacturing Engineering Intern job 8161817 — already tracked (line ~1461). Entegris "Designer/Drafter Co-Op" San Luis Obispo CA via a Handshake mirror (job 11425351) — grep-confirmed to be the same already-tracked role (REQ-14428-1, lines ~2502-2508). RTX/Collins' Jamestown ND co-op example checked and confirmed closed. Blue Origin Spring 2027 posting checked and confirmed closed. MIT Lincoln Laboratory checked — only Summer 2027 SRP internships found, no Winter/Spring co-op track exists there. Hologic/Waters Corp snippets checked — ambiguous/stale (Waters reqs carry 2025 numbers; Hologic page 503'd), not reported as candidates.
+
+As the standing methodology note requires, this session independently grepped `build.mjs` for every req/job ID before accepting anything. Result: 100% of the reported candidates (Draper's 3 "new" reqs, both Anduril Greenhouse postings, Formlabs 8161817, Entegris San Luis Obispo) were already exact duplicates already live in `rows`. This is now the THIRD consecutive run where a freshly-briefed research agent's full set of "strongest new leads" turned out to be 100% pre-existing.
+
+### Added to `rows` (0 new)
+None this run. No candidate survived independent `build.mjs` grep-dedup.
+
+### Added to `checked` (4 new)
+- **Dedup-confirmed non-new batch (run 65)**: Draper's reported "new" Spring 2027 slate (JR003000, JR002942, JR002882), Anduril jobs 5236601007 and 5236589007, Formlabs job 8161817, and Entegris San Luis Obispo Designer/Drafter Co-Op (Handshake job 11425351) — all confirmed exact duplicates of existing `rows` entries by grep.
+- **Teradyne — re-check**: no change, same 2 discipline/location-mismatched Spring 2027 co-ops.
+- **Albany Engineered Composites — 6th-run re-check**: still unresolved, one dead Circa Works posting found and confirmed closed, core ADP blocker unresolved.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 408. `checked` 1118 → 1122 (+4, matches the 4 new array entries above). `.xlsx` file changed (confirmed via `git status`/diff stat).
+
+### Worth re-checking next time
+- **Draper Laboratory**: Spring 2027 cycle is confirmed live and posting (per this run's findings), but every req surfaced so far is already tracked. Keep watching for a genuinely new req ID (not JR002882/JR002942/JR003000/JR002883-1/JR002884/JR002944/JR002941/JR002688/JR002974/JR002940) as the cycle continues to open through October.
+- **Teradyne (North Reading, MA)**: still watching for a Mechanical-specific Spring 2027 US req (currently only CE/EE/Computer Systems and software, plus a Singapore-only Mechanical Engineering Intern).
+- **Albany Engineered Composites (Rochester, NH)**: 6 runs of dead ends now; core ADP Workforce Now JS-rendering blocker unresolved. Lowest priority absent genuine headless-browser rendering.
+- Standing items carried forward unchanged (not touched this run, low priority): Siemens Hingham NEU-eligibility (Hamza's own call); Regeneron Cloudflare-protected; iRobot TalentBrew AJAX JS-only; Precision Castparts Altcha/Cloudflare bot wall; Cognex Corporation ATS platform still unidentified.
+- **Methodology note (reinforced)**: third consecutive run where a freshly-briefed, carefully-instructed research agent's full set of self-described "strongest new leads" was 100% already-tracked duplicates, several resurfaced via third-party aggregator mirrors of employers' own JS-walled ATS pages (Draper Workday, in particular). Independent `build.mjs` grep-by-exact-ID before any edit remains mandatory and continues to catch 100% of reported "new" leads as duplicates at this saturation level.
+- Tracker is now at 408 rows / 1122 checked entries after 65 consecutive runs. This run found zero new qualifying postings and zero closures; its only substantive output was 4 new dated exclusion entries (1 consolidated dedup batch, 2 re-check confirmations with new detail, covering the same 3 carried-over priority leads).
