@@ -5245,3 +5245,38 @@ None this run — the one new posting (Gulfstream Flight Controls V&V) is Partia
 - **Gulfstream's new req 235984 (Flight Controls V&V)** and its 4 siblings — all 5 remain stuck at Partial after repeated runs; worth trying archive.org or a different fetch method to get a raw-HTTP cross-check and upgrade to Full.
 - Standing priority angles carried forward unchanged: **GD Electric Boat (Groton, CT)** req 601496955 (unresolved after 20+ runs), **SEW-EURODRIVE** (Partial, no first-party source found), **Amazon Robotics** (only generic company-wide language, no specific dated posting), **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
 - Tracker is now at 414 rows / 1156 checked entries after 75 consecutive runs.
+
+## 2026-10-19 ~19:03 UTC (run 76)
+
+### Sync
+Fresh container. Local checkout was detached HEAD; `git fetch origin master` showed a stale local `origin/master` ref (26 commits behind what the remote actually had — a one-time fetch resolved this, no real divergence/push failure). Confirmed `git log --oneline origin/master..HEAD` is 0 after fetching. Ground truth going in (sheet-level counts after a fresh `node build.mjs`): `rows` 414, `checked` 1156.
+
+### Searched
+Delegated this run's research to one subagent, briefed with the full exhausted-company list (75 runs' worth, unchanged) plus 3 priority angles from the prior log entry: (1) Amazon Robotics (Westborough, MA) — targeted search for a specific dated posting instead of the generic "2027 cycle" blurb; (2) Reliable Robotics Corporation (Mountain View, CA) — find their actual ATS rather than guessing URLs, since a strong-fit lead went stale; (3) a general fresh sweep for genuinely new Boston-area/national employers not yet in the exhausted list.
+
+As the standing methodology requires, every lead the agent reported was independently checked against `build.mjs` before any edit:
+- **Amazon Robotics**: the agent reported reqs 10535282 ("Hardware Development Engineer Intern/Co-Op") and 10536817 ("Industrial Development Engineer Intern/Co-op") as "new findings" — independent grep against `build.mjs` showed **both are already tracked** (added in prior runs, lines ~237 and ~2417). Not new. A third req the agent found, **10573570** ("Embedded Firmware Co-op," Amazon Robotics Firmware team), was independently re-fetched directly via WebFetch: confirmed live, Spring 2027, but requires a Computer Science/Computer Engineering/Systems Engineering/Electrical Engineering background (Software Development category) — discipline mismatch, not mechanical/hardware. Added to `checked`.
+- **Reliable Robotics**: the agent identified their real ATS as Ashby (`reliable-robotics` slug) and fetched the full live board (59 open reqs) directly via the public posting-api — zero internship/co-op postings exist, only full-time roles. This reconfirms (rather than newly resolves) the 2026-09-25 finding under the same conclusion; logged as a dated reconfirmation and downgraded from "worth re-checking" to a standing low-priority watch.
+- **General sweep**: the agent's remaining leads were independently checked — **CMTA, Inc. (via Legence)** Boston posting is byte-for-byte already in `rows` (added 2026-10-02, req 4002/jobPostingId 33378); **Locus Robotics, Reframe Systems, SKAI Technology** are all already-logged confirmed dead ends from prior runs (no new req IDs, no status change). Three genuinely new-to-the-log leads were independently assessed and found not to qualify: **WB Engineers+Consultants** (no season stated, no locatable live posting on a WB-owned domain — unverifiable), **Maglev Aero** (Boston-area stealth UAM propulsion startup, but only a thin Talent.com aggregator stub exists with no company careers page or ATS board found), and **Schaefer** (Cincinnati, OH — confirmed real/live Structural Engineer Intern/Co-op Spring 2027 via Paylocity, but wrong location and civil/architectural discipline, not aerospace/mechanical-adjacent).
+
+### Added to `rows` (0 new)
+None this run. No candidate survived independent `build.mjs` grep-dedup or the verification bar — this is now the **tenth consecutive run** where every freshly-reported "new" lead was either already tracked, a confirmed dead end, or excluded on discipline/location/season grounds.
+
+### Added to `checked` (5 new)
+- **Amazon Robotics — Embedded Firmware Co-op**, req 10573570, Spring 2027: discipline mismatch (CS/CE/SysE/EE, not mechanical/hardware).
+- **Reliable Robotics Corp (Mountain View, CA)**: dated reconfirmation of zero internship postings on their live Ashby board (59 open reqs, all full-time).
+- **WB Engineers+Consultants**: unverifiable (no season, no locatable live posting).
+- **Maglev Aero (Boston, MA)**: unverifiable (aggregator stub only, no owned careers page/ATS).
+- **Schaefer (Cincinnati, OH)**: confirmed real/live but wrong location and discipline (civil/architectural structural, not aero/mechanical-adjacent).
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 414. `checked` 1156 → 1161 (+5, matches the 5 new entries above). Read the generated `.xlsx` back with the `xlsx` library: 414 rows on the internships sheet, 1161 on the checked sheet, matching the source arrays; programmatic check confirmed zero duplicate Application Links across all 414 `rows` entries. `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Amazon Robotics (Westborough, MA)** now has 3 tracked reqs (2 in `rows`, 1 excluded for discipline) — the company clearly runs an active 2027-cycle recruiting campaign; worth a periodic check for additional mechanical/hardware-specific reqs beyond the 2 already tracked, but no urgent new angle needed every run.
+- **Reliable Robotics** — downgraded to standing low-priority watch; their Ashby board is now confirmed as the correct ATS, so a quick board check (not a URL-guessing hunt) suffices going forward.
+- Standing priority angles carried forward unchanged: **Gulfstream's 5 Partial-verified Spring 2027 Savannah GA reqs** (Cloudflare-walled, stuck at Partial), **GD Electric Boat (Groton, CT)** req 601496955 (unresolved after 20+ runs), **SEW-EURODRIVE** (Partial, no first-party source found), **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
+- Tracker is now at 414 rows / 1161 checked entries after 76 consecutive runs. Search saturation for mainstream Boston-area and national aerospace/mechanical/robotics employers remains very high; future runs may benefit from focusing more on periodic re-checks of Partial-verified/bot-walled items (Gulfstream, GD Electric Boat, SEW-EURODRIVE) and less on exhaustive new-company sweeps, which have returned zero qualifying new postings for 10 consecutive runs.
