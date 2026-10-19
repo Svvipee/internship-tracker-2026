@@ -5171,3 +5171,41 @@ Entegris (Bedford MA Mechanical Engineering Co-Op, Spring 2027), Berkshire Grey 
 - **ZOLL Medical's own careers.zoll.com embedded-JSON approach worked where guessed job IDs failed** — if other saturated/bot-walled employers (e.g. Gulfstream, GD Electric Boat) have a similar server-rendered corporate careers landing page (as opposed to only their Workday/iCIMS/Taleo ATS directly), it's worth trying the same technique: fetch the employer's own top-level careers page and grep its raw HTML for embedded job JSON before concluding a lead is unverifiable.
 - Standing priority angles carried forward unchanged: **Gulfstream's 4 Partial-verified Spring 2027 Savannah GA reqs** (Cloudflare-walled), **GD Electric Boat (Groton, CT)** req 601496955 (Cloudflare-walled, 20+ consecutive blocked attempts), **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
 - Tracker is now at 412 rows / 1146 checked entries after 73 consecutive runs.
+
+## 2026-10-19 ~06:57 UTC (run 74)
+
+### Sync
+Fresh container. Local checkout was detached HEAD, 24 commits stale relative to `origin/master` (same recurring stale-local-ref pattern noted in prior entries, no divergence). `git fetch origin master && git checkout master && git merge --ff-only origin/master` fast-forwarded cleanly to `9721937`. Ground truth going in: `rows` 412, `checked` 1148 (sheet counts confirm 412/1146 per prior run's log; a `Company:` grep count differs slightly because it also matches the word inside some `checked` Notes text — sheet-level counts are authoritative going forward).
+
+### Searched
+Delegated this run's research to one subagent, briefed with the full exhausted-company list (73 runs' worth, unchanged) plus two carried-over priority angles: (1) try to upgrade Gulfstream's 4 Partial-verified Spring 2027 Savannah GA reqs past the Cloudflare wall, reusing the technique that worked for ZOLL last run (fetch the employer's own top-level careers/jobs listing page rather than individual job-ID URLs); (2) try a new angle on GD Electric Boat (Groton, CT) req 601496955, blocked for 20+ consecutive runs.
+
+As the standing methodology requires, every lead the agent reported was independently checked against `build.mjs` before any edit:
+- **Gulfstream**: individual job-detail pages still render nav/footer only, no content (not a Cloudflare challenge screen, just no job data via direct fetch). New angle found: Gulfstream's own live search-listing endpoint (`careers.gulfstream.com/en/jobs/?search=Spring+2027`) server-renders real current req titles — confirmed the 4 tracked reqs' titles are still present among 61 live Spring 2027 results, but under a different 6-digit req-ID scheme that couldn't be conclusively matched to the tracked 10-digit IDs beyond title similarity, and the listing carries no open/closed flag. Logged as a dated reconfirmation note; the 4 `rows` entries remain Partial, unchanged.
+- **GD Electric Boat**: icims URL now returns HTTP 410 (previously only 403); gd.com URL still 403; gdeb.com/careers/ gave 503 once then a nav-only JS shell with no listings. Not a clean confirmation either way — still unresolved.
+- **General sweep**: independently verified the agent's one new-company lead — **SEW-EURODRIVE GmbH & Co KG**, "Mechanical Engineering Co-Op (Spring 2027)," Troy, OH — via direct WebFetch of the posting itself (not the agent's claim): title, company, location, $22.00/hr pay, and eligibility text (enrolled Bachelor's Engineering student, US work authorization) all confirmed live with an active Apply button. No explicit open/closed flag on the page and it's a third-party mirror (solidprofessor.com) rather an SEW-owned domain, so added as **Partial**, not full. Everything else the agent reported was independently grepped/dedup-checked and found to be either an exact duplicate under a different aggregator mirror ID (Varda's already-tracked Manufacturing Engineering Internship, job 7824767003, re-surfaced via a generalcatalyst.com mirror under ID 89263785), an already-excluded discipline mismatch (Shield AI's EE-only Spring co-op, excluded repeatedly since 2026-10-02), already-confirmed dead ends (Xona — closed; SPIROL — unverifiable on any SPIROL-owned domain, both reconfirmed in prior runs), or too thin to verify (General Astronautics — 2-person startup, search-snippet only; Amazon Robotics' generic "2027 cycle" mention with no locatable specific posting).
+
+### Added to `rows` (1 new)
+- **SEW-EURODRIVE GmbH & Co KG — Mechanical Engineering Co-Op (Spring 2027)**, Troy, OH. Partial verification (full posting text confirmed live via direct fetch, but on a third-party mirror with no explicit open/closed flag).
+
+### Added to `checked` (6 new)
+- Gulfstream Aerospace — dated note on the new live-search-listing angle for the 4 Partial reqs (titles still listed, no ID match or status upgrade).
+- GD Electric Boat (Groton, CT) — dated note on the icims URL's new 410 response; still unresolved.
+- Varda Space Industries — Manufacturing Engineering Internship re-surfaced via a generalcatalyst.com mirror (job 89263785): confirmed exact duplicate of the already-tracked job 7824767003.
+- Shield AI — Electrical Engineering Spring Co-op (Boston listed as a location option): same already-excluded EE discipline mismatch.
+- Xona Space Systems / SPIROL International — reconfirmed already-excluded dead ends (closed / unverifiable respectively), re-surfaced via stale mirrors this run.
+- General Astronautics / Amazon Robotics 2027 cycle — too thin/unverifiable this run, not added.
+
+### Staged
+None this run — the one new posting (SEW-EURODRIVE) is Partial-verified, not fully verified, so per the routine's staging rule no staged-applications file was created.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` 412 → 413 (+1), `checked` 1146 → 1152 (+6), matching the source array edits. Zero duplicate Application Links across all 413 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Gulfstream's 4 Partial-verified reqs** — still blocked on individual job-detail pages after 4 runs of attempts; the live search-listing endpoint confirms the titles are still active but can't resolve full verification. Worth trying to cross-reference the 6-digit req IDs found this run (236064, 236089, 236050, 236093) against the tracked 10-digit IDs via a Google cache or archive.org snapshot of an individual job page, since direct fetch keeps returning empty content.
+- **GD Electric Boat (Groton, CT)** req 601496955 — the icims URL's shift from 403 to 410 this run could mean something changed; worth a genuine headless-browser check next time to resolve one way or the other after 20+ blocked runs.
+- **SEW-EURODRIVE** — only Partial-verified via a third-party mirror; worth trying to find SEW-EURODRIVE's own careers domain directly next run to upgrade to full verification.
+- **Amazon Robotics (Westborough, MA)** — the generic "2027 cycle, year-round start dates" reference is exactly the kind of Boston-area match Hamza wants; worth a more targeted search for a specific Jan/Spring-2027-dated posting next run instead of the vague company-wide mention found this run.
+- Standing priority angles carried forward unchanged: **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
+- Tracker is now at 413 rows / 1152 checked entries after 74 consecutive runs.
