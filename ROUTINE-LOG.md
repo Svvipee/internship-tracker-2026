@@ -5209,3 +5209,39 @@ None this run — the one new posting (SEW-EURODRIVE) is Partial-verified, not f
 - **Amazon Robotics (Westborough, MA)** — the generic "2027 cycle, year-round start dates" reference is exactly the kind of Boston-area match Hamza wants; worth a more targeted search for a specific Jan/Spring-2027-dated posting next run instead of the vague company-wide mention found this run.
 - Standing priority angles carried forward unchanged: **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
 - Tracker is now at 413 rows / 1152 checked entries after 74 consecutive runs.
+
+## 2026-10-19 ~13:00 UTC (run 75)
+
+### Sync
+Fresh container. Local checkout was detached HEAD, 25 commits stale relative to `origin/master` (same recurring stale-local-ref pattern noted in prior entries, no divergence). `git fetch origin master && git checkout master && git merge --ff-only origin/master` fast-forwarded cleanly to `acd3733`. Ground truth going in (sheet-level counts after a fresh `node build.mjs`): `rows` 413, `checked` 1152.
+
+### Searched
+Delegated this run's research to one subagent, briefed on 4 carried-over priority angles from the prior log entry plus a general sweep: (1) Gulfstream's 4 Partial-verified Spring 2027 Savannah GA reqs — try to resolve the 6-digit req-ID mapping found last run and upgrade past the Cloudflare wall; (2) GD Electric Boat (Groton, CT) req 601496955, unresolved after 20+ runs, following up on last run's icims 403→410 shift; (3) SEW-EURODRIVE (Troy, OH) — try to find a first-party verification source to upgrade from Partial; (4) Amazon Robotics (Westborough, MA) — targeted search for a specific dated posting instead of the generic company-wide mention; (5) a general fresh sweep for new Boston-area/national postings, with the full exhausted-company list to avoid wasted re-search.
+
+As the standing methodology requires, every lead the agent reported was independently checked/re-verified by this session before any edit:
+- **Gulfstream**: the agent used WebFetch (not raw curl, which still 403s via Cloudflare) to render both the live search-listing page and the 4 tracked reqs' individual job-detail pages via their 6-digit IDs (236089, 236064, 236093, 236050), confirming each maps 1:1 to the tracked 10-digit req and showing active Apply buttons and "active until" dates. This session independently re-fetched one of these (236089) via WebFetch and got consistent results, but could not reproduce it via raw curl (still 403) and found no archive.org snapshot — so verification tier stays **Partial** (the 4 existing rows), with the corroborating detail added to each row's Notes rather than upgrading "Link Verified." The agent also surfaced a 5th, previously untracked req, **235984 "2027 Spring - IEF - Flight Controls V&V Collegiate Intern"** — this session independently re-fetched it directly via WebFetch and confirmed the title, "Must be available to work on-site in Savannah, GA during the Spring 2027 semester," 14–16 week duration, "may remain active until October 30, 2026," and an active Apply link. Controls discipline is squarely in scope — **added to `rows` as Partial** (same tier/caveats as its 4 siblings).
+- **GD Electric Boat**: no resolution. gdeb.com/careers gave a one-time 503 then a JS shell with no listings; gd.com posting still 403; req 601496955 did not resolve either way. A different GDEB icims req (17866) was found to cleanly 410 when closed, confirming the ATS does surface 410 — but didn't help resolve 601496955 itself. Logged as a dated non-change note.
+- **SEW-EURODRIVE**: no upgrade path found; still only the solidprofessor.com mirror. Logged as a dated non-change note.
+- **Amazon Robotics**: the 4 specific job IDs the agent found via search (2790719, 2830720, 2869990, 2745851) all now 404. Only the generic "2027 cycle" company-wide language remains. Logged as a dated non-change note.
+- **General sweep**: Moderna (both reqs already tracked/excluded), BMW Spartanburg controls co-op (reconfirmed already-closed), WSP USA (wrong season/domain, excluded), and Sensata/Olympus/Piaggio Fast Forward/Soft Robotics/Vecna Robotics/Brooks Automation/MACOM/Realtime Robotics (no Spring 2027/Winter 2026 postings found for any) were all dead ends already tracked or newly excluded. One live lead, **Reliable Robotics Corporation** (Mountain View, CA) Mechanical Engineering Intern — explicitly dated "Winter 2026, and Spring 2027 seasons" per a BuiltInSF mirror — turned out stale: this session independently confirmed the specific mirror URL (job 10167374) itself states "this job was removed... Jul 20, 2026," and found no live Greenhouse board (job-boards.greenhouse.io/reliablerobotics → 404) or other working ATS link; reliable.co/careers is an unreadable JS SPA. Not added — logged as unverifiable, worth a manual in-browser check next run.
+
+### Added to `rows` (1 new)
+- **Gulfstream Aerospace — "2027 Spring - IEF - Flight Controls V&V - Collegiate Intern,"** req 235984, Savannah, GA. Partial verification (WebFetch-rendered directly; raw curl on this domain still 403s via Cloudflare, so not cross-verified by a second independent HTTP method — same caveat as its 4 sibling Gulfstream Partial reqs already in `rows`).
+
+### Added to `checked` (4 new)
+- **Reliable Robotics Corporation (Mountain View, CA)** — Mechanical Engineering Intern, Winter 2026/Spring 2027: strong domain/season fit but the only specific URL found is stale (removed Jul 2026); no live ATS board located. Unverifiable, not added.
+- **Amazon Robotics (Westborough, MA)** — re-check of 4 specific job IDs, all now 404; only generic company-wide language remains. Not added.
+- **SEW-EURODRIVE GmbH & Co KG (Troy, OH)** — re-check for a first-party verification source; none found. Existing `rows` entry stays Partial, unchanged.
+- **General Dynamics Electric Boat (Groton, CT)** — re-check of req 601496955; still unresolved either way. Existing `rows` entry stays Partial, unchanged.
+
+### Staged
+None this run — the one new posting (Gulfstream Flight Controls V&V) is Partial-verified, not fully verified, so per the routine's staging rule no staged-applications file was created.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` 413 → 414 (+1), `checked` 1152 → 1156 (+4), matching the source array edits. Zero duplicate Application Links across all 414 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Reliable Robotics (Mountain View, CA)** — strong domain/season fit if a live posting can be found; next run should try a manual in-browser check of reliable.co/careers (its JS SPA doesn't expose listings via direct fetch/WebFetch) or search for its actual ATS vendor rather than guessing Greenhouse.
+- **Gulfstream's new req 235984 (Flight Controls V&V)** and its 4 siblings — all 5 remain stuck at Partial after repeated runs; worth trying archive.org or a different fetch method to get a raw-HTTP cross-check and upgrade to Full.
+- Standing priority angles carried forward unchanged: **GD Electric Boat (Groton, CT)** req 601496955 (unresolved after 20+ runs), **SEW-EURODRIVE** (Partial, no first-party source found), **Amazon Robotics** (only generic company-wide language, no specific dated posting), **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
+- Tracker is now at 414 rows / 1156 checked entries after 75 consecutive runs.

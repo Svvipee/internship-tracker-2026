@@ -3097,7 +3097,7 @@ const rows = [
     Pay: "Not stated on posting",
     "Application Link": "https://careers.gulfstream.com/job/Savannah-Spring-2027-IEF-Structures-Structural-Design-Collegiate-Associate-GA-31401/1428064500/",
     "Link Verified": "Partial — req/title confirmed to exist on Gulfstream's own careers.gulfstream.com domain via search-engine indexing (indexed 2026-09-09), same URL format as the Stress Engineering/Materials and Processes reqs verified directly above; direct fetch of this specific URL returned a Cloudflare bot-challenge (403) / content-free shell on repeated attempts this run (both WebFetch and curl), so open/closed status and full posting text could not be independently confirmed. Also mirrored at gulfstream.com/en/jobs/236089 (likewise bot-walled). Verify live in-browser before applying.",
-    Notes: "Sibling IEF Collegiate Associate req to the Stress Engineering / Materials and Processes reqs above — likely same GPA ≥3.0 / no-visa-sponsorship terms (not independently confirmed for this specific req).",
+    Notes: "Sibling IEF Collegiate Associate req to the Stress Engineering / Materials and Processes reqs above — likely same GPA ≥3.0 / no-visa-sponsorship terms (not independently confirmed for this specific req). 2026-10-19: WebFetch-rendered (not raw curl, which still 403s) of careers.gulfstream.com/en/jobs/236089/ confirms this exact req, 'may remain active until October 30, 2027.' Internally consistent but not cross-verified by a second raw-HTTP method — tier unchanged (Partial).",
   },
   {
     Company: "Gulfstream Aerospace",
@@ -3109,7 +3109,7 @@ const rows = [
     Pay: "Not stated on posting",
     "Application Link": "https://careers.gulfstream.com/job/Savannah-Spring-2027-Flight-Sciences-Propulsion-College-Intern-GA-31401/1428211200/",
     "Link Verified": "Partial — same basis as the Structures/Structural Design req above: existence confirmed via search-engine indexing (2026-09-09), direct fetch blocked by Cloudflare challenge this run. Also mirrored at gulfstream.com/en/jobs/236064. Verify live in-browser before applying.",
-    Notes: "Propulsion Analysis team per posting excerpt — engine performance modeling, cycle analysis, transient engine behavior, inlet distortion.",
+    Notes: "Propulsion Analysis team per posting excerpt — engine performance modeling, cycle analysis, transient engine behavior, inlet distortion. 2026-10-19: WebFetch-rendered (not raw curl, which still 403s) of careers.gulfstream.com/en/jobs/236064/ confirms this exact req, 'may remain active until October 30, 2027.' Tier unchanged (Partial) — not cross-verified by a second raw-HTTP method.",
   },
   {
     Company: "Gulfstream Aerospace",
@@ -3121,7 +3121,7 @@ const rows = [
     Pay: "Not stated on posting",
     "Application Link": "https://careers.gulfstream.com/job/Savannah-Spring-2027-IEF-Flight-SciencesStability-and-Control-Collegiate-Intern-GA-31401/1428239700/",
     "Link Verified": "Partial — same basis as the two reqs above: existence confirmed via search-engine indexing (2026-09-09), direct fetch blocked by Cloudflare challenge this run. Verify live in-browser before applying.",
-    Notes: "Stability/control requirements driving tail sizing and flight-control-surface design; desktop and pilot-in-the-loop simulation, flight control law design per posting excerpt.",
+    Notes: "Stability/control requirements driving tail sizing and flight-control-surface design; desktop and pilot-in-the-loop simulation, flight control law design per posting excerpt. 2026-10-19: WebFetch-rendered (not raw curl, which still 403s) of careers.gulfstream.com/en/jobs/236093/ confirms this exact req, 'may remain active until October 30, 2026.' Tier unchanged (Partial) — not cross-verified by a second raw-HTTP method.",
   },
   {
     Company: "Gulfstream Aerospace",
@@ -3133,7 +3133,19 @@ const rows = [
     Pay: "Not stated on posting",
     "Application Link": "https://careers.gulfstream.com/job/Savannah-Spring-2027-IEF-Flight-Sciences-Thermofluid-Analysis-Collegiate-Intern-GA-31401/1428243900/",
     "Link Verified": "Partial — same basis as the three reqs above: existence confirmed via search-engine indexing (2026-09-09), direct fetch blocked by Cloudflare challenge this run. Search excerpt also notes no work-visa sponsorship for this role. Verify live in-browser before applying.",
-    Notes: "Thermal-fluids analysis within the Flight Sciences group.",
+    Notes: "Thermal-fluids analysis within the Flight Sciences group. 2026-10-19: WebFetch-rendered (not raw curl, which still 403s) of careers.gulfstream.com/en/jobs/236050/ confirms this exact req, 'may remain active until October 30, 2026.' Tier unchanged (Partial) — not cross-verified by a second raw-HTTP method.",
+  },
+  {
+    Company: "Gulfstream Aerospace",
+    "Role Title": "2027 Spring - IEF - Flight Controls V&V - Collegiate Intern",
+    Discipline: "Aerospace / Controls Engineering",
+    Season: "Spring 2027",
+    Location: "Savannah, GA",
+    "Distance from Boston, MA (mi, approx.)": 900,
+    Pay: "Not stated on posting",
+    "Application Link": "https://careers.gulfstream.com/en/jobs/235984/2027-spring-ief-flight-controls-vv/",
+    "Link Verified": "Partial — new req found 2026-10-19 via Gulfstream's own search-listing endpoint and WebFetch-rendered directly: confirms title '2027 Spring - IEF - Flight Controls V&V Collegiate Intern', 'Must be available to work on-site in Savannah, GA during the Spring 2027 semester,' 14–16 week duration, 'may remain active until October 30, 2026,' and an active Apply link. Raw curl on this domain still returns a Cloudflare 403, so this could not be cross-verified by a second independent HTTP method — same caveat as the 4 sibling Gulfstream Partial reqs above. Verify live in-browser before applying.",
+    Notes: "New Gulfstream req for the tracker — sibling IEF Collegiate Intern req to the Stability and Control / Thermofluid Analysis reqs above, same application cycle. Flight-control-law verification and validation work per title. GPA/visa terms not independently confirmed for this specific req (likely GPA ≥3.0 / no-visa-sponsorship consistent with sibling reqs, not confirmed).",
   },
   {
     Company: "Pyka",
@@ -6150,6 +6162,10 @@ const checked = [
   { Company: "ZOLL Medical Corporation (Chelmsford, MA)", "Role(s) Checked": "Sustaining Mechanical Engineer Intern, req R20313", Reason: "2026-10-19 ~01:00 UTC: found via the same ZOLL careers.zoll.com embedded job-board JSON sweep that resolved the Manufacturing Engineering Co-Op lead below. On-discipline (Mechanical, Chelmsford MA on-site) but the posting states no season/term anywhere in its body (unlike the sibling Manufacturing Engineering Co-Op and Mechanical Engineering Intern reqs, which both state explicit date ranges) — fails the season-verification bar. Not added; worth re-checking if a dated version appears." },
   { Company: "ZOLL Medical Corporation (Chelmsford, MA)", "Role(s) Checked": "Biomedical Engineering Co-Op, req R20358", Reason: "2026-10-19 ~01:00 UTC: found in the same sweep. Discipline (biomedical engineering) is outside Hamza's target disciplines (mechanical/aero/manufacturing/robotics/flight systems/industrial/materials/structural/controls). Not added." },
   { Company: "ZOLL Medical Corporation (Pittsburgh, PA)", "Role(s) Checked": "Operations Engineering Co-Op - Spring/Summer, req R20411", Reason: "2026-10-19 ~01:00 UTC: found in the same sweep. Wrong location (Pittsburgh, PA, not Boston-area or otherwise prioritized) and season spans into Summer — not pursued further given the Chelmsford, MA req below already satisfies the location/season priority for this employer. Not added." },
+  { Company: "Reliable Robotics Corporation (Mountain View, CA)", "Role(s) Checked": "Mechanical Engineering Intern, explicitly dated 'Winter 2026, and Spring 2027 seasons' per a BuiltInSF mirror (job 10167374)", Reason: "2026-10-19 ~13:00 UTC (run 75): strong domain fit (automated flight systems) and explicit season match, but the only specific URL found carries its own notice: 'Sorry, this job was removed at 09:07 a.m. (PST) on Monday, Jul 20, 2026' — stale/dead. reliable.co/careers is a JS-rendered SPA that returns no listings via direct fetch/WebFetch, and no live Greenhouse (job-boards.greenhouse.io/reliablerobotics → 404) or other ATS board could be located. Not added; worth a manual in-browser check of reliable.co/careers next run." },
+  { Company: "Amazon Robotics (Westborough, MA)", "Role(s) Checked": "Specific amazon.jobs IDs surfaced by search (2790719, 2830720, 2869990, 2745851)", Reason: "2026-10-19 ~13:00 UTC (run 75): all four specific job IDs found via search now 404 (expired/removed). Only the generic company-wide '2027 cycle, year-round start dates' language remains, same as prior runs — no specific dated Winter 2026/Spring 2027 posting locatable. Not added." },
+  { Company: "SEW-EURODRIVE GmbH & Co KG (Troy, OH)", "Role(s) Checked": "Re-check of the existing Partial-verified Mechanical Engineering Co-Op (Spring 2027) row for a first-party verification source", Reason: "2026-10-19 ~13:00 UTC (run 75): searched for the posting on sew-eurodrive.com and other SEW-owned domains; still only found via the same solidprofessor.com third-party mirror as before. No upgrade path found. `rows` entry remains Partial, unchanged." },
+  { Company: "General Dynamics Electric Boat (Groton, CT)", "Role(s) Checked": "Re-check of req 601496955 (existing Partial `rows` entry)", Reason: "2026-10-19 ~13:00 UTC (run 75): gdeb.com/careers returned HTTP 503 once then a nav-only JS shell with no listings on retry; gd.com posting URL still 403; req 601496955 itself did not resolve to a 403, 410, or working page this run (status genuinely still unknown). Separately, a different GD Electric Boat icims req (17866, '2026 Fall Engineering CO-OP Trainee') was found to now return a clean HTTP 410 Gone, confirming icims reqs do surface 410 when closed — but this did not resolve 601496955 itself either way. `rows` entry remains Partial, unchanged." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
