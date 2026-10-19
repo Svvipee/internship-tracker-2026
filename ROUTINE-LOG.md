@@ -5128,3 +5128,46 @@ None this run (no new fully-verified postings).
 - Standing priority angles carried forward unchanged: **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks per the 2026-10-17 note), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
 - **Methodology note (reinforced)**: ninth consecutive run where a freshly-briefed research agent's full set of self-described "strongest/new" leads was 100% already-tracked duplicates, already-excluded postings, or unverifiable against the posting itself. Independent `build.mjs` grep-by-exact-ID remains mandatory and continues to catch every reported "new" lead at this saturation level.
 - Tracker is now at 411 rows / 1142 checked entries after 72 consecutive runs. This run found zero new qualifying postings; its only substantive output was 5 new dated exclusion/verification entries.
+
+---
+
+## 2026-10-19 ~00:53 UTC (run 73)
+
+This run picked up directly on the standing "worth re-checking next time" note from run 72: ZOLL Medical (Chelmsford, MA)'s Manufacturing Engineering Co-Op lead, which prior runs could not verify because careers.zoll.com's individual job-ID URLs (guessed IDs like r19221/r19002/r19003/r18005) all 404 directly.
+
+### What was searched
+1. **ZOLL Medical direct re-check** (priority carryover): instead of guessing job IDs, fetched ZOLL's own corporate careers landing page (careers.zoll.com) directly via curl. The page turned out to be server-rendered with the company's *entire* live job board embedded as inline JSON (including full HTML job descriptions, Workday req IDs, status, and `jobUrl`) — a different and much more useful entry point than the individual `/jobs/rXXXXX` paths the aggregator searches kept surfacing (which appear to be a stale/different index that 404s). Parsed this JSON directly with a local Python script (not trusting any WebFetch summarization) to locate every Chelmsford, MA co-op/intern req and read each one's actual season/discipline text verbatim.
+2. **General fresh sweep**: web searches for new Spring 2027/Winter 2026 Boston-area and national mechanical/aerospace/robotics postings (Entegris, Berkshire Grey, MIT Lincoln Laboratory, Draper Laboratory, Reliable Robotics, Figure, Formlabs).
+
+### Verification detail (ZOLL)
+Every Chelmsford, MA "Intern/Co-op" req currently on ZOLL's own live board was individually read from the embedded JSON:
+- **R20300 — Manufacturing Engineering Co-Op**: status "(Open)". Posting states verbatim: "Candidates must be enrolled in a degree program at the start of the Co-Op. Position Runs from January 2027 to June 2027." Pay $27.00–$28.00/hr. Bachelor's in Mechanical/Industrial/Manufacturing/Electrical/Biomedical Engineering, min 2.5 GPA, min 1 year completed, authorized to work in U.S. — **genuinely new, qualifying posting. Added to `rows`.**
+- **R20310 — Mechanical Engineering Intern**: "Position runs May 2027 through August 2027" — Summer 2027, wrong season. Added to `checked`.
+- **R20313 — Sustaining Mechanical Engineer Intern**: on-discipline and in Chelmsford, but no season/term stated anywhere in the posting body (unlike its siblings, which both state explicit dates) — fails the season bar. Added to `checked`.
+- **R20358 — Biomedical Engineering Co-Op**: discipline (biomedical) outside Hamza's target list. Added to `checked`.
+- **R20411 — Operations Engineering Co-Op - Spring/Summer**: wrong location (Pittsburgh, PA). Added to `checked`.
+
+The original xtalks.com third-party mirror's stated dates (Jan–June 2027) matched R20300 exactly, confirming it had been describing this real req all along — the prior runs' blocker was purely that they were probing the wrong URL pattern, not that the posting was unverifiable or fake.
+
+### Added to `rows` (1 new)
+- **ZOLL Medical Corporation — Manufacturing Engineering Co-Op**, Chelmsford, MA, Spring 2027 (Jan–June 2027). Fully verified via direct fetch of ZOLL's own careers.zoll.com embedded job-board JSON (req R20300, "Open").
+
+### Added to `checked` (4 new)
+- ZOLL Medical — Mechanical Engineering Intern, R20310 (wrong season, Summer 2027).
+- ZOLL Medical — Sustaining Mechanical Engineer Intern, R20313 (no season stated).
+- ZOLL Medical — Biomedical Engineering Co-Op, R20358 (wrong discipline).
+- ZOLL Medical — Operations Engineering Co-Op - Spring/Summer, R20411 (wrong location).
+
+### General sweep
+Entegris (Bedford MA Mechanical Engineering Co-Op, Spring 2027), Berkshire Grey (Spring 2027 Mechanical Engineering Co-op, Bedford MA), MIT Lincoln Laboratory (Jan–June 2026 Group 07-71 cycle — past/wrong year; the already-tracked Winter/Spring 2027 Group 07-71 req, job 1434254300, is a separate later req, unchanged), Draper Laboratory (no new reqs surfaced), Reliable Robotics, Figure, Formlabs — all re-surfaced postings already byte-for-byte tracked in `rows`/`checked` from prior runs. No new findings from this general pass; the only genuinely new addition this run came from the targeted ZOLL re-check.
+
+### Staged
+`staged-applications/zoll-medical-manufacturing-engineering-coop.md` — posting URL, deadline (none stated, rolling), eligibility (degree program enrolled, Mechanical/Industrial/Manufacturing/Electrical/Biomedical Engineering major, min 2.5 GPA, 1+ year completed, U.S. work authorization), and an application-prep checklist. Staged only — not submitted.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 411 → 412 (+1), `checked` 1142 → 1146 (+4). Read the generated `.xlsx` back with the `xlsx` library: 412 rows / 1146 checked, matching the source arrays; zero duplicate Application Links across all 412 `rows` entries. `.xlsx` file changed.
+
+### Worth re-checking next time
+- **ZOLL Medical's own careers.zoll.com embedded-JSON approach worked where guessed job IDs failed** — if other saturated/bot-walled employers (e.g. Gulfstream, GD Electric Boat) have a similar server-rendered corporate careers landing page (as opposed to only their Workday/iCIMS/Taleo ATS directly), it's worth trying the same technique: fetch the employer's own top-level careers page and grep its raw HTML for embedded job JSON before concluding a lead is unverifiable.
+- Standing priority angles carried forward unchanged: **Gulfstream's 4 Partial-verified Spring 2027 Savannah GA reqs** (Cloudflare-walled), **GD Electric Boat (Groton, CT)** req 601496955 (Cloudflare-walled, 20+ consecutive blocked attempts), **Draper Laboratory** (saturated, JS-walled), **Teradyne** (can likely drop to periodic, not every-run, checks), **GE Aerospace/RTX** (bot-walled), **Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
+- Tracker is now at 412 rows / 1146 checked entries after 73 consecutive runs.
