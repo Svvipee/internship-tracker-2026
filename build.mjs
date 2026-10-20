@@ -1283,18 +1283,6 @@ const rows = [
     Notes: "New company for the tracker (building materials manufacturer). Accepts Mechanical, Electrical, Engineering Technology, Chemical, or Industrial Engineering majors.",
   },
   {
-    Company: "Crown Equipment",
-    "Role Title": "Mechanical Engineering Co-op (Spring 2027)",
-    Discipline: "Mechanical Engineering",
-    Season: "Spring 2027",
-    Location: "Greencastle, IN",
-    "Distance from Boston, MA (mi, approx.)": 900,
-    Pay: "Not stated on posting",
-    "Application Link": "https://us-careers.crown.com/job/Greencastle-Mechanical-Engineering-Co-op-Spring-2027-IN-46135/1420491100/",
-    "Link Verified": "Yes — fetched directly, page live, 'Apply now' button present, req 146174, no closed-application message.",
-    Notes: "New company for the tracker (forklift/material handling equipment manufacturer). Mechanical design/simulation/testing for forklift and material handling equipment development.",
-  },
-  {
     Company: "Anduril Industries",
     "Role Title": "Winter 2027 EWIS Harness Engineer Co-op",
     Discipline: "Mechanical / Electrical Engineering (wire harness design)",
@@ -1305,18 +1293,6 @@ const rows = [
     "Application Link": "https://job-boards.greenhouse.io/andurilindustries/jobs/5236577007",
     "Link Verified": "Yes — fetched directly on Greenhouse, Apply button live, no closed-application message.",
     Notes: "Resolves a 'worth re-checking' item from the 2026-09-23 ~19:00 UTC run (previously found without a job ID). Same batch/site as the already-tracked Propulsion, Warhead, and Test & Evaluation Engineer Costa Mesa co-ops. Open to Mechanical or Electrical Engineering majors.",
-  },
-  {
-    Company: "Crown Equipment",
-    "Role Title": "Mechanical Engineering Intern/Co-op (Spring 2027)",
-    Discipline: "Mechanical Engineering",
-    Season: "Spring 2027",
-    Location: "Kinston, NC",
-    "Distance from Boston, MA (mi, approx.)": 700,
-    Pay: "Not stated on posting",
-    "Application Link": "https://us-careers.crown.com/job/Kinston-Mechanical-Engineering-InternCo-op-Spring-2027-NC-28504/1426309500/",
-    "Link Verified": "Yes — fetched directly, HTTP 200, title/season confirmed on page, 'Apply now' present, req 146597, no closed-application message.",
-    Notes: "New sibling req to the already-tracked Greencastle, IN req (146174) at the same company, found via a fresh sweep of Crown's own careers site.",
   },
   {
     Company: "Hermeus",
@@ -6177,6 +6153,13 @@ const checked = [
   { Company: "Anduril Industries — 'new lead' batch, run 78, all already tracked", "Role(s) Checked": "Winter 2027 Mechanical Engineer Co-op (job 5236601007), Winter 2027 Systems Engineer Co-op (job 5236599007), Winter 2027 Manufacturing Engineer Co-op (job 5236589007) — Quincy/Lexington MA; Winter 2027 Propulsion Engineer Co-op (Costa Mesa CA) and Winter 2027 Reliability Engineer Co-op (job 5257693007, Costa Mesa CA)", Reason: "2026-10-20 ~07:00 UTC: a research agent reported all 5 as candidate/strongest leads (2 of them re-confirmed live via direct WebFetch of the Quincy MA Mechanical/Systems co-ops, which this session independently re-fetched and confirmed still live/open with no closure language). Independent `build.mjs` grep-by-exact-job-ID showed every one of the 5 is already byte-for-byte in `rows` (added in prior runs). Also checked a 6th agent-reported lead, 'Winter 2027 Naval Architect Co-op' at a guessed job ID (5170844007) — that ID does not resolve to a real posting; WebFetch redirects it to Anduril's generic open-roles page (HTTP 302, no matching job). Not a real/locatable posting; not added. This is now the TWELFTH consecutive run where no newly-reported lead survived independent verification as a genuinely new, qualifying posting. None added to `rows`." },
   { Company: "Boston Dynamics (Waltham, MA) / Vicor (Andover, MA) / Relativity Space / Commonwealth Fusion Systems (Devens, MA) — standing dead ends reconfirmed, run 78", "Role(s) Checked": "Boston Dynamics reqs R2536/R2534/R2496/R2476 (stale aggregator mirrors); Vicor general internship search; Relativity Space Spring 2027 postings; CFS 'Intern - Industrial Engineer, Spring or Summer 2027' / 'Intern - Manufacturing Engineer, Spring or Summer 2027'", Reason: "2026-10-20 ~07:00 UTC: all re-surfaced by this run's research agent and independently checked against `build.mjs` / prior log entries — Boston Dynamics' R2496 was definitively resolved closed on 2026-10-16 (zero live intern/co-op reqs company-wide, confirmed via the official Workday CXS API) and R2476/R2534/R2536 were previously confirmed stale/closed as well, no change; Vicor has never had a dedicated intern/co-op title in 78 runs of checking, no change; Relativity Space's internship program remains LA-metro (Long Beach)/Summer-2027-cycle only, no Spring 2027 posting found again, no change; CFS's two Lever postings are the same already-excluded merged 'Spring or Summer 2027' term (fails the season-stated bar, same as the 2026-10-13 finding) — re-fetched and reconfirmed unchanged, still no Spring-only date range in the body. No new information; no `rows` changes." },
   { Company: "General Dynamics Electric Boat (Groton, CT) — moot priority angle note, run 78", "Role(s) Checked": "req 601496955 (jobs.buildsubmarines.com, still Cloudflare-walled after 20+ runs)", Reason: "2026-10-20 ~07:00 UTC: re-confirmed this specific req/URL remains unresolved via its own icims-style portal. However, this is the SAME role already fully tracked in `rows` (line ~286, '2027 Spring Engineering CO-OP Trainee') via a working gd.com-hosted mirror link, upgraded to fully verified ('Yes') on 2026-09-24. Hamza already has a working application link for this opportunity — continuing to spend research-agent effort trying to crack the Cloudflare-walled original URL is no longer useful. Dropping this from the 'worth re-checking' priority list going forward." },
+  { Company: "Crown Equipment — Greencastle, IN (req 146174)", "Role(s) Checked": "Mechanical Engineering Co-op (Spring 2027), previously in `rows`", Reason: "2026-10-20 ~12:50 UTC (run 79): re-verified by direct fetch of the tracked job-detail URL — page now reads 'Sorry, this position has been filled.' No Apply button present. MOVED from `rows` to `checked`. Staged application notes updated with a closure notice; DO NOT apply." },
+  { Company: "Crown Equipment — Kinston, NC (req 146597)", "Role(s) Checked": "Mechanical Engineering Intern/Co-op (Spring 2027), previously in `rows`", Reason: "2026-10-20 ~12:50 UTC (run 79): re-verified by direct fetch of the tracked job-detail URL — page now reads 'Sorry, this position has been filled.' No Apply button present. MOVED from `rows` to `checked`. Staged application notes updated with a closure notice; DO NOT apply." },
+  { Company: "Crown Equipment — New Bremen, OH (5 reqs, new company reqs surfaced this run, all already filled)", "Role(s) Checked": "Mechanical Engineering Co-op – Spring 2027 (job 1408114200); Packaging Engineering Co-Op – Spring 2027 (job 1410214400); Manufacturing Engineering Co-Op – Spring 2027 (job 1408110900); Digital Advanced Manufacturing Engineering Co-Op – Spring 2027 (job 1410215000); Mechanical Engineering Co-op – Spring 2027, Greencastle IN sibling (job 1420491100, duplicate of the already-tracked req 146174)", Reason: "2026-10-20 ~12:50 UTC (run 79): a research agent surfaced these via us-careers.crown.com search. Independently re-fetched each New Bremen, OH job-detail page directly — all five read 'Sorry, this position has been filled.' Exact season/discipline match (named 'Spring 2027' in the title) confirms Crown runs this naming pattern across multiple sites, but every current instance of it is now closed. Not added. A separate open 'Mechanical Engineering Co-op – Summer 2027' req at New Bremen was also found but is out of scope (wrong season)." },
+  { Company: "MIT Lincoln Laboratory — Group 07-71 Mechanical Engineering Co-Op (Winter/Spring 2027), req 43350", "Role(s) Checked": "Re-verification of the existing `rows` entry (job 1434254300)", Reason: "2026-10-20 ~12:50 UTC (run 79): a research agent re-surfaced this exact req as a 'new' lead (it independently located the search-results listing and job-detail page). Grep against `build.mjs` confirmed it is already in `rows` (added 2026-09-29). Independently re-fetched the job-detail page directly: still live, 'Apply now' button present twice, posted 2026-09-28, no closure language — no status change, already tracked." },
+  { Company: "VulcanForms (Devens, MA)", "Role(s) Checked": "Full re-sweep of VulcanForms' real ATS (Rippling, ats.rippling.com/vulcanforms/jobs), 20 current open postings", Reason: "2026-10-20 ~12:50 UTC (run 79): re-confirms the 2026-09-29 finding — zero internship/co-op postings currently open (all 20 listed reqs are full-time Engineering/Commercial roles, including several Engineering Technician shift roles). No change; still worth a periodic re-check given the strong Boston-area/MIT-spinout fit if a co-op program opens." },
+  { Company: "Watts Water Technologies (North Andover, MA) — distinct from the already-tracked Intern-External board", "Role(s) Checked": "watts.com/careers/students-graduates; a third-party (Berkeley Handshake) mirror of a 'Research and Technology Co-Op' listing", Reason: "2026-10-20 ~12:50 UTC (run 79): both URLs 404'd on direct fetch. The company's actual live Intern-External Workday board (4 Jan–Jun 2027 co-ops) remains the correct, already-tracked source in `rows` since 2026-10-06 — these alternate URLs add nothing new. No change." },
+  { Company: "Markforged (Waltham, MA) / Desktop Metal (Burlington, MA)", "Role(s) Checked": "General web search for a 2027 mechanical engineering intern/co-op", Reason: "2026-10-20 ~12:50 UTC (run 79): re-confirms prior findings — Markforged's current openings (per aggregator snapshot) are all full-time (Senior Application Engineer, Senior Buyer, Senior Materials Process Engineer, etc.), no co-op/intern titles. Desktop Metal's own careers page lists only two current openings (Process Engineer – Burlington, MA; Sr. Mechanical Engineer – North Huntingdon, PA), neither an intern/co-op. No change." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];

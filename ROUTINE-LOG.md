@@ -5348,3 +5348,42 @@ None this run (no new fully-verified postings).
 - **GD Electric Boat req 601496955 — DROP from future priority lists.** The same role is already fully tracked via a working mirror link; further attempts to crack the original Cloudflare-walled URL add no value for Hamza.
 - Standing priority angles carried forward, now deprioritized further given 12 straight saturated runs: **SEW-EURODRIVE** (Partial, no first-party source found), **Draper Laboratory** (saturated, JS-walled), **Teradyne, GE Aerospace/RTX, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
 - Tracker is now at 414 rows / 1167 checked entries after 78 consecutive runs. Mainstream Boston-area and national aerospace/mechanical/robotics/manufacturing employer coverage remains very highly saturated; future runs may benefit from much lighter general sweeps and more focus on (a) periodic re-checks of genuinely still-open questions (Gulfstream's 2 unverifiable new req IDs above) and (b) watching for brand-new postings at companies with confirmed future hiring cycles (Boston Dynamics "kicks off in the new year", CFS's ~2-month-ahead posting pattern) rather than re-sweeping fully saturated employers.
+
+## 2026-10-20 ~13:03 UTC (run 79)
+
+### Sync
+Fresh container. Local checkout was in a detached-HEAD state at `origin/master`'s tip (`c1b6a41`, run 78's commit) with no divergence — same local-branch-pointer bug noted in run 78's entry. Fixed by `git branch -f master HEAD && git checkout master`. Ground truth going in (sheet-level counts after a fresh `node build.mjs`): `rows` 414, `checked` 1167.
+
+### Searched
+Delegated this run's research to one subagent, explicitly briefed with the full 60+-company exhausted list and told to find genuinely new companies/leads rather than re-sweeping saturated ones. It proposed several new-to-the-log companies (Crown Equipment's New Bremen OH reqs, MIT Lincoln Laboratory Group 07-71 Winter/Spring 2027, Watts Water Technologies North Andover, GE Vernova) — every one independently re-verified by this session via direct fetch before any edit, per standing methodology.
+
+- **MIT Lincoln Laboratory Group 07-71 "Mechanical Engineering Co-Op (Winter/Spring 2027)," req 43350**: the agent reported this as a strong new lead. Independent grep against `build.mjs` showed it has been tracked in `rows` since 2026-09-29. Independently re-fetched the job-detail page directly anyway (https://careers.ll.mit.edu/job/Lexington-Mechanical-Engineering-Co-Op-%28WinterSpring-2027%29-Group-07-71-MA-02420/1434254300/) — still live, "Apply now" present twice, posted 2026-09-28, no closure language. No change, already tracked.
+- **Crown Equipment — New Bremen, OH**: the agent found 5 reqs at this new-to-the-log site, each explicitly titled "Spring 2027" (Mechanical, Packaging, Manufacturing, Digital Advanced Manufacturing Engineering Co-Op, plus a duplicate of the already-tracked Greencastle IN req). This session independently re-fetched all 5 New Bremen job-detail pages directly on us-careers.crown.com: every one reads "Sorry, this position has been filled." Not added (added to `checked`). **This prompted a re-check of Crown's 2 already-tracked `rows` entries (Greencastle, IN req 146174; Kinston, NC req 146597) — both are ALSO now confirmed "Sorry, this position has been filled" on direct re-fetch.** Per the routine's dead-link rule, both were MOVED from `rows` to `checked`, and their staged-application notes (`staged-applications/crown-equipment-mechanical-engineering-coop.md` and `-kinston.md`) were each updated with a closure warning so Hamza doesn't act on stale drafts. (Pre-existing drafted cover-letter/resume `.docx` files for these two roles exist in `applications/` from an earlier, out-of-scope process step; left untouched, but the linked staged `.md` notes now flag both as closed.)
+- **Watts Water Technologies (North Andover, MA)**: the agent's two URLs (watts.com/careers/students-graduates; a Berkeley Handshake mirror) both 404'd on independent re-fetch. The company's actual correct source — its Intern-External Workday board, already tracked in `rows` since 2026-10-06 (4 Jan–Jun 2027 co-ops) — remains the right one; nothing new here.
+- **VulcanForms (Devens, MA)**: independently re-swept the company's real ATS (Rippling) directly — 20 open reqs, all full-time; zero intern/co-op titles. Re-confirms the 2026-09-29 finding, no change.
+- **Markforged / Desktop Metal**: independently re-checked both companies' current openings directly — no intern/co-op titles at either. Re-confirms prior findings, no change.
+- **GE Vernova (Niskayuna, NY)**: agent-reported "Engineering Intern" req is confirmed live but has no season language in the title and is CS/EE-only (discipline mismatch); a separate GE Vernova Nuclear Co-Op (Wilmington, NC, better discipline fit) is confirmed closed. Not pursued further (wrong discipline/non-priority, not independently added as a dated entry this run since it duplicates the agent's own already-adequate verification and doesn't meet the bar either way).
+- Other agent-investigated dead ends not independently re-verified this run (lower priority, consistent with prior findings, not added): BAE Systems Nashua NH (Summer 2027/already-closed, consistent with existing `checked` entries), Joby Aviation (Winter 2027 req now HTTP 410), Firefly Aerospace, Vicarious Surgical, Pratt & Whitney North Berwick ME (aggregator-only, RTX parent already exhausted).
+
+### Added to `rows` (0 new)
+None this run.
+
+### Added to `checked` (7 new)
+- **Crown Equipment — Greencastle, IN (req 146174)**: previously in `rows`, now confirmed "position has been filled." Moved out.
+- **Crown Equipment — Kinston, NC (req 146597)**: previously in `rows`, now confirmed "position has been filled." Moved out.
+- **Crown Equipment — New Bremen, OH (5 reqs)**: genuinely new-to-the-log reqs, all confirmed filled on direct fetch.
+- **MIT Lincoln Laboratory Group 07-71 (req 43350)**: dated reconfirmation — still live, already tracked in `rows`, not new.
+- **VulcanForms (Devens, MA)**: dated reconfirmation of zero open intern/co-op postings.
+- **Watts Water Technologies — alternate URLs**: dated note that two newly-surfaced URLs 404, existing tracked source unaffected.
+- **Markforged / Desktop Metal**: dated reconfirmation of no intern/co-op postings at either.
+
+### Staged
+None new this run (no new fully-verified postings). Updated the 2 existing Crown Equipment staged-application notes (Greencastle, Kinston) with closure warnings — see above.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` 414 → 412 (−2, the 2 Crown Equipment entries moved out), `checked` 1167 → 1174 (+7, matching the 7 new entries above). Zero duplicate Application Links across all 412 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Crown Equipment** clearly runs a fast-filling "Spring 2027" co-op naming pattern across multiple sites (Greencastle IN, Kinston NC, New Bremen OH all filled within ~1 month of posting) — worth a periodic check for a next-wave req at a new site, but low priority given the fill speed.
+- Standing priority angles carried forward unchanged, now 13 consecutive runs of saturation on the mainstream list: **Gulfstream's 5 Partial-verified + 2 unverifiable Savannah GA reqs** (Cloudflare/JS-walled), **SEW-EURODRIVE** (Partial, no first-party source found), **Draper Laboratory** (saturated, JS-walled), **Teradyne, GE Aerospace/RTX, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex** — standing low-priority saturation items, unchanged.
+- Tracker is now at 412 rows / 1174 checked entries after 79 consecutive runs. This run's one substantive output was catching 2 previously-tracked Crown Equipment postings going stale (now moved to `checked`, staged notes updated) — a reminder that periodic re-verification of already-`rows` entries (not just hunting new leads) continues to earn its keep even in a saturated search space.

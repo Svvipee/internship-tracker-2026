@@ -1,5 +1,7 @@
 # Crown Equipment — Mechanical Engineering Intern/Co-op (Spring 2027, Kinston NC)
 
+> **⚠️ CLOSED as of 2026-10-20:** Re-verified by direct fetch — page now reads "Sorry, this position has been filled." No Apply button present. Moved from `rows` to `checked` in build.mjs. Do not submit this application.
+
 - **Posting URL:** https://us-careers.crown.com/job/Kinston-Mechanical-Engineering-InternCo-op-Spring-2027-NC-28504/1426309500/
 - **Location:** Kinston, NC (req 146597)
 - **Term:** Spring 2027

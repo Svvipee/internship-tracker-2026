@@ -1,5 +1,7 @@
 # Crown Equipment — Mechanical Engineering Co-op (Spring 2027)
 
+> **⚠️ CLOSED as of 2026-10-20:** Re-verified by direct fetch — page now reads "Sorry, this position has been filled." No Apply button present. Moved from `rows` to `checked` in build.mjs. Do not submit this application.
+
 - **Posting URL:** https://us-careers.crown.com/job/Greencastle-Mechanical-Engineering-Co-op-Spring-2027-IN-46135/1420491100/
 - **Location:** Greencastle, IN
 - **Term:** Spring 2027 (exact dates not stated on posting)
