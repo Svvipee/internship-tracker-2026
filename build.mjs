@@ -5,30 +5,6 @@ import fs from "fs";
 // for quick sorting/reference only — not driving distance.
 const rows = [
   {
-    Company: "ASM (ASM International)",
-    "Role Title": "Manufacturing Engineering Intern",
-    Discipline: "Manufacturing Engineering",
-    Season: "Spring 2027 (Jan/Feb–Apr/May)",
-    Location: "Greater Phoenix, AZ",
-    "Distance from Boston, MA (mi, approx.)": 2300,
-    Pay: "Not stated on posting",
-    "Application Link": "https://www.asm.com/open-vacancies/manufacturing-engineering-intern-spring-2027-4830098101?gh_jid=4830098101",
-    "Link Verified": "Yes — fetched directly, page live, Apply button present",
-    Notes: "12 weeks, full-time, on-site. Enrolled full-time student required.",
-  },
-  {
-    Company: "ASM (ASM International)",
-    "Role Title": "Mechanical Engineering Intern",
-    Discipline: "Mechanical Engineering",
-    Season: "Spring 2027 (Jan/Feb–Apr/May)",
-    Location: "Greater Phoenix, AZ",
-    "Distance from Boston, MA (mi, approx.)": 2300,
-    Pay: "Not stated on posting",
-    "Application Link": "https://www.asm.com/open-vacancies/mechanical-engineering-intern-spring-2027-4830929101?gh_jid=4830929101",
-    "Link Verified": "Yes — fetched directly, page live, Apply button present",
-    Notes: "12 weeks, full-time, on-site. Enrolled full-time student required.",
-  },
-  {
     Company: "Varda Space Industries",
     "Role Title": "Manufacturing Engineering Internship",
     Discipline: "Manufacturing Engineering",
@@ -6188,6 +6164,7 @@ const checked = [
   { Company: "VulcanForms (Devens, MA)", "Role(s) Checked": "Full re-sweep of VulcanForms' real ATS (Rippling, ats.rippling.com/vulcanforms/jobs), 20 current open postings", Reason: "2026-10-20 ~12:50 UTC (run 79): re-confirms the 2026-09-29 finding — zero internship/co-op postings currently open (all 20 listed reqs are full-time Engineering/Commercial roles, including several Engineering Technician shift roles). No change; still worth a periodic re-check given the strong Boston-area/MIT-spinout fit if a co-op program opens." },
   { Company: "Watts Water Technologies (North Andover, MA) — distinct from the already-tracked Intern-External board", "Role(s) Checked": "watts.com/careers/students-graduates; a third-party (Berkeley Handshake) mirror of a 'Research and Technology Co-Op' listing", Reason: "2026-10-20 ~12:50 UTC (run 79): both URLs 404'd on direct fetch. The company's actual live Intern-External Workday board (4 Jan–Jun 2027 co-ops) remains the correct, already-tracked source in `rows` since 2026-10-06 — these alternate URLs add nothing new. No change." },
   { Company: "Markforged (Waltham, MA) / Desktop Metal (Burlington, MA)", "Role(s) Checked": "General web search for a 2027 mechanical engineering intern/co-op", Reason: "2026-10-20 ~12:50 UTC (run 79): re-confirms prior findings — Markforged's current openings (per aggregator snapshot) are all full-time (Senior Application Engineer, Senior Buyer, Senior Materials Process Engineer, etc.), no co-op/intern titles. Desktop Metal's own careers page lists only two current openings (Process Engineer – Burlington, MA; Sr. Mechanical Engineer – North Huntingdon, PA), neither an intern/co-op. No change." },
+  { Company: "ASM (ASM International) — Greater Phoenix, AZ", "Role(s) Checked": "Manufacturing Engineering Intern (job 4830098101) and Mechanical Engineering Intern (job 4830929101), Spring 2027 — previously in `rows`", Reason: "2026-10-21 ~13:00 UTC (run 83): both tracked Application Link URLs confirmed HTTP 404 on direct re-fetch (run 82 had already flagged this as inconclusive). This run additionally searched ASM's own live open-vacancies board directly for \"intern\"/\"co-op\" titles and for the Greater Phoenix, AZ location — zero intern/co-op postings of any kind currently appear anywhere on the board (only full-time roles and unrelated China graduate-program listings). No rotated/replacement job ID found. MOVED from `rows` to `checked` as closed. No staged-applications note existed for either (never fully verified as a fresh add after the prior inconclusive flag), so none needed updating." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
