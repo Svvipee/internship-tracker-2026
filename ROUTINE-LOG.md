@@ -5547,4 +5547,39 @@ None this run.
 ### Worth re-checking next time
 - Standing priority angles carried forward unchanged, now 18 consecutive runs of saturation on the mainstream list: **Gulfstream's 5 Partial-verified + 1 unverifiable (URL-confirmed) Savannah GA reqs**, **J&J/Abiomed R-100650** (still worth a periodic re-check for updated season language), **Draper Laboratory**, **GE Aerospace**, **MIT Lincoln Laboratory**, **Teradyne, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, Axcelis, SEW-EURODRIVE** — standing low-priority saturation items, unchanged.
 - **Methodology note (reinforced again this run)**: a research agent's self-rated "cleanest new finds" (the 2 Buro Happold reqs, fetched directly with high confidence) were, without exception, already in `build.mjs`. The condensed exhausted-company-list summary continues to understate true coverage even for agents explicitly briefed with it — direct grep-by-exact-job-ID remains the only reliable dedup check at this log size.
+
+## 2026-10-21 ~19:00 UTC (run 84)
+
+### Sync
+Fresh container. Local checkout was detached HEAD at `origin/master`'s tip (`2b6ce03`, run 83's final commit); `git checkout master && git merge --ff-only 2b6ce03` landed cleanly (no divergence, same recurring stale-local-ref pattern as prior runs — local `master` was 5 commits behind). Ground truth going in (sheet-level counts after a fresh `node build.mjs`): `rows` 411, `checked` 1192, matching run 83's log entry exactly.
+
+### Searched
+Dispatched one research agent with: (1) the standing priority re-check angles — J&J/Abiomed R-100650 (Danvers, MA, for updated season language), GE Aerospace Lynn MA (new reqs on GE's own domain), Draper Laboratory (new Winter 2026/Spring 2027 postings), MIT Lincoln Laboratory (new reqs beyond req 43350) — and (2) a light secondary sweep for smaller/lesser-known companies not on the ~80-company exhausted list, briefed explicitly with that list to avoid re-treading saturated ground. Per standing methodology, every lead the agent reported was independently checked against `build.mjs` (via grep) and, where feasible, independently re-fetched directly by this session before any edit:
+
+- **J&J/Abiomed R-100650**: agent re-fetched careers.jnj.com directly — no change, same two conflicting close dates (Oct 30 2026 vs 6/25/2027), still no explicit season/program-dates language anywhere in the body. Not added.
+- **GE Aerospace (Lynn, MA)**: agent could not render GE's own JS-based career search tool; cross-checked aggregators instead — found only wrong-season/wrong-category leads (Fall 2027 Engines Engineering Co-op; a 2-year full-time Manufacturing Engineering Development Program starting June 2027; an Ohio-only Spring 2027 Systems Engineering Co-op). No new Lynn-area Winter 2026/Spring 2027 engineering co-op found beyond the already-tracked CNC Programmer Co-op (req R5033208-1).
+- **MIT Lincoln Laboratory**: agent re-fetched the Group 07-71 Mechanical Engineering Co-Op page (req 43350) directly — same already-tracked req, no new Winter/Spring 2027 posting found (only a wrong-season Fall 2026 "Rapid Prototyping Aero/Mech Co-Op, Group 77").
+- **Draper Laboratory**: agent flagged "Computational Fluid Dynamics Co-Op" (iCIMS job 8018) and "Metrology Co-Op" as possibly-new, unable to open the source iCIMS pages directly (404s) and relying on aggregator snippets. This session independently grepped `build.mjs`: both are already extensively logged in `checked` since 2026-10-07/10-12/10-17 — iCIMS job-detail pages are a known JS-rendering dead end on plain fetch, and aggregator mirrors already confirmed "Metrology Co-Op" as Fall-2026-dated and inactive. Independently re-attempted a direct fetch of job 8018 this run anyway — still 404. No status change; not added.
+- **Field AI (Boston, MA)**: agent called "Mechanical Engineer, Robotics Hardware Intern" (Lever id `5ae428f8-...`) a "genuinely new company to the tracker" with role/pay/location confirmed but season unconfirmed. Independent grep showed this is the EXACT SAME posting already excluded three times (2026-10-11, 10-14, 10-18) for stating no season/term anywhere in its body. Not new; re-confirmed unchanged.
+- **QuEra Computing, Via Separations, Alaka'i Technologies**: all three secondary-sweep "new company" candidates the agent surfaced were independently grepped and found already checked/excluded (QuEra and Alaka'i since 2026-10-08/10-11, Fall-2026-only; Via Separations since 2026-10-06/07, currently zero co-op/intern listings).
+
+Net result: every lead the agent reported, across both the priority re-checks and the secondary sweep, was either unchanged from a prior finding or a pre-existing duplicate. Zero genuinely new information surfaced this run.
+
+### Added to `rows` (0 new)
+None this run.
+
+### Added to `checked` (2 new)
+- **Johnson & Johnson / Abiomed — R-100650 re-check**: dated reconfirmation, no change.
+- **Dedup-confirmed non-new batch (run 84)**: GE Aerospace Lynn, MIT Lincoln Lab, Draper's CFD/Metrology Co-Ops, Field AI's Mechanical Engineer Robotics Hardware Intern, QuEra Computing, Via Separations, Alaka'i Technologies — all already tracked/excluded from prior runs.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` unchanged at 411, `checked` 1192 → 1194 (+2, matching the 2 new entries above). Zero duplicate Application Links across all 411 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- Standing priority angles carried forward unchanged, now 19 consecutive runs of saturation on the mainstream list: **Gulfstream's 5 Partial-verified + 1 unverifiable (URL-confirmed) Savannah GA reqs**, **J&J/Abiomed R-100650** (still worth a periodic re-check for updated season language), **Draper Laboratory** (CFD/Metrology Co-Ops remain unverifiable without JS-capable/headless-browser tooling — plain WebFetch cannot render the iCIMS portal), **GE Aerospace**, **MIT Lincoln Laboratory**, **Teradyne, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, Axcelis, SEW-EURODRIVE** — standing low-priority saturation items, unchanged.
+- **Methodology note (reinforced again this run)**: a research agent's single self-described "genuinely new company" (Field AI) and two "worth a direct inquiry" leads (Draper's CFD/Metrology Co-Ops) were, without exception, already in `build.mjs` — in Field AI's case, the identical posting had already been excluded three separate times since 2026-10-11. The condensed exhausted-company-list summary continues to understate true coverage; direct grep-by-exact-job-ID/posting-id remains the only reliable dedup check at this log size.
+- Tracker is now at 411 rows / 1194 checked entries after 84 consecutive runs. The research agent's own assessment this run (consistent with runs 81-83): the Winter 2026/Spring 2027 posting wave remains thin industry-wide as of 2026-10-21; a lighter-touch cadence focused on standing re-check angles rather than broad new-company hunting continues to be the better use of each run's effort until that wave opens up.
 - Tracker is now at 411 rows / 1192 checked entries after 83 consecutive runs. This run's one substantive output was catching ASM International's two previously-tracked Phoenix AZ reqs going fully stale (confirmed closed, moved to `checked`); the broader new-company sweep found nothing that survived independent verification.
