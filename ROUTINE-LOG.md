@@ -5862,3 +5862,41 @@ None this run (no new fully-verified postings).
 - **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
 - Standing priority angles carried forward, now 26 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE** — standing low-priority saturation items, unchanged.
 - Tracker is now at 411 rows / 1211 checked entries after 90 consecutive runs (this is run 91). No new qualifying posting survived verification this run — the fifth run out of the last six with no new find, continuing the deepening-saturation pattern of the mainstream Boston-area/aerospace employer watch-list as of 2026-10-23.
+
+## 2026-10-23 ~18:58 UTC (run 92)
+
+### Sync
+Fresh container. `npm install xlsx --no-save && node build.mjs` printed `done`; read back with the `xlsx` library: `rows` 411, `checked` 1211, matching run 91's log exactly. No divergence.
+
+### Searched
+Dispatched one research agent with a general national sweep, explicitly steered away from the exhausted mainstream watch-list (GE Aerospace, Draper, MIT Lincoln Lab, RTX family, Lockheed/Sikorsky, Textron, GD Electric Boat, Boeing, Northrop Grumman, L3Harris, Leidos, BAE, Anduril, Blue Origin, Teradyne, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Axcelis, Gulfstream, J&J/Abiomed, Berkshire Grey, Amazon Robotics, Symbotic, Applied Materials, Formlabs, Locus Robotics, Specter Aerospace, Steffes, Field AI, Astranis, Aalo Atomics, 1X Technologies, Apex, ASM, Sanofi, CMTA/Legence, Boston Dynamics) and toward smaller/newer Boston-area hardware, robotics, defense, and deep-tech companies not yet checked. Every lead was independently re-verified by this session directly against the primary source before any edit, per standing methodology.
+
+- **Commonwealth Fusion Systems (Devens, MA)** — genuinely new company for the tracker. The agent found its live Lever board; this session independently fetched all 4 of its "Spring"-labeled internship postings directly. Confirmed open with clear season/discipline fit: **Mechanical Equipment Engineer – Spring 2027**, **Manufacturing Engineer – Spring or Summer 2027**, and **Industrial Engineer – Spring or Summer 2027** (all Devens, MA, 13–26 week internships, $25–$38/hr by school level) — all three ADDED to `rows`. A fourth Spring 2027 CFS posting, **Assembly Technical Project Manager**, and company-wide 7 other CFS internships (AI & Infrastructure Engineer, Health Physics, and 5 Summer-2027-only roles at Devens/Milpitas) were independently checked and excluded — see dedicated `checked` entry. The two "Spring or Summer 2027" titles are included under the tracker's existing precedent for distinctly-dated dual-season postings (Tesla, Varda) — Spring 2027 is an explicitly named option, not a merged ambiguous term.
+- **Markforged** (Waltham/Billerica, MA) — independently re-fetched its own Greenhouse board directly: 4 full-time postings, zero internships. Excluded, logged in `checked`.
+- **BETA Technologies** (Burlington, VT) — independently fetched beta.team/careers/: only a "Summer 2027" internship program referenced, no Spring 2027/Winter 2026 option. Wrong season (and outside the Boston-area preference). Excluded, logged in `checked`.
+- **Form Energy, Sublime Systems, Boston Metal, Hologic, Re:Build Manufacturing, Analog Devices, Vicor, Brooks Automation, Analogic** — agent reported no current qualifying posting at any of these, but this session's own direct re-checks were inconclusive for most (JS-rendered pages, a non-filtering search parameter at Hologic) rather than clean confirmations — logged as an honestly-labeled "agent-reported-only/inconclusive" batch in `checked`, not hard exclusions. Worth direct re-checks next run, especially Hologic's internship-specific URL and a JS-capable fetch of Form Energy's careers page.
+
+### Added to `rows` (3 new)
+- Commonwealth Fusion Systems — Intern, Mechanical Equipment Engineer, Spring 2027 (Devens, MA).
+- Commonwealth Fusion Systems — Intern, Manufacturing Engineer, Spring or Summer 2027 (Devens, MA).
+- Commonwealth Fusion Systems — Intern, Industrial Engineer, Spring or Summer 2027 (Devens, MA).
+
+### Added to `checked` (4 new)
+- Commonwealth Fusion Systems sibling-internship exclusions (8 postings: 3 discipline-mismatch, 5 wrong-season).
+- Markforged — zero internships on its own Greenhouse board.
+- BETA Technologies — Summer 2027 internship program only, wrong season.
+- Dedup/inconclusive batch — Form Energy, Sublime Systems, Boston Metal, Hologic, Re:Build Manufacturing, Analog Devices, Vicor, Brooks Automation, Analogic (agent-reported, not independently confirmed to the full bar).
+
+### Staged
+3 new `staged-applications/` files, one per newly-added Commonwealth Fusion Systems posting (mechanical-equipment-engineer, manufacturing-engineer, industrial-engineer), each with posting URL, eligibility (enrollment/work-authorization/export-control, no stated GPA or deadline), pay band, and an application-form checklist. Draft-only, nothing submitted.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read back with the `xlsx` library: `rows` 411 → 414 (+3), `checked` 1211 → 1215 (+4). Zero duplicate Application Links across all 414 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Hologic** (Marlborough, MA) — careers.hologic.com's `?q=intern` search parameter does not appear to filter server-side; worth finding its proper internship-specific URL or ATS API directly rather than relying on the generic search box.
+- **Form Energy** (Somerville, MA) — careers page is JS-rendered and returned empty to a direct fetch; worth a JS-capable fetch/headless-browser check given it's a Boston-area battery-manufacturing company that fits Hamza's disciplines well if it has a current posting.
+- **Commonwealth Fusion Systems** — now a tracked company; worth a periodic re-check for new reqs given CFS's large and apparently fast-moving internship board (11 current internship postings company-wide as of this run).
+- Carried forward unchanged: Axcelis (12001/12009 year-ambiguity, still unresolved), Gulfstream (SAP SuccessFactors/"Happydance" backend, still Cloudflare-walled), J&J/Abiomed (R-099097/R-100650/R-101582, unchanged standing status), Boston Dynamics (not due until late Dec 2026/early Jan 2027).
+- Standing priority angles carried forward, now 27 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE** — standing low-priority saturation items, unchanged.
+- Tracker is now at 414 rows / 1215 checked entries after 91 consecutive runs (this is run 92). This run broke a 5-of-6-run dry streak by finding one genuinely new company (Commonwealth Fusion Systems) outside the exhausted mainstream watch-list, yielding 3 new qualifying postings — a reminder that the general/untracked-company sweep angle still has yield even as the mainstream employer list stays saturated.
