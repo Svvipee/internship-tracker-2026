@@ -5741,3 +5741,46 @@ None this run (no new fully-verified postings).
 - Standing priority angles carried forward, now 23 consecutive runs of saturation on the mainstream list: **Gulfstream** (Cloudflare block intermittently lifts but the site's own search still doesn't filter; no usable underlying ATS API identified yet — worth trying to identify one directly rather than the public search box), **GE Aerospace, Draper Laboratory, Specter Aerospace, MIT Lincoln Laboratory** (now genuinely fully enumerated, not just keyword-matched, per this run's closed pagination gap — job 1437466700 remains Hamza's own standing discipline-borderline call), **Teradyne, Entegris (beyond Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, Axcelis, SEW-EURODRIVE** — standing low-priority saturation items, unchanged.
 - **Methodology note**: this run's research agent lacked browser automation (WebFetch/WebSearch text-extraction only) and explicitly flagged several leads (Field AI's Lever page, Siemens' official posting, Boston Dynamics' Workday board) as load-blocked/unconfirmed rather than asserting verification it didn't have — a useful practice worth preserving in future agent briefings, since it made this run's independent-dedup pass faster (no agent claims needed to be walked back).
 - Tracker is now at 413 rows / 1205 checked entries after 87 consecutive runs (this is run 88). The Winter 2026/Spring 2027 wave in Hamza's target disciplines (mechanical/aerospace/manufacturing/robotics/flight-systems/controls) remains thin industry-wide as of 2026-10-22; mainstream-employer coverage (GE Aerospace, Entegris, Draper, MIT Lincoln Lab, Specter Aerospace, Gulfstream, Boston Dynamics) is essentially saturated for now, with new finds coming either from fresh postings at already-tracked employers or from smaller/previously-unswept companies.
+
+## 2026-10-23 ~01:00 UTC (run 89)
+
+### Sync
+Fresh container. Local `master` branch ref was 10 commits stale (behind through run 88's `94e1c09`); `git checkout master && git merge --ff-only origin/master` fast-forwarded cleanly after stashing in-progress edits, no divergence — same recurring stale-local-ref pattern as prior runs. Ground truth going in (after `npm install xlsx --no-save && node build.mjs`): `rows` 413, `checked` 1205, matching run 88's log entry exactly.
+
+### Searched
+Dispatched one research agent with the full standing re-check list (J&J/Abiomed R-099097/R-100650/R-101582, GE Aerospace, Draper Laboratory, Specter Aerospace, Teradyne, Entegris beyond Danbury, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, Axcelis, SEW-EURODRIVE, Gulfstream) plus a general Boston-area fresh sweep, explicitly told to skip Boston Dynamics (next cycle not until Dec2026/Jan2027 per run 88) and MIT Lincoln Laboratory (fully paginated/exhausted as of run 88). The agent verified via each company's own ATS/API directly where possible (Workday CXS for GE Aerospace/Draper/Entegris, BambooHR for Specter) rather than aggregator mirrors, and grep-checked every lead against `build.mjs` by exact req/job ID before reporting anything as new — per standing methodology.
+
+- **Specter Aerospace**: re-querying Specter's own BambooHR careers API (all 37 current reqs enumerated) found req 127 ("Computational Design Engineer Co-Op - Spring 2027," Peabody MA) no longer listed; the BambooHR detail API for id 127 now returns HTTP 404 (`type: not_found`). Confirmed closed via Specter's own API, not an aggregator. The other 5 tracked Specter Spring 2027 co-ops (124 Mechanical Engineer, 116 Vehicle Design, 117 Propulsion Test, 118 Propulsion Design, 123 PLC/Controls) individually re-verified as still Open — unchanged.
+- **J&J/Abiomed**: R-099097 and R-100650 re-fetched directly, both still open, both still lacking explicit season language (same two-conflicting-close-dates pattern as every prior re-check). R-101582 still HTTP 404 on both URL variants. No change.
+- **GE Aerospace**: queried GE's own Workday CXS API directly, paginated the full Lynn MA result set (80 postings) plus the company-wide Spring 2027 slate — every Co-Op-titled result already tracked by exact req ID. No new req.
+- **Draper Laboratory**: queried Draper's own Workday CXS API directly; current full Co-Op/Student slate (10 Spring 2027 postings, JR002882/JR002941/JR003044(-1)/JR002885/JR002883(-1)/JR002884/JR002942/JR002944/JR003000/JR002974) all already tracked or already discipline-excluded. Fully saturated, no new reqs.
+- **Teradyne, Entegris (Bedford MA Workday sweep, 59 postings), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE**: all individually re-checked, all dead-ended consistent with prior findings — no new qualifying postings at any of them.
+- **Axcelis (Beverly, MA)**: found two current Manufacturing/Test Engineer Co-Op postings with Jan-June/July-Dec cycle language, but neither states a year anywhere on the posting — cannot confirm Spring 2027 vs. a different year. Not added; flagged for a direct-site follow-up next run.
+- **Gulfstream**: careers.gulfstream.com is no longer Cloudflare-walled (a change from prior runs), but the `?q=co-op` search page 1 of 43 showed only a wrong-season/wrong-discipline Summer 2027 Business Technology intern req; agent did not page through all 43 given the standing diminishing-returns note that Gulfstream's search doesn't reliably filter server-side. No usable ATS API identified yet — worth a dedicated attempt to find one directly.
+- **General sweep**: CMTA/Legence Boston, 3 Sanofi Spring 2027 co-ops, Berkshire Grey job 91872250, and Field AI's Lever posting all re-confirmed already tracked/excluded, unchanged. Lila Sciences (Cambridge, MA) "Co-op, Mechanical Engineer" newly confirmed closed via direct fetch ("no longer accepting applications") — was a Summer term anyway, so this is a non-event for the tracker (never qualified), not logged as its own `checked` entry.
+
+Net result: one confirmed closure (Specter req 127, moved `rows` → `checked`). Zero genuinely new qualifying postings survived verification. This is now the 24th consecutive run of saturation on the mainstream watch-list.
+
+### Added to `rows` (0 new)
+None this run.
+
+### Moved from `rows` to `checked` (1)
+- Specter Aerospace — Computational Design Engineer Co-Op - Spring 2027, req 127 (Peabody, MA): confirmed closed via Specter's own BambooHR ATS API (404, no longer on the live careers list). See dedicated `checked` entry for details.
+
+### Added to `checked` (2 new, including the Specter closure above)
+- Specter Aerospace req 127 closure (see above).
+- Dedup-confirmed non-new batch (run 89): J&J/Abiomed's three standing reqs, GE Aerospace's full Lynn MA + company-wide Workday sweep, Draper's full current Workday slate, Teradyne, Entegris's Bedford MA Workday sweep, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, Axcelis (two undated postings — unresolved, not a hard exclusion), SEW-EURODRIVE, Gulfstream's page-1 search result, and the general sweep (CMTA/Legence, 3 Sanofi reqs, Berkshire Grey, Field AI) — all already tracked/excluded or reconfirmed unchanged.
+
+### Staged
+None this run (no new fully-verified postings; the only change was a closure).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` 413 → 412 (−1, Specter req 127 removed), `checked` 1205 → 1207 (+2, matching the 2 new entries above). Zero duplicate Application Links across all 412 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Axcelis (Beverly, MA)** — two current Manufacturing/Test Engineer Co-Op postings have cycle-month language (Jan-June / July-Dec) but no stated year; worth a direct fetch of Axcelis's own career site next run to try to pin down the year rather than relying on the aggregator mirror that lacked it.
+- **Gulfstream** — site is no longer Cloudflare-walled as of this run (a change); worth a dedicated attempt to identify an underlying ATS API (rather than paging through the 43-page public search box) now that the wall is down.
+- **J&J/Abiomed R-099097, R-100650, R-101582** — still worth periodic re-checks for updated season language or a working URL (R-101582); unchanged standing status.
+- **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
+- Standing priority angles carried forward, now 24 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE** — standing low-priority saturation items, unchanged. Specter Aerospace now has one fewer open req (5 remain) after this run's closure.
+- Tracker is now at 412 rows / 1207 checked entries after 88 consecutive runs (this is run 89). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin industry-wide as of 2026-10-23; this run's only substantive change was a closure, not a new find, consistent with the deepening saturation pattern.

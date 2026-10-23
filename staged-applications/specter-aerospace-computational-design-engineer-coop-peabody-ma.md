@@ -21,4 +21,4 @@
 - [ ] Portfolio/computational design work samples (if requested)
 - [ ] Transcript/GPA (verify if required)
 
-**Status:** Staged only — not submitted. Supports design/analysis of high-speed airbreathing testbed vehicles via parametric/implicit geometry modeling. Verified 2026-09-29 via direct fetch of Specter's own BambooHR ATS API.
+**Status:** CLOSED as of 2026-10-23 — req 127 no longer appears on Specter's BambooHR careers list and the detail API now returns HTTP 404. Do not apply; left here for reference only. Was staged, never submitted. Supports design/analysis of high-speed airbreathing testbed vehicles via parametric/implicit geometry modeling. Last live-verified 2026-09-29 via direct fetch of Specter's own BambooHR ATS API.
