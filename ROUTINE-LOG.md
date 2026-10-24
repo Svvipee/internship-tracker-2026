@@ -5953,3 +5953,45 @@ None this run — both new postings are Partial-verified, not fully verified, so
 - **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
 - Standing priority angles carried forward, now 28 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE** — standing low-priority saturation items, unchanged.
 - Tracker is now at 416 rows / 1220 checked entries after 92 consecutive runs (this is run 93). This run found 2 new Partial-verified Gulfstream postings via the same company's newer URL scheme — a reminder that even "exhausted" mainstream employers can still yield new reqs when their ATS/URL scheme changes, and that the general/untracked-company sweep angle (Shield AI aside, nothing new survived) is thinning out faster than the "re-check the exhausted list with a fresh angle" angle.
+
+## 2026-10-24 ~07:00 UTC (run 94)
+
+### Sync
+Fresh container. Local checkout was detached HEAD at the correct remote tip (`a4193a8`, run 93's commit) with the local `master` branch ref 2 commits stale (same recurring container quirk as every prior run). `git fetch origin master && git checkout master && git merge --ff-only origin/master` fast-forwarded cleanly, no divergence. Ground truth going in (after `npm install xlsx --no-save && node build.mjs`, read back with the `xlsx` library): `rows` 416, `checked` 1220, matching run 93's log entry exactly.
+
+### Searched
+Dispatched one research agent with this run's standing priority re-check angles (Gulfstream's sitemap-based sweep for new Collegiate reqs plus re-checks of jobs 235194/235803/235827, Axcelis's year-ambiguous reqs, Hologic's undiscoverable ATS, J&J/Abiomed's three standing reqs) plus a general national sweep for new companies, explicitly steered away from the long exhausted mainstream watch-list. Every lead the agent reported was independently re-verified directly by this session (own WebFetch calls against the primary source, not taken on the agent's word) and exact-ID grep-checked against `build.mjs` before any edit, per standing methodology:
+
+- **Gulfstream Aerospace**: agent reported 6 Spring 2027 Collegiate reqs (236118, 236089, 236093, 236064, 236050, 235984) as genuinely new, each with a direct-fetch verbatim quote. Independent exact-job-ID grep of `build.mjs` found **all 6 already present** — 236118 already dedup-logged as a duplicate of an older 10-digit req, the other 5 already fully tracked in `rows` as Partial-verified since runs ~74/80. Zero new. Also independently re-fetched job 235194 directly — Posting End Date still reads 09/14/2026 with no extending narrative, unchanged from run 93's "likely stale" call. Jobs 235803/235827 (already in `rows`) re-fetched directly — same unresolved Posting-End-Date-vs-"remain active" contradiction persists on both, unchanged.
+- **Bose Corporation**: agent's "Product Compliance and Safety Co-op" lead (via a BuiltInBoston mirror) is the same req already logged and excluded on 2026-10-10/11 as a discipline mismatch — not new.
+- **Axcelis Technologies**: this session's own direct re-fetch of reqs 12001/12009 hit a Workday tenant-outage redirect (myworkday.com/wday/drs/outage) — the research agent independently hit the same wall via its API query. Tenant appears to be mid-outage this run; could not re-verify any of the 7 standing reqs (12001/12008/12009/12010/11590/12018/12019) one way or the other. Unresolved, not a change.
+- **Hologic**: agent reconfirmed careers.hologic.com's sitemap.xml 404s and no ATS signature is discoverable. Dead end stands, unchanged.
+- **J&J/Abiomed**: this session independently re-fetched R-099097 directly — still open, "Apply now" present, still no explicit season language, now showing two conflicting closing dates on the same page (Nov 06 2026 near the top vs. 7/1/2027 in the pay section) — same pattern, unchanged. R-101582 independently re-fetched directly — still HTTP 404, unchanged. R-100650 not independently re-fetched this run (agent could not reach it either); carried forward unresolved.
+- **General sweep**: no new company survived independent verification this run.
+
+Net result: zero genuinely new qualifying postings. Every one of this run's "new" leads (all 6 from Gulfstream) turned out to be exact pre-existing entries — a repeat of the pattern from runs 90-91, where an agent without direct `build.mjs` access cannot itself catch duplication against a 416-row/1220-entry tracker.
+
+### Added to `rows` (0 new)
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (1 new)
+- Dedup-confirmed non-new batch (run 94): Gulfstream's 6 reported-new Collegiate req IDs (all pre-existing), Bose's Product Compliance and Safety Co-op (pre-existing exclusion), Axcelis's outage-blocked re-check, Hologic's unchanged dead end, and J&J/Abiomed's three standing reqs (R-099097 re-confirmed open/unresolved-season, R-101582 re-confirmed 404, R-100650 unreachable this run).
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` unchanged at 416, `checked` 1220 → 1221 (+1). Zero duplicate Application Links across all 416 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Axcelis** — hit a Workday tenant outage/maintenance redirect this run (first time this specific failure mode has occurred); worth a plain re-try next run since this is likely transient, not a permanent access change. The standing 12001/12009 year-ambiguity itself remains unresolved regardless.
+- **Gulfstream jobs 235803, 235827** — still Partial due to the unresolved Posting-End-Date-vs-narrative contradiction; still worth a direct in-browser check of the actual Apply flow if a JS-capable tool becomes available.
+- **Gulfstream job 235194** — Posting End Date (09/14/2026) still hasn't been updated or contradicted by narrative text after two independent re-checks (runs 93 and 94); increasingly looks like a genuinely stale/closed template rather than a live role, but left excluded per the strict bar rather than promoted without positive confirmation.
+- **Hologic** (Marlborough, MA) — still no discoverable ATS API; worth trying a headless-browser-capable tool if one becomes available.
+- **J&J/Abiomed R-099097, R-100650, R-101582** — still worth periodic re-checks; unchanged standing status.
+- **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
+- Standing priority angles carried forward, now 29 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE** — standing low-priority saturation items, unchanged.
+- Tracker is now at 416 rows / 1221 checked entries after 93 consecutive runs (this is run 94). No new qualifying posting survived verification this run — the seventh run out of the last eight with no new find; the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and the mainstream employer watch-list stays saturated as of 2026-10-24.
