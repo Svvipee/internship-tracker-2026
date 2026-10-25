@@ -6118,3 +6118,56 @@ None this run.
 - **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
 - Standing priority angles carried forward, now 32 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE** — not re-swept this run given very low marginal odds after 30+ prior clean sweeps.
 - Tracker is now at 418 rows / 1227 checked entries after 96 consecutive runs (this is run 97). Found one new fully-verified Insulet posting via a general sweep, plus one new dead-end company (Nyobolt) logged — a reminder that even companies with no intern postings today are worth a dated one-line exclusion entry so future runs don't need to re-check them from scratch.
+
+## 2026-10-25 ~07:01 UTC (run 98)
+
+### Sync
+Fresh container. Ground truth going in (after `npm install xlsx --no-save && node build.mjs`, read back with the `xlsx` library): `rows` 418, `checked` 1227, matching run 97's log entry exactly. Also noticed a pre-existing `applications/` folder (467 .docx files, separate from `staged-applications/`) that isn't mentioned in this routine's current instructions — inspected its origin (added in the repo's very first commit, 2026-10-13, alongside the initial seeded `rows`/`checked` baseline, before this log existed) and its content (one sample file is a draft Q&A answer sheet using Hamza's real background/links, explicitly marked "prepared answers... copy the one that fits" — not a submitted application). Legacy/pre-existing, unchanged, benign; left untouched.
+
+### Searched
+Dispatched one research agent for a general national sweep plus this run's standing priority re-check angles (Gulfstream sitemap, Insulet Workday API, Axcelis 12001/12009 year-ambiguity, J&J/Abiomed R-099097/R-100650/R-101582, Hologic Marlborough). Every lead it reported was independently grep-checked against `build.mjs` by exact job/req ID or exact URL before any edit, per standing methodology:
+
+- **Formlabs** (Somerville, MA) — agent's two "fully verified" leads (Mechanical Engineering Intern job 8130829, Manufacturing Engineering Intern job 8161817) are both already in `rows` from early runs. Zero new.
+- **Applied Materials** "2027 Spring Mechanical Engineer Co-op" (Gloucester, MA, req 100424621952) — already in `rows`. Zero new.
+- **Anduril Industries** — both of the agent's "finds" (Winter 2027 Mechanical Engineer Co-op, jobs.generalcatalyst.com job 93310425; Winter 2027 Manufacturing Engineer Co-op, job 93310422) are already in `rows` under their Greenhouse mirrors (jobs 93310425↔Greenhouse / job 93310422↔Greenhouse job 5236589007). The agent flagged job 93310422's page as internally contradictory ("Winter 2027" title vs. "summer 2027" body) — this exact contradiction was already identified and resolved in that row's own Notes field in an earlier run (same Jan–Aug 2027 cohort pattern as Anduril's other Winter 2027 co-ops). Not a new finding.
+- **Lexington Medical, Inc.** (Bedford, MA) Mechanical Engineering Co-Op, Greenhouse job 5423105008 — already in `rows`. Zero new.
+- **Gulfstream Aerospace** — agent's two "new" Savannah GA reqs (236089 Structures/Structural Design, 236118 Materials and Processes Engineering) are both already in `rows` (236118 is also already dedup-logged as a duplicate of an older 10-digit req-ID scheme). Zero new from Gulfstream this run.
+- **Insulet** (Acton, MA) — agent could not reach Insulet's own Workday CXS API this run (HTTP 400/500) and found no new mechanical-engineering req via search beyond the known list; inconclusive, not a new finding either way.
+- **Axcelis** reqs 12001/12009 — agent could not locate these exact req numbers this run (tenant access issue) and instead found the same two co-ops by title via a SolidProfessor mirror; neither states a year in its body text — same standing unresolved status, unchanged.
+- **J&J/Abiomed** — R-099097 and R-100650 still open, still no explicit season language, same conflicting closing-date pattern as every prior check. R-101582 still HTTP 404 — already logged as closed/dead since run 85/87, unchanged (not re-logged).
+- **Hologic** (Marlborough, MA) — agent found only a July–Dec-cycle Mechanical Engineer R&D co-op title referencing Marlborough via language mirrors, but could not load the actual posting or confirm a year; inconclusive, not a match either way.
+- **Genuinely new dead ends** (not previously in `build.mjs` by company/req/URL): **Yaskawa Motoman Robotics** (Miamisburg, OH) — Spring-2027-titled co-op whose own body says "start work in August 2026," a self-contradiction; excluded. **CIRCOR International** — no MA posting, only Corona CA (one already removed). **Sensata Technologies** (Attleboro, MA) — only a Summer 2027 intern, wrong season. **Vicor Corporation** (Andover, MA) — zero internship/co-op postings. **Electrified Thermal Solutions** (Charlestown, MA) — live posting states no season/term dates, unconfirmable. **L3Harris** (Northampton, MA) job ID 27494 — specific URL 404s, inconclusive.
+- Everything else the agent reported (Field AI, Shield AI, RTX/Collins Aerospace Jamestown ND closure, Textron, MKS Instruments, Bose Product Compliance Co-op, Precision Castparts, SEW-EURODRIVE) matched already-logged exclusions exactly, no change.
+
+Net result: zero genuinely new qualifying postings survived independent verification — every "fully verified" or "partial" candidate the research agent reported turned out to be a pre-existing duplicate once grep-checked against `build.mjs` (the agent itself has no direct file access and so cannot catch this). Six genuinely new dead-end exclusions were logged for transparency.
+
+### Added to `rows` (0 new)
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (7 new)
+- Yaskawa Motoman Robotics (Miamisburg, OH) — Spring 2027 title / August 2026 body contradiction.
+- CIRCOR International — no MA mechanical co-op found.
+- Sensata Technologies (Attleboro, MA) — Summer 2027 only.
+- Vicor Corporation (Andover, MA) — no internship/co-op postings.
+- Electrified Thermal Solutions (Charlestown, MA) — no season stated, unconfirmable.
+- L3Harris (Northampton, MA) job 27494 — 404, inconclusive.
+- Dedup-confirmed non-new batch (run 98): Formlabs x2, Applied Materials, Anduril x2, Lexington Medical, Gulfstream x2, Field AI, Shield AI, RTX/Collins Aerospace, Textron, MKS Instruments, Bose — all pre-existing.
+
+### Staged
+None this run (no new fully-verified postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` unchanged at 418, `checked` 1227 → 1234 (+7). Zero duplicate Application Links across all 418 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Insulet** — this run's fetch tool couldn't reach the Workday CXS API (HTTP 400/500); worth a direct portal re-check since prior runs reached it successfully.
+- **Axcelis** reqs 12001/12009 — still no year stated in body text; still unresolved.
+- **Hologic** — a July–Dec-cycle Marlborough posting title was found but not confirmed to a specific year or loadable page; worth a direct URL check if one can be located.
+- **J&J/Abiomed** R-099097, R-100650 — still open, still no season language, still worth periodic re-checks.
+- **L3Harris** job 27494 (Northampton, MA) — worth a direct careers.l3harris.com portal check (search-only hit so far, specific URL 404s).
+- **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
+- Standing priority angles carried forward, now 33 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE**.
+- Tracker is now at 418 rows / 1234 checked entries after 97 consecutive runs (this is run 98). Eighth run out of the last nine with no new qualifying find — reinforces that a research agent's "new" leads need independent `build.mjs` grep-checking every single time, since the agent itself cannot see the file and nearly always resurfaces pre-existing entries.
