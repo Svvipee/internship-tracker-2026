@@ -6216,3 +6216,35 @@ None this run.
 - **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
 - Standing priority angles carried forward, now 34 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE**.
 - Tracker is now at 420 rows / 1235 checked entries after 98 consecutive runs (this is run 99). This run's two new finds were both duplicate-req siblings of an already-tracked posting rather than a genuinely distinct new employer/role — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-25. Also fixed a real repo-hygiene bug this run: 7 prior runs' commits had been stranded on a detached HEAD and never reached `origin/master` until this run's fix — worth double-checking `origin/master` (not just local `master`) at the start of every future run.
+
+## Run 100 — 2026-10-25 ~18:50–19:45 UTC
+
+**Repo-hygiene fix (first action this run):** HEAD was detached again on session start, with 8 routine commits (runs 92-99) that had never reached `origin/master` — local `master` was stale at run 91. Fast-forwarded local `master` to HEAD and pushed; confirmed `origin/master` now matches. **Future runs: always check `git status`/`git branch` for a detached HEAD before committing, and verify `origin/master` (not just local `master`) matches after push.**
+
+### What was searched
+- Re-checked near-term/standing "worth re-checking" items from run 99's log: Gulfstream req 236000 (near its stated Oct 30 2026 "may remain active until" date), Entegris Bedford's recurring unverifiable "Mechanical Engineering Co-Op" lead, Sonos's recurring unverifiable lead, J&J/Abiomed R-099097/R-100650/R-101582.
+- Full direct-API sweeps (not aggregator-dependent) of Entegris (Workday CXS, 186 postings), Draper Laboratory (Workday CXS, full 223-posting pagination), and GE Aerospace (Workday CXS, 12 Spring-2027-co-op-titled postings) — each company's entire current Spring 2027/co-op slate enumerated and cross-checked by exact req ID against `build.mjs`.
+- General web searches for new Boston-area/New England postings at BAE Systems (NH), Textron/Pratt & Whitney/Collins Aerospace (MA), iRobot (Bedford, MA — careers.irobot.com still 404s on direct fetch, consistent with prior "renders empty" finding), Analog Devices (Wilmington, MA).
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (1 new consolidated entry)
+- Run 100 dedup/sweep entry covering: Entegris Bedford "Mechanical Engineering Co-Op" definitively reconfirmed non-existent via direct Workday CXS API query (yet again); Draper's JR002974 retitled with an explicit "Spring 2027" date (previously excluded for lacking any season) but still excluded on discipline grounds (embedded software, not ME/Aero) — season-vs-discipline exclusion basis updated; Draper's JR003044-1 (Optoelectronics EE Co-Op, Spring 2027) newly found, excluded on EE/photonics discipline grounds; GE Aerospace's current 12-req Spring 2027 co-op slate reconfirmed fully saturated (all already tracked); Sonos still unverifiable on any primary source (new aggregator mirror's own cited source, Wellfound, now 410 Gone); J&J/Abiomed R-099097/R-100650 reconfirmed unchanged (open, no explicit season, conflicting close dates); R-101582 still 404; Gulfstream req 236000 reconfirmed still live, 5 days from its stated "may remain active until October 30, 2026" cutoff.
+- A new, not-yet-resolved lead: J&J/Abiomed R-099800 "Operational Excellence Engineering Co-Op" (Danvers, MA, same Non-LDP template as its siblings, anticipated close Oct 30 2026) — found only via search snippets; careers.jnj.com, xtalks.com, and disabilitytalent.org mirrors all failed to load this run (404/410/403). NOT added to `rows` per the verification bar (season/content unconfirmed from the posting itself). Logged in `checked` as unresolved, worth a direct re-fetch next run.
+
+### Staged
+None — no new fully-verified postings this run to draft applications for.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read back: `rows` 420 → 420 (unchanged), `checked` 1235 → 1236 (+1). Zero duplicate Application Links across all 420 `rows` (programmatic check). `.xlsx` file changed (byte size 1418044 → 1422735).
+
+### Worth re-checking next time
+- **J&J/Abiomed R-099800** (Operational Excellence Engineering Co-Op, Danvers MA) — could not be opened on any source this run; try again, and if accessible check whether it follows the same no-explicit-season template as R-099097/R-100650 (in which case it too gets excluded) or states Spring 2027 cleanly (in which case it qualifies).
+- **Gulfstream req 236000** — stated "may remain active until October 30, 2026," now 5 days out. Re-check right after that date: either it closes (move to `checked`) or the posting persists/extends (note the extension).
+- Standing carried-forward items, all unchanged this run: Entegris Bedford "Mechanical Engineering Co-Op" (now very likely phantom/never-existed, repeatedly non-existent on primary source across ~10+ checks), Sonos (same pattern, aggregator-only, primary source unreachable), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), Boston Dynamics (worth a dedicated check in late Dec 2026/early Jan 2027, not before).
+- Standing saturation list, 34+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE**.
+- Tracker is now at 420 rows / 1236 checked entries after 100 runs. Zero new qualifying postings found this run — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-25 evening UTC.
