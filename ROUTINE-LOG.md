@@ -6074,3 +6074,47 @@ None this run (no new fully-verified postings).
 - J&J/Abiomed R-099097, R-100650, R-101582 and Axcelis's undated reqs 12001/12009 — unchanged standing status, not re-checked this run (no new information expected without a fresh posting cycle).
 - Boston Dynamics — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
 - Tracker is now at 417 rows / 1225 checked entries after 95 consecutive runs (this is run 96) — the second consecutive run (after run 93/94's Axcelis-outage hiccup aside) with zero new qualifying postings despite direct API-level verification of two major employers (Draper, GE Aerospace) that previously only got search-UI-level checks, reinforcing that this tracker's remaining upside now runs through watching for brand-new companies/postings rather than re-sweeping the saturated list.
+
+## 2026-10-25 ~00:59 UTC (run 97)
+
+### Sync
+Fresh container. HEAD was detached at the correct remote tip (`7b696b2`, run 96's commit) with the local `master` branch ref several commits stale (same recurring container quirk as every prior run) — `origin/master` itself was also stale in the local git cache until a fresh `git fetch origin master` pulled it current. `git checkout -B master origin/master` reset the local branch cleanly onto the correct tip, no divergence. Ground truth going in (after `npm install xlsx --no-save && node build.mjs`, read back with the `xlsx` library): `rows` 417, `checked` 1225, matching run 96's log entry exactly.
+
+### Searched
+Dispatched one research agent for a general national sweep (new companies/postings, not the long-exhausted mainstream watch-list) plus this run's standing re-check angle (a fresh Gulfstream sitemap pass). Every lead the agent reported was independently re-verified directly by this session (own curl/Workday-CXS-API calls against the primary source, not taken on the agent's word) and exact-ID/exact-name grep-checked against `build.mjs` before any edit, per standing methodology:
+
+- **Insulet (Acton, MA)**: agent reported 5 Jan–June 2027 co-op reqs as candidate finds. Exact-req-ID grep found 4 already present in `rows` (REQ-2026-18007, REQ-2026-18155, REQ-2026-18078, REQ-2026-18209). The 5th, **REQ-2026-18798** ("Co-op, Mechanical Engineer: January-June 2027 (Onsite)"), was genuinely new — independently re-verified via Insulet's own Workday CXS job API (`POST .../wday/cxs/insulet/insuletcareers/jobs` and a direct GET on the job-detail JSON): confirmed live, posted "2 Days Ago," body states "Position Dates: January 11, 2027 – June 30, 2027," Mechanical Engineering discipline (Global Equipment Engineering Group, automated manufacturing equipment design, SolidWorks), Acton MA onsite, $25.00–$34.00/hr, not visa-sponsorship-eligible. **Added to `rows` as fully verified.**
+- **Sonos (Boston, MA)**: agent's Audio Systems Engineering Co-Op (req R2827) is already tracked in `rows` since run 80 — not new. Its claim that a separately-titled "Mechanical Engineering Co-Op" does not currently exist on Sonos's live board matches this tracker's own standing note (req R2547, repeatedly confirmed closed/wrong-season since 2026-09-22) — consistent, not a change.
+- **Gulfstream Aerospace (Savannah, GA)**: agent's fresh sitemap re-check surfaced 4 Spring 2027 Collegiate reqs (236093 Stability and Control, 236064 Propulsion, 236050 Thermofluid Analysis, 235984 Flight Controls V&V) as candidate new finds, each with direct-fetch verbatim quotes. Exact-req-ID grep of `build.mjs` found all 4 already tracked in `rows` as Partial since runs ~74/80/95. Zero new.
+- **Dead ends reconfirmed, no changes**: BAE Systems "Mechanical Engineering Intern III" (Nashua, NH) — already exhaustively excluded on wrong-season (Summer 2027) grounds since 2026-09-19. Berkshire Grey — fully closed as of run 90, unchanged. Vicarious Surgical — co-ops confirmed closed 2026-10-07, unchanged. Pickle Robot Company / Dexai Robotics — zero intern postings, confirmed 2026-10-06/09, unchanged. Reframe Systems — its sole Spring-2027-titled posting was confirmed pulled entirely on 2026-10-02, unchanged. Anduril's only Spring/Summer 2027 US mechanical postings remain Summer-only, consistent with prior exclusions.
+- **Genuinely new dead end**: **Nyobolt (Bedford, MA)** — independently fetched nyobolt.com/careers directly. Only 2 current openings company-wide, both full-time (Equipment Engineering Technician, Senior Cell Development Engineer); no internship/co-op posting of any kind. New company for this tracker's exclusion log.
+
+Net result: one genuinely new fully-verified qualifying posting (Insulet REQ-2026-18798), one new dead-end company logged (Nyobolt), everything else from the agent's report was a pre-existing duplicate or an already-logged exclusion.
+
+### Added to `rows` (1 new)
+- Insulet — Co-op, Mechanical Engineer (January–June 2027, Onsite), req REQ-2026-18798 (Acton, MA) — Fully verified.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (2 new)
+- Nyobolt (Bedford, MA) — no internship/co-op posting of any kind on its live careers page; only 2 full-time openings.
+- Dedup-confirmed non-new batch (run 97): Insulet's 4 already-tracked reqs, Sonos R2827 (already tracked), Gulfstream's 4 already-tracked Partial reqs, BAE Systems Nashua (already excluded), Berkshire Grey/Vicarious Surgical/Pickle Robot/Dexai/Reframe Systems (all already-logged dead ends/closures, unchanged).
+
+### Staged
+- `staged-applications/insulet-mechanical-engineer-coop-jan-jun-2027-acton-ma.md` — created for the new fully-verified Insulet posting (REQ-2026-18798).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` 417 → 418 (+1), `checked` 1225 → 1227 (+2). Zero duplicate Application Links across all 418 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Gulfstream job 236000** — still Partial; check once its stated Oct 30, 2026 posting-end-date actually passes to see if it closes cleanly or grows a contradicting "remains active" narrative like its siblings.
+- **Gulfstream jobs 235803, 235827** — Posting-End-Date-vs-narrative contradiction confirmed NOT resolvable from this sandbox (Cloudflare-blocked even via a real Playwright browser through the session's proxy, per run 96's finding) — not actionable here; stop carrying forward as "worth a browser re-check."
+- **Gulfstream job 235194** — Posting End Date (09/14/2026) still unresolved after four independent re-checks; increasingly looks genuinely stale/closed but left excluded per the strict bar.
+- **Insulet (Acton, MA)** — this run found one new req (REQ-2026-18798) via a general sweep rather than a dedicated company re-check; worth periodically re-querying Insulet's own Workday CXS jobs-search API directly (reliable, no bot-block) in case new reqs post, same pattern as REQ-2026-18798 and the earlier batch.
+- **Axcelis** — 12001/12009 still have no explicit year stated in their own bodies despite matching 12018/12019's confirmed-2027 cycle; still not dispositive per the strict season-from-the-posting-itself bar.
+- **Hologic** (Marlborough, MA) — ATS backend identified; only matching internship found is in San Diego, not Marlborough/Boston-area; worth periodic re-checks of the Marlborough-filtered search.
+- **J&J/Abiomed R-099097, R-100650, R-101582** — still worth periodic re-checks; unchanged standing status.
+- **Boston Dynamics** — still worth a dedicated check in late Dec 2026/early Jan 2027, not before.
+- Standing priority angles carried forward, now 32 consecutive runs of saturation on the mainstream list: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE** — not re-swept this run given very low marginal odds after 30+ prior clean sweeps.
+- Tracker is now at 418 rows / 1227 checked entries after 96 consecutive runs (this is run 97). Found one new fully-verified Insulet posting via a general sweep, plus one new dead-end company (Nyobolt) logged — a reminder that even companies with no intern postings today are worth a dated one-line exclusion entry so future runs don't need to re-check them from scratch.
