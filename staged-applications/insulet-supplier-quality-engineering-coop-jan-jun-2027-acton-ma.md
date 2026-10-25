@@ -23,3 +23,10 @@ Global Supplier Quality Engineering team — supplier selection/qualification/ma
 - [ ] Confirm availability for the Jan 11 – Jun 30, 2027 term
 
 **Status:** Staged only — not submitted. Confirmed open/live via direct Workday CXS API fetch, canApply:true, posted 2026-10-01, checked 2026-10-02.
+
+## Note (added 2026-10-25, run 99)
+Insulet has posted this identical role (same title, same Jan 11 – Jun 30, 2027 dates) under two additional req numbers, confirmed live the same way:
+- REQ-2026-18127: https://insulet.wd5.myworkdayjobs.com/wday/cxs/insulet/insuletcareers/job/Acton-Massachusetts/Co-op---Supplier-Quality-Engineering--January---June-2027--Onsite-_REQ-2026-18127
+- REQ-2026-18126: https://insulet.wd5.myworkdayjobs.com/wday/cxs/insulet/insuletcareers/job/US---Massachusetts-Acton---Office/Co-op---Supplier-Quality-Engineering--January---June-2027--Onsite-_REQ-2026-18126
+
+These appear to be duplicate postings of the same opening (common for Insulet's Workday board) rather than separate open positions — applying once, to whichever req is live when you apply, should be sufficient. No need to submit three separate applications for the same role.
