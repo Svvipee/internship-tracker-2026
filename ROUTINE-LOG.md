@@ -6281,3 +6281,38 @@ None — no new fully-verified postings this run.
 - Standing carried-forward items, all unchanged this run: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 10+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), Boston Dynamics (worth a dedicated check in late Dec 2026/early Jan 2027, not before).
 - Standing saturation list, 35+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril**.
 - Tracker is now at 420 rows / 1239 checked entries after 101 runs. Zero new qualifying postings found this run — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-26 ~00:55 UTC.
+
+## Run 102 — 2026-10-26 ~06:55–07:15 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached again at session start (matching `origin/master`'s run-101 commit, 326491c). Local `master` had silently drifted stale — `git push` from a prior run reported "Everything up-to-date" only because `origin/master` genuinely was already current; the local `master` *branch pointer* itself was 10 commits behind. Ran `git checkout -B master HEAD` to resync, then `git fetch origin master` and confirmed local and remote `master` match exactly before doing any new work. No data was lost; this is a recurring cosmetic git-state issue in this environment, not a push failure.
+
+### What was searched
+- Direct re-fetch (3rd consecutive run) of J&J/Abiomed req R-099800 (Operational Excellence Engineering Co-Op, Danvers MA) at both URL variants.
+- Direct re-fetch of Gulfstream req 236000 (Spring 2027 IEF EWIS College Intern, Savannah GA), now 4 days from its stated "may remain active until October 30, 2026" language.
+- General WebSearch sweeps for new Winter 2026/Spring 2027 mechanical/aerospace/manufacturing/robotics/controls postings nationally and in the Boston area, plus a targeted robotics-sector sweep (Amazon Robotics, Rugged Robotics, Simbe Robotics, Boston Dynamics) and a materials/manufacturing-adjacent sweep (Markforged, Desktop Metal, CIRCOR, MathWorks, Vicor, Analog Devices, BMW Group, Lincoln Electric, Flex, Berkshire Grey, Vertex, Applied Materials, Watts Water, Thornton Tomasetti, CMTA/Legence, Karman Space & Defense).
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked`
+None this run — no row was confirmed dead.
+
+### Added to `checked` (4 new entries)
+- J&J/Abiomed R-099800 — third consecutive run, still HTTP 404 on both URL variants. Demoted to the low-priority "probably unreachable" bucket (same treatment as the Entegris Bedford/Sonos phantoms) per run 101's own standing note — no longer worth a dedicated re-fetch every run.
+- Gulfstream req 236000 — reconfirmed unchanged: still live, still "may remain active until October 30, 2026," no closure language, exactly 4 days out as of this run.
+- Simbe Robotics (SF/South SF, CA) — new company/lead (a ZipRecruiter-aggregator "Spring and Summer 2027 hardware/mechanical intern" claim), but unverifiable: Lever board 404s, current ATS is JS-rendered and returned no listings on direct fetch, and the one primary-adjacent hit (Hardware Test Engineer Intern) is explicitly closed. Not added.
+- A dedup-confirmed general-sweep batch: every other specific lead this run's searches surfaced (Amazon Robotics reqs 10573570/10535282, Rugged Robotics, Lincoln Electric req 29823, BMW Group Spartanburg SC co-op batch, Flex Libertyville IL, Berkshire Grey job 91872250, Vertex Pharmaceuticals, Applied Materials Gloucester MA, Watts Water Technologies, Thornton Tomasetti, CMTA/Legence Boston, Karman Space & Defense) was independently cross-checked against `build.mjs` and found already tracked/excluded by exact req/job ID from prior runs.
+
+### Staged
+None — no new fully-verified postings this run to draft applications for.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read back: `rows` 420 → 420 (unchanged), `checked` 1239 → 1243 (+4). `.xlsx` file changed (byte size 1427386 → 1433022).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — now 4 days from its stated Oct 30, 2026 closure language; check right after that date — either it closes (move to `checked`) or persists/extends (note the extension).
+- **J&J/Abiomed R-099800** — now demoted to the same low-priority bucket as Entegris Bedford/Sonos (3 consecutive 404s); catch it opportunistically in a general sweep rather than a dedicated re-fetch every run.
+- **Simbe Robotics** — new unverified lead; worth a browser-based follow-up if a future run has that capability, otherwise leave as-is.
+- Standing carried-forward items, all unchanged this run: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 10+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), Boston Dynamics (worth a dedicated check in late Dec 2026/early Jan 2027, not before).
+- Standing saturation list, 36+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense (confirmed Summer-only by program design)**.
+- Tracker is now at 420 rows / 1243 checked entries after 102 runs. Zero new qualifying postings found this run — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-26 ~07:15 UTC.
