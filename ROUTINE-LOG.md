@@ -6316,3 +6316,43 @@ None — no new fully-verified postings this run to draft applications for.
 - Standing carried-forward items, all unchanged this run: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 10+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), Boston Dynamics (worth a dedicated check in late Dec 2026/early Jan 2027, not before).
 - Standing saturation list, 36+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense (confirmed Summer-only by program design)**.
 - Tracker is now at 420 rows / 1243 checked entries after 102 runs. Zero new qualifying postings found this run — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-26 ~07:15 UTC.
+
+## Run 103 — 2026-10-26 ~12:52–13:10 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached again at session start, matching `origin/master` exactly at run 102's commit (292fc0f). Ran `git checkout -B master HEAD` to resync the local `master` branch pointer; confirmed `git fetch origin master` shows local and remote both at the same commit before any new work. Same recurring cosmetic issue as runs 99-102 — no data at risk, just the local branch ref drifting stale.
+
+### What was searched
+- Direct primary-source re-sweeps of this run's explicitly-named priorities: GE Aerospace (Workday CXS API, 12-req Spring 2027 slate), Draper Laboratory (Workday CXS API, full 223-posting company-wide pagination), MIT Lincoln Laboratory (careers.ll.mit.edu via WebSearch), and Gulfstream req 236000 (direct fetch).
+- Re-check of Simbe Robotics (still unverifiable, no change).
+- A research agent dispatched for a broad Boston-area + national sweep (no `build.mjs` access, so every lead needed independent dedup-checking) covering untried companies (STERIS Endoscopy, Xona Space Systems, PPL Corporation, Bosch, Stoke Space, Curtiss-Wright, Owens Corning, Rivian, BMW Mountain View, Debra Kuempel) and standing-saturated ones (Commonwealth Fusion Systems, Precision Castparts, Gulfstream, RTX Rockford, Eaton Syracuse, SpaceX, Joby Aviation, Berkshire Grey, Entegris Bedford).
+- A focused follow-up on Parker Hannifin (Wickliffe, OH, Chemical/Materials Engineering Co-Op) — a 6th+ consecutive attempt to reach their own ATS, still blocked.
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (8 new entries)
+- Gulfstream req 236000 — re-check, unchanged (still live, still "may remain active until October 30, 2026").
+- GE Aerospace / Draper Laboratory / MIT Lincoln Laboratory — dedicated direct-API/direct-source re-sweep, all fully saturated at their already-tracked reqs, no new finds.
+- Simbe Robotics — re-check, still unverifiable, no change.
+- **STERIS Endoscopy (Mentor, OH)** — new company lead (Engineering/Software Engineering/Materials Engineering Co-ops, Spring 2027), found only via xtalks.com aggregator mirrors; could not locate the live posting on careers.steris.com (JS-rendered category pages, old job IDs now 303-redirect). Unresolved, not added — worth a direct re-attempt if a working URL surfaces.
+- **Xona Space Systems (Burlingame, CA)** — Mechanical Engineering Co-op (Spring 2027), confirmed closed ("no longer accepting applications") via direct re-fetch.
+- **PPL Corporation / LG&E and KU (Louisville, KY)** — new company lead (Spring 2027 Mechanical/Civil/Chemical Engineering Co-ops), aggregator-only; PPL's own iCIMS portal confirmed to exist but renders listings client-side with nothing visible to direct fetch. Unresolved, not added.
+- Parker Hannifin (Wickliffe, OH) — 6th+ consecutive blocked attempt (DNS failure, 403, and 6 Workday tenant/site-name guesses all HTTP 422). Deprioritizing to opportunistic-only re-checks going forward.
+- Dedup-confirmed non-new batch covering every other research-agent lead (Commonwealth Fusion Systems, Berkshire Grey job 91872250, Precision Castparts, Gulfstream reqs 1421682700/1423438600, RTX Rockford, Eaton Syracuse, SpaceX, Joby Aviation Winter 2027, Debra Kuempel, Entegris Bedford phantom, BMW Mountain View, Rivian) — all independently grep-checked against `build.mjs` and found already tracked, already excluded, or discipline-mismatched.
+
+### Staged
+None — no new fully-verified postings this run to draft applications for.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read back with the `xlsx` library: `rows` 420 → 420 (unchanged), `checked` 1243 → 1251 (+8). Zero duplicate Application Links across all 420 `rows` (programmatic check). `.xlsx` file changed (byte size 1433022 → 1443504).
+
+### Worth re-checking next time
+- **STERIS Endoscopy (Mentor, OH)** — new, promising, in-discipline (Materials Engineering) lead corroborated by 3 separate xtalks.com postings, but the live careers.steris.com posting itself could not be located this run. Try a direct site search or a different access method (e.g. a headless-browser render, same fix that worked for Eaton's eightfold.ai ATS in an earlier run) next time.
+- **PPL Corporation (Louisville, KY)** — new lead, ATS confirmed to exist (intern-pplweb.icims.com) but client-side-rendered; same headless-browser approach may resolve it.
+- **Gulfstream req 236000** — now essentially at its stated Oct 30, 2026 cutoff; check right after that date — either it closes (move to `checked`) or persists/extends (note the extension).
+- Standing carried-forward items, all unchanged: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 11+ checks, resurfaced yet again via new aggregator mirrors this run with no new primary-source corroboration), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), J&J/Abiomed R-099800 (demoted to opportunistic-only per run 102), Simbe Robotics, Boston Dynamics (worth a dedicated check in late Dec 2026/early Jan 2027, not before), Parker Hannifin (now also demoted to opportunistic-only after 6+ blocked attempts).
+- Standing saturation list, 37+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense**.
+- Tracker is now at 420 rows / 1251 checked entries after 103 runs. Zero new qualifying postings found this run (the 4th consecutive run, 100-103, with no new `rows` additions) — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-26 ~13:10 UTC. Two genuinely new, unresolved company leads (STERIS Endoscopy, PPL Corporation) are worth a focused follow-up attempt with a different access method before being written off.
