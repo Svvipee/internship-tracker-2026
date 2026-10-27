@@ -6399,4 +6399,53 @@ The background research agent dispatched this run (broad national/Boston-area sw
 - **Lubrizol** — new company this run, Wickliffe OH site only directly confirmed; worth a follow-up sweep of its other US sites (it also posts Chemical Engineering Co-ops at the same OH/TX locations, software/IT co-ops, etc. — none in Hamza's target disciplines this run, but worth a periodic re-check given it's a newly-opened company with multiple active reqs).
 - Standing carried-forward items, unchanged: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 11+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), J&J/Abiomed R-099800 (opportunistic-only), Simbe Robotics, Boston Dynamics (not before late Dec 2026/early Jan 2027), Parker Hannifin (opportunistic-only after 6+ blocked attempts).
 - Standing saturation list, 38+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense**.
+
+## Run 105 — 2026-10-27 ~00:50–01:10 UTC
+
+Repo-hygiene check (first action this run): `git status`/`git branch` clean — on `master`, up to date with `origin/master`, no detached HEAD this run (unlike the recurring cosmetic issue in runs 99-104).
+
+### What was searched
+Two parallel background research agents, each without `build.mjs` access (per standing methodology — every reported lead independently grep/req-ID-checked against `build.mjs` by this session before any edit):
+1. **Priority re-checks**: Gulfstream req 236000 (direct re-fetch, now 3 days from its stated Oct 30 2026 "may remain active until" cutoff), PPL Corporation/LG&E and KU (direct iCIMS req-ID sweep 15128–15140), STERIS Endoscopy (re-attempt at careers.steris.com), Lubrizol Corporation (sweep of other US sites for additional Spring 2027/Winter 2026 co-ops).
+2. **Broad national/Boston-area sweep** for new companies/postings, explicitly steered away from the 36-company saturated list (GE Aerospace, Draper, MIT Lincoln Lab, Teradyne, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Commonwealth Fusion Systems, Amazon Robotics, Berkshire Grey, Axcelis, Gulfstream, BMW Spartanburg, J&J/Abiomed, Skyworks, RTX/Collins, Boeing, Northrop Grumman, Lockheed Martin, L3Harris, BAE Systems, Textron, GD Electric Boat, Leidos, SpaceX, Joby Aviation, Rivian, Boston Dynamics).
+
+Every lead from both agents was independently re-verified by this session (direct WebFetch/curl against the primary source — Workday CXS APIs, BambooHR, Lever, company career sites) before any `build.mjs` edit.
+
+### Added to `rows` (4 new)
+- **Applied Materials — 2027 Spring Product Quality Engineer Co-op - Bachelor's**, Gloucester, MA, job R2628291/100424621440. Fully verified directly via jobs.appliedmaterials.com (posted 2026-09-10, active Apply buttons, no closed notice). New sibling req to the already-tracked Mechanical Engineer Co-op at the same site.
+- **Moderna — Co-Op, Automation, Digital Manufacturing & Controls**, Norwood, MA, req R19951. Fully verified directly via Moderna's own Workday CXS job-search API (not an aggregator) — `canApply: true`, posted ~11 days ago. Jan 18–June 25, 2027. Controls/automation/manufacturing-systems discipline fit.
+- **Moderna — Co-Op, Process Engineering, CQV & Manufacturing Engineering**, Norwood, MA, req R19956. Same verification method/season. Strong manufacturing-engineering discipline fit (cGMP equipment, CQV, process engineering).
+- **Moderna — Co-Op, Facilities, Plant & Project Engineering**, Norwood, MA, req R19952. Same verification method/season. Industrial/facilities-engineering-adjacent fit (building systems, controls/automation, reliability).
+- All 3 new Moderna reqs are U.S.-persons-only (citizens/permanent residents/asylees/refugees) with no immigration sponsorship — flagged prominently in each staged-application file.
+
+### Moved from `rows` to `checked`
+None this run — all 5 tracked Specter Aerospace reqs were re-verified still open after a research agent raised a (false-alarm) concern; see below.
+
+### Added to `checked` (8 new entries)
+- Gulfstream req 236000 — re-checked, unchanged, now 3 days from its stated Oct 30 2026 cutoff.
+- PPL Corporation — direct iCIMS req-ID sweep (15128–15140) found the entire block is HTTP 410 Gone (closed), confirming the Mechanical and Chemical Spring 2027 co-ops are now definitively closed (not just unreachable); Civil Engineering variant remains genuinely unresolved (no closed banner, but no working PPL URL either).
+- STERIS Endoscopy — careers.steris.com domain now reachable (a first, after 3 prior unreachable attempts) but its job search is still client-side-JS-rendered with no visible listings; still unresolved for a 4th run.
+- **HaloBraid** (Cambridge/Allston, MA) — new braiding-robot startup; its one co-op listing is confirmed closed ("no longer accepting applications") and was Fall-term anyway.
+- Field AI (Boston, MA) — re-surfaced Lever posting (id 5ae428f8) confirmed live but states no season/term; consistent with the standing "no season stated" exclusion.
+- Specter Aerospace — all 5 tracked Boston Seaport/Peabody reqs independently re-verified still Open directly via BambooHR after a research agent's Built-In-Boston-based concern turned out to be a false alarm (wrong source checked).
+- Moderna — Co-Op, Business Operations & Operational Excellence (R19950-1) — same site/season as this run's 3 new Moderna adds, but non-engineering discipline; not pursued.
+- Consolidated dedup/sweep entry: Applied Materials' and Formlabs' already-tracked reqs re-reported as "new" by the sweep agent; Siemens Hingham (still Northeastern-only + unlocatable), Shield AI Boston EE lead (discipline mismatch), Sonos (still unverifiable phantom), PI Physik Instrumente (still wrong season), a J&J "Materials Engineering Co-op" with no confirmed MA location, Seurat Technologies (full-time only), Alloy Enterprises (Fall 2026 only), and a dozen other companies (Vicor, MKS/ESI, Turbocam, Barnes, Moog, Woodward, Kaman Aerospace, Instron, Chromalloy, Markforged, Desktop Metal, FedEx) with no qualifying posting found.
+
+### Staged (4 new)
+- `staged-applications/applied-materials-product-quality-engineer-coop-spring-2027-gloucester-ma.md`
+- `staged-applications/moderna-automation-digital-manufacturing-controls-coop-spring-2027-norwood-ma.md`
+- `staged-applications/moderna-process-engineering-cqv-manufacturing-engineering-coop-spring-2027-norwood-ma.md`
+- `staged-applications/moderna-facilities-plant-project-engineering-coop-spring-2027-norwood-ma.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` 422 → 426 (+4), `checked` 1256 → 1264 (+8). Zero duplicate Application Links across all 426 `rows` entries (programmatic check).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — now only 3 days from its stated Oct 30, 2026 cutoff; the NEXT run (expected ~06:50 UTC) should be right around or just after that date — check whether it closes or persists/extends.
+- **PPL Corporation** — Mechanical and Chemical variants now confirmed closed; only the Civil Engineering variant remains genuinely unresolved (no working PPL URL, but no closed banner either on its WayUp mirror). Not worth another full req-ID sweep of the 15120-15140 block (now exhausted/confirmed closed) — if pursued again, try a different req-ID range or a direct site search.
+- **STERIS Endoscopy** — domain now reachable but search is JS-rendered; still opportunistic-only, now a 4th unresolved run.
+- **Lubrizol** — the priority-re-check agent found only the same two already-tracked Wickliffe, OH co-ops (Mechanical Test Engineering, Mechanical Engineering Spring/Summer) on a sweep of other sites; no new site/discipline postings found this run.
+- Standing carried-forward items, unchanged: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 11+ checks), Sonos (same pattern, resurfaced again via new mirrors, still unverifiable), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), J&J/Abiomed R-099800 (opportunistic-only), Simbe Robotics, Boston Dynamics (not before late Dec 2026/early Jan 2027), Parker Hannifin (opportunistic-only after 6+ blocked attempts), Siemens Hingham (Northeastern-only + unlocatable), PI Physik Instrumente (wrong season — worth a fresh check once Spring 2027 postings would plausibly appear there).
+- Standing saturation list, 39+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense**. Applied Materials (Gloucester, MA) and Moderna (Norwood, MA) are proving to be recurring sources of new reqs as they post fresh Spring 2027 co-op slates in batches — worth continuing to check their own career sites/APIs directly each run rather than relying on aggregators.
+- Tracker is now at 426 rows / 1264 checked entries after 105 runs. This run broke a 4-run (101-104 partial) stretch of thin results with 4 genuinely new, fully-verified postings (1 Applied Materials + 3 Moderna), all found via each company's own API/site directly rather than an aggregator.
 - Tracker is now at 422 rows / 1256 checked entries after 104 runs. This run broke the 4-run (100-103) zero-new-postings streak: Lubrizol Corporation is a brand-new, genuinely qualifying company (2 Spring 2027 Mechanical/Electrical co-op reqs, Wickliffe OH) found via a lead that surfaced incidentally while chasing the PPL Corporation follow-up. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin overall, but new reqs do still periodically appear outside the fully-saturated mainstream list.
