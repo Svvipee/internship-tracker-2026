@@ -6449,3 +6449,53 @@ None this run — all 5 tracked Specter Aerospace reqs were re-verified still op
 - Standing saturation list, 39+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense**. Applied Materials (Gloucester, MA) and Moderna (Norwood, MA) are proving to be recurring sources of new reqs as they post fresh Spring 2027 co-op slates in batches — worth continuing to check their own career sites/APIs directly each run rather than relying on aggregators.
 - Tracker is now at 426 rows / 1264 checked entries after 105 runs. This run broke a 4-run (101-104 partial) stretch of thin results with 4 genuinely new, fully-verified postings (1 Applied Materials + 3 Moderna), all found via each company's own API/site directly rather than an aggregator.
 - Tracker is now at 422 rows / 1256 checked entries after 104 runs. This run broke the 4-run (100-103) zero-new-postings streak: Lubrizol Corporation is a brand-new, genuinely qualifying company (2 Spring 2027 Mechanical/Electrical co-op reqs, Wickliffe OH) found via a lead that surfaced incidentally while chasing the PPL Corporation follow-up. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin overall, but new reqs do still periodically appear outside the fully-saturated mainstream list.
+
+## Run 106 — 2026-10-27 ~06:50–07:20 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached again at session start, one commit behind `origin/master`'s run-105 commit (eb71df5) — `master` locally pointed at run 104's commit (ecba914). Ran `git checkout -B master HEAD && git push -u origin master` to resync; confirmed `git fetch origin master` shows local and remote both at eb71df5 before any new work. Same recurring cosmetic issue as runs 99-105.
+
+### What was searched
+Two parallel background research agents, each without `build.mjs` access (per standing methodology — every reported lead independently re-verified/grep-checked by this session before any edit):
+1. **Priority re-checks**: Gulfstream req 236000 (now ~3 days from its stated Oct 30 2026 cutoff), PPL Corporation/LG&E and KU (further iCIMS req-ID probing beyond the already-exhausted 15128–15140 block), STERIS Endoscopy (new ATS-identification attempt), Applied Materials + Moderna sweep for any additional new Gloucester MA/Norwood MA reqs.
+2. **Broad national/Boston-area sweep** for new companies/postings, steered away from the full saturated list (36+ companies, see prior runs' logs).
+
+Every lead from both agents was independently re-verified by this session via direct WebFetch against the primary source (symbotic.com, careers.formlabs.com, jobs.sanofi.com, jobs.appliedmaterials.com, intern-pplweb.icims.com, careers.gulfstream.com, careers.steris.com) and cross-checked against `build.mjs` by exact req/job ID before any edit.
+
+### Added to `rows` (4 new)
+- **Symbotic — Co-Op- Project Engineer, Commissioning**, req R8240, Wilmington, MA (ITC). Fully verified directly via symbotic.com (posted Oct 14, 2026). Hands-on commissioning/validation testing of robotic automation systems. EE/ME/Robotics bachelor's.
+- **Symbotic — Co-Op- System Engineer**, req R8215, Melrose Park, IL (onsite at customer warehouse). Fully verified directly via symbotic.com (posted Oct 13, 2026). EE/ME/Industrial Engineering bachelor's; hands-on field troubleshooting role, not Boston-area but in-discipline/in-season.
+- **Symbotic — Co-Op- System Engineer**, req R8261, Brooksville, FL — same role as R8215, distinct requisition/site. Fully verified directly (posted Oct 15, 2026).
+- **Symbotic — Co-Op- System Engineer**, req R8211, Palestine, TX — same role as R8215, distinct requisition/site. Fully verified directly (posted Oct 13, 2026).
+- Note: Symbotic's "Co-op - Hardware Engineer" (R7976) that the broad-sweep agent flagged as a new find for Symbotic is **already in `rows`** since an earlier run (confirmed by exact-ID grep) — not counted as new.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (7 new entries)
+- Gulfstream req 236000 — re-check attempt; could not confirm live/closed status this run (Cloudflare-blocked on curl, client-rendered on WebFetch) — no change to its existing Partial `rows` entry.
+- PPL Corporation — broader iCIMS ID probe (15100–15160) found two additional live (HTTP 200) IDs, 15131 and 15145, but both are fully client-rendered with no confirmable title/discipline — not added, fails verification bar.
+- STERIS Endoscopy — identified underlying ATS as Phenom People "CareerConnect"; API tenant lookup and direct page fetch both still return no job content. Unresolved for a 5th consecutive run.
+- **Applied Materials — "2026-2027 Process Engineer Co-op - Doctorate"**, req R2626230, Gloucester MA — new req, confirmed live, but Doctorate-level eligibility only; not added.
+- **Symbotic — "Co-op - Robot Manipulation"**, req R8257, Wilmington MA — new req, confirmed live, but full job description (real-time manipulation software, ML pick-and-place, ROS/C++/Python/simulators, no CAD/machining mentioned) is predominantly software/controls-software engineering, same discipline-mismatch basis as the already-excluded sibling "Co-op - Robot Perception" (R8113). Not added.
+- **Sanofi — "2027 Spring Co-Op Opportunities"**, Framingham MA — new company lead, confirmed live directly via jobs.sanofi.com, but named disciplines (Chemical/Biological/Bioengineering/Biochemical/Biomedical Engineering) don't include any of Hamza's target disciplines. Discipline mismatch, not added.
+- **Sanofi — "2027 Spring Co-op – Upstream Automatic Control Development"**, Framingham MA — controls-discipline lead found only via a WayUp mirror; no working jobs.sanofi.com URL/req ID located despite a direct site search. Unresolved, not added.
+- Formlabs: all leads the broad-sweep agent reported (Manufacturing Engineering Intern job 8161817, Electrical Engineering Intern job 8148283, and an unlocated "Mechanical Engineering Intern (Winter/Spring 2027)" aggregator lead) were confirmed **already in `rows`/`checked`** from prior runs by exact-job-ID grep — zero new Formlabs postings this run.
+
+### Staged (4 new)
+- `staged-applications/symbotic-project-engineer-commissioning-coop-r8240-spring2027-wilmington-ma.md`
+- `staged-applications/symbotic-system-engineer-coop-r8215-spring2027-melrose-park-il.md`
+- `staged-applications/symbotic-system-engineer-coop-r8261-spring2027-brooksville-fl.md`
+- `staged-applications/symbotic-system-engineer-coop-r8211-spring2027-palestine-tx.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Read the generated `.xlsx` back with the `xlsx` library: `rows` 426 → 430 (+4), `checked` 1264 → 1271 (+7). Zero duplicate Application Links across all 430 `rows` entries (programmatic check).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — Oct 30, 2026 cutoff is now essentially here; the next run (expected ~13:00 UTC) should be the first real chance to catch a post-cutoff status change.
+- **PPL Corporation** — two live-but-unidentified iCIMS IDs (15131, 15145) found this run; worth a headless-browser render attempt if that capability becomes available, otherwise not worth another raw-HTML probe of the same IDs.
+- **STERIS Endoscopy** — now a 5th unresolved run; ATS identified as Phenom People CareerConnect but still no working API/tenant path found. Opportunistic-only.
+- **Sanofi** — brand-new company for this tracker (Framingham, MA, ~21 mi from Boston). The general co-op posting is a discipline mismatch, but the "Upstream Automatic Control Development" co-op (controls discipline) remains a genuine unresolved lead if a working jobs.sanofi.com URL surfaces — worth one direct follow-up attempt.
+- **Symbotic** — now has 5 tracked Spring 2027 co-ops (R7976, R8240, R8215, R8261, R8211) plus 2 excluded on discipline grounds (R8113, R8257); worth a periodic re-check of symbotic.com/careers/open-positions for any further new reqs given this company's apparent habit of posting several at once.
+- Standing carried-forward items, unchanged: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 11+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), J&J/Abiomed R-099800 (opportunistic-only), Simbe Robotics, Boston Dynamics (not before late Dec 2026/early Jan 2027), Parker Hannifin (opportunistic-only after 6+ blocked attempts), Siemens Hingham (Northeastern-only + unlocatable), PI Physik Instrumente (wrong season).
+- Standing saturation list, 40+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Formlabs (now fully saturated at its own ~8-10 tracked/excluded reqs)**. Applied Materials and Moderna remain worth periodic direct re-checks (new reqs do keep appearing there), but their current slates are now saturated as of this run too.
+- Tracker is now at 430 rows / 1271 checked entries after 106 runs. This run found 4 genuinely new, fully-verified postings, all at one newly-added company (Symbotic's non-HQ reqs), plus caught one genuinely new company lead each at Sanofi and Applied Materials that failed the verification bar on eligibility/discipline/access grounds rather than being silently dropped.
