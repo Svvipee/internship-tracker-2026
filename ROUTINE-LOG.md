@@ -6617,3 +6617,39 @@ None this run — no new fully-verified (non-Partial) postings were added to `ro
 - Standing carried-forward items, unchanged: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 11+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, Hologic Marlborough (no Spring 2027 mechanical match), J&J/Abiomed R-099800 (opportunistic-only), Simbe Robotics, Boston Dynamics (not before late Dec 2026/early Jan 2027), Parker Hannifin (now a distinct new Manitowoc WI lead, see above), Siemens Hingham (Northeastern-only + unlocatable), PI Physik Instrumente (wrong season).
 - Standing saturation list, 43+ consecutive runs: **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Formlabs, Varda Space Industries, Hermeus, Rocket Lab, Zipline**. Applied Materials, Moderna, Symbotic, and PPL Corporation remain worth periodic direct re-checks (new reqs have appeared there before).
 - Tracker is now at 431 rows / 1288 checked entries after 109 runs. This run found zero new qualifying postings — every lead from two parallel research agents either duplicated an already-tracked/excluded entry or failed the verification bar (aggregator-only sourcing, internally contradictory seasons, EE-discipline mismatch, or a still-blocked primary source). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-28 ~01:15 UTC.
+
+## Run 110 — 2026-10-28 ~06:50–07:10 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached again at session start, matching `origin/master`'s run-109 commit (7290ca3) — the same recurring cosmetic issue seen in runs 99-109. Ran `git checkout -B master origin/master` to resync; confirmed local and remote both at 7290ca3 before any new work.
+
+### What was searched
+Two parallel background research agents, each without `build.mjs` access (per standing methodology — every reported lead independently re-verified by this session via direct grep-by-exact-ID or fresh WebFetch before any edit):
+1. **Priority re-checks**: Gulfstream req 236000 (now ~2 days from its stated Oct 30, 2026 cutoff), STERIS Endoscopy, ZOLL Medical Chelmsford, Parker Hannifin Manitowoc WI, Yaskawa Motoman Miamisburg OH, J&J/Abiomed req R-099800, plus a fresh Applied Materials/Moderna/Symbotic/PPL Corporation sweep for any new reqs.
+2. **Broad national/Boston-area sweep** for new companies/postings, steered away from the saturated list (GE Aerospace, Draper, MIT Lincoln Lab, Teradyne, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Formlabs, Varda, Hermeus, Rocket Lab, Zipline, plus the full aerospace/defense-major and prior-run exclusion lists), including the "untried angles" flagged by run 109 (Blue Origin, Relativity Space, Sierra Space, Redwire Space, Intuitive Surgical, Analog Devices, Kodiak Robotics, Carbon Robotics, John Deere, Caterpillar, Cummins, smaller Boston-area hardware startups).
+
+This session independently re-verified every reported lead directly (own WebFetch calls, exact req/job-ID grep against `build.mjs`) before any edit, per standing methodology.
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (1 new consolidated entry)
+- **Dedup-confirmed non-new batch, run 110**: every lead from both agents was either already tracked (Applied Materials R2628290, Symbotic R8261/R8211/R8215, Commonwealth Fusion Systems' 3 Spring-2027-tagged Lever reqs, Lexington Medical req 5423105008 — independently re-fetched directly via Greenhouse's own API and reconfirmed unchanged, Berkshire Grey's 2 open reqs, Insulet's current batch) or already excluded with no status change (Gulfstream 236000 — unchanged, ~2 days from cutoff; STERIS Endoscopy — still unresolved, 10th+ run, careers.steris.com confirmed to be a fully JS-rendered Phenom shell on every path tried; ZOLL Medical Chelmsford — still unresolved, 8 more req-ID guesses 404'd; Parker Hannifin Manitowoc WI — still unresolved, parker.com still 403s, jobs.parker.com DNS-fails in this sandbox; Yaskawa Motoman Miamisburg OH — reconfirmed unchanged via a working mirror, still internally contradictory on season; J&J/Abiomed R-099800 — still 404 on both domains; Field AI and Saronic Technologies — exact repeats of exclusions logged 2026-10-02 through 2026-10-07; Vicarious Surgical, Boston Dynamics, Hologic — no change). PPL's already-excluded Louisville KY co-op mirror now explicitly reads "no longer accepting applications," consistent with its existing closed status. The "untried angles" from run 109 (Relativity Space, Sierra Space, Redwire Space, Intuitive Surgical, Analog Devices, Carbon Robotics, John Deere, Caterpillar, Cummins) were all searched fresh — none currently have a qualifying Winter 2026/Spring 2027 posting; they can now fold into the standing saturation list absent a fresh signal.
+
+### Staged
+None this run — no new fully-verified (non-Partial) postings were added to `rows`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 431; `checked` 1288 → 1289 (+1 consolidated entry). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — Oct 30, 2026 cutoff is now ~2 days out; the next run should be the first real chance to catch an actual post-cutoff status change (closure, or persistence/extension past the stated date).
+- **STERIS Endoscopy** — 10th+ unresolved run; careers.steris.com is a Phenom-style JS shell on every path tried (homepage, early-careers, early-talent-jobs, search-results, legacy job URLs) — opportunistic-only absent a non-JS access method.
+- **ZOLL Medical** — careers.zoll.com's r#### URL pattern is confirmed valid (works for other reqs), just not yet for the right ID — worth continued req-ID guessing or a different discovery method (e.g. a sitemap or job-board-index page) rather than blind guesses.
+- **Parker Hannifin** — the Manitowoc, WI "2027 Automation Co-Op" lead remains Handshake-mirror-only; jobs.parker.com DNS-fails in this sandbox specifically — worth retrying if network access changes, otherwise still parker.com-403-blocked.
+- **Yaskawa Miamisburg OH** — remains internally contradictory on season regardless of access method; low priority.
+- Standing carried-forward items, unchanged: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 11+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, J&J/Abiomed R-099800 (opportunistic-only), Simbe Robotics, Siemens Hingham (Northeastern-only + unlocatable), PI Physik Instrumente (wrong season).
+- Standing saturation list, now folding in run 109's "untried angles": **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Formlabs, Varda Space Industries, Hermeus, Rocket Lab, Zipline, Relativity Space, Sierra Space, Redwire Space, Intuitive Surgical, Analog Devices, Carbon Robotics, John Deere, Caterpillar, Cummins**. Applied Materials, Moderna, Symbotic, and PPL Corporation remain worth periodic direct re-checks (new reqs have appeared there before).
+- Tracker is now at 431 rows / 1289 checked entries after 110 runs. This run found zero new qualifying postings — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-28 ~07:10 UTC. The single concrete item to watch is Gulfstream req 236000's imminent Oct 30, 2026 stated cutoff.
