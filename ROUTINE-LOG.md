@@ -6653,3 +6653,48 @@ None this run — no new fully-verified (non-Partial) postings were added to `ro
 - Standing carried-forward items, unchanged: Entegris Bedford "Mechanical Engineering Co-Op" (phantom, 11+ checks), Sonos (same pattern), Axcelis's year-ambiguous reqs 12001/12009, J&J/Abiomed R-099800 (opportunistic-only), Simbe Robotics, Siemens Hingham (Northeastern-only + unlocatable), PI Physik Instrumente (wrong season).
 - Standing saturation list, now folding in run 109's "untried angles": **GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris (beyond Bedford/Danbury), Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Formlabs, Varda Space Industries, Hermeus, Rocket Lab, Zipline, Relativity Space, Sierra Space, Redwire Space, Intuitive Surgical, Analog Devices, Carbon Robotics, John Deere, Caterpillar, Cummins**. Applied Materials, Moderna, Symbotic, and PPL Corporation remain worth periodic direct re-checks (new reqs have appeared there before).
 - Tracker is now at 431 rows / 1289 checked entries after 110 runs. This run found zero new qualifying postings — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-28 ~07:10 UTC. The single concrete item to watch is Gulfstream req 236000's imminent Oct 30, 2026 stated cutoff.
+
+
+## Run 111 — 2026-10-28 ~12:52 UTC
+
+### What was searched
+Two parallel background research agents (each without `build.mjs` access, per standing methodology — every reported lead independently re-verified by this session via direct WebFetch or exact-ID/URL grep before any edit):
+1. **Priority re-checks**: Gulfstream req 236000 (imminent Oct 30, 2026 stated cutoff — directly re-fetched by this session, unchanged), STERIS Endoscopy (Mentor, OH), ZOLL Medical Chelmsford, Parker Hannifin Manitowoc WI, Yaskawa Motoman Miamisburg OH, J&J/Abiomed req R-099800, plus a fresh Applied Materials/Moderna/Symbotic/PPL Corporation sweep.
+2. **Broad national/Boston-area sweep** for new companies/postings, steered away from the full saturated-company list (60+ names carried over from runs 85-110), including L3Harris, Northrop Grumman, Lockheed Martin, Honeywell Aerospace, BAE Systems, Archer/Joby/Beta/Wisk/Overair, Vast Space, Impulse Space, Figure AI, Agility Robotics, Apptronik, and Boston-area hardware/battery/robotics startups.
+
+### Added to `rows` (4 new)
+- **STERIS Endoscopy (US Endoscopy) — "Engineering Co-op – Spring 2027"**, Mentor, OH. First STERIS entry to clear even the Partial bar after 10+ unresolved prior runs — fetched directly via an xtalks.com mirror (full body content, not a snippet); STERIS's own careers.steris.com remains an unreadable Phenom JS shell.
+- **STERIS Endoscopy (US Endoscopy) — "Materials Engineering Co-op – Spring 2027"**, Mentor, OH. Same sourcing/caveat as above.
+- **ZOLL Medical Corporation — "Manufacturing Engineering Co-Op"**, Pawtucket, RI. Distinct from the already-tracked Chelmsford, MA ZOLL co-op (req R20300) — different location/pay/season window. Fetched directly via an xtalks.com mirror; ZOLL's own careers.zoll.com req for this specific posting not locatable.
+- **Storion Energy — "Mechanical Engineer Co-Op"**, Billerica, MA. New company for the tracker (vanadium redox flow battery JV of Stryten Energy + Largo Inc.), right in the Boston metro area. Fetched directly via a SolidProfessor job-board listing; Storion's own careers domain not confirmed.
+
+All four are marked Partial (mirror-sourced, could not cross-verify on a confirmed company-owned ATS) — consistent with the verification bar for bot-blocked/unreachable primary sources.
+
+**Correction during this run:** the broad-sweep agent also reported an Amazon Robotics "Hardware Development Engineer Intern/Co-Op, ROBOTICS – 2027" (job 10535282) posting as a candidate new find. This session independently re-verified it directly via amazon.jobs's own search API and confirmed it is **already tracked in `rows` since 2026-09-27** — a duplicate was briefly added in error and then removed before this run's commit. No duplicate remains in the file.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (8 new entries)
+- Gulfstream req 236000 run-111 re-check: unchanged, still "may remain active until October 30, 2026," ~2 days from the stated cutoff.
+- J&J/Abiomed req R-101685 "Access & Pump Engineering Co-op" (Danvers, MA): new req, but no explicit season stated and conflicting close dates — same standing exclusion pattern as sibling reqs R-099097/R-100650.
+- BAE Systems "Mechanical Engineering Coop (Spring/Summer 2027)" (Cedar Rapids, IA): bundled dual-season title/duration fails the single-season bar (same grounds as Regeneron/MetOx).
+- BAE Systems "Mechanical Engineering Intern III" (Nashua, NH): ambiguous Summer-2027-formal/Spring-2027-body-text term, unconfirmed.
+- General Dynamics Mission Systems "Infrastructure Engineer Co-op" (Pittsfield, MA): unreachable (gd.com 403, iCIMS board unfetchable) and discipline mismatch (IT/infrastructure, not mechanical/aero).
+- Textron Aviation "Spring Co-Op, Product Design Improvement Engineer" (Independence, KS): careerbuilder.com mirror 403'd, unverifiable.
+- CMTA "Mechanical Engineer Intern/Co-op Winter 2026" (Framingham/Boston, MA): likely stale (Jan 2026 start already passed), mirror 403'd.
+- Consolidated dedup-confirmed closed/non-new batch: Xona Space Systems, Reliable Robotics, Stoke Space, Figure AI, RTX/Collins Aerospace (Jamestown ND), BAE Operations Co-op (Cedar Rapids) all confirmed closed; Amazon Robotics job 10535282 re-confirmed already-tracked (not new); L3Harris/Northrop Grumman/Lockheed Martin/Honeywell/Archer/Joby/Beta/Wisk/Overair/Vast/Impulse/Agility Robotics/Apptronik/MKS/Vicor/Markforged/Desktop Metal all searched fresh with no qualifying Winter 2026/Spring 2027 posting found.
+
+### Staged
+None this run — all 4 new `rows` postings are Partial (mirror-sourced), not fully verified, per the staging rule (step 7 applies only to fully-verified, non-Partial new postings).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 431 → 435 (+4). `checked` 1289 → 1297 (+8). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — Oct 30, 2026 cutoff is now ~2 days out; the next run should be the first real chance to catch an actual post-cutoff status change.
+- **STERIS Endoscopy** — now has 2 Partial entries in `rows` via xtalks.com mirrors; careers.steris.com itself remains an unreadable Phenom JS shell after 11+ attempts — worth trying to upgrade these to "Yes" if a working primary-source method is ever found, otherwise leave as-is.
+- **ZOLL Medical** — the Pawtucket, RI req is now Partial in `rows`; the long-standing Chelmsford Jan-June 2027 xtalks-only lead remains separately unresolved in `checked` — worth continued req-ID guessing on careers.zoll.com for both.
+- **Storion Energy** — worth a search for a Storion-Energy-owned careers domain (vs. the SolidProfessor mirror) to upgrade to "Yes".
+- Standing saturation list (unchanged, now includes run 111's fresh-but-empty checks): GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Formlabs, Varda, Hermeus, Rocket Lab, Zipline, Relativity Space, Sierra Space, Redwire Space, Intuitive Surgical, Analog Devices, Carbon Robotics, John Deere, Caterpillar, Cummins, Blue Origin, Commonwealth Fusion Systems, Lexington Medical, Berkshire Grey, Insulet, Applied Materials, Moderna, Symbotic, PPL Corporation, Axcelis, Shield AI, Boston Dynamics, Hologic, Vicarious Surgical, Form Energy, Specter, Leonardo DRS, Saronic Technologies, Field AI, Sonos, Siemens, PI Physik Instrumente, L3Harris, Northrop Grumman, Lockheed Martin, Honeywell Aerospace, Archer Aviation, Joby Aviation, Beta Technologies, Wisk Aero, Overair, Vast Space, Impulse Space, Figure AI, Agility Robotics, Apptronik.
+- Tracker is now at 435 rows / 1297 checked entries after 111 runs. This run's genuinely new finds were all Partial-tier (STERIS x2, ZOLL Pawtucket, Storion Energy) — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin, but a few fresh Boston-area leads did surface this run after several zero-new-postings runs in a row.
