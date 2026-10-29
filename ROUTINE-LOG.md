@@ -6815,3 +6815,48 @@ No application submitted for any posting.
 - **ZOLL Pawtucket, RI (R20367 / R20084)** — pay rate not independently confirmed this run (only a third-party mirror's earlier $27.00/hr claim); worth confirming directly on the Workday application page if Hamza proceeds.
 - Standing saturation list (unchanged, now also covers run 114's fresh-but-empty sweep): GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Teradyne, Entegris, Albany Engineered Composites, Regeneron, iRobot, Precision Castparts, Cognex, SEW-EURODRIVE, Anduril, Karman Space & Defense, Formlabs, Varda, Hermeus, Rocket Lab, Zipline, Relativity Space, Sierra Space, Redwire Space, Intuitive Surgical, Analog Devices, Carbon Robotics, John Deere, Caterpillar, Cummins, Blue Origin, Commonwealth Fusion Systems, Lexington Medical, Berkshire Grey, Insulet, Applied Materials, Moderna, Symbotic, PPL Corporation, Axcelis, Shield AI, Boston Dynamics, Hologic, Vicarious Surgical, Form Energy, Specter, Leonardo DRS, Saronic Technologies, Field AI, Sonos, Siemens, PI Physik Instrumente, L3Harris, Northrop Grumman, Lockheed Martin, Honeywell Aerospace, Archer Aviation, Joby Aviation, Beta Technologies, Wisk Aero, Overair, Vast Space, Impulse Space, Figure AI, Agility Robotics, Apptronik, Xona Space Systems, Schaeffler, QuEra Computing, VulcanForms, Markforged, Edwards Lifesciences, Schneider Electric, Emerson, ABB, Trane, Carrier, ITW, Flowserve, Dover, Nordson, IDEX, Ametek, Waters Corp, MKS Instruments, Thermo Fisher, Austal USA, GE Vernova, RoviSys, MORSE Corp, Toyota Research Institute, Vicor, Desktop Metal, Watts Water Technologies, CMTA, Syska Hennessy.
 - Tracker is now at 436 rows / 1314 checked entries after 114 runs. This run's net effect was a repo-hygiene cleanup (1 duplicate row removed, 1 dead posting moved to `checked`, 1 existing posting upgraded to fully verified) rather than new postings — a reminder to periodically audit for duplicate rows after an agent-assisted run, not just for dead links.
+
+## 2026-10-29 ~13:11–13:23 UTC (run 115)
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 114's commit (815ff00), matching `origin/master` exactly. Ran `git checkout -B master origin/master` to resync before any other work — same recurring cosmetic issue as runs 99-114.
+
+### What was searched
+Two parallel background research agents (each without `build.mjs` access, per standing methodology — every reported lead independently re-verified by this session via direct WebFetch/API calls before any edit):
+1. **Priority re-checks**: ZOLL Pawtucket RI pay-rate confirmation (reqs R20367/R20084), RoviSys (Aurora OH / Thousand Oaks CA), MORSE Corp (full current Greenhouse board for any new qualifying co-op), STERIS Endoscopy (Mentor, OH).
+2. **Broad national sweep** for new companies/postings, steered away from the ~95-company standing saturation list.
+
+This session also independently re-fetched Gulfstream req 236000 directly before delegating (unchanged, still "may remain active until October 30, 2026," cutoff is tomorrow).
+
+### Added to `rows`
+None net-new this run. Two candidates reported as "new" by the research agents — Freeform Future Corp's Mechanical Engineering Intern (job 7921114003) and Manufacturing Engineering Intern (job 8013422003), and nVent's "Engineering Co-Op Opportunities" (Richland, MS, req R23659) — were each independently found via exact-URL/req-ID grep against `build.mjs` to already be tracked in `rows` since earlier runs (~2026-10-06 and ~2026-10-05 respectively). Rows for all three were briefly added in error during this run's editing and then removed before commit; `rows` count is unchanged at 436. Sanofi's Cambridge, MA "2027 Spring Co-op Opportunities" (job 41259853312) was also re-surfaced and confirmed already tracked, not added again.
+
+### Moved from `rows` to `checked`
+None this run (the ZOLL Pawtucket/MORSE Corp/BMW Spartanburg re-checks below all confirmed the existing `rows` entries unchanged, not dead).
+
+### Updated in `rows`
+- **ZOLL Medical Corporation — "Manufacturing Engineering Co-op," Pawtucket, RI (req R20367)** — pay rate independently confirmed this run via a direct fetch of ZOLL's own Workday CXS job JSON: "$27.00 to $27.00" per hour. Resolved run 114's open "pay rate not independently confirmed" note. Already committed and pushed earlier in this run (commit a471e55).
+- **MORSE Corp (Cambridge, MA)** — a research agent flagged that the two already-tracked co-op reqs (Manufacturing Engineer Co-op job 8034274003, Mechanical Engineer Co-op job 7968311003) no longer appear on MORSE's Greenhouse board — but it had queried the wrong board (`morsecorp`, MORSE's full-time board). This session independently queried the correct board (`morsecorpcoop`) directly and confirmed both reqs are still live, unchanged, same job IDs. No edit needed; false alarm caught before any edit.
+- **BMW Group, Spartanburg, SC (4 already-tracked Spring 2027 co-op reqs)** — a research agent flagged 2 reqs as possibly closed ("not available at this time"). This session independently re-fetched all 4 tracked reqs directly, which all showed that message — but so did a brand-new, never-before-tracked 5th req (Quality Management Co-Op, 191181) that a fresh WebSearch had just surfaced as a live, currently-indexed posting. This strongly indicates a site-wide bot/referrer-block pattern on jobs.bmwgroup.com rather than real closures. Left all 4 `rows` entries unchanged rather than acting on a likely false positive — logged in `checked` for transparency.
+
+### Added to `checked` (8 new entries)
+- Freeform (Freeform Future Corp) wrong-discipline (Electrical Engineering Intern) and wrong-season (Summer 2027 / CNC Machining Summer 2027 variants) sibling reqs on the same board as the two already-tracked Spring 2027 ME/Mfg reqs.
+- Sanofi Cambridge, MA re-surfaced lead — already tracked, not new.
+- nVent Richland, MS re-surfaced lead — already tracked (req R23659) via nVent's own Workday API, not new; a SolidProfessor mirror's Fall 2026 start option on the same req has already passed.
+- ASM International, Phoenix, AZ "Mechanical Engineering Intern (Spring 2027)" — found on ASM's own paginated open-vacancies listing per WebSearch, but a direct WebFetch of the primary listing page and a startup.jobs mirror (403'd) could not independently confirm it — unresolved, worth a fresh attempt with a different access method.
+- WSP USA, Philadelphia, PA "Mechanical Engineering Co-op – Fall 2026/Winter 2027" — explicitly restricted to Drexel University's own co-op program per mirrors; excluded regardless of verification status.
+- Lighthouse Avionics (drone startup) Mechanical Engineer Intern — vague, unconfirmed season ("summer and either fall or spring"), no company careers page located.
+- EVident Battery (Westford, MA) Mechanical Engineering Intern — only a stale "Fall 2025" PDF posting found, over a year old, no current successor.
+- BMW Group Spartanburg, SC access-pattern note (see above) — logged as a likely false-positive closure signal, not an actual exclusion.
+
+### Staged
+None this run — no new fully-verified postings were added to `rows`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done` (run twice this run: once after the ZOLL pay-rate fix, committed separately as commit a471e55, and once after all other edits settled). Verified via direct xlsx read: `rows` unchanged at 436; `checked` 1314 → 1322 (+8). Zero duplicate Application Links across all 436 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — stated cutoff (Oct 30, 2026) is now today/tomorrow depending on exact run time; the next run is the real window to catch a post-cutoff status change.
+- **ASM International (Phoenix, AZ)** — "Mechanical Engineering Intern (Spring 2027)" is indexed on ASM's own open-vacancies page per WebSearch but unconfirmed by direct fetch this run (JS-paginated listing, mirror 403'd) — worth a fresh attempt via a different path (e.g. ASM's own ATS API if one can be identified, or a working mirror).
+- **BMW Group Spartanburg, SC** — jobs.bmwgroup.com appears to block direct-link access site-wide (returns "not available" even for brand-new, freshly-indexed reqs) — treat any future "not available" message from this domain as inconclusive, not a closure, unless corroborated by a second independent signal (e.g. the req disappearing from a fresh site search entirely, or an explicit "filled"/"closed" notice).
+- Standing saturation list (unchanged from run 114, now also covers run 115's fresh-but-empty priority re-checks and broad sweep): see run 114 entry above for the full list — no new entries this run (Freeform, Sanofi, and nVent were re-surfaced leads already on the tracker, not new saturation entries).
+- Tracker is now at 436 rows / 1322 checked entries after 115 runs. This run's main value was verification hygiene rather than growth: confirmed ZOLL Pawtucket's pay rate, caught a wrong-Greenhouse-board false alarm on MORSE Corp before any bad edit, caught a likely site-wide access-block false positive on BMW Spartanburg before any bad edit, and caught three "new" leads (Freeform x2, nVent, Sanofi) that were actually already-tracked duplicates — three near-misses this run would have become repo-hygiene bugs (duplicate rows) if not independently cross-checked against `build.mjs` before committing. Zero genuinely new postings survived verification. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-29.
