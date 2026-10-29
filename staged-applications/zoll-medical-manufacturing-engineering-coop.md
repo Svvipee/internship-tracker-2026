@@ -1,4 +1,6 @@
-# ZOLL Medical Corporation — Manufacturing Engineering Co-Op (Spring 2027)
+> ⚠️ **DEAD as of 2026-10-29 (run 114) — do not apply via this link.** Req R20300 no longer appears in ZOLL's own Workday job search, the careers.zoll.com link now 404s, and the xtalks mirror returns HTTP 410 Gone. Moved to `checked` in the tracker. See `zoll-medical-manufacturing-engineering-coop-pawtucket.md` for ZOLL's still-open Pawtucket, RI Manufacturing Engineering Co-op instead (same employer, same role, different site). Leaving this file in place only as a dated record — do not use it to apply.
+
+# ZOLL Medical Corporation — Manufacturing Engineering Co-Op (Spring 2027), Chelmsford MA — DEAD
 
 - **Posting URL:** https://zoll.wd5.myworkdayjobs.com/ZOLLMedicalCorp/job/Chelmsford-MA/Manufacturing-Engineering-Co-Op_R20300
 - **Location:** Chelmsford, MA (Boston area, ~25 mi from Boston)
