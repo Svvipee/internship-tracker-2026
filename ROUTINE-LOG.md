@@ -6860,3 +6860,36 @@ None this run — no new fully-verified postings were added to `rows`.
 - **BMW Group Spartanburg, SC** — jobs.bmwgroup.com appears to block direct-link access site-wide (returns "not available" even for brand-new, freshly-indexed reqs) — treat any future "not available" message from this domain as inconclusive, not a closure, unless corroborated by a second independent signal (e.g. the req disappearing from a fresh site search entirely, or an explicit "filled"/"closed" notice).
 - Standing saturation list (unchanged from run 114, now also covers run 115's fresh-but-empty priority re-checks and broad sweep): see run 114 entry above for the full list — no new entries this run (Freeform, Sanofi, and nVent were re-surfaced leads already on the tracker, not new saturation entries).
 - Tracker is now at 436 rows / 1322 checked entries after 115 runs. This run's main value was verification hygiene rather than growth: confirmed ZOLL Pawtucket's pay rate, caught a wrong-Greenhouse-board false alarm on MORSE Corp before any bad edit, caught a likely site-wide access-block false positive on BMW Spartanburg before any bad edit, and caught three "new" leads (Freeform x2, nVent, Sanofi) that were actually already-tracked duplicates — three near-misses this run would have become repo-hygiene bugs (duplicate rows) if not independently cross-checked against `build.mjs` before committing. Zero genuinely new postings survived verification. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-29.
+
+## 2026-10-29 ~18:51–19:10 UTC (run 116)
+
+### What was searched
+Two parallel background research agents (each without `build.mjs` access, per standing methodology — every reported lead independently re-verified by this session via direct WebFetch/WebSearch before any edit):
+1. **Priority re-checks**: Gulfstream req 236000 (Oct 30, 2026 stated cutoff now tomorrow), RoviSys (Aurora OH / Thousand Oaks CA), ASM International Phoenix AZ Mechanical Engineering Intern, STERIS Endoscopy (Mentor, OH), MORSE Corp (full current Greenhouse board), Lila Sciences (explicit-year re-check).
+2. **Broad national sweep** for new companies/postings, steered away from the ~100-company standing saturation list — covered Boston-area hardware/robotics startups, aerospace-prime subsidiaries (Collins Aerospace/RTX, GD Electric Boat, BAE Nashua, Textron/Bell), industrial/EMS manufacturers (Parker Hannifin, Eaton, Flex, Jabil, Woodward, Moog, Curtiss-Wright), and newer space/defense startups (True Anomaly, Stoke Space, Ursa Major, Firefly, Castelion, Apex Space, Phase Four).
+
+This session independently re-fetched/re-searched every reported lead before editing anything.
+
+### Added to `rows`
+None this run. The broad-sweep agent's one "new" candidate — Toyota Material Handling/Raymond Corp's "Mechanical Systems Engineering Co-op" (Greene, NY) — was independently found via exact-text grep against `build.mjs` to already be tracked (added run ~2026-10-07). RTX/Collins Aerospace Jamestown ND and Troy OH reqs, and Flex's Hollis NH Mechanical Engineering Co-op, were likewise already tracked or already excluded from prior runs.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (2 new entries)
+- Toyota Material Handling/Raymond Corp — "Product Engineering Co-op (Mechanical)", Columbus, IN: a genuinely new req (distinct from the already-tracked Greene, NY co-ops), but its stated term is a single fixed "January through August 2027" block with no Spring-only option — spans Spring AND Summer 2027, failing Hamza's season-specific bar. Not added.
+- Consolidated dedup-confirmed non-new batch covering both agents' priority re-checks (Gulfstream, RoviSys, ASM International, STERIS, MORSE Corp, Lila Sciences — all unchanged from run 115) and the broad sweep's already-tracked/already-excluded candidates (Raymond Corp Greene NY, RTX Jamestown ND, RTX Troy OH, Flex Hollis NH, PCC Airfoils, GD Electric Boat) plus a general negative sweep (Aurora Flight Sciences, Locus Robotics, Vecna Robotics, Realtime Robotics, Piaggio Fast Forward, Smiths Detection, Hexcel, Albany International, Haemonetics, Olympus, Textron/Bell, BAE Systems Nashua, Parker Hannifin, Eaton, National Instruments, Keysight, Jabil, Firefly Aerospace, Castelion, Phase Four, Apex Space, True Anomaly, Stoke Space, Ursa Major).
+
+### Staged
+None this run — no new fully-verified postings were added to `rows`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 436; `checked` 1322 → 1324 (+2). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`, binary diff).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — stated cutoff (Oct 30, 2026) is now imminent (within ~24h of this run); the *next* run is the real window to catch a post-cutoff status change (closure, extension, or silent persistence).
+- **ASM International (Phoenix, AZ)** — "Mechanical Engineering Intern (Spring 2027)" remains indexed only via a Google search-snippet of asm.com's own page plus a 403'd startup.jobs mirror, still unconfirmed by direct fetch for 2 consecutive runs now — worth trying asm.com's own ATS API (if one can be identified) or a different working mirror.
+- **RoviSys** — still only confirmable via Dice mirrors; careers-rovisys.icims.com continues to return a JS shell with no working JSON/XML endpoint found despite multiple attempts across several runs.
+- **STERIS Endoscopy** — still only confirmable via an xtalks.com mirror; this run additionally confirmed STERIS's ATS is NOT Workday but could not pin down which ATS it actually is — worth identifying the real ATS domain (similar to the PCC Airfoils/Precision Castparts breakthrough from run ~58) to get past the careers.steris.com JS shell.
+- Standing saturation list (unchanged from run 115, now also covers run 116's fresh-but-empty sweep): see run 114/115 entries above for the full list, plus Toyota Material Handling/Raymond Corp (Greene NY co-ops fully saturated — only Mechanical Systems Engineering Co-op and Automation Development Co-op fit Hamza's disciplines among the Jan-May-2027-eligible roles), GD Electric Boat, PCC Airfoils, Aurora Flight Sciences, Locus Robotics, Vecna Robotics, Realtime Robotics, Piaggio Fast Forward, Smiths Detection, Hexcel, Albany International, Haemonetics, Olympus, Textron/Bell, BAE Systems Nashua, Parker Hannifin, Eaton, National Instruments, Keysight, Jabil, Firefly Aerospace, Castelion, Phase Four, Apex Space, True Anomaly, Stoke Space, Ursa Major.
+- Tracker is now at 436 rows / 1324 checked entries after 116 runs. This run found zero genuinely new qualifying postings — every candidate either turned out to be an already-tracked duplicate (Raymond Corp Greene NY, RTX Jamestown ND/Troy OH, Flex Hollis NH) or failed the season-specific bar on first look (Raymond Corp's Columbus IN sibling req, Jan-Aug 2027 spanning Spring+Summer). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-29; the one live, time-sensitive thread is Gulfstream req 236000's imminent Oct 30 cutoff.
