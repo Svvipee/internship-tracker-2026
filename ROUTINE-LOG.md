@@ -6926,3 +6926,35 @@ Every reported lead was independently re-verified by this session via its own We
 - **STERIS Endoscopy** — ATS now identified as Phenom People/CareerConnect; worth investigating whether Phenom People exposes any public search/GraphQL endpoint (similar to how Workday CXS and Greenhouse APIs were cracked for other employers) in a future run.
 - Standing saturation list (unchanged from run 116, now also resolved: ASM International — see dedicated entry above, no longer a standing open thread): see run 114/115/116 entries above for the full list.
 - Tracker is now at 437 rows / 1328 checked entries after 117 runs. This run's main values were: one genuinely new Boston-area posting (Johnson Controls Burlington, MA), a 3-run-old unresolved thread definitively closed out (ASM International), and a repo-hygiene near-miss caught before any bad push (stale local origin/master ref). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-30.
+
+## 2026-10-30 06:58 UTC (run 118)
+
+**Repo-hygiene note:** session started with HEAD detached, matching origin/master's commit (112bfb6, run 117) — same recurring cosmetic issue as runs 99-117. This time ran `git fetch origin master` FIRST (per run 117's hard-won lesson), confirmed FETCH_HEAD matched the detached HEAD exactly, then `git checkout -B master origin/master` — correctly reported "up to date" on a verified-fresh base. No stale-ref issue this run.
+
+### What was searched
+Two parallel background research agents (neither with `build.mjs` access), per standing methodology:
+1. **Priority re-checks**: Gulfstream req 236000 (Savannah, GA — today is the day AFTER its stated Oct 30, 2026 cutoff), RoviSys (Aurora OH / Thousand Oaks CA), STERIS Endoscopy (Mentor, OH), Lila Sciences (Cambridge, MA — explicit-year re-check), Storion Energy (Billerica, MA).
+2. **Broad national sweep** for new companies/postings, explicitly steered away from the ~100+-company standing saturation list (full list carried in the dedicated `checked` entry for this run) — covered Boston-area/New England hardware, aerospace primes (RTX/Collins, Pratt & Whitney, Northrop Grumman), industrial/med-device/robotics companies, and exact-phrase searches for "Winter 2026"/"Spring 2027" co-op/intern starts.
+
+Every reported lead was independently re-verified by this session via its own WebFetch calls or cross-checked against `build.mjs` by exact URL/req ID before any edit.
+
+### Added to `rows` (0 new)
+None. No new qualifying posting survived independent verification this run.
+
+### Added to `checked` (2 new entries)
+- **Gulfstream req 236000** — re-checked one day past its own stated Oct 30, 2026 cutoff via a WayUp mirror (careers.gulfstream.com itself still an unreadable JS shell); unchanged, still only states "may remain active until October 30, 2026," no closure or extension language found anywhere. Worth one more re-check next run.
+- **Dedup-confirmed non-new batch**: RoviSys, STERIS Endoscopy, Lila Sciences, and Storion Energy all re-confirmed unchanged from their existing Partial/excluded status (see entry for exact quotes/URLs — notably two new facts: a second Storion icims req, 5531, is now also confirmed HTTP 410 Gone; STERIS's xtalks mirrors now show explicit Nov 1/Nov 11, 2026 stated closing dates, still open per that mirror). Two broad-sweep candidates were surfaced and both confirmed non-new by direct `build.mjs` grep: Moderna "Co-Op, Facilities, Plant & Project Engineering" (Norwood, MA, req R19952) is already tracked in `rows` since run 105; SPIROL International (Stow, OH) is the same lead already confirmed a dead end in `checked` since run 74/2026-10-11 (its mirror URL now 404s, and a Handshake preview the agent found actually belongs to an unrelated Crown Equipment Corporation posting — a cross-contamination risk worth flagging). Full detail and the complete list of searched-and-rejected companies (RTX/Collins Jamestown ND, Siemens Hingham, iRobot, Northrop Grumman, Waters Corp, Humanoid, Cognex, Vicor, Desktop Metal, Textron Systems, Barnes Group, CIRCOR, SSOE Group, MKS Instruments — none qualifying) is in the dedicated `checked` entry in `build.mjs`.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 437. `checked` 1328 → 1330 (+2). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — now persisting one full day past its own stated Oct 30, 2026 cutoff with zero closure language across three consecutive runs (116/117/118) of checking; worth a definitive re-check next run, and worth noting as a pattern if it continues to persist indefinitely (the stated date may simply be decorative/non-binding on Gulfstream's ATS).
+- **RoviSys** — still only confirmable via Dice mirrors after many runs; confirmed this run that careers-rovisys.icims.com individual job pages ARE reachable by direct req-ID URL in general (IDs 1970, 2129 both loaded), so a systematic ID-range probe between/around those (e.g. 1971-2128) might eventually surface the Spring 2027 req directly — worth trying next run if time allows.
+- **STERIS Endoscopy** — ATS confirmed Phenom People/CareerConnect (run 117); no public API found yet. The xtalks mirror's stated Nov 1/Nov 11, 2026 closing dates mean these specific postings may close naturally within the next 1-2 runs regardless of verification progress.
+- **Storion Energy** — both known icims req IDs (5471, 5531) now confirmed HTTP 410 Gone; the Billerica-specific "Mechanical Engineer Co-Op" role remains locatable only via a third-party mirror with no Storion-owned confirmation — likely a standing dead end absent a new icims req ID surfacing.
+- Standing saturation list (unchanged from run 117): see run 114/115/116/117 entries above for the full list.
+- Tracker is now at 437 rows / 1330 checked entries after 118 runs. This run found zero genuinely new qualifying postings — every candidate either turned out to be an already-tracked/already-excluded duplicate (Moderna R19952, SPIROL Stow OH) or remained unresolved on its primary source for another run (Gulfstream, RoviSys, STERIS, Lila Sciences, Storion). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-30.
