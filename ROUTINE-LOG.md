@@ -4,6 +4,68 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 122 — 2026-10-31 ~12:49-13:40 UTC
+
+**Repo-hygiene check:** HEAD was detached at session start, matching origin/master exactly (run 121's commit, 6180126) after `git fetch origin master`. Ran `git checkout -B master origin/master` — clean, no drift.
+
+### What was searched
+Two parallel background research agents (each without `build.mjs` access, per standing methodology):
+1. **Priority re-checks**: Boston Dynamics (R3318/R3312 term-language check), Rocket Lab (Cloudflare-block workaround attempt), RTX/Collins Aerospace Haltom City TX (req 01883312), BMW Spartanburg SC (191197/191539), STERIS Endoscopy Mentor OH, Draper Laboratory (fresh Workday CXS sweep — last full sweep was run 103), MIT Lincoln Laboratory (fresh listing sweep), GE Aerospace Lynn MA.
+2. **Broad national sweep** for new companies, explicitly steered away from the ~115+-company standing saturation list.
+
+Every reported lead was independently re-verified by this session via its own WebFetch/curl calls before any edit, per standing methodology.
+
+### Major correction this run
+**Rocket Lab was NOT actually unverifiable.** Run 121 flagged Rocket Lab's ~15-posting Spring 2027 slate as newly "unverifiable" (Cloudflare-blocked on rocketlabcorp.com) — but the tracker had already solved this exact problem weeks earlier, in run 24 (2026-09-24), by querying Rocket Lab's own Greenhouse API directly (`boards-api.greenhouse.io/v1/boards/rocketlab/jobs`), which bypasses the Cloudflare front entirely. 21 Rocket Lab reqs have been tracked in `rows` since then. This run re-verified all 21 via the same direct API method:
+- 16 are still live (HTTP 200), re-confirmed unchanged.
+- **5 are now closed** (HTTP 404 "Job not found" on direct API query): Systems Engineering Intern, Integration & Test Intern, Propulsion Intern, Structural Analysis Intern, and Thermal Engineering Intern (all Long Beach, CA). Moved from `rows` to `checked`; their stale staged-application drafts were deleted.
+- **1 genuinely new req found**: Ground Systems Engineering Intern, Spring 2027, Stennis Space Center, MS (job 8007204003, first published 2026-10-12) — added to `rows` and staged.
+
+### Added to `rows` (3 new)
+- **Symbotic — Co-Op - Service Readiness Engineer**, Wilmington, MA (HQ). Spring (Jan–May 2027). Req R8374, posted Oct 29, 2026 (2 days old at check time). Fetched directly via symbotic.com, active Apply button. Right in the Boston metro (~16 mi).
+- **Commonwealth Fusion Systems — Intern, Mechanical and Magnet Engineer**, Devens, MA. Spring or Summer 2027 (13–26 week internship). Fetched directly via CFS's own Lever board. Included under the tracker's standing precedent for distinctly-dated dual Spring/Summer postings (same as the already-tracked CFS Manufacturing/Industrial Engineer siblings).
+- **Rocket Lab — Ground Systems Engineering Intern, Spring 2027**, Stennis Space Center, MS. See correction above.
+
+### Moved from `rows` to `checked` (5)
+- 5 Rocket Lab Long Beach, CA reqs confirmed closed via direct Greenhouse API re-check — see correction above.
+
+### Added to `checked` (16 new entries)
+- Boston Dynamics (R3318/R3312 still no term language; new siblings R3331 program-management and R3317 AI/ML research intern — both discipline-excluded).
+- RTX/Collins Aerospace Haltom City TX req 01883312 — still unverifiable; identified the real blocker as the Phenom People ATS platform (not Workday), whose public jobs API rejects direct external queries regardless of domain tried.
+- BMW Spartanburg 191197/191539 — weak new signal (Dice mirror for 191197 now HTTP 410), still unresolved.
+- STERIS Endoscopy Mentor OH — confirmed on the same Phenom People platform as RTX; still unverifiable on primary source.
+- Draper Laboratory — fresh CXS API sweep confirmed all 5 tracked reqs still live; 4 new reqs found, all wrong discipline (software, EE, optics/physics).
+- MIT Lincoln Laboratory — fresh listing sweep; the 2 "new" leads reported by a research agent were both already tracked/already excluded.
+- GE Aerospace Lynn MA — confirmed same Phenom People blocker; one aggregator-only lead (CNC Programmer Co-op) not independently confirmable.
+- Broad-sweep dedup batch: Symbotic R7976/R8240 (already tracked) and R8257 (already excluded); CFS 86514c02/01ec2ee8/7ed4bf93 (already tracked).
+- ColdSnap (Billerica, MA) — fresh/Boston-area lead but genuinely unverifiable; no company careers page locatable.
+- Insulet — already heavily tracked; two aggregator leads couldn't be matched to a specific new req ID.
+- Hologic (Marlborough, MA) — mechanical co-op pattern appears to be July-Dec (Fall), not Spring.
+- Beta Technologies — confirmed Summer 2027 only via direct fetch.
+- Boston Materials (Billerica, MA) — no internship/co-op currently posted.
+- Zipline — stale (~2 months old per aggregator), not Boston, unverifiable on primary source.
+- National sweep dead-ends batch: Analogic, GreenSight, ClearMotion, Hyperfine, Performance Drone Works, ASM International (Phoenix, AZ — still unresolved after multiple runs).
+
+### Staged (3 new, 5 removed)
+- `staged-applications/symbotic-service-readiness-engineer-coop-wilmington-ma.md` (new)
+- `staged-applications/cfs-mechanical-magnet-engineer-intern-spring-summer2027-devens-ma.md` (new)
+- `staged-applications/rocket-lab-ground-systems-engineering-intern-spring2027-stennis.md` (new)
+- Deleted 5 stale Rocket Lab staged drafts for the reqs confirmed closed this run (systems-engineering, integration-test, propulsion, structural-analysis, thermal-engineering intern).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 435 → 433 rows (−5 Rocket Lab closures, +3 new); `Checked - Not Included` sheet 1354 → 1370 (+16). Zero duplicate Application Links across all 433 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **RTX/Collins Aerospace, STERIS Endoscopy, and GE Aerospace** all share the same Phenom People ATS platform-level blocker (public jobs API rejects direct external queries with "Tenant not identified" regardless of domain param) — this is now a confirmed structural access limitation, not a per-company dead end. Worth a dedicated attempt at a workaround (e.g. a browser-rendered fetch) if one becomes available, since it would unlock verification for all three at once.
+- **BMW Spartanburg 191197/191539** — still genuinely unresolved; req 191197 now has a weak closed-leaning signal (Dice 410) but no confirmation either way for 191539.
+- **ColdSnap (Billerica, MA)** — fresh, Boston-area, promising lead that could not be independently verified this run; worth a fresh attempt to find the company's own domain/ATS.
+- **ASM International (Phoenix, AZ)** — "Manufacturing/Mechanical Engineering Intern (Spring 2027)" remains unresolved across several runs now; worth trying asm.com's own Greenhouse board (token "asm") directly, which resolved a similar thread for this company earlier.
+- **Rocket Lab** — now re-verified as a LIVE, low-effort direct-API check (`boards-api.greenhouse.io/v1/boards/rocketlab/jobs/<id>`, bypasses Cloudflare entirely) — worth a periodic re-sweep of the full company board (not just the 21 already-tracked IDs) in case entirely new reqs appear, since this method is cheap and reliable.
+- Standing saturation list (unchanged from run 121, now also add this run's new dead ends: ColdSnap unresolved, Insulet/Hologic/Beta Technologies/Boston Materials/Zipline/Analogic/GreenSight/ClearMotion/Hyperfine/Performance Drone Works): see run 114-121 entries above for the full prior list.
+- Tracker is now at 433 rows / 1370 checked entries after 122 runs. This run's main values were a genuine access-method breakthrough (Rocket Lab's Greenhouse-API re-discovery, which also caught 5 stale closed reqs that had gone unnoticed) and 3 new verified postings (Symbotic, Commonwealth Fusion Systems, Rocket Lab Stennis) — a comparatively strong run after several consecutive runs of near-zero net growth. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-31, but is not fully exhausted.
+
+---
+
 ## Run 121 — 2026-10-31 (in progress, checkpoint ~ first commit)
 
 **Repo-hygiene check:** HEAD was detached at session start, matching origin/master exactly (run 120's commit, 4454214) after `git fetch origin master`. Ran `git checkout -B master origin/master` — clean, no drift.
