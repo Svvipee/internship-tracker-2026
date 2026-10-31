@@ -4,6 +4,48 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 123 — 2026-10-31 ~18:43-19:30 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, matching `master`'s local ref exactly (6180126, run 121's commit) — but a fresh `git fetch origin master` revealed origin/master was actually one commit ahead at 27c8f23 (run 122), which had been pushed successfully but never fast-forwarded onto this container's local `master` branch pointer. Ran `git checkout master && git merge --ff-only 27c8f23` to resync onto the verified-fresh remote tip before any new work — no data was lost (run 122's commit was safely on `origin/master` all along), but this is a new variant of the standing detached-HEAD/stale-ref issue worth flagging again: this time the local branch ref itself (not just a cached remote-tracking ref) lagged one full run behind origin.
+
+### What was searched
+Two parallel background research agents (each without `build.mjs` access, per standing methodology — every reported lead independently re-verified by this session via its own WebFetch/curl calls before any edit):
+1. **Priority re-checks**: ASM International (Phoenix, AZ) via its own Greenhouse board token "asm"; Rocket Lab full company-wide Greenhouse board re-sweep; BMW Spartanburg SC (191197/191539); ColdSnap (Billerica, MA); GE Aerospace (Lynn, MA); Draper Laboratory (fresh Workday CXS sweep); MIT Lincoln Laboratory (fresh listing sweep) — the last three explicitly prioritized per this run's task instructions.
+2. **Broad national sweep** for new companies/postings, explicitly steered away from the ~120+-company standing saturation list.
+
+This session also independently ran its own direct Workday CXS API queries against Draper's own site (POST to `draper.wd5.myworkdayjobs.com/wday/cxs/draper/Draper_Careers/jobs`, which — contrary to runs 121/122's assumption that the SPA could not be queried directly — works fine and returned the full 216-posting board paginated 20-at-a-time).
+
+### Added to `rows` (1 new)
+- **Anduril Industries — "Winter 2027 Robotics Engineer Co-op"**, Quincy, MA (job 5271842007). First published 2026-10-21, 10 days old at check time. Independently fetched directly via Greenhouse's own board API — live, no closed language. Boston metro. Included under the same standing precedent as Anduril's other already-tracked Winter 2027 Mechanical/Manufacturing/Systems Engineer Co-ops (16–24wk Jan-start cohort).
+
+### Moved from `rows` to `checked` (1)
+- **Draper Laboratory — "Mechanical Engineering & System Packaging Co-Op (Spring 2027)", req JR003000** (Cambridge, MA). A full fresh Workday CXS board sweep (216 postings) did not surface this req; a direct per-req fetch confirmed it now returns Workday's standard closed-requisition signature (`403 permission denied`) while its still-open sibling req JR002940 (same title, different req ID) returns full content normally. Closed since run 103's last full sweep (2026-10-26); run 122's Draper re-check appears to have missed flagging this. Its stale staged-application draft was deleted.
+
+### Added to `checked` (8 new entries)
+- ASM International (Phoenix, AZ) — independently re-resolved (4th time across runs 82/83/117/123) that no Spring 2027 title exists on its own full 501-job Greenhouse board; only a Summer-2027-only Phoenix umbrella req exists. Recommending this stop being carried forward as "worth re-checking" — it's a dead lead, not an unresolved one.
+- Rocket Lab — full company-wide board re-sweep; all 15 Spring-2027-titled, discipline-fitting intern reqs reported by a research agent are already in `rows`. Zero new finds (second clean sweep in a row).
+- BMW Spartanburg SC reqs 191197/191539 — 191197's Dice mirror now shows explicit "no longer available" body text (stronger closed signal, still not BMW's own primary source); 191539 remains genuinely unresolved (a Google-cached mirror snippet found doesn't match 191539's own title — likely cross-contaminated cache, not used as evidence).
+- ColdSnap (Billerica, MA) — recovered cached text confirming a real 3-track Engineering Co-Op program (including a Manufacturing Engineering Co-Op track) but still no season language found anywhere and no locatable ATS/careers page on coldsnap.com. Still fails the verification bar.
+- Mujin Corp (Suwanee, GA) — new company checked; only posting found is stale/removed and wrong-season (Summer 2026). Not added.
+- Consolidated broad-sweep dedup batch: Lexington Medical (Bedford, MA, job 5423105008), Hermeus's 5 Atlanta GA/LA CA Structures/Manufacturing/Mechanical Intern reqs, Field AI (Boston, MA, no-season-stated exclusion), Anduril's other two Winter 2027 co-ops (jobs 5236601007/5236589007), GE Aerospace's Simplify.jobs CNC Programmer Co-op lead — all already tracked/excluded from prior runs. Schaefer, Syska Hennessy, Impulse Space, Skydio, AeroVironment, Vast Space, K2 Space, Markforged re-surfaced by this run's broad sweep — all already excluded in prior runs.
+
+### Staged (1 new, 1 removed)
+- `staged-applications/anduril-industries-robotics-engineer-coop-winter2027-quincy-ma.md` (new) — for the newly-verified Anduril Robotics Engineer Co-op.
+- Deleted the stale `draper-laboratory-mechanical-engineering-system-packaging-coop-jr003000-cambridge-ma.md` draft (req confirmed closed this run).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet unchanged at 433 rows (−1 Draper JR003000 closure, +1 Anduril Robotics Co-op); `Checked - Not Included` sheet 1370 → 1378 (+8). Zero duplicate Application Links across all 433 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace, RTX/Collins Aerospace, STERIS Endoscopy** — all three share the same Phenom People ATS platform-level blocker (confirmed again this run); still worth a dedicated workaround attempt (e.g. browser-rendered fetch) if one ever becomes available, since it would unlock all three at once. GE Aerospace's older Workday-CXS-sourced `rows` entries (R50xxxxx req IDs) suggest GE may have migrated ATS platforms mid-cycle — the already-tracked reqs haven't been re-verifiable via Workday for a couple of runs now; worth trying the Phenom API's `/api/apply/v2/jobs` endpoint with browser-like headers if that capability appears.
+- **BMW Spartanburg req 191197** — now has explicit "no longer available" mirror text; low priority for further re-checking (likely closed). Req 191539 remains genuinely unresolved with zero clean independent signal.
+- **ColdSnap (Billerica, MA)** — confirmed to run a real, discipline-fitting Engineering Co-Op program via cached third-party text, but still no primary-source ATS located and no season stated anywhere found so far — worth trying the company's former name ("Sigma Phase Corp") or a LinkedIn company-page crawl for a careers link in a future run.
+- **Draper Laboratory** — the Workday CXS API at `draper.wd5.myworkdayjobs.com/wday/cxs/draper/Draper_Careers/jobs` (POST, `{"appliedFacets":{},"limit":20,"offset":0,"searchText":""}`) is confirmed working for a full-board sweep (216 postings) — this resolves run 121/122's assumption that the SPA couldn't be queried directly. Use this exact endpoint/pattern for future Draper sweeps rather than re-attempting browser-rendering workarounds. A per-req GET to the job-detail path also usefully distinguishes open (full content) from closed (403 permission denied) requisitions — useful for catching future silent closures the same way JR003000 was caught this run.
+- Standing saturation list (unchanged from run 122, now also resolved: ASM International should be dropped from future "worth re-checking" notes per the recommendation above — see run 114-122 entries for the full prior list).
+- Tracker is now at 433 rows / 1378 checked entries after 123 runs. This run's main values: one new Boston-area posting (Anduril Robotics Engineer Co-op, Quincy MA), one previously-unnoticed closure caught via a reliable new Workday-API technique (Draper JR003000), and a repo-hygiene near-miss caught and fixed (stale local `master` branch ref one run behind origin). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-31.
+
+---
+
 ## Run 122 — 2026-10-31 ~12:49-13:40 UTC
 
 **Repo-hygiene check:** HEAD was detached at session start, matching origin/master exactly (run 121's commit, 6180126) after `git fetch origin master`. Ran `git checkout -B master origin/master` — clean, no drift.
