@@ -4,6 +4,30 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 121 — 2026-10-31 (in progress, checkpoint ~ first commit)
+
+**Repo-hygiene check:** HEAD was detached at session start, matching origin/master exactly (run 120's commit, 4454214) after `git fetch origin master`. Ran `git checkout -B master origin/master` — clean, no drift.
+
+### What was searched (first phase, priority re-checks)
+Dispatched a priority-re-check research agent (no `build.mjs` access) for: Gulfstream req 236000 (one day past its own stated Oct 30, 2026 cutoff), BMW Spartanburg SC reqs 191197/191539, STERIS Endoscopy Mentor OH's two original reqs, Lila Sciences (explicit-year check), and MIT Lincoln Laboratory / Draper Laboratory (both explicitly prioritized by this run's task instructions). Every lead independently re-verified by this session via its own WebFetch calls before any edit, per standing methodology. A second broad-sweep research agent (new companies/postings, avoiding the ~100+-company saturation list) is still running in the background as of this checkpoint — results and a second commit to follow.
+
+### Added to `rows`
+None yet this run (pending broad-sweep agent results).
+
+### Updated in `rows`
+- **Gulfstream req 236000** — Notes field updated: re-checked 2026-10-31, one day after its own stated "may remain active until October 30, 2026" cutoff; unchanged, still live, no closure notice. Confirms the phrasing is non-binding boilerplate, consistent with the same pattern on other Gulfstream reqs across runs 116-120.
+
+### Added to `checked`
+- **Priority re-checks, run 121** — BMW Spartanburg 191197/191539 (both remain genuinely unresolved on an independent non-BMW source, though now weak-closed-leaning for both — req 191539's bmwgroup.jobs mirror newly 404s this run, closing part of the gap from run 120); STERIS Endoscopy Mentor OH (original primary-source URLs still unlocatable; two different sibling Spring-2027 reqs at other STERIS locations — Conroe TX, Montgomery AL — independently confirmed FILLED, consistent with but not proof of the same fate); Lila Sciences (still no explicit year stated, unchanged); MIT Lincoln Lab Group 07-71 Mechanical Eng Co-Op (already tracked in `rows` since an earlier run, re-confirmed live, not new); Draper Digital Engineering Requirements Co-Op JR002944 (already tracked, a Simplify.jobs aggregator re-surfaced it as "new" — it isn't). Full detail in `build.mjs`.
+
+### Staged
+None yet this run.
+
+### Notes
+Committing this checkpoint now (spreadsheet regenerated, "done" printed) before the broad-sweep agent returns, per repo hygiene requirements. Will append a second entry below once the broad sweep completes and any new postings are verified/staged.
+
+---
+
 ## 2026-09-19 ~19:15 UTC (first logged run)
 
 No prior ROUTINE-LOG.md existed — `build.mjs` already contained a seeded `rows`/`checked` dataset from earlier (unlogged) work, so this run treated that as the baseline and did NOT re-verify any of its existing entries; it began fresh research from that baseline forward.
