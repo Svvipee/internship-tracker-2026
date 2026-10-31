@@ -28,6 +28,50 @@ Committing this checkpoint now (spreadsheet regenerated, "done" printed) before 
 
 ---
 
+## Run 121 — 2026-10-31 (continued / final)
+
+### What was searched (second phase, broad sweep)
+A broad-sweep research agent (no `build.mjs` access) searched for new companies/postings nationally, with explicit focus on Boston-area hardware/robotics/defense-tech startups and mid-size aerospace & defense suppliers not already on the saturation list, plus exact-phrase searches for recently-posted Spring 2027/Winter 2026 roles. Every lead was independently re-verified (or found genuinely unverifiable) by this session via its own WebFetch/WebSearch calls before any edit, per standing methodology.
+
+### Added to `rows`
+None this run. Several promising leads surfaced but none survived the full verification bar:
+- **Boston Dynamics (Waltham, MA)** — 3 genuinely new req IDs (R3318 Mechanical Engineer/Atlas Hardware Co-Op, R3312 Systems Test Engineer Co-Op, R3315 Electrical Engineer Co-Op), all posted within the last week, confirmed live via Boston Dynamics' own Workday API — but none state an explicit term/season anywhere in the posting body. This is the first sign of life from Boston Dynamics' student recruiting since run 88 (2026-10-22) found zero live reqs; worth a priority re-check next run.
+- **RTX/BBN Technologies (Cambridge, MA)** — Hardware Electrical Engineering Co-Op (Spring 2027), req 01883598, confirmed live/open with explicit dates — but Electrical/Computer Engineering discipline fails Hamza's discipline bar.
+- **Rocket Lab** — ~15 apparently-live "Spring 2027"-titled intern postings (mechanical, manufacturing, propulsion, thermal, test, systems) found via search, strong discipline fit, but rocketlabcorp.com returns HTTP 403 (Cloudflare) on every direct fetch attempt; no working independent mirror found. Could not verify even a single posting directly — not eligible for Partial status under this run's verification bar. Worth a dedicated re-attempt.
+- RTX/Collins Structural Engineering Co-op (Haltom City, TX, req 01883312) could not be independently located at all (guessed URL 404s, no search hit for the exact req ID) — unverifiable.
+- Weaker aggregator-only leads (Johns Hopkins APL, Field AI, Maglev Aero, Revolute Robotics, Precision Castparts, SPIROL, Yaskawa/Motoman, Peak Energy) — none independently confirmed on a primary source; not added.
+- Draper's Workday CXS-filtered leads (Mechanical Eng & System Packaging JR002940, Electro-Mechanical Instrument JR002883-1, Systems Engineering JR002882, Materials and Chemistry JR002942) and MIT Lincoln Lab's Group 07-71 Mechanical Eng Co-Op (req 43350) were all re-confirmed already tracked in `rows` from prior runs — not new.
+
+### Updated in `rows`
+- Gulfstream req 236000 — see first-phase entry above (Notes field updated, no season/row change).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (4 new entries this run)
+1. Priority re-checks batch (Gulfstream, BMW Spartanburg 191197/191539, STERIS Mentor OH, Lila Sciences, MIT Lincoln Lab dedup, Draper dedup) — see first-phase entry above.
+2. Boston Dynamics new reqs (R3318, R3312, R3315) — live but no stated term, flagged worth re-checking.
+3. Rocket Lab Spring 2027 batch — Cloudflare-blocked, genuinely unverifiable, flagged worth re-checking with a different access method.
+4. RTX/Collins Aerospace (BBN EE discipline mismatch, Haltom City unverifiable, remote Supplier Quality weak fit) + weaker aggregator-only leads (JHU APL, Field AI, Maglev Aero, Revolute Robotics, Precision Castparts, SPIROL, Yaskawa, Peak Energy) — consolidated batch entry.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet unchanged at 435 rows; `Checked - Not Included` sheet 1350 → 1354 (+4). Zero duplicate Application Links across all 435 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Boston Dynamics (Waltham, MA)** — 3 fresh reqs (R3318, R3312, R3315) posted in the last week after a long recruiting dormancy; none state an explicit term. Re-check whether the postings get updated with "Winter 2026"/"Spring 2027" language, or whether a dated sibling req appears — this looks like the start of their next hiring cycle.
+- **Rocket Lab** — ~15 apparently-live Spring 2027 intern postings (strong discipline fit, several Boston-distance-irrelevant but national) blocked by Cloudflare on every direct-fetch attempt this run. Worth a dedicated re-attempt with a different method/time.
+- **RTX/Collins Aerospace Structural Engineering Co-op, Haltom City TX, req 01883312** — reported by a research agent but this session could not independently locate it at all (guessed URL 404s, no search hit). Worth a fresh req-ID-correct lookup.
+- **BMW Spartanburg 191197/191539** — both now have a bmwgroup.jobs 404 (new for 191539 this run); still no independent non-BMW confirmation for either. Worth a definitive re-check via a different access method.
+- **STERIS Endoscopy Mentor OH** — still unverifiable at the original primary-source URLs; exclusion continues to rest on sibling-req evidence (2 more siblings at other locations confirmed filled this run).
+- Draper's applicant system has migrated to Workday (draper.wd5.myworkdayjobs.com); last full CXS API sweep was run 103 (2026-10-26) — worth a fresh CXS-API-direct re-sweep (not the blocked SPA UI) to confirm no new req since then.
+- Standing saturation list (unchanged from run 120, carries forward): see run 114-120 entries for the full prior list (STERIS Mentor OH, RoviSys, Reliable Robotics, Atomic Machines, Elevate Robotics, RAI Institute, Saab, Cambridge Consultants, Marotta Controls, Hadrian, Neros Technologies, Gecko Robotics, Collaborative Robotics, Lifeward/ReWalk Robotics, Leonardo DRS, Applied Materials, Shield AI R4475, Berkshire Grey, Sonos, DeBra-Kuempel/EMCOR, Saab Quincy, SSOE Group, Entegris Bedford phantom, Edwards Lifesciences).
+- Tracker is now at 435 rows / 1354 checked entries after 121 runs. This run's main value was verification hygiene and surfacing two promising-but-not-yet-verifiable leads (Boston Dynamics' apparent new hiring cycle, Rocket Lab's large Spring 2027 slate) rather than growth — zero genuinely new postings survived the full verification bar (explicit season + independently loadable primary source). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-31.
+
+---
+
 ## 2026-09-19 ~19:15 UTC (first logged run)
 
 No prior ROUTINE-LOG.md existed — `build.mjs` already contained a seeded `rows`/`checked` dataset from earlier (unlogged) work, so this run treated that as the baseline and did NOT re-verify any of its existing entries; it began fresh research from that baseline forward.
