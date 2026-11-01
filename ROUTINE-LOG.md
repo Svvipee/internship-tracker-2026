@@ -4,6 +4,58 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 127 — 2026-11-01 ~19:40-20:15 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start. Ran `git fetch origin master`, confirmed FETCH_HEAD matched the detached HEAD exactly (30fe1b6, run 126's commit, no drift), then `git checkout -B master origin/master` on a verified-fresh base.
+
+### What was searched
+Two parallel background research agents (no `build.mjs`/`ROUTINE-LOG.md` access; every reported lead independently re-verified by this session via its own direct curl/WebFetch calls against the primary source, or exact-ID grep against `build.mjs`, before any edit):
+1. **Priority re-checks**: GE Aerospace (Lynn, MA), RTX/Collins Aerospace, STERIS Endoscopy (Mentor, OH) — all three still Phenom-People-blocked; ColdSnap (Billerica, MA); KFI Engineers PC (Cincinnati, OH); RMF Engineering, Inc. (Boston, MA) — season re-check; MIT Lincoln Laboratory — light re-sweep.
+2. **Broad keyword-driven national sweep** for new companies/postings not on the ~150+-company saturated list, steered toward Boston-area/New England hardware/robotics/defense-tech/medtech/industrial companies and exact-phrase ATS searches.
+
+### Added to `rows` (5 new)
+- **SharkNinja — Mechanical Engineering Co-op, Ninja (January to June)**, Needham, MA (job 4720340006). Spring 2027. Independently fetched directly via SharkNinja's own Greenhouse public API; `first_published` 2026-10-28, no closed language. Ninja-brand sibling to the already-tracked Shark-brand req.
+- **SharkNinja — Mechanical Systems Engineering Co-op, Ninja (January to June)**, Needham, MA (job 4720169006). Spring 2027. Verified same way; `first_published` 2026-10-14.
+- **SharkNinja — Noise & Vibrations Engineering Co-op (January to June)**, Needham, MA (job 4720163006). Spring 2027. Verified same way; `first_published` 2026-10-14.
+- **SharkNinja — Product Design Engineering Co-op, Advanced Development (January to June)**, Needham, MA (job 4720191006). Spring 2027. Verified same way; `first_published` 2026-10-28. Flagged as a hybrid Industrial Design/Mechanical Engineering role per the posting's own framing, not pure ME — included per the honesty-over-volume standard, Hamza's call on fit.
+- **TMEIC Corporation Americas — Intern - Engineer (Spring2027) IS (ET26080)**, Roanoke, VA. New company for the tracker. Verified directly via the company's own Workable-hosted ATS page; title explicitly states "Spring2027," active Apply link, no closed language. Controls/industrial-automation discipline fit (BSME/BSEE/BSCpE with control-automation coursework). Not Boston-area.
+
+### Added to `checked` (11 new entries)
+- Sonos "Mechanical Engineering Co-Op" (re-surfaced via a stale Intern Dock mirror) — independently queried Sonos's own Workday CXS API directly for "Mechanical": only live results are full-time Mechanical Engineer roles in Shenzhen/Shanghai; no co-op of any kind currently on Sonos's own board. Confirms this is the same already-closed req R2547, not a new live posting.
+- Moderna "Co-Op, Automation, Digital Manufacturing & Controls" — already in `rows` since run 105 (req R19951); re-surfaced via a WayUp mirror as if new. Not duplicated.
+- Shield AI "Electrical Engineering Co-op (January 2027)" (R4475) — same standing EE-discipline-mismatch exclusion reconfirmed, unchanged.
+- Re:Build Manufacturing (Rochester/Rush, NY) — same standing exclusion (Mechatronics/EE majors only, multi-season), unchanged.
+- Formlabs job 8161817 — already in `rows`, re-surfaced as if new, not duplicated.
+- PPL Corporation (Louisville, KY) — new company candidate; both WayUp mirrors show closed. Agent-reported only, not independently re-fetched by this session this run — flagged rather than silently dropped.
+- Karman Space & Defense (Decatur, AL) — new company candidate; own careers page states internships are Summer-only (May/June–Aug/Sept). Excluded on season grounds.
+- Rockwell Automation (Chelmsford, MA) — Rockwell's own careers site returned HTTP 503 this run; genuinely inconclusive, not a confirmed exclusion.
+- J.R. Automation/Hitachi (Holland, MI) — confirmed Summer 2027 (May–Aug), excluded.
+- Exol (Wilmington, MA) — turned out to be a re-mirrored Symbotic posting (already saturated), also Summer 2027. Excluded.
+- Piaggio Fast Forward (Boston, MA) — new company candidate; "Robotics and AI Co-op" is vision/software-focused, discipline mismatch. Agent-reported only, not independently re-fetched this run.
+
+### Staged (5 new)
+- `staged-applications/sharkninja-mechanical-engineering-coop-ninja-needham-ma.md`
+- `staged-applications/sharkninja-mechanical-systems-engineering-coop-ninja-needham-ma.md`
+- `staged-applications/sharkninja-noise-vibrations-engineering-coop-needham-ma.md`
+- `staged-applications/sharkninja-product-design-engineering-coop-advanced-development-needham-ma.md`
+- `staged-applications/tmeic-corporation-americas-intern-engineer-spring2027-roanoke-va.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 437 → 442 rows (+5); `Checked - Not Included` sheet 1392 → 1403 (+11). Zero duplicate Application Links across all 442 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace, RTX/Collins Aerospace, STERIS Endoscopy** — still share the same Phenom People ATS blocker; unchanged standing note.
+- **ColdSnap** — this run found careers.coldsnap.com/careers now returns a flat 404 (not the prior pure-JS-shell signal), and no ADP WorkforceNow URL for ColdSnap could be found at all (contradicting run 124's claim of locating one — may have been a mismatched/stale URL). A live third-party ATS mirror shows only 2 current openings, both non-engineering ("Batch Operations Coordinator"). This reads increasingly like the engineering co-op program is not currently live/posted anywhere findable, rather than merely hard-to-verify — worth downgrading priority on this lead.
+- **KFI Engineers PC (Cincinnati, OH)** — the Dice.com mirror for this req now returns HTTP 410 Gone; still single-sourced via Intern Dock otherwise, primary ADP posting still not locatable. Low priority going forward.
+- **RMF Engineering, Inc. (Boston, MA)** — still evergreen/no season stated; Workable rate-limited this session (HTTP 429, ~14.5h retry-after) on a second check attempt — worth retrying after the window clears, though no new evidence expected given the Oct 2025 post date.
+- **Rockwell Automation (Chelmsford, MA)** — new, promising, Boston-area lead that returned HTTP 503 on direct fetch this run; worth a dedicated re-check since it's a known regular Chelmsford co-op employer.
+- **SharkNinja** — Needham, MA board is turning out to be a strong steady source (5 reqs now tracked); worth a periodic re-sweep of the full board each run (several more Spring 2027 co-ops exist in EE/Product Design/Industrial Design/HW UX if those disciplines ever become relevant).
+- MIT Lincoln Laboratory's pagination/sweep remains reliable per run 126's resolution; this run's light re-sweep found one new Spring-2027-dated req (Cyber Security Co-op, Group 11-10) but it's a discipline mismatch, already excluded since 2026-09-21 — no change.
+- Standing saturation list (unchanged from run 126, now also covers run 127's fresh-but-mostly-empty priority re-checks): see run 114-126 entries below for the full list.
+- Tracker is now at 442 rows / 1403 checked entries after 127 runs. This run's main value: 5 new Boston-metro SharkNinja Needham co-ops (verified directly via Greenhouse API) plus one new nationwide company (TMEIC, Roanoke VA) — a comparatively strong run after several near-zero runs in a row. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin nationally but SharkNinja's Needham, MA board specifically is proving to be an active, regularly-refreshed Boston-metro source.
+
+---
+
 ## Run 126 — 2026-11-01 ~13:30-13:50 UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start. Ran `git fetch origin master` first, confirmed FETCH_HEAD matched the detached HEAD exactly (0a853b0, run 125's commit, no drift), then `git checkout -B master origin/master` on a verified-fresh base.
