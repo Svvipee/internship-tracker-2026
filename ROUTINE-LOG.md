@@ -4,6 +4,41 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 125 — 2026-11-01 ~06:49-07:10 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed exactly at origin/master's tip (66c66f9, run 124's commit) once a fresh `git fetch origin master` was run (an earlier, pre-fetch `git rev-parse origin/master` showed a stale cached ref at 6180126/run 121 — the by-now-standard false alarm). Ran `git checkout -B master origin/master` — clean, no drift, nothing was at risk.
+
+### What was searched
+Two parallel background research agents (each without `build.mjs`/`ROUTINE-LOG.md` access, per standing methodology; every reported lead independently re-verified by this session via its own WebFetch/WebSearch calls before any edit):
+1. **Priority re-checks** of the standing carryover list from run 124's notes: GE Aerospace (Lynn, MA), RTX/Collins Aerospace, STERIS Endoscopy (Mentor, OH) — all three Phenom-People-blocked; ColdSnap (Billerica, MA) ADP WorkforceNow lead; Commonwealth Fusion Systems (Devens, MA) full Lever board re-sweep; Rocket Lab full Greenhouse board re-sweep; Draper Laboratory full Workday CXS re-sweep; MIT Lincoln Laboratory listing sweep. Explicitly instructed: no bot-detection/CAPTCHA circumvention, no spoofed headers.
+2. **Broad keyword-driven sweep** (not company-by-company) for new companies/postings via search operators like `"Spring 2027" co-op mechanical engineering`, steered away from re-searching the ~150-company saturated list.
+
+### Added to `rows`
+None this run. Every candidate either survived as already-tracked (byte-for-byte or by exact req/job/Lever-ID grep) or failed verification.
+
+### Added to `checked` (4 new entries)
+- **Commonwealth Fusion Systems (Devens, MA)** — 2 new discipline-mismatch exclusions found on a full fresh Lever-API sweep (139 postings): "Intern - Health Physics - Spring or Summer 2027" (radiation-protection/compliance role) and "Intern - Assembly Technical Project Manager - Spring 2027" (project-management role). The sweep otherwise re-confirmed CFS fully saturated — no other untracked Intern/Co-op title found.
+- **RTX/Collins Aerospace** — 2 new merged-term exclusions: "Industrial Engineering Co-Op (Spring/Summer 2027)" (Melbourne FL/Coralville IA/Cedar Rapids IA) and "2027 Spring-Summer Co-op Systems Engineering (Onsite)" (Cedar Rapids IA). Neither mirror shows closed language, but both are undated merged Spring/Summer sessions with no distinct Spring-only sub-range — same standing treatment given every other RTX merged-season co-op without dated Spring-only language. A third RTX lead (Manufacturing Engineering Co-Op, Troy OH/York NE) was the same req already confirmed closed in run 124 — re-confirmed unchanged, not double-logged as new.
+- **KFI Engineers PC (Cincinnati, OH)** — new company; a "Controls Engineering Co-Op (Performance Group)" Spring Term 2027 lead found only on an Intern Dock mirror. KFI's own careers page links out to a JS-rendered ADP WorkforceNow portal with no retrievable job data, and an identically-titled "Spring 2025" version of the same req was also found — suggesting a recurring/template title rather than confirmed current-cycle evidence. Fails the primary-source and freshness bars; not added.
+- One consolidated dedup entry covering everything else both agents reported that turned out to be already tracked/already excluded: SpaceX, Leonardo DRS, SSOE Group, Entegris (Round Rock TX), Schaeffler (Fort Mill SC), Johns Hopkins APL, Berkshire Grey, Applied Materials (Gloucester, MA), Storion Energy (re-confirmed HTTP 410), GE Vernova, Marotta Controls, Pursuit Aerospace, GE Aerospace's CNC Programmer co-op, plus unchanged re-checks of STERIS (same stale xtalks.com mirror, no new evidence), ColdSnap (ADP portal still a pure JS shell), MIT Lincoln Lab (already-tracked Group 07-71 co-op; search/pagination still behaves inconsistently — a full ~67-posting sweep still hasn't been cleanly completed), Draper (557-posting full sweep, all 4 tracked reqs unchanged), and Rocket Lab (full Greenhouse sweep, all already tracked — third clean/zero-new sweep in a row).
+
+### Staged
+None this run — no new fully-verified postings were added to `rows`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet unchanged at 437 rows; `Checked - Not Included` sheet 1386 → 1390 (+4). Zero duplicate Application Links across all 437 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace, RTX/Collins Aerospace, STERIS Endoscopy** — still share the same Phenom People ATS blocker; unchanged standing note.
+- **ColdSnap** — the ADP WorkforceNow URL remains a pure JS shell on every plain fetch; still worth a browser-rendered check if that capability ever becomes available.
+- **MIT Lincoln Laboratory** — careers.ll.mit.edu's search/pagination continues to behave inconsistently across fetches (different, non-overlapping result sets on repeated queries); a fully exhaustive sweep of its ~67 postings still hasn't been cleanly achieved across several runs now. Worth a dedicated, carefully-paginated attempt.
+- **KFI Engineers PC (Cincinnati, OH)** — plausible new lead if its actual ADP posting URL (rather than the Intern Dock mirror) can be located directly; the recurring "Spring 2025" title for the same req is a reason for caution, not automatic disqualification.
+- Commonwealth Fusion Systems' Devens, MA Lever board is now confirmed fully saturated as of this run (0 new in a full 139-posting sweep) after producing new finds in runs 92/122/124 — can likely drop to a lower-frequency periodic re-sweep rather than every run, unless a new req count change is observed.
+- Rocket Lab's Greenhouse board: third consecutive zero-new sweep (runs 123/124/125) — same recommendation, lower-frequency periodic re-sweep going forward.
+- Tracker is now at 437 rows / 1390 checked entries after 125 runs. This run found zero new qualifying postings — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-01, with both Commonwealth Fusion Systems and Rocket Lab (this run's two most productive recent sources) now also reading as saturated.
+
+---
+
 ## Run 124 — 2026-11-01 ~00:50-01:15 UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, matching `master`'s local ref exactly at `9f10d0c` (run 123's commit). A fresh `git fetch origin master` confirmed origin/master was at the SAME commit — so unlike several prior runs' near-misses, there was no actual drift, just a detached-HEAD state. Ran `git branch -f master HEAD && git checkout master`, then `git push -u origin master` (reported "Everything up-to-date," confirming no data had been at risk). Clean.
