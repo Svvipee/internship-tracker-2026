@@ -4,6 +4,39 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 126 — 2026-11-01 ~13:30-13:50 UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start. Ran `git fetch origin master` first, confirmed FETCH_HEAD matched the detached HEAD exactly (0a853b0, run 125's commit, no drift), then `git checkout -B master origin/master` on a verified-fresh base.
+
+### What was searched
+Two parallel background research agents (each without `build.mjs`/`ROUTINE-LOG.md` access, per standing methodology; every reported lead independently re-verified by this session via its own WebFetch calls or exact-ID grep against `build.mjs` before any edit):
+1. **Priority re-checks**: GE Aerospace (Lynn, MA), RTX/Collins Aerospace, STERIS Endoscopy (Mentor, OH) — all three Phenom-People-blocked; ColdSnap (Billerica, MA) ADP WorkforceNow lead; MIT Lincoln Laboratory (a dedicated, carefully-paginated 3-page sweep per run 125's note); KFI Engineers PC (Cincinnati, OH) — tried to locate the direct ADP posting.
+2. **Broad keyword-driven national sweep** for new companies/postings not on the ~150+-company saturated list, steered toward Boston-area/New England hardware-robotics-defense-tech-medtech startups and exact-phrase ATS searches (site:greenhouse.io, site:lever.co, site:myworkdayjobs.com "Spring 2027").
+
+### Added to `rows`
+None this run. Every single candidate from both agents — including Rendezvous Robotics' 4 Golden CO reqs, MetOx International's 2 Houston TX reqs, Yaskawa America, GE Appliances, Medical Murray, GE Aerospace's CNC Programmer Co-op, MIT Lincoln Lab's Group 07-71 co-op, and KFI Engineers — turned out on independent grep/re-check to already be tracked in `rows` or already excluded in `checked` from prior runs (several from run 125 just hours earlier). MIT Lincoln Lab's full 67-posting paginated sweep completed cleanly this run (resolving run 125's note about inconsistent pagination) and surfaced nothing new.
+
+### Added to `checked` (2 new entries)
+- **RMF Engineering, Inc. (Boston, MA)** — new company; "Intern/Co-Op - Boston" found directly on the company's own Workable ATS. Real primary source, but the posting is evergreen/rolling (posted 2025-10-27, over a year old) with no "Spring 2027"/"Winter 2026" or any dated term anywhere in the body — fails the explicit-season bar. Not added; worth a re-check for season language in a future run given the Boston location/discipline fit.
+- Consolidated dedup-confirmed non-new batch covering everything else both agents reported (see dedicated `checked` entry in `build.mjs` for the full list): Rendezvous Robotics, MetOx International, Yaskawa, GE Appliances, Medical Murray, GE Aerospace, RTX/Collins, STERIS, ColdSnap, MIT Lincoln Lab, KFI Engineers, Kairos Power, Epirus, SoftInWay, Fabri Inc, Brooks Automation, Vention, Soft Robotics, A123 Systems, Generac, Turion Space, Gravitics, Starfish Space, Vatn Systems, Red Cat, The Nuclear Company.
+
+### Staged
+None this run — no new fully-verified postings were added to `rows`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet unchanged at 437 rows; `Checked - Not Included` sheet 1390 → 1392 (+2). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace, RTX/Collins Aerospace, STERIS Endoscopy** — still share the same Phenom People ATS blocker; unchanged standing note.
+- **ColdSnap** — the ADP WorkforceNow URL remains a pure JS shell on every plain fetch; still worth a browser-rendered check if that capability ever becomes available.
+- **RMF Engineering, Inc. (Boston, MA)** — new lead this run; real company-owned Workable posting, Boston location, MEP/mechanical-adjacent discipline, but no season stated (evergreen posting). Worth a quick re-check in case a dated Spring 2027 cohort version ever gets posted.
+- **KFI Engineers PC (Cincinnati, OH)** — still a plausible lead if its actual ADP posting URL can be located directly past the JS shell; the recurring "Spring 2025" template-title concern from run 125 stands.
+- MIT Lincoln Laboratory's pagination issue (flagged unresolved across several prior runs) is now resolved — a clean 3-page, 67-posting sweep was completed this run with no inconsistency. Can treat future sweeps as reliable going forward.
+- Standing saturation list (unchanged from run 125, now also covers run 126's fresh-but-empty priority re-checks and broad sweep): see run 114-125 entries below for the full list.
+- Tracker is now at 437 rows / 1392 checked entries after 126 runs. This run found zero new qualifying postings — every candidate from both research agents, without exception, turned out to be an already-tracked or already-excluded duplicate (several from run 125, mere hours earlier), except one newly-logged evergreen-posting exclusion (RMF Engineering). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-01.
+
+---
+
 ## Run 125 — 2026-11-01 ~06:49-07:10 UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed exactly at origin/master's tip (66c66f9, run 124's commit) once a fresh `git fetch origin master` was run (an earlier, pre-fetch `git rev-parse origin/master` showed a stale cached ref at 6180126/run 121 — the by-now-standard false alarm). Ran `git checkout -B master origin/master` — clean, no drift, nothing was at risk.
