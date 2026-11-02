@@ -4,6 +4,41 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 128 — 2026-11-02 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start. `git fetch origin master` confirmed FETCH_HEAD matched the detached HEAD exactly (55739f2, run 127's commit, no drift), then `git checkout -B master origin/master` on a verified-fresh base.
+
+### What was searched
+Two parallel background research agents (no `build.mjs`/`ROUTINE-LOG.md` access; every reported lead independently re-verified by this session via its own WebFetch/curl calls against the primary source, or exact job-ID/URL grep against `build.mjs`, before any edit):
+1. **Priority re-checks**: Gulfstream req 236000 (Savannah, GA — 3 days past its own stated Oct 30, 2026 cutoff), BMW Spartanburg SC reqs 191197/191539 (the long-running "genuinely unresolved" thread carried from runs 119-127), STERIS Endoscopy Mentor OH (Materials Engineering Co-op lead).
+2. **Broad national sweep** for new companies/postings, steered away from the saturated list, covering Boston-area/New England hardware-robotics-defense-tech-medtech startups, smaller aerospace/defense suppliers, and industrial-automation/controls co-op programs.
+
+### Added to `rows` (1 new)
+- **Lila Sciences — Co-Op, SCADA Engineer**, Cambridge, MA (Alewife; job 4467407009). Spring 2027, explicitly stated on the posting ("Available full time for the Spring 2027 co-op term"). Independently verified via direct WebFetch (HTTP 200, Apply/Submit buttons present, no closed language). New company for the tracker — Hardware & Controls Engineering team, right in the Boston metro area (~3 mi). This is the first Lila Sciences posting found with an explicit year; its two siblings (Mechatronics Engineer, Automated Systems Engineer) remain excluded on undated-season grounds.
+
+### Updated in `rows` (1)
+- **Gulfstream req 236000** — Notes field updated, NOT moved to `checked`. Today's direct WebFetch of the exact URL rendered only the generic Gulfstream careers site template (no job content), a change from every prior run's successful content render. A raw curl also got HTTP 403, but so did Gulfstream's own careers homepage fetched the same way (confirmed Cloudflare "Just a moment..." bot-challenge, not a job-specific signal) — so this is genuinely ambiguous (deactivated req vs. tightened bot-wall), not confirmed closure. Downgraded confidence honestly rather than guessing either direction; flagged as a priority re-check next run via the company's sitemap/search rather than the direct URL.
+
+### Added to `checked` (2 new entries)
+- **BMW Spartanburg reqs 191197/191539 — thread closed out.** Re-checked today: jobs.bmwgroup.com still uninformative for both; Dice 410 (191197, known since run 120) and bmwgroup.jobs→error404 redirects for BOTH reqs (191539's redirect first seen run 121) now agree across three independent signals. More importantly: both reqs were already correctly moved to `checked` as closed back on 2026-10-08/09 — the 15+ runs (119-127) treating this as an open "genuinely unresolved" question were redundant churn on an already-resolved item. Closing the thread; future runs should stop re-adding this to the priority re-check list.
+- **Dedup-confirmed non-new batch**: STERIS Materials Engineering Co-op (same stale xtalks.com mirror, run 119's exclusion stands); Rendezvous Robotics' 3 Golden CO reqs (already in `rows`); Shield AI EE Co-op R4475 (same discipline-mismatch exclusion); BAE Systems Cedar Rapids Mechanical Coop (already in `rows`, same ClearanceJobs URL); CMTA/Legence Boston (already in `rows`, same Dayforce URL); Teradyne Quality Applications Co-Op job 1436974400 (same discipline-mismatch exclusion, re-surfaced as if new — it isn't); Lila Sciences Mechatronics/Automated Systems Co-ops (same undated-season exclusion).
+
+### Staged (1 new)
+- `staged-applications/lila-sciences-scada-engineer-coop-spring2027-cambridge-ma.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 442 → 443 rows (+1); `Checked - Not Included` sheet 1403 → 1405 (+2). Zero duplicate Application Links across all 443 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Gulfstream req 236000** — now unverifiable rather than confirmed-open; try the company's own jobs sitemap/search for req 236000 rather than the direct job URL, which now renders only the generic site shell.
+- **GE Aerospace, RTX/Collins Aerospace, STERIS Endoscopy** — still share the same Phenom People/JS-shell ATS blocker; unchanged standing note.
+- **BMW Spartanburg 191197/191539** — RESOLVED, drop from the priority re-check list going forward (see dedicated `checked` entry).
+- **Lila Sciences** — worth a periodic re-check of its sibling Mechatronics Engineer (job 4465068009) and Automated Systems Engineer (job 4462594009) postings in case they're ever updated with an explicit year; also worth a light re-sweep of the full Lila Sciences Greenhouse board for any further new reqs given today's find.
+- Standing saturation list (unchanged from run 127): see run 114-127 entries below for the full list.
+- Tracker is now at 443 rows / 1405 checked entries after 128 runs. This run's main value: one new Boston-metro posting (Lila Sciences SCADA Engineer Co-Op, Cambridge MA), an honest downgrade of Gulfstream req 236000's verification status rather than silently carrying forward a now-unverifiable "confirmed open" claim, and closing out a 9-run-old redundant BMW Spartanburg thread that had already been resolved since early October. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-02.
+
+---
+
 ## Run 127 — 2026-11-01 ~19:40-20:15 UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start. Ran `git fetch origin master`, confirmed FETCH_HEAD matched the detached HEAD exactly (30fe1b6, run 126's commit, no drift), then `git checkout -B master origin/master` on a verified-fresh base.
