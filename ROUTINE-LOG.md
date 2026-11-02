@@ -4,6 +4,52 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 131 — 2026-11-02 ~15:40-16:20 UTC
+
+**Repo-hygiene note (first action this run):** HEAD was detached at session start, matching run 130's commit (5592612). An initial `git log origin/master -1` (before fetching) showed a stale cached ref at 6180126 (run 121) — the by-now-standard false alarm. Ran `git fetch origin master` first, confirmed FETCH_HEAD matched the detached HEAD exactly (5592612, no drift — run 130 had already pushed successfully), then `git checkout -B master origin/master` on a verified-fresh base. Clean.
+
+### What was searched
+Two parallel background research agents (no `build.mjs`/`ROUTINE-LOG.md` access; every reported lead independently re-verified by this session via its own WebFetch/WebSearch calls against the primary source, or exact URL/req-ID grep against `build.mjs`, before any edit):
+1. **Priority re-checks**: the 3 "worth re-checking" items carried from run 130 (Bridgestone Americas real-ATS search, Roush Industries' previously-unrendered "Powertrain Calibration Engineering Intern" req, Skyworks Solutions req 74013), plus the standing GE Aerospace / RTX-Collins / STERIS Endoscopy / Draper / MIT Lincoln Lab list.
+2. **Broad national sweep** for new companies/postings, explicitly steered away from the 150+-company standing saturation list.
+
+### Added to `rows` (1 new)
+- **Roush Industries — Powertrain Calibration Engineering Intern - Winter/Spring 2027**, Livonia, MI (sibling req to the already-tracked Mechanical Engineering Intern at the same company, added run 130). This run independently re-fetched the exact URL directly and got the full description this time (run 130's fetch only returned a template header): "Candidates must be available M-F 40 hours for winter/spring (Jan-May) 2027," stated twice in the posting. Active application form, no closed language. Mechanical/Electrical/Automotive Engineering, sophomore standing minimum. Not Boston-area (~720 mi).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (12 new entries)
+- **PPL Corporation** — a research agent re-surfaced the "Spring 2027 Civil, Mechanical, or Electrical Engineer Intern" (careers.pplweb.com/jobs/15274) as if it were a brand-new company find; this session independently re-fetched it directly, then caught via an exact-Application-Link grep against `build.mjs` that it is byte-for-byte already tracked in `rows` since run 106 (fully verified "Yes" there via embedded JobPosting JSON-LD — a stronger verification than this run could reproduce). Not duplicated; a near-miss caught by the duplicate-link check run as part of spreadsheet regeneration (see below). Two separate WayUp-mirrored Louisville, KY leads remain unconfirmed on PPL's own site — worth a direct check in a future run.
+- **Skyworks Solutions req 74013** — confirmed dead ("You can't view this job because it's not available at this time"); two newer live replacement reqs found (78170 San Jose CA, 78333 Woburn MA, both explicitly dated Jan-June 2027) but both are RF/analog-EE discipline, not mechanical/aero/controls — excluded on discipline grounds. Closes out the req-74013 thread.
+- **Bridgestone Americas** — still no live, company-owned page locatable (bridgestoneamericas.com 403s; a Workday URL guess renders empty; only old icims.com postings found) — unresolved, same blocker as run 130.
+- **GE Aerospace** — two mirror-only leads (Systems Engineering Electric Power Co-op OH-area; EHS/Facilities Co-op Lynn MA) not independently confirmable via GE's JS-rendered careers.geaerospace.com — not added.
+- **Consolidated priority re-check entry**: Draper's "Requirements Engineer Co-op - Digital Engineering" lead turned out to match the already-tracked JR002944, not a new 6th req; MIT Lincoln Lab reconfirmed unchanged (only page 1/5 reviewed); RTX/Collins — Jamestown ND lead is closed and date-ambiguous (Jan-Aug), other reqs explicitly merged Spring/Summer; STERIS Endoscopy — site remains JS-rendered/unconfirmable either way.
+- **Precision Castparts Corp.** — a re-surfaced Mentor OH/Wickliffe OH/Niskayuna NY aggregator batch confirmed to be the same divisions already extensively tracked by exact oppid in `rows`/`checked`; dedup only.
+- **Desktop Metal** (Bedford, MA) — aggregator-mirrored Spring 2027 co-op; company's own careers page currently shows zero co-op/intern listings — likely stale/removed. Notable miss given the Boston-area location.
+- **MetOx International** — "Process Engineering Co-Op/Intern (Spring/Summer 2027)" re-confirmed live but merged/undated season, excluded per the merged-season rule; a previously-reported separate Mechanical Engineering Intern req no longer appears on their board.
+- **Curtiss-Wright** (Cheswick, PA), new-company candidate — aggregator-only, merged undated Spring/Summer/Fall block, not added.
+- **Analog Devices** (Wilmington, MA), new-company candidate — aggregator-only, stale March-2026 posting date, no season language, not added.
+- **Field AI** (Boston, MA) — independently re-fetched directly via Lever: confirmed open, exact discipline fit (Robotics/Mechanical/Mechatronics), Boston on-site, but states no start date/term/season anywhere on the posting — fails the explicit-season verification bar despite being otherwise an excellent match. Recurring thread since ~run 121.
+- **Dedup/negative batch**: Gulfstream St. Louis Operations Engineer intern (likely closed per a mirrored end date, also discipline mismatch); Saronic Technologies (wrong season / ambiguous sibling); Piaggio Fast Forward and True Anomaly (live Greenhouse boards checked directly, zero current internship/co-op listings on either); Vicarious Surgical (zero current openings of any kind).
+
+### Staged (1 new)
+- `staged-applications/roush-powertrain-calibration-engineering-intern-winterspring2027-livonia-mi.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 443 → 444 rows (+1); `Checked - Not Included` sheet 1412 → 1424 (+12). Zero duplicate Application Links across all 444 `rows` entries (programmatic check — this check caught and prevented a near-duplicate PPL Corporation addition before it was committed). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Field AI (Boston, MA)** — exact discipline/location match, confirmed open via primary source, but genuinely undated on the posting itself across multiple runs now (~121, 131). Worth a more creative approach next time (e.g. checking if Field AI publishes a careers FAQ or LinkedIn post with term dates) rather than just re-fetching the same Lever page, which is unlikely to change.
+- **Desktop Metal (Bedford, MA)** — a Spring 2027 Mechanical Engineering Co-op aggregator mirror exists but the company's own site shows no current co-op listing; worth a quick re-check in a future run in case it reopens, given the strong Boston-area fit.
+- **Analog Devices (Wilmington, MA)** and **Curtiss-Wright (Cheswick, PA)** — both only checked via aggregator mirror this run, not against the company's own ATS/Workday board; worth a dedicated direct-primary-source attempt next time.
+- **Bridgestone Americas** — still no primary-source ATS locatable with WebFetch/WebSearch; worth trying a browser-rendering tool (Claude in Chrome / built-in browser) if one becomes available in a future run, rather than repeating the same WebFetch attempts.
+- **GE Aerospace Lynn MA "Environmental/Health/Safety, Facilities, & Maintenance Co-op – Spring 2027"** and **"Systems Engineering Co-op (Electric Power) - Spring 2027"** — mirror-only, not independently confirmed; careers.geaerospace.com remains JS-rendered and unreadable via plain fetch — same standing blocker as GE Aerospace generally.
+- Standing saturation list (unchanged from run 130, now also add explicitly-reconfirmed-duplicate/dead: PPL Corporation req 15274 (already tracked since run 106), Skyworks req 74013 (dead), Precision Castparts Mentor/Wickliffe/Niskayuna aggregator batch (already tracked), Piaggio Fast Forward, True Anomaly, Vicarious Surgical, Saronic Technologies, Gulfstream St. Louis Operations Engineer intern): see run 114-130 entries above for the full prior list.
+- Tracker is now at 444 rows / 1424 checked entries after 131 runs. This run's main value: one genuinely new fully-verified posting (Roush's Powertrain Calibration Intern, resolving run 130's own "didn't render" flag), closing out the dead Skyworks req-74013 thread, and catching a near-duplicate PPL Corporation addition before it reached the spreadsheet (the duplicate-Application-Link check working exactly as intended). The Winter 2026/Spring 2027 wave in Hamza's target disciplines, especially in the Boston area specifically, remains thin and heavily saturated as of 2026-11-02 — Field AI (Boston, MA) remains the single most attractive unconfirmed lead, blocked purely on missing season language rather than discipline or location fit.
+
+---
+
 ## Run 130 — 2026-11-02 ~13:06-14:10 UTC
 
 **Repo-hygiene note (first action this run):** HEAD was detached at session start, matching run 129's commit (06c0e57). Local `master` branch ref was stale (cached at run 121's commit, 6180126) — the by-now-standard false alarm. Ran `git fetch origin master` first, confirmed FETCH_HEAD matched the detached HEAD exactly (06c0e57, run 129's commit, no drift — run 129 had already pushed successfully), then `git checkout -B master origin/master` on a verified-fresh base. Clean.
