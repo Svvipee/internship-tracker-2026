@@ -4,6 +4,41 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 129 — 2026-11-02 ~06:53-07:30 UTC
+
+**Repo-hygiene note (first action this run):** HEAD was detached at session start, pointed at run 128's commit (d9db0d8). An initial `git rev-parse origin/master` (before fetching) showed a stale cached ref at 6180126 (run 121) — the by-now-standard false alarm documented since run 99. Ran `git fetch origin master` first, which confirmed FETCH_HEAD actually matched the detached HEAD exactly (d9db0d8) — run 128 HAD already pushed successfully; no data was ever at risk. Ran `git checkout -B master d9db0d8` then a (redundant, "Everything up-to-date") `git push` to confirm. Clean.
+
+### What was searched
+Two parallel background research agents (no `build.mjs`/`ROUTINE-LOG.md` access; every reported lead independently re-verified by this session via its own WebFetch calls against the primary source, or exact job-ID/URL grep against `build.mjs`, before any edit):
+1. **Priority re-checks**: Gulfstream req 236000 (now 3 days past its own stated Oct 30, 2026 cutoff, and its direct page had stopped rendering content as of run 128), GE Aerospace (Lynn, MA), RTX/Collins Aerospace, STERIS Endoscopy (Mentor, OH), Lila Sciences (Cambridge, MA — sibling co-ops), MIT Lincoln Laboratory and Draper Laboratory.
+2. **Broad national sweep** for new companies/postings, steered away from the ~100+-company standing saturation list — covered Boston-area/New England hardware-robotics-defense-tech-medtech startups, smaller aerospace/defense suppliers nationally, and industrial-automation/controls co-op programs.
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked` (1)
+- **Gulfstream req 236000** — "Spring 2027 - IEF - Electrical Wiring Interconnection Systems College Intern" (Savannah, GA). This session independently fetched a WayUp mirror of the identical posting, which explicitly states "Sorry, this listing is no longer accepting applications." Combined with its absence from Gulfstream's own newest-sorted active-jobs listing and its being 3 days past its own stated "may remain active until October 30, 2026" cutoff, three independent closed-leaning signals now outweigh the single ambiguous direct-URL bot-wall rendering that had kept this Partial since run 95. Moved to `checked`.
+
+### Added to `checked` (1 new consolidated entry, plus the Gulfstream entry above)
+- Consolidated dedup-confirmed/unchanged batch: GE Aerospace "CNC Programmer Co-op, Spring 2027" (already in `rows` since an earlier run, req R5033208-1 — re-surfaced via a Simplify.jobs mirror as if new; no public Workday/Phenom API found this run either, blocker unresolved); RTX/Collins Aerospace (no genuinely Spring-2027-only Boston/New-England posting found; one lead — a "Winter/Spring 2027 Project Engineer Co-op," Landing Systems/wheels-brakes group — has an unconfirmed location, worth a follow-up); STERIS Endoscopy Mentor OH "Engineering Co-op – Spring 2027" general lead turned out to be a cross-contaminated mix-up with the already-tracked Precision Castparts Corp. Airfoils "Engineering Co-Op, Spring 2027" req at the SAME Mentor, OH location (the Dice mirror's own "Airfoils division" tag gave this away) — not a distinct STERIS finding; the "Materials Engineering Co-op" STERIS lead is the same unchanged xtalks.com mirror, run 119's exclusion stands; careers.steris.com/en/jobs/sitemap.xml returned HTTP 500 this run. Lila Sciences' Mechatronics Engineer and Automated Systems Engineer co-ops independently re-fetched directly, still no explicit year on either — unchanged. MIT Lincoln Lab's Group 07-71 Mechanical Eng Co-Op (job 1434254300) re-confirmed live but already tracked in `rows` since run 2. Draper's Workday CXS API returned HTTP 400/empty on direct query attempts this run — no sweep completed, worth retrying the exact endpoint pattern from run 103's notes. Broad-sweep agent's self-described "strongest leads" (Specter Aerospace's 5-8 Boston/Peabody Spring 2027 co-ops, Lexington Medical's Mechanical Engineering Co-Op, Applied Materials Gloucester MA, CMTA/Legence Boston, Berkshire Grey) were all independently confirmed already tracked in `rows` by exact req/job ID; its lower-confidence leads (MDI/Multi-Dimensional Integration Shrewsbury MA — no directly-opened Spring 2027 posting located despite university career-center corroboration; Skyworks Solutions Andover MA — career page returns "not available at this time" for all 4 reqs, genuinely unverifiable; Entegris Bedford MA "Mechanical Engineering Co-Op" — the long-standing aggregator-only phantom with no primary-source confirmation across many runs; Sonos — confirmed closed many times already; Pursuit Aerospace Malden MA and ZOLL Chelmsford — both already tracked/excluded) were not added, consistent with the honesty-over-volume standard.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 443 → 442 rows (−1, Gulfstream moved out); `Checked - Not Included` sheet 1405 → 1407 (+2). Zero duplicate Application Links across all 442 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`, binary diff).
+
+### Worth re-checking next time
+- **RTX/Collins "Winter/Spring 2027 Project Engineer Co-op"** (Landing Systems/wheels-brakes group, pay $17.79–$39.42/hr per a broad-sweep lead) — location was not confirmed this run; worth pinning down the exact site before deciding if it's Boston-area/qualifying.
+- **MDI (Multi-Dimensional Integration)**, Shrewsbury, MA — multiple university career-center sources (Villanova, UMBC, Georgia Tech) independently corroborate a Spring 2027 Controls & Automation Engineering Internship, but no canonical posting URL with that exact season was directly opened this run (MDI doesn't use job boards — applications go by email to recruiter@mdiadvantage.com). Worth a dedicated attempt to find/confirm a primary-source posting.
+- **Skyworks Solutions (Andover, MA)** — 4 "Winter/Spring 2027 Co-Op" reqs (78166, 78296, 78282, 78255) all return "You can't view this job because it's not available at this time" on direct fetch — genuinely unverifiable (not confirmed open or closed). RF/hardware discipline fit is borderline (not core mechanical) regardless.
+- **Draper Laboratory** — Workday CXS API returned HTTP 400/empty this run; retry the exact working endpoint/payload pattern documented in run 103's notes rather than the human-facing SPA search.
+- **STERIS Endoscopy (Mentor, OH)** — still blocked by its own Phenom People JS shell; sitemap.xml returned HTTP 500 this run (previously 500'd for a research agent too) — may be a standing dead end absent a different access method.
+- Standing saturation list (unchanged from run 128): see run 114-128 entries below for the full list.
+- Tracker is now at 442 rows / 1407 checked entries after 129 runs. This run's main value was closing out the Gulfstream req 236000 thread (now confirmed closed via a third-party mirror's explicit status language plus corroborating signals) rather than carrying forward an increasingly stale "ambiguous" status. Zero genuinely new qualifying postings survived verification from either research agent — every reported lead, including the broad-sweep agent's self-described strongest finds, turned out to already be tracked or excluded. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-02.
+
+---
+
 ## Run 128 — 2026-11-02 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start. `git fetch origin master` confirmed FETCH_HEAD matched the detached HEAD exactly (55739f2, run 127's commit, no drift), then `git checkout -B master origin/master` on a verified-fresh base.
