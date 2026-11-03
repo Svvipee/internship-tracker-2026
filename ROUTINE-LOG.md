@@ -4,6 +4,51 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 132 — 2026-11-03 ~UTC
+
+**Repo-hygiene note (first action this run):** HEAD was detached at session start, matching run 131's commit (580a041). `git fetch origin master` confirmed FETCH_HEAD matched the detached HEAD exactly (no drift — run 131 had already pushed successfully), then `git checkout -B master origin/master` on a verified-fresh base. Clean.
+
+### What was searched
+Two parallel background research agents (no `build.mjs`/`ROUTINE-LOG.md` access; every reported lead independently re-verified by this session via its own WebFetch/WebSearch calls against the primary source before any edit):
+1. **Priority re-checks**: the 6 "worth re-checking" items carried from run 131 — Field AI (Boston, MA), Desktop Metal (Bedford, MA), Analog Devices (Wilmington, MA), Curtiss-Wright (Cheswick, PA), Bridgestone Americas, and GE Aerospace Lynn MA's two specific co-op leads.
+2. **Broad national sweep** for new companies/postings, explicitly steered away from the 150+-company standing saturation list.
+
+### Added to `rows`
+None this run. The one candidate that initially looked like a genuinely new find — **MORSE Corp's "Mechanical Engineer Co-op" and "Manufacturing Engineer Co-op"** (Cambridge, MA, Spring 2027, exact same Greenhouse job IDs 7968311003/8034274003) — was independently re-fetched and re-verified directly by this session (both confirmed live, correct season/discipline), but a pre-commit exact-Application-Link grep against `build.mjs` then caught that BOTH are already tracked in `rows`, byte-for-byte, since runs 113/114 (2026-10-29) — a near-duplicate exactly like run 131's PPL Corporation catch. Not added; the duplicate-link check worked as intended.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (9 new entries)
+- **GE Aerospace (Lynn, MA)** — careers.geaerospace.com remains JS-rendered/unreadable; cross-checked the two standing leads via several independently-opened third-party mirrors instead. The "Systems Engineering Co-op (Electric Power) - Spring 2027" lead's locations are consistently given as Dayton/Beavercreek OH and Bohemia NY across every source found — likely a location mismatch, not actually Lynn-based. The "Environmental/Health/Safety, Facilities, & Maintenance Co-op - Spring 2027" lead is confirmed real and live for Spring 2027, but its location field is "any of the 35+ GE Aerospace U.S. locations" (a nationwide pool, one mirror instance even in Rutland, VT) — Lynn unconfirmed as a specific site. Narrows but doesn't resolve the standing blocker.
+- **Reframe Systems** (Billerica, MA), new-company candidate — internally contradictory season language (title says "Spring 2027," body and the company's own eclipse.capital ATS board both describe a "Fall 2026" term for the same FAB1 Billerica role). Excluded on the season-verification bar despite a strong Boston-area/discipline fit otherwise.
+- **DeBra-Kuempel Inc. / EMCOR Group** (Cincinnati, OH), new-company candidate — independently fetched directly, HTTP 410 Gone. Confirmed dead.
+- **Yaskawa America / Motoman Robotics Division** (Miamisburg, OH), new-company candidate — internally contradictory season language (title "Spring 2027," body "expected to start work in August 2026"); only an aggregator mirror reachable, no primary-source cross-check possible. Unverifiable.
+- **Xona Space Systems** (Burlingame, CA), new-company candidate — independently fetched directly; "This job is no longer accepting applications." Confirmed closed.
+- **Schaefer** (Cincinnati, OH structural engineering firm), new-company candidate — independently fetched directly; "that job does not exist or is not currently active." Likely expired.
+- **Johns Hopkins University Applied Physics Laboratory** (Laurel, MD), new-company candidate — only reachable via aggregator mirrors, could not confirm co-op-length term vs. summer-only from a primary source. Genuinely inconclusive.
+- **Graco Inc.** (Anoka/Rogers/Dayton, MN), new-company candidate — claim rests entirely on an unverified third-party "Extern" guide; no official posting independently located. Unconfirmed.
+- **Blue Water Autonomy** (Lexington/Boston, MA), new-company candidate — full careers page reviewed directly; full-time ME roles exist but zero co-op/internship postings. No match.
+- Also checked and ruled out without a dedicated entry (already confirmed dead/stale/undated by the priority-recheck agent, consistent with prior runs' findings, no status change): Field AI's live Boston posting remains open but still has no discoverable season anywhere despite a dedicated search for LinkedIn/Glassdoor/press corroboration (unchanged from run 131); its old sibling req (d87bf7d5, "Mechanical Engineer Co-Op, Robotics Hardware") is now a clean 404/closed, superseded by the still-undated live posting. Desktop Metal's own careers page (fetched directly) still lists zero co-op/intern listings and no Bedford, MA presence at all (their engineering listings are Burlington, MA) — unchanged from run 131. Analog Devices' own student-programs page confirms the co-op program structure generally but lists no open reqs; their real Workday board (analog.wd1.myworkdayjobs.com) returned HTTP 500 to direct fetch — still inconclusive, unchanged. Curtiss-Wright's only locatable postings remain merged undated "Spring, Summer and Fall" blocks — unchanged. Bridgestone Americas' real ATS (bebridgestone.com, behind an iCIMS backend) was newly identified as the likely genuine board this run, but it 403s to direct fetch just like bridgestoneamericas.com — still unresolved.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet unchanged at 444 rows; `Checked - Not Included` sheet 1424 → 1433 (+9). Zero duplicate Application Links across all 444 `rows` entries (programmatic check — this check caught and prevented the MORSE Corp near-duplicate addition before it was committed). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Bridgestone Americas** — a likely-genuine real ATS host was identified this run (bebridgestone.com via an iCIMS backend, c-2745-20160318-www-bebridgestone-com.i.icims.com), but it 403s to WebFetch/curl just like bridgestoneamericas.com; worth a browser-rendering-tool attempt (Claude in Chrome/built-in browser) if one becomes available, rather than repeating the same WebFetch attempts.
+- **GE Aerospace Lynn MA leads** — the Electric Power Systems Engineering Co-op now looks like it's actually Dayton OH/Bohemia NY-based rather than Lynn; the EHS/Facilities Co-op is a nationwide pool with Lynn unconfirmed as a specific site. Both now lower-confidence than before as "Lynn, MA" postings specifically — careers.geaerospace.com remains JS-rendered and unreadable via plain fetch.
+- **Field AI (Boston, MA)** — still the single most attractive unconfirmed Boston-area lead (confirmed open, exact discipline/location fit), still genuinely undated on the posting itself and now also unresolved via a dedicated LinkedIn/Glassdoor/press search. Running out of indirect ways to resolve this via web research alone.
+- **Reframe Systems (Billerica, MA)** — worth a direct check of the company's own careers page (not eclipse.capital or Seedtable mirrors) in case a genuine, non-contradictory Spring 2027 req exists distinct from the Fall 2026 one.
+- **Yaskawa America (Miamisburg, OH)** and **Johns Hopkins APL (Laurel, MD)** — both only checked via aggregator/mirror this run; worth a dedicated direct-primary-source attempt next time.
+- **Analog Devices** — their real Workday board (analog.wd1.myworkdayjobs.com) 500'd on direct fetch; worth retrying with a different request pattern (per the Draper/Blue Origin CXS-API precedent from earlier runs).
+- Standing saturation list (unchanged from run 131, now also add explicitly-reconfirmed-duplicate/dead: MORSE Corp (already tracked since run 113/114 — near-duplicate caught), DeBra-Kuempel/EMCOR, Xona Space Systems, Schaefer, Desktop Metal (still no co-op listing), Curtiss-Wright (still merged-season-only)): see run 114-131 entries below for the full prior list.
+- Tracker is now at 444 rows / 1433 checked entries after 132 runs. This run's main value was verification hygiene rather than growth: catching a near-duplicate MORSE Corp addition before it reached the spreadsheet (the dedup check working exactly as intended), narrowing the GE Aerospace Lynn location question, and ruling out 6 new company candidates (2 confirmed dead, 2 contradictory-season, 2 genuinely inconclusive) with full transparency. Zero genuinely new qualifying postings survived verification this run. The Winter 2026/Spring 2027 wave in Hamza's target disciplines, especially in the Boston area specifically, remains thin and heavily saturated as of 2026-11-03 — Field AI (Boston, MA) remains the single most attractive unconfirmed lead, blocked purely on missing season language rather than discipline or location fit.
+
+---
+
 ## Run 131 — 2026-11-02 ~15:40-16:20 UTC
 
 **Repo-hygiene note (first action this run):** HEAD was detached at session start, matching run 130's commit (5592612). An initial `git log origin/master -1` (before fetching) showed a stale cached ref at 6180126 (run 121) — the by-now-standard false alarm. Ran `git fetch origin master` first, confirmed FETCH_HEAD matched the detached HEAD exactly (5592612, no drift — run 130 had already pushed successfully), then `git checkout -B master origin/master` on a verified-fresh base. Clean.
