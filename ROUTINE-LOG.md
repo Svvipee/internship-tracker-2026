@@ -4,6 +4,50 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 135 — 2026-11-03 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 134's commit (6d3bc26). A fresh `git fetch origin master` initially showed a stale cached ref at 6180126 (run 121) before the fetch completed — after the fetch, `origin/master` correctly resolved to 6d3bc26, matching HEAD exactly (no real drift, just a stale pre-fetch cache, same false-alarm pattern noted in run 124's log). Ran `git branch -f master HEAD && git checkout master` to resync cleanly. Clean; run 133's push-pipeline fix continues to hold.
+
+### What was searched
+Two parallel background research agents (no `build.mjs`/`ROUTINE-LOG.md` access; every reported lead independently re-verified by this session via its own WebFetch/WebSearch calls or exact-ID/URL cross-check against `build.mjs` before any edit):
+1. **Priority re-checks**: the 3 standing items carried from run 134 — Johns Hopkins APL (Laurel, MD), Field AI (Boston, MA), Yaskawa Drives & Motion division "Engineering Co-op."
+2. **Broad national sweep** for new companies/postings, steered away from a condensed ~660-name saturation list extracted from `build.mjs`'s Company fields.
+
+**Process note (own mistake, caught and corrected mid-run):** the first message to the broad-sweep agent accidentally included a literal `PASTE_LIST_HERE` placeholder instead of the actual saturation list (a drafting error in this session, not the agent's fault). Caught before the agent's final report, and a corrected ~660-name list was sent via a follow-up message; the agent re-screened all its candidates against the corrected list before reporting back. See the Hermeus entry below for the one place this caused wasted (but harmless) duplicate work — independent verification against `build.mjs` caught it before anything was added.
+
+### Added to `rows`
+None this run. No new qualifying posting survived independent verification.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (9 new entries)
+- **Hermeus Corporation (Atlanta GA / Los Angeles CA / Jacksonville FL)** — the broad-sweep agent's one "new" finding, its full Spring/Summer/Fall 2027 Structures/Mechanical/Propulsion intern cluster. Independently cross-checked every Lever id against `rows`: all are byte-for-byte already tracked (Hermeus has 14 reqs already in the tracker from earlier runs). Root cause: this run's condensed saturation list omitted "Hermeus" by a drafting oversight when I hand-condensed ~1100 raw Company-field strings down to ~660 unique names — the agent correctly flagged it as not on the list it was given, and this session's own re-check caught the duplicate before anything was added.
+- **Scientific Systems Company Inc (SSCI), Burlington/Woburn, MA** — new-to-the-tracker small defense-autonomy/controls firm; its internships page currently lists zero open requisitions.
+- **Foundry Robotics / Maven Robotics** — new-to-the-tracker recently-funded hardware/robotics startups; only senior/full-time roles found at either, no internship/co-op.
+- **Indigo Technologies** — new-to-the-tracker; no internship or co-op program currently posted.
+- **AAR Corp / Belcan** — new-to-the-tracker; neither has a confirmed live Winter 2026/Spring 2027 posting (Belcan's recurring "A2I" co-op program gives no current dated postings; AAR's internship page gives no dates or openings).
+- **United Therapeutics (Medford, MA)** — new-to-the-tracker; has a "IVIVA Physiology Co-op, Spring 2027" (Jan-June) but it's a biomedical/tissue-engineering physiology-lab role, a discipline mismatch against Hamza's mechanical/aerospace/manufacturing/robotics/materials/structural/controls scope. Aggregator-only source, not independently fetched.
+- **Johns Hopkins APL (Laurel, MD)** — still could not locate the exact "2027 Internship – Aerospace & Mechanical Systems" req via APL's own site (sitemap.xml only exposes numeric job IDs, no title/keyword data; /internships pages give no listings). New circumstantial evidence this run: APL's program is branded "ATLAS... immersive summer internship," and a third-party cycle guide plus other same-naming-convention APL reqs are independently confirmed summer-only. Moderate-confidence summer-only by program-wide convention, but not an explicit statement on this specific req — left excluded/unresolved rather than silently upgraded to confirmed.
+- **Field AI (Boston, MA)** — re-confirmed open, right discipline/location, zero season language anywhere after ~13 runs; one previously-seen sibling Lever posting (d87bf7d5) no longer live. Still the single most attractive unconfirmed Boston-area lead; diminishing returns on further automated attempts stands.
+- **Yaskawa Drives & Motion division** — located the real ATS (UKG UltiPro, tenant YAS1000YAAMI) and pulled the full 28-posting live board directly: the "Engineering Co-op" req this thread had been tracking appears to have expired since the run that surfaced it (no matching title live, none in Santa Clara/SF). Dropping this specific lead going forward.
+
+### Staged
+None this run — no new fully-verified posting.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 445; `checked` 1447 → 1456 (+9). `.xlsx` file changed (confirmed via `git diff --stat`, binary diff, 1714293 → 1721051 bytes).
+
+### Worth re-checking next time
+- **Field AI (Boston, MA)** — remains the single most attractive unconfirmed Boston-area lead, now ~13 runs unresolved purely on missing season language. Likely needs Hamza to ask the company directly if he wants to pursue it.
+- **Johns Hopkins APL** — now has reasonably strong circumstantial evidence of summer-only, but still no exact-req confirmation; only worth revisiting if a browser-rendering tool becomes available for its iCIMS/Jibe-gated site.
+- Yaskawa Drives & Motion's specific "Engineering Co-op" thread is now closed out (expired); no further action needed.
+- **Process reminder for future runs**: when hand-condensing the saturation list to pass to a broad-sweep agent, double-check that well-known heavily-tracked companies (this run: Hermeus, with 14 existing reqs) didn't get dropped in the condensing step. The independent-verification step caught it this time with zero cost to data integrity, but a tighter condensing pass would save the agent's research effort.
+- Standing saturation list (unchanged from run 134, now also add this run's new exclusions: SSCI, Foundry Robotics, Maven Robotics, Indigo Technologies, AAR Corp, Belcan, United Therapeutics): see run 114-134 entries below for the full prior list.
+- Tracker is now at 445 rows / 1456 checked entries after 135 runs. Zero genuinely new qualifying postings survived verification this run — every broad-sweep candidate besides the already-tracked Hermeus cluster was either a discipline mismatch, had no live posting, or was a brand-new company with nothing currently open. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-03.
+
+---
+
 ## Run 134 — 2026-11-03 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 133's commit (bd3119b). `git fetch origin master` confirmed FETCH_HEAD matched the detached HEAD exactly (origin/master was already at bd3119b — run 133's fix held, no drift). Ran `git checkout -B master bd3119b` then `git push origin master` (reported "Everything up-to-date," expected since no new commits yet existed), then re-fetched to reconfirm `origin/master` == local `master` before starting any edits. Clean; no hygiene issue this run, and run 133's push-pipeline fix is holding.
