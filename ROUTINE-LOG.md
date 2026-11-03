@@ -4,6 +4,46 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 133 — 2026-11-03 ~UTC
+
+**CRITICAL repo-hygiene finding (first action this run, distinct from the usual cosmetic detached-HEAD issue in runs 99-132):** HEAD was detached at session start, pointed at run 132's commit (c349384). `git fetch origin master` showed `origin/master` was NOT at c349384 — it was still sitting at **6180126, run 121's commit**, dated 2026-10-31. `git merge-base` confirmed run 121..run 132 (11 commits, c349384 included) were strictly ahead of origin with no divergence. Root cause: at some point after run 121, the local `master` branch ref stopped being updated/checked-out alongside HEAD, so every run from 122-132 committed onto detached HEAD, then ran `git push origin master` — which pushes the *local `master` branch ref* (unchanged, stale at run 121), not HEAD — so `git push` reported "Everything up-to-date" or similar while silently pushing nothing new. **11 runs / 3 days of work (2026-10-31 through 2026-11-03, runs 122-132) never reached GitHub**, despite every one of those runs' logs claiming a successful push. Fixed this run: `git branch -f master HEAD` (clean fast-forward, no divergent history) + `git checkout master` + `git push -u origin master`, then verified via a fresh `git fetch` that `origin/master` now actually matches (c349384). All 11 runs' work is recovered. **Flagging for future runs:** the existing "fetch before checkout -B" lesson from runs 113/117 is not sufficient — the actual failure mode is that `git push origin master` can silently no-op on a detached-HEAD session if the local `master` ref was never advanced. Future runs should prefer `git push origin HEAD:master` or explicitly verify `git rev-parse HEAD` equals the new `origin/master` tip after pushing, not just trust push's exit code/message.
+
+### What was searched
+Two parallel background research agents (no `build.mjs`/`ROUTINE-LOG.md` access; every reported lead independently re-verified by this session via its own WebFetch/WebSearch calls against the primary source before any edit):
+1. **Priority re-checks**: the 6 standing "worth re-checking" items carried from run 132 — Field AI (Boston, MA), Reframe Systems (Billerica, MA), Yaskawa America/Motoman (Miamisburg, OH), Johns Hopkins APL (Laurel, MD), Analog Devices (Wilmington, MA), and GE Aerospace Lynn MA's leads; plus Bridgestone Americas (carried from runs 130-131).
+2. **Broad national sweep** for new companies/postings, explicitly steered away from the ~160-company standing saturation list.
+
+### Added to `rows` (1 new)
+- **Bridgestone Americas — "Spring 2027 Co-Op," Akron, OH (Americas Technology Center)**. Resolves a 3-run standing blocker (runs 130-132): bridgestoneamericas.com itself still 403s to direct fetch, but this run's priority-recheck agent found the real applicant-facing Workday tenant (bridgestone.wd5.myworkdayjobs.com) is reachable directly. This session independently re-fetched the exact job URL via Bridgestone's own Workday CXS API: canApply true, posted 21 days ago, rotational co-op (4-5 month rotations) across Mechanical, Polymer, Mechatronics, and Chemical Engineering, min 3.0 GPA. Not Boston-area (~600 mi).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (7 new entries)
+- **GE Aerospace (Lynn, MA)** — reconfirmed the already-tracked CNC Programmer Co-op (R5033208-1) remains the only genuinely Lynn-specific Spring 2027 college co-op; the other 2 standing leads (Electric Power Systems Eng. — Dayton/Bohemia-area; EHS/Facilities Co-op — nationwide pool) remain non-Lynn-specific, consistent with run 132. Recommending this specific sub-thread be closed out.
+- **Reframe Systems (Billerica, MA)** — upgraded from "worth a direct check" to a primary-source-confirmed exclusion: the agent traced Reframe's own domain chain to its own Ashby ATS (not eclipse.capital/Seedtable) and found the identical Spring-2027-title/"this fall"-body contradiction on Reframe's *own* board. No genuine distinct Spring 2027 role exists.
+- **Johns Hopkins APL (Laurel, MD)** — APL's own internships page and multiple same-series 2027 reqs, all independently fetched directly from careers.jhuapl.edu, consistently describe a summer-only program ("Spend the summer with our team..."); the exact Aerospace & Mechanical Systems req couldn't be located directly (JS-gated search), so this is strong pattern evidence rather than an exact-req confirmation, but enough to exclude pending a definitive direct hit.
+- **Yaskawa America/Motoman (Miamisburg, OH)** — located Yaskawa's real ATS (UKG/UltiPro) via yaskawa.com/collegerecruiting but it's fully JS-rendered and returned empty data to every access attempt; still inconclusive, same class of blocker as Bridgestone's marketing site and STERIS.
+- **Analog Devices req R266691** — reconfirmed unchanged for the 11th+ consecutive time since 2026-09-28 (same internal season contradiction, no year stated). Recommending this specific req be dropped from the standing priority re-check list — it has shown zero change across 5+ weeks of re-checks.
+- **Field AI (Boston, MA)** — re-confirmed open, right discipline/location, but season still unconfirmable anywhere (Lever posting itself, LinkedIn, Glassdoor, press, aggregators) after roughly a dozen runs since ~run 121. Still the single most attractive unconfirmed Boston-area lead; likely needs Hamza to ask the company directly if he wants to pursue it.
+- **Dedup-confirmed/already-excluded batch**: Rugged Robotics (byte-for-byte already tracked, re-surfaced by the broad-sweep agent as if new), MDI/Multi-Dimensional Integration (the specific Spring 2027 posting's application window expired May-June 2026 and isn't on MDI's own live careers page — consistent with run 130's closure), ASM International (reconfirmed gone from its own Greenhouse board, consistent with run 117), SPIROL Shim Division (reconfirmed HTTP 404, consistent with run 74), Andis Company (independently queried Andis's own authoritative ADP job-requisitions API directly and got zero open requisitions company-wide, directly contradicting 4 still-"active"-looking Spring 2027 postings on the third-party SolidProfessor board — the primary source overrides the stale aggregator, consistent with the 2026-10-11 zero-requisitions finding), plus Boston Scientific (removed), Fabri Inc. (removed/wrong-season), Marvin Composites (season unconfirmable), and SSOE Group (already excluded on discipline grounds).
+
+### Staged (1 new)
+- `staged-applications/bridgestone-americas-spring2027-coop-akron-oh.md` (new) — for the newly-verified Bridgestone Spring 2027 Co-Op.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct source count: `rows` 444 → 445 (+1 Bridgestone); `checked` 1433 → 1440 (+7). Zero duplicate Application Links across all 445 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Yaskawa America/Motoman** — real ATS located (UKG/UltiPro) but JS-blocked; worth a browser-rendering-tool attempt if one becomes available.
+- **Johns Hopkins APL** — strong pattern evidence (summer-only) but the exact "Aerospace & Mechanical Systems" req was never directly located; worth a definitive direct-req check if a working search path is found.
+- **Field AI (Boston, MA)** — remains the single most attractive unconfirmed Boston-area lead, blocked purely on missing season language after ~12 runs of automated research; diminishing returns on further automated attempts.
+- Drop from standing priority list going forward (fully resolved/saturated, zero change expected): Analog Devices R266691 (11+ identical re-checks), MDI (closed since run 130, reconfirmed dead again this run), ASM International (closed since run 117), GE Aerospace Lynn MA generally (only one req exists, already tracked).
+- Standing saturation list (unchanged from run 132, now also add explicitly-reconfirmed-duplicate/dead: Rugged Robotics, Andis Company, Boston Scientific, Fabri Inc., SSOE Group, SPIROL Shim Division): see run 114-132 entries below for the full prior list.
+- Tracker is now at 445 rows / 1440 checked entries after 133 runs. This run's main values were: one genuinely new, Boston-reasonable-radius posting (Bridgestone Americas, Akron OH, resolving a 3-run standing blocker), a primary-source-confirmed close-out of the Reframe Systems thread, a strong-pattern close-out of the JHU APL thread, and — most importantly — catching and fixing a 3-day, 11-run silent push failure that had left all that prior work unreachable on GitHub (see the critical repo-hygiene note above). The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-03; Field AI (Boston, MA) remains the single most attractive unconfirmed lead, blocked purely on missing season language.
+
+---
+
 ## Run 132 — 2026-11-03 ~UTC
 
 **Repo-hygiene note (first action this run):** HEAD was detached at session start, matching run 131's commit (580a041). `git fetch origin master` confirmed FETCH_HEAD matched the detached HEAD exactly (no drift — run 131 had already pushed successfully), then `git checkout -B master origin/master` on a verified-fresh base. Clean.
