@@ -21,24 +21,27 @@ None this run.
 ### Moved from `rows` to `checked`
 None this run.
 
-### Added to `checked` (4 new entries)
+### Added to `checked` (5 new entries)
 - **GE Aerospace R5029663 re-check** — still open (`canApply` true), stated `endDate` unchanged at 2026-11-06 (2 days away). No status change; 3rd consecutive run tracking this toward its cutoff.
 - **HaloBraid joinrise.co re-check** — still HTTP 503 (2nd consecutive identical result). Deprioritizing to opportunistic-only given two identical inconclusive results in a row.
 - **U.S. Tsubaki** — still no working primary-source (employer-owned or ATS) link found for the Spring 2027 req; only aggregator mirrors and a Summer/Fall 2026 titles on the company's own site. Deprioritizing to opportunistic-only after a 2nd unresolved attempt.
 - **Cook Inc.** — still no Spring 2027 req found on Cook's own iCIMS board; only the expired Fall 2026 sibling and the single unverifiable xtalks.com mirror. Deprioritizing to opportunistic-only after a 2nd unresolved attempt.
+- **Background broad-sweep agent batch** (addendum, same run) — the agent dispatched earlier this run finished after the first commit; every one of its reported candidates (Lincoln Electric, GE Appliances, Berkshire Grey, Field AI, Yaskawa/Motoman, Pursuit Aerospace, Siemens Wendell NC, Reliable Robotics, Sea Machines, Pison, Tutor Intelligence, Reframe Systems, Fleet Robotics, Rockwell Automation Chelmsford, PCC Tilton/Northfield NH, Boston Dynamics, GE Aerospace Lynn) was independently cross-checked against `build.mjs` and found already tracked or already excluded — a fully saturated sweep, zero new finds. One minor discrepancy worth flagging: the agent reported finding no live Spring 2027 Draper/MIT Lincoln Laboratory postings, but this tracker already carries several live ones (re-confirmed as recently as run 136) — the agent's access, not the tracker, was the limiting factor there.
 
 ### Staged
 None this run — no new fully-verified posting to stage.
 
 ### Spreadsheet regenerated
-`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 444; `checked` 1480 → 1484 (+4). `.xlsx` file changed (confirmed via `git status`).
+`npm install xlsx --no-save && node build.mjs` → printed `done` (run twice this run: once before the first commit, once after the broad-sweep addendum). `rows` unchanged at 444; `checked` 1480 → 1485 (+5 total: 4 priority re-checks + 1 broad-sweep dedup batch). `.xlsx` file changed both times (confirmed via `git status`).
 
 ### Worth re-checking next time
 - **GE Aerospace R5029663** — stated cutoff (2026-11-06) is now effectively the next run's main event; check immediately whether it closes.
 - **HaloBraid, U.S. Tsubaki, Cook Inc.** — all now deprioritized to opportunistic-only (2 consecutive unresolved attempts each) rather than a dedicated check every run; revisit if a new signal (working ATS link, different mirror, status change) surfaces.
-- A background broad-sweep research agent was dispatched this run (national + Boston-area, no tracker access) but had not returned results before this run's commit was required. Its findings still need independent primary-source verification against `rows`/`checked` before anything is added — do this first thing next run if the agent's output is available, rather than re-dispatching a duplicate sweep.
+- **Yaskawa/Motoman Miamisburg OH** — a SolidProfessor mirror claims a live 'Mechanical Engineering Co-op, Spring 2027' that conflicts with run 134's direct backend-API sweep (zero co-op/intern reqs found); worth one direct re-check of Motoman's own ATS backend to resolve the conflict definitively.
+- **Rockwell Automation (Chelmsford, MA)** — still genuinely inconclusive since run 127 (careers site returned 503); worth a fresh direct Workday CXS API check given the strong location/discipline fit if it ever resolves.
+- A broad national/Boston-area sweep (this run, full 5-angle coverage) found zero genuinely new leads anywhere — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-04, now across 139 runs.
 - Field AI (Boston, MA) and the broader standing saturation list are unchanged from run 138 — see prior run entries for the full list.
-- Tracker is now at 444 rows / 1484 checked entries after 139 runs.
+- Tracker is now at 444 rows / 1485 checked entries after 139 runs.
 
 ---
 
