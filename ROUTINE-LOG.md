@@ -4,6 +4,46 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 138 — 2026-11-04 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 137's commit (299f9d6). Ran `git fetch origin master` first, confirmed `origin/master` resolved to 299f9d6, matching HEAD exactly (no drift). `git checkout -B master origin/master` on a verified-fresh base. Clean.
+
+### What was searched
+One background broad-sweep research agent (no `build.mjs`/`ROUTINE-LOG.md` access; given the full ~1144-name saturation list extracted from `build.mjs`'s Company fields) covering: (1) the two standing priority leads carried from run 137 — GE Aerospace "Manufacturing Engineering Co-op" (R5029663, stated end date 2026-11-06) and Field AI (Boston, MA) — and (2) a broad national sweep for new companies/postings, steered toward Boston-area employers and recently-funded robotics/hardware startups. Every lead the agent reported was independently re-verified by this session directly via its own WebFetch/WebSearch calls before any edit: GE Aerospace's own Workday CXS job-detail API, Field AI's own Lever postings API, Leonardo DRS's own careers page, Festo's own careers page, VEIR's own Greenhouse board, and direct searches against Cook Medical's own iCIMS board and U.S. Tsubaki's own careers domain (neither of which could be located for their reported Spring 2027 reqs).
+
+### Added to `rows`
+None. No new qualifying posting survived independent verification this run — the one candidate with the strongest-looking title (Leonardo DRS "Mechanical Engineer Co-Op (Spring 2027)," Bridgeton, MO) turned out, on direct fetch, to state its actual term as "Spring through Summer (January 2027–August 2027)" — spanning Summer 2027, which Hamza's rules exclude even when bundled with a qualifying season.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (9 new entries)
+- **Leonardo DRS — "Mechanical Engineer Co-Op (Spring 2027)," Bridgeton, MO** — confirmed live via direct fetch, but its own stated term spans Spring AND Summer 2027 (Jan–Aug 2027). Fails the season-specific bar; not added.
+- **U.S. Tsubaki Power Transmission, LLC — "Intern, Engineering Co-Op Spring 2027 (SDKY)," Sandusky, OH** — title/season found only via aggregator mirrors (CareerBuilder, JobTarget, Dice); no working link to a Tsubaki-owned job page could be located despite a direct search of ustsubaki.com. Fails primary-source verification; not added.
+- **Cook Inc. (Cook Medical) — "Spring 2027 Sustaining Engineering Co-op," Spencer, IN** — title/season found only via a single xtalks.com mirror; Cook's own iCIMS board was searched directly and only shows the (expired) Fall 2026 sibling and a Spring 2026 sibling, no Spring 2027 Sustaining req. Fails primary-source verification; not added.
+- **VEIR (Woburn, MA)** — new-to-tracker superconducting power transmission startup; live Greenhouse board fetched directly, 12 open reqs, all full-time/contract, zero co-op/intern postings currently.
+- **Festo (Marlborough, MA) — "Mechanical Engineer Intern"** — new-to-tracker; own posting fetched directly, confirmed filled ("Sorry, this position has been filled").
+- **HaloBraid (Cambridge/Allston, MA)** — re-check attempt on a joinrise.co URL suggesting possible board turnover; URL returned HTTP 503 on direct fetch, could not confirm either way. Remains excluded/unresolved as before.
+- **GE Aerospace R5029663 re-check** — still open (`canApply` true), now showing "1 day left to apply" against its 2026-11-06 stated end date. No change to the existing `rows` entry.
+- **Field AI (Boston, MA) re-check** — season still unconfirmed after ~16 runs; one previously-tracked sibling req URL now 404s, consistent with known board churn. Diminishing-returns guidance continues to stand.
+- **Dedup-confirmed non-new batch**: Trener Robotics/Algorized/CRABI Robotics (re-surfaced duplicates of run 137's own new exclusions), Observable Space, Portal Space Systems, ANYbotics/Apptronik/Figure/1X (no Boston-area internship presence), several MassRobotics-fair micro-startups with no discoverable career pages, Soterya Inc. (stale 2025 listing only).
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified programmatically: `rows` unchanged at 444; `checked` 1471 → 1480 (+9). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace "Manufacturing Engineering Co-op – US – Spring 2027" (R5029663)** — now "1 day left to apply" per its own Workday API, stated end date 2026-11-06 is imminent; the *next* run is the real window to catch a closure (or, per this employer's history on sibling reqs, continued persistence past the stated date).
+- **Field AI (Boston, MA)** — ~16 runs unresolved purely on missing season language; still the most attractive unconfirmed Boston-area lead, but likely needs Hamza to ask the company directly if he wants to pursue it.
+- **HaloBraid** — worth a fresh attempt on the joinrise.co URL next run (503, not 404 — status genuinely unknown rather than confirmed gone).
+- **U.S. Tsubaki (Sandusky, OH)** and **Cook Inc. (Spencer, IN)** — both have real Spring 2027 co-op programs per their own posting history (Tsubaki runs Spring/Summer/Fall cycles every year; Cook runs a Sustaining Engineering co-op most cycles), but this run couldn't locate either on its primary-source ATS. Worth a fresh attempt at identifying Tsubaki's actual ATS and Cook's live iCIMS req ID for the Spring 2027 cycle.
+- Standing saturation list (unchanged from run 137, now also add this run's new exclusions: Leonardo DRS Bridgeton MO, VEIR, Festo): see prior run entries for the full list.
+- Tracker is now at 444 rows / 1480 checked entries after 138 runs. This run found zero genuinely new qualifying postings — the closest candidate (Leonardo DRS) failed on a season technicality (spans Summer), and two other candidates (Tsubaki, Cook Inc.) failed purely on primary-source verification despite plausible-looking aggregator listings, consistent with Hamza's "honesty over volume" bar. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-04.
+
+---
+
 ## Run 137 — 2026-11-04 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 136's commit (6b16afc). Local `master` was stale (cached at run 121's commit, 6180126 — the long-standing false-alarm pattern). Ran `git fetch origin master` first, confirmed `origin/master` resolved to 6b16afc, matching HEAD exactly (no drift). `git checkout master && git merge --ff-only origin/master`. Clean.
