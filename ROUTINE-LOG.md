@@ -4,6 +4,44 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 136 — 2026-11-04 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 135's commit (4d1804f). The local `master` branch ref was stale (cached at 6180126, run 121 — the long-standing false-alarm pattern). Ran `git fetch origin master` first, confirmed `origin/master` actually resolved to 4d1804f, matching the detached HEAD exactly (no drift — run 135 had already pushed successfully). Ran `git merge --ff-only origin/master` on the local `master` branch to bring it current, then checked it out. Clean.
+
+### What was searched
+One background broad-sweep research agent (no `build.mjs`/`ROUTINE-LOG.md` access; given a ~1127-name saturation list extracted from `build.mjs`'s Company fields to screen against) covering: (1) the task's standing priority leads — GE Aerospace (Lynn, MA), Draper Laboratory (Cambridge, MA), MIT Lincoln Laboratory — and (2) a broad national sweep for new companies/postings. Every lead the agent reported was independently re-verified by this session directly, per standing methodology: Field AI's live Lever board (re-pulled directly), Lexington Medical's Greenhouse board (exact job IDs pulled and fetched), Draper's and GE Aerospace's own Workday CXS job APIs (fully paginated, 220 and 110 current postings respectively), and MIT Lincoln Laboratory's co-op search (all 3 pages, 65 total postings, completing a pagination gap the agent's own sweep left behind).
+
+### Added to `rows`
+None this run. No new qualifying posting survived independent verification — every "new" candidate either turned out to already be tracked (Lexington Medical's Mechanical Engineering Co-Op, job 5423105008 — already in `rows` since an earlier run; the broad-sweep agent had no `build.mjs` access and couldn't know) or failed the verification bar on independent re-check (see below).
+
+### Moved from `rows` to `checked` (2)
+- **GE Aerospace — "Engines Engineering Co-op – US – Spring 2027" (R5029617-1, Lynn MA / Evendale OH).** This req has flip-flopped before (restored once in run ~run-50s after a marketing-portal false negative), but this run's closure signal came from the authoritative source itself: a direct fetch of the Workday CXS job-detail API returned a clean HTTP 404, and a fresh full-board sweep (110 current Co-op/Intern postings, paginated directly) confirms it's gone — only its Fall 2027 sibling remains live. Its own previously-recorded stated end date was 2026-11-06, consistent with natural closure. Stale staged-applications draft deleted.
+- **Draper Laboratory — "Materials and Chemistry Engineering Co-op (Spring 2027)" (JR002942, Cambridge MA).** Direct fetch of the exact req via Draper's own Workday CXS API returned `{"errorCode":"S22",...,"httpStatus":403,"message":"permission denied"}` — the same signature Draper's API gives for a confirmed-closed req (matches JR003000's closure signature from run 123). Absent from a fresh full-board sweep (220 current unique postings). The other 4 tracked Draper Spring 2027 Co-Op reqs are all still live. Stale staged-applications draft deleted.
+
+### Added to `checked` (10 new entries)
+- **GE Aerospace (Lynn, MA) full Workday facet re-sweep** — reconfirms run 133's finding with a fresh independently-pulled dataset: exactly 5 Lynn-tagged postings exist company-wide, and only one (CNC Programmer Co-op, R5033208-1) is a genuine college-level engineering co-op; the rest are vocational-trainee or SkillBridge-military reqs. The broad-sweep agent's two aggregator-sourced "new Lynn req" leads do not correspond to anything live on GE's own site.
+- **Draper Laboratory full Workday CXS re-sweep** — reconfirms Draper's real, working ATS remains draper.wd5.myworkdayjobs.com (not the stale, 404ing student-draper.icims.com the broad-sweep agent flagged as unreachable); found one new Summer-2027-only sibling (Acoustic and Vibration Technologies Intern, JR003003-1 — wrong season) not previously logged.
+- **MIT Lincoln Laboratory "Advanced Sensors and Techniques Co-Op (Spring 2027)"** (Group 09-92, Req 43452) — fundamentally an RF/radar signal-processing role for space surveillance, not mechanical/robotics/structural/controls despite "Aerospace Engineering" being a listed job segment. Discipline mismatch.
+- **Siemens (Hingham, MA) "Production Engineer Co-op"** (Operations Leadership Development Program, Spring 2027) — every mirror found states this co-op is explicitly restricted to students enrolled at Northeastern University; excluded per the same standing precedent applied to WSP USA's Drexel-only co-op. Could not independently locate a primary-source jobs.siemens.com URL either.
+- **Lexington Medical's Mechanical Engineering Co-Op re-surfaced as if new** — confirmed already tracked in `rows` since an earlier run; its sibling Manufacturing Engineering Intern (Summer 2027) already in `checked` since 2026-10-01.
+- **Medra (medra.ai, San Francisco, CA)** — new-to-tracker startup; only a stale Winter 2026 posting found, application window already passed.
+- **Neo Cybernetica (Greater Boston, MA)** — new-to-tracker; live Greenhouse board has only a generic "General Applications" listing, no engineering role.
+- **Revolute Robotics (Boston, MA)** — new-to-tracker; only open role is a technician-level "Robotics Assembly Intern" with no stated season.
+
+### Staged
+None this run — no new fully-verified posting survived verification.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 444 → 442 rows (−2, both GE Aerospace and Draper reqs moved to `checked`); `Checked - Not Included` sheet 1456 → 1466 (+10). Zero duplicate Application Links across all 442 `rows` entries (programmatic check). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Field AI (Boston, MA)** — re-confirmed open, zero season language, still the single most attractive unconfirmed Boston-area lead after ~14 runs. Diminishing returns on further automated checking continues to hold; likely needs Hamza to ask the company directly.
+- GE Aerospace's "Manufacturing Engineering Co-op – US – Spring 2027" (R5029663, already tracked) has a stated end date of 2026-11-06 — worth confirming at the next run whether it closed on schedule or (per this employer's history) the marketing portal gives a false negative while the Workday API still shows it open.
+- Standing saturation list (unchanged from run 135, now also add this run's new exclusions: Medra, Neo Cybernetica, Revolute Robotics, Siemens Hingham OLDP): see run 114-135 entries below for the full prior list.
+- Tracker is now at 442 rows / 1466 checked entries after 136 runs. This run's main value was verification hygiene: catching two previously-tracked reqs (GE Aerospace, Draper) that had gone dead since their last check, via a stronger primary-source signal (the authoritative Workday job-detail API itself, not a marketing portal or aggregator mirror) than has typically been available for these two employers. Zero genuinely new qualifying postings survived verification this run — the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-04.
+
+---
+
 ## Run 135 — 2026-11-03 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 134's commit (6d3bc26). A fresh `git fetch origin master` initially showed a stale cached ref at 6180126 (run 121) before the fetch completed — after the fetch, `origin/master` correctly resolved to 6d3bc26, matching HEAD exactly (no real drift, just a stale pre-fetch cache, same false-alarm pattern noted in run 124's log). Ran `git branch -f master HEAD && git checkout master` to resync cleanly. Clean; run 133's push-pipeline fix continues to hold.
