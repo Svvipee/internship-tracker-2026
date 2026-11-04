@@ -4,6 +4,43 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 137 — 2026-11-04 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 136's commit (6b16afc). Local `master` was stale (cached at run 121's commit, 6180126 — the long-standing false-alarm pattern). Ran `git fetch origin master` first, confirmed `origin/master` resolved to 6b16afc, matching HEAD exactly (no drift). `git checkout master && git merge --ff-only origin/master`. Clean.
+
+### What was searched
+One background broad-sweep research agent (no `build.mjs`/`ROUTINE-LOG.md` access; given the full ~1137-name saturation list extracted from `build.mjs`'s Company fields) covering: (1) the task's standing priority leads — Field AI (Boston, MA) and GE Aerospace's "Manufacturing Engineering Co-op" (R5029663, stated end date 2026-11-06) — and (2) a broad national sweep for new companies/postings. Every lead the agent reported was independently re-verified by this session directly: Field AI's live Lever public API (re-pulled directly), GE Aerospace's own Workday CXS job-detail API (re-fetched directly), AgZen's official Ashby job-board API (re-pulled directly, full description text re-confirmed), and Kodak's exact posting URL (re-fetched directly via curl, grepped for season/closure language).
+
+### Added to `rows` (2 new)
+- **AgZen — "Research & Development Engineering Co-op"** (Somerville, MA). New company for the tracker. Independently confirmed via AgZen's own Ashby job-board API: `isListed: true`, description states verbatim "This is a temporary/seasonal position running from January 2027 through June 2027." Mechanical engineering explicitly listed among qualifying majors; hardware/mechanical-design tasks in scope. Boston-area (~3 mi). Posted 2026-10-16 (within freshness window). Verification: Full.
+- **Eastman Kodak Company — "Controls Engineering Co-op"** (Rochester, NY). New company for the tracker. Independently fetched the exact posting URL directly (HTTP 200); body states "This co-op will take place in Spring 2027" verbatim, active Apply button, posted Oct 18, 2026 (within freshness window), no closure language. Controls/Electrical/Mechatronics discipline fit. Not Boston-area (~340 mi). Verification: Full.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (5 new entries)
+- **Field AI (Boston, MA)** — re-confirmed open via direct Lever API fetch, zero season/term language anywhere in the full description, now ~15 consecutive runs unresolved. A previously-seen sibling title (Lever id d87bf7d5) independently confirmed 404/closed this run — not a new finding. Diminishing-returns guidance stands.
+- **GE Aerospace "Manufacturing Engineering Co-op – US – Spring 2027" (R5029663)** — re-checked via GE's own Workday CXS job-detail API: still open (`canApply` true) as of this check, with its own stated end date (2026-11-06) now 2 days away. No change to its `rows` entry; flagged for a definitive re-check next run.
+- **Trener Robotics** (Boston-area/San Jose robotics hardware startup, newly funded) — new-to-tracker; no internship/co-op listings on its own board, full-time roles only.
+- **Algorized** (physical-AI/robot-safety startup, newly funded) — new-to-tracker; own careers page direct fetch shows only 5 full-time roles (Switzerland, Campbell CA), zero internships.
+- **CRABI Robotics** (Medford, MA, marine hull-inspection robotics startup) — new-to-tracker; has co-op postings but only for Summer 2026. Wrong season.
+
+### Staged (2 new)
+- `staged-applications/agzen-rd-engineering-coop-spring2027-somerville-ma.md` (new)
+- `staged-applications/eastman-kodak-controls-engineering-coop-spring2027-rochester-ny.md` (new)
+Both newly-verified postings staged per step 7, with posting URL, deadline (none stated for either), eligibility requirements, and an application-form checklist. No application submitted.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified programmatically: `rows` 442 → 444 (+2); `checked` 1466 → 1471 (+5). Zero duplicate Application Links across all 444 `rows` entries. `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace "Manufacturing Engineering Co-op – US – Spring 2027" (R5029663)** — its own stated end date (2026-11-06) is 2 days from this run; the *next* run is the real window to catch a post-cutoff closure (or, per this employer's history on its sibling req, continued persistence past the stated date before an eventual confirmed closure).
+- **Field AI (Boston, MA)** — ~15 runs unresolved purely on missing season language; still the most attractive unconfirmed Boston-area lead, but likely needs Hamza to ask the company directly if he wants to pursue it.
+- Standing saturation list (unchanged from run 136, now also add this run's new exclusions: Trener Robotics, Algorized, CRABI Robotics): see prior run entries for the full list.
+- Tracker is now at 444 rows / 1471 checked entries after 137 runs. This run found 2 genuinely new, fully-verified qualifying postings (AgZen, Kodak) out of roughly a dozen search angles and ~20+ candidate leads chased down — most of the broad sweep was duplicate/wrong-season/no-posting, consistent with the Winter 2026/Spring 2027 wave in Hamza's target disciplines remaining thin and heavily saturated as of 2026-11-04.
+
+---
+
 ## Run 136 — 2026-11-04 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 135's commit (4d1804f). The local `master` branch ref was stale (cached at 6180126, run 121 — the long-standing false-alarm pattern). Ran `git fetch origin master` first, confirmed `origin/master` actually resolved to 4d1804f, matching the detached HEAD exactly (no drift — run 135 had already pushed successfully). Ran `git merge --ff-only origin/master` on the local `master` branch to bring it current, then checked it out. Clean.
