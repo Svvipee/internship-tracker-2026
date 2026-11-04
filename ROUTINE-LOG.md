@@ -4,6 +4,44 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 139 — 2026-11-04 ~18:50-19:05 UTC
+
+**Repo-hygiene check (first action this run):** `git status`/`git log` confirmed HEAD matched `origin/master` (run 138's commit, f9c0128) with no stale-ref drift. Clean start.
+
+### What was searched
+This run prioritized time-sensitive re-checks over a fresh broad sweep (the broad sweep was dispatched to a background research agent whose results had not yet returned when a repo-hygiene hook required this run to commit; its findings will be independently verified and folded into a follow-up run/commit rather than held up further):
+1. **GE Aerospace req R5029663** (Manufacturing Engineering Co-op – Spring 2027, Lynn MA) — re-fetched directly via GE's own Workday CXS job-detail API, since its stated 2026-11-06 end date is now imminent.
+2. **HaloBraid** joinrise.co URL re-check (carried over from run 138's inconclusive 503).
+3. **U.S. Tsubaki Power Transmission** (Sandusky, OH) — attempted to locate a working ATS/primary-source link for the Spring 2027 Intern, Engineering Co-Op lead.
+4. **Cook Inc. (Cook Medical)** (Spencer, IN) — re-searched americas-cookmedical.icims.com specifically for a Spring 2027 Sustaining Engineering Co-op req.
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (4 new entries)
+- **GE Aerospace R5029663 re-check** — still open (`canApply` true), stated `endDate` unchanged at 2026-11-06 (2 days away). No status change; 3rd consecutive run tracking this toward its cutoff.
+- **HaloBraid joinrise.co re-check** — still HTTP 503 (2nd consecutive identical result). Deprioritizing to opportunistic-only given two identical inconclusive results in a row.
+- **U.S. Tsubaki** — still no working primary-source (employer-owned or ATS) link found for the Spring 2027 req; only aggregator mirrors and a Summer/Fall 2026 titles on the company's own site. Deprioritizing to opportunistic-only after a 2nd unresolved attempt.
+- **Cook Inc.** — still no Spring 2027 req found on Cook's own iCIMS board; only the expired Fall 2026 sibling and the single unverifiable xtalks.com mirror. Deprioritizing to opportunistic-only after a 2nd unresolved attempt.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 444; `checked` 1480 → 1484 (+4). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace R5029663** — stated cutoff (2026-11-06) is now effectively the next run's main event; check immediately whether it closes.
+- **HaloBraid, U.S. Tsubaki, Cook Inc.** — all now deprioritized to opportunistic-only (2 consecutive unresolved attempts each) rather than a dedicated check every run; revisit if a new signal (working ATS link, different mirror, status change) surfaces.
+- A background broad-sweep research agent was dispatched this run (national + Boston-area, no tracker access) but had not returned results before this run's commit was required. Its findings still need independent primary-source verification against `rows`/`checked` before anything is added — do this first thing next run if the agent's output is available, rather than re-dispatching a duplicate sweep.
+- Field AI (Boston, MA) and the broader standing saturation list are unchanged from run 138 — see prior run entries for the full list.
+- Tracker is now at 444 rows / 1484 checked entries after 139 runs.
+
+---
+
 ## Run 138 — 2026-11-04 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 137's commit (299f9d6). Ran `git fetch origin master` first, confirmed `origin/master` resolved to 299f9d6, matching HEAD exactly (no drift). `git checkout -B master origin/master` on a verified-fresh base. Clean.
