@@ -4,6 +4,42 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 141 — 2026-11-05 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD at run 140's commit on origin/master, clean checkout, no drift.
+
+### What was searched
+One background research agent (no `build.mjs` access) covering: (1) 4 priority re-checks carried from run 140 — GE Aerospace R5029663 (stated end date 2026-11-06, now literally tomorrow), Rockwell Automation Chelmsford MA (re-query of the CXS API endpoint found in run 140), Yaskawa/Motoman Miamisburg OH (SolidProfessor mirror vs. UltiPro ATS, still blocked), Palmer Engineering Cincinnati OH (a Handshake-only structural co-op lead flagged in run 140); (2) a broad national/Boston-area sweep for new postings.
+
+**Important correction made this run:** the agent's broad sweep reported several "new" candidates (2 Commonwealth Fusion Systems reqs, 1 SpaceX req, 3 Rendezvous Robotics reqs) that turned out, on this session's own independent `build.mjs` grep-by-exact-job-ID before finalizing, to be exact duplicates already tracked in `rows` since earlier runs — the agent did not have `build.mjs` access and so could not check this itself, and its "not on your exclusion list" instructions named companies, not every individual req, so an already-tracked req at an otherwise-unlisted company slipped through. All 6 duplicate rows were caught and removed before this run's edits were finalized, along with 2 duplicate staged-application drafts, a 3rd staged draft that had been mistakenly overwritten (restored to its original content), and a `checked` entry that incorrectly described 2 already-tracked CFS dual-season reqs as newly excluded (removed) and 3 duplicate Rockwell `checked` entries that exactly repeated run 140's own re-check one run later (also removed). This is a good example of why independent verification against the live file, not just the agent's own "not already tracked" claim, is required before any edit — logging it here in case a future run's methodology review wants the detail.
+
+### Added to `rows` (1 new posting)
+- **SpaceX — "Spring 2027 Civil Engineering Internship"** (job-boards.greenhouse.io/spacex/jobs/8636143002, Flexible - Any SpaceX Site). Independently fetched directly via Greenhouse, HTTP 200. Title and body state the role requires "full time, onsite for a minimum of 12 consecutive weeks beginning in January or March 2027" — explicitly Spring 2027, not summer-spanning. Pay $28–$30/hr by class year. Civil/structural discipline, adjacent to Hamza's target list. Not Boston-area. Confirmed genuinely new (distinct job ID from the already-tracked SpaceX "Spring 2027 Engineering Internship/Co-op" and "Spring 2027 Graduate Engineer Internship/Co-op" reqs).
+
+### Moved from `rows` to `checked`
+None this run. GE Aerospace R5029663 remains open with its stated end date now tomorrow (2026-11-06) — the real closure-watch window is the next run.
+
+### Added to `checked` (3 new entries)
+- **GE Aerospace R5029663 re-check** — still open (canApply true), endDate unchanged at 2026-11-06. Next run is the real closure-watch window.
+- **Palmer Engineering (Cincinnati, OH)** — traced the real employer (palmernet.com, HQ Winchester KY, civil/structural/transportation firm). No Spring 2027 co-op found anywhere on the company's own site (careers page, internships page, or the KY regional job board jobs.soar-ky.org). The original Handshake-sourced lead (app.joinhandshake.com/jobs/11231666, /8990072) remains the only trace — genuinely unconfirmed, not a confirmed exclusion.
+- **Yaskawa/Motoman re-check** — traced the real ATS (an UltiPro board linked from Motoman's own "Apply Now" button); confirmed fully JS-rendered/blocked on direct fetch. The SolidProfessor mirror's internal title/body season contradiction (titled "Spring 2027," body says "expected to start work in August 2026") remains unresolved, unchanged from run 132.
+
+Rockwell Automation (Chelmsford, MA): re-confirmed the same 3 reqs run 140 already logged (R26-7706 summer/fall season, R26-8341 electrical discipline, R26-5547 full-time) — no new information, so no new `checked` entry added (would have exactly duplicated run 140's).
+
+### Staged
+- `staged-applications/spacex-spring2027-civil-engineering-internship.md` — created for the one new fully-verified posting this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 444 → 445 (+1). `checked` 1493 → 1496 (+3). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace R5029663** — stated cutoff (2026-11-06) is now effectively immediate; the very next run should check whether it finally closes or persists past its own date again (as several siblings have).
+- **Rockwell Automation (Chelmsford, MA)** — CXS API endpoint from run 140 remains useful (rockwellautomation.wd1.myworkdayjobs.com/wday/cxs/rockwellautomation/External_Rockwell_Automation/jobs); worth a periodic re-query rather than every run, since nothing changed between run 140 and 141.
+- **Yaskawa/Motoman (Miamisburg, OH)** — still needs a headless-browser render of the UltiPro board to resolve the season contradiction definitively.
+- **Palmer Engineering (Cincinnati, OH)** — still unresolved; worth trying the original Handshake job URLs directly if Handshake ever becomes fetchable, or a periodic re-check of palmernet.com.
+- **Methodology note:** a broad-sweep research agent without `build.mjs` access cannot itself rule out "new" leads being already-tracked reqs at companies not on its given exclusion list. Future runs should keep independently grepping every reported job ID/URL against `build.mjs` before editing — which is what caught this run's duplicates before they were committed, but it's worth the reminder given how close this run came to shipping 6 duplicate rows and a factually-incorrect `checked` entry.
+- Tracker is now at 445 rows / 1496 checked entries after 141 runs. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated.
+
 ## Run 140 — 2026-11-05 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 139's commit (55ee3e6). Ran `git fetch origin master` first, confirmed `origin/master` resolved to 55ee3e6, matching HEAD exactly (no drift). `git checkout -B master origin/master` on a verified-fresh base. Clean.
