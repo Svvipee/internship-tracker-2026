@@ -4,6 +4,45 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 142 — 2026-11-05 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD detached at run 141's commit (b551305) on origin/master, clean checkout, no drift.
+
+### What was searched
+This run's task brief carried forward three leads (Gulfstream req 236000, BMW Spartanburg reqs 191197/191539, STERIS Endoscopy Mentor OH) as current "worth re-checking" items. Before spending research budget, this session grepped `build.mjs`'s own history for each and found all three were already fully resolved long ago: Gulfstream 236000 moved to `checked` as closed in run 129, BMW 191197/191539 explicitly closed out for good in run 128 (with a note that future runs should stop re-raising them), and STERIS Mentor OH's two original reqs moved to `checked` in run 119 on strong sibling-req evidence. No further action was needed on any of the three beyond reconfirming via a fresh Gulfstream sitemap check that 236000 no longer appears there.
+
+Actual research this run focused on: (1) run 141's genuine carried-over priorities — GE Aerospace R5029663 (stated cutoff 2026-11-06, now tomorrow), Rockwell Automation Chelmsford MA, Palmer Engineering Cincinnati OH, MIT Lincoln Laboratory, and a full Draper Laboratory re-sweep; (2) a broad national/Boston-area WebSearch sweep for new Winter 2026/Spring 2027 postings in Hamza's target disciplines, including BMW Spartanburg's current batch, Fleet Robotics, and Boston Engineering Corporation.
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (6 new entries)
+- **GE Aerospace R5029663** — re-fetched directly via GE's own Workday CXS API: still open, canApply true, endDate unchanged at 2026-11-06 (tomorrow). Also re-ran GE's company-wide "co-op spring 2027" search (10 results) — all already tracked/excluded. Zero new GE req.
+- **Rockwell Automation (Chelmsford, MA)** — re-queried the known CXS API endpoint directly; identical 7 Chelmsford postings as runs 140/141, no new on-season/on-discipline req.
+- **Draper Laboratory full re-sweep** — 221 postings pulled directly; the 4 tracked Spring 2027 Co-Op reqs reconfirmed live; 4 other Student-type postings reconfirmed correctly excluded (EE/optics/software discipline); 2 new reqs found but both Summer 2027 (wrong season).
+- **MIT Lincoln Laboratory req 43350** — reconfirmed live, unchanged; a fresh search for siblings found only already-excluded Fall 2026 titles.
+- **Palmer Engineering & Consulting** — re-fetched palmernet.com's careers and internships pages directly; still no Spring 2027 co-op found anywhere on the employer's own site. Remains genuinely unresolved, not confirmed-closed.
+- **Standing-lead correction** — documented that Gulfstream 236000, BMW 191197/191539, and STERIS Mentor OH are all already resolved (see "What was searched" above); flagging so a future run's task brief stops carrying them forward as open threads.
+
+A broad sweep (BMW Spartanburg's current Spring 2027 batch, Fleet Robotics, Boston Engineering Corporation, general "Spring 2027"/"Winter 2026" phrase searches) found only already-tracked or already-excluded postings — no genuinely new company or req surfaced.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 445; `checked` 1496 → 1502 (+6). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- **GE Aerospace R5029663** — stated cutoff (2026-11-06) is now the very next run's main event; check immediately whether it closes or persists past its own date (as several siblings have).
+- **Rockwell Automation (Chelmsford, MA)** — unchanged two runs running now; periodic re-query of the CXS API is sufficient, not every run.
+- **Palmer Engineering (Cincinnati, OH)** — still unresolved; periodic re-check of palmernet.com, or the original Handshake URLs if Handshake ever becomes fetchable.
+- **Yaskawa/Motoman (Miamisburg, OH)** — still needs a headless-browser render of the UltiPro board; not re-attempted this run (deprioritized per run 140/141).
+- **Gulfstream req 236000, BMW Spartanburg 191197/191539, STERIS Mentor OH** — all already resolved (see above); should NOT be carried forward as open leads in future task briefs.
+- Tracker is now at 445 rows / 1502 checked entries after 142 runs. This run's value was verification hygiene and correcting a stale carried-forward lead list — zero genuinely new qualifying postings survived verification, consistent with the saturated pattern of recent runs.
+
 ## Run 141 — 2026-11-05 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD at run 140's commit on origin/master, clean checkout, no drift.
