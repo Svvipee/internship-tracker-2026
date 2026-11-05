@@ -4,6 +4,46 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 140 — 2026-11-05 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 139's commit (55ee3e6). Ran `git fetch origin master` first, confirmed `origin/master` resolved to 55ee3e6, matching HEAD exactly (no drift). `git checkout -B master origin/master` on a verified-fresh base. Clean.
+
+### What was searched
+One background research agent (no `build.mjs` access; given the ~689-name saturation list extracted from this file's Company fields, with instructions to steer away from it) covering: (1) 4 priority re-checks carried from run 139 — GE Aerospace R5029663 (stated end date 2026-11-06, now imminent), Rockwell Automation Chelmsford MA (HTTP 503-blocked since run 127), Yaskawa/Motoman Miamisburg OH (SolidProfessor mirror vs. run 134's direct-API sweep conflict), Field AI Boston MA (~16 runs unresolved); (2) opportunistic-only re-checks of HaloBraid, U.S. Tsubaki, and Cook Inc.; (3) a broad national/Boston-area sweep for new postings. Every lead the agent reported was independently re-verified by this session — directly via its own tool calls — against `build.mjs` by exact URL/req ID, or via a fresh fetch, before any edit, per standing methodology.
+
+### Added to `rows`
+None. Both of the broad-sweep agent's "new" candidates (Buro Happold Structural Co-op job 2464, Lincoln Electric Plymouth MI Mechanical Co-op req 29823) turned out, on direct `build.mjs` cross-check, to be byte-identical duplicates of entries already tracked since earlier runs — the agent appears not to have fully used the saturation list it was given. A genuinely clean sweep otherwise: zero unresolved/Partial new leads either.
+
+### Moved from `rows` to `checked`
+None this run. GE Aerospace R5029663 remains open (re-confirmed via GE's own Workday CXS API) with its stated end date now 1 day away — the real closure-watch window is the next run.
+
+### Added to `checked` (8 new entries)
+- **GE Aerospace R5029663 re-check** — still open, endDate unchanged at 2026-11-06 (1 day away). 4th consecutive run tracking this toward its cutoff.
+- **Rockwell Automation (Chelmsford, MA) re-check** — the long-standing HTTP 503 block is resolved: located and queried Rockwell's own Workday CXS jobs-search API directly. 7 live Chelmsford postings found, including a brand-new "Intern, Electrical Engineering" (R26-8341, posted today) — excluded on discipline grounds (electrical/sensing-test, not on Hamza's target list) and unconfirmed season; a "Co-op, Electrical Engineer (June–Dec 2027)" (R26-7706) and a Mayfield Heights OH "Co-op, Hardware Development Engineer (Jan–July 2027)" (R26-6638) both fail the season rule (summer-spanning). No qualifying Chelmsford posting found, but the useful CXS API endpoint is now on file for future rechecks.
+- **Yaskawa/Motoman re-check** — identified the real ATS (an UltiPro board linked from Motoman's own "Apply Now" button) but it's fully JS-rendered with no discoverable API; the SolidProfessor-mirror-vs-direct-sweep conflict remains unresolved. Correct ATS URL logged for a future headless-browser attempt.
+- **Field AI re-check (final automated attempt)** — fetched the full, correctly-resolved Lever posting end to end; confirmed zero season/term/date language anywhere in the text. Deprioritizing to opportunistic-only per standing guidance; this is now a genuinely unknowable-by-posting-text case rather than a search-effort gap.
+- **U.S. Tsubaki re-check** — both the Sandusky, OH location page and the Internships function page on Tsubaki's own site now explicitly state "There are no open positions," a stronger negative signal than run 139's inconclusive finding.
+- **Cook Inc. re-check** — Cook's own iCIMS board shows Spring 2026/Fall 2026/Summer 2025 co-ops at Spencer/Bloomington but still no Spring 2027 req; fails primary-source verification for a 3rd consecutive run.
+- **HaloBraid re-check** — 3rd consecutive identical HTTP 503; no longer worth a dedicated attempt every run.
+- **Dedup-confirmed non-new batch (broad sweep)**: Buro Happold Structural Co-op (already tracked), Lincoln Electric Plymouth MI (already tracked), plus a consolidated list of other candidates that failed on season (Amcor, ThermalTech — both span into summer), non-US location (Elk Valley Resources/Glencore), or were unverifiable beyond an aggregator preview. One unresolved lead flagged for a future run: Palmer Engineering (Cincinnati, OH) structural co-op, seen only via a Handshake preview — no employer-owned domain/ATS located yet.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 444; `checked` 1485 → 1493 (+8). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- **GE Aerospace R5029663** — stated cutoff (2026-11-06) is now the very next run's main event; check immediately whether it closes, persists past its own date (as several of its siblings have), or something in between.
+- **Rockwell Automation (Chelmsford, MA)** — now has a working CXS API endpoint (rockwellautomation.wd1.myworkdayjobs.com/wday/cxs/rockwellautomation/External_Rockwell_Automation/jobs); worth a periodic re-query for a new on-discipline, in-season req rather than relying on the previously-503'd rendered page.
+- **Yaskawa/Motoman (Miamisburg, OH)** — now has a correct ATS URL identified (UltiPro board) but needs a headless-browser render or a discovered API pattern to actually resolve the SolidProfessor-mirror conflict; still unresolved after many runs.
+- **Palmer Engineering (Cincinnati, OH)** — a new, not-yet-chased-down lead for a Spring 2027 structural co-op, seen only via a Handshake preview this run; worth finding the company's own careers domain next run.
+- Field AI, U.S. Tsubaki, Cook Inc., HaloBraid — all now deprioritized to opportunistic-only after multiple consecutive unresolved/negative attempts; see entries above for each one's current lean (Field AI: genuinely unknowable from posting text; Tsubaki: leaning toward not-currently-live; Cook Inc.: leaning toward not-yet-posted; HaloBraid: genuinely unknown, 3x 503).
+- Standing saturation list (unchanged from run 139, now also effectively reconfirmed for Buro Happold and Lincoln Electric): see prior run entries for the full list.
+- Tracker is now at 444 rows / 1493 checked entries after 140 runs. This run's value was verification hygiene on the standing priority threads (Rockwell's API block resolved, Tsubaki/Cook Inc. negative signals strengthened, Field AI's posting fully read end-to-end) plus catching two broad-sweep false positives before they could be duplicated into `rows`. Zero genuinely new qualifying postings survived verification. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-05.
+
+---
+
 ## Run 139 — 2026-11-04 ~18:50-19:05 UTC
 
 **Repo-hygiene check (first action this run):** `git status`/`git log` confirmed HEAD matched `origin/master` (run 138's commit, f9c0128) with no stale-ref drift. Clean start.
