@@ -4,6 +4,35 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 145 — 2026-11-06 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD was detached at session start. A pre-fetch `git rev-parse origin/master` showed a stale cached ref at run-121's commit (6180126) — the long-standing false-alarm pattern documented since run 99. Ran `git fetch origin master` first, which resolved `origin/master` to run 144's commit (e354c07), exactly matching the detached HEAD — confirming run 144 had already pushed successfully and no data was ever at risk. Ran `git checkout master && git merge --ff-only origin/master`. Clean start, no drift.
+
+### What was searched
+Resolved run 144's two carried-forward priorities: (1) GE Aerospace R5029663's closure-watch (its own stated cutoff was today, 2026-11-06); (2) Palmer Engineering, already downgraded to periodic-only, not re-attempted. Beyond that, ran fresh direct-API sweeps of the three most reliable Boston-area primary sources (Draper Laboratory Workday CXS, MIT Lincoln Laboratory site search, Rockwell Automation Workday CXS, Commonwealth Fusion Systems Lever board) plus a general WebSearch for new Boston-area/national Spring 2027 mechanical-engineering postings. No background research agent was delegated this run.
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification.
+
+### Moved from `rows` to `checked`
+- **GE Aerospace — "Manufacturing Engineering Co-op – US – Spring 2027" (R5029663, Lynn MA / 23 locations)** — CONFIRMED CLOSED. Direct GET to its Workday CXS job-detail API now returns `HTTP_404`; a fresh company-wide "co-op spring 2027" full-text search returns only 3 results (down from 10 as of run 142) and R5029663 is not among them; a direct req-ID search for "R5029663" returns 0 results. Closed on or just after its own stated 2026-11-06 cutoff, exactly as run 144's "4 hours left to apply" observation anticipated. Stale staged-application draft deleted.
+
+### Added to `checked` (4 new entries)
+- **Rockwell Automation (Chelmsford, MA) — "Intern, Engineering (Independent Cart Technology)" (R26-8684-1)** — new req, posted today. Preferred majors include Mechanical/Electrical Engineering, but no season/term/start-date stated anywhere in the body. Fails the explicit-season bar. Also reconfirmed the standing aggregator-only "Co-op, Mechanical Engineering (Spring 2027)" Rockwell lead still does not exist on Rockwell's own Chelmsford Workday facet (8 current postings enumerated directly).
+- **Commonwealth Fusion Systems (Devens, MA) — "Intern - I&C and Network Engineer - Spring or Summer 2027"** — new-to-tracker; despite the "I&C" title, the full posting body is IT/networking/cybersecurity, not controls engineering. Discipline mismatch, plus a merged Spring-or-Summer season with no Spring-only sub-range.
+- **Commonwealth Fusion Systems (Devens, MA) — "Intern - EHS Engineer - Spring or Summer 2027"** — new-to-tracker; Environmental Health & Safety/compliance role, discipline mismatch, same merged-season issue.
+- **Dedup-confirmed non-new batch** — GE Aerospace's 3 other current company-wide co-op results (CNC Programmer Co-op R5033208, Colibrium Additive Co-op R5040302, SaaS Flight Analytics Co-op R5040450), all of Draper's current Spring 2027 Co-Op slate (JR002882, JR002940, JR002944 qualifying; JR002941/JR002885/JR002884/JR002974 discipline-excluded; JR003093/JR003094 wrong-season), all of MIT Lincoln Laboratory's current "Co-Op"-titled postings (AI Applications Developer, IT Co-Op, Active Optical Systems IT/Sysadmin Co-Op, the standing Advanced Sensors and Techniques Co-Op borderline item job 1437466700, Cyber Security Co-op, Enterprise Collaboration & Web Services Co-op), and a general WebSearch's Berkshire Grey/Entegris/Formlabs/Sanofi/Field AI/Sonos results — every one independently grep-confirmed already tracked or already excluded in `build.mjs` by exact req/job ID.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` 445 → 444 (-1, GE Aerospace R5029663 moved out). `checked` 1508 → 1513 (+5, including the moved GE Aerospace entry). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- Standing saturation list (unchanged from run 144, now also add explicitly-reconfirmed-duplicate/excluded: Rockwell Independent Cart Technology intern, CFS I&C/Network Engineer intern, CFS EHS Engineer intern): see run 114-144 entries below for the full prior list.
+- Tracker is now at 444 rows / 1513 checked entries after 145 runs. This run's main value was closing out the GE Aerospace R5029663 closure-watch thread begun in run 139 (closed exactly on its own stated cutoff) via direct Workday API confirmation, and a fresh direct-API sweep of Draper/MIT Lincoln Lab/Rockwell/CFS that surfaced 3 new-to-tracker reqs, all of which failed verification on discipline or season grounds. Zero genuinely new qualifying postings survived verification — the 7th consecutive run (139-145) confirming the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-06.
+
 ## Run 144 — 2026-11-06 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD detached at session start; ran `git fetch origin master` first, confirmed it matched the detached HEAD exactly (run 143's commit), then `git checkout master && git merge --ff-only origin/master`. Clean start, no drift.
