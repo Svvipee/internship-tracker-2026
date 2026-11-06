@@ -4,6 +4,37 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 146 — 2026-11-06 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD started detached. A pre-fetch `git rev-parse` of the local `master` ref showed it stale at run 121's commit (6180126) — the long-standing false-alarm pattern (runs 99+). Ran `git fetch origin master` first, which resolved `origin/master` to run 145's commit (ac29e72), exactly matching the detached HEAD — confirming run 145 had already pushed successfully and no data was at risk. Ran `git checkout -B master origin/master`. Clean start, no drift.
+
+### What was searched
+No background research agent was dispatched this run (consistent with recent runs given the heavy saturation documented since run 139). Did direct WebSearch/WebFetch myself: (1) a broad Boston-area sweep ("Spring 2027" mechanical/aerospace engineering co-op, various MA cities); (2) RTX/Collins Aerospace/Pratt & Whitney Spring 2027 mechanical/systems co-ops; (3) Draper Laboratory Spring 2027 mechanical co-op re-check; (4) a general "Spring 2027 robotics engineering intern" freshness search; (5) the standing unresolved Yaskawa/Motoman UltiPro thread (still fully JS-blocked, no progress possible without headless-browser tooling this session doesn't have).
+
+One genuinely new-to-tracker company surfaced (Persona AI, humanoid robotics, Houston/Pensacola) and was independently verified directly — see below.
+
+### Added to `rows`
+None this run. No new qualifying posting survived independent verification.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (2 new entries)
+- **Persona AI Inc (Houston, TX / Pensacola, FL)** — "Mechanical Engineering Intern." The aggregator mirror (builtin.com) that surfaced it explicitly states the posting "was removed" back in June 2026 — a stale dead cache, not a live posting. The company's own ATS (joinrise.co) returned HTTP 503, fully JS-blocked. Even independent of those two problems, every mirror's stated review window is a merged "Fall 2026 and Spring 2027," not a Spring-2027-specific start — fails the explicit-season bar outright. Not added.
+- **Dedup-confirmed non-new batch** — this run's own broad sweep (Berkshire Grey, Entegris, Sonos, Rockwell Automation Chelmsford, SSOE Group, Collins Aerospace Jamestown ND Mechanical Design Co-op + 3 distinct siblings, RTX general Project Engineer Co-op, Pratt & Whitney Tucson (wrong season), GE Aerospace Engines Co-op "Returning Students"/Fall-2027 variants, Path Robotics Columbus (already confirmed closed), Yaskawa/Motoman) — every single one independently grep-confirmed already tracked or already excluded in `build.mjs` by exact req ID/URL/company name before being logged.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 444; `checked` 1513 → 1515 (+2). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- **Yaskawa/Motoman (Miamisburg, OH)** — still unresolved after many runs; the UltiPro board (recruiting.ultipro.com/YAS1000YAAMI/...) remains fully JS-rendered/blocked to direct fetch with no discoverable API. Would need headless-browser rendering to resolve the long-standing SolidProfessor-mirror season contradiction definitively — no such tooling was available this run.
+- **Palmer Engineering (Cincinnati, OH)** — downgraded to periodic-only per run 144; no action needed every run (confirmed no specific posting exists on the company's own site).
+- Standing saturation list (unchanged from run 145, now also add explicitly-reconfirmed-duplicate/excluded: Persona AI, Collins Aerospace Jamestown ND Mechanical Design Co-op, Path Robotics Columbus OH): see run 114-145 entries below for the full prior list.
+- Tracker is now at 444 rows / 1515 checked entries after 146 runs. This run's main value was catching one new-to-tracker lead (Persona AI) and correctly excluding it on both a dead-mirror and a merged-season basis, plus reconfirming the broader Boston-area/national Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-06 — the 8th consecutive run (139-146) of near-zero new qualifying findings.
+
 ## Run 145 — 2026-11-06 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start. A pre-fetch `git rev-parse origin/master` showed a stale cached ref at run-121's commit (6180126) — the long-standing false-alarm pattern documented since run 99. Ran `git fetch origin master` first, which resolved `origin/master` to run 144's commit (e354c07), exactly matching the detached HEAD — confirming run 144 had already pushed successfully and no data was ever at risk. Ran `git checkout master && git merge --ff-only origin/master`. Clean start, no drift.
