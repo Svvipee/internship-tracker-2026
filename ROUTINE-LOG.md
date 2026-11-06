@@ -4,6 +4,38 @@ Running log of every automated routine run. Each run reads this log first to avo
 
 ---
 
+## Run 144 — 2026-11-06 ~UTC
+
+**Repo-hygiene check (first action this run):** HEAD detached at session start; ran `git fetch origin master` first, confirmed it matched the detached HEAD exactly (run 143's commit), then `git checkout master && git merge --ff-only origin/master`. Clean start, no drift.
+
+### What was searched
+Carried forward from run 143's "worth re-checking" list: (1) GE Aerospace R5029663 — stated cutoff 2026-11-06 is today, the real closure-watch window; (2) Palmer Engineering & Consulting — still unresolved, worth trying to locate the actual internships page. Rockwell Automation and Yaskawa/Motoman remain correctly deprioritized to periodic-only per runs 140-142 and were not re-attempted this run.
+
+No background research agent was delegated this run; given the 6th consecutive run (139-144) of near-zero new findings, this session did its own direct WebFetch/WebSearch checks on the two carried-forward priorities plus a modest independent broad sweep (not an exhaustive repeat of the ~100+ company saturation list) for new Boston-area/national postings in Hamza's target disciplines.
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (3 new entries)
+- **GE Aerospace R5029663** — re-fetched directly via GE's own Workday CXS job-detail API: still open, canApply true, endDate 2026-11-06 (today), with the API's own `timeLeftToApply` field reading "4 hours left to apply" as of this check. Still live right up to its own stated cutoff — the actual closure is happening within hours of this run, not before it. No change to `rows` yet; flagging for the next run to confirm closure.
+- **Palmer Engineering & Consulting** — finally located and fetched the real internships page directly (palmernet.com/internships, linked from the careers page — the guessed `/careers/internships` sub-path tried in runs 140-143 was the wrong URL). It's a general program-description page with past-intern profiles and an interest form, no specific open requisition, location, or season date listed. This resolves the multi-run "can't find the internships URL" thread — the page has now actually been read — but there is still no concrete Spring 2027 structural co-op posting to verify or add. Downgraded to periodic/opportunistic-only, same tier as Rockwell/Yaskawa.
+- **Dedup-confirmed non-new batch** — this run's own WebSearch sweep (Berkshire Grey, Sonos, SPIROL/SolidProfessor mirror, Andis Company, StandardAero, Yaskawa/Motoman, Marotta Controls, Howmet Aerospace, Schaeffler, Field AI, Humanoid, Fleet Robotics, Amazon Robotics, Boston Dynamics, and a re-surfaced Stoke Space "Spring 2027" lead via stale aggregator mirrors) — every candidate independently grep-confirmed already tracked or already excluded in `build.mjs`. Stoke Space's Spring 2027 posting in particular was already confirmed closed/removed from its own Greenhouse board back on 2026-09-23; the aggregator mirrors surfacing it again today are stale cached copies, not evidence of a re-posting.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows` unchanged at 445; `checked` 1505 → 1508 (+3). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`).
+
+### Worth re-checking next time
+- **GE Aerospace R5029663** — had only "4 hours left to apply" as of this run; the next run should find it finally closed (or, consistent with several siblings' past behavior, persisting past its own stated cutoff anyway) — either way, check and update `rows`/`checked` accordingly.
+- **Palmer Engineering (Cincinnati, OH)** — real internships page now located and read; confirmed no current specific posting. Downgraded to periodic-only, no need to re-check every run.
+- Standing saturation list (unchanged from run 143, now also add explicitly-reconfirmed-duplicate: Berkshire Grey, Sonos, SPIROL/SolidProfessor, Andis Company, StandardAero, Marotta Controls, Howmet Aerospace, Schaeffler, Field AI, Humanoid, Fleet Robotics, Amazon Robotics, Boston Dynamics, Stoke Space): see run 114-143 entries above for the full prior list.
+- Tracker is now at 445 rows / 1508 checked entries after 144 runs. This run's value was closure-watch hygiene on GE Aerospace (caught it mid-countdown, hours from its own stated deadline) and finally resolving the multi-run Palmer Engineering URL mystery (page located, confirmed empty of a specific posting). Zero genuinely new qualifying postings survived verification — the 6th consecutive run (139-144) confirming the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-06.
+
 ## Run 143 — 2026-11-05 ~UTC
 
 **Repo-hygiene check (first action this run):** HEAD was detached at session start, pointed at run 141's commit (b551305), while the local `master` branch ref was stale (cached at run 121's commit, 6180126 — the long-standing false-alarm pattern). Ran `git fetch origin master` first, which resolved `origin/master` to run 142's commit (c7696c1) — one run ahead of the detached HEAD, confirming run 142 had already pushed successfully and this session's initial checkout was simply one fetch behind. `git checkout master && git merge --ff-only origin/master` brought local `master` fully current at c7696c1. Clean start, no drift or lost work.
