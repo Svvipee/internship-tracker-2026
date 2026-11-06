@@ -8092,3 +8092,39 @@ None this run — no new fully-verified posting to stage.
 - **STERIS Endoscopy Mentor OH** (the two reqs moved to `checked` in run 119) — still worth a definitive primary-source re-check (the correct careers.steris.com req URLs for the ORIGINAL two reqs, not the on-discipline siblings used as proxies) if those exact URLs can be reconstructed in a future run, since the only corroborating signal checked this run (a stale xtalks mirror) is known-unreliable in either direction.
 - Standing saturation list (unchanged from run 119, now also add explicitly-reconfirmed-duplicate: Leonardo DRS, Applied Materials, Shield AI R4475, Berkshire Grey job 91872250, Sonos R2547, DeBra-Kuempel/EMCOR, Saab Quincy, SSOE Group, Entegris Bedford phantom): see run 114-119 entries above for the full prior list.
 - Tracker is now at 435 rows / 1350 checked entries after 120 runs. This run's main value was verification hygiene: a genuinely clean broad sweep (every candidate independently confirmed a duplicate, with zero ambiguous half-leads left over) and one new corroborating signal on a long-standing BMW Spartanburg thread. Zero genuinely new qualifying postings survived verification. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-10-30.
+
+## Log-maintenance note (added run 147, 2026-11-06) — runs 121–146 were never appended here
+
+This file stopped being appended after run 120 even though commits (and `build.mjs` edits/comments) continued every run through run 146. The underlying work for those 26 runs was NOT lost — every addition, exclusion, and verification note was still recorded inline as dated `Notes`/`Reason` fields directly in `build.mjs`'s `rows` and `checked` arrays (search `build.mjs` for `run 121` through `run 146` to find them) — but this narrative log has a 26-run gap. Reconstructing full per-run narrative for all 26 would require re-reading ~26 runs' worth of `build.mjs` comments; given the tracker's extreme saturation at this point, that effort is better spent on new research. Below is a compact index (run number, date, commit subject) so the gap is at least visible and navigable; full detail for any of these runs lives in `build.mjs`'s own inline comments and in `git log`.
+
+| Run | Date (UTC) | Commit | Summary |
+|---|---|---|---|
+| 121 | 2026-10-31 | `6180126` | 0 new, 4 checked-excluded |
+| 122 | 2026-10-31 ~13:40 | `27c8f23` | 3 new, 16 checked-excluded |
+| 123 | 2026-10-31 ~19:30 | `9f10d0c` | 1 new, 8 checked-excluded |
+| 124 | 2026-11-01 ~01:15 | `66c66f9` | 4 new, 8 checked-excluded |
+| 125 | 2026-11-01 ~07:10 | `0a853b0` | 0 new, 4 checked-excluded |
+| 126 | 2026-11-01 ~13:50 | `30fe1b6` | 0 new, 2 checked-excluded |
+| 127 | 2026-11-01 ~19:40–20:15 | `55739f2` | 5 new, 11 checked-excluded |
+| 128 | 2026-11-02 | `d9db0d8` | 1 new, 2 checked-excluded; BMW Spartanburg 191197/191539 thread closed out for good (already-correctly-excluded) |
+| 129 | 2026-11-02 ~07:30 | `06c0e57` | 0 new, 2 checked-excluded; Gulfstream req 236000 moved to `checked` as closed |
+| 130 | 2026-11-02 ~13:06–14:10 | `5592612` | 1 new, 5 checked-excluded |
+| 131 | 2026-11-02 ~15:40–16:20 | `580a041` | 1 new, 12 checked-excluded |
+| 132 | 2026-11-03 | `c349384` | 0 new, 9 checked-excluded |
+| 133 | 2026-11-03 | `bd3119b` | 1 new, 7 checked-excluded |
+| 134 | 2026-11-03 | `6d3bc26` | 0 new, 7 checked-excluded, 1 moved to checked |
+| 135 | 2026-11-03 | `4d1804f` | 0 new, 9 checked-excluded |
+| 136 | 2026-11-04 | `6b16afc` | 0 new, 10 checked-excluded, 2 moved to checked |
+| 137 | 2026-11-04 | `299f9d6` | 2 new, 5 checked-excluded |
+| 138 | 2026-11-04 | `f9c0128` | 0 new, 9 checked-excluded |
+| 139 | 2026-11-04 ~19:05 | `ca916f4` | 0 new, 4 checked-excluded |
+| 139 (addendum) | 2026-11-04 ~19:20 | `55ee3e6` | 0 new, 1 checked-excluded batch — broad sweep confirmed fully saturated |
+| 140 | 2026-11-05 | `ffcffce` | 0 new, 8 checked-excluded |
+| 141 | 2026-11-05 | `b551305` | 1 new (SpaceX Spring 2027 Civil Engineering Internship), 3 checked-excluded |
+| 142 | 2026-11-05 | `c7696c1` | 0 new, 6 checked-excluded |
+| 143 | 2026-11-05 | `3323235` | 0 new, 3 checked-excluded |
+| 144 | 2026-11-06 | `e354c07` | 0 new, 3 checked-excluded |
+| 145 | 2026-11-06 | `ac29e72` | 0 new, 4 checked-excluded; GE Aerospace R5029663 moved `rows`→`checked` (closed) |
+| 146 | 2026-11-06 | `f3a736e` | 0 new, 2 checked-excluded |
+
+Also worth noting: at session start of run 147, `HEAD` was again detached (same recurring pattern noted in run 102's entry) and the local `master` branch ref was stale (pointing at run 121) even though `origin/master` was correctly at run 146 — a stale local ref, not a lost-push issue. Resynced via `git checkout master && git reset --hard origin/master` before starting new work, per the established pattern from run 102.
