@@ -8128,3 +8128,36 @@ This file stopped being appended after run 120 even though commits (and `build.m
 | 146 | 2026-11-06 | `f3a736e` | 0 new, 2 checked-excluded |
 
 Also worth noting: at session start of run 147, `HEAD` was again detached (same recurring pattern noted in run 102's entry) and the local `master` branch ref was stale (pointing at run 121) even though `origin/master` was correctly at run 146 — a stale local ref, not a lost-push issue. Resynced via `git checkout master && git reset --hard origin/master` before starting new work, per the established pattern from run 102.
+
+## Run 147 — 2026-11-06 ~18:51–19:20 UTC
+
+### What was searched
+One background research agent (no `build.mjs` access, given the 918-name saturation-company list extracted from this file's Company fields) ran a broad sweep: Boston-area/New England hardware-robotics-defense-tech-medtech startups, smaller aerospace/defense suppliers nationally, industrial automation/controls/manufacturing-engineering co-op programs, and exact-phrase "Spring 2027"/"Winter 2026"/"January 2027" searches. Every lead it reported was independently re-verified by this session via its own WebFetch/WebSearch calls before any edit, per standing methodology.
+
+### Added to `rows`
+None. Three candidates were surfaced and independently checked, but none cleared the verification bar:
+- **Alliance Laundry Systems (Ripon, WI)** "Mechanical Engineer Co-op - Spring Term" (Job ID 2026-12964) — every mirror describes it as a merged "Spring/Summer 2027 Co-Op (January–August)" with no distinct Spring-only sub-range (same standing exclusion basis as CFS's merged-season postings), and the primary iCIMS posting for this exact job ID could not be independently reached.
+- **ATI / Automated Tire, Inc. (Woburn, MA)** "Mechanical Engineering Internship" — posting states no season/term/start date at all and is over a year stale ("Reposted 3 Months Ago" off a mid-2025 original). New, untracked Boston-area company actively hiring full-time ME/robotics roles there — worth periodic future monitoring for a fresh dated req.
+- **Delsys, Inc. (Natick, MA)** "Mechanical Engineer (Intern)" — no season/term/start date stated in the primary-adjacent posting; posting-age signals inconsistent across mirrors; one university mirror suggests a Fall 2026 recruiting cycle, not Spring 2027. New, untracked Boston-area company (EMG/wearable-sensor hardware) — worth a future re-check.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (4 new entries)
+Alliance Laundry Systems, ATI/Automated Tire Inc., Delsys Inc. (each above, with full dated reasoning), plus a dedup-confirmed non-new batch entry covering the rest of the agent's sweep (Fabri Inc., Peak Energy, Teradar, Marshalltown Company, Vanderweil Engineers, Leonardo DRS Fitchburg — all confirmed closed/expired/dead-end or already-saturated; see `build.mjs` for full detail).
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet unchanged at 444 rows; `Checked - Not Included` sheet 1516 → 1520 (+4). `.xlsx` file changed (confirmed via `git status`).
+
+### Repo hygiene note
+At session start, `HEAD` was detached (same recurring pattern as runs 102/121+) and the local `master` branch ref was stale (pointing at run 121) even though `origin/master` was correctly at run 146 — confirmed via `git fetch` that this was a stale local ref, not a lost/unpushed-commit issue. Resynced via `git checkout master && git reset --hard origin/master` before starting new work. Also discovered and fixed a 26-run gap in this log file (runs 121–146 were never appended despite commits landing every run) — see the "Log-maintenance note" section above for a compact backfilled index. Future runs: please keep appending here each run; the per-run detail that would have gone here is still recoverable from `build.mjs`'s own inline `Notes`/`Reason` comments if needed.
+
+### Worth re-checking next time
+- **ATI / Automated Tire, Inc. (Woburn, MA)** — new, real, actively-hiring Boston-area robotics/automation company; its only found internship posting is stale/undated. Worth checking its Workable board again for a fresh, season-stated req.
+- **Delsys, Inc. (Natick, MA)** — new, real Boston-area hardware company; posting-age signals are inconsistent across mirrors, suggesting the listing may refresh/rotate. Worth a re-check for a dated Spring 2027-specific posting.
+- **Alliance Laundry Systems (Ripon, WI)** — low priority (not Boston-area, merged Spring/Summer season already fails the bar as-is) unless a future mirror shows a distinct Spring-2027-only sub-posting.
+- The BMW Spartanburg and STERIS Endoscopy Mentor OH threads that this run's task brief carried forward as "worth re-checking" were already finally resolved in runs 128/129/119 respectively (per build.mjs's own history) — future task-brief authors should drop them from the standing priority list; they are not actually open questions.
+- Tracker is now at 444 rows / 1520 checked entries after 147 runs. Zero genuinely new qualifying postings survived verification this run — the 8th consecutive run (139-147, excepting run 141's single SpaceX addition) of a heavily saturated search space. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin as of 2026-11-06.
