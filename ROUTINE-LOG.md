@@ -8161,3 +8161,36 @@ At session start, `HEAD` was detached (same recurring pattern as runs 102/121+) 
 - **Alliance Laundry Systems (Ripon, WI)** — low priority (not Boston-area, merged Spring/Summer season already fails the bar as-is) unless a future mirror shows a distinct Spring-2027-only sub-posting.
 - The BMW Spartanburg and STERIS Endoscopy Mentor OH threads that this run's task brief carried forward as "worth re-checking" were already finally resolved in runs 128/129/119 respectively (per build.mjs's own history) — future task-brief authors should drop them from the standing priority list; they are not actually open questions.
 - Tracker is now at 444 rows / 1520 checked entries after 147 runs. Zero genuinely new qualifying postings survived verification this run — the 8th consecutive run (139-147, excepting run 141's single SpaceX addition) of a heavily saturated search space. The Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin as of 2026-11-06.
+
+
+## Run 148 — 2026-11-07 ~UTC
+
+### What was searched
+No background research agent dispatched this run (given the extreme saturation documented in runs 139-147). Did direct WebSearch/WebFetch myself: re-checked the two run-147 "worth re-checking" leads (ATI/Automated Tire Inc. Woburn MA, Delsys Inc. Natick MA); a fresh national/Boston-area sweep for "Spring 2027"/"Winter 2026" mechanical-engineering-co-op phrases; and targeted re-checks of GE Aerospace, Draper Laboratory, Shield AI, Berkshire Grey, and MIT Lincoln Laboratory per the standing priority list.
+
+### Added to `rows`
+None.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (4 new entries)
+- **Fleet Robotics, Inc. (Charlestown, Boston, MA)** — new-to-tracker underwater ship-hull-cleaning robotics startup (Harvard Microrobotics Lab spinout). Current Mechanical & Validation Engineer / Mechanical Engineer co-op postings are explicitly "Summer/Fall 2026" (wrong season) and independently confirmed closed ("no longer accepting applications," posted 6+ months ago). Not added; flagged as worth a future re-check for a Spring 2027-titled posting.
+- **ATI / Automated Tire, Inc. (Woburn, MA)** — re-checked directly, unchanged from run 147: still no season/term stated. Not added.
+- **Delsys, Inc. (Natick, MA)** — re-checked directly, unchanged from run 147: still no season/term stated. Not added.
+- Dedup-confirmed non-new batch covering the rest of this run's sweep (GE Aerospace Spring 2027 reqs at Batesville AR/Rutland VT/Durham NC/Lynn MA, Draper's Digital Engineering Requirements Co-op JR002944, Shield AI R4475, Berkshire Grey job 91872250, MIT Lincoln Laboratory) — all already tracked or already excluded in prior runs.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Repo hygiene note
+Session started with `HEAD` detached and local `master` pointing at run 121 (stale ref) while a local commit chain at run 147 sat unreferenced by any branch — same recurring environment pattern as runs 102/121/147. Resolved by force-moving `master` to the run-147 commit (`git reset --hard 7db33bd`) rather than discarding it. Confirmed via `git fetch` that `origin/master` was already correctly at run 147 (the repo's own prior runs had pushed successfully) — no actual lost or unpushed work, just a stale local ref in this fresh container. Future runs: continue checking `git fetch origin master` vs. local `master`/`HEAD` before assuming a push failure.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `Winter26-Spring27 Internships` sheet unchanged at 444 rows (no new adds); `Checked - Not Included` sheet 1520 → 1524 (+4). `.xlsx` file changed (confirmed via `git status`, binary diff present).
+
+### Worth re-checking next time
+- **Fleet Robotics (Charlestown, Boston, MA)** — new, real, discipline-matched Boston-area startup; current postings are wrong-season/closed but worth checking again for a Spring 2027-titled req.
+- **ATI (Woburn, MA)** and **Delsys (Natick, MA)** — both new-ish, real, Boston-area, mechanical-discipline companies whose only findable postings remain undated; still worth periodic re-checks for a dated Spring 2027 req.
+- Standing saturation list (unchanged, carried forward from run 147's comprehensive index — see that run's entry and `build.mjs`'s own history for the full ~1185-company roster already checked).
+- Tracker is now at 444 rows / 1524 checked entries after 148 runs. Zero genuinely new qualifying postings survived verification this run — the 9th consecutive run (139-148, excepting run 141's single SpaceX addition) of a heavily saturated search space.
