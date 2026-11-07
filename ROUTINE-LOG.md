@@ -8265,3 +8265,37 @@ None this run.
 - **Fleet Robotics, ATI, Delsys** — all still periodic-only (diminishing returns); no change this run.
 - **Draper Laboratory** — just produced a new req after a quiet stretch; worth a close re-check next run in case more Spring 2027 reqs follow the same pattern.
 - Tracker is now at 444 rows / 1537 checked entries after 150 runs. One genuinely new, fully-verified Boston-area posting (Draper GNC Co-Op) was the sole addition this run; the broader Winter 2026/Spring 2027 wave in Hamza's target disciplines otherwise remains thin and heavily saturated as of 2026-11-07.
+
+## Run 151 — 2026-11-07 ~UTC
+
+### Repo hygiene note
+Session started with `HEAD` detached, matching `origin/master`'s tip (run 150, `3c1107b`); local `master` ref was stale (pointing at run 121) — same recurring container quirk as runs 102/121/147/148/149. Confirmed via `git fetch origin master` that `origin/master` already correctly held run 150 (no lost/unpushed work). Resynced via `git checkout master && git reset --hard origin/master` before starting new work.
+
+### What was searched
+Did direct WebSearch/WebFetch myself (no background agent dispatched this run): a close re-check of Draper Laboratory (per run 150's note that it had just produced a new req after a quiet stretch); the standing periodic watchlist (HaloBraid, Yaskawa Motoman); a fresh national/Boston-area "Spring 2027"/"Winter 2026" mechanical/aerospace/robotics/controls co-op phrase sweep; and re-checks of GE Aerospace and MIT Lincoln Laboratory's current co-op slates.
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (5 new entries)
+- **HaloBraid (Cambridge/Allston, MA)** — re-attempted the standing joinrise.co URL; still HTTP 503, unchanged since runs 138-140.
+- **Yaskawa Motoman Robotics (Miamisburg, OH)** — a SolidProfessor mirror titled "Mechanical Engineering Coop (Spring 2027)" turned out to be a stale/mis-dated restatement of the already-tracked Yaskawa America req ENGIN002923, not a distinct posting.
+- **Unidentified Dice listing (Bedford, MA)** — surfaced via WebSearch as a fresh Spring 2027 Bedford, MA co-op, but the listing itself had gone HTTP 410 by the time it was fetched directly; the underlying employer/req could not be identified, so this remains genuinely unresolved (not confirmed dead, not confirmed dedup).
+- **Boost Robotics (Cambridge, MA)** — new-to-tracker, discipline/location-fit robotics startup; has no co-op or internship posting of any kind right now (one full-time role only). Nothing to verify or add; worth future monitoring.
+- **Dedup-confirmed non-new batch** — GE Aerospace (careers search page rendered nothing client-side; Workday CXS API GET returned 400, needs a POST — could not independently re-verify this run, no new req surfaced via WebSearch either), MIT Lincoln Laboratory (no new req beyond the already-tracked Group 07-71 and Group 08-35 x2), Draper Laboratory (Workday fetch 500'd; WebSearch found only already-tracked reqs including run 150's JR003131), Sanofi, Sonos, Field AI, Toyota Research Institute, Lila Sciences, Humanoid, Berkshire Grey — all already tracked/excluded.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet unchanged at 444 rows; `Checked - Not Included` sheet 1537 → 1542 (+5). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **GE Aerospace** — this run could not re-verify its company-wide Spring 2027 req count directly (public search page is JS-rendered, Workday CXS API needs a POST body this session didn't have on hand); worth using the exact prior-run API call pattern again next time.
+- **Unidentified Bedford, MA Dice listing** — gone (410) before it could be identified; if a similar Bedford, MA Spring 2027 mechanical co-op resurfaces on an aggregator, try to catch it before the primary listing expires.
+- **Boost Robotics (Cambridge, MA)** — new, real, tiny Boston-area robotics startup with no internship posting yet; worth a periodic check in case it posts one as it grows.
+- **HaloBraid, ATI, Delsys, Yaskawa Motoman** — all remain periodic/opportunistic-only re-checks; no change this run.
+- Tracker is now at 444 rows / 1542 checked entries after 151 runs. Zero genuinely new qualifying postings survived verification this run; the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-07.
