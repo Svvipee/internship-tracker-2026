@@ -8234,3 +8234,34 @@ None this run — no new fully-verified posting to stage.
 
 ### Addendum — background sweep agent results (2026-11-07 ~07:05 UTC)
 The background research agent dispatched earlier in this run reported back with 6 "new" candidates: Lexington Medical, MORSE Corp (×2 roles), Specter Aerospace (×5 roles), Leonardo DRS, and ASM International. Every single one, checked by exact job/req ID, was already tracked byte-for-byte in `rows` (or, for ASM International, already resolved-negative in `checked` at least 4 times since run 82). Zero genuinely new postings — a fully saturated sweep. Logged as a single dedup-confirmed batch entry in `checked`; `Winter26-Spring27 Internships` sheet unchanged at 443 rows; `Checked - Not Included` sheet 1532 → 1533 (+1).
+
+## Run 150 — 2026-11-07 ~UTC
+
+### Repo hygiene note
+Session started clean — `git status` showed working tree clean, `master` up to date with `origin/master` at run 149's addendum commit (7e0c63b). No drift to resolve.
+
+### What was searched
+Dispatched one background research agent (fork) to do fresh WebSearch/WebFetch research, with instructions to grep build.mjs itself first to avoid reporting duplicates. It covered: a varied national/Boston-area "Spring 2027"/"Winter 2026" mechanical/aerospace/robotics/manufacturing/controls phrase sweep across Greenhouse/Lever/Ashby and general job boards, plus targeted re-checks of the standing watchlist (Fleet Robotics, ATI, Delsys, GE Aerospace Spring 2027 reqs, Draper Laboratory, MIT Lincoln Laboratory).
+
+### Added to `rows` (1 new entry)
+- **Draper Laboratory — "GNC Systems Engineering Co-Op (Spring 2027)" (JR003131, Cambridge, MA)** — brand-new req (posted 2026-11-06, the day before this run). Fully verified via direct fetch of Draper's own Workday CXS job-detail API: `canApply: true`, `postedOn: "Posted Yesterday"`, `startDate: 2026-11-06`. Controls/GNC/flight-systems discipline, squarely in Hamza's target list. US Citizenship required; may require a government security clearance. Pay $20.00–$45.00/hr per posting. Sits alongside Draper's other already-tracked Spring 2027 co-ops (JR002882, JR002940, JR002944).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (4 new entries)
+- **Fleet Robotics (Charlestown, Boston, MA)** — periodic re-check: site now serves a Cloudflare bot-challenge page on direct fetch; consistent with run 149's "zero open postings" finding, no independent change confirmable.
+- **ATI / Automated Tire, Inc. (Woburn, MA)** — periodic re-check: careers page returned HTTP 503 this run, unreachable.
+- **Delsys, Inc. (Natick, MA)** — periodic re-check: still states no specific season/term ("reviewed on a rolling basis"), unchanged from runs 147–149.
+- **Dedup-confirmed non-new batch** — Draper's own EE/optics/software-discipline Spring 2027 reqs (JR002941, JR002885, JR002884, JR002974) and Summer-2027-only reqs (JR003093, JR002945-1, JR003094), all already logged in prior runs (122/130/136/142); GE Aerospace's company-wide co-op search still returns the same 3 already-tracked reqs; MIT Lincoln Laboratory shows no new qualifying req beyond the already-tracked Group 07-71 posting; Buro Happold, Yaskawa America, GE Appliances, PPL Corporation, CMTA/Legence, Berkshire Grey, SSOE Group, Lubrizol, and Sanofi Spring 2027 co-ops all re-surfaced but confirmed already tracked/excluded; Siemens (Wendell, NC) "Production Engineer Co-op" excluded (requires prior Siemens co-op experience).
+
+### Staged
+- `staged-applications/draper-laboratory-gnc-systems-engineering-coop.md` — created for the new Draper GNC Systems Engineering Co-Op (JR003131).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 443 → 444 (+1, Draper JR003131); `Checked - Not Included` sheet 1533 → 1537 (+4). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **Fleet Robotics, ATI, Delsys** — all still periodic-only (diminishing returns); no change this run.
+- **Draper Laboratory** — just produced a new req after a quiet stretch; worth a close re-check next run in case more Spring 2027 reqs follow the same pattern.
+- Tracker is now at 444 rows / 1537 checked entries after 150 runs. One genuinely new, fully-verified Boston-area posting (Draper GNC Co-Op) was the sole addition this run; the broader Winter 2026/Spring 2027 wave in Hamza's target disciplines otherwise remains thin and heavily saturated as of 2026-11-07.
