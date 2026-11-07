@@ -8194,3 +8194,40 @@ Session started with `HEAD` detached and local `master` pointing at run 121 (sta
 - **ATI (Woburn, MA)** and **Delsys (Natick, MA)** — both new-ish, real, Boston-area, mechanical-discipline companies whose only findable postings remain undated; still worth periodic re-checks for a dated Spring 2027 req.
 - Standing saturation list (unchanged, carried forward from run 147's comprehensive index — see that run's entry and `build.mjs`'s own history for the full ~1185-company roster already checked).
 - Tracker is now at 444 rows / 1524 checked entries after 148 runs. Zero genuinely new qualifying postings survived verification this run — the 9th consecutive run (139-148, excepting run 141's single SpaceX addition) of a heavily saturated search space.
+
+## Run 149 — 2026-11-07 ~06:30–06:55 UTC
+
+### Repo hygiene note
+Session started with `HEAD` detached, matching `origin/master`'s tip (run 148, `9e35898`), but local `master` ref was stale (pointing at run 121) — same recurring container quirk as runs 102/121/147/148. Confirmed via `git fetch origin master` that `origin/master` already correctly held run 148 (no lost/unpushed work). Resynced via `git checkout master && git reset --hard origin/master` before starting new work.
+
+### What was searched
+Did direct WebSearch/WebFetch myself (no background agent for the initial pass) covering: the standing worth-re-checking list (Fleet Robotics, ATI/Automated Tire, Delsys, GE Aerospace Spring 2027 reqs, Draper Laboratory, MIT Lincoln Laboratory, Reliable Robotics, Rockwell Automation Chelmsford); a fresh national/Boston-area "Spring 2027"/"Winter 2026" mechanical-engineering-co-op phrase sweep on Greenhouse/Lever/Ashby and general job boards. Also dispatched one background research agent for a broader national/Boston-area sweep for brand-new, smaller/startup companies not yet on the saturation list — that agent's findings, if any survive independent verification, will be appended in a follow-up entry once it reports back (it had not yet completed when this run's commit was made, per the environment's commit-before-stopping requirement).
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked` (1 entry)
+- **GE Aerospace — "Systems Engineering Co-op - Mechanical/Aerospace Engineering (Electric Power) - US - Spring 2027" (R5030103, Dayton OH)** — direct re-fetch of GE's own Workday CXS job-detail API now returns HTTP 404. Also absent from GE's own company-wide "co-op spring 2027" full-text search this run (down to 3 live results — R5033208 Lynn CNC Programmer, R5040302 Colibrium West Chester, R5040450 Austin Data Science — all already tracked/excluded). Confirmed closed.
+
+### Added to `checked` (7 new entries)
+- **Fleet Robotics, Inc. (Charlestown, Boston, MA)** — re-check: its careers board (jobs.polymer.co/fleet-robotics) and the portfolio-mirror board now show ZERO open postings of any kind — even the previously-tracked Summer/Fall 2026 co-ops from run 148 appear to have been taken down entirely. No Spring 2027 posting to check. Still worth periodic re-checks.
+- **ATI / Automated Tire, Inc. (Woburn, MA)** — re-checked directly, unchanged from runs 147/148: still no season/term stated.
+- **Delsys, Inc. (Natick, MA)** — re-checked directly, unchanged from runs 147/148: still no season/term stated.
+- **Reliable Robotics Corp (Mountain View, CA)** — a "Winter 2026, and Spring 2027" aggregator claim re-surfaced under a new aggregator job ID, but it's the exact same long-dead listing (page itself still states the job "was removed" on Jul 20, 2026). No live posting on the company's own Ashby board.
+- **Rockwell Automation (Chelmsford, MA)** — a fresh aggregator lead (Dice job-detail) now returns HTTP 410 Gone. Consistent with the company's own Workday CXS API (re-confirmed runs 140/142) showing no qualifying req.
+- **HALLAM-ICS (Mansfield, MA)** — new-to-tracker lead; its "Mechanical Engineering Co-Op (Spring)" posting is for Spring **2026** (posted 11/21/2025, closed 1/3/2026, now expired) — a past season entirely outside Hamza's window. Not flagged for re-check since the season itself is wrong, not just this listing.
+- **Dedup-confirmed non-new batch** — Field AI (Boston, MA, standing 20+-run unresolved undated thread, re-surfaced, no change), Berkshire Grey job 91872250, Sanofi Spring 2027 co-ops, SSOE Group Spring 2027 co-op, Lubrizol Spring/Summer 2027 co-ops, Foth Mechanical Engineering/Packaging Systems Co-ops (Summer/Fall 2027 — wrong season) — all already tracked or already excluded.
+
+Also independently re-confirmed (no change needed): Draper Laboratory's full current Spring 2027 Student-worker slate still live; MIT Lincoln Laboratory's "Mechanical Engineering Co-Op (Winter/Spring 2027) Group 07-71" (job 1434254300) still live/open, unchanged (posting date shows Oct 27, 2026, no closing date).
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 444 → 443 (−1, GE Aerospace R5030103 moved out); `Checked - Not Included` sheet 1524 → 1532 (+8). `.xlsx` file changed (confirmed via `git status`, binary diff present).
+
+### Worth re-checking next time
+- **Fleet Robotics (Charlestown, Boston, MA)** — now has zero open postings at all; worth checking again periodically for a fresh Spring 2027-titled req, but no longer an urgent every-run item since there's nothing live to watch.
+- **ATI (Woburn, MA)** and **Delsys (Natick, MA)** — both still undated; periodic re-checks only (diminishing returns on every-run checks given multiple unchanged results in a row).
+- A background research agent's broader sweep for brand-new/startup companies was still in progress when this run's commit was made (the environment requires committing uncommitted changes before stopping, even mid-research); if it surfaces anything genuinely new and verifiable, it will be appended as a follow-up entry/commit within this same run's session before ending.
+- Tracker is now at 443 rows / 1532 checked entries after 149 runs. One stale GE Aerospace req was caught and moved out this run; otherwise the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-07.
