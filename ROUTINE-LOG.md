@@ -8415,3 +8415,38 @@ None — no new fully-verified postings this run to draft application material f
 - GE Aerospace's Workday API blocker remains solved (POST-with-searchText pattern, from run 153) — reuse directly in future runs rather than re-discovering it.
 - The 15 newly-checked companies this run (7 startups + 8 national manufacturers) are now believed exhausted; no further action needed on them absent new news.
 - Tracker is now at 448 rows / 1581 checked entries after 154 runs. 0 genuinely new postings this run — all research-agent candidates turned out to already be tracked or to fail verification, continuing the saturation pattern of runs 139-153.
+
+## Run 155 — 2026-11-08 ~18:49–18:55 UTC
+
+### Repo hygiene note
+Session started with `HEAD` detached, matching `origin/master`'s tip (run 154, `4094485`) exactly once `git fetch origin master` was run — same recurring container quirk as prior runs (local `master` ref was stale at run 149). No lost/unpushed work; confirmed `git rev-list --count origin/master..HEAD` = 0 before starting.
+
+### What was searched
+Did direct research myself (no background agents dispatched) using curl/Python against employers' own APIs, plus — new this run — actual headless-browser rendering via Playwright/Chromium, which is genuinely pre-installed in this session's environment (prior runs repeatedly noted lacking this). Focused on: (1) SharkNinja's full current Greenhouse board for any Spring 2027 titles beyond the 6 already tracked + 2 already excluded; (2) GE Aerospace's Workday CXS API (reusing the run-153 POST-with-searchText pattern); (3) Draper Laboratory's full Workday CXS board (223 postings, paginated); (4) MIT Lincoln Laboratory's full "co-op" search (67 results, all 3 pages); (5) Textron's long-standing "needs headless browser" sitemap slugs from run 154, finally read with real Playwright rendering; (6) two general WebSearch sweeps for fresh national/Boston-area Spring 2027/Winter 2026 mechanical/aerospace postings.
+
+### Added to `rows`
+None this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (9 new entries)
+- **SharkNinja — 4 new-to-tracker Spring 2027 titles**, all open/live, Spring 2027 Jan-June, found via a full Greenhouse board re-fetch: "CMF Industrial Design Co-op" (job 4722306006, Needham) and "Industrial Design Co-op" (jobs 4720208006 Needham + 4720294006 New York NY) — pure Industrial Design discipline, not engineering; "Electrical Design Engineering Co-op, Advanced Development" (job 4721665006, Needham) — core EE discipline despite being on the same Advanced Development team as an already-tracked, mechanical-framed sibling role. All 4 excluded on discipline grounds, consistent with the tracker's standing ID/EE exclusion pattern.
+- **GE Aerospace** — re-ran the exact documented POST-with-searchText query; still exactly 3 results, all 3 already tracked. Reconfirmed saturated.
+- **Draper Laboratory** — full 223-posting pagination (searchText now 400s again; plain limit/offset pagination works), all 18 Student-track titles accounted for, zero new qualifying reqs.
+- **MIT Lincoln Laboratory** — full 67-result "co-op" search read across all 3 pages; zero new qualifying (in-discipline, correct-season) reqs beyond the standing Group 07-71/05-52/09-92 entries.
+- **Textron Systems/Aviation/Bell — DEFINITIVELY RESOLVED.** Used this session's actual Playwright/headless-Chromium access (confirmed pre-installed, not previously available to this routine) to render and read all 17 of run 154's logged sitemap slugs plus siblings in full (networkidle wait, innerText extraction, regex-searched for any season+year token). Verified the extraction method itself works by inspecting one full rendered page's text directly. Result: zero of the 17 postings states a season/term anywhere in the body. This upgrades the standing "assumed to still apply, but unverified on these specific slugs, for lack of headless-browser tooling" note into an actually-confirmed finding with this run's own tooling — Textron's job-posting template structurally never states a season. Closing this out as settled; future runs don't need to keep re-flagging it as a tooling gap.
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Confirmed via `git diff --stat`: `build.mjs` +7 lines (net; 9 new checked entries minus array-closing-brace context); `.xlsx` changed (1841598 → 1848614 bytes). `rows` unchanged at 448 (confirmed no insertions there); `checked` 1581 → 1590 (+9).
+
+### Worth re-checking next time
+- **Textron** — now considered closed/settled (see above); no further headless-browser re-attempt needed unless the posting template visibly changes.
+- **GE Aerospace, Draper, MIT Lincoln Laboratory** — all reconfirmed saturated this run using each of their own direct APIs; the exact working query patterns are documented above and in prior runs' notes for reuse.
+- **SharkNinja** — board is now fully triaged (10 Spring 2027 titles total: 6 tracked, 4 newly excluded this run on discipline grounds). No open items remain on this board; drop to periodic/opportunistic re-check unless a fresh posting wave appears.
+- **Neurable, Beacon Biosignals, EQORE, Blues, BoolSi, Hellbender, Rotostitch** (from run 154) — all already fully checked and excluded last run; no further action needed.
+- This session's confirmed Playwright/headless-Chromium access is a genuine capability upgrade over many prior runs that repeatedly deferred JS-rendered-SPA checks (Textron, and historically others) for lack of it — worth trying it proactively on any other standing "JS-rendered/bot-walled, can't verify" items in future runs (e.g., Gulfstream, Waters Corporation/iCIMS CAPTCHA, RoviSys icims.com) rather than assuming the limitation still holds.
+- Tracker is now at 448 rows / 1590 checked entries after 155 runs. 0 genuinely new qualifying postings this run; this run's main value was closing out a long-standing tooling-gap item (Textron) with a definitive answer and clearing SharkNinja's board to full saturation, continuing the broader saturation pattern of runs 139-154.
