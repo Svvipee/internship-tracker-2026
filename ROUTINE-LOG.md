@@ -8335,3 +8335,50 @@ None this run — no new fully-verified posting to stage.
 - **Shield AI's EE avionics co-op cohort** — now tracking a "June 2027" start cohort instead of the "January 2027" one; if a true Winter 2026/Spring 2027-start EE/avionics-flavored req reappears, it would still fail the standing discipline bar, but worth noting the cohort-rotation pattern for future reference.
 - **GE Aerospace** — still effectively unreachable via its own Phenom/CareerConnect-backed careers API without triggering bot-protection; the Workday-tenant guesses (`geaerospace.wd5.myworkdayjobs.com`, `ge.wd5.myworkdayjobs.com`) both failed this run. The company-wide Spring 2027 req count (via WebSearch/aggregators) still appears stuck at the same 3 already-tracked reqs.
 - Tracker remains at 444 rows / 1545 checked entries after 152 runs. Zero genuinely new qualifying postings survived verification this run — notably, both of this run's background research agents (dispatched specifically to avoid duplicate work) independently "rediscovered" only entries already in the tracker, underscoring how saturated the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains as of 2026-11-08.
+
+## Run 153 — 2026-11-08 ~UTC
+
+### Repo hygiene note
+Session started with `HEAD` detached, matching `origin/master`'s tip (run 152, `4505e4a`); local `master` ref was stale (pointing at run 121) — same recurring container quirk as runs 102/121/147/148/149/151/152. Confirmed via `git fetch origin master` that `origin/master` already correctly held run 152 (no lost/unpushed work). Resynced via `git checkout master && git reset --hard origin/master` before starting new work.
+
+### What was searched
+Dispatched two parallel background research agents: (1) a priority re-check of standing leads — MIT Lincoln Laboratory's two discipline-borderline postings (Group 05-52, Group 09-92) read in full, GE Aerospace's own Workday CXS API (finally solved the POST-vs-GET blocker from prior runs), Draper Laboratory's full current Student-track req list, plus quick re-checks of Fleet Robotics/ATI/Delsys/HaloBraid/Boost Robotics; (2) a general fresh sweep for new companies/postings via direct Greenhouse/Lever API fetches (not aggregators), covering SharkNinja, Commonwealth Fusion Systems, Formlabs, Anduril, and a handful of newer Boston-area hardware startups. Independently re-verified every reported candidate directly (Greenhouse/Lever/Workday APIs via curl) before touching `build.mjs`.
+
+### Added to `rows` (4 new entries)
+- **SharkNinja (Needham, MA) — "Spring 2027: Mechanical Engineering Co-op, Wearable and Biomedical Devices (January to June)"** (job 4727128006, req 6437) — core mechanical engineering on a wearable/biomedical-sensor team (PPG/EMG/temperature/motion/impedance sensing, biomechanics/signal-processing/control-systems coursework desired). Strongest discipline match of the batch.
+- **SharkNinja (Needham, MA) — "Spring 2027: Design & Engineering Co-op (January through June)"** (job 4726759006, req 6428) — hands-on prototyping on the Advanced Development team; flagged as EE-adjacent hybrid (breadboard circuits, motor control, embedded microcontrollers) alongside mechanical prototyping.
+- **SharkNinja (Needham, MA) — "Spring 2027: Product Design Engineering Co-op, Ninja (January to June)"** (job 4719432006, req 6308) — posting explicitly frames itself as "sitting between Industrial Design and Mechanical Engineering."
+- **SharkNinja (Needham, MA) — "Spring 2027: Product Design Engineering Co-op, Shark (January to June)"** (job 4720273006, req 6320) — same ID/ME hybrid framing, Shark-brand sibling of the Ninja role above.
+
+All 4 independently verified via direct fetch of SharkNinja's own Greenhouse API (not search snippets): live, Needham MA (Boston metro, ~11 mi), Spring 2027 Jan–June, no closed/filled language. All genuinely new — not previously in `build.mjs` despite 6 pre-existing SharkNinja entries from prior runs.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (17 new entries)
+- MIT Lincoln Laboratory's "Advanced Sensors and Techniques Co-Op, Group 09-92" (job 1437466700) and "AI Technology & Systems Co-Op, Group 05-52" (job 1440734200, a distinct newer job ID than the Fall-2026 version) — both read in full this run; the former remains a standing RF/radar/signal-processing borderline call, the latter is a clean pure-AI/ML discipline exclude (no aerospace/mechanical major listed at all). A fresh full "Co-Op" keyword sweep (67 postings) found nothing new beyond the already-tracked Group 07-71/08-35 reqs; noted a Fall-2026 "Rapid Prototyping Aero/Mech Co-Op" (Group 77) as an in-discipline near-miss excluded only on season grounds.
+- **GE Aerospace** — solved the long-standing Workday CXS API blocker (needs POST with a JSON searchText body, not GET). Ran 4 targeted company-wide queries; confirmed exhaustively that no new qualifying Winter2026/Spring2027 co-op exists beyond the 3 already tracked (R5033208, R5040302, R5040450).
+- **Draper Laboratory** — pulled the full 18-posting current Student-track req list directly. Found 6 new Summer-2027-titled JRs (wrong season, not pursued) and 1 ambiguous JR (JR003002-1, Microsystems Integration Intern) — independently fetched and confirmed it states no season at all and is explicitly schedule-flexible/rolling; excluded.
+- Fleet Robotics, ATI/Automated Tire, Delsys, HaloBraid, Boost Robotics — all periodic re-checks, no change from runs 147–151 (bot-blocked/rate-limited/unchanged-undated/503/no-internship-posted respectively).
+- SharkNinja's other 2 untracked Winter/Spring 2027 titles found during the same board sweep — "Electrical Engineering Co-op" (job 4718702006, EE discipline mismatch) and "Quality Engineering Co-op, Shark" (job 4723761006, QA discipline not on Hamza's target list despite season/location fit — flagged transparently as a judgment call).
+- Commonwealth Fusion Systems' "R&D Multiphysics Simulation Intern — Spring or Summer 2027" (merged season, no distinct Spring-only sub-range, same standing CFS exclusion basis as runs 109/145) and a full 143-posting Lever re-sweep confirming nothing else new.
+- Formlabs' full 237-posting board re-sweep — 2 untracked Winter/Spring 2027 titles (Print Production Intern, Makerspace Fellow) excluded on discipline grounds (operational/facilities roles, not engineering).
+- Anduril's full 2,600-posting board re-sweep — 2 untracked Winter 2027 titles (Research Engineer, Business Operations Engineer), neither Boston-area nor core discipline. Also logged, without resolving, a possible internal tracker inconsistency a research agent flagged: "Winter 2027 Reliability Engineer Co-op" was excluded in runs 78/101 on season grounds while an identically-dated "Winter 2027 Mechanical Engineer Co-op" was included as equivalent to Spring 2027 — worth a human look at the original reasoning.
+- Dedup-confirmed smaller-startup batch (Eka Robotics, Avatar Robotics, Robotix Labs, Metalenz, Saronic, plus the standing defense/space-prime roster) — all saturated/no internship/not Boston-area. Noted a few recent-funding-news Boston companies (Neurable, Beacon Biosignals, EQORE, Blues Wireless, BoolSi, Hellbender, Rotostitch) as unexplored rather than ruled out, for a future run.
+
+### Staged (4 new files)
+- `staged-applications/sharkninja-mechanical-engineering-coop-wearable-biomedical.md`
+- `staged-applications/sharkninja-design-engineering-coop.md`
+- `staged-applications/sharkninja-product-design-engineering-coop-ninja.md`
+- `staged-applications/sharkninja-product-design-engineering-coop-shark.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `Winter26-Spring27 Internships` sheet 444 → 448 (+4, the SharkNinja co-ops); `Checked - Not Included` sheet 1545 → 1563 (+18, includes a correction of this session's own initial mis-attribution of 2 Formlabs job IDs — see commit for detail). `.xlsx` file changed (confirmed via `git status`).
+
+### Worth re-checking next time
+- **SharkNinja** just posted 6 new Spring 2027 reqs in a single week (Nov 2–6) after being quiet for a while — worth a close re-check next run in case more follow, same pattern as Draper in run 150.
+- **The Anduril Winter 2027 Reliability-vs-Mechanical-Engineer-Co-op season-equivalence inconsistency** flagged above — a human should look at this; this run did not change either entry.
+- **Neurable, Beacon Biosignals, EQORE, Blues Wireless, BoolSi, Hellbender, Rotostitch** — recent Boston-funding-news companies, not yet checked for internship postings. Worth a dedicated pass.
+- GE Aerospace's API blocker is now solved — future runs should reuse the POST-with-searchText pattern directly rather than re-discovering it.
+- Fleet Robotics, ATI, Delsys, HaloBraid, Boost Robotics — all remain periodic/opportunistic-only; no change this run.
+- Tracker is now at 448 rows / 1563 checked entries after 153 runs. 4 genuinely new, fully-verified Boston-area postings (SharkNinja) were added this run, ending an 11-run stretch (139-152, excepting the single run-150 Draper addition) with almost nothing new.
