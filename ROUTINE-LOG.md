@@ -8382,3 +8382,36 @@ None this run.
 - GE Aerospace's API blocker is now solved — future runs should reuse the POST-with-searchText pattern directly rather than re-discovering it.
 - Fleet Robotics, ATI, Delsys, HaloBraid, Boost Robotics — all remain periodic/opportunistic-only; no change this run.
 - Tracker is now at 448 rows / 1563 checked entries after 153 runs. 4 genuinely new, fully-verified Boston-area postings (SharkNinja) were added this run, ending an 11-run stretch (139-152, excepting the single run-150 Draper addition) with almost nothing new.
+
+---
+
+## Run 154 — 2026-11-08 ~12:49–13:10 UTC
+
+### What was searched
+Dispatched two parallel background research agents: (1) a priority re-check of run 153's three carried-over leads — a SharkNinja Greenhouse re-check for any postings newer than the 6 known Spring 2027 IDs, a deep dive into the flagged Anduril "Winter 2027 Reliability Engineer Co-op vs. Mechanical Engineer Co-op" season-equivalence inconsistency, and first-time checks of 7 Boston-funding-news startups (Neurable, Beacon Biosignals, EQORE, Blues Wireless/Blues, BoolSi, Hellbender, Rotostitch); (2) a general fresh national/Boston-area sweep for new qualifying postings, which cross-referenced build.mjs directly before reporting candidates and additionally re-checked HII/Newport News and tried a new Textron sitemap-based verification angle. Every candidate either agent reported was independently cross-checked by this session against build.mjs by exact job ID before any edit.
+
+### Added to `rows`
+None. Both Anduril postings the run-153 agent flagged as a possible fix (Winter 2027 Reliability Engineer Co-op, job 5257693007, and Winter 2027 Mechanical Engineer Co-op, job 5236601007) were found to already be present in `rows` since 2026-10-06 — the "inconsistency" was a stale premise referring to an older, superseded Reliability posting that had been excluded back in runs 78/101. No real inconsistency existed; resolved and logged in `checked` for the record. SharkNinja's Greenhouse board produced no job IDs newer than the 6 already triaged in run 153.
+
+### Added to `checked` (18 new entries)
+- Anduril season-equivalence question — formally resolved/closed out (no change to either entry; both already correctly in `rows`).
+- Neurable, Beacon Biosignals, EQORE, Blues (Blues Wireless), BoolSi, Hellbender, Rotostitch — all 7 previously-unexplored funded Boston-area startups checked for the first time; none have any internship/co-op postings at all right now (Hellbender is also Pittsburgh-based, not Boston; Rotostitch has no locatable careers page/ATS presence under any name and is also SF-based, not Boston).
+- Daikin Applied, Milwaukee Tool/TTI, The Toro Company/Ditch Witch/Exmark, Vermeer Corporation, Oceaneering International, Protolabs, nLIGHT, Sintavia — 8 new national mid-size manufacturing/industrial employers checked for the first time; all excluded on season (Summer-only / 2026-cycle) or no-posting-exists grounds, one (Milwaukee Tool) also on discipline grounds.
+- HII/Newport News Shipbuilding — re-checked, unchanged, still no live Spring 2027 engineering co-op.
+- Textron Systems/Aviation/Bell — re-checked via a new sitemap-only angle; surfaced different specific req slugs than previously seen, but this session lacked headless-browser tooling to read them past the Nuxt SPA shell, so the standing 2026-09-26 Playwright-verified finding (Textron's template never states a season) is assumed to still govern. New slugs logged for a future run with browser-rendering access.
+
+### Moved from `rows` to `checked`
+None.
+
+### Staged
+None — no new fully-verified postings this run to draft application material for.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Confirmed via direct count: `rows` unchanged at 448; `checked` 1563 → 1581 (+18). `.xlsx` file changed (confirmed via `git status`/`git diff --stat`, 1832178 → 1841598 bytes).
+
+### Worth re-checking next time
+- SharkNinja — confirmed no new postings beyond the known 6 as of today; the agent also noted the board carries several OTHER Spring 2027 co-op titles (Noise & Vibrations Engineering, Mechanical Systems Engineering Ninja, Electrical Design Engineering Advanced Development, Product Design Engineering Advanced Development, CMF Industrial Design) that were not individually re-triaged this run (assumed already covered from earlier passes) — worth a dedicated full-board re-triage next run just to be certain none slipped through uncatalogued.
+- Textron — the newest sitemap slugs (Hunt Valley MD Uncrewed Land & Air, Wichita KS Mass Properties, New Orleans LA Naval Architecture, Williamsport PA/Lycoming, Muskegon MI/CWC, Slidell LA, Detroit MI, Avilla IN) are logged above; a future run with Playwright/headless-browser access could read them directly, though the standing finding is that Textron's template never states a season at all, so this is low-priority.
+- GE Aerospace's Workday API blocker remains solved (POST-with-searchText pattern, from run 153) — reuse directly in future runs rather than re-discovering it.
+- The 15 newly-checked companies this run (7 startups + 8 national manufacturers) are now believed exhausted; no further action needed on them absent new news.
+- Tracker is now at 448 rows / 1581 checked entries after 154 runs. 0 genuinely new postings this run — all research-agent candidates turned out to already be tracked or to fail verification, continuing the saturation pattern of runs 139-153.
