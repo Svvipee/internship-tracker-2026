@@ -8299,3 +8299,39 @@ None this run — no new fully-verified posting to stage.
 - **Boost Robotics (Cambridge, MA)** — new, real, tiny Boston-area robotics startup with no internship posting yet; worth a periodic check in case it posts one as it grows.
 - **HaloBraid, ATI, Delsys, Yaskawa Motoman** — all remain periodic/opportunistic-only re-checks; no change this run.
 - Tracker is now at 444 rows / 1542 checked entries after 151 runs. Zero genuinely new qualifying postings survived verification this run; the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains thin and heavily saturated as of 2026-11-07.
+
+## Run 152 — 2026-11-08 ~01:00 UTC
+
+### Repo hygiene note
+Session started with `HEAD` detached, matching `origin/master`'s tip (run 151, `37ae8ec`); local `master` ref was stale — same recurring container quirk as runs 102/121/147/148/149/151. Resynced via `git fetch origin master && git checkout master && git reset --hard origin/master` before starting new work. No lost/unpushed work.
+
+### What was searched
+Dispatched two parallel background research agents: (1) a priority re-check of the three standing "worth re-checking" leads — GE Aerospace (company-wide Spring 2027 co-op search, including an attempt to use the Workday CXS API directly with a POST body), Draper Laboratory (full current Student-track Workday CXS req list), and MIT Lincoln Laboratory (full "co-op" site search); (2) a general fresh national/Boston-area sweep for new companies/postings not already on the saturation list. Independently re-verified every candidate either agent reported via direct WebFetch/WebSearch before touching `build.mjs`, then grep-checked each exact job/req ID against the file.
+
+### Added to `rows`
+None this run — every candidate from both agents turned out to be an exact duplicate of an already-tracked posting:
+- MORSE Corp (Cambridge, MA) Mechanical Engineer Co-op (job 7968311003) and Manufacturing Engineer Co-op (job 8034274003) — already tracked since run ~113.
+- MORSE Corp Aerospace Algorithms Engineer Co-op (job 7968520003) — already excluded (software/algorithms discipline).
+- Formlabs (Somerville, MA) Mechanical Engineering Intern (job 8130829), Manufacturing Engineering Intern (job 8161817), Materials Intern (job 8199092) — all already tracked.
+- Draper Laboratory JR002940 (Mechanical Engineering & System Packaging Co-Op), JR002882 (Systems Engineering Co-Op), JR002944 (Digital Engineering/Requirements Engineering Co-Op) — all already tracked since early runs, despite the Draper-focused agent independently re-pulling them via Draper's own Workday CXS API as if new.
+- GE Aerospace "CNC Programmer Co-op – Spring 2027" (Lynn, MA) — aggregator-sourced lead, same already-tracked req R5033208(-1).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (3 new entries)
+- **Dedup-confirmed batch — MORSE Corp / Formlabs** (background agent): all 4 reported candidates independently confirmed already tracked/excluded.
+- **Shield AI "Electrical Engineering Co-op - January 2027"** (Boston, MA option) — update: the individual posting page still renders live, but the req no longer appears on Shield AI's own current Lever board, which now shows only a "June 2027 Co-0p" cohort EE intern role instead. Likely quietly superseded/closed. Remains excluded regardless on standing EE-discipline-mismatch grounds.
+- **Dedup-confirmed batch — Draper / GE Aerospace / MIT Lincoln Laboratory** (background agent): all reported "new" Draper and GE Aerospace reqs confirmed already tracked; MIT LL yielded nothing new (two AI/sensor-focused Winter/Spring 2027 postings, Group 05-52 and Group 09-92, flagged as discipline-borderline but not pursued — worth a closer look next time if the search stays this thin).
+
+### Staged
+None this run — no new fully-verified posting to stage.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via `git diff --stat`: `Winter26-Spring27 Internships` sheet unchanged at 444 rows; `Checked - Not Included` sheet 1542 → 1545 (+3). `.xlsx` file changed (binary diff confirmed via `git status`).
+
+### Worth re-checking next time
+- **MIT Lincoln Laboratory Group 05-52 (AI Technology & Systems Co-Op) and Group 09-92 (Advanced Sensors and Techniques Co-Op)**, both Winter/Spring 2027 — AI/sensor-focused rather than core mechanical/robotics/controls, flagged by this run's agent as discipline-borderline. Worth a closer read of the actual posting text next run to judge fit more precisely rather than skipping outright.
+- **Shield AI's EE avionics co-op cohort** — now tracking a "June 2027" start cohort instead of the "January 2027" one; if a true Winter 2026/Spring 2027-start EE/avionics-flavored req reappears, it would still fail the standing discipline bar, but worth noting the cohort-rotation pattern for future reference.
+- **GE Aerospace** — still effectively unreachable via its own Phenom/CareerConnect-backed careers API without triggering bot-protection; the Workday-tenant guesses (`geaerospace.wd5.myworkdayjobs.com`, `ge.wd5.myworkdayjobs.com`) both failed this run. The company-wide Spring 2027 req count (via WebSearch/aggregators) still appears stuck at the same 3 already-tracked reqs.
+- Tracker remains at 444 rows / 1545 checked entries after 152 runs. Zero genuinely new qualifying postings survived verification this run — notably, both of this run's background research agents (dispatched specifically to avoid duplicate work) independently "rediscovered" only entries already in the tracker, underscoring how saturated the Winter 2026/Spring 2027 wave in Hamza's target disciplines remains as of 2026-11-08.
