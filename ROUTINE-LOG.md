@@ -8450,3 +8450,39 @@ None this run — no new fully-verified posting to stage.
 - **Neurable, Beacon Biosignals, EQORE, Blues, BoolSi, Hellbender, Rotostitch** (from run 154) — all already fully checked and excluded last run; no further action needed.
 - This session's confirmed Playwright/headless-Chromium access is a genuine capability upgrade over many prior runs that repeatedly deferred JS-rendered-SPA checks (Textron, and historically others) for lack of it — worth trying it proactively on any other standing "JS-rendered/bot-walled, can't verify" items in future runs (e.g., Gulfstream, Waters Corporation/iCIMS CAPTCHA, RoviSys icims.com) rather than assuming the limitation still holds.
 - Tracker is now at 448 rows / 1590 checked entries after 155 runs. 0 genuinely new qualifying postings this run; this run's main value was closing out a long-standing tooling-gap item (Textron) with a definitive answer and clearing SharkNinja's board to full saturation, continuing the broader saturation pattern of runs 139-154.
+
+## Run 156 — 2026-11-09 ~00:50–01:10 UTC
+
+### Repo hygiene note
+Session started with `HEAD` detached, matching `origin/master`'s tip (run 155, `2caca9a`) exactly once `git fetch origin master` was run — same recurring container quirk noted in prior runs. Checked out `master` and fast-forwarded cleanly; no lost/unpushed work.
+
+### What was searched
+Dispatched one background research agent for a general national/Boston-area sweep (no `build.mjs` access), explicitly briefed on the full list of companies run 155 had already fully saturated (SharkNinja, GE Aerospace, Draper, MIT Lincoln Lab, Textron, the 7 funded Boston startups, 8 national manufacturers, HII) so it wouldn't waste budget re-checking them. In parallel/follow-up, this session did its own fresh full re-sweeps of Rocket Lab's and SpaceX's own Greenhouse APIs directly (all current Spring 2027/Winter 2026-titled postings, cross-checked by exact job ID against `build.mjs`), plus targeted re-checks of Commonwealth Fusion Systems' Lever board, Berkshire Grey's BambooHR board, and Formlabs' Greenhouse board for any job IDs not already tracked.
+
+### Added to `rows` (2 new postings)
+Both found via this session's own direct Greenhouse API cross-check (not the background agent, whose "strong candidates" all turned out to be pre-existing duplicates — see below):
+- **Rocket Lab — Ground Systems Engineering Intern, Spring 2027** (Middle River, MD, job 8042094003, req JR105625) — Mechanical/Manufacturing discipline (tooling/fixtures/lift equipment for Neutron). First published 2026-11-02. Distinct from the already-tracked Stennis Space Center, MS req of the same title (different discipline focus: EE/Mechatronics/Robotics there).
+- **Rocket Lab — Quality Engineering Intern, Spring 2027** (Long Beach, CA, job 8042031003) — Manufacturing/Quality discipline (supplier quality, root-cause investigation). First published 2026-10-29.
+
+Both independently fetched directly via Rocket Lab's own Greenhouse API (HTTP 200, live), both within the ~3-week freshness window, both genuinely new — confirmed absent from `build.mjs` by exact job-ID grep before adding.
+
+### Added to `checked` (2 new entries)
+- **Formlabs — Makerspace Fellow (Winter/Spring 2027), Milwaukee, WI** (Greenhouse job 8328598) — independently fetched directly, confirmed live, Jan-April 2027 term, but it's a printer/makerspace-maintenance operations role (not engineering design) — same discipline-mismatch basis as the already-tracked Somerville, MA sibling excluded in run 153. Not Boston-area either.
+- **Dedup-confirmed non-new batch, run 156** — logs every candidate the background research agent reported as a "strong"/"verified" lead (5 Commonwealth Fusion Systems Devens MA reqs, Formlabs Manufacturing Engineering Intern job 8161817, Berkshire Grey Mechatronics co-op, 12 Rocket Lab reqs, 3 SpaceX reqs, Rivian job 33784) that were all independently found already tracked byte-for-byte in `rows` by exact job/req-ID grep before any edit. Also notes the agent's weaker/unverified leads (an Anduril Winter-2027 jobs.generalcatalyst.com mirror, an internally-contradictory Yaskawa Motoman Miamisburg OH listing, RTX/Collins Jamestown ND) were not pursued this run — Jamestown and the Anduril Winter-2027 pattern are already-resolved standing items; Yaskawa remains too inconsistent to verify from an aggregator mirror alone.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Staged (2 new files)
+- `staged-applications/rocket-lab-ground-systems-engineering-intern-middle-river.md`
+- `staged-applications/rocket-lab-quality-engineering-intern-long-beach.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx sheet read: `Winter26-Spring27 Internships` sheet 448 → 450 (+2, the two new Rocket Lab reqs); `Checked - Not Included` sheet 1588 → 1590 (+2). `.xlsx` file changed (confirmed via `git diff --stat`, 1848614 → 1853817 bytes). Note: this run's own exact-entry grep count on the committed `build.mjs` at session start read 1588 `checked` entries, one lower than run 155's self-reported "1590 checked entries after 155 runs" — likely a minor counting-method discrepancy in a prior run's log text (e.g. a multi-line entry grep miscount), not a sign of lost data; `git diff --stat` confirms this run's net change is a clean +2/+2.
+
+### Worth re-checking next time
+- Rocket Lab's own Greenhouse API remains the fastest, most authoritative way to catch new reqs (bypasses the Cloudflare block on rocketlabcorp.com) — the 2 new reqs this run were posted just 1–2 weeks before being caught, suggesting a periodic full-board re-sweep (not just re-checking already-known req IDs) continues to pay off every few runs as Rocket Lab keeps adding Spring 2027 reqs company-wide.
+- SpaceX, Commonwealth Fusion Systems, Berkshire Grey, and Formlabs' own boards were all re-swept this run and found fully saturated — no new action needed on them absent a fresh posting wave.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, Textron, SharkNinja, and the Boston-funding-news startups/national manufacturers checked in runs 154-155 were not re-touched this run (per run 155's own "no further action needed" notes) — still believed saturated.
+- The background research agent continues to report mostly-already-tracked "strong candidates" as if new; the standing methodology (always grep `build.mjs` by exact job/req ID before accepting any agent-reported lead) caught 100% of the duplicates again this run. This session's own direct API re-sweeps — not the agent's search-engine-style sweep — are what's actually still finding the occasional genuinely new posting at this saturation level.
+- Tracker is now at 450 rows / 1590 checked entries after 156 runs.
