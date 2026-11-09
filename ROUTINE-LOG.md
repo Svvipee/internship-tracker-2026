@@ -8521,3 +8521,40 @@ None this run.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, Textron, the Boston-funding-news startups, and the national manufacturers checked in runs 153-156 were not re-touched this run — still believed saturated.
 - Field AI's Boston mechanical-engineer-robotics-hardware posting remains open but structurally unverifiable on season after ~20 consecutive runs — diminishing returns on further automated re-checks continues to hold.
 - Tracker is now at 451 rows / 1596 checked entries after 157 runs.
+
+## Run 158 — 2026-11-09 ~12:52–13:35 UTC
+
+### Repo hygiene note
+Session started with `HEAD` detached, pointing at a commit (`0912017`, run 157) that was NOT reachable from the local `master` branch ref — the local `master` ref was stale, still pointing at the run-149-era commit `7e0c63b`. This initially looked like 8 runs' worth of unpushed work (runs 150-157), which would have been a serious problem. After `git fetch origin master`, confirmed `origin/master` was ALREADY at `0912017` — i.e. every prior run's push had in fact succeeded; only the local branch ref in this fresh container was stale/never-updated. Resolved with `git checkout -B master 0912017` (fast-forward, no data loss). No actual unpushed work existed. Flagging this clearly in case it recurs: always `git fetch origin master` and compare before assuming a "non-fast-forward" push rejection means lost work — check whether local `master` is just stale first.
+
+### What was searched
+Dispatched two parallel background research agents: (1) a re-sweep of GE Aerospace, Draper Laboratory, and MIT Lincoln Laboratory (all last fully checked 2026-11-08, runs 153-155) for anything posted since; (2) a general national/Boston-area sweep for new qualifying postings, explicitly briefed on the full list of companies already exhausted in runs 139-157 so it wouldn't re-research them. This session then independently verified every candidate either agent reported — by exact job/req-ID grep against `build.mjs`, by direct HTTP/Greenhouse-API fetch, and via headless-Chromium (Playwright) rendering for JS-heavy boards (Sonos's Workday board, Saab's career site) — before making any edit.
+
+### Added to `rows`
+None this run. The two candidates that initially looked most promising both turned out to already be tracked on verification: MetOx International's "Process Engineering Co-Op/Intern (Spring/Summer 2027)" (job 5439987008) was already in `rows` since run ~131; Sonos's reported "Mechanical Engineering Co-Op, Boston, Jan-June 2027" lead does not actually exist on Sonos's own current Workday board (51 "co-op"-matching postings across all 3 pages checked directly, none titled Mechanical Engineering Co-Op) — it's a stale aggregator-mirror echo of the already-known-closed req R2547, not a live posting. Sonos's distinct, genuinely-open "Audio Systems Engineering Co-Op" (R2827) remains correctly tracked and was not affected.
+
+### Added to `checked` (8 new entries)
+- **Draper Laboratory, MIT Lincoln Laboratory re-sweep** — both boards re-confirmed saturated (Draper: 223 total postings, identical to run-155 baseline; MIT LL: ~65 "co-op" results, close to the 67 baseline); every current Spring 2027 co-op cross-checked by exact req/job ID and found already tracked.
+- **GE Aerospace — platform-correction + partial re-sweep.** Important correction for future runs: GE Aerospace's careers site runs on Phenom People/CareerConnect, not Workday CXS as runs 153/155 assumed — the "working" Workday endpoint those runs used was likely hitting an unrelated tenant. No working search API was found this run; a sitemap-based partial check (592 static URLs, not exhaustive) found only already-known-closed Lynn, MA postings. Flagged so a future run doesn't keep assuming the old Workday pattern is reliable.
+- **General Dynamics Mission Systems** — a Quincy, MA "Co-Op Engineer – Mechanical" (AUV-focused) posting confirmed HTTP 410 Gone/closed. Distinct from the already-tracked, still-open McLeansville, NC req.
+- **Locus Robotics** (Wilmington, MA) — new company for the tracker, warehouse/mobile robotics. Live Greenhouse board has 7 postings, all full-time; zero internship/co-op postings right now.
+- **Barrett Technology** (Newton, MA) — new company, small (~24-employee) Boston-area robotic-arm/hand manufacturer with a history of Northeastern co-ops. No current careers page or ATS board locatable via search — genuinely unconfirmed rather than ruled dead.
+- **Saab, Inc.** (Quincy, MA) — new company. Confirmed via Saab's own site (filtered by Quincy location and by "co-op" keyword) that no engineering co-op/intern is currently open at Quincy; only full-time engineering roles and non-engineering (Program Management/IT/Legal) co-ops exist on the board right now.
+- **Sonos "Mechanical Engineering Co-Op" re-check** — see above; formally logged as still-not-live after an exhaustive full-board check via headless rendering.
+- **Dedup-confirmed non-new/closed batch** — Vicarious Surgical, Via Separations, Alloy Enterprises, Stoke Space, Joby Aviation (2 reqs), Boston Dynamics/RAI Institute, ICON, Archer Aviation, PTC, Analog Devices, L3Harris, Northrop Grumman, Sierra Space, Axiom Space, Intuitive Machines, Astranis, Virgin Galactic, BAE Systems (Nashua, NH) — all independently confirmed closed (HTTP 410/"no jobs to discover") or wrong-season (Summer-2026/2027-only) on direct fetch; plus MetOx's two Houston, TX reqs, both already tracked.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Staged
+None — no new fully-verified posting to draft application material for this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx sheet read: `Winter26-Spring27 Internships` unchanged at 451; `Checked - Not Included` 1596 → 1604 (+8). `.xlsx` file changed (confirmed via `git diff --stat`, 1861403 → 1869573 bytes).
+
+### Worth re-checking next time
+- **Locus Robotics, Barrett Technology, Saab (Quincy)** — all three are new, genuinely unresolved-either-way (not ruled dead, just nothing open right now) Boston-area/qualifying-adjacent companies. Worth a periodic re-check, not every run, since all three plausibly post co-ops on a rolling/seasonal basis. Barrett Technology in particular has no locatable ATS at all — a future run with headless-browser access could try hitting barrett.com directly rather than relying on search-engine indexing.
+- **GE Aerospace's actual search mechanism remains unresolved** — the Workday-pattern assumption from runs 153/155 appears to have been wrong. A future run with Playwright/headless-browser access should try rendering careers.geaerospace.com's live search UI directly for a more exhaustive pass than this run's sitemap-only check achieved.
+- Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, and the Boston-funding-news startups/national manufacturers checked in runs 150-157 were not newly re-touched beyond the re-sweep noted above — still believed saturated.
+- Field AI's Boston mechanical-engineer-robotics-hardware posting remains open but structurally unverifiable on season after ~20+ consecutive runs — diminishing returns on further automated re-checks continues to hold.
+- Tracker is now at 451 rows / 1604 checked entries after 158 runs. 0 genuinely new qualifying postings this run — continuing the saturation pattern of runs 139-157, though this run did add 3 newly-researched companies (Locus Robotics, Barrett Technology, Saab) to the tracker's coverage for the first time, plus a useful platform-correction for GE Aerospace.
