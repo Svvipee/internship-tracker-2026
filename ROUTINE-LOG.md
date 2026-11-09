@@ -8486,3 +8486,38 @@ None this run.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, Textron, SharkNinja, and the Boston-funding-news startups/national manufacturers checked in runs 154-155 were not re-touched this run (per run 155's own "no further action needed" notes) — still believed saturated.
 - The background research agent continues to report mostly-already-tracked "strong candidates" as if new; the standing methodology (always grep `build.mjs` by exact job/req ID before accepting any agent-reported lead) caught 100% of the duplicates again this run. This session's own direct API re-sweeps — not the agent's search-engine-style sweep — are what's actually still finding the occasional genuinely new posting at this saturation level.
 - Tracker is now at 450 rows / 1590 checked entries after 156 runs.
+
+## Run 157 — 2026-11-09 ~06:52–07:15 UTC
+
+### Repo hygiene note
+Session started with `HEAD` matching `origin/master`'s tip (run 156, `2a0bf07`) exactly — `git fetch origin master` confirmed no drift. Ran `git checkout -B master origin/master` to resync the local `master` ref cleanly (same recurring container quirk as prior runs, but no lost/unpushed work this time).
+
+### What was searched
+Did direct research myself (no background agents dispatched) via curl/Python against employers' own ATS APIs, plus two general WebSearch sweeps. Focused on: (1) a full 31-posting re-sweep of Rocket Lab's own Greenhouse API — flagged in run 156 as "worth a periodic full-board re-sweep... pays off every few runs"; (2) GE Aerospace's Workday CXS API (reusing the run-153 POST-with-searchText pattern); (3) a full 25-posting re-sweep of SharkNinja's own Greenhouse API — SharkNinja has been posting new Spring 2027 reqs weekly; (4) re-checks of two standing unresolved/borderline threads, Field AI (Boston, MA, season still unconfirmed) and Revolute Robotics (Boston, MA); (5) a general WebSearch sweep for fresh Boston-area/national Spring 2027 mechanical/aerospace/manufacturing/robotics postings.
+
+### Added to `rows` (1 new posting)
+- **SharkNinja — "Product Integrity Co-op" (Spring 2027, January–June), Needham, MA** (Greenhouse job 4726437006) — found via the full SharkNinja board re-sweep. Despite the "Product Integrity" title (QA-adjacent), the body is explicit hands-on electro-mechanical test engineering: design/build custom test rigs, failure-mode analysis, teardown-based reliability work. Flagged transparently in `build.mjs`'s Notes field as a judgment call versus the sibling "Quality Engineering Co-op, Shark" (job 4723761006) excluded in run 153 on pure-QA grounds — this one's explicit electromechanical-systems design requirement reads closer to mechanical/test engineering. Independently fetched directly (HTTP 200, live, no closed/filled language); first published/updated 2026-11-04 — within the ~3-week freshness window. $27.00–$36.00/hr.
+
+### Added to `checked` (6 new entries)
+- **GE Aerospace — "Student Welder Trainee Program - Flyer"** (R5042970, Beavercreek OH) — new req, posted today, season fits ("2027 Spring semester") but it's a skilled-trade welding apprenticeship requiring enrollment in a career-technical-education welding program, not an engineering degree. Not an engineering internship; excluded.
+- **SharkNinja — 9 new-to-tracker Spring 2027 titles**, all open/live, Needham MA: AI/Sharks Applied AI & Analytics Co-op, Consumer Insights Co-op, Employer Brand Intern, Environmental Health & Safety Co-op, HW UX/UI Design Co-op, Ninja Test Kitchen Co-op, Product Development Co-op, Product Strategy & Development Co-Op, Technical Project Management Co-op — all excluded on discipline grounds (none are mechanical/aerospace/manufacturing/robotics/structural/materials/controls engineering). SharkNinja's Spring 2027 slate (25 titles total) is now believed fully triaged.
+- **Rocket Lab — 15 new-to-tracker Spring 2027 titles** across the full board re-sweep (Business Development, Electrical Engineering, Export Compliance, 2x Government Operations, Indirect Procurement, People & Culture, 4x Security Analyst, 4x Supply Chain interns) — all live but all fail the discipline bar. Rocket Lab's current 31-posting Spring 2027 slate is now fully triaged with no untracked reqs remaining.
+- **Field AI (Boston, MA) — re-check.** Still open, still zero season/term language anywhere in the live Lever posting. Unchanged standing status after ~20 consecutive runs; not added, not newly resolved.
+- **Revolute Robotics, Inc. (Boston, MA) — re-check.** The specific posting re-surfaced by this run's search is now confirmed fully dead (removed 2026-03-20) — further confirms the existing run-121/136 exclusion. No live posting currently exists.
+- **Dedup-confirmed non-new batch** — a general WebSearch sweep surfaced only already-resolved standing leads (Berkshire Grey job 91872250, Entegris Bedford phantom lead, the still-JS-blocked Yaskawa/Motoman SolidProfessor mirror, SSOE Group, Rendezvous Robotics' 4 standing Golden CO reqs, Stoke Space's still-Summer-2027-only board) — every one independently cross-checked against `build.mjs` and confirmed pre-existing.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Staged (1 new file)
+- `staged-applications/sharkninja-product-integrity-coop.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx sheet read: `Winter26-Spring27 Internships` sheet 450 → 451 (+1); `Checked - Not Included` sheet 1590 → 1596 (+6). `.xlsx` file changed (confirmed via `git diff --stat`, 1853817 → 1861403 bytes).
+
+### Worth re-checking next time
+- SharkNinja and Rocket Lab are both now believed fully triaged company-wide as of this run — no further action needed on either absent a fresh posting wave (same caveat as run 155/156's other "fully triaged" boards: worth a periodic, not every-run, re-sweep since both companies post new reqs on a rolling basis).
+- The SharkNinja "Product Integrity Co-op" discipline judgment call (engineering-adjacent test/reliability role vs. the excluded pure-QA sibling) is worth a human sanity-check — flagged transparently in both `build.mjs` and the staged application file rather than silently included.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, Textron, the Boston-funding-news startups, and the national manufacturers checked in runs 153-156 were not re-touched this run — still believed saturated.
+- Field AI's Boston mechanical-engineer-robotics-hardware posting remains open but structurally unverifiable on season after ~20 consecutive runs — diminishing returns on further automated re-checks continues to hold.
+- Tracker is now at 451 rows / 1596 checked entries after 157 runs.
