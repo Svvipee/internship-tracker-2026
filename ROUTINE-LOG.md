@@ -8558,3 +8558,40 @@ None — no new fully-verified posting to draft application material for this ru
 - Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, and the Boston-funding-news startups/national manufacturers checked in runs 150-157 were not newly re-touched beyond the re-sweep noted above — still believed saturated.
 - Field AI's Boston mechanical-engineer-robotics-hardware posting remains open but structurally unverifiable on season after ~20+ consecutive runs — diminishing returns on further automated re-checks continues to hold.
 - Tracker is now at 451 rows / 1604 checked entries after 158 runs. 0 genuinely new qualifying postings this run — continuing the saturation pattern of runs 139-157, though this run did add 3 newly-researched companies (Locus Robotics, Barrett Technology, Saab) to the tracker's coverage for the first time, plus a useful platform-correction for GE Aerospace.
+
+
+## Run 159 — 2026-11-09 ~18:49–19:30 UTC
+
+### What was searched
+Dispatched a background research agent, briefed with the full lists of companies already in `rows` (148 unique) and `checked` (1184 unique) extracted directly from `build.mjs`, with two tasks: (1) follow up on run 158's note that GE Aerospace's careers site had no locatable working search API, and (2) a general fresh sweep for new Winter 2026/Spring 2027 qualifying postings. The agent reported 3 candidates as new: 2 GE Aerospace reqs (via a newly-found Workday CXS facet-based enumeration method) and 1 Field AI posting, plus a list of companies it checked and found closed/wrong-season.
+
+### Independent verification caught a false positive
+Before adding anything, this session independently re-fetched the agent's top candidates directly (GE Aerospace via the Workday CXS job-detail API, Field AI via direct WebFetch) and then grepped `build.mjs` by exact req/job ID. Result: **both GE Aerospace reqs (R5033208-1 CNC Programmer Co-op, R5040302-2 Colibrium Additive Co-op) were already tracked in `rows` since run 133/~2026-10-15**, and have been independently re-confirmed as already-tracked duplicates in at least 10 subsequent runs (100, 103, 112, 114, 136, 142, 145, 149, 150, 153, 155, 158). The agent's "platform breakthrough" (discovering the Co-op/Intern workerSubType facet) was a genuine new enumeration method, but it surfaced req IDs that were already known — the agent's company-level dedup check wasn't enough to catch a req it found via a different discovery path. Everything else the agent reported as "new" — DeBra-Kuempel/EMCOR, Enable Injections, Storion Energy, Teradyne, Markforged, Gecko Robotics, Apptronik, Vecna Robotics, ClearMotion, Charles River Analytics, Realtime Robotics, Soft Robotics, Field AI, an MIT Lincoln Lab expired posting, and a dead Berkshire Grey mirror link — was also already present in `checked` from prior runs (several many times over, going back to runs 85-132).
+
+An initial edit that added the 2 GE Aerospace reqs to `rows` and 13 entries to `checked` was made, caught as entirely duplicate work during post-edit verification, and fully reverted (`git checkout -- build.mjs Engineering-Internships-Winter2026-Spring2027.xlsx`) before committing anything.
+
+### Added to `rows`
+None. Zero genuinely new qualifying postings survived verification this run.
+
+### Added to `checked` (2 consolidated entries, correcting/documenting the above)
+- GE Aerospace API correction: documents that the Workday CXS POST endpoint (used successfully since run 100) still works fine — run 158's "no working API found" note was itself an incomplete check, not a real platform change. Also documents the new facet-based enumeration method (73 total worldwide co-op/intern reqs) for future runs' reference, and reconfirms the 7 non-qualifying US reqs plus SkillBridge/non-US reqs it surfaced are all already excluded.
+- Dedup-confirmed non-new/closed batch: logs that every other candidate from this run's research agent was already tracked/excluded, and flags the process lesson (grep by exact req/job ID, not just company name, before accepting any "new" candidate).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Staged
+None — no new fully-verified posting this run (the two candidates that looked promising were duplicates).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified: `Winter26-Spring27 Internships` unchanged at 451; `Checked - Not Included` 1604 → 1606 (+2). `.xlsx` file changed (1869573 → 1873186 bytes).
+
+### Repo hygiene note
+Session started with `HEAD` detached at `a5686ab` (run 158), with local `master` stale at `7e0c63b` (run 149) — the same pattern run 158 itself flagged. Confirmed via `git fetch origin master` that `origin/master` was already at `a5686ab` (no unpushed work existed), then ran `git checkout -B master a5686ab` to fast-forward the local branch ref. This is now a recurring per-session artifact of the fresh-container setup, not a real problem — future runs should keep doing the same fetch-and-compare check before assuming anything is lost.
+
+### Worth re-checking next time
+- Future runs dispatching a research agent should ask it (or independently verify) by exact req/job ID grep against `build.mjs`, not just by company name — a company already on the exhausted list can still surface a "new"-looking req via a different discovery method (API facet vs. text search vs. aggregator) that is actually the same already-tracked posting.
+- GE Aerospace's Co-op/Intern workerSubType facet (ID `74cbdbfadb6e1001457c5daa0b900000`) is now a documented, reusable, paginated enumeration method — future runs can use it directly instead of re-discovering it.
+- Locus Robotics, Barrett Technology, Saab (Quincy) — still the periodic-recheck-not-every-run items flagged in run 158, not re-touched this run (checked only ~5 hours earlier).
+- Field AI's Boston mechanical-engineer-robotics-hardware posting remains open but structurally unverifiable on season after ~20+ consecutive runs — diminishing returns on further automated re-checks continues to hold.
+- Tracker is now at 451 rows / 1606 checked entries after 159 runs. 0 genuinely new qualifying postings this run — the search space remains heavily saturated; this run's main value was a methodology correction (GE Aerospace API) and a caught false-positive before it could pollute `rows` with a duplicate.
