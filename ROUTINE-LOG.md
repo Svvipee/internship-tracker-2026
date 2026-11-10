@@ -8688,3 +8688,28 @@ Created `staged-applications/doosan-bobcat-design-engineer-student-experience-sp
 
 ### Status
 A second background research agent (general sweep for new qualifying postings, briefed with full dedup lists from `rows`/`checked`) is still running. This log entry will be appended to / finalized once that agent's results have been independently verified and incorporated. Committing now per repo hygiene (small commits, push every run).
+
+### What was searched (part 2 — general new-company sweep)
+Dispatched a second background agent for a fresh sweep, briefed with the full deduplicated company lists from `rows` (150 unique) and `checked` (725 unique) extracted directly from `build.mjs`, told to skip GE Aerospace/Draper/MIT Lincoln Laboratory/Field AI/SharkNinja/Rocket Lab/Locus Robotics/Barrett Technology/Saab (all recently re-checked), and to prioritize genuinely new company names over re-sweeping saturated boards. The agent reported two "borderline" leads (Carrier Global, Magellan Aerospace — both live, discipline-fit, recently posted, but season not stated in the text) plus ~19 new-to-tracker companies it checked and ruled out, and flagged 4 further names it could not even confirm exist (not logged, per the hard rule against fabricating entries). This session independently re-fetched both borderline leads' primary-source URLs directly before deciding not to add them.
+
+### Added to `rows`
+None this part — both of this sweep's most promising leads (Carrier Global, Magellan Aerospace) failed the strict season-verification bar: independently re-fetching both primary-source postings confirmed neither states an academic term (no "Spring 2027"/"Winter 2026"/etc.) anywhere in the text, despite being live, discipline-matching, and recently posted. Per the verification bar, season must be confirmed from the posting itself — not added, logged as inconclusive instead.
+
+### Added to `checked` (3 new entries)
+- Carrier Global Corporation (new-to-tracker) — two live, discipline-matching, season-unstated reqs; worth re-checking in a couple weeks.
+- Magellan Aerospace (new-to-tracker) — live, very recently posted (Nov 5), discipline-matching Mechanical Engineering Intern req, but no season stated; worth re-checking.
+- Consolidated dedup-confirmed batch: 19 new-to-tracker companies independently checked and ruled out (wrong discipline, wrong season/Summer-only, closed/expired, or non-US) — see full list in `build.mjs`.
+
+### Staged
+None this part — no newly fully-verified posting from this sweep.
+
+### Spreadsheet regenerated (final, both parts combined)
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct `build.mjs` regex count: `rows` 456 → 457 (+1, the Doosan Bobcat Design Engineer posting from part 1); `checked` 1653 → 1655 (+2 net: part 1 was -1, part 2 was +3). `.xlsx` file changed and confirmed regenerated.
+
+### Worth re-checking next time
+- **Carrier Global Corporation and Magellan Aerospace** — both have real, live, discipline-matching, recently-posted reqs; the only gap is season confirmation. Worth a direct re-check of jobs.carrier.com and careers.magellan.aero in 1-2 weeks to see if either posts an explicitly Winter 2026/Spring 2027-labeled req, or if the existing rolling reqs later add season language.
+- **RBC Bearings/Dodge Industrial (Simpsonville, SC)** — now confirmed the prior cohort's requisition expired in late August 2026 (not just a bad URL). Their board runs on a JS-rendered UltiPro portal not scrapable by automated fetch; a future run with headless-browser (Playwright) access could check it directly for a new cohort rather than relying on aggregator mirrors.
+- **Arkwin Industries (TransDigm)** — a third-party guide claims confirmed Spring/Fall 2027 co-ops, but no live posting was locatable on any TransDigm-unit career page this run. Worth a dedicated retry, possibly with headless-browser access if TransDigm's sites are JS-heavy.
+- Per the standing recommendation: given 162 runs of saturation in pure ME/aero/robotics, a future run might consider widening scope slightly (e.g. chemical/materials engineering at industrial companies) within the disciplines Hamza already said are in scope (materials, structural already included).
+- Locus Robotics, Barrett Technology, Saab (Quincy) — re-confirmed in run 160, not due for re-check yet.
+- Tracker is now at 457 rows / 1655 checked entries after 162 runs. 1 genuinely new qualifying posting this run (a Doosan Bobcat sibling role, same employer already in the tracker) — continuing the saturation pattern, with two promising-but-season-unconfirmed leads (Carrier, Magellan) flagged for near-term re-check.
