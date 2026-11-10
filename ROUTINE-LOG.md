@@ -8664,3 +8664,27 @@ None this run.
 - **Doosan Bobcat North America's Quality Engineer Student Experience inclusion** is a judgment call (generic degree requirement, included on duties-described-as-hands-on-testing grounds) — worth a human sanity-check, same category as the Lydian Coatings and SharkNinja Product Integrity precedents.
 - Locus Robotics, Barrett Technology, Saab (Quincy) — re-confirmed yesterday (run 160); not re-touched this run, still periodic-recheck-not-every-run items.
 - Tracker is now at 456 rows / ~1650 checked entries after 161 runs. Directing both research agents specifically toward genuinely-new company names (not re-sweeps of the ~150 known-saturated employers) again surfaced new finds this run (2 new companies, 3 postings), continuing run 160's observation that this framing outperforms re-sweeping saturated boards at this stage.
+
+## Run 162 — 2026-11-10 ~12:51–UTC (in progress)
+
+### Repo hygiene
+Session started with `HEAD` detached at `e395c8d` (run 161), local `master` stale at `7e0c63b` (run 149) — same recurring fresh-container artifact flagged in runs 158-161. Confirmed via `git fetch origin master` that `origin/master` was already at `e395c8d` (no unpushed work existed), then ran `git checkout master && git reset --hard origin/master` to sync the local branch ref before starting work.
+
+### What was searched (part 1 — retry of run 161's flagged items)
+Dispatched a background agent to retry the two items run 161 left unresolved: (1) Doosan Bobcat's "Design Engineer Student Experience - Spring 2027" title, previously seen only on aggregator mirrors; (2) RBC Bearings/Dodge Industrial (Simpsonville, SC), whose specific posting URL 404'd. This session independently re-verified the Doosan Bobcat candidate via direct WebFetch of the primary-source URL before editing `build.mjs`.
+
+### Added to `rows` (1 new posting — same company already in tracker)
+- **Doosan Bobcat North America — "Design Engineer Student Experience - Spring 2027"** (Bismarck, ND; also Johnson Creek WI / Statesville NC / Gwinner ND). Independently re-confirmed live via direct fetch of jobs.doosan.com/bobcat/job/Bismarck-Design-Engineer-Student-Experience-Spring-2027-ND-58504/1426195700/ — Last Updated Date Oct 30, 2026, live Apply button, pay $23-26/hr matching the aggregator figure exactly. Run 161's original search simply didn't surface this specific URL; it was not actually unconfirmable.
+
+### Moved/updated in `checked`
+- Removed the now-superseded "unverified" Doosan Bobcat Design Engineer entry (moved to `rows`, see above).
+- Updated the RBC Bearings/Dodge Industrial entry: the retry found the aggregator-mirrored posting now explicitly marked "This job has expired" (posted 7/30/2026, closed 8/30/2026) — the original 404 was the posting coming down, not a bad link. Still not added; flagged that RBC's board is a JS-rendered UltiPro portal not scrapable by automated fetch, so a live-browser check would be needed to monitor for a future cohort.
+
+### Staged
+Created `staged-applications/doosan-bobcat-design-engineer-student-experience-spring2027.md` for the newly-verified posting.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct `build.mjs` regex count: `rows` 456 → 457 (+1); `checked` 1653 → 1652 (−1, net: one unverified entry replaced by a richer one). `.xlsx` file changed.
+
+### Status
+A second background research agent (general sweep for new qualifying postings, briefed with full dedup lists from `rows`/`checked`) is still running. This log entry will be appended to / finalized once that agent's results have been independently verified and incorporated. Committing now per repo hygiene (small commits, push every run).
