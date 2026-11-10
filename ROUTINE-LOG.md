@@ -8595,3 +8595,35 @@ Session started with `HEAD` detached at `a5686ab` (run 158), with local `master`
 - Locus Robotics, Barrett Technology, Saab (Quincy) — still the periodic-recheck-not-every-run items flagged in run 158, not re-touched this run (checked only ~5 hours earlier).
 - Field AI's Boston mechanical-engineer-robotics-hardware posting remains open but structurally unverifiable on season after ~20+ consecutive runs — diminishing returns on further automated re-checks continues to hold.
 - Tracker is now at 451 rows / 1606 checked entries after 159 runs. 0 genuinely new qualifying postings this run — the search space remains heavily saturated; this run's main value was a methodology correction (GE Aerospace API) and a caught false-positive before it could pollute `rows` with a duplicate.
+
+## Run 160 — 2026-11-10 ~00:50–00:58 UTC
+
+### Repo hygiene
+Session started with `HEAD` detached at `a490326` (run 159), local `master` stale at `7e0c63b` (run 149) — the same recurring fresh-container artifact flagged in runs 158-159. Confirmed via `git fetch origin master` that `origin/master` was already at `a490326` (no unpushed work existed), then ran `git checkout -B master a490326` to fast-forward the local branch ref before starting work.
+
+### What was searched
+Dispatched a background research agent, briefed with the full deduplicated lists of companies already in `rows` (148 unique) and `checked` (1186 unique), extracted directly from `build.mjs`, with explicit instructions (per run 159's process lesson) to report exact job/req IDs or URLs for any candidate rather than just company names, to prioritize Boston-area employers and genuinely new-to-tracker company names over re-sweeping the same ~150 saturated companies, to do the periodic re-checks on Locus Robotics/Barrett Technology/Saab (Quincy), and to skip deep re-investigation of Draper Laboratory, MIT Lincoln Laboratory, GE Aerospace, and Field AI (each already re-swept 10-20+ times with no new results). Before adding anything, this session independently re-verified the agent's top candidate directly against Lydian's own Ashby posting API (not just the agent's summary) and grepped the exact company name against both reference files to confirm it was genuinely untracked.
+
+### Added to `rows` (2 new postings, both fully verified — new company to the tracker)
+- **Lydian (Lydian Labs, Inc.)** — "Mechanical Engineer Co-op," Spring 2027 (Jan–June), Boston (Charlestown), MA. Fully verified via Lydian's own Ashby posting API (job id `9a3b543c-cee8-4fd9-b5e5-5d44a6f994ef`), published 2026-10-27 (~2 weeks old, within freshness window). Clean mechatronics/SolidWorks mechanical engineering fit, no citizenship/ITAR/GPA requirement stated.
+- **Lydian (Lydian Labs, Inc.)** — "Coatings Engineer/Scientist Co-op," Spring 2027, same location. Fully verified via the same API (job id `bc092b36-e885-41dd-b970-ae2c06f5e271`), published 2026-09-17 (~8 weeks old, older than usual freshness preference). Included as a lower-priority/borderline fit — discipline is Materials Science/Chemical Engineering, not core mechanical, flagged clearly in both `build.mjs` Notes and the staged application file.
+- Lydian is a sustainable-aviation-fuel/catalyst-reactor startup; independently confirmed it is NOT a rebrand of the already-tracked Boston Metal (unrelated metals-decarbonization company) before adding.
+
+### Added to `checked` (8 new entries)
+- 5 new-to-tracker company names with no qualifying posting found: Robotix Labs (Boston-area robotics, no careers page/posting found despite reported funding), Tighe & Bond (Westfield MA — only Summer 2027/Summer 2026 postings, wrong season, primarily civil), GZA GeoEnvironmental (only Fall 2026/full-time geotechnical roles, wrong season/discipline), Persimmon Technologies (Wakefield MA — only full-time Controls/EE roles requiring 2+ years experience, no internship program), Harvest Automation (Billerica MA — very small/possibly dormant, no postings found).
+- 3 periodic re-checks (no change from prior exclusion, logged with today's date per the standing "worth re-checking" items): Locus Robotics (only Fall 2026/Summer 2026 postings found, no Spring 2027), Barrett Technology (still no internship/co-op postings located, unresolved either way), Saab Inc. Quincy (only an Orlando FL Spring/Summer 2026 co-op and full-time Quincy roles found, no Spring 2027 Quincy co-op).
+- Resurfaced-but-already-known leads from the research agent's general sweep (Lutron Electronics, Hallam-ICS, Syska Hennessy, Yaskawa Motoman Miamisburg OH) were confirmed already present in `checked` from prior runs — not re-added, no new entries needed.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Staged
+Created `staged-applications/lydian-mechanical-engineer-coop-spring2027-boston-ma.md` and `staged-applications/lydian-coatings-engineer-scientist-coop-spring2027-boston-ma.md` for the two new fully-verified postings — posting URLs, deadlines (none stated), eligibility requirements, and application checklists. Draft/stage only, nothing submitted.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified: `Winter26-Spring27 Internships` 451 → 453 (+2); `Checked - Not Included` 1606 → 1614 (+8). `.xlsx` file changed.
+
+### Worth re-checking next time
+- Lydian's Coatings Engineer/Scientist Co-op is a weak discipline fit (materials/chemical engineering, not mechanical) — future runs should not treat its presence in `rows` as precedent for including other non-mechanical roles at the same looseness; it was a judgment call flagged clearly to Hamza.
+- Locus Robotics, Barrett Technology, Saab (Quincy) — re-confirmed today (run 160), no change; continue as periodic-recheck-not-every-run items.
+- Tracker is now at 453 rows / 1614 checked entries after 160 runs. Despite 159 prior runs of saturation, directing the background research agent specifically toward *new company names* (rather than re-sweeping the same ~150 known companies) surfaced one genuinely new, high-confidence match this run — future runs may benefit from continuing to bias agent instructions this way rather than defaulting to re-sweeps of the same saturated employer list.
