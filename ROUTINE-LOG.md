@@ -8713,3 +8713,43 @@ None this part — no newly fully-verified posting from this sweep.
 - Per the standing recommendation: given 162 runs of saturation in pure ME/aero/robotics, a future run might consider widening scope slightly (e.g. chemical/materials engineering at industrial companies) within the disciplines Hamza already said are in scope (materials, structural already included).
 - Locus Robotics, Barrett Technology, Saab (Quincy) — re-confirmed in run 160, not due for re-check yet.
 - Tracker is now at 457 rows / 1655 checked entries after 162 runs. 1 genuinely new qualifying posting this run (a Doosan Bobcat sibling role, same employer already in the tracker) — continuing the saturation pattern, with two promising-but-season-unconfirmed leads (Carrier, Magellan) flagged for near-term re-check.
+
+## Run 163 — 2026-11-10 ~18:49–19:00 UTC
+
+### Repo hygiene
+Session started with `HEAD` detached at `6fb366a` (run 162), local `master` stale at `7e0c63b` (run 149) — same recurring fresh-container artifact flagged in runs 158-162. Confirmed via `git fetch origin master` that `origin/master` was already at `6fb366a` (no unpushed work existed, every prior run's push succeeded), then ran `git checkout master && git merge --ff-only origin/master` to fast-forward the local branch ref before starting work.
+
+### What was searched
+Dispatched one background research agent for a fresh new-company sweep (briefed with the full deduplicated list of 1053 companies already in `rows`/`checked`, told to skip them entirely and focus on genuinely new Boston-area hardware/robotics/aerospace startups and national mid-size industrial/aerospace companies). In parallel, this session did its own direct, independent research on three items run 162 left unresolved: (1) RBC Bearings/Dodge Industrial re-check, (2) Arkwin Industries/TransDigm (flagged "unconfirmed, not a clean exclusion"), and (3) Kyocera SENCO's Spring 2027 Mechanical Engineering Co-op lead (flagged unconfirmed due to a JS-rendered ADP portal) — the last two resolved this run using Playwright (headless Chromium, pre-installed in this environment) to render the JS-only pages directly.
+
+### Added to `rows`
+None this run. The background agent's one "strong candidate" — Specter Aerospace's 5 Boston/Peabody MA Spring 2027 co-ops — was independently re-verified directly via Specter's own BambooHR detail API and found to **already be tracked in `rows`** (added in an early run, re-verified open as recently as runs 89/105). The agent rediscovered an already-known company via a fresh search pass rather than recognizing it as known — logged as a duplicate, not added again.
+
+### Added to `checked` (10 new entries)
+- **Arkwin Industries/TransDigm** — resolved run 162's "unconfirmed" flag. Directly fetched arkwin.com's own careers page: 6 current openings, all full-time/skilled-trade, zero internships/co-ops. Clean exclusion now (was previously just "unconfirmed").
+- **Kyocera SENCO Industrial Tools** — resolved run 162's "unconfirmed, JS-rendered" flag. Rendered the company's live ADP recruiting portal directly via Playwright: 7 current openings, all full-time non-engineering (sales, buyer, technician, mechanic, janitor); the aggregator-mirrored "Mechanical Engineering Co-op - Spring 2027" does not appear on the live board — confirmed stale.
+- **Enigma Aerospace** (Burlington, MA, new-to-tracker) — autonomous air-cargo startup; live Lever board has only full-time roles, no internship/co-op (two 2025-dated internship titles are stale/closed).
+- **Cerulion** (Boston, MA / Mountain View, CA, new-to-tracker) — YC S24 robot-middleware startup; only one open role (Founding Middleware Lead, full-time, 3+ yrs experience). No internship.
+- **Luminous Robotics** (South Boston, MA, new-to-tracker) — solar-farm robotics startup; only full-time roles. No internship/co-op.
+- **Whelix** (Boston, MA, new-to-tracker) — biotech cell-culture robotics startup; one contract/intern-eligible role found but it's ROS/software engineering, not mechanical/aerospace — discipline mismatch, no season stated either.
+- **HaloBraid** — re-check, no change. Still only 4 full-time roles, no co-op live.
+- **RBC Bearings/Dodge Industrial** — re-check, no change. Posting still confirmed expired (closed 8/30/2026).
+- **Dedup-confirmed duplicate batch** — logs the Specter Aerospace rediscovery (see above) plus 6 company names (Bogo Robotics, Braid Robotics, Chronospace, Strive Robotics, Synthium, P!ng) the agent surfaced with no findable careers page or independent confirmation of existence — deliberately not logged individually, same basis as the Rotostitch precedent (run 154).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Staged
+None — no new fully-verified posting this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via `git diff --stat`: `build.mjs` +9 lines (10 new `checked` entries); `rows` unchanged at 457. `.xlsx` file changed (1906362 → 1913685 bytes).
+
+### Worth re-checking next time
+- **Carrier Global Corporation and Magellan Aerospace** — both flagged in run 162 as live, discipline-matching, season-unconfirmed; not due for re-check yet (run 162 suggested 1-2 weeks), not re-touched this run.
+- Enigma Aerospace — has a history of running internships; worth a periodic (not every-run) re-check in case a Winter/Spring 2027 posting opens.
+- Doosan Bobcat North America's "Design Engineer"/"Quality Engineer" Student Experience inclusions remain judgment calls flagged for a human sanity-check (per run 161/162 notes) — unchanged.
+- Locus Robotics, Barrett Technology, Saab (Quincy) — last re-confirmed run 160 (2026-11-10 ~00:58 UTC); not due for re-check yet.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab — all believed saturated; not re-touched this run.
+- Given the background research agent's repeated failure mode (rediscovering already-tracked companies via a fresh search rather than recognizing them), future runs should keep insisting agents report exact job/req IDs or URLs, and always independently grep `build.mjs` by exact ID/URL before accepting any "new" lead — this is now documented across runs 87/105/159/162/163.
+- Tracker is now at 457 rows / 1662 checked entries after 163 runs. Zero genuinely new qualifying postings this run, but two standing "unconfirmed" items (Arkwin, Kyocera SENCO) were definitively resolved to clean exclusions using headless-browser access.
