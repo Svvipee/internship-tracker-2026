@@ -8627,3 +8627,40 @@ Created `staged-applications/lydian-mechanical-engineer-coop-spring2027-boston-m
 - Lydian's Coatings Engineer/Scientist Co-op is a weak discipline fit (materials/chemical engineering, not mechanical) — future runs should not treat its presence in `rows` as precedent for including other non-mechanical roles at the same looseness; it was a judgment call flagged clearly to Hamza.
 - Locus Robotics, Barrett Technology, Saab (Quincy) — re-confirmed today (run 160), no change; continue as periodic-recheck-not-every-run items.
 - Tracker is now at 453 rows / 1614 checked entries after 160 runs. Despite 159 prior runs of saturation, directing the background research agent specifically toward *new company names* (rather than re-sweeping the same ~150 known companies) surfaced one genuinely new, high-confidence match this run — future runs may benefit from continuing to bias agent instructions this way rather than defaulting to re-sweeps of the same saturated employer list.
+
+## Run 161 — 2026-11-10 ~06:52–07:40 UTC
+
+### Repo hygiene
+Session started with `HEAD` detached at `b9989c9` (run 160), local `master` stale at `7e0c63b` (run 149) — same recurring fresh-container artifact flagged in runs 158-160. Confirmed via `git fetch origin master` that `origin/master` was already at `b9989c9` (no unpushed work existed), then ran `git checkout -B master origin/master` to fast-forward the local branch ref before starting work.
+
+### What was searched
+Dispatched two parallel background research agents, each briefed with the full deduplicated lists of companies already in `rows` (149 unique) and `checked` (1180 unique), extracted directly from `build.mjs`, and explicitly told to skip re-researching GE Aerospace, Draper, MIT Lincoln Laboratory, Field AI, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, and Saab (Quincy) — all re-checked within the last 24 hours per run 160's log. Agent 1 focused on genuinely-new Boston-area hardware/robotics/aerospace startups (recent funding sweeps, MassRobotics member/career-fair companies). Agent 2 focused on genuinely-new national mid-size aerospace/defense/industrial/robotics companies, checking each one's own ATS board directly. This session then independently re-verified every candidate either agent reported via direct WebFetch of the primary-source posting (not the agent's summary) before editing `build.mjs`.
+
+### Added to `rows` (3 new postings, all fully verified — 2 new companies)
+- **Doosan Bobcat North America — "Test Engineer Student Experience - Spring 2027"** (Bismarck, ND, also posted Gwinner ND/Johnson Creek WI/Sahuarita AZ). Fully verified via direct fetch of jobs.doosan.com (not an aggregator) — title states the season directly, body lists "Agricultural Engineering, Mechanical Engineering" (plus Electrical/Industrial/Manufacturing) as qualifying majors, Last Updated Date Oct 30, 2026 (~11 days old), live Apply button. New company to the tracker.
+- **Doosan Bobcat North America — "Quality Engineer Student Experience - Spring 2027"** (same locations). Same verification method/freshness. Degree requirement on the posting is generic ("engineering or equivalent"), but duties quoted are hands-on product testing, statistical/quality-data analysis, and process verification on Bobcat heavy equipment — included as a judgment call (manufacturing/industrial-engineering-adjacent), flagged transparently in both `build.mjs` and the staged file, same basis as the SharkNinja "Product Integrity Co-op" precedent (run 157).
+- **Modine Manufacturing Company — "Engineering Co-op August 2026 - May 2027"** (Jefferson City, MO, req 6865). Fully verified via direct fetch of careers.modine.com — page states "2 semester assignment, starting August 2026 through May 2027," requires "a degree in Industrial Engineering or a related field," live Apply button. Posting Start Date 6/19/26 — older than the usual ~3-week freshness window, included anyway as a live, newly-found-company Spring 2027 posting. New company to the tracker.
+
+None are Boston-area. A sibling Modine req (Product Development and Application Engineer Co-op, req 8274) was checked and found closed — logged to `checked`, not added.
+
+### Added to `checked` (36 new entries)
+Consolidated from both agents' sweeps, each independently spot-checked before logging: 1 Modine sibling (closed, req 8274); 1 unverified Doosan Bobcat "Design Engineer Student Experience" title (seen only on aggregator mirrors, no primary-source page located — not added without direct confirmation); 1 inconclusive RBC Bearings/Dodge Industrial lead (posting 404s); and 33 new-to-tracker companies with no qualifying live posting found (wrong season — mostly Summer 2027 or expired Summer/Fall 2026 — no internship program, or discipline mismatch): Vertiv, Chaos Industries, Cubic Corporation, Serve Robotics, Bear Robotics, Benchmark Space Systems, ABL Space Systems, ESAB Corporation, Gates Industrial, Starship Technologies, Amentum, Ducommun, StandardAero, Teradar, CircuitHub, Foundation Alloy, Electric Hydrogen/EH2, Sereact, GreenSight, Zordi, Rapid Liquid Print, Magnendo Corp, Target Arm, Ruland Manufacturing, Aigen, Springcraft, SKAI Technology/Alaka'i Technologies, NeuroBionics, Laminar, Anvil Capture Systems, Verne Robotics, Airmada, and a consolidated MassRobotics career-fair attendee sweep (CRABI, Festo, Leidos, Pickle Robot, Revolute Robotics, Harmonic Drive, Simpl, maxon, Lattice Semiconductor, XYZ Robotics — all either already tracked/excluded or not hardware-internship employers).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Staged (3 new files)
+- `staged-applications/doosan-bobcat-test-engineer-student-experience-spring2027.md`
+- `staged-applications/doosan-bobcat-quality-engineer-student-experience-spring2027.md`
+- `staged-applications/modine-engineering-coop-jefferson-city.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct `build.mjs` regex count: `rows` 453 → 456 (+3); `checked` regex-count 1617 → 1653 (+36, matches `git diff --stat`'s +72 lines ÷ 2 lines/entry). `.xlsx` file changed (confirmed via `git status`, 1880159 → 1900478 bytes); `Winter26-Spring27 Internships` sheet now has 456 data rows, `Checked - Not Included` sheet 1650 data rows (small count discrepancy vs. the regex count is the same recurring multi-line-entry artifact noted in prior runs' logs, not lost data).
+
+### Worth re-checking next time
+- **Doosan Bobcat's "Design Engineer Student Experience - Spring 2027"** — plausibly real (seen on aggregator mirrors, sibling titles confirmed live on jobs.doosan.com), but not independently confirmed on the primary source this run. Worth a direct jobs.doosan.com search retry.
+- **RBC Bearings/Dodge Industrial (Simpsonville, SC)** — aggregator claims a Spring 2027 co-op cohort but the specific URL 404s. Worth retrying with a fresh URL/search.
+- **Vertiv, StandardAero, Amentum, Electric Hydrogen/EH2** — all run continuous or seasonal co-op programs where only Summer 2027 or expired cohorts are live right now; worth a periodic (not every-run) re-check as their Spring 2027 postings likely open in the coming weeks.
+- **Doosan Bobcat North America's Quality Engineer Student Experience inclusion** is a judgment call (generic degree requirement, included on duties-described-as-hands-on-testing grounds) — worth a human sanity-check, same category as the Lydian Coatings and SharkNinja Product Integrity precedents.
+- Locus Robotics, Barrett Technology, Saab (Quincy) — re-confirmed yesterday (run 160); not re-touched this run, still periodic-recheck-not-every-run items.
+- Tracker is now at 456 rows / ~1650 checked entries after 161 runs. Directing both research agents specifically toward genuinely-new company names (not re-sweeps of the ~150 known-saturated employers) again surfaced new finds this run (2 new companies, 3 postings), continuing run 160's observation that this framing outperforms re-sweeping saturated boards at this stage.
