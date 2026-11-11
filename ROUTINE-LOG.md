@@ -8788,3 +8788,43 @@ Dispatched one background research agent for a fresh new-company sweep, briefed 
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab — all believed saturated; not re-touched this run (per run 163's note, consistent with dozens of prior exhaustive sweeps logged across runs 81-163).
 - The two new Rennscot MFG postings are only Partially verified (JS-rendered page, confirmed via API not full page render) — worth a real-browser (Playwright) re-check in a near-term run to upgrade to full verification or catch if either closes.
 - Tracker is now at 458 rows / 1668 checked entries after 164 runs. Net this run: 2 new qualifying postings found, 1 previously-tracked posting confirmed dead and moved out, 6 new companies checked-and-excluded.
+
+## Run 165 — 2026-11-11 ~06:50–07:10 UTC
+
+### Repo hygiene
+Fresh container, `origin/master` already at `9d63381` (run 164); confirmed via `git pull origin master` — already up to date, no unpushed work to recover.
+
+### What was searched
+Dispatched two background research agents in parallel: (1) a fresh new-company sweep, briefed to grep `build.mjs` itself for the full existing company list (458 rows / 1668 checked) before researching, skipping all saturated well-known names; (2) a targeted Playwright-based re-verification pass on four specific carry-over items flagged by run 164: the two Rennscot MFG "Partial" postings (JS-rendered Ashby pages previously confirmed only via API), Carrier Global Corporation and Magellan Aerospace (both season-unconfirmed since run 162), and Fourth Power (previously unlocatable primary source). This session independently reviewed both agents' reports and the relevant existing `build.mjs` entries before making any edit.
+
+### Added to `rows` (2 new)
+- **Emerson — "Mechanical Engineering Co-op (Spring 2027)"** (Elyria, OH, req 26010384) — new, distinct requisition (Emerson already had 2 other Spring 2027 co-op rows at different locations/role types). Fully verified: fetched directly via Emerson's own live Oracle Cloud recruiting REST API (same backend the public JS page calls, not an aggregator). Title states "Spring 2027" verbatim; posted 2026-10-28; live in Emerson's active-postings feed.
+- **Fourth Power — "Spring 2027 Mechanical Engineering & Materials Science Co-Op"** (Bedford, MA / Middleton, MA) — new company. Run 164 could not locate a primary source (guessed wrong Ashby org slug, 404). This run used Playwright to render gofourth.com/careers and found the real slug is "fourth-power" (hyphenated). Fully verified via Playwright-rendered posting page + Ashby posting API: season stated verbatim ("This application is for Spring 2027 Co-Ops (January - May/June)"), pay $22–$28/hr, Boston-area location, live apply flow.
+
+### Verification upgrades (existing rows, not new adds)
+- **Emerson "R&D Engineering Co-Op – Spring 2027"** (req 26010785) and **"Project Engineering Co-op – Spring 2027"** (req 26010587) — both upgraded from "Partial" (aggregator-sourced, JS-blocked) to fully verified "Yes" after this run confirmed the same Oracle Cloud REST API endpoint works for direct, non-aggregator confirmation of both reqs.
+- **Rennscot MFG — both Spring 2027 Woburn, MA postings** (Quality Engineering Co-op; Subtractive Manufacturing Engineering Co-Op) — both upgraded from "Partial" to fully verified "Yes" after Playwright fully rendered the live Ashby pages (not just the posting API), confirming season, pay ($18.50–$24.00/hr), eligibility, ITAR clause, and live apply flow. Staged files for both updated accordingly.
+
+### Added to `checked` (2 new consolidated entries, covering ~20 individually-named items)
+- Emerson-board related reqs checked and excluded: Electrical Engineering Co-op Elyria OH (season OK but discipline borderline, flagged for Hamza's judgment, not auto-added), Manufacturing Engineering Co-Op and Additive Manufacturing Co-op (both Marshalltown IA, no season stated), Sourcing Co-Op Elyria OH (wrong discipline), Mechanical Engineer Co-op Mansfield MA (Boston-area but Fall cohort, wrong season).
+- National sweep of 15 new-to-tracker companies, all excluded (closed/filled, wrong season, no internship program, discipline mismatch, or no season stated): SpaceRake, xGenomes, Adiabatic Materials, LiftOFF Technology, SPX Corporation, Kennametal, Carlisle Companies, AGCO Corporation, National Oilwell Varco, Harley-Davidson, Diamond Age, Argo Space, Cyngn, Impossible Aerospace, Interlune.
+
+### Carry-over items resolved
+- **Carrier Global Corporation** — re-checked via Playwright full-site search; still no Winter 2026/Spring 2027-dated mechanical posting. One near-miss ("Mechanical Engineering Intern - Spring", East Syracuse NY, Job ID 30220992) turned out on full read to be mislabeled — body states "for the summer of 2027." Excluded, noted in `checked`.
+- **Magellan Aerospace** — re-checked via Playwright full-site search ("spring 2027", "winter 2026", "co-op mechanical"); the Bohemia, NY Mechanical Engineering Intern posting is unchanged, still no season stated. Only company-wide season-explicit posting is an unrelated HR co-op in Mississauga, ON (wrong discipline/country). No change, noted in `checked`.
+- **Fourth Power** — resolved, see "Added to `rows`" above. The run-164 `checked` entry was annotated as superseded (not deleted) for the transparency log.
+
+### Staged (4 files: 2 new, 2 updated)
+- `staged-applications/emerson-mechanical-engineering-coop-spring2027-elyria-oh.md` (new)
+- `staged-applications/fourth-power-mechanical-engineering-materials-science-coop-spring2027.md` (new)
+- `staged-applications/rennscot-mfg-quality-engineering-coop-spring2027-woburn-ma.md` (updated — full verification, pay/eligibility now confirmed)
+- `staged-applications/rennscot-mfg-subtractive-manufacturing-engineering-coop-spring2027-woburn-ma.md` (updated — full verification, pay/eligibility now confirmed)
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct line-count (not substring-count, which double-counts quoted text containing "Company:"): `rows` 458 → 460 (+2); `checked` 1668 → 1670 (+2 new consolidated entries). `.xlsx` file changed (1919588 → 1926729 bytes).
+
+### Worth re-checking next time
+- **Carrier Global Corporation and Magellan Aerospace** — still live, discipline-matching, season-unconfirmed; worth another check in a few weeks in case either posts explicit season language.
+- **Emerson "Electrical Engineering Co-op (Spring 2027)"** (req 26010996, Elyria OH) — season confirmed, discipline is general Electrical Engineering/CAE (borderline against Hamza's "controls" framing) — flagged for a human judgment call, not auto-added. Same category as the standing Doosan Bobcat Quality Engineer judgment-call note.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab — all believed saturated, not re-touched this run.
+- Tracker is now at 460 rows / 1670 checked entries after 165 runs. Net this run: 2 new qualifying postings, 3 existing Partial rows upgraded to fully verified via a now-confirmed-working Oracle Cloud REST endpoint pattern and Playwright rendering of Ashby pages, 2 consolidated checked-exclusion entries (~20 items), 2 carry-over leads re-checked with no change, 1 carry-over lead (Fourth Power) resolved and moved from checked to rows.
