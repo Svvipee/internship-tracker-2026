@@ -8828,3 +8828,30 @@ Dispatched two background research agents in parallel: (1) a fresh new-company s
 - **Emerson "Electrical Engineering Co-op (Spring 2027)"** (req 26010996, Elyria OH) — season confirmed, discipline is general Electrical Engineering/CAE (borderline against Hamza's "controls" framing) — flagged for a human judgment call, not auto-added. Same category as the standing Doosan Bobcat Quality Engineer judgment-call note.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab — all believed saturated, not re-touched this run.
 - Tracker is now at 460 rows / 1670 checked entries after 165 runs. Net this run: 2 new qualifying postings, 3 existing Partial rows upgraded to fully verified via a now-confirmed-working Oracle Cloud REST endpoint pattern and Playwright rendering of Ashby pages, 2 consolidated checked-exclusion entries (~20 items), 2 carry-over leads re-checked with no change, 1 carry-over lead (Fourth Power) resolved and moved from checked to rows.
+
+## Run 166 — 2026-11-11 ~UTC
+
+### Repo hygiene
+Fresh container, `origin/master` already at `a0a3fa8` (run 165); no unpushed work to recover.
+
+### What was searched
+Dispatched one background research agent briefed on the full known-company lists (460 rows / 1670 checked, 1334 unique names extracted via grep before the agent started, so it would not re-research saturated names). Instructed to find NEW companies/postings only, prioritizing Boston-area mechanical/aerospace/robotics employers and smaller/startup hardware companies a big-name sweep would miss, applying the full verification bar, and to report back rather than edit files directly so this session could review every claim before touching `build.mjs`. Per run 165's note, Carrier Global Corporation and Magellan Aerospace were explicitly skipped this run ("worth another check in a few weeks," not yet due).
+
+### Added to `rows`
+None. Zero new qualifying postings found this run — every lead chased down turned out closed, wrong season, wrong discipline, wrong location, or otherwise failed the verification bar. Consistent with the heavy saturation documented across 165 prior runs.
+
+### Added to `checked` (1 new consolidated entry, covering 10 new-to-tracker companies)
+National sweep, run 166: Electroswitch Corp (Weymouth MA — live posting but no season stated), SpaceRake Inc. (Watertown MA — re-confirmed closed), Onshore Technologies (Hooksett NH — expired), Found Energy (Cambridge MA — no qualifying open role on live Greenhouse board), Vital Lyfe (Torrance CA — the Spring 2027 mechanical posting seen on aggregators is no longer on the live Ashby board; also wrong discipline/distance for what remains), QuEra Computing (Boston MA — mechanical co-op confirmed closed, remaining co-ops wrong discipline/no season), Eka Robotics (Boston area — no internship/co-op exists at all, only full-time senior roles), CRB (Winter posting found is in Toronto, ON — wrong country), IMEG Corporation (Boston-area listings are all Summer cycles), Vanderweil Engineers (season unconfirmable across all located listings). Full dated reasons are in `build.mjs`.
+
+### Staged
+None — no new fully-verified postings this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via line-count (not substring-count): `rows` unchanged at 460; `checked` 1670 → 1671 (+1 consolidated entry, 10 companies). `.xlsx` file changed (1926729 → 1929105 bytes).
+
+### Worth re-checking next time
+- **Carrier Global Corporation and Magellan Aerospace** — still not due for re-check (run 165 said "a few weeks"); unchanged.
+- **Electroswitch Corp** (Weymouth, MA) — live, discipline-matching co-op posting but no season/pay stated; worth a periodic re-check in case the posting is later updated with explicit term language.
+- **Vanderweil Engineers (R.G. Vanderweil)** — company's own domain was not resolvable this run; worth a direct re-check (possibly via Playwright) since several aggregators mirror Boston-area intern/co-op listings for them with no season stated.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG — all believed saturated/current, not re-touched this run.
+- Tracker is now at 460 rows / 1671 checked entries after 166 runs. Net this run: 0 new qualifying postings, 1 consolidated checked-exclusion entry covering 10 new-to-tracker companies, 0 staged files. This run's research agent independently cross-referenced both company-name lists before investigating, which appears to have prevented any duplicate-rediscovery findings (the recurring failure mode noted in runs 87/105/159/162/163).
