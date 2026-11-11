@@ -8753,3 +8753,38 @@ None — no new fully-verified posting this run.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab — all believed saturated; not re-touched this run.
 - Given the background research agent's repeated failure mode (rediscovering already-tracked companies via a fresh search rather than recognizing them), future runs should keep insisting agents report exact job/req IDs or URLs, and always independently grep `build.mjs` by exact ID/URL before accepting any "new" lead — this is now documented across runs 87/105/159/162/163.
 - Tracker is now at 457 rows / 1662 checked entries after 163 runs. Zero genuinely new qualifying postings this run, but two standing "unconfirmed" items (Arkwin, Kyocera SENCO) were definitively resolved to clean exclusions using headless-browser access.
+
+## Run 164 — 2026-11-11 ~UTC
+
+### Repo hygiene
+Session started with `HEAD` detached at `97fd9f6` (run 163), local `master` stale at `7e0c63b` (run 149) — same recurring fresh-container artifact flagged in runs 158-163. Confirmed via `git fetch origin master` that `origin/master` was already at `97fd9f6` (no unpushed work existed), then ran `git checkout master && git merge --ff-only origin/master` to fast-forward before starting work.
+
+### What was searched
+Dispatched one background research agent for a fresh new-company sweep, briefed to grep `build.mjs` itself for the full existing company list (1324 unique company-name lines extracted) and skip everything already tracked, then search Boston-area hardware/robotics/aerospace startups and national mid-size industrial firms for genuinely new Winter 2026/Spring 2027 postings. In parallel, this session directly re-checked Enigma Aerospace (run 163's "worth a periodic re-check" note) and independently re-verified every lead the agent reported against primary sources before touching `build.mjs`, per standing methodology (runs 87/105/159/162/163).
+
+### Added to `rows` (2 new)
+- **Rennscot MFG — "Quality Engineering Co-op - Spring 2027"** (Woburn, MA) — new company. Confirmed directly via Rennscot's own Ashby public posting API (`isListed: true`, exact title match). Link Verified marked **Partial** — the Ashby job-detail page is JS-rendered and this run's fetch tool could not render the full description, so pay/eligibility beyond the API/title are not independently confirmed (a Simplify.jobs mirror claims $18.50-$24/hr, not primary-confirmed).
+- **Rennscot MFG — "Subtractive Manufacturing Engineering Co-Op - Spring 2027"** (Woburn, MA) — same company/board, same Partial-verification caveat. A third posting on the same board, "Industrial Engineering Co-Op," states no season anywhere found and was NOT added — logged in `checked` instead.
+- Staged both to `staged-applications/` with explicit notes that verification is partial and eligibility/form details are unknown pending a real-browser check.
+
+### Moved from `rows` to `checked` (1)
+- **Beyond Reach Labs — "Mechanical Engineer Intern (Spring 2027)"** (New York, NY; tracked since 2026-10-05) — while independently re-verifying an agent-reported lead that happened to already be in `rows`, this session re-fetched the company's own Ashby posting API directly and found the Spring 2027 posting (id `5b16a59b-...`) is now **completely gone** from the live board (not merely unlisted) — the current board shows only a "Mechanical Engineer Intern (Summer 2027)" instead, wrong season. The previously-staged `staged-applications/beyond-reach-labs-...md` file was deleted since it no longer corresponds to a live posting.
+
+### Added to `checked` (6 new, 1 re-check)
+- **Enigma Aerospace** — re-check, no change (still only 4 full-time roles live, no internship/co-op).
+- **Fourth Power** (Bedford/Middleton, MA) — aggregator mirrors (Simplify.jobs, Handshake, Career.com) advertise a Spring 2027 Mechanical Engineering & Materials Science Co-op, but no primary-source posting could be located: gofourth.com/careers is JS-empty, the DCVC portfolio jobs board and a guessed Ashby API endpoint both 404. Per the verification bar, an aggregator-only sighting with no locatable primary posting is not added even as Partial. Worth retrying with Playwright rendering in a future run.
+- **Tiberius Aerospace** — only a full-time Mechanical Engineer role found, no internship program.
+- **Neocybernetica** — only a generic "General Applications" catch-all, no season-stated posting.
+- **Human Computer Lab** (SF/Toronto) — controls/mechatronics intern-shaped roles exist, discipline fits, but no season stated on any posting.
+- **Mechronix / Mechspire / Mechnova** — only appear on one sketchy aggregator (jobverse.io) with internally-inconsistent listings and no findable real careers page; treated as unverifiable/likely-spam, same basis as the Rotostitch precedent (run 154). Not worth re-researching absent a better source.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `.xlsx` file changed (1913685 → 1919588 bytes). Verified via direct grep: `rows` now 458 entries (457 - 1 moved-out + 2 new); `checked` now 1668 entries (grep-counted directly against the file, not carried forward from the prior run's narrative tally, which may have drifted slightly).
+
+### Worth re-checking next time
+- **Carrier Global Corporation and Magellan Aerospace** — still flagged from run 162 (live, discipline-matching, season-unconfirmed reqs); not due yet, not re-touched this run.
+- **Fourth Power** — real company, real discipline/season match per aggregator mirrors, but no primary ATS could be located this run. Worth a Playwright-rendered check of gofourth.com/careers, or identifying the actual ATS platform, in a future run.
+- Doosan Bobcat North America's "Design Engineer"/"Quality Engineer" Student Experience inclusions remain judgment calls flagged for a human sanity-check (per run 161/162 notes) — unchanged.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab — all believed saturated; not re-touched this run (per run 163's note, consistent with dozens of prior exhaustive sweeps logged across runs 81-163).
+- The two new Rennscot MFG postings are only Partially verified (JS-rendered page, confirmed via API not full page render) — worth a real-browser (Playwright) re-check in a near-term run to upgrade to full verification or catch if either closes.
+- Tracker is now at 458 rows / 1668 checked entries after 164 runs. Net this run: 2 new qualifying postings found, 1 previously-tracked posting confirmed dead and moved out, 6 new companies checked-and-excluded.

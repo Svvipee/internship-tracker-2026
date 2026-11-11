@@ -4195,18 +4195,6 @@ const rows = [
     Notes: "New company for the tracker — nuclear hardware startup (25 MWe 'Ember' reactor). Work on components/fluids/structures. Applicant can pick Spring 2027 term specifically per the posting.",
   },
   {
-    Company: "Beyond Reach Labs",
-    "Role Title": "Mechanical Engineer Intern (Spring 2027)",
-    Discipline: "Aerospace/Mechanical Engineering (deployable space mechanisms)",
-    Season: "Spring 2027",
-    Location: "New York City, NY",
-    "Distance from Boston, MA (mi, approx.)": 215,
-    Pay: "Not confirmed",
-    "Application Link": "https://jobs.ashbyhq.com/beyondreachlabs/5b16a59b-87b1-4ab3-812d-38f38ec4c55d",
-    "Link Verified": "Yes — 2026-10-05: verified via Beyond Reach Labs' own Ashby public posting-API; isListed: true (open), posted 2026-07-15. Title itself is 'Mechanical Engineer Intern (Spring 2027)'; body confirms designing/analyzing/testing deployable mechanical systems (solar arrays, radiators) for satellites.",
-    Notes: "New company for the tracker — satellite deployable-mechanisms startup. Minimum 12 weeks, on-site. Closest non-Boston option found this run to Hamza's home region.",
-  },
-  {
     Company: "R.W. Beckett Corporation",
     "Role Title": "Spring 2027 Engineering Co-Op - Mechanical",
     Discipline: "Mechanical Engineering",
@@ -5508,6 +5496,30 @@ const rows = [
     "Application Link": "https://careers.modine.com/job/Engineering-Co-op-August-2026-May-2027/6865-en_US/",
     "Link Verified": "Yes — fetched directly via careers.modine.com (req 6865). Page states 'a 2 semester assignment, starting August 2026 through May 2027'; Posting Start Date 6/19/26; live 'Apply now' button, no closed/expired language.",
     Notes: "New company to the tracker, run 161. Requires 'currently pursuing a degree in Industrial Engineering or a related field' — industrial-engineering fit per Hamza's adjacent-discipline list. Onsite, Jefferson City MO, not Boston-area. A sibling Modine req ('Product Development and Application Engineer Co-op, Fall 2026-Spring 2027', req 8274) was checked and found closed ('not available at this time') — logged to checked, not added.",
+  },
+  {
+    Company: "Rennscot MFG",
+    "Role Title": "Quality Engineering Co-op - Spring 2027",
+    Discipline: "Manufacturing/Quality Engineering",
+    Season: "Spring 2027",
+    Location: "Woburn, MA",
+    "Distance from Boston, MA (mi, approx.)": 10,
+    Pay: "Not independently confirmed (a Simplify.jobs mirror lists $18.50-$24/hr, not verified on the primary source)",
+    "Application Link": "https://jobs.ashbyhq.com/rennscotmfg/ca09ce65-89be-405f-941e-36b32b95c036",
+    "Link Verified": "Partial — 2026-11-11: confirmed directly via Rennscot MFG's own Ashby public posting-API (api.ashbyhq.com/posting-api/job-board/rennscotmfg): posting exists, isListed: true (open), title exactly 'Quality Engineering Co-op - Spring 2027', location Woburn MA. The Ashby job-detail page itself is JS-rendered and could not be fully rendered by this run's fetch tool, so pay and eligibility details beyond what the API/listing title show are not independently confirmed.",
+    Notes: "New company for the tracker — Woburn, MA precision CNC machining + metal additive manufacturing shop, ITAR-registered. Boston-area location (close distance). Found run 164.",
+  },
+  {
+    Company: "Rennscot MFG",
+    "Role Title": "Subtractive Manufacturing Engineering Co-Op - Spring 2027",
+    Discipline: "Manufacturing Engineering",
+    Season: "Spring 2027",
+    Location: "Woburn, MA",
+    "Distance from Boston, MA (mi, approx.)": 10,
+    Pay: "Not stated on posting",
+    "Application Link": "https://jobs.ashbyhq.com/rennscotmfg/19630145-1218-41bb-94f0-8693eb5454f4",
+    "Link Verified": "Partial — 2026-11-11: confirmed directly via Rennscot MFG's own Ashby public posting-API (api.ashbyhq.com/posting-api/job-board/rennscotmfg): posting exists, isListed: true (open), title exactly 'Subtractive Manufacturing Engineering Co-Op - Spring 2027', location Woburn MA, employment type Temporary. The Ashby job-detail page itself is JS-rendered and could not be fully rendered by this run's fetch tool to confirm pay/eligibility; a snippet surfaced during research mentions 'candidates must be local to the Boston, MA area.'",
+    Notes: "New company for the tracker — same Woburn, MA manufacturing shop as the Quality Engineering Co-op above. Boston-area location. Found run 164. A related 'Industrial Engineering Co-Op' posting also exists on the same board but states no season anywhere found — not added, flagged below in checked.",
   },
 ];
 
@@ -7202,6 +7214,13 @@ const checked = [
   { Company: "HaloBraid (Cambridge/Allston, MA) — re-check, run 163", "Role(s) Checked": "Company's current live job listings", Reason: "2026-11-10 (run 163): re-confirms the standing unresolved/excluded status tracked since run 105 — current board has only 4 full-time roles (Senior EE, Senior ME, Principal ME/Systems Engineer, Hardware TPM); no co-op/intern posting live right now. No change; the joinrise.co 503 re-check item from runs 138-153 was not re-attempted this run (deprioritized to opportunistic-only per run 140's note)." },
   { Company: "RBC Bearings / Dodge Industrial (Simpsonville, SC) — re-check, run 163", "Role(s) Checked": "career.com mirror of the prior cohort posting (j202604080550397376917)", Reason: "2026-11-10 (run 163): re-confirms run 162's finding with no change — posting still explicitly reads \"This job has expired,\" posted 7/30/2026, closed 8/30/2026. UltiPro board still not scrapable; no new cohort visible. Not added." },
   { Company: "Dedup-confirmed duplicate batch, run 163 (2026-11-10)", "Role(s) Checked": "A background research agent's general new-company sweep reported Specter Aerospace's 5 Spring 2027 Boston/Peabody MA co-ops (BambooHR ids 124 Mechanical Engineer, 116 Vehicle Design, 117 Propulsion Test, 118 Propulsion Design, 123 PLC/Controls) as a \"strong new find,\" independently re-fetched directly via Specter's own BambooHR detail API before any edit.", Reason: "2026-11-10 (run 163): all 5 are already tracked in `rows` (added in early runs, re-verified open as recently as runs 89/105). The agent discovered them via a fresh search pass rather than recognizing them as already-known, the same recurring failure mode documented in runs 87/105/159/162 — logging again as a reminder that exact-ID/URL grep against `build.mjs`, not a fresh company-level search, is what actually catches duplicates. Zero new postings from this lead. The agent also reported 6 company names (Bogo Robotics, Braid Robotics [distinct from HaloBraid], Chronospace, Strive Robotics, Synthium, P!ng) with no findable careers page, ATS board, or independent confirmation of existence — deliberately not logged individually since identity itself is unconfirmed, same basis as the Rotostitch precedent (run 154)." },
+  { Company: "Enigma Aerospace (Burlington, MA) — re-check, run 164", "Role(s) Checked": "jobs.lever.co/crgo (the company's own Lever board)", Reason: "2026-11-11 (run 164): re-checked per run 163's 'worth a periodic re-check' note. No change — live board still shows only 4 full-time roles (Aeronautical Test Engineer, General Talent, Principal Aerospace Engineer, Senior Software Engineer), no internship/co-op. Not added." },
+  { Company: "Beyond Reach Labs (New York, NY) — MOVED from `rows`, run 164", "Role(s) Checked": "api.ashbyhq.com/posting-api/job-board/beyondreachlabs (the company's own Ashby public posting API, direct fetch)", Reason: "2026-11-11 (run 164): the previously-tracked 'Mechanical Engineer Intern (Spring 2027)' posting (Ashby id 5b16a59b-87b1-4ab3-812d-38f38ec4c55d, added to `rows` 2026-10-05) no longer appears on the company's live posting-API output at all — not even as unlisted, fully removed. The company's current board shows a 'Mechanical Engineer Intern (Summer 2027)' instead (wrong season, out of scope). Moved from `rows` to `checked`: the Spring 2027 posting this tracker verified is dead/filled/withdrawn." },
+  { Company: "Fourth Power (Bedford/Middleton, MA) — new-to-tracker, unverifiable, run 164", "Role(s) Checked": "gofourth.com/careers (JS-rendered, returned no content), jobs.dcvc.com/companies/fourth-power (404), a guessed api.ashbyhq.com/posting-api/job-board/fourthpower endpoint (404)", Reason: "2026-11-11 (run 164): aggregator mirrors (Simplify.jobs, Handshake, Career.com, Breakthrough Energy job board) advertise a 'Mechanical Engineering & Materials Science Co-op, Spring 2027' (and separately dated Summer 2026 / Fall 2026 mechanical-engineering-intern postings), but no primary-source posting page could be located or rendered by this run — the company's own careers page is empty/JS-only and no working ATS endpoint could be found. Per this tracker's verification bar, an aggregator-only sighting with no locatable primary posting is not added, even as Partial. Not added — worth retrying with headless-browser (Playwright) rendering of gofourth.com/careers in a future run, or if the real ATS board is identified." },
+  { Company: "Tiberius Aerospace — new-to-tracker, run 164", "Role(s) Checked": "Company's Lever board", Reason: "2026-11-11 (run 164): only a full-time Mechanical Engineer role found. No internship/co-op program located. Not added." },
+  { Company: "Neocybernetica — new-to-tracker, run 164", "Role(s) Checked": "Company's Greenhouse board", Reason: "2026-11-11 (run 164): only a generic 'General Applications' catch-all posting exists; no specific internship/co-op posting with a stated season. Not added." },
+  { Company: "Human Computer Lab (SF, CA / Toronto, ON) — new-to-tracker, run 164", "Role(s) Checked": "Company's career listings", Reason: "2026-11-11 (run 164): controls/mechatronics intern-shaped roles exist and discipline fits, but no posting states an academic term/season (Winter 2026/Spring 2027 or otherwise). Cannot confirm season from the primary source. Not added." },
+  { Company: "Mechronix / Mechspire / Mechnova — new-to-tracker, unverifiable, run 164", "Role(s) Checked": "jobverse.io aggregator listings advertising 'remote co-op' roles under these names", Reason: "2026-11-11 (run 164): no real company careers page, ATS board, or other independent confirmation of these companies' existence could be found; the listings are internally inconsistent across the one aggregator that carries them. Treated as unverifiable/likely-spam, same basis as prior unconfirmed-identity exclusions (e.g. Rotostitch, run 154) — not added, and not worth re-researching absent a better source." },
 ];
 const wsChecked = xlsx.utils.json_to_sheet(checked);
 wsChecked["!cols"] = [{ wch: 34 }, { wch: 55 }, { wch: 70 }];
