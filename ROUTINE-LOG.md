@@ -8855,3 +8855,44 @@ None — no new fully-verified postings this run.
 - **Vanderweil Engineers (R.G. Vanderweil)** — company's own domain was not resolvable this run; worth a direct re-check (possibly via Playwright) since several aggregators mirror Boston-area intern/co-op listings for them with no season stated.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG — all believed saturated/current, not re-touched this run.
 - Tracker is now at 460 rows / 1671 checked entries after 166 runs. Net this run: 0 new qualifying postings, 1 consolidated checked-exclusion entry covering 10 new-to-tracker companies, 0 staged files. This run's research agent independently cross-referenced both company-name lists before investigating, which appears to have prevented any duplicate-rediscovery findings (the recurring failure mode noted in runs 87/105/159/162/163).
+
+## Run 167 — 2026-11-11 ~18:54–19:20 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` detached at `b65d84f` (run 166), local `master` stale at `7e0c63b` (run 149) — same recurring fresh-container artifact as many prior runs. Confirmed via `git fetch origin master` that `origin/master` was already correctly at `b65d84f` (no unpushed work existed), then `git checkout master && git pull origin master` to fast-forward before starting work.
+
+### What was searched
+Dispatched one background research agent for a fresh new-company sweep, briefed to read the full list of 1335 unique already-known company names (extracted via grep to a scratchpad file) before researching, and told to report back rather than edit files directly. In parallel, this session did its own direct re-checks of the two carry-over items due from run 166 (Electroswitch Corp, Vanderweil Engineers) and independently re-verified every lead the agent reported — including using Playwright (headless Chromium) to render JS-only pages — before touching `build.mjs`, per standing methodology.
+
+### Added to `rows` (2 new)
+- **Resonetics — "Manufacturing Engineering Co-Op"** (req 2026-5399, Hutchinson, MN) — new company. The background agent surfaced Resonetics via Wellfound mirrors claiming "Spring of 2027"; this session independently rendered the company's own iCIMS portal via Playwright (plain fetch returns an empty JS shell) and found this req's own page states "during the Spring 2027" verbatim. Fully verified.
+- **Resonetics — "Development Engineering Co-op"** (req 2026-5397, Hutchinson, MN) — same company/method, own page states "during the Spring of 2027" verbatim. Fully verified. Both staged.
+- Both postings: $25.00–$28.00/hr, BS/MS currently-enrolled requirement, no visa sponsorship, no ITAR/citizenship clause found. Not Boston-area (~1,175 mi) but within Hamza's "anywhere in the US" allowance.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (7 new entries)
+- **Resonetics sibling reqs without a stated season** (consolidated entry) — 6 other current "co-op"-titled reqs on the same iCIMS board (IDs 2026-5862, 5292, 5029 "Development Engineering Co-Op"/"Co-op"; 5455 "NPI Engineering Co-op"; 5414 "Machinist Co-Op"; 4370 "Maintenance Technician Apprentice") each independently fetched and read in full — none states a season, despite near-identical titles to the two added reqs. Also notes 5550 (HR AI Automation Co-Op, wrong discipline), 5811 (R&D Engineering Manager, full-time not an internship), and a "Quality Engineering Co-op" referenced only by two Wellfound mirrors that does not currently exist anywhere in Resonetics' own live "co-op" search results (likely stale/already closed). None added.
+- **Electroswitch Corp** (Weymouth, MA) — re-check, no change from run 166: still no season/term/pay stated on the company's own page.
+- **Vanderweil Engineers** (Boston, MA) — re-check; domain was resolvable this run (unlike run 166). Own internship-program page confirms mechanical as an offered discipline but states no season anywhere; a fresh search of aggregator mirrors found nothing dated Spring 2027. Conclusion unchanged, now independently confirmed via the primary site.
+- **GSSI / Geophysical Survey Systems, Inc.** (Nashua, NH) — new-to-tracker; company's own BambooHR API (fetched directly via curl) lists 4 current openings, all full-time, zero co-op/internship. Aggregator-mirrored co-op listings are stale.
+- **Dottir Labs** (Somerville, MA, Greentown Labs) — new-to-tracker, real company, plausible discipline fit (optical/chemical-sensor hardware), but masscec.com (the only locatable posting source) returns HTTP 403 to every fetch attempt (plain WebFetch and Playwright-rendered browser alike), and no independent company-owned ATS was found. Season genuinely unconfirmable this run — not added.
+- **Aformic, Inc.** (Duncan, SC) — new-to-tracker, real funded robotics startup (seed round announced 2026-11-04), but no careers page or posting of any kind found; search results are dominated by the unrelated, similarly-named AFL. Not added.
+- **Strive Robotics (update) and Southie Autonomy** — Strive Robotics' existence (previously "unconfirmed," run 163) is now corroborated by some hiring signal, but it's software/ROS-focused (discipline mismatch); Southie Autonomy has no locatable posting. Neither added.
+
+### Staged (2 new)
+- `staged-applications/resonetics-manufacturing-engineering-coop-spring2027-hutchinson-mn.md`
+- `staged-applications/resonetics-development-engineering-coop-spring2027-hutchinson-mn.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct xlsx read: `rows` 460 → 462 (+2); `checked` 1671 → 1678 (+7). Zero duplicate Application Links across all 462 `rows` entries (programmatic check). `.xlsx` file changed.
+
+### Worth re-checking next time
+- **Resonetics (Hutchinson, MN and Nashua, NH sites)** — clearly churns co-op reqs frequently (several near-identical open titles, some with season stated, some without, at the same locations); worth a periodic re-check for newly-posted siblings that do state a season, and to confirm the two added reqs (5399, 5397) are still live.
+- **GSSI (Nashua, NH)** — real company, historically runs ME/EE co-ops seasonally; worth a periodic re-check for a fresh posting.
+- **Dottir Labs (Somerville, MA)** — new, real, Boston-area, plausible discipline fit; blocked only by masscec.com's bot-blocking. Worth a future attempt with a different fetch approach, or checking if the company ever stands up its own ATS.
+- **Aformic, Inc. (Duncan, SC)** — real, funded, discipline-matching robotics startup with no internship program yet; worth a periodic re-check as it grows.
+- Carrier Global Corporation and Magellan Aerospace — still not due (run 165 said "a few weeks"); unchanged.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG — all believed saturated/current, not re-touched this run.
+- Tracker is now at 462 rows / 1678 checked entries after 167 runs. Net this run: 2 new qualifying postings (both from a single new company, Resonetics), 7 checked-exclusion entries (one consolidated Resonetics-siblings entry plus 2 carry-over re-checks plus 4 new-to-tracker companies/pairs), 2 staged files.
