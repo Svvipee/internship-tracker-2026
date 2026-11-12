@@ -8896,3 +8896,41 @@ None this run.
 - Carrier Global Corporation and Magellan Aerospace — still not due (run 165 said "a few weeks"); unchanged.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG — all believed saturated/current, not re-touched this run.
 - Tracker is now at 462 rows / 1678 checked entries after 167 runs. Net this run: 2 new qualifying postings (both from a single new company, Resonetics), 7 checked-exclusion entries (one consolidated Resonetics-siblings entry plus 2 carry-over re-checks plus 4 new-to-tracker companies/pairs), 2 staged files.
+
+## Run 168 — 2026-11-12 ~00:50–01:05 UTC
+
+### Repo hygiene
+Fresh container again, local `master` detached/stale (at run 167's commit `6b49b32` by HEAD, but `refs/heads/master` pointer stale at run 149's `7e0c63b`) — same recurring fresh-container artifact as many prior runs. `git fetch origin master` confirmed `origin/master` was already correctly at `6b49b32` (no unpushed work existed), then `git checkout master && git pull origin master` fast-forwarded cleanly before starting work.
+
+### What was searched
+Dispatched one background research agent for a fresh new-company sweep, briefed on the ~823 unique already-known company names (deduped from both `rows` and `checked`, extracted via grep to a scratchpad file) and told to report back rather than edit files directly. This session then independently re-verified every lead the agent reported via direct WebFetch/curl against the companies' own sites (not aggregator summaries) before touching `build.mjs`, per standing methodology — and in the process caught that two of the agent's "new" leads (Buro Happold's Mechanical and Structural Boston Spring-2027 co-ops) were **not actually new**: both have been in `rows` since around run 140/the 2026-09-26 era. The agent's company-dedup pass missed them because its known-company extraction evidently didn't fully canonicalize "Buro Happold." Caught before any duplicate was committed — zero duplicate Application Links confirmed via a post-build programmatic check.
+
+### Added to `rows` (1 new)
+- **Extreme Engineering Solutions (X-ES) — "Materials Science & Engineering Co-Op"** (Verona, WI) — new company. Posting states "Spring/Summer 2027 Co-Op (January–August 2027)" or "Summer/Fall 2027 Co-Op (May–December 2027)" as two selectable terms; the Jan–Aug option qualifies as Winter/Spring 2027 (same precedent as several existing multi-term entries in the tracker). Independently fetched directly at the company's own canonical student-co-op page (reached via its own careers/student-opportunities index, not an aggregator) — live "Apply Online" buttons to UltiPro ATS, no closed/expired language. Not Boston-area (~1,150 mi) but within Hamza's "anywhere in the US" allowance. Materials Science & Engineering discipline (also considers Chemical/Mechanical w/ materials interest), working on materials characterization and thermal/mechanical modeling for industrial/military/aerospace hardware. Citizenship/ITAR not stated on posting — flagged in the staging note since the company serves defense/aerospace customers. Fully verified, staged.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (6 new entries)
+- **JETCool Technologies Inc. (Littleton, MA)** — new-to-tracker. Aggregator mirror states expired 6/14/2026; posting's own term was Jul–Dec 2026 (wrong season regardless). Company's own careers page returned HTTP 503 on this run's direct re-check attempt. Not added.
+- **QuEra Computing (Boston, MA)** — periodic re-check. "Mechanical Engineering Co-Op" title explicitly states Fall 2026 only (wrong season regardless of status). Live Greenhouse board fetched directly this run (73 postings) — this req is no longer present; only "Optical Engineer Co-Op" and "QPU Build Co-Op" remain (wrong discipline). Not added.
+- **NuVasive / Globus Medical (Methuen, MA)** — new-to-tracker. Robotics/medical-device company, Boston-area, plausible discipline fit. No source among several aggregator mirrors states a Spring 2027/Winter 2026 season; postings independently confirmed closed. Not added — worth checking globusmedical.com/careers directly for a fresh req in a future run.
+- **Werfen (Bedford, MA)** — new-to-tracker, watch item. Real Boston-area medical-device company that historically runs recurring mechanical/EE co-ops each semester, but no live Spring 2027 posting located this run; own iCIMS board is JS-rendered and didn't return individual postings to a direct fetch. Genuinely unconfirmable, not a fabrication. Worth a periodic re-check, ideally with a rendered-browser fetch.
+- **Extreme Engineering Solutions (X-ES) — phantom second posting.** An alleged "thermal/structural" co-op referenced by search-engine indexing (query-string URL `?p=9194`, plus `?p=6403` and `?p=11973`) all return HTTP 404 on direct fetch/curl — confirmed stale/deindexed, do not currently exist. X-ES's own live student-co-op index lists exactly 3 current co-ops (Embedded Software, Materials Science — added above, IT Services) and no separate thermal/structural/general-mechanical co-op. Logged so a future run doesn't re-chase this dead URL.
+- **Packaging Corporation of America (Counce Mill, Counce, TN)** — new-to-tracker. "Mechanical Engineer CO OP Counce Mill Fall 2026 - Spring 2027" — right season and a matching role title, but directly confirmed CLOSED ("This job has expired," closed 8/7/2026) via the career.com mirror. Not added. Paper/packaging mill is a borderline discipline fit if it reopens for a later cohort — worth a future re-check of careers.packagingcorp.com directly.
+
+### Staged (1 new)
+- `staged-applications/extreme-engineering-solutions-materials-science-engineering-coop-spring2027-verona-wi.md`
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct regex count on `build.mjs`: `rows` 462 → 463 (+1); `checked` 1678 → 1684 (+6). Zero duplicate Application Links across all 463 `rows` entries (programmatic check, after removing the two accidental Buro Happold duplicates caught during verification). `.xlsx` file changed per `git status`.
+
+### Worth re-checking next time
+- **Werfen (Bedford, MA)** — real, Boston-area, seasonal co-op cadence; try a rendered-browser (Playwright) fetch of careers-werfen.icims.com next time instead of plain WebFetch.
+- **NuVasive / Globus Medical (Methuen, MA)** — check globusmedical.com's own careers page directly rather than aggregator mirrors.
+- **Packaging Corporation of America (Counce Mill, TN)** — the Fall2026-Spring2027 cohort posting closed 8/7/2026; a later cohort posting (e.g. Fall2027-Spring2028) could appear eventually, low priority given discipline is borderline and location isn't Boston-area.
+- **X-ES (Verona, WI)** — periodic re-check for any new co-op reqs added to their student-opportunities index; note the dead `?p=9194`/`?p=6403`/`?p=11973` URLs so they aren't re-chased.
+- Resonetics (Hutchinson MN/Nashua NH), GSSI (Nashua NH), Dottir Labs (Somerville MA), Aformic Inc. (Duncan SC), Carrier Global Corporation, Magellan Aerospace — all flagged in runs 165–167, not yet due for re-check this run.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG — all believed saturated/current, not re-touched this run.
+- **Process note:** a company-name dedup extraction should canonicalize on the bare company name (e.g. "Buro Happold") before briefing a research agent — this run's agent re-surfaced a company already tracked since run ~140 because its own dedup pass didn't catch it; this session's independent re-verification step caught the near-miss before it became a duplicate, which is exactly why that step exists. Keep it.
+- Tracker is now at 463 rows / 1684 checked entries after 168 runs. Net this run: 1 new qualifying posting (X-ES, Verona WI), 6 checked-exclusion entries, 1 staged file.
