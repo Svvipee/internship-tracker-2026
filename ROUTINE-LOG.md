@@ -9002,3 +9002,35 @@ None — no new fully-verified postings this run.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current, not re-touched this run.
 - **Process note (reaffirming run 168's):** full-text grep (not just `Company:`-field extraction) is needed to catch companies logged only inside a consolidated entry's Notes text — this run's agent re-surfaced SpaceRake/Found Energy/XGenomes/Eyebot because its own dedup pass, like run 168's, missed names that live only in prose rather than as a `Company:` key. This session's own cross-check (grep against full `build.mjs` text) caught it before any duplicate was logged. A future run could consider periodically re-flattening the checked array's multi-company consolidated entries into individual `Company:`-keyed rows to close this gap for good.
 - Tracker is now at 463 rows / 1691 checked entries after 170 runs. Net this run: 0 new qualifying postings (one candidate, CPI Electron Device Business, deliberately excluded for a self-contradictory season statement and absence from the company's own live ATS), 2 checked-exclusion entries (covering 7 companies total), 0 staged files. Heavy saturation continues to hold at run 170.
+
+## Run 171 — 2026-11-12 ~18:30–19:05 UTC
+
+### Repo hygiene
+Fresh container, no prior uncommitted work found; `git status` clean before starting, HEAD matched `origin/master` at run 170's commit.
+
+### What was searched
+Extracted all 1357 unique company names from `build.mjs` (both `rows` and `checked`, full `Company:`-field grep) to a scratchpad exclude list and dispatched one background research agent, briefed on that list, with four priority leads carried over from run 170's notes (re-run GE Aerospace's own Workday CXS full-text "co-op spring 2027" search; Draper Laboratory; MIT Lincoln Laboratory; Dottir Labs direct-ATS search bypassing masscec.com) plus a general Boston-area/national sweep for brand-new companies. Carrier Global Corporation, Magellan Aerospace, Werfen, and Globus Medical were left untouched again per run 169/170's "not yet due" notes.
+
+### Added to `rows`
+None. The agent reported several "new" and "possibly-new, needs cross-check" candidates (GE Aerospace reqs R5033208/R5040302, Draper reqs JR002882/JR003131, 5 Specter Aerospace BambooHR reqs, Buro Happold job 2462, and 3 Rendezvous Robotics Greenhouse reqs) — every one was independently grep-confirmed by this session to already be present in `rows` by exact req/job ID, so none were new. This is the same recurring agent-dedup pattern documented in runs 143/148/168/170.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (3 new entries)
+- **GE Aerospace — "Aerospace Student Weld Trainee - Flyer" (R5043119, Beavercreek OH)** — a genuinely distinct, newer req ID from the already-excluded R5042970 (run 157) Student Welder Trainee Program, but the identical category: a skilled-trade welding apprenticeship ("looking for weld students to join our team for the 2027 Spring semester"), not a degree-engineering internship/co-op. Not added.
+- **MIT Lincoln Laboratory — "Rapid Prototyping Aero/Mech Co-Op - Group 77" (job 1423005300, Lexington MA)** — strong discipline fit and apparently open, but the posting's own raw HTML body contains no season/term string at all despite a search-index snippet suggesting "Fall 2026" — fails the season-must-be-confirmed-from-the-posting-itself bar. Not added; flagged for a future rendered-browser re-check (see below).
+- **Dedup-confirmed non-new batch, run 171** — consolidates the agent's GE Aerospace/Draper/Specter Aerospace/Buro Happold/Rendezvous Robotics re-surfaces (all already in `rows`, see above) plus MIT Lincoln Lab's Group 08-35 Microfab Co-Op (now directly confirmed filled) and an unchanged Dottir Labs dead end (masscec.com still 403s; no company-owned ATS found under Lever/Greenhouse/Ashby).
+
+### Staged
+None — no new fully-verified postings this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 463; `checked` 1691 → 1694 (+3 entries). Zero duplicate Application Links across all 463 `rows` entries (programmatic check). `.xlsx` file changed per `git status` (1957637 → 1961356 bytes).
+
+### Worth re-checking next time
+- **MIT Lincoln Laboratory "Rapid Prototyping Aero/Mech Co-Op - Group 77" (job 1423005300)** — worth a rendered-browser (Playwright) fetch rather than plain WebFetch, since the raw HTML this run omitted any season string that a JS-rendered view might show.
+- Werfen (Bedford, MA), Globus Medical, Dottir Labs (Somerville, MA) — all still not re-touched; periodic re-check only.
+- Carrier Global Corporation and Magellan Aerospace — still not due (run 165 said "a few weeks").
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current.
+- Tracker is now at 463 rows / 1694 checked entries after 171 runs. Net this run: 0 new qualifying postings, 3 checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — this is the 3rd consecutive run (169-171) with zero net new `rows` entries since run 168's last addition (X-ES).
