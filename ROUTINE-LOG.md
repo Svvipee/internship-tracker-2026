@@ -8934,3 +8934,38 @@ None this run.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG — all believed saturated/current, not re-touched this run.
 - **Process note:** a company-name dedup extraction should canonicalize on the bare company name (e.g. "Buro Happold") before briefing a research agent — this run's agent re-surfaced a company already tracked since run ~140 because its own dedup pass didn't catch it; this session's independent re-verification step caught the near-miss before it became a duplicate, which is exactly why that step exists. Keep it.
 - Tracker is now at 463 rows / 1684 checked entries after 168 runs. Net this run: 1 new qualifying posting (X-ES, Verona WI), 6 checked-exclusion entries, 1 staged file.
+
+## Run 169 — 2026-11-12 ~06:50–07:15 UTC
+
+### Repo hygiene
+Fresh container again, HEAD detached at run 168's commit (`69d0b6f`), matching `origin/master` exactly (confirmed via `git fetch origin master` — no unpushed work existed). `git checkout master && git pull origin master` fast-forwarded cleanly before starting work. Same recurring fresh-container artifact as many prior runs.
+
+### What was searched
+Dispatched one background research agent for (a) a fresh new-company sweep, briefed on the ~154 unique company names already in `rows` (extracted via grep) plus the full `checked` array for context, and told to report back rather than edit files directly; and (b) three specific carry-over re-checks flagged by run 168 as worth another look: Werfen (Bedford, MA), NuVasive/Globus Medical (Methuen, MA), and Dottir Labs (Somerville, MA). This session then independently re-verified the two most consequential claims — Globus Medical's Workday-API-sourced posting and Werfen's iCIMS title/body contradiction — via direct `curl`/WebFetch against the companies' own backends before touching `build.mjs`, per standing methodology. Per run 168's note, Carrier Global Corporation and Magellan Aerospace were skipped (not yet due — "a few weeks" from run 165, only ~1 day elapsed).
+
+### Added to `rows`
+None. Zero new qualifying postings survived verification this run.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (6 new entries)
+- **Werfen (Bedford, MA)** — resolved from "unconfirmable" (run 168) to fully mapped. Found and independently confirmed a working `&in_iframe=1` URL technique that bypasses Werfen's iCIMS JS-redirect shell without needing Playwright. All 4 current live co-op postings read directly: the one titled "ACDx Electrical Engineering Co-Op (Spring 2027)" (req 10997) has a title/body contradiction — body says "Fall co-op" with no year — independently re-confirmed via this session's own WebFetch (not just the agent's claim); it's also Electrical, not Mechanical. The other 3 postings state no season and use generic (non-mechanical-specific) degree requirements. Zero confirmed Spring 2027/Winter 2026 mechanical co-op currently live. Not added.
+- **NuVasive / Globus Medical — update.** Found "2027 Co-Op & Internship, Project Engineer" (req JR108109, Audubon, PA) via Globus's own Workday CXS API. This session independently re-fetched the same API endpoint directly (`curl` POST to the jobs search endpoint, then the job-detail endpoint) and confirmed verbatim: `canApply: true`, posted 29 days ago, body states "THIS ROLE IS FOR 2027 SPRING/SUMMER CO-OP CANDIDATES" with no separate selectable term and no date range anywhere — unlike this tracker's existing multi-term precedents (e.g. X-ES) where a Jan-start option is distinguishable from a May-start one. Per Hamza's explicit Summer-2027 exclusion and the strict season-verification bar, this fails verification (same precedent as Carrier Global's "Spring" title / "summer of 2027" body mismatch, run 165) and is NOT added to `rows`, despite being real, open, and mechanical/biomedical-eligible. Also not Boston-area. Methuen, MA site itself has no mechanical/robotics co-op right now. Not added.
+- **Dottir Labs (Somerville, MA)** — re-check, no change. masscec.com still 403s (confirmed via direct `curl -I`, so it's the site's own bot-protection, not a tool limitation); no company-owned ATS found under any common platform. Still genuinely unconfirmable. New data point logged: contact emails charles@dottirlabs.com / nili@dottirlabs.com, in case Hamza wants to reach out directly outside this tracker's verification process.
+- **Field AI (Boston, MA)** — resolved/closed out. The long-standing "open but unverifiable season" standing thread (carried across runs 131–157) is gone: the Boston mechanical-intern posting no longer exists on Field AI's live Lever board at all. Dropped from future re-check priority.
+- **National sweep (1 consolidated entry, 11 companies)** — CubicPV, Lithios, Kytopen (no internship/co-op of any kind); PanelClaw (no season stated); VEIR, Infinite Cooling, xGenomes (re-checks, all unchanged from prior findings); HaloBraid (co-op cycle not currently posted); York Space Systems (no live Spring 2027 posting); Xona Space Systems (season- and ITAR-explicit Spring 2027 posting found but confirmed closed); American Robotics (no locatable careers presence). None added.
+
+### Staged
+None — no new fully-verified postings this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via line-count (not substring-count): `rows` unchanged at 463; `checked` 1684 → 1689 (+5 entries covering the 6 items above — Werfen and the Globus Medical update were logged as separate entries, with the national sweep consolidated into one). Zero duplicate Application Links across all 463 `rows` entries (programmatic check). `.xlsx` file changed per `git status` (1947800 → 1954291 bytes).
+
+### Worth re-checking next time
+- **Werfen (Bedford, MA)** — now fully mapped as "not currently a match," not unconfirmable; worth another look only if req 10997's body text is ever corrected to match its "Spring 2027" title.
+- **Globus Medical** — worth a periodic re-check in case they ever post a season-unambiguous mechanical req (distinct Spring-only vs Summer-only listings) at Methuen or elsewhere.
+- **Dottir Labs (Somerville, MA)** — still blocked at the source (masscec.com 403, no company ATS); contact emails now on file if Hamza wants to reach out directly.
+- Carrier Global Corporation and Magellan Aerospace — still not due (run 165 said "a few weeks"); unchanged.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current, not re-touched this run.
+- Tracker is now at 463 rows / 1689 checked entries after 169 runs. Net this run: 0 new qualifying postings (one borderline candidate, Globus Medical JR108109, deliberately excluded for season ambiguity rather than added), 6 checked-exclusion entries (one resolved standing thread, one update, one re-check, one closed-out, one consolidated 11-company national sweep), 0 staged files. Heavy saturation continues to hold — this session's independent re-verification of the agent's two strongest claims (Werfen, Globus Medical) is what caught the season ambiguity that the verification bar requires excluding.
