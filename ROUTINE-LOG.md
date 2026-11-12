@@ -8969,3 +8969,36 @@ None — no new fully-verified postings this run.
 - Carrier Global Corporation and Magellan Aerospace — still not due (run 165 said "a few weeks"); unchanged.
 - GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current, not re-touched this run.
 - Tracker is now at 463 rows / 1689 checked entries after 169 runs. Net this run: 0 new qualifying postings (one borderline candidate, Globus Medical JR108109, deliberately excluded for season ambiguity rather than added), 6 checked-exclusion entries (one resolved standing thread, one update, one re-check, one closed-out, one consolidated 11-company national sweep), 0 staged files. Heavy saturation continues to hold — this session's independent re-verification of the agent's two strongest claims (Werfen, Globus Medical) is what caught the season ambiguity that the verification bar requires excluding.
+
+## Run 170 — 2026-11-12 ~12:51–13:02 UTC
+
+### Repo hygiene
+Fresh container again, `HEAD` detached at run 169's commit (`08a7576`), matching `origin/master` exactly (confirmed via `git fetch origin master` — no unpushed work existed). Same recurring fresh-container artifact as many prior runs; no recovery needed.
+
+### What was searched
+Extracted 1343 unique company names from `build.mjs` (grep on `Company:` fields) to a scratchpad file and dispatched one background research agent for a fresh new-company sweep, briefed on that list and told to skip every company on it and report back rather than edit files directly. Per run 169's notes, Carrier Global Corporation and Magellan Aerospace were skipped (still not due — only ~1 day elapsed since run 165's "a few weeks" flag); Globus Medical and Dottir Labs were left for a later periodic re-check rather than re-touched this run.
+
+### Added to `rows`
+None. The agent's one candidate — CPI Electron Device Business (Beverly, MA) "Mechanical Engineering Co-Op" — did not survive this session's independent re-verification (see below).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (2 new entries, covering 7 companies)
+- **CPI Electron Device Business** (Communications & Power Industries, Beverly, MA) — new-to-tracker. The aggregator-mirrored posting's own text reads "The Co-Op will be January 2027 - June 2026" — an internally contradictory date range that fails the explicit-season-stated-on-the-posting bar. This session independently queried CPI's own live ATS directly (recruiting2.ultipro.com, JS-rendered, read via Playwright since plain WebFetch returned only an "unsupported browser" shell) — searched "mechanical" and "co-op" across all 36 current company-wide openings; zero matches at any location, including Beverly/Electron Device Business. The req is not currently live on CPI's own board at all, only on third-party mirrors (career.com, Interndock) — consistent with a stale/expired/rotated req. Not added.
+- **National sweep, run 170 (6 companies)** — BlueWave (Boston, solar — only one live co-op, non-engineering, wrong discipline anyway), Designers Choice Inc (Hyde Park, MA — Industrial Engineering co-op closed, window 2/5-4/29/2026), Goddard Technologies Inc (Beverly, MA — Mechanical Engineering Co-op posting directly confirmed "not open for applications"), Methods Machine Tools (Sudbury, MA — co-op reqs found for several terms but none Winter2026/Spring2027; two direct job-page URLs 404'd), Palmer Foundry (Palmer, MA — ~75 mi west of Boston, outside the area preference, season unconfirmable, ITAR-controlled facility), Acumino (no careers page or posting of any kind found). None added.
+- Also re-surfaced by the agent but already logged in prior runs (not re-logged): SpaceRake, Found Energy, XGenomes, Eyebot — all unchanged from their existing dated entries (confirmed via full-text grep, not just the `Company:`-field dedup list, since several of these only appear inside earlier consolidated entries' Notes text rather than as a standalone `Company:` key — same canonicalization gap flagged in run 168's process note).
+
+### Staged
+None — no new fully-verified postings this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct regex count on `build.mjs`: `rows` unchanged at 463; `checked` 1689 → 1691 (+2 consolidated entries covering 7 companies). `.xlsx` file changed per `git status`.
+
+### Worth re-checking next time
+- **CPI Electron Device Business (Beverly, MA)** — not worth re-chasing this exact stale req; would need a freshly-posted CPI EDB co-op with a clean, non-contradictory season statement live on CPI's own UltiPro board (recruiting2.ultipro.com/COM1009CPII/JobBoard/...) to qualify.
+- Werfen (Bedford, MA), Globus Medical, Dottir Labs (Somerville, MA) — all flagged in run 169, not yet due/not re-touched this run.
+- Carrier Global Corporation and Magellan Aerospace — still not due (run 165 said "a few weeks"); only ~1 day elapsed, unchanged.
+- GE Aerospace, Draper, MIT Lincoln Laboratory, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current, not re-touched this run.
+- **Process note (reaffirming run 168's):** full-text grep (not just `Company:`-field extraction) is needed to catch companies logged only inside a consolidated entry's Notes text — this run's agent re-surfaced SpaceRake/Found Energy/XGenomes/Eyebot because its own dedup pass, like run 168's, missed names that live only in prose rather than as a `Company:` key. This session's own cross-check (grep against full `build.mjs` text) caught it before any duplicate was logged. A future run could consider periodically re-flattening the checked array's multi-company consolidated entries into individual `Company:`-keyed rows to close this gap for good.
+- Tracker is now at 463 rows / 1691 checked entries after 170 runs. Net this run: 0 new qualifying postings (one candidate, CPI Electron Device Business, deliberately excluded for a self-contradictory season statement and absence from the company's own live ATS), 2 checked-exclusion entries (covering 7 companies total), 0 staged files. Heavy saturation continues to hold at run 170.
