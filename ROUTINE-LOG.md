@@ -9071,3 +9071,47 @@ None this run — no new fully-verified postings.
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current.
 - **Useful finding for future runs:** GE Aerospace's and Draper's correct Workday CXS tenant/site slugs are `geaerospace.wd5`/`GE_ExternalSite` and `draper.wd5`/`Draper_Careers` (confirmed working directly); earlier guesses at `wd1`/`Careers` 404 with HTTP_422. Worth reusing these directly rather than guessing each run.
 - Tracker is now at 463 rows / 1701 checked entries after 172 runs. Net this run: 0 new qualifying postings, 7 checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — the 4th consecutive run (169-172) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+## Run 173 — 2026-11-13 ~06:50–07:35 UTC
+
+### Repo hygiene
+Fresh container, local `master` was detached at run 172's own commit (`896a4f6`), exactly matching `origin/master` — confirmed run 172 had already pushed successfully, no unpushed work at risk. Ran `git checkout master && git merge --ff-only origin/master` (fast-forwarded cleanly). Same long-standing fresh-container artifact as prior runs.
+
+### What was searched
+Resolved run 172's two carried-forward priorities directly: (1) Battelle (Hilliard, OH) — re-checked the "Manufacturing Engineering Co-Op (Spring 2027)" posting's deadline directly against the aggregator mirror (careers.battelle.org itself remains 403-blocked to direct fetch); also found and checked a second Battelle req, "Electrical Engineering Co-Op (Spring Semester 2027)" (Columbus, OH). (2) Periodic re-checks of Amentum, Werfen (Bedford, MA — found one new, undated req), and Dottir Labs (Somerville, MA) — all still blocked/unresolved per their standing notes. Also spot-checked whether several already-tracked discipline fits (Boston Dynamics, Entegris, Analog Devices, Vicor, Hologic, Markforged, Desktop Metal, MKS Instruments, Cognex, Anduril, Saronic, Varda, Shield AI, Stoke Space, Impulse Space, True Anomaly, Firefly Aerospace, Hadrian, Castelion, Epirus, Ursa Major) were already saturated in the tracker before spending further effort on them (all confirmed heavily covered — 5 to 193 existing mentions each). Separately dispatched one background research agent for a fresh new-to-tracker company sweep, briefed to first grep all ~1,368 unique `Company:` field lines in `build.mjs` as its skip list, then search nationally for genuinely new Winter 2026/Spring 2027 mechanical/aero/manufacturing/robotics postings.
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification — this is the 5th consecutive run (169-173) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (14 new entries)
+- **Battelle — "Manufacturing Engineering Co-Op (Spring 2027)" (Hilliard, OH)** — resolved run 172's carried-forward note: posting's own stated deadline (2026-08-21) already passed. Closed.
+- **Battelle — "Electrical Engineering Co-Op (Spring Semester 2027)" (Columbus, OH)** — new-to-tracker; season fits but discipline is electrical engineering, not mechanical/aero/manufacturing/controls-adjacent. Not added.
+- **Werfen — "R&D Systems Hardware Engineering Co-op" (Bedford, MA)** — new req, freshly posted (2026-11-02, deadline 2026-12-08), Boston-area, but no season/term stated anywhere on the posting (only "a semester long" with no year). Werfen's own iCIMS search is JS-rendered and blocked both to direct fetch and a Playwright render (redirected to the generic homepage). Not added — unverifiable for season.
+- **Amentum** — periodic re-check per run 161's "Spring posting window ~Oct 2026-Feb 2027" note. Still nothing live for Spring 2027 mechanical/aero as of this run; current postings are Summer/Fall 2026. Still worth a periodic re-check.
+- **Dottir Labs (Somerville, MA)** — periodic re-check; same masscec.com-only postings as before, still no season/date shown and no company-owned ATS locatable. Unchanged, still unverifiable.
+- **rStream Recycling** — new-to-tracker; "Mechanical Engineering Co-Op - Robotics" explicitly dated "winter/spring of 2025" (wrong season, ~2 years stale) and marked closed. Not added.
+- **Kinema Systems** — new-to-tracker; "Supplier Quality Engineer Intern" closed, no season stated, and QA discipline mismatch. Not added.
+- **Snyder & Associates / Shuck-Britson (Ankeny, IA)** — new-to-tracker; iCIMS URL redirects to a landing page with zero open postings. Not added.
+- **KPFF Consulting Engineers** — new-to-tracker; only posting found dated "Spring 2026" (wrong/past season); site also returned HTTP 503. Not added.
+- **BMW Group Manufacturing (Spartanburg, SC)** — new-to-tracker; two season/discipline-fitting Spring 2027 manufacturing co-op reqs (191747, 191166) both now return "not available at this time" on direct fetch — pulled/closed. Not added.
+- **Space Kinetic (El Segundo, CA)** — new-to-tracker; full 44-posting Greenhouse board checked directly — only internship listed is the "2027 Engineering Development Program," explicitly Summer 2027. Wrong season. Not added.
+- **Liebherr Aerospace / Liebherr USA (Newport News, VA)** — new-to-tracker; all four current internship postings (Manufacturing Engineering, HIL Systems Engineering, Analysis & Simulation Engineering, Welder) are explicitly Fall 2026. No Winter/Spring 2027 posting found. Not added — worth a periodic re-check once the next cohort posts.
+- **Safran Electronics & Defense (Irvine, CA)** — new-to-tracker; discipline-fitting "Engineering Co-Op" (job 189254) but safran-group.com 403s on direct fetch (not circumvented) and a prior-year sibling posting suggested a rolling, undated req rather than a Spring-2027-specific one. Parent Safran USA already excluded for the same 403 block. Not added — unverifiable.
+- **Marmon Holdings / Powerex-Iwata Air Technology (Harrison, OH)** — additional req at an already-tracked company; a "Spring 2027 Industrial Engineer Co-op" is claimed only by a simplify.jobs aggregator mirror, and Marmon's own Workday board (bot-blocked, 403/400) could not independently confirm it. Not added — unverifiable against primary source.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 463; `checked` 1701 → 1715 (+14). `.xlsx` file changed per `git status`.
+
+### Worth re-checking next time
+- **Werfen "R&D Systems Hardware Engineering Co-op" (Bedford, MA)** — only worth re-chasing if a dated (explicit season) version of this req surfaces; the current undated one isn't worth re-polling.
+- **Liebherr Aerospace (Newport News, VA)** — currently Fall-2026-only; worth a re-check once their next (likely Winter/Spring) cohort posts.
+- **Safran Electronics & Defense (Irvine, CA)** — blocked by the same 403 as parent Safran USA; would need a non-blocked mirror or a live-browser render to ever resolve either.
+- Carrier Global Corporation, Magellan Aerospace, Globus Medical — still not re-touched, periodic re-check only (per run 165/169's "a few weeks" notes — only ~2-3 days elapsed, still not due).
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Werfen (standing req), Dottir Labs — all believed saturated/current or already periodically re-checked this run.
+- Tracker is now at 463 rows / 1715 checked entries after 173 runs. Net this run: 0 new qualifying postings, 14 checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — the 5th consecutive run (169-173) with zero net new `rows` entries since run 168's last addition (X-ES).
