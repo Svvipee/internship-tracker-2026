@@ -9115,3 +9115,31 @@ None this run — no new fully-verified postings.
 - Carrier Global Corporation, Magellan Aerospace, Globus Medical — still not re-touched, periodic re-check only (per run 165/169's "a few weeks" notes — only ~2-3 days elapsed, still not due).
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Werfen (standing req), Dottir Labs — all believed saturated/current or already periodically re-checked this run.
 - Tracker is now at 463 rows / 1715 checked entries after 173 runs. Net this run: 0 new qualifying postings, 14 checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — the 5th consecutive run (169-173) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+## Run 174 — 2026-11-13 ~12:56–13:20 UTC
+
+### Repo hygiene — CRITICAL FINDING, now fixed
+Container started in a detached HEAD at run 173's commit (`439416b`), but local `master` and `origin/master` were still sitting all the way back at run 149's commit (`7e0c63b`, 2026-11-07). That means **every run from 150 through 173 — roughly 24 runs across 6 days — had committed locally but none of that work had ever actually reached a branch ref or `origin/master`.** Each of those runs' own "repo hygiene" checks were apparently comparing against a stale/cached `origin/master` pointer rather than a fresh fetch, so they kept reporting "already in sync" while the real remote stayed frozen at run 149. All 25 commits (data for runs 150–173, including dozens of `rows`/`checked` entries and ~20 staged-application files) were still physically present in this container's git history, just unreachable from any branch. Fixed this run: `git checkout master && git merge --ff-only 439416b...` (clean fast-forward, no conflicts) followed by `git push -u origin master`, then independently re-verified via `git fetch origin master` that `origin/master` now equals local `master` at `439416b`. **Recommendation for future runs: always `git fetch origin master` (not just read a cached ref) before trusting a "local matches origin" conclusion, and confirm `git push` actually advanced the remote ref (e.g. via a fetch-and-compare), not just that the command exited without error.**
+
+### What was searched
+Dispatched one fresh background research agent (general-purpose, with WebSearch/WebFetch) for a new-company sweep, given the skip list of all 1,381 unique `Company:` values already in `build.mjs` and the full verification bar. It ran ~20 search angles (ATS boards, Boston-area hardware/robotics startups, YC-funded hardware companies, small aerospace suppliers, structural/civil/controls engineering firms) and opened 6 candidates directly: SpaceRake Inc. (Watertown, MA), Fabri Inc. (Billerica, MA), Marvin (Roanoke, VA, window/door mfr), Luxium Solutions LLC (Hiram, OH), HDR Inc. (structural, multiple locations), Mott MacDonald (Westwood, MA). Cross-checked all 6 against existing `checked` entries before editing: 5 of the 6 (SpaceRake, Fabri, Marvin, HDR, Mott MacDonald) were already logged excluded in prior consolidated batch entries (runs 126/133/134/162) with the same conclusions the agent independently reached again — not re-logged to avoid duplicate entries. Only Luxium Solutions, LLC was genuinely new-to-tracker. Did not re-touch any of the standing "not yet due" periodic re-check items (Werfen, Liebherr Aerospace, Safran Electronics, Carrier Global, Magellan Aerospace, Globus Medical) per run 173's notes — none had become due in the ~6 hours since.
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification — the 6th consecutive run (169-174) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (1 new entry)
+- **Luxium Solutions, LLC (Hiram, OH)** — "Industrial Engineering Co-Op," $20/hr, on-site — fetched directly at jobs.workable.com. Posting's own body explicitly states "the Fall of 2026" as the term — wrong season. Not added.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 463; `checked` 1715 → 1716 (+1). `.xlsx` file changed per `git status`.
+
+### Worth re-checking next time
+- Same standing list as run 173 (Werfen, Liebherr Aerospace, Safran Electronics & Defense, Carrier Global, Magellan Aerospace, Globus Medical) — none due yet.
+- **Repo-hygiene check going forward**: confirm with a real `git fetch` (not a cached ref) that `origin/master` matches local `master` at the start of every run, and verify the end-of-run `git push` actually advanced the remote ref.
+- Tracker is now at 463 rows / 1716 checked entries after 174 runs. Net this run: 0 new qualifying postings, 1 checked-exclusion entry, 0 staged files, plus recovery and push of 6 days' worth of previously-unpushed work (runs 150–173).
