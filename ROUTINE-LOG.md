@@ -9034,3 +9034,40 @@ None — no new fully-verified postings this run.
 - Carrier Global Corporation and Magellan Aerospace — still not due (run 165 said "a few weeks").
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current.
 - Tracker is now at 463 rows / 1694 checked entries after 171 runs. Net this run: 0 new qualifying postings, 3 checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — this is the 3rd consecutive run (169-171) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+## Run 172 — 2026-11-13 ~00:49–01:10 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started detached, local `master` ref was stale at run 149's commit (pre-fetch artifact). Ran `git fetch origin master`, which resolved to run 171's commit (`b2a52d8`), exactly matching the detached HEAD — confirmed run 171 had already pushed successfully, no unpushed work at risk. Ran `git checkout master && git merge --ff-only origin/master` (fast-forwarded 23 commits). Same long-standing fresh-container artifact as many prior runs; no recovery needed.
+
+### What was searched
+Resolved run 171's one carried-forward priority directly (not delegated): MIT Lincoln Laboratory's "Rapid Prototyping Aero/Mech Co-Op - Group 77" (job 1423005300), this time via a real headless-Chromium (Playwright) render rather than plain WebFetch, confirming the prior run's finding was not a rendering artifact. While doing that, ran a fresh careers.ll.mit.edu "co-op" keyword search and found 6 other MIT LL req IDs not yet in the tracker; rendered the two most promising (Structural & Thermal-Fluids Engineering CO-OP, Security Department Co-Op) directly via Playwright, and resolved the remaining 4 on season/discipline grounds from the search index's own title/date text. Also independently re-queried GE Aerospace's and Draper Laboratory's own Workday CXS job-search APIs directly (found the correct tenant/site slugs — `geaerospace.wd5`/`GE_ExternalSite` and `draper.wd5`/`Draper_Careers` — by reading existing tracked Application Links in `build.mjs`, since earlier tenant-slug guesses 404'd with HTTP_422). Separately dispatched one background research agent for a fresh new-to-tracker company sweep, briefed on the full ~1360-company skip list extracted from `build.mjs`, told to skip the standing saturated-source list (GE Aerospace, Draper, MIT Lincoln Lab, Carrier Global, Magellan Aerospace, Werfen, Globus Medical, Dottir Labs, SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES). The agent's one quasi-lead (Harpak-ULMA, Taunton MA, Controls Engineering Co-op — discipline/location fit but season unconfirmable from aggregator mirrors) was independently re-checked by this session directly against the company's own ADP Workforce Now ATS (rendered via Playwright).
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (7 new entries)
+- **MIT Lincoln Laboratory — "Rapid Prototyping Aero/Mech Co-Op - Group 77" (job 1423005300)** — resolved/closed out. Full Playwright-rendered page body (title through footer) still contains no season/term string anywhere; confirms run 171's finding was a genuine absence of season language, not a rendering artifact. The job no longer even appears in a fresh "co-op" keyword search on careers.ll.mit.edu, possibly delisted. Not worth further re-checking unless reposted with an explicit season.
+- **MIT Lincoln Laboratory — "Structural & Thermal-Fluids Engineering CO-OP, Spring/Summer 2027 (Group 77-74)" (job 1450304600)** — new-to-tracker, posted 1 day ago, strong Mechanical/Aero discipline fit, but the posting's own body explicitly states "Spring/Summer 2027 Co-Op (approximately January through August)" — a merged term with no separable Spring-only range, same exclusion precedent as Carrier Global (run 165) and Globus Medical (run 169). Not added.
+- **MIT Lincoln Laboratory — "Security Department Co-Op, (Jan 2027 - June 2027) - Group 12-00" (job 1439561400)** — new-to-tracker; season fits exactly, but the role requires a Criminal Justice/security background, not engineering. Discipline mismatch. Not added.
+- **MIT Lincoln Laboratory — wrong-season/wrong-discipline batch (6 req IDs: 1437452700, 1437456600, 1316028700, 1448624200, 1450305200, 1450306500)** — three IT/software-discipline co-ops (season-fitting but wrong field) and three June/August-2027-start co-ops (wrong season, run into the excluded summer/fall wave). None added.
+- **GE Aerospace / Draper Laboratory — direct Workday CXS API re-check** — queried both companies' own job-search APIs directly; GE Aerospace returns 4 results (all already tracked/excluded by exact req ID), Draper returns 8 (all already tracked/excluded by exact req ID). Zero new reqs from either primary source.
+- **Harpak-ULMA Packaging LLC (Taunton, MA)** — new-to-tracker; a "Controls Engineering Co-op" surfaced only on stale aggregator mirrors (some dated 2022) with no confirmable season. The company's own live ATS (ADP Workforce Now) lists exactly 10 current openings company-wide and none is a co-op/internship — the aggregator listing is not currently live. Not added.
+- **National sweep, run 172 (background research agent, 4 companies)** — DN Tanks (Wakefield, MA, past/closed cycle), ZwitterCo (Cambridge/Woburn, MA, wrong season + weak discipline), Battelle (Hilliard, OH, deadline already passed — not independently re-verified on the company's own site this run, worth a direct careers.battelle.org check if chased again), ATI Industrial Automation/Novanta (Apex, NC, explicitly Summer 2027 + deadline passed). None added.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 463; `checked` 1694 → 1701 (+7). `.xlsx` file changed per `git status`.
+
+### Worth re-checking next time
+- **Harpak-ULMA (Taunton, MA)** — not worth re-chasing the exact stale aggregator req; would need a freshly-posted, dated co-op/intern req live on the company's own ADP ATS to qualify.
+- **Battelle (Hilliard, OH)** — this run's exclusion (deadline passed) relied on an aggregator date, not the company's own careers.battelle.org (blocked by a third-party mirror's HTTP 403, not independently re-tried against the primary source). Worth a direct visit next time Battelle co-ops are chased.
+- Werfen (Bedford, MA), Globus Medical, Dottir Labs (Somerville, MA), Carrier Global Corporation, Magellan Aerospace — all still not re-touched; periodic re-check only.
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES — all believed saturated/current.
+- **Useful finding for future runs:** GE Aerospace's and Draper's correct Workday CXS tenant/site slugs are `geaerospace.wd5`/`GE_ExternalSite` and `draper.wd5`/`Draper_Careers` (confirmed working directly); earlier guesses at `wd1`/`Careers` 404 with HTTP_422. Worth reusing these directly rather than guessing each run.
+- Tracker is now at 463 rows / 1701 checked entries after 172 runs. Net this run: 0 new qualifying postings, 7 checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — the 4th consecutive run (169-172) with zero net new `rows` entries since run 168's last addition (X-ES).
