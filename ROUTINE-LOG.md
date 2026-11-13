@@ -9143,3 +9143,35 @@ None this run — no new fully-verified postings.
 - Same standing list as run 173 (Werfen, Liebherr Aerospace, Safran Electronics & Defense, Carrier Global, Magellan Aerospace, Globus Medical) — none due yet.
 - **Repo-hygiene check going forward**: confirm with a real `git fetch` (not a cached ref) that `origin/master` matches local `master` at the start of every run, and verify the end-of-run `git push` actually advanced the remote ref.
 - Tracker is now at 463 rows / 1716 checked entries after 174 runs. Net this run: 0 new qualifying postings, 1 checked-exclusion entry, 0 staged files, plus recovery and push of 6 days' worth of previously-unpushed work (runs 150–173).
+
+## Run 175 — 2026-11-13 ~18:56–19:10 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started detached at run 174's own commit (`e5d9a8c`). Ran `git fetch origin master` directly (per run 174's own recommendation, not trusting a cached ref) — confirmed `origin/master` already equaled `e5d9a8c`, i.e. run 174's push had genuinely landed. Ran `git checkout -B master origin/master` to get onto a real branch tracking origin. No unpushed work at risk, no recovery needed.
+
+### What was searched
+Dispatched one background research agent (general-purpose) for a fresh new-to-tracker company sweep, briefed on the skip list (grep all ~1,382 unique `Company:` values from `build.mjs`) and the full verification bar. It ran 12 distinct search angles (Boston-area hardware/robotics startups, YC-funded hardware companies, ATS-board direct searches, MA manufacturing/structural/controls/materials/avionics co-ops, MassRobotics members, recent seed-funding news) and opened candidates directly rather than trusting aggregator snippets. Did not re-touch the standing "not yet due" periodic re-check list (Werfen, Liebherr Aerospace, Safran Electronics & Defense, Carrier Global, Magellan Aerospace, Globus Medical) — only ~2 days elapsed since run 173/174, still not due per the "a few weeks" standard.
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification — the 7th consecutive run (169–175) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (4 new entries, covering 7 companies)
+- **Buro Happold — "Plumbing & Fire Protection Co-op - Boston - Spring 2027" (job 2463)** — a third, distinct job ID at an already-tracked company (siblings: Mechanical Co-op job 2462 and Structural Co-op job 2464, both already in `rows`). Confirmed open directly, Boston MA, Spring 2027, $24-34/hr — but discipline (plumbing/fire protection, "BEnv Public Health") falls outside Hamza's stated discipline list. Not added.
+- **HNTB Corporation — "Civil Engineer Co-op - Structures" (Boston, MA)** — new-to-tracker. Season (Spring 2027) and discipline (structural) fit, but the only reachable copy (a Simplify aggregator mirror; HNTB's own hntb.jobs board is JS-only and didn't load via direct fetch) shows the listing as "Inactive." Not added — best evidence says closed; worth a Playwright re-check of HNTB's own board in case the status is stale.
+- **National sweep, run 175 (4 companies rejected)** — Kleinfelder Inc. (Boston, MA structural co-op — HTTP 410 Gone), Onshore Technologies (Hooksett, NH manufacturing co-op — HTTP 410 Gone, cached window was Feb-May 2026 anyway), Albireo Energy (Chelmsford, MA controls intern — no season stated anywhere, 2+ months stale, one mirror even labels it full-time), Leonardo DRS Fitchburg MA (the specific co-op req found is delisted; a direct site-search found 14 current Fitchburg postings, none an internship). None added.
+- **Benesch (Boston, MA structural co-op)** — new-to-tracker; only a 2026-cycle posting exists, expired June 2026; no 2027 cycle posted yet. Not added — worth a re-check once their next cycle posts.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 463; `checked` 1716 → 1720 (+4 entries, covering 7 companies). `.xlsx` file changed per `git status` (1977578 → 1981106 bytes).
+
+### Worth re-checking next time
+- **HNTB Corporation "Civil Engineer Co-op - Structures" (Boston, MA)** — worth a Playwright-rendered direct check of HNTB's own hntb.jobs board; the current "Inactive" read comes only from an aggregator mirror.
+- **Benesch (Boston, MA)** — re-check once their Spring 2027 structural co-op cycle posts (2026 cycle already expired).
+- Same standing list as runs 173-174 (Werfen, Liebherr Aerospace, Safran Electronics & Defense, Carrier Global, Magellan Aerospace, Globus Medical) — none due yet, only ~2 days elapsed.
+- Tracker is now at 463 rows / 1720 checked entries after 175 runs. Net this run: 0 new qualifying postings, 4 checked-exclusion entries (7 companies), 0 staged files. Heavy saturation continues — the 7th consecutive run (169-175) with zero net new `rows` entries since run 168's last addition (X-ES).
