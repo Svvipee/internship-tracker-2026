@@ -9175,3 +9175,38 @@ None this run — no new fully-verified postings.
 - **Benesch (Boston, MA)** — re-check once their Spring 2027 structural co-op cycle posts (2026 cycle already expired).
 - Same standing list as runs 173-174 (Werfen, Liebherr Aerospace, Safran Electronics & Defense, Carrier Global, Magellan Aerospace, Globus Medical) — none due yet, only ~2 days elapsed.
 - Tracker is now at 463 rows / 1720 checked entries after 175 runs. Net this run: 0 new qualifying postings, 4 checked-exclusion entries (7 companies), 0 staged files. Heavy saturation continues — the 7th consecutive run (169-175) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+## Run 176 — 2026-11-14 ~00:50–01:40 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started detached at run 175's own commit (`ef6b89c`). Ran `git fetch origin master` directly (not a cached ref) — confirmed `origin/master` already equaled `ef6b89c`, i.e. run 175's push had genuinely landed. Ran `git checkout -B master origin/master` to get onto a real branch tracking origin. No unpushed work at risk, no recovery needed.
+
+### What was searched
+Directly resolved run 175's one carried-forward priority: HNTB Corporation's "Civil Engineer Co-op - Structures" (Boston, MA), previously only checkable via an aggregator mirror showing "Inactive." This time used a real headless-Chromium (Playwright) render of HNTB's own job-search tool (hntb.jobs/jobs/), filling the keyword/location search fields directly rather than guessing a URL — confirmed via the company's own primary source, not a mirror. Also dispatched one background research agent (general-purpose) for a fresh new-to-tracker company sweep, briefed on the full skip-list (grep of all unique `Company:` values in `build.mjs`) plus the standing saturated-source list, run 12+ search angles (Boston hardware/robotics startups, YC-funded hardware companies, aerospace/defense suppliers, structural firms, materials/controls companies, recent seed-funding news, MassRobotics members, direct ATS-board queries).
+
+### Added to `rows`
+None this run. No new qualifying posting survived verification — the 8th consecutive run (169-176) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Resolved (updated existing `checked` entry)
+- **HNTB Corporation — "Civil Engineer Co-op - Structures" (Boston, MA)** — run 175 flagged this as worth a Playwright re-check since only an aggregator ("Inactive") was reachable. This run's direct Playwright render of HNTB's own job-search tool returns "No results were found" for the exact title, and a broader Boston-area "Co-Op" search returns only 6 live listings, none matching — confirms the aggregator's "Inactive" read was accurate. Fully closed out; entry updated in place (not a new row) to cite the primary-source confirmation.
+
+### Added to `checked` (2 new entries + 1 dedup-batch note)
+- **Cross Domain Systems (Medford, MA)** — new-to-tracker; its only locatable "Mechanical Engineering Co-op" (Caltrop fixed-wing UAV program) posting explicitly states "CLOSED ON 9/30/2025," no season was ever stated even while live, and no replacement posting or company-owned careers domain could be found. Not added.
+- **Voltic / Voltic Shipping (East Boston, MA)** — new-to-tracker (electric cargo-vessel startup); its one internship-type listing is explicitly "Summer," the other two listed roles are a non-seasonal contract post and a closed founding-engineer req. No Winter 2026/Spring 2027 co-op found. Not added — evidence was aggregator-only, company's own ATS not independently opened this run.
+- **National-sweep dedup batch, run 176** — the background agent's other "candidates" (Found Energy, VulcanForms, WSP USA, Midwest Aerospace Casting, Fleet Robotics, Bogo Robotics/Braid Robotics/Synthium) were all independently grep-confirmed already present in `build.mjs` before any edit — the same recurring re-discovery pattern already documented in runs 87/105/159/162/163, where a company-level web search resurfaces names a direct grep against this file would catch instantly. None re-logged as new; zero genuinely new postings from that portion of the sweep.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 463; `checked` 1720 → 1723 (+3 net array entries; the HNTB update was an in-place edit, not a new entry). Zero duplicate Application Links across all 463 `rows` entries (programmatic check). `.xlsx` file changed per `git diff --stat` (1981106 → 1984927 bytes).
+
+### Worth re-checking next time
+- Same standing periodic-recheck list as runs 173-175 (Werfen "R&D Systems Hardware Engineering Co-op," Liebherr Aerospace, Safran Electronics & Defense, Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch) — none due yet, only ~1 day elapsed since run 175's note.
+- **Voltic / Voltic Shipping (East Boston, MA)** — only aggregator-sourced this run; worth a direct-ATS check if chased again, to see if a Winter 2026/Spring 2027 cohort exists beyond the Summer listing found.
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum — all believed saturated/current.
+- **Process note for future runs:** a background agent given the full company skip-list still re-surfaced ~6 already-tracked companies as "new candidates" this run (0 of them were actually new) — continue grep-checking every agent-reported "new" company by exact name against `build.mjs` before touching `rows`/`checked`, per standing methodology; this caught all 6 before any duplicate entry was written.
+- Tracker is now at 463 rows / 1723 checked entries after 176 runs. Net this run: 0 new qualifying postings, 2 genuinely new checked-exclusion entries (plus 1 resolved/updated HNTB entry, plus 1 dedup-batch note), 0 staged files. Heavy saturation continues to hold — the 8th consecutive run (169-176) with zero net new `rows` entries since run 168's last addition (X-ES).
