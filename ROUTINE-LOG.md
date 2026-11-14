@@ -9296,3 +9296,40 @@ None this run — no new fully-verified postings.
 - Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch — still not due for re-check (per standing "a few weeks" cadence; only ~6 hours elapsed since run 177).
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum — all believed saturated/current.
 - Tracker is now at 464 rows / 1744 checked entries after 178 runs. Net this run: 0 new qualifying postings, 7 new consolidated checked-exclusion entries (~26 companies), 0 staged files. Heavy saturation continues to hold — this session independently re-verified both of the research agent's "Partial" leads and found neither met the verification bar (one a merged Winter-Summer range, one with no season stated at all), consistent with the tracker's long-running pattern of agent-reported candidates not surviving independent re-check.
+
+## Run 179 — 2026-11-14 ~18:45–18:55 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started at run 178's own commit (`41bf3c1`). Ran `git fetch origin master` — confirmed `origin/master` already equaled `41bf3c1`, i.e. run 178's push had landed. Working tree clean, no unpushed work at risk.
+
+### What was searched
+Directly re-checked two carried-forward priorities myself: (1) the Liebherr Mining Equipment Newport News "HIL Systems Engineering Intern - Spring 2027" posting (in `rows` since run 177) — re-fetched directly at careers.liebherr.com, still shows "Apply now" buttons and no closed/expired language; no change needed. (2) Schneider Electric's historical Andover, MA January-cycle "Mechanical Engineer Co-Op" — searched careers.se.com (still 403-blocked to direct fetch) plus aggregator mirrors (Dice, TheMuse, WayUp, Handshake, career.com, ihireconstruction); no Spring 2027/Winter 2026 Andover mechanical req found yet, only wrong-discipline (EE/Firmware/Business Development) Andover co-ops for the 2027 cycle. Also dispatched one background research agent (general-purpose) for a fresh new-to-tracker sweep across ~10 search angles (recently-funded Boston-area hardware/robotics startups, YC-funded hardware companies, direct ATS searches on Greenhouse/Lever/Workday for "Spring 2027 mechanical engineering intern," aerospace/defense primes' new reqs, and run 153/154's previously-flagged-but-unchecked leads: Neurable, Rotostitch, Blues Wireless, Beacon Biosignals, EQORE, BoolSi, Hellbender, Robotix Labs), briefed on the standing anti-duplication methodology (grep every candidate against `build.mjs` before reporting it as new).
+
+### Added to `rows`
+None this run — the 10th run out of 179 total (and 3rd of the last 3) with zero net new `rows` entries. The one genuinely new-to-tracker lead the sweep surfaced (RTX "Manufacturing Engineering Ops Co-Op (Spring/Summer 2027)") did not survive this session's independent re-verification (see below).
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (3 new entries)
+- **Schneider Electric — Andover, MA "Mechanical Engineer Co-Op" — periodic re-check.** Still no Spring 2027/Winter 2026 req found at Andover; Jan-2026 req 96613 remains closed. Worth checking again in a future run.
+- **RTX — "Manufacturing Engineering Ops Co-Op (Spring/Summer 2027)" (Rockford, IL) — new-to-tracker.** The agent's lead described it as possibly at Andover, MA; this session's own re-verification via the actual WayUp posting found it is in Rockford, IL (not Boston-area), the posting's own text states a merged "Spring (January start) and Summer (early to mid August end)" term (fails the explicit-season bar, same precedent as other combined-term exclusions), and the listing is already closed ("no longer accepting applications"). Not added.
+- **Dedup-confirmed non-new batch (background agent, run 179).** Every other company the agent's sweep surfaced (Buro Happold, Formlabs, Reframe Systems, Berkshire Grey, Heron Power, Hermeus, Pyka, Rendezvous Robotics, Beyond Reach Labs, Vital Lyfe, Stoke Space, General Astronautics, SpaceX, Specter Aerospace, Marotta Controls, Rugged Robotics, Amazon Robotics, Flex, Lutron, Lydian, Leonardo DRS, Syska Hennessy, Zipline, Vertex Pharmaceuticals, Castelion, Field AI, Fleet Robotics, Locus Robotics, QuEra Computing, Found Energy/Found Industries) was grep-confirmed already present in `build.mjs` before any edit — the same recurring re-discovery pattern documented in runs 87/105/159/162/163/176. Xona Space Systems, MDA Space (Canada), Sanctuary (Canada), and Zaber (dead link) were checked and rejected on their own merits (no posting / non-US / unreachable). Neurable, Blues (formerly Blues Wireless), and Rotostitch were independently re-confirmed to still have no qualifying posting, matching their existing run-154 entries exactly.
+
+### Still unexplored (carried forward, not newly checked)
+Beacon Biosignals, EQORE, BoolSi, Hellbender, and Robotix Labs remain flagged-but-unchecked from run 153/154 — the agent again ran out of time budget before reaching them. Worth a dedicated check in a future run.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 464; `checked` 1744 → 1747 (+3). Zero duplicate Application Links across all 464 `rows` entries (programmatic check). `.xlsx` file changed per `git diff --stat` (1999986 → 2003363 bytes).
+
+### Worth re-checking next time
+- **Schneider Electric Andover, MA "Mechanical Engineer Co-Op"** — no Spring 2027/Winter 2026 version posted yet; keep checking given the January-cycle historical pattern.
+- **Beacon Biosignals, EQORE, BoolSi, Hellbender, Robotix Labs** — still genuinely unchecked (not ruled out) across runs 153/154/179; worth a dedicated pass with its own time budget next time rather than folding into a broader sweep.
+- **Werfen "R&D Systems Hardware Engineering Co-op" (Bedford, MA)** and **Safran Electronics & Defense (Irvine, CA)** — confirmed unresolvable by WebFetch, curl, and Playwright across two prior runs; only worth revisiting if a differently-worded/dated version surfaces via a fresh search.
+- **Liebherr Mining (Newport News, VA)** — confirmed still live this run; keep an eye out for a closing date appearing.
+- Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch — still not due for re-check (per standing "a few weeks" cadence).
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum — all believed saturated/current.
+- Tracker is now at 464 rows / 1747 checked entries after 179 runs. Net this run: 0 new qualifying postings, 3 new checked-exclusion entries (covering ~34 companies total across the batch), 0 staged files. Heavy saturation continues to hold.
