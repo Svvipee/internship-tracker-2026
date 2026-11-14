@@ -9257,3 +9257,42 @@ None this run.
 - Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch — still not due for re-check for another few weeks (per standing "a few weeks" cadence).
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum — all believed saturated/current.
 - Tracker is now at 464 rows / entries in `checked` grown by 14 (plus 1 resolved update) after 177 runs. Net this run: 1 new qualifying posting (Liebherr Mining, Newport News VA), 14 new checked-exclusion entries, 1 staged file. Breaks the 8-run (169-176) streak of zero net new `rows` entries.
+
+## Run 178 — 2026-11-14 ~13:00 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started detached at run 177's own commit (`4ce34c1`). Ran `git fetch origin master` directly — confirmed `origin/master` already equaled `4ce34c1`, i.e. run 177's push had genuinely landed. Ran `git checkout -B master origin/master`. No unpushed work at risk, no recovery needed.
+
+### What was searched
+Directly re-checked run 177's two carried-forward priorities myself: (1) Liebherr Mining Equipment Newport News Co.'s "HIL Systems Engineering Intern - Spring 2027" posting (added to `rows` last run with no visible closing date) — re-fetched directly at careers.liebherr.com, still live, "Apply now" present, no closed/expired language. No change needed. (2) Werfen's "R&D Systems Hardware Engineering Co-op" (Bedford, MA) and Safran Electronics & Defense (Irvine, CA) job 189254 — both re-tried this run with a real headless-Chromium (Playwright) render in addition to WebFetch, since run 177 flagged Playwright as worth trying. Werfen's iCIMS search still redirects to the generic corporate homepage even when JS-rendered; Safran's Cloudflare "Attention Required!" challenge blocks Playwright exactly as it blocks plain WebFetch/curl — neither is a rendering artifact, both remain genuinely unresolvable by this session's tools. Also dispatched one background research agent (general-purpose) for a fresh new-to-tracker company sweep, briefed on the skip list (~1,367 unique `Company:` values grepped from `build.mjs`) and the standing saturated-source list, run ~15 search angles (MassRobotics' full 102-company resident directory, YC-funded hardware/robotics companies, Pittsburgh robotics cluster, exoskeleton/bionics companies, lidar/satellite companies, materials-science companies, industrial controls/automation vendors, avionics suppliers).
+
+### Added to `rows`
+None this run. The agent's two "Partial" leads (Schneider Electric Fairfield OH, Ouster Product Engineer Intern) did not survive this session's independent re-verification (see below) — the 10th run out of 178 total (and 2nd of the last 2) with zero net new `rows` entries.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (7 new consolidated entries, covering ~26 companies)
+- **Schneider Electric — "Product Engineering Co-Op" (Fairfield, OH)** — new req, only reachable via a Dice mirror (careers.se.com 403'd to both WebFetch and a Playwright render). Posting's own text states "January 2027-July 2027" — a merged Winter-through-Summer range with no separable Spring-only portion, same exclusion precedent as Carrier Global/Globus Medical/MIT Lincoln Lab. Not added. (Schneider Electric itself already broadly checked in runs ~113/10-01 national sweeps — this is a new req, not a first-time check.)
+- **Ouster, Inc. — "Product Engineer Intern" (San Francisco, CA)** — new-to-tracker; confirmed open, good discipline fit, $35/hr, but the posting states no season/start date/duration at all. Fails the explicit-season bar outright. Not added.
+- **Pittsburgh robotics cluster batch (5 companies)** — Carnegie Robotics (co-ops are Summer 2026), ARM Institute (confirmed open but explicitly Summer 2027), ESTAT Actuation (confirmed closed), Seegrid and Near Earth Autonomy (no intern/co-op postings at all). None added.
+- **Exoskeleton/bionics batch (3 companies)** — Dephy Inc. (Boxborough, MA — full-time roles only, no co-op/intern posting), PSYONIC, Sarcos Technology (no current mechanical intern/co-op postings). None added.
+- **Space/satellite/lidar batch (9 companies)** — Seasats (closed, wrong season anyway), Malin Space Science Systems (expired), Spire Global, Planet Labs, HawkEye 360, BlackSky, Umbra Space (no Winter2026/Spring2027 postings), Luminar Technologies, Aeva (no internship postings at all). None added.
+- **Industrial controls/avionics/materials batch (6 companies)** — Standex International/Electronics (season-unconfirmed, ATS 403s), Beckhoff Automation, Yokogawa (no US internships found), Astronics, Innovative Solutions and Support, Avidyne (no Winter2026/Spring2027-dated postings). None added.
+- **MassRobotics resident-startup directory spot-check (~10 companies)** — fetched the full 102-company directory, spot-checked the most substantial-looking members (Able Innovations, AIR Robotics, WiBotic, International Fabric Machines, Kraken Robotics, ModalAI, Tombot) directly; none had a confirmable current mechanical-engineering co-op. The remaining ~90 are mostly very early-stage startups, not individually verified this run given diminishing returns. None added.
+
+Note: the research agent also re-surfaced HDR Inc. (Boston structural co-op) as a seeming "new" lead — this session's own grep confirmed HDR was already logged excluded in runs 162 and 174 (the same recurring canonicalization gap documented in runs 168/170/176, where a company-level web search resurfaces a name that lives only in a consolidated batch entry's prose rather than as a standalone `Company:` key). Not re-logged.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` unchanged at 464; `checked` 1737 → 1744 (+7 consolidated entries covering ~26 companies). Zero duplicate Application Links across all 464 `rows` entries (programmatic check). `.xlsx` file changed per `git diff --stat` (1994336 → 1999986 bytes).
+
+### Worth re-checking next time
+- **Werfen "R&D Systems Hardware Engineering Co-op" (Bedford, MA)** and **Safran Electronics & Defense (Irvine, CA)** — both now confirmed unresolvable by WebFetch, curl, AND Playwright across two runs; no further automated method is likely to help. Only worth revisiting if a differently-worded/dated version of either posting surfaces via a fresh search, not by re-trying the same URLs.
+- **Schneider Electric — Andover, MA "Mechanical Engineer Co-Op"** — this run's agent noted Schneider has historically run an identical Mechanical Engineer Co-Op at its Andover, MA (Boston-area) site each January cycle (the Jan-2026 version, req 96613, is now closed). A Spring 2027 version may not yet be posted — worth checking specifically for a new Andover req in a future run.
+- **Liebherr Mining (Newport News, VA)** — confirmed still live this run; keep an eye out for a closing date appearing.
+- Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch — still not due for re-check (per standing "a few weeks" cadence; only ~6 hours elapsed since run 177).
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum — all believed saturated/current.
+- Tracker is now at 464 rows / 1744 checked entries after 178 runs. Net this run: 0 new qualifying postings, 7 new consolidated checked-exclusion entries (~26 companies), 0 staged files. Heavy saturation continues to hold — this session independently re-verified both of the research agent's "Partial" leads and found neither met the verification bar (one a merged Winter-Summer range, one with no season stated at all), consistent with the tracker's long-running pattern of agent-reported candidates not surviving independent re-check.
