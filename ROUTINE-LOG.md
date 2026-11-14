@@ -9210,3 +9210,50 @@ None this run — no new fully-verified postings.
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum — all believed saturated/current.
 - **Process note for future runs:** a background agent given the full company skip-list still re-surfaced ~6 already-tracked companies as "new candidates" this run (0 of them were actually new) — continue grep-checking every agent-reported "new" company by exact name against `build.mjs` before touching `rows`/`checked`, per standing methodology; this caught all 6 before any duplicate entry was written.
 - Tracker is now at 463 rows / 1723 checked entries after 176 runs. Net this run: 0 new qualifying postings, 2 genuinely new checked-exclusion entries (plus 1 resolved/updated HNTB entry, plus 1 dedup-batch note), 0 staged files. Heavy saturation continues to hold — the 8th consecutive run (169-176) with zero net new `rows` entries since run 168's last addition (X-ES).
+
+## Run 177 — 2026-11-14 ~06:50–07:30 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started detached at run 176's own commit (`5993ccd`). Ran `git fetch origin master` directly — confirmed `origin/master` already equaled `5993ccd`, i.e. run 176's push had genuinely landed. Ran `git checkout -B master origin/master`. No unpushed work at risk, no recovery needed.
+
+### What was searched
+Dispatched one background research agent (general-purpose) with the full skip-list of all 1,389 unique `Company:` values in `build.mjs`, the full verification bar, and two parts of work: (A) resolve the six standing "worth re-checking" items from run 176 (Werfen "R&D Systems Hardware Engineering Co-op," Liebherr Aerospace, Safran Electronics & Defense, Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch, Voltic/Voltic Shipping), and (B) a fresh 15+-angle national sweep for genuinely new companies (Boston-area hardware/robotics/aero startups, YC-funded hardware companies, ATS-board direct searches, controls/materials/structural firms, recent funding announcements). Independently re-verified the one positive finding myself via a direct WebFetch of the posting before adding it to the tracker.
+
+### Added to `rows` (1 new entry)
+- **Liebherr Mining Equipment Newport News Co. — "HIL Systems Engineering Intern - Spring 2027" (Newport News, VA)** — resolves run 173/176's standing "worth a periodic re-check" note on Liebherr Newport News. This is a *different division* (Mining Equipment, not the previously-checked Aerospace/Saline entity) at the same Newport News site. Verified directly at careers.liebherr.com (company's own ATS): title explicitly states "Spring 2027," "Apply now" buttons present, no closed/expired language (no explicit closing date shown either way). $18-23/hr, controls-engineering fit (HIL simulation, CAN networks, MATLAB/Simulink for mining haul-truck embedded controls). Staged an application draft.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Resolved (updated existing `checked` entry)
+- **Liebherr Aerospace / Liebherr USA (Newport News, VA)** — run 173's entry updated in place: re-checked specifically for the Aerospace/Saline division, still only a Welder Intern (no season) and quality/HR/logistics interns, no engineering-season posting. The Mining division finding above is a separate company entity, noted accordingly.
+
+### Added to `checked` (14 new entries)
+- **Werfen "R&D Systems Hardware Engineering Co-op" (Bedford, MA)** — re-checked 5 iCIMS job IDs; all return HTTP 410 Gone or an AWS WAF CAPTCHA (inconsistent signals, neither a clean read); werfen.com direct pages both 403. No season-specific posting of this req found. Still unresolved/unverifiable.
+- **Safran Electronics & Defense (Irvine, CA), job 189254** — safran-group.com confirmed Cloudflare bot-protected (403 via two independent methods). Still only reportable as Partial if listed at all; nothing new this run.
+- **Carrier Global Corporation** — only Summer/Fall 2026 and Summer 2027 postings found (one "Spring"-titled posting's own body states it's actually Summer 2027). No Winter2026/Spring2027 posting.
+- **Magellan Aerospace** — Production Control Co-op is Canada/non-mechanical; Mechanical Engineering Intern (Bohemia/Corona NY) has no term stated. Nothing dated Winter2026/Spring2027.
+- **Globus Medical (Methuen, MA)** — no new posting beyond the entry already in `rows`.
+- **Benesch (Boston, MA)** — benesch.com/careers shows only generic program text; 2026 cycle confirmed expired (Tallo, 2026-06-11); no 2027 cycle posted yet.
+- **Voltic / Voltic Shipping (East Boston, MA)** — company's own YC jobs board shows only one open role ("Asymmetric Upside Engineering"), not an internship, no season stated.
+- **Berkshire Grey (Bedford, MA)** — re-confirmed already-logged "now closed" status (404 on direct fetch).
+- **SpaceRake (Watertown, MA)** — new-to-tracker; interndock.com mirror explicitly states "This internship has closed."
+- **Pivotal (Palo Alto, CA, eVTOL)** — new-to-tracker; only Summer 2026/Fall 2026/Summer 2027 mechanical/MRO postings exist — wrong season only.
+- **BlueWave (Boston, MA)** — new-to-tracker; listing returns HTTP 410 Gone; discipline (solar/battery siting) also a doubtful fit.
+- **MistyWest** — new-to-tracker; Winter 2027 co-op but located in Vancouver, BC, Canada — fails location requirement.
+- **ThermalTech Engineering** — new-to-tracker; Handshake-preview listings not corroborated by the company's own careers page (no postings listed there at all) — likely stale.
+- **Astro Machine Works (Ephrata, PA)** — new-to-tracker; no season stated anywhere, appears to be a rolling/generic small machine-shop assembly posting.
+
+### Staged
+- `staged-applications/liebherr-mining-hil-systems-engineering-intern.md` — new file for the Liebherr Mining posting above.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count: `rows` 463 → 464 (+1); `checked` increased by 14 new array entries (plus 1 in-place update to the existing Liebherr Aerospace entry, not a new entry). Zero duplicate Application Links across all 464 `rows` entries (programmatic check). `.xlsx` file changed per `git status`.
+
+### Worth re-checking next time
+- **Werfen "R&D Systems Hardware Engineering Co-op" (Bedford, MA)** — still unresolved; site gives inconsistent 410/CAPTCHA signals. Worth trying a Playwright render next time rather than WebFetch/curl.
+- **Safran Electronics & Defense (Irvine, CA)** — still Cloudflare-blocked; would need a non-blocked mirror or live-browser render to ever resolve.
+- **Liebherr Mining (Newport News, VA)** — no explicit closing date was visible on the new posting; worth confirming it's still open on the next pass.
+- Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch — still not due for re-check for another few weeks (per standing "a few weeks" cadence).
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum — all believed saturated/current.
+- Tracker is now at 464 rows / entries in `checked` grown by 14 (plus 1 resolved update) after 177 runs. Net this run: 1 new qualifying posting (Liebherr Mining, Newport News VA), 14 new checked-exclusion entries, 1 staged file. Breaks the 8-run (169-176) streak of zero net new `rows` entries.
