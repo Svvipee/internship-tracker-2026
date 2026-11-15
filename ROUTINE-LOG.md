@@ -9402,3 +9402,40 @@ None this run — no new fully-verified postings.
 - Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch — still not due for re-check (only ~6 hours elapsed since run 180's standing note; per "a few weeks" cadence).
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris — all believed saturated/current.
 - Tracker is now at 464 rows / 1758 checked entries after 181 runs. Net this run: 0 new qualifying postings, 6 new checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — this run's fresh sweep (distinct search angles from recent runs, including two genuinely new-to-tracker leads) independently re-confirmed the saturation rather than finding anything that met the verification bar.
+
+## Run 182 — 2026-11-15 ~12:55–13:00 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started detached at run 181's own commit (`57ee57d`). Ran `git fetch origin master` directly — confirmed `origin/master` already equaled `57ee57d`, i.e. run 181's push had genuinely landed. Ran `git checkout -B master origin/master`. No unpushed work at risk, no recovery needed.
+
+### What was searched
+Directly re-checked the two standing carried-forward items myself: (1) Schneider Electric's Andover, MA "Mechanical Engineer Co-Op" for a Spring 2027/Winter 2026 req (WebSearch + a direct careers.se.com search URL, which 404'd); (2) the exact tracked Liebherr Mining Equipment Newport News "HIL Systems Engineering Intern - Spring 2027" URL (direct WebFetch). In parallel, dispatched one background research agent (general-purpose), briefed with the full skip-list of ~1,421 unique company names grepped from `build.mjs` and the standing saturated-source list, to run a fresh multi-angle sweep: recent Boston-area hardware/robotics funding news, YC W26 hardware companies, direct Greenhouse/Lever/Workday ATS searches for "Spring 2027 mechanical engineering intern," defense-prime subsidiaries, and materials/structural/controls-specific companies. Independently re-verified every one of the agent's reported leads myself (grep against `build.mjs` for dedup, plus direct WebFetch/WebSearch for the ones that looked genuinely new) before touching `rows`/`checked`.
+
+### Added to `rows`
+None this run — the 12th run out of 182 total (and 5th of the last 5) with zero net new `rows` entries. The agent's one "unconfirmed, needs verification" lead (XGenomes' "Engineering Intern/Co-Op (2026-2027)," Cambridge MA) turned out to already be tracked as excluded since run 165 (no season stated in the posting body) — re-confirmed unchanged via direct WebFetch, not a new finding.
+
+### Moved from `rows` to `checked`
+None this run — Liebherr Mining Newport News re-fetched directly, still live with "Spring 2027" in the title and "Apply now" buttons present, no closed/expired language. No change needed.
+
+### Added to `checked` (7 new entries)
+- **Schneider Electric Andover, MA — periodic re-check.** Still no Spring 2027/Winter 2026 Andover mechanical req found.
+- **Liebherr Mining Newport News — re-check.** Confirmed still live; no change to `rows`.
+- **Eden GeoPower Inc. (Somerville/Boston, MA) — new-to-tracker.** Own careers page (edengeopower.com/careers) 404s; every aggregator mirror for its intern roles is undated or stale (2025 cycle); only recent posting (Oct 2026) is a full-time Senior Mechanical Engineer, not an internship. Not added.
+- **XGenomes/Hexcel/VulcanForms/Eka Robotics re-surfaced-by-agent batch.** All four already had standalone exclusion entries from prior runs (165/169, ~09-21/09-29, ~10-13/10-20, 153/162/166 respectively); XGenomes independently re-confirmed unchanged via direct WebFetch, the other three not re-verified since nothing new was claimed about them. Not re-logged as separate findings.
+- **National sweep dead-end batch (12 companies).** Moss, Salient Motion, Samara Aerospace, Grid Aero, Hybron Technologies, Fortastra (all CA-based, wrong season and/or already closed), Reservoir, Hearth Display, Genesis AI, Origami Robotics, Human Archive, AllSpice.io (all Boston-area but none has an internship program at all, or the only internship is wrong-discipline/non-engineering). None added.
+- **MERL (Mitsubishi Electric Research Labs, Cambridge MA) and PSI Corp (Physical Sciences Inc., Andover MA) — new-to-tracker, inconclusive.** MERL's internships read as PhD-researcher roles, not undergrad-level, with no Spring-2027-specific window. PSI Corp's composites-intern listing is fully bot-walled (verification challenge) and unreadable by this session's tools. Neither added; PSI Corp worth a re-check with a headless-browser render if chased again.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count/diff: `rows` unchanged at 464; `checked` 1758 → 1765 (+7). `.xlsx` file changed per `git diff --stat` (2009043 → 2015367 bytes).
+
+### Worth re-checking next time
+- **Schneider Electric Andover, MA "Mechanical Engineer Co-Op"** — still no Spring 2027/Winter 2026 version posted; keep checking given the historical January-cycle pattern.
+- **Liebherr Mining (Newport News, VA)** — confirmed still live this run, still no closing date shown; keep an eye out for one appearing.
+- **PSI Corp (Physical Sciences Inc., Andover, MA)** — composites-intern listing is bot-walled; worth a Playwright/headless-browser render attempt in a future run rather than plain WebFetch.
+- Carrier Global Corporation, Magellan Aerospace, Globus Medical, Benesch — still not due for re-check (per standing "a few weeks" cadence).
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris — all believed saturated/current.
+- **Process note:** the background agent's own skip-list grep missed several already-tracked companies (XGenomes/xGenomes case mismatch, Hexcel, VulcanForms, Eka Robotics substring/variant issues) — continue independently re-grepping every agent-reported "new" candidate against `build.mjs` before touching `rows`/`checked`, per standing methodology; this caught all four before any duplicate entry was written.
+- Tracker is now at 464 rows / 1765 checked entries after 182 runs. Net this run: 0 new qualifying postings, 7 new checked-exclusion entries (covering ~16 companies), 0 staged files. Heavy saturation continues to hold — the 12th consecutive-ish run (169-182, with run 177's single exception) of near-zero net new `rows` entries.
