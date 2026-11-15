@@ -9439,3 +9439,37 @@ None this run — no new fully-verified postings.
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris — all believed saturated/current.
 - **Process note:** the background agent's own skip-list grep missed several already-tracked companies (XGenomes/xGenomes case mismatch, Hexcel, VulcanForms, Eka Robotics substring/variant issues) — continue independently re-grepping every agent-reported "new" candidate against `build.mjs` before touching `rows`/`checked`, per standing methodology; this caught all four before any duplicate entry was written.
 - Tracker is now at 464 rows / 1765 checked entries after 182 runs. Net this run: 0 new qualifying postings, 7 new checked-exclusion entries (covering ~16 companies), 0 staged files. Heavy saturation continues to hold — the 12th consecutive-ish run (169-182, with run 177's single exception) of near-zero net new `rows` entries.
+
+## Run 183 — 2026-11-15 ~18:50–18:55 UTC
+
+### Repo hygiene
+Fresh container, `HEAD` started detached at run 182's own commit (`49381b5`), with `origin/master` already at the same commit (confirmed via `git fetch`/`git log` comparison — run 182's push had genuinely landed). Ran `git checkout master` then `git merge --ff-only origin/master` (no-op, already current). No unpushed work at risk, no recovery needed.
+
+### What was searched
+Directly re-checked the three standing carried-forward items myself: (1) Schneider Electric's Andover, MA "Mechanical Engineer Co-Op" for a Spring 2027/Winter 2026 req (WebSearch); (2) the exact tracked Liebherr Mining Equipment Newport News "HIL Systems Engineering Intern - Spring 2027" URL (direct WebFetch); (3) PSI Corp's bot-walled composites-intern listing — this time using a Playwright headless-browser render (available pre-installed in this environment) instead of plain WebFetch, specifically to try the different-access-method workaround run 182 flagged as worth attempting. Also ran a fresh WebSearch sweep (GE Aerospace Spring 2027 reqs across all current locations, Draper Laboratory Cambridge Spring 2027 co-ops, and a Greenhouse/Lever-filtered search for Boston-area Spring 2027 mechanical co-ops) and independently grep-confirmed every surfaced candidate against `build.mjs` before touching `rows`/`checked`.
+
+### Added to `rows`
+None this run — the 13th run out of 183 total (and 6th of the last 6) with zero net new `rows` entries.
+
+### Moved from `rows` to `checked`
+None this run.
+
+### Added to `checked` (4 new entries)
+- **Schneider Electric Andover, MA — periodic re-check.** Still no Spring 2027/Winter 2026 Andover mechanical req found.
+- **Liebherr Mining Newport News — re-check.** Confirmed still live; no change to `rows`.
+- **PSI Corp (Physical Sciences Inc., Andover, MA) — resolved.** A Playwright headless-browser render got past the bot-verification wall that had blocked every prior attempt (runs up to 182), confirming the wall itself is bypassable this way. However the exact tracked composites-intern URL now 404s on PSI Corp's own site — the posting is gone. Checked the general Internships page and a guessed `/careers/jobs` path for a replacement listing; neither surfaced one. Closing out this thread as resolved-excluded (no live posting to add).
+- **Dedup-confirmed non-new batch.** GE Aerospace's current Spring 2027 slate, Draper's Spring 2027 reqs, Buro Happold, Lexington Medical, Field AI, Syska Hennessy, Berkshire Grey, Specter Aerospace, and Reframe Systems all re-confirmed already tracked (in `rows` or `checked`) from prior runs. Hermeus's Spring/Summer 2027 mechanical intern lead is Los Angeles, CA — wrong location, not added.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count/diff: `rows` unchanged at 464; `checked` 1760 → 1764 (+4). `.xlsx` file changed per `git diff --stat` (2015367 → 2019190 bytes).
+
+### Worth re-checking next time
+- **Schneider Electric Andover, MA "Mechanical Engineer Co-Op"** — still no Spring 2027/Winter 2026 version posted; keep checking given the historical January-cycle pattern.
+- **Liebherr Mining (Newport News, VA)** — confirmed still live this run, still no closing date shown; keep an eye out for one appearing.
+- **Field AI (Boston, MA) "Mechanical Engineer, Robotics Hardware Intern"** — still the single most attractive unconfirmed Boston-area lead (excellent discipline/location fit) but still has zero season/term language on its own Lever posting after roughly 20+ consecutive runs; likely requires Hamza to ask the company directly if he wants to pursue it informally.
+- PSI Corp's specific composites-intern req is now closed/gone — not worth chasing further unless a new PSI Corp posting surfaces. The headless-browser method that bypassed its bot-wall is now a proven option for any other bot-walled source in future runs (e.g. Werfen, Safran) if revisited.
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris — all believed saturated/current.
+- Tracker is now at 464 rows / 1764 checked entries after 183 runs. Net this run: 0 new qualifying postings, 4 new checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — the 13th consecutive-ish run (171-183, with run 177's single exception) of near-zero net new `rows` entries.
