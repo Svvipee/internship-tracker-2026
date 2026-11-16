@@ -9473,3 +9473,38 @@ None this run — no new fully-verified postings.
 - PSI Corp's specific composites-intern req is now closed/gone — not worth chasing further unless a new PSI Corp posting surfaces. The headless-browser method that bypassed its bot-wall is now a proven option for any other bot-walled source in future runs (e.g. Werfen, Safran) if revisited.
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris — all believed saturated/current.
 - Tracker is now at 464 rows / 1764 checked entries after 183 runs. Net this run: 0 new qualifying postings, 4 new checked-exclusion entries, 0 staged files. Heavy saturation continues to hold — the 13th consecutive-ish run (171-183, with run 177's single exception) of near-zero net new `rows` entries.
+
+## Run 184 — 2026-11-16 ~00:50–01:00 UTC
+
+### Repo hygiene
+Fresh container. `HEAD` started detached at run 183's own commit (`d108abc`), with `origin/master` fetched and confirmed at the same commit (`git fetch origin master` + `git rev-parse`) — run 183's push had genuinely landed, no unpushed work at risk. Ran `git checkout master` then `git merge --ff-only origin/master` (no-op, already current).
+
+### What was searched
+Directly re-checked the two standing carried-forward items myself: (1) Schneider Electric's Andover, MA "Mechanical Engineer Co-Op" for a Spring 2027/Winter 2026 req (WebSearch, plus a Playwright headless-browser attempt against careers.se.com's search tool — blocked by an Akamai "Access Denied" edge rule, a harder block than the plain-WebFetch 403 seen before); (2) the exact tracked Liebherr Mining Equipment Newport News "HIL Systems Engineering Intern - Spring 2027" URL (direct WebFetch). In parallel, dispatched one background research agent (general-purpose) for a fresh ~15-angle sweep (recent Boston-area hardware/robotics funding news, direct Greenhouse/Lever/Workday ATS searches for "Spring 2027 mechanical engineering intern," defense primes/subsidiaries, materials/structural/controls niches, medtech manufacturing co-ops). Independently re-verified every one of the agent's reported leads myself (grep against `build.mjs` for dedup, plus direct WebFetch for season/status) before touching `rows`/`checked`.
+
+### Added to `rows`
+None this run — the 14th run out of 184 total (and 7th of the last 7) with zero net new `rows` entries. The agent's one "new" find, Anduril Industries' "Winter 2027 Mechanical Engineer Co-op" (Quincy, MA / Ashville, OH), turned out to be byte-for-byte already in `rows` (same Greenhouse URL/title/pay, added ~run 78) — the agent itself flagged this as likely and asked for a careful dedup check, which confirmed it.
+
+### Moved from `rows` to `checked`
+None this run — Liebherr Mining Newport News re-fetched directly at the exact tracked URL, still live with "Spring 2027" in the title (Job ID 84986), "Apply now" button present, no closed/expired language. No change needed.
+
+### Added to `checked` (6 new entries)
+- **Schneider Electric Andover, MA — periodic re-check.** Still no Spring 2027/Winter 2026 Andover mechanical req found; a headless-browser attempt to get past the bot-wall was also blocked (Akamai edge-level denial this time, not just a WebFetch 403).
+- **Liebherr Mining Newport News — re-check.** Confirmed still live; no change to `rows`.
+- **Peraton — "Co-Op Engineer" (Blacksburg/Herndon, VA) — new-to-tracker.** iCIMS job-detail URL returns HTTP 410 Gone. Not added.
+- **Nova Biomedical — "System Test Engineering Co-Op" (Waltham, MA) — new-to-tracker.** Good discipline/location fit, but no season stated on the posting itself, and sibling Nova postings reference a "January 2026 Co-Op Cycle" — likely a stale prior-cycle req, not a fresh 2027 one. Not added.
+- **Paragonix Technologies — "R&D Engineering Co-Op" (Waltham, MA) — new-to-tracker.** Aggregator described a qualifying Jan-June 2027 term, but the company's own Greenhouse URL 404s and no live replacement could be relocated. Not added.
+- **Dedup-confirmed non-new batch (background agent, run 184).** Beyond the Anduril duplicate above: Xona Space Systems (closed, 6th+ re-confirmation), Beyond Reach Labs (closed), Stoke Space (no open posting locatable on its own site), Shield AI (Lever board now empty; also standing EE-discipline-mismatch exclusion), BAE Systems Cedar Rapids (confirmed combined Jan-Aug 2027 term, same ambiguous-combined-term precedent as other exclusions), HNTB Civil Engineer Co-op Structures Boston (already resolved closed in run 176 via company-primary-source), J&J/Abiomed "Innovation Excellence Co-Op" R-097289 (already in `rows` since run 85), KFI Engineers PC (already excluded since run 125), Via Separations (Lever board still empty, standing "recheck closer to Spring 2027" note unchanged), Saab (already resolved excluded in prior runs), and Found Energy/Pyka/Berkshire Grey/Reframe Systems/Sonos/Buro Happold/Specter Aerospace/Rendezvous Robotics/SpaceX/SSOE Group/Schaeffler/Fourth Power/Entegris (all already tracked). Boston Scientific's current board independently re-confirmed to show only Fall 2027/Summer 2028-cycle postings right now — refreshes but doesn't change the standing exclusion.
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count/diff: `rows` unchanged at 464 (zero duplicate Application Links, programmatically checked); `checked` 1764 → 1770 (+6). `.xlsx` file changed per `git diff --stat` (2019190 → 2025411 bytes).
+
+### Worth re-checking next time
+- **Schneider Electric Andover, MA "Mechanical Engineer Co-Op"** — still no Spring 2027/Winter 2026 version posted; careers.se.com is now confirmed bot-blocked even against a headless-browser render (Akamai edge rule), so future attempts likely need a different access method (a found Workday/Greenhouse mirror, or direct company press) rather than repeating the same blocked approach.
+- **Liebherr Mining (Newport News, VA)** — confirmed still live this run, still no closing date shown; keep an eye out for one appearing.
+- **Nova Biomedical (Waltham, MA)** and **Paragonix Technologies (Waltham, MA)** — both new-to-tracker leads with good discipline/location fit but failed verification this run (stale-cycle risk / dead link respectively); worth a fresh look if a dated/working version surfaces.
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris, Boston Scientific — all believed saturated/current.
+- Tracker is now at 464 rows / 1770 checked entries after 184 runs. Net this run: 0 new qualifying postings, 6 new checked-exclusion entries (covering ~20 companies/leads), 0 staged files. Heavy saturation continues to hold — this is the 7th consecutive run with zero net new `rows` entries.
