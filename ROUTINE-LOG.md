@@ -9508,3 +9508,44 @@ None this run — no new fully-verified postings.
 - **Nova Biomedical (Waltham, MA)** and **Paragonix Technologies (Waltham, MA)** — both new-to-tracker leads with good discipline/location fit but failed verification this run (stale-cycle risk / dead link respectively); worth a fresh look if a dated/working version surfaces.
 - GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris, Boston Scientific — all believed saturated/current.
 - Tracker is now at 464 rows / 1770 checked entries after 184 runs. Net this run: 0 new qualifying postings, 6 new checked-exclusion entries (covering ~20 companies/leads), 0 staged files. Heavy saturation continues to hold — this is the 7th consecutive run with zero net new `rows` entries.
+
+## Run 185 — 2026-11-16 ~06:50–07:15 UTC
+
+### Repo hygiene
+Fresh container. `HEAD` started detached at run 184's own commit (`5dadc94`); `git fetch origin master` confirmed `origin/master` was already at the same commit (run 184's push had landed). Ran `git checkout master` (fast-forward no-op, already current). No unpushed work at risk.
+
+### What was searched
+Personally re-checked the three standing carried-forward items: (1) Liebherr Mining Newport News exact tracked URL (direct WebFetch); (2) Schneider Electric Andover, MA mechanical co-op (WebSearch); (3) fresh looks at Nova Biomedical and Paragonix Technologies (Waltham, MA), both previously-failed new-to-tracker leads, via WebSearch plus direct re-fetch of the Paragonix Greenhouse URL and board. In parallel, dispatched one background research agent (general-purpose) for a fresh ~15-angle sweep (direct Greenhouse/Lever/Workday ATS queries for Spring 2027/Winter 2026 mechanical-adjacent postings, recent Boston-area hardware/robotics funding news, New England defense/medtech, materials/structural/controls niches), explicitly briefed to skip the long list of already-exhausted/saturated sources. Independently re-verified every one of the agent's 5 reported "new" leads myself (direct WebFetch of each exact posting URL, plus grep against `build.mjs` for dedup) before touching `rows`/`checked`.
+
+### Added to `rows`
+**LiquidPiston — "Design Engineer Intern - Spring 2027" (Suffield, CT).** New company for the tracker. Confirmed open via direct fetch on the company's own ATS (apply.liquidpiston.com); title explicitly states "Spring 2027"; live application form, no closing date shown. Mechanical engineering discipline (rotary/combustion engine design), paid (rate not stated), "U.S. person status preferred" (not required) due to defense/aerospace-adjacent work. This breaks the 7-run streak of zero net new `rows` entries — net +1 this run.
+
+Of the agent's other 4 reported "new" candidates, all 4 turned out on independent grep-check to be byte-for-byte already in `rows` from prior runs: Commonwealth Fusion Systems' Mechanical Equipment Engineer intern (Lever 86514c02, added run 124) and Cryogenics Engineer intern (Lever 12638cfd, added run 124), MORSE Corp's Mechanical Engineer Co-op (Greenhouse 7968311003, already tracked), and Hermeus's Propulsion Component Engineering Intern - Spring 2027 LA (Lever 2cbb75f7, already tracked). None re-added; see `checked` dedup entry below.
+
+### Moved from `rows` to `checked`
+None this run — Liebherr Mining Newport News re-fetched directly at the exact tracked URL, still live with "Spring 2027" in the title, two "Apply now" buttons present, no closed/expired language, no closing date shown. No change needed.
+
+### Added to `checked` (8 new entries)
+- **Schneider Electric Andover, MA — periodic re-check.** Still no Spring 2027/Winter 2026 Andover mechanical req found; unchanged from runs 182-184.
+- **Liebherr Mining Newport News — re-check.** Confirmed still live; no change to `rows`.
+- **Nova Biomedical (Waltham, MA) — fresh look.** Still no Spring 2027 cycle posted; all current aggregator-mirrored postings reference the now-elapsed January-July 2026 cycle. Company's own careers page 403s. Not added.
+- **Paragonix Technologies (Waltham, MA) — fresh look.** The specific Greenhouse URL still 404s, and the entire Greenhouse board for the company now 404s too (board may no longer exist at that slug). Getinge's own careers site returned zero results for "co-op AND Waltham." Aggregator-cached Jan-June 2027 listings appear to have expired. Not added.
+- **BAE Systems — Nashua, NH "Mechanical Engineering Intern II/III" — new-to-tracker.** Good discipline/location fit but the actual intern titles are explicitly Summer 2027 (wrong season) despite one secondary "Spring 2027" mention elsewhere on the page. Not added.
+- **Hermeus — "Structures/Mechanical Engineering Intern" (Atlanta, GA) — new-to-tracker.** Verified open, good discipline fit, but states a combined "Spring/Summer 2027" term with no separable Spring-only portion — same ambiguous-combined-term exclusion precedent as Carrier Global/Globus Medical/MIT Lincoln Lab/X-ES/BAE Cedar Rapids. Not added.
+- **Tutor Intelligence (Watertown, MA) — new-to-tracker.** Checked directly after a Nov 2, 2026 $75M Series B announcement; only full-time Mechanical Engineer / Robotics Mechanical Engineer roles posted, no internships/co-ops at all. Not added.
+- **Dedup-confirmed non-new batch (background agent, run 185).** The 4 duplicate "new" leads described above (CFS x2, MORSE Corp, Hermeus LA) — all independently confirmed byte-for-byte already in `rows`.
+
+### Staged
+One new file: `staged-applications/liquidpiston-design-engineer-intern-spring2027-suffield-ct.md` (LiquidPiston Design Engineer Intern, Spring 2027).
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count/dedup check: `rows` 464 → 465 (+1), zero duplicate Application Links across all 465 entries (programmatically checked); `checked` 1770 → 1778 (+8). `.xlsx` file changed per `git diff --stat` (2025411 → 2033180 bytes).
+
+### Worth re-checking next time
+- **Schneider Electric Andover, MA "Mechanical Engineer Co-Op"** — still no Spring 2027/Winter 2026 version posted; careers.se.com remains bot-blocked even against a headless-browser render. Worth checking again given the historical January-cycle pattern, but a different access method (a found Workday/Greenhouse mirror) is more likely to help than repeating the same blocked approach.
+- **Liebherr Mining (Newport News, VA)** — confirmed still live this run, still no closing date shown; keep an eye out for one appearing.
+- **Nova Biomedical (Waltham, MA)** — worth another look in a few weeks once the Spring 2027 cycle likely posts (current postings are all from the now-elapsed Jan-July 2026 cycle).
+- **Paragonix Technologies (Waltham, MA)** — the Greenhouse board itself now 404s entirely (not just the one job URL) — worth checking whether Paragonix has moved its ATS, e.g. fully consolidated under Getinge's careers site, rather than re-trying the same dead Greenhouse links.
+- **Commonwealth Fusion Systems' other Spring-2027-only Devens, MA reqs** — the background agent noted CFS's Lever board (jobs.lever.co/cfsenergy) also lists an "Intern - Electrical/Electromechanical Engineer - Spring 2027" and an "Intern - Assembly Technical Project Manager - Spring 2027" at Devens; both are already in `rows` per this run's dedup check, so no action needed, but confirms CFS's board is worth a periodic fresh look for newly-added Devens reqs.
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris, Boston Scientific, Commonwealth Fusion Systems, MORSE Corp — all believed saturated/current.
+- Tracker is now at 465 rows / 1778 checked entries after 185 runs. Net this run: 1 new qualifying posting (LiquidPiston, Suffield CT), 8 new checked-exclusion entries, 1 staged file. Breaks the 7-run (178-184) streak of zero net new `rows` entries.
