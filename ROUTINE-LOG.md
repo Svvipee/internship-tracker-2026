@@ -9623,3 +9623,35 @@ None this run.
 - Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris, Boston Scientific, Commonwealth Fusion Systems, MORSE Corp, Veir — all believed saturated/current, not re-checked this run.
 - **Walden Robotics (Cambridge, MA)** — real, actively-hiring humanoid-robotics company (Toyota Research Institute spinout) with no current intern/co-op posting; worth a periodic check for when one appears.
 - Tracker is now at 467 rows / 1804 checked entries after 187 runs. Net this run: 0 new qualifying postings, 1 posting moved from rows to checked (dead), 14 new checked-exclusion entries (3 from direct checks + 11 from a background research sweep), 0 staged files. This run's main substantive output was the repo-hygiene fix recovering 8 runs' worth of previously-unpushed commits.
+
+## Run 188 — 2026-11-17 ~00:50–01:05 UTC
+
+### Repo hygiene
+Fresh container. `HEAD` started detached at run 187's own commit (`3185764`). Per run 187's hard-learned lesson, did NOT trust a cached ref: ran `git fetch origin master` (real network check), confirmed `origin/master` was already at `3185764` — run 187's push had genuinely landed this time. Local `master` branch itself was stale (still at `41bf3c1`, run 178) despite origin being current — ran `git checkout master && git reset --hard origin/master` to bring it in sync. Working tree clean, no unpushed work at risk.
+
+### What was searched
+Personally re-checked six standing carried-forward items directly: (1) Schneider Electric Andover, MA (WebSearch); (2) Liebherr Mining Newport News exact tracked URL (direct WebFetch — first attempt used a guessed URL that 404'd, a false alarm; the actual tracked URL from `build.mjs` was then re-fetched and confirmed live); (3) Nova Biomedical (Waltham, MA) fresh look (WebSearch); (4) Paragonix Technologies (Waltham, MA) fresh look, including a freshly-surfaced Greenhouse URL from this run's own search that still 404'd on direct fetch; (5) Walden Robotics (WebSearch for new student postings — none found, but surfaced a Lila Sciences "Co-op, Mechanical Engineer" lead, checked and found closed/stale Summer 2026); (6) DePuy Synthes/J&J Raynham Partial reqs (direct WebFetch — still Cloudflare-walled, no new information). In parallel, dispatched one background research agent (general-purpose), explicitly briefed to skip the six items above and focus on fresh angles (recent funding news, new ATS phrase searches, defense subcontractors, medtech, niche robotics startups), and to read `build.mjs`/log tail first. Agent confirmed repo hygiene independently (no issue found on its read) and reported back 15 checked companies/leads, including two worth flagging (Mercury Systems — Andover MA, bot-walled, standing thread now has a concrete-but-lapsed data point; VulcanForms — just raised ~$500M, still no co-op program as of today).
+
+### Added to `rows`
+None this run — the 15th run out of 188 total with zero net new `rows` entries (second zero-net run of the last 2, following run 187's -1 net).
+
+### Moved from `rows` to `checked`
+None this run — no tracked posting found newly dead.
+
+### Added to `checked` (15 new entries)
+See `checked` array for full detail. Summary: periodic re-checks of Schneider Electric Andover, Liebherr Newport News (confirmed live), Nova Biomedical, Paragonix Technologies, Walden Robotics, and DePuy Synthes Partial reqs — all unchanged. New-to-tracker/re-opened leads checked and excluded: Lila Sciences "Co-op, Mechanical Engineer" (closed, stale Summer 2026), Field AI's humanoid-manipulation Lever req (title/body season contradiction, PhD-only), Specter Aerospace (freshness confirm only), Pursuit Aerospace KPO Co-op (now has a concrete "expired" data point), VulcanForms (post-$500M-funding re-check, still no co-ops), Re:Build Manufacturing/DAPR Engineering (wrong season / closed), Mercury Systems (Andover MA — inconclusive, bot-walled, flagged below), Saronic Technologies (wrong season/location), and a lower-confidence dead-end batch (RIOS Robotics, Neya Systems, Xaba Inc., Verdant Robotics, Samsara, Atomic Machines).
+
+### Staged
+None this run — no new fully-verified postings.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. Verified via direct count/dedup script: `rows` unchanged at 467 (zero duplicate Application Links, programmatically checked); `checked` 1804 → 1819 (+15). `.xlsx` file changed per `git diff --stat` (2053051 → 2063755 bytes).
+
+### Worth re-checking next time
+- **Git push verification remains a standing hard requirement** — always confirm `origin/master` via a real `git fetch`/`git ls-remote`, and also check that the local `master` branch itself (not just `origin/master`) is current before building on it; this run found local `master` stale even though `origin/master` was correct, the inverse of run 187's problem.
+- **Mercury Systems (Andover, MA)** — new concrete signal this run: a dated Winter 2026 Mechanical Engineering Intern req (job #25-612) closed 1/15/2026, but the real ATS (myjobs.adp.com/mercurysystemscareers) is bot-walled to this session's tools. Strong location fit and a recurring ME co-op program — worth a dedicated headless-browser/manual check, or Hamza checking directly.
+- **VulcanForms (Devens, MA)** — just raised ~$500M (~2026-11-14); no co-op program yet, but worth a re-check in a month or two given the funding and likely hiring expansion.
+- **The three DePuy Synthes/Raynham MA Partial reqs** — still unresolved via automation; Hamza should personally open these in-browser before investing application time.
+- Schneider Electric Andover, Liebherr Mining Newport News, Nova Biomedical, Paragonix Technologies, Walden Robotics — all unchanged this run; same standing notes as runs 182-187 apply.
+- GE Aerospace, Draper, MIT Lincoln Laboratory (core slate), SharkNinja, Rocket Lab, Locus Robotics, Barrett Technology, Saab, Emerson, Fourth Power, Rennscot MFG, Resonetics, X-ES, Battelle, Amentum, Formlabs, Entegris, Boston Scientific, Commonwealth Fusion Systems, MORSE Corp, Veir, Field AI (Mechanical Engineer Co-Op lead, still the most attractive unresolved Boston lead), Specter Aerospace — all believed saturated/current, not re-checked beyond freshness confirms this run.
+- Tracker is now at 467 rows / 1819 checked entries after 188 runs. Net this run: 0 new qualifying postings, 15 new checked-exclusion entries, 0 staged files.
