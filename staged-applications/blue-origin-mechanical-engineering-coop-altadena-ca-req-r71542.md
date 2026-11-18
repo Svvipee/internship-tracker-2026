@@ -1,4 +1,6 @@
-# Blue Origin (Honeybee Robotics) — Mechanical Engineering Co-Op (Fixed Term), Spring 2027 (Req R71542)
+> ⚠️ **DEAD as of 2026-11-18 (run 193) — do not apply via this link.** Req R71542 now returns errorCode S22 "permission denied" (HTTP 403) on direct fetch, and a full sweep of all 1,895 currently-live Blue Origin postings company-wide found zero Co-Op-titled reqs remaining (all Internship-titled reqs still live are Summer 2027). Moved to `checked` in the tracker. Leaving this file in place only as a dated record — do not use it to apply.
+
+# Blue Origin (Honeybee Robotics) — Mechanical Engineering Co-Op (Fixed Term), Spring 2027 (Req R71542) — DEAD
 
 - **Posting URL:** https://blueorigin.wd5.myworkdayjobs.com/BlueOrigin/job/Los-Angeles-CA/Mechanical-Engineering-Co-Op--Fixed-Term-_R71542
 - **Location:** Altadena, CA (Honeybee Robotics, a Blue Origin company; listed under the "Los Angeles, CA" Workday location group)

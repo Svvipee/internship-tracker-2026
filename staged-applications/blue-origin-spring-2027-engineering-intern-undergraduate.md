@@ -1,4 +1,6 @@
-# Blue Origin — Spring 2027 Engineering Intern - Undergraduate (R69064)
+> ⚠️ **DEAD as of 2026-11-18 (run 193) — do not apply via this link.** Req R69064 now returns errorCode S22 "permission denied" (HTTP 403) on direct fetch, and a full sweep of all 1,895 currently-live Blue Origin postings company-wide found zero Co-Op-titled or Spring-2027-titled internship reqs remaining (all Internship-titled reqs still live are Summer 2027). Moved to `checked` in the tracker. Leaving this file in place only as a dated record — do not use it to apply.
+
+# Blue Origin — Spring 2027 Engineering Intern - Undergraduate (R69064) — DEAD
 
 - **Posting URL:** https://blueorigin.wd5.myworkdayjobs.com/en-US/BlueOrigin/job/Spring-2027--Engineering-Intern---Undergraduate_R69064
 - **Location:** Greater Seattle Area (also site options: Van Horn TX, Huntsville AL, Denver CO, Space Coast FL, Los Angeles CA, Longmont CO) — ~2,500 mi from Boston

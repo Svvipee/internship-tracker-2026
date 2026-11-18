@@ -9817,3 +9817,47 @@ None — no new fully-verified postings this run, so no new `staged-applications
 - **WGI Inc. / Westfield Gage, Kollmorgen, Werfen** — all now confirmed genuinely bot-walled (CAPTCHA/WAF) even under full headless-browser rendering; deprioritize to opportunistic-only, stop treating as "needs a browser-rendering retry" standing items.
 - Odys Aviation, Olympus, Schneider Electric, Nova Biomedical, Paragonix Technologies, Walden Robotics, VulcanForms, York Space Systems, Samara Aerospace, MDA Space, JetZero, PDW, Draper (non-Electro-Mechanical reqs), MIT Lincoln Lab, GE Aerospace core (non-Niskayuna) — all re-confirmed unchanged/excluded this run or very recently; resume normal periodic cadence, do not re-check every run.
 - Tracker is now at 464 rows / 1874 checked entries after 192 runs. Net this run: 0 new qualifying postings, 1 posting moved from rows to checked (confirmed dead, Draper JR002883-1), 11 new checked-exclusion entries, 0 staged files. Main substantive output: resolving the Draper Electro-Mechanical Instrument Co-op as genuinely closed (data-integrity correction to `rows`), finding the real CarbonSix/Carbon Six Robotics domain, and confirming via exhaustive own-ATS API pagination that GE Aerospace/Draper/MIT Lincoln Lab have no further qualifying Spring 2027 reqs beyond what's already tracked.
+
+## Run 193 — 2026-11-18 ~06:50–07:45 UTC
+
+### Repo hygiene
+Fresh container. Working tree started clean, `git status` confirmed up to date with `origin/master` at run 192's commit (`a4925c7`); no stale local branch issue this run.
+
+### What was searched
+Dispatched two parallel background general-purpose research agents. Agent A was briefed to do a fresh-angle hunt (recently-funded Boston-area hardware/robotics/medtech-device/defense-supplier startups, niche defense subcontractors, varied Greenhouse/Lever/Workday/Ashby phrasings), explicitly steered away from the saturated company list. Agent B was briefed to do a fresh own-ATS-API sweep (not generic web search) of the standing priority targets (GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Textron Systems) plus a quick fresh-posting check of other major employers (Blue Origin, Anduril, Rocket Lab, SpaceX, Northrop Grumman, etc.), looking only for genuinely new Winter 2026/Spring 2027 postings. Every lead either agent reported was independently re-verified by this session via its own direct curl/API calls before any edit — including fetching Boston Dynamics' req R3380 and R3360 directly via its Workday CXS API, and independently confirming Blue Origin's R71542/R69064 closures via a full paginated sweep of all 1,895 currently-live Blue Origin postings company-wide (zero Co-Op-titled reqs; all Internship-titled reqs are Summer 2027) plus a direct S22/403 "permission denied" response on both exact req URLs.
+
+### Added to `rows` (1 new posting)
+- **Boston Dynamics — "Advanced Manufacturing Engineering Co-Op" (req R3380, Waltham, MA).** Independently fetched directly via Boston Dynamics' own Workday CXS API: `canApply: true`, posted 4 days ago, job description states verbatim "This 6-month Co-op will begin on January 4th, 2027, in our Waltham, MA robotics factory," pay "$32 to $37 per hour." Right in the Boston metro. New Boston Dynamics intern/co-op cycle appears to be opening after a long dormant stretch (see standing checked-entry history for this company).
+
+### Moved from `rows` to `checked` (2 entries — confirmed dead)
+- **Blue Origin — "Mechanical Engineering Co-Op (Fixed Term)," req R71542 (Altadena, CA, Honeybee Robotics).** Direct fetch now returns errorCode S22 "permission denied" (HTTP 403) — per this tracker's established methodology, distinct from a plain 404 and meaning the req existed but is no longer public. Independently corroborated via a full company-wide sweep of all 1,895 currently-live Blue Origin postings: zero Co-Op-titled reqs exist anywhere, and every live Internship-titled posting is explicitly Summer 2027. Genuinely closed.
+- **Blue Origin — "Spring 2027 Engineering Intern – Undergraduate," req R69064 (Greater Seattle Area + 6 other sites).** Same result, same corroborating full-board sweep. Genuinely closed.
+
+Both corresponding `staged-applications/` drafts were marked DEAD in place (not deleted), consistent with established practice (see the ZOLL Medical precedent).
+
+### Added to `checked` (12 new entries, including the 2 moved rows above)
+- Blue Origin R71542 and R69064 — confirmed dead, moved from `rows` (see above).
+- **Boston Dynamics — "Manufacturing Test Engineer Co-Op," req R3360 (Waltham, MA).** Sibling req to the newly-added R3380; `canApply: true`, posted 8 days ago, strong discipline fit, but the job body states only "Duration: 6 months" with no explicit start date/season language anywhere — fails the strict explicit-season verification bar. Worth a re-check next run in case it's updated.
+- **EnVision Endoscopy (Waltham, MA)** — new-to-tracker, no internship/co-op posting or student-facing careers page found anywhere; likely too new/small post-Series-A.
+- **Winchester Interconnect (Peabody, MA)** — new-to-tracker; aggregator-mirrored "Machine Shop Apprentice Co-op" has no stated academic term (reads as a rolling apprenticeship), and the official site (now redirecting to Aptiv's careers domain) shows zero Peabody/internship listings. Fails the season-must-be-stated bar.
+- **Zeta Surgical (Boston, MA)** — new-to-tracker; only locatable posting mirrors are confirmed closed (one returns HTTP 410 Gone), no official careers page locatable, no season language found anywhere.
+- **Nano-C (Westwood, MA)** — new-to-tracker; own careers page shows zero internship/co-op listings, only full-time roles.
+- **Axis Automation / Axis Company (Walker, MI)** — new-to-tracker; own Greenhouse board (11 openings) is all full-time; also not Boston-area.
+- **Convergix (London, Ontario, Canada)** — new-to-tracker; genuine co-op posting found (Jan/May 2027, robotics/controls) but Canada location fails the US-only requirement.
+- **Axiomatic AI / CavilinQ (Boston-area, recent seed raises)** — new-to-tracker, NOT deep-verified; discipline mismatch suspected on their face (engineering-infrastructure software / quantum networking), deprioritized rather than fully chased down. Flagged honestly as not exhaustively checked.
+- **Rocket Lab — "Quality Engineering Intern Spring 2027," job 8205829003** — new-to-tracker; strong title/season match but location is Toronto, Canada. All other Spring-2027 US reqs on the board are already-tracked job IDs.
+- **Anduril — "Fall 2027 Manufacturing Engineer Co-op," job 5280611007** — new-to-tracker; wrong season (Fall 2027, not Winter 2026/Spring 2027).
+- **Priority-target re-sweep (GE Aerospace, Draper Laboratory, MIT Lincoln Laboratory, Textron Systems)** — all reconfirmed unchanged via fresh, independent live-API/sitemap pulls (not a repeat of prior claims): GE Aerospace's only Niskayuna-area reqs remain Summer-2027-only; Draper's 2 tracked Spring 2027 reqs remain live (JR002882, JR003131), the dead JR002883-1 slot is now occupied by a Summer 2027 sibling (JR003093); MIT Lincoln Lab's one qualifying hit (job 1434254300) remains live, no new hit; Textron Systems still has zero co-op-titled Wilmington reqs, 2027 cycle still not posted.
+
+### Staged (1 new file, `staged-applications/`)
+- `staged-applications/boston-dynamics-advanced-manufacturing-engineering-coop-waltham-ma.md` — for the newly-verified Boston Dynamics R3380 posting.
+
+Also marked DEAD in place (not new staged files, but updated): `blue-origin-mechanical-engineering-coop-altadena-ca-req-r71542.md`, `blue-origin-spring-2027-engineering-intern-undergraduate.md`.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: 464 → 463 (+1 new Boston Dynamics, -2 Blue Origin moved to checked). `checked`: 1874 → 1887 (+13: 2 moved rows + 11 new exclusions; see exact entries above). Zero duplicate Application Links across all 463 `rows` entries (programmatically checked). `.xlsx` file changed per `git diff --stat` (2095717 → 2103676 bytes).
+
+### Worth re-checking next time
+- **Boston Dynamics (Waltham, MA)** — a new intern/co-op hiring cycle appears to be opening after a long dormant stretch (R3380 added, R3360 pending season confirmation). Worth a priority re-check next run for R3360's season update and any further new sibling reqs.
+- **Axiomatic AI / CavilinQ** — surfaced via funding news but not deep-verified; worth a real look only if there's reason to suspect a hardware-engineering internship track at either.
+- **GE Aerospace Niskayuna Research reqs, Textron Systems, WGI/Westfield Gage/Kollmorgen/Werfen** — all unchanged from run 192's standing cadence notes; continue per those timelines (early December for Textron, periodic for the others).
