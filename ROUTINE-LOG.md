@@ -9861,3 +9861,39 @@ Also marked DEAD in place (not new staged files, but updated): `blue-origin-mech
 - **Boston Dynamics (Waltham, MA)** — a new intern/co-op hiring cycle appears to be opening after a long dormant stretch (R3380 added, R3360 pending season confirmation). Worth a priority re-check next run for R3360's season update and any further new sibling reqs.
 - **Axiomatic AI / CavilinQ** — surfaced via funding news but not deep-verified; worth a real look only if there's reason to suspect a hardware-engineering internship track at either.
 - **GE Aerospace Niskayuna Research reqs, Textron Systems, WGI/Westfield Gage/Kollmorgen/Werfen** — all unchanged from run 192's standing cadence notes; continue per those timelines (early December for Textron, periodic for the others).
+
+## Run 194 — 2026-11-18 ~12:51–13:10 UTC
+
+### Repo hygiene
+Fresh container. **Found and fixed a stale-HEAD bug from run 193**: run 193's final commit (`62f8807`) had been made on a detached HEAD instead of the `master` branch, so it was never pushed and local `master`/`origin/master` were still sitting at run 192's commit (`a4925c7`). Verified `62f8807` was a direct fast-forward descendant of `a4925c7` (`git merge-base --is-ancestor`), checked out `master`, fast-forwarded it to `62f8807`, and pushed — `origin/master` is now caught up. Starting this run from a clean, pushed state.
+
+### What was searched
+Dispatched two parallel background general-purpose research agents. Agent A was briefed on three specific items: (1) re-fetch Boston Dynamics req R3360 directly via its own Workday CXS API to check for an explicit-season update (it failed the strict bar last run on a missing date), plus a fresh pull of Boston Dynamics' full Waltham-area Workday posting list for any new co-op/intern siblings beyond R3380/R3360; (2) resolve Axiomatic AI / CavilinQ, flagged "not deep-verified" in run 193; (3) a secondary general fresh-angle sweep. Agent B was briefed to skip the long saturated company list (passed explicitly) and hunt fresh angles: recent funding-news-driven Boston-area hardware/robotics/medtech/aerospace-supplier startups, niche defense subcontractors, varied ATS phrasings. This session independently spot-verified two of Agent B's findings via direct WebFetch before writing anything to `build.mjs` (Xona Space Systems closure page, Shield AI's live Lever board) rather than trusting the subagent reports alone.
+
+### Added to `rows`
+None. Zero new qualifying postings survived verification this run.
+
+### Added to `checked` (8 new entries)
+- **Boston Dynamics (Waltham, MA) — full Workday re-sweep.** R3360 re-fetched directly: job body still only states "Duration: 6 months," zero date/season keywords anywhere — unchanged from run 193. Full paginated pull of all 86 current Waltham-area Workday postings found no co-op/intern reqs beyond the already-tracked set (R3380 in `rows`; R3360/R3331/R3318/R3312/R3315/R3317 all already in `checked`). Spot-rechecked R3318 directly — same result. No new hiring-cycle siblings have appeared yet.
+- **Axiomatic AI and CavilinQ — resolved.** Axiomatic AI's live Greenhouse API shows 4 postings company-wide, zero internships (prior internship listings are closed, redirect to the generic board, and were pure software/ML anyway). CavilinQ has no careers page or job board locatable at all — too early-stage. Upgrades run 193's "not deep-verified" flag to a clean resolution; both confirmed excluded.
+- **Shield AI — "Structures / Mechanical Test Co-op - January 2027."** The specific Lever posting URL 404s; the company's live Lever board currently shows zero open postings company-wide (independently confirmed by this session via direct fetch). Dead/stale search snippet.
+- **Xona Space Systems — "Mechanical Engineering Co-op (Spring 2027)" (Burlingame, CA).** Posting is real (title/season/posted-date all present) but the page explicitly states twice "This job is no longer accepting applications" (independently confirmed by this session via direct fetch). Also CA, not Boston-area, moot given closure.
+- **Fortify (Boston-area composites 3D printing)** — new-to-tracker. No internship/co-op; only prior req (RF Applications Engineer, full-time) is closed. fortify3d.com itself unreachable from this session's network; checked via a Prelude Ventures mirror instead.
+- **Array Labs (radar manufacturing, Redwood City/Palo Alto, CA)** — new-to-tracker. Own Lever board shows only full-time EE/RF/mechanical roles (3+ years' experience); no internship program. Also outside Boston-preference area, moot.
+- **Astromech ("aerospace hardware," ~$20M raise) — unresolved identity.** Search results conflict between a low-quality aerospace-hardware source and multiple stronger sources describing an unrelated Dallas biotech company of the same name. No company site/careers page located under either identity. Flagged honestly as unresolved rather than guessed.
+- **Safran Electrical & Power — "Engineering Co-Op: Spring 2027" — partial/unverifiable.** A Handshake share-preview (login-walled) states season "based on Spring 2027" and describes aircraft power-conversion-unit work, but could not independently confirm open status, exact location, or a direct non-aggregator link. Safran's own careers portal shows only full-time roles at its Twinsburg, OH site. Fails the direct-posting/confirmed-open bar; worth a re-check if a direct Safran-hosted version turns up.
+
+One additional lead (Anduril "Winter 2027 Mechanical/Manufacturing Engineer Co-op," General Catalyst mirror for Quincy MA) turned out on independent grep to be the same already-tracked Quincy, MA req (`job-boards.greenhouse.io/andurilindustries/jobs/5236601007`) under a different ATS mirror — not new, not re-logged.
+
+### Staged
+None — no new fully-verified postings this run, so no new `staged-applications/` files were needed.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: unchanged at 463 (0 new, 0 moved/removed). `checked`: 1887 → 1895 (+8, all listed above). Zero duplicate Application Links across all 463 `rows` entries (programmatically checked). `.xlsx` file changed per `git status`.
+
+### Worth re-checking next time
+- **Boston Dynamics (Waltham, MA)** — R3380 recently posted suggests a new hiring cycle; R3360 still lacks season language after two runs. Continue periodic (not every-run) re-checks for season updates or new sibling reqs.
+- **Safran Electrical & Power** — Spring 2027 co-op lead looks genuine but is stuck behind a Handshake login-wall; worth trying to locate a direct Safran-hosted posting next time.
+- **GE Aerospace Niskayuna Research reqs, Textron Systems, WGI/Westfield Gage/Kollmorgen/Werfen** — all unchanged from standing cadence notes; continue per those timelines (early December for Textron, periodic for the others).
+- Axiomatic AI, CavilinQ, Shield AI, Xona Space Systems, Fortify, Array Labs — all now fully resolved/excluded this run; no further action needed unless something changes materially.
+- Tracker is now at 463 rows / 1895 checked entries after 194 runs. Net this run: 0 new qualifying postings, 8 new checked-exclusion entries, 0 staged files. Also fixed a detached-HEAD/unpushed-commit bug carried over from run 193.
