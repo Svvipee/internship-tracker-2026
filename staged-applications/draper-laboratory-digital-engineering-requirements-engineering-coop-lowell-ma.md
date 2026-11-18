@@ -1,4 +1,6 @@
-# Draper Laboratory — Digital Engineering – Requirements Engineering Co-Op (Spring 2027, Lowell, MA)
+> ⚠️ **DEAD as of 2026-11-18 (run 195) — do not apply via this link.** Req JR002944 independently re-verified via Draper's own Workday CXS jobs-search API: now returns `{"total":0}` (no longer live), while sibling reqs JR002882/JR003131 confirmed still live in the same check. Moved to `checked` in the tracker. Leaving this file in place only as a dated record.
+
+# Draper Laboratory — Digital Engineering – Requirements Engineering Co-Op (Spring 2027, Lowell, MA) — DEAD
 
 - **Posting URL:** https://draper.wd5.myworkdayjobs.com/Draper_Careers/job/Lowell-MA/Digital-Engineering---Requirements-Engineering-Co-Op--Spring-2027-_JR002944
 - **Req ID:** JR002944

@@ -1,4 +1,6 @@
-# GE Aerospace — Structures Intern/Co-op – ACSC – Cincinnati, OH – Spring 2027
+> ⚠️ **DEAD as of 2026-11-18 (run 195) — do not apply via this link.** Req R5039588 independently re-verified via GE Aerospace's own Workday CXS jobs-search API: now returns `{"total":0}` (no longer live). Moved to `checked` in the tracker. Leaving this file in place only as a dated record.
+
+# GE Aerospace — Structures Intern/Co-op – ACSC – Cincinnati, OH – Spring 2027 — DEAD
 
 - **Posting URL:** https://geaerospace.wd5.myworkdayjobs.com/en-US/GE_ExternalSite/job/Springdale/Structures-Intern-Co-op---ACSC---Cincinnati--OH---Spring-2027_R5039588-1
 - **Location:** Springdale (Cincinnati), OH — not Boston-area

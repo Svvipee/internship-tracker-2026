@@ -1,4 +1,6 @@
-# Draper Laboratory — Mechanical Engineering & System Packaging Co-Op (Spring 2027, Cambridge, MA)
+> ⚠️ **DEAD as of 2026-11-18 (run 195) — do not apply via this link.** Req JR002940 independently re-verified via Draper's own Workday CXS jobs-search API: now returns `{"total":0}` (no longer live), while sibling reqs JR002882/JR003131 confirmed still live in the same check. Moved to `checked` in the tracker. Leaving this file in place only as a dated record.
+
+# Draper Laboratory — Mechanical Engineering & System Packaging Co-Op (Spring 2027, Cambridge, MA) — DEAD
 
 - **Posting URL:** https://draper.wd5.myworkdayjobs.com/Draper_Careers/job/Cambridge-MA/Mechanical-Engineering---System-Packaging-Co-Op--Spring-2027-_JR002940
 - **Req ID:** JR002940

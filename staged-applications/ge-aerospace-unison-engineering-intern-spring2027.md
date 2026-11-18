@@ -1,4 +1,6 @@
-# GE Aerospace — Unison Engineering Intern - Spring 2027 (Dayton OH / Jacksonville FL / Norwich NY / St. George UT)
+> ⚠️ **DEAD as of 2026-11-18 (run 195) — do not apply via this link.** Req R5037093 independently re-verified via GE Aerospace's own Workday CXS jobs-search API: now returns `{"total":0}` (no longer live). Moved to `checked` in the tracker. Leaving this file in place only as a dated record.
+
+# GE Aerospace — Unison Engineering Intern - Spring 2027 (Dayton OH / Jacksonville FL / Norwich NY / St. George UT) — DEAD
 
 - **Posting URL:** https://geaerospace.wd5.myworkdayjobs.com/GE_ExternalSite/job/Jacksonville/Unison-Engineering-Intern---Spring-2027_R5037093-1
 - **Location:** One assignment location, chosen from 4 Unison Industries sites: Dayton, OH; Jacksonville, FL; Norwich, NY; St. George, UT. None are Boston-area.
