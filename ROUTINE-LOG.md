@@ -10034,3 +10034,34 @@ Dispatched two parallel background general-purpose research agents. Agent A was 
 - **Boston Dynamics R3360** — still lacks season language after 6 runs; continue periodic (not every-run) re-checks.
 - **Textron Wilmington MA** — JS-gated to direct fetch this run; a future run with headless-browser access available to the priority-recheck agent should get a cleaner direct pull than this run's WebSearch-only fallback.
 - Tracker is now at 457 rows / 1909 checked entries after 198 runs. Net this run: 1 new qualifying posting, 0 postings moved from rows to checked, 2 new checked-exclusion entries, 1 staged file.
+
+## Run 199 — 2026-11-19 ~18:50–19:15 UTC
+
+### Repo hygiene (real issue found, not a false alarm)
+Fresh container. `git status` showed `HEAD` detached at `82ff30a`. Unlike the benign "stale local ref" pattern logged in runs 146/197/198, a `git rev-parse` comparison this time showed the local `master` branch ref AND `origin/master` both stuck at `a4925c7` — **6 commits behind** the detached HEAD (runs ~193 through 198's work, commits `62f8807` through `82ff30a`). Verified with `git merge-base --is-ancestor master HEAD` (clean fast-forward, no divergence) before touching anything. Ran `git checkout master && git merge --ff-only 82ff30a && git push origin master` — this succeeded and pushed the 6 stranded commits (including all of run 198's AECOM addition and run 196/197's Buro Happold/Draper closures) to `origin/master` for the first time. **Root cause not determined** — some recent run(s) between ~193 and 198 apparently committed on a detached HEAD and either skipped the final `git push` step or the push silently didn't update the branch ref; the commits themselves were sound and already matched what the logs described, so no data was lost, but several runs' worth of work sat unpushed for potentially ~24+ hours. Flagging explicitly in case Hamza wants to check why (e.g. a transient network/auth issue in those containers) — this run's own push (see below) succeeded normally.
+
+### What was searched
+Dispatched one background general-purpose research agent (Agent A) for a broad fresh-angle sweep (Boston-area deep-tech/hardware startups not yet on the saturation list, aerospace/defense suppliers outside the known roster, general "Spring 2027"/"Winter 2026" freshness searches) — briefed with an explicit skip-list of ~70+ already-saturated companies pulled from the staged-applications directory listing. In parallel, this session directly re-checked the standing priority list named in the routine's own instructions: Safran Electrical & Power, Boston Dynamics, Textron Wilmington MA, GE Aerospace, Draper Laboratory, and MIT Lincoln Laboratory, plus Anduril (Quincy MA) and Commonwealth Fusion Systems (Devens MA) as other high-frequency Boston-area posters. Every lead from the agent was independently re-verified by this session (WebSearch/WebFetch, or exact-name grep against `build.mjs`) before any edit.
+
+### Added to `rows`
+None. Zero new qualifying postings survived verification this run.
+
+### Dedup-confirmed non-new findings
+- **Priority list**: Safran (still 403-blocked, unchanged), Boston Dynamics R3360 (still no season language, 7th consecutive run), Textron Wilmington MA (still only the non-engineering Program Master Scheduler req), GE Aerospace Lynn/Niskayuna (unchanged), Anduril Quincy MA (its Winter 2027 Robotics Engineer Co-op and Mechanical Engineer Co-op are already in `rows`), Commonwealth Fusion Systems Devens MA (all qualifying interns already in `rows`), MIT Lincoln Laboratory (Group 07-71 already in `rows`; Group 07-74 still correctly excluded for a combined "Spring/Summer 2027" term), Draper Laboratory (relied on run 196/197's direct-API confirmation; the JS-rendered icims board could not be independently re-pulled this run).
+- **Agent A's leads**, all independently checked and found to be dead ends or duplicates: Sonos's aggregator-mislabeled "Mechanical Engineering Co-Op (Boston, MA)" is the identical Jan-June 2027 role already tracked under Sonos's own title "Audio Systems Engineering Co-Op" (req R2827) — not a distinct posting. Shield AI's "Structures / Mechanical Test Co-op - January 2027" (Dallas, TX) — same req already confirmed dead (404 + empty Lever board) in run 194. XGenomes' "Engineering Intern/Co-Op (2026-2027)" — already excluded since run 169 for stating only a year-range, no season. CESO, Inc.'s "2027 Co-Op – Mechanical Engineering/MEP" (Overland Park, KS) — already excluded since 2026-10-09 for the same no-season-specified reason; non-Boston-area regardless. Sublime Systems, SpaceRake, Neo Cybernetica, Eka Robotics, SmartFlower Solar, Agility Robotics/Apptronik, rStream — all already logged dead ends from prior runs, re-confirmed unchanged. Transaera, Inc. (Somerville, MA) and Evident Scientific/Wabtec's mechanical-discipline co-ops (Waltham, MA) are genuinely new-to-tracker companies/angles; both independently checked and found to have no qualifying open posting (closed mirrors / wrong discipline+year) — logged as dedicated `checked` entries.
+
+### Added to `checked` (6 new entries)
+Transaera, Inc.; Evident Scientific/Wabtec (mechanical-discipline re-check); CESO, Inc. (re-check); Shield AI Dallas (re-check); Sonos aggregator-title cross-reference (not a distinct posting, logged for clarity); and a consolidated "Priority re-check, run 199" entry covering the named routine-priority companies.
+
+### Staged
+None — no new fully-verified postings this run.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: 457 → 457 (no change). `checked`: 1909 → 1915 (+6 new entries). `.xlsx` file changed per `git diff --stat` (2123741 → 2128614 bytes).
+
+### Worth re-checking next time
+- **Repo hygiene**: confirm future runs' final `git push origin master` actually succeeds (check for a non-error exit code / re-fetch-and-compare) rather than assuming success — this run found 6 prior commits had silently failed to reach `origin/master`.
+- **Boston Dynamics R3360** — still lacks season language after 7 runs; continue periodic (not every-run) re-checks.
+- **Safran Electrical & Power** — unchanged, Cloudflare-blocked, Sarasota FL (non-Boston); opportunistic-only per run 196/197's standing recommendation.
+- **AECOM's January 2027 start date/duration** — still worth a closer look per run 198's note; not re-checked this run.
+- Tracker is now at 457 rows / 1915 checked entries after 199 runs. Net this run: 0 new qualifying postings, 0 postings moved from rows to checked, 6 new checked-exclusion entries, 0 staged files. Main substantive output this run: catching and fixing 6 runs' worth of silently-unpushed commits (repo hygiene), plus incremental confirmation that the priority watchlist and a fresh batch of Boston-area leads remain saturated/dead.
