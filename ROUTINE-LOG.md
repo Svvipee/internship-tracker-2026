@@ -10006,3 +10006,31 @@ None — no new fully-verified postings this run.
 - **Textron Systems** — 2027 cycle is now posting at multiple sites (Wilmington MA, Hunt Valley MD, New Orleans LA) but the company's posting template structurally never states a season — this is a settled finding (run 155), not worth re-verifying again; only worth re-checking if Textron's template visibly changes.
 - **GE Aerospace Lynn / Draper Laboratory** — both re-confirmed fully saturated and unchanged this run via direct Workday CXS API pulls; no need to re-check every run.
 - Tracker is now at 456 rows / 1907 checked entries after 197 runs. Net this run: 0 new qualifying postings, 0 postings moved from rows to checked, 3 new checked-exclusion entries, 0 staged files. Main substantive output: catching that both of this run's research agents' "fresh finds" were long-saturated duplicates (reinforcing the standing methodology), plus genuine incremental progress on the Safran lead (location now known) even though it still doesn't clear the verification bar.
+
+## Run 198 — 2026-11-19 ~12:50–13:05 UTC
+
+### Repo hygiene
+Fresh container. `git status` found `HEAD` detached at run 197's commit (`5f9c67f`). Ran a real `git fetch origin master` (not a cached ref) — confirmed `origin/master` already matched the detached HEAD exactly, i.e. run 197's push had genuinely landed. Ran `git checkout -B master origin/master` to get onto a real branch tracking origin before starting any work. No unpushed work at risk, no recovery needed.
+
+### What was searched
+Dispatched two parallel background general-purpose research agents. Agent A was briefed to read `build.mjs`/log tail first, then hunt fresh angles only, explicitly told not to re-research the long saturated company list. Agent B was briefed to re-check the standing priority watchlist (Boston Dynamics R3360, MIT Lincoln Laboratory, GE Aerospace Niskayuna/Lynn, Draper Laboratory, Textron Wilmington MA) via each company's own API/job feed. Safran Electrical & Power was not re-checked this run. Every lead from both agents was independently re-verified by this session (direct WebFetch, Playwright headless render, or exact-ID grep against `build.mjs`) before any edit.
+
+### Added to `rows` (1 new posting)
+- **AECOM — "Structural Engineering Co-Op - Buildings" (Req J10161076, Boston, MA).** Independently re-verified by this session via headless Playwright render of AECOM's own campus-careers site (campus.aecom.jobs, not an aggregator) — full job body read directly off the live DOM, "Apply Now" button present and live. Posting states verbatim "This position is expected to begin in January 2027" (no literal "Winter"/"Spring" word, no end date — a weaker season signal than most tracked entries, flagged clearly in the row's Season field for Hamza to weigh himself). Structural Engineering discipline, hybrid in Boston MA, requires 2+ years of Civil/Structural Engineering study, no sponsorship available. Staged to `staged-applications/aecom-structural-engineering-coop-boston.md`.
+
+### Added to `checked` (2 new entries)
+- **Aurelius Systems** (counter-UAS laser systems) — new-to-tracker. Actually HQ'd in San Francisco (not Boston/Cambridge as an initial search query assumed); zero internship/co-op postings exist, only experienced-hire roles. Not added.
+- **Dedup-confirmed non-new batch + priority re-sweep, run 198** — consolidates all other leads from both agents: Field AI, Sublime Systems, Ascend Elements, Seurat Technologies, Blue Water Autonomy, MORSE Corp, HNTB, and Weston & Sampson were all checked and found unchanged/already-excluded (discipline mismatch, closed, or no qualifying posting); Boston Dynamics R3360 (6th consecutive run with no season language), MIT Lincoln Lab (same roster as run 197, job 1451968600 still combined-term-excluded), GE Aerospace Niskayuna/Lynn (unchanged, Summer-2027-only or vocational-trade-only), Draper Laboratory (unchanged, same 2 qualifying reqs), and Textron Wilmington MA (JS-gated this run, but a WebSearch cross-check found no new engineering-discipline 2027 posting, consistent with runs 196/197) were all re-confirmed unchanged. Zero other genuinely new qualifying postings survived verification.
+
+### Staged (1 new file)
+- `staged-applications/aecom-structural-engineering-coop-boston.md` — for the newly-verified AECOM Boston posting.
+
+### Spreadsheet regenerated
+`npm install xlsx --no-save && node build.mjs` → printed `done`. `rows`: 456 → 457 (+1 new AECOM). `checked`: 1907 → 1909 (+2 new entries). Zero duplicate Application Links across all 457 `rows` entries (programmatically checked). `.xlsx` file changed per `git diff --stat` (2117421 → 2123741 bytes).
+
+### Worth re-checking next time
+- **AECOM's January 2027 start date** — worth a closer look if a future run finds a way to confirm the actual co-op end date/duration directly (not stated on the current posting); Hamza should also independently confirm his work-authorization status against AECOM's explicit no-sponsorship statement.
+- **Safran Electrical & Power** — not re-checked this run; the standing Sarasota FL lead from run 197, still behind a Cloudflare block to direct fetch, is unchanged.
+- **Boston Dynamics R3360** — still lacks season language after 6 runs; continue periodic (not every-run) re-checks.
+- **Textron Wilmington MA** — JS-gated to direct fetch this run; a future run with headless-browser access available to the priority-recheck agent should get a cleaner direct pull than this run's WebSearch-only fallback.
+- Tracker is now at 457 rows / 1909 checked entries after 198 runs. Net this run: 1 new qualifying posting, 0 postings moved from rows to checked, 2 new checked-exclusion entries, 1 staged file.
