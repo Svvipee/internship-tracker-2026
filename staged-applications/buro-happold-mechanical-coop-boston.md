@@ -1,3 +1,5 @@
+**STATUS: DEAD (confirmed 2026-11-19, run 196) — "The application deadline for this job has now passed," confirmed via direct Playwright render. Do not apply. Left in place for the record.**
+
 # Buro Happold — Mechanical Co-op - Boston - Spring 2027
 
 - **Posting URL:** https://vacancies.burohappold.com/jobs/job/Mechanical-Coop-Boston-Spring-2027/2462
